@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20240619 15:11:25.580" rpa="false" schemaversion="4">
+<suite id="s1" name="loginDriver" source="c:\Users\nico2\Documents\AllRide\Robocorp AllRide\AllRide Test Cases\Test Cases\Colectivos(C.AutoColecNico)\App Colectivo\loginDriver.robot">
+<test id="s1-t1" name="Get Driver SelfInfo" line="198">
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${STAGE_URL}/api/v1/cp/me</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240619 15:11:30.416" level="INFO">${url} = https://stage.allrideapp.com/api/v1/cp/me</msg>
+<status status="PASS" starttime="20240619 15:11:30.415" endtime="20240619 15:11:30.420"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Authorization=Bearer 1f7169231ec36bc77996f1f880649e9e0d6fded6955552bca71d1878fd51c868acfaa3295ad24bf58c230e165e43de1956930a7ec6d33d90623422b18b1df35f</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240619 15:11:30.422" level="INFO">&amp;{headers} = { Authorization=Bearer 1f7169231ec36bc77996f1f880649e9e0d6fded6955552bca71d1878fd51c868acfaa3295ad24bf58c230e165e43de1956930a7ec6d33d90623422b18b1df35f }</msg>
+<status status="PASS" starttime="20240619 15:11:30.421" endtime="20240619 15:11:30.422"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>url=${url}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20240619 15:11:31.364" level="INFO">GET Request : url=https://stage.allrideapp.com/api/v1/cp/me 
+ path_url=/api/v1/cp/me 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer 1f7169231ec36bc77996f1f880649e9e0d6fded6955552bca71d1878fd51c868acfaa3295ad24bf58c230e165e43de1956930a7ec6d33d90623422b18b1df35f'} 
+ body=None 
+ </msg>
+<msg timestamp="20240619 15:11:31.365" level="INFO">GET Response : url=https://stage.allrideapp.com/api/v1/cp/me 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 19 Jun 2024 19:11:33 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1778', 'Connection': 'keep-alive', 'Server': 'nginx', 'X-DNS-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Access-Control-Allow-Origin': '*', 'X-RateLimit-Limit': '200', 'X-RateLimit-Remaining': '199', 'X-RateLimit-Reset': '1718824354', 'ETag': 'W/"6f2-7rS7wH5dxpzk+Sp7M5Yio9g0+YY"'} 
+ body={"_id":"666b2e04bd68f8d0735c8f9d","communities":["666b08f0d574cd44de5885e1","666b08f0d574cd44de5885e1","666b08f0d574cd44de5885e1"],"active":true,"routes":["666b2bd9bfaab8adfaf53f25","667310b0b22c939821a338cc","66731108b22c939821a33968"],"avatar":"https://s3.amazonaws.com/cabpool.avatars/default_avatar.png","name":"Conductor RF Pago Diario","socialServices":[{"_id":"666b5425bd68f8d0735c9745","socialType":"accountkit","socialId":"mDhTxHGU7KNtCm2K0F2V6ShXsu23","number":"56976493312","source":"firebase","createdAt":"2024-06-13T20:18:46.071Z","updatedAt":"2024-06-13T20:18:46.071Z"}],"username":"ConductorRFD","hasToChangePassword":false,"identifier":"123456755-8","phone":"56976493312","createdAt":"2024-06-13T17:36:04.704Z","updatedAt":"2024-06-19T17:13:30.734Z","code":"01302","__v":27,"cars":[{"active":true,"_id":"666b5f73bd68f8d0735c9830","plate":"ABCD12","brand":"auto1","model":"auto1","year":1995},{"active":true,"_id":"66724c930a01678a23b56c6b","plate":"NICO","brand":"Toyota","model":"Yaris","year":1995},{"active":true,"_id":"66724cc4b34e9ee19093274e","plate":"NICO","brand":"Toyota","model":"Yaris","year":1995}],"accessToken":"1f7169231ec36bc77996f1f880649e9e0d6fded6955552bca71d1878fd51c868acfaa3295ad24bf58c230e165e43de1956930a7ec6d33d90623422b18b1df35f","device":{"lang":"es","token":"","rtlToken":null,"notificationToken":null,"manufacturer":"motorola","model":"moto g71 5G","appVersion":"40","lastSeenOnline":"2024-06-18T14:20:09.453Z"},"rtlToken":"e5b683ba7ad6e1d0ed587e1d8af6fa556d4fe169bd504de2c5dce02d06dfd4ac81c8b1dc1cb9104bdc29f89e130e6bfbc15e6bc24012e4ab26f1d6f5fea80565","bankAccount":{"_id":"666b5968bfaab8adfaf546a2","name":"Nicolas Bustamante","rut":"12345675582332","accountType":"Cuenta Corriente","accountNumber":1591591598},"routeRequests":[]} 
+ </msg>
+<msg timestamp="20240619 15:11:31.366" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240619 15:11:30.424" endtime="20240619 15:11:31.366"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20240619 15:11:31.368" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240619 15:11:31.367" endtime="20240619 15:11:31.368"/>
+</kw>
+<status status="PASS" starttime="20240619 15:11:30.414" endtime="20240619 15:11:31.369"/>
+</test>
+<status status="PASS" starttime="20240619 15:11:25.592" endtime="20240619 15:11:31.371"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="loginDriver">loginDriver</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

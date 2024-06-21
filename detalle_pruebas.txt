@@ -1,0 +1,6 @@
+Failed Test Cases:
+File Name: createRegularFlow.robot
+Test Name: Create Regular Route Alto - Apumanque
+Error Message: Variable '${today_date}' not found.
+URL: No URL found
+--------------------------------------------------

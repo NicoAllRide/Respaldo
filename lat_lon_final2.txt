@@ -1,0 +1,300 @@
+  Set Location    -33.493571     -70.512244
+  Sleep    3s
+  Set Location    -33.493447     -70.512372
+  Sleep    3s
+  Set Location    -33.493447     -70.512372
+  Sleep    3s
+  Set Location    -33.493135     -70.512663
+  Sleep    3s
+  Set Location    -33.493135     -70.512663
+  Sleep    3s
+  Set Location    -33.489121     -70.517118
+  Sleep    3s
+  Set Location    -33.489075     -70.518537
+  Sleep    3s
+  Set Location    -33.488393     -70.519154
+  Sleep    3s
+  Set Location    -33.488393     -70.519154
+  Sleep    3s
+  Set Location    -33.486376     -70.518628
+  Sleep    3s
+  Set Location    -33.48637     -70.518733
+  Sleep    3s
+  Set Location    -33.48637     -70.518733
+  Sleep    3s
+  Set Location    -33.489013     -70.516372
+  Sleep    3s
+  Set Location    -33.491105     -70.513632
+  Sleep    3s
+  Set Location    -33.491717     -70.513363
+  Sleep    3s
+  Set Location    -33.492308     -70.513507
+  Sleep    3s
+  Set Location    -33.492308     -70.513507
+  Sleep    3s
+  Set Location    -33.49328     -70.512536
+  Sleep    3s
+  Set Location    -33.49328     -70.512536
+  Sleep    3s
+  Set Location    -33.49392     -70.511748
+  Sleep    3s
+  Set Location    -33.49387     -70.511857
+  Sleep    3s
+  Set Location    -33.493667     -70.51214
+  Sleep    3s
+  Set Location    -33.493667     -70.51214
+  Sleep    3s
+  Set Location    -33.493614     -70.512193
+  Sleep    3s
+  Set Location    -33.493614     -70.512193
+  Sleep    3s
+  Set Location    -33.493611     -70.512231
+  Sleep    3s
+  Set Location    -33.493529     -70.51236
+  Sleep    3s
+  Set Location    -33.493034     -70.512781
+  Sleep    3s
+  Set Location    -33.49205     -70.513569
+  Sleep    3s
+  Set Location    -33.490985     -70.513656
+  Sleep    3s
+  Set Location    -33.490632     -70.514521
+  Sleep    3s
+  Set Location    -33.490566     -70.514607
+  Sleep    3s
+  Set Location    -33.490566     -70.514607
+  Sleep    3s
+  Set Location    -33.489058     -70.516186
+  Sleep    3s
+  Set Location    -33.488992     -70.516617
+  Sleep    3s
+  Set Location    -33.489034     -70.518585
+  Sleep    3s
+  Set Location    -33.489034     -70.518585
+  Sleep    3s
+  Set Location    -33.488071     -70.519276
+  Sleep    3s
+  Set Location    -33.486539     -70.518608
+  Sleep    3s
+  Set Location    -33.486363     -70.518622
+  Sleep    3s
+  Set Location    -33.486355     -70.518629
+  Sleep    3s
+  Set Location    -33.486355     -70.518629
+  Sleep    3s
+  Set Location    -33.486337     -70.518688
+  Sleep    3s
+  Set Location    -33.489106     -70.518642
+  Sleep    3s
+  Set Location    -33.489084     -70.518199
+  Sleep    3s
+  Set Location    -33.489084     -70.518199
+  Sleep    3s
+  Set Location    -33.489161     -70.516187
+  Sleep    3s
+  Set Location    -33.489832     -70.516121
+  Sleep    3s
+  Set Location    -33.490421     -70.515467
+  Sleep    3s
+  Set Location    -33.490738     -70.514596
+  Sleep    3s
+  Set Location    -33.490707     -70.514509
+  Sleep    3s
+  Set Location    -33.490811     -70.513819
+  Sleep    3s
+  Set Location    -33.491016     -70.513653
+  Sleep    3s
+  Set Location    -33.491695     -70.513374
+  Sleep    3s
+  Set Location    -33.492503     -70.513261
+  Sleep    3s
+  Set Location    -33.492503     -70.513261
+  Sleep    3s
+  Set Location    -33.493784     -70.511988
+  Sleep    3s
+  Set Location    -33.493913     -70.511784
+  Sleep    3s
+  Set Location    -33.493834     -70.511909
+  Sleep    3s
+  Set Location    -33.493834     -70.511909
+  Sleep    3s
+  Set Location    -33.493589     -70.51223
+  Sleep    3s
+  Set Location    -33.493589     -70.51223
+  Sleep    3s
+  Set Location    -33.493673     -70.512379
+  Sleep    3s
+  Set Location    -33.493673     -70.512379
+  Sleep    3s
+  Set Location    -33.493516     -70.512528
+  Sleep    3s
+  Set Location    -33.49211     -70.513629
+  Sleep    3s
+  Set Location    -33.491496     -70.513444
+  Sleep    3s
+  Set Location    -33.490821     -70.513904
+  Sleep    3s
+  Set Location    -33.490606     -70.514666
+  Sleep    3s
+  Set Location    -33.490606     -70.514666
+  Sleep    3s
+  Set Location    -33.489806     -70.516067
+  Sleep    3s
+  Set Location    -33.48909     -70.516229
+  Sleep    3s
+  Set Location    -33.489083     -70.516978
+  Sleep    3s
+  Set Location    -33.489232     -70.517836
+  Sleep    3s
+  Set Location    -33.488866     -70.518796
+  Sleep    3s
+  Set Location    -33.488866     -70.518796
+  Sleep    3s
+  Set Location    -33.48748     -70.519071
+  Sleep    3s
+  Set Location    -33.486461     -70.518648
+  Sleep    3s
+  Set Location    -33.486461     -70.518648
+  Sleep    3s
+  Set Location    -33.486394     -70.518657
+  Sleep    3s
+  Set Location    -33.486394     -70.518657
+  Sleep    3s
+  Set Location    -33.486728     -70.51898
+  Sleep    3s
+  Set Location    -33.486728     -70.51898
+  Sleep    3s
+  Set Location    -33.486851     -70.519051
+  Sleep    3s
+  Set Location    -33.486851     -70.519051
+  Sleep    3s
+  Set Location    -33.487746     -70.519423
+  Sleep    3s
+  Set Location    -33.487746     -70.519423
+  Sleep    3s
+  Set Location    -33.489162     -70.518544
+  Sleep    3s
+  Set Location    -33.489162     -70.518544
+  Sleep    3s
+  Set Location    -33.489162     -70.518544
+  Sleep    3s
+  Set Location    -33.489824     -70.516135
+  Sleep    3s
+  Set Location    -33.489824     -70.516135
+  Sleep    3s
+  Set Location    -33.490132     -70.516126
+  Sleep    3s
+  Set Location    -33.490132     -70.516126
+  Sleep    3s
+  Set Location    -33.490781     -70.514628
+  Sleep    3s
+  Set Location    -33.490781     -70.514628
+  Sleep    3s
+  Set Location    -33.490713     -70.514279
+  Sleep    3s
+  Set Location    -33.490713     -70.514279
+  Sleep    3s
+  Set Location    -33.491065     -70.51367
+  Sleep    3s
+  Set Location    -33.491065     -70.51367
+  Sleep    3s
+  Set Location    -33.491684     -70.513372
+  Sleep    3s
+  Set Location    -33.491684     -70.513372
+  Sleep    3s
+  Set Location    -33.492391     -70.513488
+  Sleep    3s
+  Set Location    -33.492391     -70.513488
+  Sleep    3s
+  Set Location    -33.492799     -70.51297
+  Sleep    3s
+  Set Location    -33.492799     -70.51297
+  Sleep    3s
+  Set Location    -33.493972     -70.511714
+  Sleep    3s
+  Set Location    -33.493972     -70.511714
+  Sleep    3s
+  Set Location    -33.493953     -70.511836
+  Sleep    3s
+  Set Location    -33.493953     -70.511836
+  Sleep    3s
+  Set Location    -33.493809     -70.512009
+  Sleep    3s
+  Set Location    -33.493809     -70.512009
+  Sleep    3s
+  Set Location    -33.493629     -70.512232
+  Sleep    3s
+  Set Location    -33.493629     -70.512232
+  Sleep    3s
+  Set Location    -33.493572     -70.512297
+  Sleep    3s
+  Set Location    -33.493572     -70.512297
+  Sleep    3s
+  Set Location    -33.49216     -70.513582
+  Sleep    3s
+  Set Location    -33.49216     -70.513582
+  Sleep    3s
+  Set Location    -33.491634     -70.513362
+  Sleep    3s
+  Set Location    -33.491634     -70.513362
+  Sleep    3s
+  Set Location    -33.490858     -70.513828
+  Sleep    3s
+  Set Location    -33.490858     -70.513828
+  Sleep    3s
+  Set Location    -33.490681     -70.514528
+  Sleep    3s
+  Set Location    -33.490681     -70.514528
+  Sleep    3s
+  Set Location    -33.490611     -70.514614
+  Sleep    3s
+  Set Location    -33.490611     -70.514614
+  Sleep    3s
+  Set Location    -33.487163     -70.5189
+  Sleep    3s
+  Set Location    -33.487163     -70.5189
+  Sleep    3s
+  Set Location    -33.486931     -70.518781
+  Sleep    3s
+  Set Location    -33.486931     -70.518781
+  Sleep    3s
+  Set Location    -33.486506     -70.518661
+  Sleep    3s
+  Set Location    -33.486506     -70.518661
+  Sleep    3s
+  Set Location    -33.486445     -70.518656
+  Sleep    3s
+  Set Location    -33.486445     -70.518656
+  Sleep    3s
+  Set Location    -33.486648     -70.518889
+  Sleep    3s
+  Set Location    -33.486648     -70.518889
+  Sleep    3s
+  Set Location    -33.488542     -70.519109
+  Sleep    3s
+  Set Location    -33.488542     -70.519109
+  Sleep    3s
+  Set Location    -33.488952     -70.518762
+  Sleep    3s
+  Set Location    -33.488952     -70.518762
+  Sleep    3s
+  Set Location    -33.489155     -70.51854
+  Sleep    3s
+  Set Location    -33.489155     -70.51854
+  Sleep    3s
+  Set Location    -33.489149     -70.518105
+  Sleep    3s
+  Set Location    -33.489149     -70.518105
+  Sleep    3s
+  Set Location    -33.489248     -70.517575
+  Sleep    3s
+  Set Location    -33.489248     -70.517575
+  Sleep    3s
+  Set Location    -33.489027     -70.516669
+  Sleep    3s
+  Set Location    -33.489027     -70.516669
+  Sleep    3s
+  Set Location    -33.489887     -70.51615
+  Sleep    3s
+  Set Location    -33.489887     -70.51615
+  Sleep    3s
