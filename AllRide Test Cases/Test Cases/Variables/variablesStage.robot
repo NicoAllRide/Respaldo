@@ -26,4 +26,5 @@ ${assignQty}            2
 ${cardIdPedro}            ABCDE159753
 ${loginUserUrl}            /api/v1/login/email
 ${colectivoIdComunidad}    666b08f0d574cd44de5885e1
+${assistantVehicleId}        66830b98bb41bfd79a4620ac
 

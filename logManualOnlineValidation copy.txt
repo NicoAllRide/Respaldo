@@ -1,0 +1,243 @@
+2024-06-28 11:02:59.463 25537-25537 UserProvider            com.allride.buses                    D  isWorking false
+2024-06-28 11:02:59.701 25537-25537 CapturePas...erActivity com.allride.buses                    E  ADD HISTORY USE: NO_TYPE_MOBILE_DATA
+2024-06-28 11:02:59.760 25537-25537 CapturePas...erActivity com.allride.buses                    D  startCamera
+2024-06-28 11:02:59.764 25537-25537 CamLifecycleController  com.allride.buses                    D  CameraProvider is not ready.
+2024-06-28 11:02:59.764 25537-25537 CameraController        com.allride.buses                    D  Use cases not attached to camera.
+2024-06-28 11:02:59.768 25537-25537 ViewReaderQR            com.allride.buses                    D  startQRAnalysis
+2024-06-28 11:02:59.768 25537-32733 DynamiteModule          com.allride.buses                    I  Considering local module com.google.mlkit.dynamite.barcode:10000 and remote module com.google.mlkit.dynamite.barcode:0
+2024-06-28 11:02:59.768 25537-32733 DynamiteModule          com.allride.buses                    I  Selected local version of com.google.mlkit.dynamite.barcode
+2024-06-28 11:02:59.801 25537-25537 CapturePas...erActivity com.allride.buses                    D  startService com.allride.buses.services.UsbSerialService
+2024-06-28 11:02:59.812 25537-25537 UfReader                com.allride.buses                    D  openReader
+2024-06-28 11:02:59.845 25537-25537 UfReader                com.allride.buses                    D  openReader: status 84 -> UFR_READER_OPENING_ERROR
+2024-06-28 11:02:59.845 25537-25537 CapturePas...erActivity com.allride.buses                    D  OPEN READER FAILURE
+2024-06-28 11:02:59.845 25537-25537 CapturePas...erActivity com.allride.buses                    D  onResumeCamera
+2024-06-28 11:02:59.845 25537-25537 ViewReaderQR            com.allride.buses                    D  onResumeCamera
+2024-06-28 11:02:59.845 25537-25537 ViewReaderQR            com.allride.buses                    D  startQRAnalysis
+2024-06-28 11:02:59.845 25537-25537 CapturePas...erActivity com.allride.buses                    D  onResumeCamera
+2024-06-28 11:02:59.845 25537-25537 ViewReaderQR            com.allride.buses                    D  onResumeCamera
+2024-06-28 11:02:59.845 25537-25537 ViewReaderQR            com.allride.buses                    D  startQRAnalysis
+2024-06-28 11:02:59.861 25537-25537 CameraController        com.allride.buses                    D  PreviewView not attached to CameraController.
+2024-06-28 11:02:59.861 25537-25537 CameraController        com.allride.buses                    D  Use cases not attached to camera.
+2024-06-28 11:02:59.863 25537-25537 UsbSerialService        com.allride.buses                    D  onCreate
+2024-06-28 11:02:59.863 25537-25537 UsbSerialService        com.allride.buses                    D  setFilter
+2024-06-28 11:02:59.865 25537-25537 UsbSerialService        com.allride.buses                    D  findSerialPortDevice
+2024-06-28 11:02:59.866 25537-25537 UsbSerialService        com.allride.buses                    D  findSerialPortDevice() usbManager returned empty device list.
+2024-06-28 11:02:59.868 25537-25537 UsbSerialService        com.allride.buses                    D  onStartCommand
+2024-06-28 11:02:59.938 25537-25537 PreviewView             com.allride.buses                    D  Transform info is not ready
+2024-06-28 11:02:59.991 25537-25537 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-06-28 11:02:59.994 25537-25537 DeferrableSurface       com.allride.buses                    D  Surface created[total_surfaces=1, used_surfaces=0](androidx.camera.core.SurfaceRequest$2@3d7a089}
+2024-06-28 11:02:59.999 25537-25537 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-06-28 11:03:00.010 25537-25537 DeferrableSurface       com.allride.buses                    D  Surface created[total_surfaces=2, used_surfaces=0](androidx.camera.core.impl.ImmediateSurface@b4244bc}
+2024-06-28 11:03:00.017 25537-25537 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-06-28 11:03:00.018 25537-25537 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-06-28 11:03:00.018 25537-26016 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Use case androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087 ACTIVE
+2024-06-28 11:03:00.019 25537-26016 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-06-28 11:03:00.019 25537-25537 DeferrableSurface       com.allride.buses                    D  Surface created[total_surfaces=3, used_surfaces=0](androidx.camera.core.impl.ImmediateSurface@724d0cb}
+2024-06-28 11:03:00.025 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Use case androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478 ACTIVE
+2024-06-28 11:03:00.026 25537-26011 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-06-28 11:03:00.033 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Use case androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087 ACTIVE
+2024-06-28 11:03:00.033 25537-26011 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-06-28 11:03:00.039 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Use case androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316 ACTIVE
+2024-06-28 11:03:00.040 25537-26011 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-06-28 11:03:00.055 25537-26011 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-06-28 11:03:00.057 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Use cases [androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478, androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087, androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316] now ATTACHED
+2024-06-28 11:03:00.059 25537-26011 UseCaseAttachState      com.allride.buses                    D  All use case: [androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087, androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478, androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316] for camera: 0
+2024-06-28 11:03:00.060 25537-26011 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087, androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478, androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316] for camera: 0
+2024-06-28 11:03:00.071 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Resetting Capture Session
+2024-06-28 11:03:00.071 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Releasing session in state INITIALIZED
+2024-06-28 11:03:00.072 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Attempting to force open the camera.
+2024-06-28 11:03:00.072 25537-25537 UfReader                com.allride.buses                    D  ResponseUFCoder
+2024-06-28 11:03:00.072 25537-25537 UfReader                com.allride.buses                    D  closeReader: status 0 -> UFR_OK
+2024-06-28 11:03:00.072 25537-25537 UfReader                com.allride.buses                    D  openReader
+2024-06-28 11:03:00.073 25537-26011 CameraStateRegistry     com.allride.buses                    D  tryOpenCamera(Camera@9153cf4[id=0]) [Available Cameras: 1, Already Open: false (Previous state: CLOSED)] --> SUCCESS
+2024-06-28 11:03:00.073 25537-25537 UfReader                com.allride.buses                    D  openReader: status 84 -> UFR_READER_OPENING_ERROR
+2024-06-28 11:03:00.073 25537-25537 CapturePas...erActivity com.allride.buses                    D  OPEN READER FAILURE
+2024-06-28 11:03:00.073 25537-25537 CapturePas...erActivity com.allride.buses                    D  onResumeCamera
+2024-06-28 11:03:00.073 25537-25537 ViewReaderQR            com.allride.buses                    D  onResumeCamera
+2024-06-28 11:03:00.073 25537-25537 ViewReaderQR            com.allride.buses                    D  startQRAnalysis
+2024-06-28 11:03:00.073 25537-25537 UsbSerialService        com.allride.buses                    D  UsbBinder.getService
+2024-06-28 11:03:00.073 25537-26011 CameraStateRegistry     com.allride.buses                    D  Recalculating open cameras:
+                                                                                                    Camera                                       State                 
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Camera@9153cf4[id=0]                         OPENING               
+                                                                                                    Camera@2f2a68d[id=1]                         UNKNOWN               
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Open count: 1 (Max allowed: 1)
+2024-06-28 11:03:00.074 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Opening camera.
+2024-06-28 11:03:00.074 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Transitioning camera internal state: INITIALIZED --> OPENING
+2024-06-28 11:03:00.074 25537-26011 CameraStateMachine      com.allride.buses                    D  New public camera state CameraState{type=OPENING, error=null} from OPENING and null
+2024-06-28 11:03:00.075 25537-26011 CameraStateMachine      com.allride.buses                    D  Publishing new public camera state CameraState{type=OPENING, error=null}
+2024-06-28 11:03:00.076 25537-26011 UseCaseAttachState      com.allride.buses                    D  All use case: [androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087, androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478, androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316] for camera: 0
+2024-06-28 11:03:00.076 25537-25537 PreviewView             com.allride.buses                    D  Surface requested by Preview.
+2024-06-28 11:03:00.094 25537-25537 SurfaceViewImpl         com.allride.buses                    D  Surface created.
+2024-06-28 11:03:00.094 25537-25537 SurfaceViewImpl         com.allride.buses                    D  Surface changed. Size: 1600x1200
+2024-06-28 11:03:00.098 25537-25537 PreviewView             com.allride.buses                    D  Preview transformation info updated. TransformationInfo{cropRect=Rect(0, 116 - 1600, 1084), rotationDegrees=90, targetRotation=-1}
+2024-06-28 11:03:00.098 25537-25537 PreviewTransform        com.allride.buses                    D  Transformation info set: TransformationInfo{cropRect=Rect(0, 116 - 1600, 1084), rotationDegrees=90, targetRotation=-1} 1600x1200 false
+2024-06-28 11:03:00.099 25537-25537 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-06-28 11:03:00.099 25537-25537 PreviewView             com.allride.buses                    W  PreviewView needs to be in COMPATIBLE mode for the transform to work correctly.
+2024-06-28 11:03:00.100 25537-25537 SurfaceViewImpl         com.allride.buses                    D  Surface set on Preview.
+2024-06-28 11:03:00.207 25537-25537 TripService             com.allride.buses                    D  Sending event 'newPosition' socket: 525c46da-46e5-4b7d-a8b4-07322227e8cb - [-34.3941121,-70.7812894]
+2024-06-28 11:03:00.316 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Use case androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478 ACTIVE
+2024-06-28 11:03:00.317 25537-26011 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087, androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478, androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316] for camera: 0
+2024-06-28 11:03:00.321 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Use case androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087 ACTIVE
+2024-06-28 11:03:00.322 25537-26011 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087, androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478, androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316] for camera: 0
+2024-06-28 11:03:00.326 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Use case androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316 ACTIVE
+2024-06-28 11:03:00.327 25537-26011 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087, androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478, androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316] for camera: 0
+2024-06-28 11:03:00.330 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} CameraDevice.onOpened()
+2024-06-28 11:03:00.330 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Transitioning camera internal state: OPENING --> OPENED
+2024-06-28 11:03:00.331 25537-26011 CameraStateRegistry     com.allride.buses                    D  Recalculating open cameras:
+                                                                                                    Camera                                       State                 
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Camera@9153cf4[id=0]                         OPEN                  
+                                                                                                    Camera@2f2a68d[id=1]                         UNKNOWN               
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Open count: 1 (Max allowed: 1)
+2024-06-28 11:03:00.332 25537-26011 CameraStateMachine      com.allride.buses                    D  New public camera state CameraState{type=OPEN, error=null} from OPEN and null
+2024-06-28 11:03:00.332 25537-26011 CameraStateMachine      com.allride.buses                    D  Publishing new public camera state CameraState{type=OPEN, error=null}
+2024-06-28 11:03:00.333 25537-26011 UseCaseAttachState      com.allride.buses                    D  All use case: [androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087, androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478, androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316] for camera: 0
+2024-06-28 11:03:00.335 25537-26011 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087, androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478, androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316] for camera: 0
+2024-06-28 11:03:00.338 25537-26011 SyncCaptureSessionBase  com.allride.buses                    D  [androidx.camera.camera2.internal.SynchronizedCaptureSessionBaseImpl@dede308] getSurface...done
+2024-06-28 11:03:00.338 25537-26011 CaptureSession          com.allride.buses                    D  Opening capture session.
+2024-06-28 11:03:00.340 25537-26011 DeferrableSurface       com.allride.buses                    D  New surface in use[total_surfaces=3, used_surfaces=1](androidx.camera.core.SurfaceRequest$2@3d7a089}
+2024-06-28 11:03:00.340 25537-26011 DeferrableSurface       com.allride.buses                    D  use count+1, useCount=1 androidx.camera.core.SurfaceRequest$2@3d7a089
+2024-06-28 11:03:00.341 25537-26011 DeferrableSurface       com.allride.buses                    D  New surface in use[total_surfaces=3, used_surfaces=2](androidx.camera.core.impl.ImmediateSurface@b4244bc}
+2024-06-28 11:03:00.341 25537-26011 DeferrableSurface       com.allride.buses                    D  use count+1, useCount=1 androidx.camera.core.impl.ImmediateSurface@b4244bc
+2024-06-28 11:03:00.341 25537-26011 DeferrableSurface       com.allride.buses                    D  New surface in use[total_surfaces=3, used_surfaces=3](androidx.camera.core.impl.ImmediateSurface@724d0cb}
+2024-06-28 11:03:00.341 25537-26011 DeferrableSurface       com.allride.buses                    D  use count+1, useCount=1 androidx.camera.core.impl.ImmediateSurface@724d0cb
+2024-06-28 11:03:00.506 25537-25537 MapActivity             com.allride.buses                    D  onStop
+2024-06-28 11:03:00.506 25537-25537 MapActivity             com.allride.buses                    I  clearObservers
+2024-06-28 11:03:00.508 25537-25537 MapActivity             com.allride.buses                    D  Success unregisterReceiver setupBroadcastReceiver
+2024-06-28 11:03:00.666 25537-26011 CaptureSession          com.allride.buses                    D  Attempting to send capture request onConfigured
+2024-06-28 11:03:00.666 25537-26011 CaptureSession          com.allride.buses                    D  Issuing request for session.
+2024-06-28 11:03:00.667 25537-26011 Camera2Cap...estBuilder com.allride.buses                    D  createCaptureRequest
+2024-06-28 11:03:00.671 25537-26011 CaptureSession          com.allride.buses                    D  CameraCaptureSession.onConfigured() mState=OPENED
+2024-06-28 11:03:00.672 25537-26011 CaptureSession          com.allride.buses                    D  CameraCaptureSession.onReady() OPENED
+2024-06-28 11:03:01.101 25537-26011 StreamStateObserver     com.allride.buses                    D  Update Preview stream state to STREAMING
+2024-06-28 11:03:01.235 25537-386   tflite                  com.allride.buses                    I  Replacing 43 out of 43 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for the whole graph.
+2024-06-28 11:03:01.239 25537-386   tflite                  com.allride.buses                    I  Replacing 42 out of 47 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 11 partitions for the whole graph.
+2024-06-28 11:03:01.243 25537-386   native                  com.allride.buses                    I  I0000 00:00:1719586981.242747     386 oned_decoder_client.cc:695] barhopper::deep_learning::OnedDecoderClient is created successfully.
+2024-06-28 11:03:01.524 25537-416   ActiveDepa...eViewModel com.allride.buses                    D  SocketClient - newDriverPosition: {"departureId":"667ecfd04356530270e31dd7","routeId":"65e88349110e5655e1583ca6","location":{"latitude":-34.3941121,"longitude":-70.7812894},"speed":0.022480974,"source":null,"busId":"MORI","state":"service","plate":"MORI","code":"0602","driverName":"Conductor Regular"}
+2024-06-28 11:03:01.526 25537-416   ActiveDepa...eViewModel com.allride.buses                    D  SocketClient - newPosition : {"latitude":-34.3941121,"longitude":-70.7812894}
+2024-06-28 11:03:02.661 25537-25653 OpenGLRenderer          com.allride.buses                    I  Davey! duration=9222943450331ms; Flags=0, FrameTimelineVsyncId=31646073, IntendedVsync=428586517742626, Vsync=428586517742626, InputEventId=0, HandleInputStart=428586518455828, AnimationStart=428586518459109, PerformTraversalsStart=428586518461401, DrawStart=428586518842651, FrameDeadline=428586551075958, FrameInterval=428586518444943, FrameStartTime=16666666, SyncQueued=428586519088224, SyncStart=428586525038849, IssueDrawCommandsStart=428586525339786, SwapBuffers=428586530816349, FrameCompleted=9223372036854775807, DequeueBufferDuration=37500, QueueBufferDuration=1014636, GpuCompleted=9223372036854775807, SwapBuffersCompleted=428586532450932, DisplayPresentTime=16843403, 
+2024-06-28 11:03:02.693 25537-446   AllRideDepartureService com.allride.buses                    I  getAccessToken 1fcf935033d12f9330efdb09f6778c76ec522b352120c221c5e02aff4ff00f6b5f248f73de5983c6c8947dc8b6728249201ecfbe9e4ba5570632f9e14dc5bcc9
+2024-06-28 11:03:04.059 25537-446   AllRideDepartureService com.allride.buses                    I  Response Code > 200
+2024-06-28 11:03:04.060 25537-446   AllRideDepartureService com.allride.buses                    I  URL > Request{method=POST, url=http://201.239.18.192:3000/api/v2/pb/driver/departures/validateWithManual, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.validateWithManual() [com.allride.buses.api.AllRideAPI$ValidatePassengerData@70e00b]}}
+2024-06-28 11:03:04.158 25537-25537 UfReader                com.allride.buses                    D  positiveBeep
+2024-06-28 11:03:04.159 25537-25537 UfReader                com.allride.buses                    D  positiveBeep: status 80 -> UFR_COMMUNICATION_BREAK
+2024-06-28 11:03:04.159 25537-25537 TextToSpeech            com.allride.buses                    W  speak failed: not bound to TTS engine
+2024-06-28 11:03:04.159 25537-25537 ActiveDepa...eViewModel com.allride.buses                    D  Success validateWithManual
+2024-06-28 11:03:04.479 25537-483   ActiveDepa...eViewModel com.allride.buses                    D  SocketClient - current : {"color":"2E7D32","capacity":42}
+2024-06-28 11:03:04.517 25537-483   DepartureProvider       com.allride.buses                    D  setCapacity 42
+2024-06-28 11:03:05.335 25537-25551 OpenGLRenderer          com.allride.buses                    I  Davey! duration=9222943447663ms; Flags=2, FrameTimelineVsyncId=31646416, IntendedVsync=428589190885775, Vsync=428589190885775, InputEventId=0, HandleInputStart=428589190885775, AnimationStart=428589190885775, PerformTraversalsStart=428589190885775, DrawStart=428589190885775, FrameDeadline=428589207552441, FrameInterval=0, FrameStartTime=16666666, SyncQueued=428589198554838, SyncStart=428589198555775, IssueDrawCommandsStart=428589198823067, SwapBuffers=428589202250150, FrameCompleted=9223372036854775807, DequeueBufferDuration=29427, QueueBufferDuration=1156667, GpuCompleted=9223372036854775807, SwapBuffersCompleted=428589207310358, DisplayPresentTime=4611690416473899026, 
+2024-06-28 11:03:05.729 25537-26128 OpenGLRenderer          com.allride.buses                    I  Davey! duration=9222943447339ms; Flags=0, FrameTimelineVsyncId=31646453, IntendedVsync=428589508257383, Vsync=428589524924049, InputEventId=0, HandleInputStart=428589540619160, AnimationStart=428589540632025, PerformTraversalsStart=428589545287754, DrawStart=428589556229942, FrameDeadline=428589541590715, FrameInterval=428589540577442, FrameStartTime=16666666, SyncQueued=428589579715671, SyncStart=428589586438744, IssueDrawCommandsStart=428589586704994, SwapBuffers=428589589661296, FrameCompleted=9223372036854775807, DequeueBufferDuration=62812, QueueBufferDuration=1469323, GpuCompleted=9223372036854775807, SwapBuffersCompleted=428589592494317, DisplayPresentTime=0, 
+2024-06-28 11:03:05.818 25537-25599 OpenGLRenderer          com.allride.buses                    I  Davey! duration=9222943447179ms; Flags=2, FrameTimelineVsyncId=31646472, IntendedVsync=428589675406588, Vsync=428589675406588, InputEventId=0, HandleInputStart=428589675406588, AnimationStart=428589675406588, PerformTraversalsStart=428589675406588, DrawStart=428589675406588, FrameDeadline=428589708739920, FrameInterval=0, FrameStartTime=16666666, SyncQueued=428589679746452, SyncStart=428589679748067, IssueDrawCommandsStart=428589679954837, SwapBuffers=428589682395306, FrameCompleted=9223372036854775807, DequeueBufferDuration=43854, QueueBufferDuration=1394896, GpuCompleted=9223372036854775807, SwapBuffersCompleted=428589684988639, DisplayPresentTime=-2749211362917757495, 
+2024-06-28 11:03:06.276 25537-25537 CapturePas...erActivity com.allride.buses                    D  hideDialogValidation
+2024-06-28 11:03:06.276 25537-25537 CapturePas...erActivity com.allride.buses                    D  onResumeCamera
+2024-06-28 11:03:06.276 25537-25537 ViewReaderQR            com.allride.buses                    D  onResumeCamera
+2024-06-28 11:03:06.276 25537-25537 ViewReaderQR            com.allride.buses                    D  startQRAnalysis
+2024-06-28 11:03:06.276 25537-25537 UfReader                com.allride.buses                    D  openReader
+2024-06-28 11:03:06.277 25537-25537 UfReader                com.allride.buses                    D  openReader: status 84 -> UFR_READER_OPENING_ERROR
+2024-06-28 11:03:06.324 25537-25537 CapturePas...erActivity com.allride.buses                    D  hideDialogValidation
+2024-06-28 11:03:06.324 25537-25537 CapturePas...erActivity com.allride.buses                    D  onResumeCamera
+2024-06-28 11:03:06.324 25537-25537 ViewReaderQR            com.allride.buses                    D  onResumeCamera
+2024-06-28 11:03:06.324 25537-25537 ViewReaderQR            com.allride.buses                    D  startQRAnalysis
+2024-06-28 11:03:06.324 25537-25537 UfReader                com.allride.buses                    D  openReader
+2024-06-28 11:03:06.325 25537-25537 UfReader                com.allride.buses                    D  openReader: status 84 -> UFR_READER_OPENING_ERROR
+2024-06-28 11:03:07.497 25537-25537 UserProvider            com.allride.buses                    D  isWorking false
+2024-06-28 11:03:07.550 25537-25537 UfReader                com.allride.buses                    D  ResponseUFCoder
+2024-06-28 11:03:07.550 25537-25537 UfReader                com.allride.buses                    D  closeReader: status 0 -> UFR_OK
+2024-06-28 11:03:07.562 25537-25537 UsbSerialService        com.allride.buses                    D  onDestroy
+2024-06-28 11:03:07.564 25537-25537 CapturePas...erActivity com.allride.buses                    D  onPauseCamera
+2024-06-28 11:03:07.564 25537-25537 ViewReaderQR            com.allride.buses                    D  onPauseCamera
+2024-06-28 11:03:07.567 25537-26011 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Use case androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316 INACTIVE
+2024-06-28 11:03:07.574 25537-25537 UsbSerialService        com.allride.buses                    D  onDestroy
+2024-06-28 11:03:07.591 25537-26011 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087, androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478] for camera: 0
+2024-06-28 11:03:07.625 25537-26011 CaptureSession          com.allride.buses                    D  Attempting to submit CaptureRequest after setting
+2024-06-28 11:03:07.625 25537-26011 CaptureSession          com.allride.buses                    D  Issuing request for session.
+2024-06-28 11:03:07.629 25537-26011 Camera2Cap...estBuilder com.allride.buses                    D  createCaptureRequest
+2024-06-28 11:03:07.631 25537-25537 MapActivity             com.allride.buses                    D  onStart
+2024-06-28 11:03:07.631 25537-25537 ActiveDepa...eViewModel com.allride.buses                    D  onResumeMap
+2024-06-28 11:03:07.631 25537-25537 ActiveDepa...eViewModel com.allride.buses                    D  onResumeMap getCurrent
+2024-06-28 11:03:07.632 25537-25537 MapActivity             com.allride.buses                    I  initViewModel
+2024-06-28 11:03:07.633 25537-25537 MapActivity             com.allride.buses                    D  Success registerReceiver setupBroadcastReceiver
+2024-06-28 11:03:07.633 25537-25537 ServiceConnectivity     com.allride.buses                    D  checkConnectivity
+2024-06-28 11:03:07.633 25537-25537 ServiceConnectivity     com.allride.buses                    D  sendNotifyConnectivity true
+2024-06-28 11:03:07.634 25537-25537 ServiceConnectivity     com.allride.buses                    D  checkInMap
+2024-06-28 11:03:07.665 25537-25537 ServiceConnectivity     com.allride.buses                    I  checkSyncOffline current deviceHistory - [offline=false, images=false, departure=false, deviceHistory=true, driverMuc=false]
+2024-06-28 11:03:07.685 25537-25537 ServiceConnectivity     com.allride.buses                    D  Pre saveDeviceHistoryConnection: 1 - {"states":[{"activity":"CapturePassengerActivity","createdAt":"Jun 28, 2024 11:02:59 AM","departureId":"667ecfd04356530270e31dd7","_id":"0fc63c55-bf76-4a37-a8a7-70339c31c1e0","type":"NO_TYPE_MOBILE_DATA"}]}
+2024-06-28 11:03:07.689 25537-25537 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel typeMap regular
+2024-06-28 11:03:07.689 25537-25537 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel capacity 42
+2024-06-28 11:03:07.689 25537-25537 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel capacityColor 2E7D32
+2024-06-28 11:03:07.690 25537-25537 MapActivity             com.allride.buses                    D  activeDepartureViewModel.newPosition lat/lng: (-34.3941121,-70.7812894) true
+2024-06-28 11:03:07.768 25537-32376 AllRideCommunityService com.allride.buses                    I  getAccessToken 5a8c2cc110efe1d5be8250a356c8123cffd561f4013ddffffe0c80bb96bab02512bbbc4102f32d4440c24020bab0fd356d1e8686267e2b7977891eef14e4ca1d
+2024-06-28 11:03:07.839 25537-512   ActiveDepa...eViewModel com.allride.buses                    D  SocketClient - current : {"color":"2E7D32","capacity":42}
+2024-06-28 11:03:07.840 25537-512   DepartureProvider       com.allride.buses                    D  setCapacity 42
+2024-06-28 11:03:07.842 25537-25537 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-06-28 11:03:07.942 25537-25599 OpenGLRenderer          com.allride.buses                    I  Davey! duration=9222943445073ms; Flags=0, FrameTimelineVsyncId=31646694, IntendedVsync=428591780321687, Vsync=428591796988353, InputEventId=0, HandleInputStart=428591803155930, AnimationStart=428591803165618, PerformTraversalsStart=428591803351659, DrawStart=428591803844784, FrameDeadline=428591813655019, FrameInterval=428591803126451, FrameStartTime=16666666, SyncQueued=428591805524524, SyncStart=428591806178795, IssueDrawCommandsStart=428591806290566, SwapBuffers=428591807698534, FrameCompleted=9223372036854775807, DequeueBufferDuration=11458, QueueBufferDuration=2975521, GpuCompleted=9223372036854775807, SwapBuffersCompleted=428591810948066, DisplayPresentTime=4353786539498887853, 
+2024-06-28 11:03:08.266 25537-25537 SurfaceViewImpl         com.allride.buses                    D  Surface destroyed.
+2024-06-28 11:03:08.266 25537-25537 SurfaceViewImpl         com.allride.buses                    D  Surface invalidated androidx.camera.core.SurfaceRequest@1e8bf90
+2024-06-28 11:03:08.267 25537-25537 DeferrableSurface       com.allride.buses                    D  surface closed,  useCount=1 closed=true androidx.camera.core.SurfaceRequest$2@3d7a089
+2024-06-28 11:03:08.304 25537-25599 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#15(BLAST Consumer)15](id:63c100000016,api:4,p:1539,c:25537) queueBuffer: BufferQueue has been abandoned
+2024-06-28 11:03:08.309 25537-25653 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#15(BLAST Consumer)15](id:63c100000016,api:4,p:1539,c:25537) dequeueBuffer: BufferQueue has been abandoned
+2024-06-28 11:03:08.312 25537-26016 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Use cases [androidx.camera.core.Preview-76bf5967-0845-4105-905e-8ddcaf31ef3941015478, androidx.camera.core.ImageCapture-37fdfdf8-6f19-46e8-8ab6-a5b9d185af44222620087, androidx.camera.core.ImageAnalysis-4a1e2fc4-1c6d-488e-b040-0af3c56ec38f1537316] now DETACHED for camera
+2024-06-28 11:03:08.313 25537-26016 UseCaseAttachState      com.allride.buses                    D  All use case: [] for camera: 0
+2024-06-28 11:03:08.315 25537-26016 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Resetting Capture Session
+2024-06-28 11:03:08.317 25537-26016 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Releasing session in state OPENED
+2024-06-28 11:03:08.318 25537-26016 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-06-28 11:03:08.321 25537-25537 DeferrableSurface       com.allride.buses                    D  surface closed,  useCount=1 closed=true androidx.camera.core.impl.ImmediateSurface@b4244bc
+2024-06-28 11:03:08.322 25537-25537 DeferrableSurface       com.allride.buses                    D  surface closed,  useCount=1 closed=true androidx.camera.core.impl.ImmediateSurface@724d0cb
+2024-06-28 11:03:08.322 25537-26016 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-06-28 11:03:08.326 25537-25537 CapturePas...erActivity com.allride.buses                    D  onDestroyCamera
+2024-06-28 11:03:08.326 25537-25537 UfReader                com.allride.buses                    D  ResponseUFCoder
+2024-06-28 11:03:08.327 25537-26016 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Closing camera.
+2024-06-28 11:03:08.328 25537-26016 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Transitioning camera internal state: OPENED --> CLOSING
+2024-06-28 11:03:08.329 25537-25537 TextToSpeech            com.allride.buses                    W  isSpeaking failed: not bound to TTS engine
+2024-06-28 11:03:08.329 25537-25537 TextToSpeech            com.allride.buses                    W  shutdown failed: not bound to TTS engine
+2024-06-28 11:03:08.332 25537-26016 CameraStateRegistry     com.allride.buses                    D  Recalculating open cameras:
+                                                                                                    Camera                                       State                 
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Camera@9153cf4[id=0]                         CLOSING               
+                                                                                                    Camera@2f2a68d[id=1]                         UNKNOWN               
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Open count: 1 (Max allowed: 1)
+2024-06-28 11:03:08.333 25537-26016 CameraStateMachine      com.allride.buses                    D  New public camera state CameraState{type=CLOSING, error=null} from CLOSING and null
+2024-06-28 11:03:08.333 25537-26016 CameraStateMachine      com.allride.buses                    D  Publishing new public camera state CameraState{type=CLOSING, error=null}
+2024-06-28 11:03:08.334 25537-26016 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Resetting Capture Session
+2024-06-28 11:03:08.336 25537-26016 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Releasing session in state CLOSING
+2024-06-28 11:03:08.337 25537-26016 CaptureSession          com.allride.buses                    D  onSessionFinished()
+2024-06-28 11:03:08.369 25537-25537 StreamStateObserver     com.allride.buses                    D  Update Preview stream state to IDLE
+2024-06-28 11:03:08.396 25537-25653 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#15(BLAST Consumer)15](id:63c100000016,api:4,p:1539,c:25537) queueBuffer: BufferQueue has been abandoned
+2024-06-28 11:03:08.426 25537-25653 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#15(BLAST Consumer)15](id:63c100000016,api:4,p:1539,c:25537) cancelBuffer: BufferQueue has been abandoned
+2024-06-28 11:03:08.428 25537-25653 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#15(BLAST Consumer)15](id:63c100000016,api:4,p:1539,c:25537) cancelBuffer: BufferQueue has been abandoned
+2024-06-28 11:03:08.429 25537-25653 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#15(BLAST Consumer)15](id:63c100000016,api:4,p:1539,c:25537) cancelBuffer: BufferQueue has been abandoned
+2024-06-28 11:03:08.434 25537-25653 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#15(BLAST Consumer)15](id:63c100000016,api:4,p:1539,c:25537) cancelBuffer: BufferQueue has been abandoned
+2024-06-28 11:03:08.437 25537-25653 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#15(BLAST Consumer)15](id:63c100000016,api:4,p:1539,c:25537) cancelBuffer: BufferQueue has been abandoned
+2024-06-28 11:03:08.438 25537-25653 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#15(BLAST Consumer)15](id:63c100000016,api:4,p:1539,c:25537) cancelBuffer: BufferQueue has been abandoned
+2024-06-28 11:03:08.477 25537-32376 AllRideCommunityService com.allride.buses                    I  getAccessToken 5a8c2cc110efe1d5be8250a356c8123cffd561f4013ddffffe0c80bb96bab02512bbbc4102f32d4440c24020bab0fd356d1e8686267e2b7977891eef14e4ca1d
+2024-06-28 11:03:08.477 25537-32376 AllRideCommunityService com.allride.buses                    I  Response Code > 200
+2024-06-28 11:03:08.477 25537-32376 AllRideCommunityService com.allride.buses                    I  URL > Request{method=POST, url=http://201.239.18.192:3000/api/v2/pb/driver/departure/device/history, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.saveDeviceHistoryConnection() [com.allride.buses.api.AllRideAPI$HistoryUse@6fffb24]}}
+2024-06-28 11:03:08.567 25537-26016 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-06-28 11:03:08.568 25537-26016 DeferrableSurface       com.allride.buses                    D  use count-1,  useCount=0 closed=true androidx.camera.core.SurfaceRequest$2@3d7a089
+2024-06-28 11:03:08.568 25537-26016 DeferrableSurface       com.allride.buses                    D  Surface no longer in use[total_surfaces=3, used_surfaces=2](androidx.camera.core.SurfaceRequest$2@3d7a089}
+2024-06-28 11:03:08.568 25537-26016 DeferrableSurface       com.allride.buses                    D  Surface terminated[total_surfaces=2, used_surfaces=2](androidx.camera.core.SurfaceRequest$2@3d7a089}
+2024-06-28 11:03:08.569 25537-26016 DeferrableSurface       com.allride.buses                    D  use count-1,  useCount=0 closed=true androidx.camera.core.impl.ImmediateSurface@b4244bc
+2024-06-28 11:03:08.569 25537-26016 DeferrableSurface       com.allride.buses                    D  Surface no longer in use[total_surfaces=2, used_surfaces=1](androidx.camera.core.impl.ImmediateSurface@b4244bc}
+2024-06-28 11:03:08.569 25537-26016 DeferrableSurface       com.allride.buses                    D  Surface terminated[total_surfaces=1, used_surfaces=1](androidx.camera.core.impl.ImmediateSurface@b4244bc}
+2024-06-28 11:03:08.569 25537-26016 DeferrableSurface       com.allride.buses                    D  use count-1,  useCount=0 closed=true androidx.camera.core.impl.ImmediateSurface@724d0cb
+2024-06-28 11:03:08.569 25537-26016 DeferrableSurface       com.allride.buses                    D  Surface no longer in use[total_surfaces=1, used_surfaces=0](androidx.camera.core.impl.ImmediateSurface@724d0cb}
+2024-06-28 11:03:08.569 25537-26016 DeferrableSurface       com.allride.buses                    D  Surface terminated[total_surfaces=0, used_surfaces=0](androidx.camera.core.impl.ImmediateSurface@724d0cb}
+2024-06-28 11:03:08.570 25537-26016 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} CameraDevice.onClosed()
+2024-06-28 11:03:08.571 25537-26016 Camera2CameraImpl       com.allride.buses                    D  {Camera@9153cf4[id=0]} Transitioning camera internal state: CLOSING --> INITIALIZED
+2024-06-28 11:03:08.573 25537-26016 CameraStateRegistry     com.allride.buses                    D  Recalculating open cameras:
+                                                                                                    Camera                                       State                 
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Camera@9153cf4[id=0]                         CLOSED                
+                                                                                                    Camera@2f2a68d[id=1]                         UNKNOWN               
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Open count: 0 (Max allowed: 1)
+2024-06-28 11:03:08.573 25537-26016 CameraStateMachine      com.allride.buses                    D  New public camera state CameraState{type=CLOSED, error=null} from CLOSED and null
+2024-06-28 11:03:08.574 25537-26016 CameraStateMachine      com.allride.buses                    D  Publishing new public camera state CameraState{type=CLOSED, error=null}
+2024-06-28 11:03:08.603 25537-25537 ServiceConnectivity     com.allride.buses                    I  checkSyncOffline dataList isEmpty
+2024-06-28 11:03:08.610 25537-25537 ServiceConnectivity     com.allride.buses                    D  Success saveDeviceHistoryConnection: 1 - {"states":[{"activity":"CapturePassengerActivity","createdAt":"Jun 28, 2024 11:02:59 AM","departureId":"667ecfd04356530270e31dd7","_id":"0fc63c55-bf76-4a37-a8a7-70339c31c1e0","type":"NO_TYPE_MOBILE_DATA"}]}
+2024-06-28 11:03:08.612 25537-25537 SurfaceViewImpl         com.allride.buses                    D  Safe to release surface.
+2024-06-28 11:03:10.138 25537-25537 TripService             com.allride.buses                    D  Sending event 'newPosition' socket: 000a8f99-647c-4ffc-9945-1489e3dc72bc - [-34.3941133,-70.7812871]

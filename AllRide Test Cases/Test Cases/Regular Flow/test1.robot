@@ -63,68 +63,57 @@ Set Date Variables
     ${expiration_date_qr}=    Set Variable    ${fecha_manana}T14:10:37.968Z
     Set Global Variable    ${expiration_date_qr}
 
-Check Validations Movement
-    Create Session    mysesion    ${STAGE_URL}    verify=true
 
+Create Regular Route Alto - Apumanque
+    Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
     # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${tokenAdmin}
-    ...    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v1/admin/pb/validations/list?community=${idComunidad}&from=0
-    ...    data={"advancedSearch":false,"startDate":"${today_date}T04:00:00.000Z","endDate":"${fecha_manana}T03:59:59.999Z","searchAll":"","route":"0","driver":"0","stop":"0","communityId":"0","validated":null,"reason":"","user":"","email":"","vehicleId":"","customParams":[{"key":"rut","value":""}],"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null}
+    ...    ${endPoint}
+    ...    data={"name":"Regular finalizar automaticamente","description":"Ruta Regular","communities":["${idComunidad}"],"superCommunities":["${idSuperCommunity}"],"ownerIds":[{"id":"${idComunidad}","role":"community"}],"shapeId":"65ef21aa6f1c17c2eeeb5f98","usesBusCode":false,"usesVehicleList":true,"usesDriverCode":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"dynamicSeatAssignment":true,"usesTickets":false,"startsOnStop":false,"notNearStop":false,"routeCost":0,"ticketCost":0,"excludePassengers":{"active":false,"excludeType":"dontHide"},"restrictPassengers":{"enabled":false,"allowed":[],"visibility":{"enabled":false,"excludes":false,"parameters":[]}},"endDepartureNotice":{"enabled":false,"lastStop":null},"scheduling":{"enabled":false,"limitUnit":"","limitAmount":0,"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"schedule":[],"stopOnReservation":false,"restrictions":{"customParams":{"enabled":false,"params":[]}}},"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"allowsServiceSnapshots":false,"allowsNonServiceSnapshots":false,"labels":[],"roundOrder":[{"stopId":"655d11d88a5a1a1ff0328466","notifyIfPassed":false},{"stopId":"655d11d88a5a1a1ff0328464","notifyIfPassed":false}],"anchorStops":["655d11d88a5a1a1ff0328466","655d11d88a5a1a1ff0328464"],"originStop":"655d11d88a5a1a1ff0328466","destinationStop":"655d11d88a5a1a1ff0328464","hasBeacons":true,"hasCapacity":true,"isStatic":false,"showParable":false,"extraInfo":"","color":"cc6060","usesManualSeat":true,"allowsManualValidation":true,"usesDriverPin":false,"hasBoardings":true,"hasUnboardings":true,"allowsDistance":false,"allowGenericVehicles":true,"hasExternalGPS":false,"departureHourFulfillment":{"enabled":false,"ranges":[]},"usesOfflineCount":true,"visible":true,"active":true,"usesTextToSpeech":false,"hasBoardingCount":false,"hasRounds":false,"hasUnboardingCount":false,"timeOnRoute":11,"distance":4,"distanceInMeters":3840,"legOptions":[],"route_type":3}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-
-    #------------------------Validations Status Pass---------------------------------#
-    ${checkValidated_Manual}=     Set Variable    ${response.json()}[validations][0][validated]
-    ${checkValidated_NFC}=     Set Variable    ${response.json()}[validations][1][validated]
-    ${checkValidated_Custom}=     Set Variable    ${response.json()}[validations][2][validated]
-    ${checkValidated_QR}=     Set Variable    ${response.json()}[validations][3][validated]
-    #------------------------Route Name---------------------------------#
-    ${routeName_Manual}=     Set Variable    ${response.json()}[validations][0][routeName]
-    ${routeName_NFC}=     Set Variable    ${response.json()}[validations][1][routeName]
-    ${routeName_Custom}=     Set Variable    ${response.json()}[validations][2][routeName]
-    ${routeName_QR}=     Set Variable    ${response.json()}[validations][3][routeName]
-    #------------------------Assigned Seat---------------------------------#
-    ${seat_NFC}=     Set Variable    ${response.json()}[validations][1][routeName]
-    ${seat_Custom}=     Set Variable    ${response.json()}[validations][2][routeName]
-    ${seat_QR}=     Set Variable    ${response.json()}[validations][3][routeName]
-    ${routeName}=    Evaluate     "Scheduled With Tickets" + "${today_date}"
-
-
-    
-    #------------------------Validations Status Pass---------------------------------#
-    Should Be Equal As Strings    ${checkValidated_Manual}    True
-    Should Be Equal As Strings    ${checkValidated_NFC}    True
-    Should Be Equal As Strings    ${checkValidated_Custom}    True
-    Should Be Equal As Strings    ${checkValidated_QR}    True
-    #------------------------Route Name---------------------------------#
-    Should Be Equal As Strings    ${routeName_Manual}    Scheduled With Tickets ${today_date}
-    Should Be Equal As Strings    ${routeName_NFC}    Scheduled With Tickets ${today_date}
-    Should Be Equal As Strings    ${routeName_Custom}    Scheduled With Tickets ${today_date}
-    Should Be Equal As Strings    ${routeName_QR}    Scheduled With Tickets ${today_date}
-    #------------------------Assigned Seat---------------------------------#
-    Should Be Equal As Numbers    ${seat_NFC}    1
-    Should Be Equal As Numbers    ${seat_Custom}    3
-    Should Be Equal As Numbers    ${seat_QR}    2
-
-
-
-
-
+    Should Be Equal As Numbers    ${code}    200
     Log    ${code}
 
+    ${regularRouteId}=    Set Variable    ${response.json()}[_id]
+    Set Global Variable    ${regularRouteId}
 
+Add Order Stops(Alto Las Condes (1))
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    ${addStopOrder}
+    ...    data={"routeId":"${regularRouteId}","stopId":"655d11d88a5a1a1ff0328466","stop_sequence":1,"cost":0,"sequence":"1","ownerIds":[{"id":"${idComunidad}","role":"community"}],"communities":["${idComunidad}"],"superCommunities":["${idSuperCommunity}"]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
 
-####################################################
-##Get Routes As Driver Pendiente
+Add Order Stops(Mall Apumanque (2))
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
-#######################################################
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    ${addStopOrder}
+    ...    data={"routeId":"${regularRouteId}","stopId":"655d11d88a5a1a1ff0328464","stop_sequence":2,"cost":0,"sequence":"2","ownerIds":[{"id":"${idComunidad}","role":"community"}],"communities":["${idComunidad}"],"superCommunities":["${idSuperCommunity}"]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
