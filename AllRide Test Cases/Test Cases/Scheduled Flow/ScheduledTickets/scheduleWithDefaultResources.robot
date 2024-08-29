@@ -82,7 +82,7 @@ Create Default Schedule Alto - Apumanque 19:00 hrs
     ${response}=    POST On Session
     ...    mysesion
     ...    ${endPoint}
-    ...    data={"name":"Prueba recursos por defecto Gustavo ${todayDate}","description":"Se verifica que los recursos por defecto no ocasionen servicios duplicados","communities":["653fd601f90509541a748683"],"superCommunities":["653fd68233d83952fafcd4be"],"ownerIds":[{"id":"653fd601f90509541a748683","role":"community"}],"shapeId":"${shapeId}","usesBusCode":false,"usesVehicleList":true,"usesDriverCode":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"dynamicSeatAssignment":false,"usesTickets":false,"startsOnStop":false,"notNearStop":false,"routeCost":0,"ticketCost":0,"excludePassengers":{"active":false,"excludeType":"dontHide"},"restrictPassengers":{"enabled":false,"allowed":[]},"endDepartureNotice":{"enabled":false,"lastStop":null},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"schedule":[{"enabled":true,"day":"${scheduleDay}","time":"${formatted_one_hour_later}","estimatedArrival":null,"stopSchedule":[],"capped":{"enabled":false,"capacity":0},"vehicleCategoryId":null,"defaultResources":[{"multipleDrivers":false,"driverId":"${driverId}","vehicleId":"${vehicleId}","drivers":[]}]}],"stopOnReservation":true,"restrictions":{"customParams":{"enabled":false,"params":[]}}},"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"allowsServiceSnapshots":false,"allowsNonServiceSnapshots":false,"labels":[],"roundOrder":[],"anchorStops":[],"originStop":"655d11d88a5a1a1ff0328464","destinationStop":"655d11d88a5a1a1ff0328466","hasBeacons":false,"hasCapacity":false,"isStatic":false,"showParable":false,"extraInfo":"","color":"d70f0f","usesManualSeat":true,"allowsManualValidation":true,"usesDriverPin":false,"hasBoardings":true,"hasUnboardings":true,"allowsDistance":false,"allowGenericVehicles":false,"hasExternalGPS":false,"departureHourFulfillment":{"enabled":false,"ranges":[]},"canReserve":true,"visible":true,"active":true,"usesOfflineCount":false,"usesTextToSpeech":false,"hasBoardingCount":true,"hasRounds":false,"hasUnboardingCount":true,"timeOnRoute":1,"distance":39,"distanceInMeters":258,"route_type":3}
+    ...    data={"name":"Prueba recursos por defecto Robot Framework ${todayDate}","description":"Se verifica que los recursos por defecto no ocasionen servicios duplicados","communities":["653fd601f90509541a748683"],"superCommunities":["653fd68233d83952fafcd4be"],"ownerIds":[{"id":"653fd601f90509541a748683","role":"community"}],"shapeId":"${shapeId}","usesBusCode":false,"usesVehicleList":true,"usesDriverCode":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"dynamicSeatAssignment":false,"usesTickets":false,"startsOnStop":false,"notNearStop":false,"routeCost":0,"ticketCost":0,"excludePassengers":{"active":false,"excludeType":"dontHide"},"restrictPassengers":{"enabled":false,"allowed":[]},"endDepartureNotice":{"enabled":false,"lastStop":null},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"schedule":[{"enabled":true,"day":"${scheduleDay}","time":"${formatted_one_hour_later}","estimatedArrival":null,"stopSchedule":[],"capped":{"enabled":false,"capacity":0},"vehicleCategoryId":null,"defaultResources":[{"multipleDrivers":false,"driverId":"${driverId}","vehicleId":"${vehicleId}","drivers":[]}]}],"stopOnReservation":true,"restrictions":{"customParams":{"enabled":false,"params":[]}}},"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"allowsServiceSnapshots":false,"allowsNonServiceSnapshots":false,"labels":[],"roundOrder":[],"anchorStops":[],"originStop":"655d11d88a5a1a1ff0328464","destinationStop":"655d11d88a5a1a1ff0328466","hasBeacons":false,"hasCapacity":false,"isStatic":false,"showParable":false,"extraInfo":"","color":"d70f0f","usesManualSeat":true,"allowsManualValidation":true,"usesDriverPin":false,"hasBoardings":true,"hasUnboardings":true,"allowsDistance":false,"allowGenericVehicles":false,"hasExternalGPS":false,"departureHourFulfillment":{"enabled":false,"ranges":[]},"canReserve":true,"visible":true,"active":true,"usesOfflineCount":false,"usesTextToSpeech":false,"hasBoardingCount":true,"hasRounds":false,"hasUnboardingCount":true,"timeOnRoute":1,"distance":39,"distanceInMeters":258,"route_type":3}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -92,6 +92,7 @@ Create Default Schedule Alto - Apumanque 19:00 hrs
     ${scheduleId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${scheduleId}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    Sleep    2s
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
@@ -99,26 +100,27 @@ Get Service Id
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}
-    ${serviceId}=    Set Variable    None
+    ${service_id_default}=    Set Variable    None
 
     # Obtenemos la cantidad de objetos de scheduledServices
     ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
+    
+    # Ordenamos los servicios por createdAt
+    ${sorted_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']    json
+    Log     ${sorted_services}
 
-    # Iteramos sobre los objetos de scheduledServices
-    FOR    ${index}    IN RANGE    ${num_scheduled_services}
-        ${service}=    Set Variable    ${responseJson['scheduledServices'][${index}]}
-        ${route_id}=    Set Variable    ${service}[routeId][_id]
-        ${service_id_default}=    Set Variable    ${service}[_id]
-        IF    "${route_id}" == "${scheduleId}"    BREAK
-        Set Global Variable    ${service_id_default}
-    END
-
+    # Verificar si se encontraron servicios
+    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found with routeId._id = "${scheduleId}"
+    
+    # Obtenemos el último servicio creado
+    ${last_service}=    Set Variable    ${sorted_services[-1]}
+    ${service_id_default}=    Set Variable    ${last_service['_id']}
+    ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
+    Should Be Equal As Strings    ${scheduleId}    ${last_service_route}
+    
     Set Global Variable    ${service_id_default}
 
-    # Si no se encuentra el serviceId, registramos un mensaje
-    Run Keyword Unless    '${service_id_default}' != 'None'    Log    No service found with the given schedule ID: ${scheduleId}
-    Log    ${service_id_default}
-    
+    Log    Last created service ID: ${service_id_default}
 
 Get Driver Token
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -142,7 +144,6 @@ Get Driver Token
     Log    ${response.content}
 
 Get departureId
-    
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/admin/pb/service/${service_id_default}?community=${idComunidad}
@@ -221,6 +222,7 @@ Login User With Email(Obtain Token)
     Set Global Variable    ${accessTokenNico}
 
 Seat Reservation(User1-NicoEnd)
+    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -239,6 +241,7 @@ Seat Reservation(User1-NicoEnd)
     Log    ${code}
 
 Seat Reservation(User2-Pedro Pascal Available Seat)
+    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -257,6 +260,7 @@ Seat Reservation(User2-Pedro Pascal Available Seat)
     Log    ${code}
 
 Seat Reservation(User3-Kratos Available Seat)
+    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -534,8 +538,53 @@ Stop Post Leg Departure
     Status Should Be    200
     Log    ${code}
 
+Get Report Id
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary
+    ...    Authorization=${tokenAdmin}
+    ...    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    data={"advancedSearch":true,"startDate":"${today_date}T04:00:00.000Z","endDate":"${fecha_manana}T03:59:59.999Z","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+
+        Status Should Be    200
+    Log    ${code}
+
+    ${reportId}=    Set Variable    ${response.json()}[departures][0][_id]
+
+    Set Global Variable    ${reportId}
+
+    
+
+Get Passenger Details(Validations)
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/admin/pb/departureValidations/${reportId}?community=${idComunidad}
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${responseJson}=    Set Variable    ${response.json()}
+    Should Not Be Empty    ${responseJson}        No validations found
+
+    Log    ${response.content}
+
 Delete Route
-    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)

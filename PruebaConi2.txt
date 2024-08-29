@@ -1,0 +1,9 @@
+Paso 0
+  Set Location    -33.493571     -70.512244
+  Sleep    3s
+Paso 1
+  Set Location    -33.493447     -70.512372
+  Sleep    3s
+Paso 2
+  Set Location    -33.493447     -70.512372
+  Sleep    3s

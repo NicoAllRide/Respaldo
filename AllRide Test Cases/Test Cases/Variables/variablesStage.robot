@@ -3,6 +3,7 @@ ${STAGE_URL}            https://stage.allrideapp.com
 ${TESTING_URL}          https://testing.allrideapp.com
 ${endPoint}             /api/v1/admin/pb/routes?community=653fd601f90509541a748683
 ${driverId}             6582e724938e4e7b3bcf9f0a
+${driverIdQr}             66a13057d19c400e03885f77
 ${driverCode}           753
 ${vehicleId}            6553b81315e27f4db2b45935
 ${vehicleCapacity}      3
@@ -27,4 +28,9 @@ ${cardIdPedro}            ABCDE159753
 ${loginUserUrl}            /api/v1/login/email
 ${colectivoIdComunidad}    666b08f0d574cd44de5885e1
 ${assistantVehicleId}        66830b98bb41bfd79a4620ac
+${idComunidad2}        6654ae4eba54fe502d4e4187
+${CrisServer}            201.239.18.192:3000
+${driverId2}            668309b8bb41bfd79a461dc3
+${vehicleId2}            66830b98bb41bfd79a4620ac
+${restrictionRoute}        66cc94821125fb1232f990a1
 

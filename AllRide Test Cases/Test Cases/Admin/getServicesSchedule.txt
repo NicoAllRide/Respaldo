@@ -1,0 +1,22 @@
+Get Service Id
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=653fd601f90509541a748683&startDate=2024-08-12T04:00:00.000Z&endDate=2024-09-03T03:59:59.999Z&onlyODDs=false
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
+    ${response}=    GET    url=${url}    headers=${headers}
+    ${responseJson}=    Set Variable    ${response.json()}
+    ${service_id_tickets}=    Set Variable    None
+
+    # Obtenemos la cantidad de objetos de scheduledServices
+    ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
+    
+    # Ordenamos los servicios por createdAt
+    ${sorted_services}=    Evaluate    sorted(${responseJson}[scheduledServices], key=lambda x: x['createdAt'])    json
+    
+    # Obtenemos el último servicio creado
+    ${last_service}=    Set Variable    ${sorted_services[-1]}
+    ${last_service1}=    Set Variable    ${sorted_services[-2]}
+    ${last_service2}=    Set Variable    ${sorted_services[-3]}
+    ${last_service3}=    Set Variable    ${sorted_services[-4]}
+
+    

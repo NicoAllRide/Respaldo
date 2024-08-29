@@ -85,9 +85,9 @@ Verify Open RDD in Community
     ${responseJson}=     Set variable    ${response.json()}
     ${enabled}=    Set Variable     ${responseJson}[custom][realTimeTransportSystem][buses][oDDServices][0][userRequests][freeRequests][enabled]
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
+    Should Be Equal As Numbers    ${response.status_code}    200    
     
-    Should Be Equal As Strings    ${enabled}   True
+    Should Be Equal As Strings    ${enabled}   True    Open RDD Disabled
 
 Get Places
         ${url}=    Set Variable
@@ -100,7 +100,7 @@ Get Places
     ${response}=    GET    url=${url}    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Should Be Equal As Numbers    ${response.status_code}    200
-    Should Not Be Empty    ${response.json()}
+    Should Not Be Empty    ${response.json()}    No places found in the community ${idComunidad}
 Create RDD As Admin With Approval
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -116,7 +116,7 @@ Create RDD As Admin With Approval
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
+    Should Be Equal As Numbers    ${code}    200    
     Log    ${code}
 
     ${rddId}=    Set Variable    ${response.json()}[_id]
@@ -135,7 +135,7 @@ Approve RDD
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
+    Should Be Equal As Numbers    ${code}    200    It wasn't Possible to approve RDD
     Log    ${code}
 
     ${rddId}=    Set Variable    ${response.json()}[_id]
@@ -161,7 +161,7 @@ Assign Driver
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
+    Should Be Equal As Numbers    ${code}    200    No driver assigned
     Log    ${code}
 Assign Vehicle
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -177,7 +177,7 @@ Assign Vehicle
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
+    Should Be Equal As Numbers    ${code}    200    No vehicle Assigned
     Log    ${code}
 
 Get Driver Token
@@ -290,7 +290,7 @@ Get RDD Stops As Driver
     ${response}=    GET    url=${url}    headers=${headers}
 
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
+    Should Be Equal As Numbers    ${response.status_code}    200    
 
 Validate With QR(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true

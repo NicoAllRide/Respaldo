@@ -91,7 +91,7 @@ Get Requested Tickets(Must be 0)
     # Almacenamos la respuesta de json en una variable para poder jugar con ella
     ${responseJson}=    Set Variable    ${response.json()}
 
-    Should Be Empty    ${responseJson}
+    Should Be Empty    ${responseJson}    Requested Tickets Should be 0 
 
     Log    ${responseJson}
 
@@ -144,7 +144,7 @@ Request Tickets
     ${ticketRequestQty}=    Set Variable    ${response.json()}[ticketQuantity]
     Set Global Variable    ${ticketRequestId}
     Set Global Variable    ${ticketRequestQty}
-    Should Be Equal As Strings    pendingApproval    ${response.json()}[state]
+    Should Be Equal As Strings    pendingApproval    ${response.json()}[state]        The state of the tickets should be pendingApproval but the state is ${response.json()}[state]
     Log    ${ticketRequestId}
     Log    ${ticketRequestQty}
 
@@ -162,7 +162,7 @@ Get Requested Tickets(Should Not Be 0)
     # Almacenamos la respuesta de json en una variable para poder jugar con ella
     ${responseJson}=    Set Variable    ${response.json()}
 
-    Should Not Be Empty    ${responseJson}
+    Should Not Be Empty    ${responseJson}    The requested tickets should not be 0, but is empty
 
     Log    ${responseJson}
 
@@ -184,9 +184,9 @@ Treasurer Request Approval
     ${ticketResponseQty}=    Set Variable    ${responseJson}[ticketRequestRes][ticketQuantity]
     ${ticketResponseState}=    Set Variable    ${responseJson}[ticketRequestRes][state]
 
-    Should Be Equal As Strings    ${ticketResponseId}    ${ticketRequestId}
-    Should Be Equal As Strings    ${ticketResponseQty}    ${ticketRequestQty}
-    Should Be Equal As Strings    ${ticketResponseState}    pendingApproval
+    Should Be Equal As Strings    ${ticketResponseId}    ${ticketRequestId}        The ticket requestId is not the same in the response after Treasure Approval, is ${ticketResponseId}
+    Should Be Equal As Strings    ${ticketResponseQty}    ${ticketRequestQty}        The ticket request quantity is not the same in the response after Treasure Approval, is ${ticketResponseQty}
+    Should Be Equal As Strings    ${ticketResponseState}    pendingApproval            The state after Treasure Approval is ${ticketResponseState}
 
     Log    ${responseJson}
 
@@ -261,7 +261,7 @@ Assing Tickets(Nico)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
-    Should Be True    ${totalTicketsAfterRequest} >=${assignQty}
+    Should Be True    ${totalTicketsAfterRequest} >=${assignQty}        
 
 
 
@@ -319,7 +319,7 @@ Get Assigned Tickets (Nico)
         Set Global Variable    ${assignedQtyNico}
     END
 
-    Should Be True    ${assignedQtyNico}==${assignQty}
+    Should Be True    ${assignedQtyNico}==${assignQty}            Assigned tickets Nico should be ${assignQty} but it is ${assignedQtyNico} The assignment is not working
 
     # Si no se encuentra el service_id_tickets, registramos un mensaje
     Log    ${assignedQtyNico}
@@ -343,7 +343,7 @@ Get Assigned Tickets (Kratos)
         Set Global Variable    ${assignedQtyKratos}
     END
 
-    Should Be True    ${assignedQtyKratos}==${assignQty}
+     Should Be True    ${assignedQtyKratos}==${assignQty}            Assigned tickets Kratos should be ${assignQty} but it is ${assignedQtyKratos}; The assignment is not working
 
     # Si no se encuentra el service_id_tickets, registramos un mensaje
     Log    ${assignedQtyKratos}
@@ -367,7 +367,7 @@ Get Assigned Tickets (Pedro)
         Set Global Variable    ${assignedQtyPedro}
     END
 
-    Should Be True    ${assignedQtyPedro}==${assignQty}
+    Should Be True    ${assignedQtyPedro}==${assignQty}        Assigned tickets Pedro should be ${assignQty} but it is ${assignedQtyPedro}; The assignment is not working
 
     # Si no se encuentra el service_id_tickets, registramos un mensaje
     Log    ${assignedQtyPedro}
@@ -384,7 +384,7 @@ Create Schedule Alto - Apumanque 19:00 hrs
     ${response}=    POST On Session
     ...    mysesion
     ...    ${endPoint}
-    ...    data={"name":"Calendarizada Servicio Creado","description":"templateRobotTickets","communities":["${idComunidad}"],"superCommunities":["${idSuperCommunity}"],"ownerIds":[{"id":"${idComunidad}","role":"community"}],"shapeId":"65ef21aa6f1c17c2eeeb5f98","usesBusCode":false,"usesVehicleList":true,"usesDriverCode":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"dynamicSeatAssignment":true,"usesTickets":true,"startsOnStop":false,"notNearStop":false,"routeCost":"100","ticketCost":"10","excludePassengers":{"active":false,"excludeType":"dontHide"},"restrictPassengers":{"enabled":false,"allowed":[],"visibility":{"enabled":false,"excludes":false,"parameters":[]}},"endDepartureNotice":{"enabled":false,"lastStop":null},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"schedule":[{"enabled":true,"day":"${schedule_day}","time":"${formatted_one_hour_later}","estimatedArrival":null,"stopSchedule":[],"capped":{"enabled":false,"capacity":0},"vehicleCategoryId":null,"defaultResources":[]}],"stopOnReservation":true,"restrictions":{"customParams":{"enabled":false,"params":[]}}},"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"allowsServiceSnapshots":false,"allowsNonServiceSnapshots":false,"labels":[],"roundOrder":[{"stopId":"655d11d88a5a1a1ff0328466","notifyIfPassed":false},{"stopId":"655d11d88a5a1a1ff0328464","notifyIfPassed":false}],"anchorStops":["655d11d88a5a1a1ff0328466","655d11d88a5a1a1ff0328464"],"originStop":"655d11d88a5a1a1ff0328466","destinationStop":"655d11d88a5a1a1ff0328464","hasBeacons":true,"hasCapacity":true,"isStatic":false,"showParable":false,"extraInfo":"","color":"502929","usesManualSeat":true,"allowsManualValidation":true,"usesDriverPin":false,"hasBoardings":true,"hasUnboardings":true,"allowsDistance":false,"allowGenericVehicles":true,"hasExternalGPS":false,"departureHourFulfillment":{"enabled":false,"ranges":[]},"usesOfflineCount":true,"visible":true,"active":true,"usesTextToSpeech":false,"hasBoardingCount":false,"hasRounds":false,"hasUnboardingCount":false,"timeOnRoute":11,"distance":4,"distanceInMeters":3840,"legOptions":[],"route_type":3}
+    ...    data={"name":"Scheduled With Tickets ${today_date}","description":"templateRobotTickets","communities":["${idComunidad}"],"superCommunities":["${idSuperCommunity}"],"ownerIds":[{"id":"${idComunidad}","role":"community"}],"shapeId":"65ef21aa6f1c17c2eeeb5f98","usesBusCode":false,"usesVehicleList":true,"usesDriverCode":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"dynamicSeatAssignment":true,"usesTickets":true,"startsOnStop":false,"notNearStop":false,"routeCost":"100","ticketCost":"10","excludePassengers":{"active":false,"excludeType":"dontHide"},"restrictPassengers":{"enabled":false,"allowed":[],"visibility":{"enabled":false,"excludes":false,"parameters":[]}},"endDepartureNotice":{"enabled":false,"lastStop":null},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"schedule":[{"enabled":true,"day":"${schedule_day}","time":"${formatted_one_hour_later}","estimatedArrival":null,"stopSchedule":[],"capped":{"enabled":false,"capacity":0},"vehicleCategoryId":null,"defaultResources":[]}],"stopOnReservation":true,"restrictions":{"customParams":{"enabled":false,"params":[]}}},"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"allowsServiceSnapshots":false,"allowsNonServiceSnapshots":false,"labels":[],"roundOrder":[{"stopId":"655d11d88a5a1a1ff0328466","notifyIfPassed":false},{"stopId":"655d11d88a5a1a1ff0328464","notifyIfPassed":false}],"anchorStops":["655d11d88a5a1a1ff0328466","655d11d88a5a1a1ff0328464"],"originStop":"655d11d88a5a1a1ff0328466","destinationStop":"655d11d88a5a1a1ff0328464","hasBeacons":true,"hasCapacity":true,"isStatic":false,"showParable":false,"extraInfo":"","color":"502929","usesManualSeat":true,"allowsManualValidation":true,"usesDriverPin":false,"hasBoardings":true,"hasUnboardings":true,"allowsDistance":false,"allowGenericVehicles":true,"hasExternalGPS":false,"departureHourFulfillment":{"enabled":false,"ranges":[]},"usesOfflineCount":true,"visible":true,"active":true,"usesTextToSpeech":false,"hasBoardingCount":false,"hasRounds":false,"hasUnboardingCount":false,"timeOnRoute":11,"distance":4,"distanceInMeters":3840,"legOptions":[],"route_type":3}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -393,6 +393,7 @@ Create Schedule Alto - Apumanque 19:00 hrs
 
     ${scheduleId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${scheduleId}
+    Sleep    2s
 
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -405,21 +406,23 @@ Get Service Id
 
     # Obtenemos la cantidad de objetos de scheduledServices
     ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
+    
+    # Ordenamos los servicios por createdAt
+    ${sorted_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']    json
+    Log     ${sorted_services}
 
-    # Iteramos sobre los objetos de scheduledServices
-    FOR    ${index}    IN RANGE    ${num_scheduled_services}
-        ${service}=    Set Variable    ${responseJson['scheduledServices'][${index}]}
-        ${route_id}=    Set Variable    ${service}[routeId][_id]
-        ${service_id_tickets}=    Set Variable    ${service}[_id]
-        IF    "${route_id}" == "${scheduleId}"    BREAK
-        Set Global Variable    ${service_id_tickets}
-    END
-
+    # Verificar si se encontraron servicios
+    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found with routeId._id = "${scheduleId}"
+    
+    # Obtenemos el último servicio creado
+    ${last_service}=    Set Variable    ${sorted_services[-1]}
+    ${service_id_tickets}=    Set Variable    ${last_service['_id']}
+    ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
+    Should Be Equal As Strings    ${scheduleId}    ${last_service_route}
+    
     Set Global Variable    ${service_id_tickets}
 
-    # Si no se encuentra el service_id_tickets, registramos un mensaje
-    Run Keyword Unless    '${service_id_tickets}' != 'None'    Log    No service found with the given schedule ID: ${scheduleId}
-    Log    ${service_id_tickets}
+    Log    Last created service ID: ${service_id_tickets}
     
 
 Get Driver Token
@@ -551,7 +554,7 @@ Seat Reservation(User1-NicoEnd)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
+    Should Be Equal As Numbers    ${code}    200        Seat reservation not working statusCode ${code}
     Log    ${code}
 
 Seat Reservation(User2-Pedro Pascal Available Seat)
@@ -568,7 +571,7 @@ Seat Reservation(User2-Pedro Pascal Available Seat)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
+    Status Should Be    200  
     Log    ${code}
 
 Seat Reservation(User3-Kratos Available Seat)
@@ -585,7 +588,7 @@ Seat Reservation(User3-Kratos Available Seat)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
+    Status Should Be    200      
     Log    ${code}
 
 Driver Accept Service
@@ -716,7 +719,7 @@ Get Assigned Tickets After Validation(Nico)
     Convert To Integer    ${assignedQtyNico}
     ${assignQtyMinus}=    Evaluate    ${assignQty}-1
     Convert To Integer    ${assignQtyMinus}
-    Should Be True    ${assignedQtyNico}==${assignQtyMinus}
+    Should Be True    ${assignedQtyNico}==${assignQtyMinus}         Doesn't discounts tickets after validation with QR, Expected tickets: ${assignQtyMinus}, Actual Tickets ${assignedQtyNico}
 
     # Si no se encuentra el service_id_tickets, registramos un mensaje
     Log    ${assignedQtyNico}
@@ -748,7 +751,7 @@ Get Total Tickets After Validation(Nico)(THIS WORKS EVALUATE IS USED FOR MATH EX
     Convert To Integer    ${totalTicketsAfterRequest}
     Convert To Integer    ${totalTicketsAfterValidation}
     ${ticketsMinus}    Evaluate    ${totalTicketsAfterRequest}-1
-    Should Be Equal As Integers    ${totalTicketsAfterValidation}    ${ticketsMinus}
+    Should Be Equal As Integers    ${totalTicketsAfterValidation}    ${ticketsMinus}            Doesn't discounts Total tickets after validation with QR, Expected tickets: ${ticketsMinus}, Actual Tickets ${totalTicketsAfterValidation}
     Log    La cantidad total de tickets es ${totalTicketsAfterValidation}
 
     Set Global Variable    ${totalTicketsAfterValidation}
@@ -806,7 +809,7 @@ Get Assigned Tickets After Validation(Kratos)
     Convert To Integer    ${assignedQtyKratos}
     Convert To Integer    ${assignQty}
     ${ticketAssignedQuantity}=    Evaluate    ${assignQty}-1
-    Should Be True    ${assignedQtyKratos}==${ticketAssignedQuantity}
+    Should Be True    ${assignedQtyKratos}==${ticketAssignedQuantity}        Doesn't discounts tickets after validation with Custom, Expected tickets: ${ticketAssignedQuantity}, Actual Tickets ${assignedQtyKratos}
 
     # Si no se encuentra el service_id_tickets, registramos un mensaje
     Log    ${assignedQtyKratos}
@@ -836,7 +839,7 @@ Get Total Tickets After Validation(Kratos)
     Convert To Integer    ${totalTicketsAfterRequest}
     Convert To Integer    ${totalTicketsAfterValidation}
     ${ticketsAfterValidation}=    Evaluate    ${totalTicketsAfterRequest}-2
-    Should Be True    ${totalTicketsAfterValidation}==${ticketsAfterValidation}
+    Should Be True    ${totalTicketsAfterValidation}==${ticketsAfterValidation}             Doesn't discounts Total tickets after validation with QR, Expected tickets: ${ticketsAfterValidation}, Actual Tickets ${totalTicketsAfterValidation}   
     Log    La cantidad total de tickets es ${totalTicketsAfterValidation}
 
     Set Global Variable    ${totalTicketsAfterValidation}
@@ -893,7 +896,7 @@ Get Assigned Tickets After Validation(Pedro)
     END
     Convert To Integer    ${assignedQtyPedro}
     Convert To Integer    ${assignQty}
-    Should Be True    ${assignedQtyPedro}==(${assignQty}-1)
+    Should Be True    ${assignedQtyPedro}==(${assignQty}-1)        Assigned quantity Pedro is not correct, should be ${assignQty} but it is ${assignedQtyPedro}
 
     # Si no se encuentra el service_id_tickets, registramos un mensaje
     Log    ${assignedQtyPedro}
@@ -923,7 +926,7 @@ Get Total Tickets After Validation(Pedro)
     Convert To Integer    ${totalTicketsAfterRequest}
     Convert To Integer    ${totalTicketsAfterValidation}
     ${ticketsAfterValidation}=    Evaluate    ${totalTicketsAfterRequest}-3
-    Should Be True    ${totalTicketsAfterValidation}==${ticketsAfterValidation}
+    Should Be True    ${totalTicketsAfterValidation}==${ticketsAfterValidation}        Total tickets after validation should be ${ticketsAfterValidation} but it is ${totalTicketsAfterValidation}
     Log    La cantidad total de tickets es ${totalTicketsAfterValidation}
 
     Set Global Variable    ${totalTicketsAfterValidation}
@@ -1125,7 +1128,6 @@ Get Passenger Details(Validations)
     Log    ${response.content}
 
 Delete Route
-    
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)

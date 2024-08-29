@@ -1,17 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20240612 12:48:30.978" rpa="false" schemaversion="4">
-<suite id="s1" name="Robot Interactive Console" source="c:\Users\nico2\.vscode\extensions\robocorp.robotframework-lsp-1.12.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20240828 10:39:05.656" rpa="false" schemaversion="4">
+<suite id="s1" name="Robot Interactive Console" source="c:\Users\UsuarioCompuElite\.vscode\extensions\robocorp.robotframework-lsp-1.12.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
-<kw name="Get Current Date">
-<msg timestamp="20240612 12:48:31.421" level="FAIL">No keyword with name 'Get Current Date' found.</msg>
-<status status="FAIL" starttime="20240612 12:48:31.421" endtime="20240612 12:48:31.422"/>
+<kw name="Create Session">
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<msg timestamp="20240828 10:39:06.436" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<status status="FAIL" starttime="20240828 10:39:06.436" endtime="20240828 10:39:06.436"/>
 </kw>
-<status status="PASS" starttime="20240612 12:48:31.040" endtime="20240612 12:48:57.545"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=${tokenAdmin}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" starttime="20240828 10:39:06.436" endtime="20240828 10:39:06.436"/>
 </kw>
-<status status="PASS" starttime="20240612 12:48:31.039" endtime="20240612 12:48:57.545"/>
+<kw name="POST On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/admin/users/qrCodes?community=${idComunidad2}</arg>
+<arg>data={"ids":["6667489cb5433b5dc2fa94e9"]}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" starttime="20240828 10:39:06.436" endtime="20240828 10:39:06.436"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20240828 10:39:06.436" endtime="20240828 10:39:06.436"/>
+</kw>
+<kw name="Status Should Be">
+<arg>200</arg>
+<status status="NOT RUN" starttime="20240828 10:39:06.438" endtime="20240828 10:39:06.438"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${qrCodeUser2}</var>
+<arg>${response.json()}[0][qrCode]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20240828 10:39:06.438" endtime="20240828 10:39:06.438"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${qrCodeUser2}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" starttime="20240828 10:39:06.438" endtime="20240828 10:39:06.438"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${qrCodeUser2}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20240828 10:39:06.438" endtime="20240828 10:39:06.438"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20240828 10:39:06.438" endtime="20240828 10:39:06.438"/>
+</kw>
+<status status="PASS" starttime="20240828 10:39:05.671" endtime="20240828 10:39:07.877"/>
+</kw>
+<status status="PASS" starttime="20240828 10:39:05.671" endtime="20240828 10:39:07.877"/>
 </test>
-<status status="PASS" starttime="20240612 12:48:30.980" endtime="20240612 12:48:57.546"/>
+<status status="PASS" starttime="20240828 10:39:05.656" endtime="20240828 10:39:07.878"/>
 </suite>
 <statistics>
 <total>

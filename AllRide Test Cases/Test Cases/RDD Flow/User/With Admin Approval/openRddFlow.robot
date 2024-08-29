@@ -125,20 +125,3 @@ Create RDD As User(Need Admin Approval)
     ${rddId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${rddId}
 
-Approve RDD
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    PUT On Session
-    ...    mysesion
-    ...    url=/api/v1/admin/pb/odd/approve/${rddId}?community=${idComunidad}
-    ...    data={}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-

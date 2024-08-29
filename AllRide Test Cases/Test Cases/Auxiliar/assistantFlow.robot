@@ -312,6 +312,8 @@ Create Assistant Route
     ${scheduleId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${scheduleId}
 
+    Sleep    5s
+
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
@@ -323,22 +325,24 @@ Get Service Id
 
     # Obtenemos la cantidad de objetos de scheduledServices
     ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
+    
+    # Ordenamos los servicios por createdAt
+    # Ordenamos los servicios por createdAt
+    ${sorted_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']    json
+    Log     ${sorted_services}
 
-    # Iteramos sobre los objetos de scheduledServices
-    FOR    ${index}    IN RANGE    ${num_scheduled_services}
-        ${service}=    Set Variable    ${responseJson['scheduledServices'][${index}]}
-        ${route_id}=    Set Variable    ${service}[routeId][_id]
-        ${service_id_tickets}=    Set Variable    ${service}[_id]
-        IF    "${route_id}" == "${scheduleId}"    BREAK
-        Set Global Variable    ${service_id_tickets}
-    END
-
+    # Verificar si se encontraron servicios
+    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found in 4 weeks with routeId._id = "${scheduleId}"
+    
+    # Obtenemos el último servicio creado
+    ${last_service}=    Set Variable    ${sorted_services[-1]}
+    ${service_id_tickets}=    Set Variable    ${last_service['_id']}
+    ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
+    Should Be Equal As Strings    ${scheduleId}    ${last_service_route}
+    
     Set Global Variable    ${service_id_tickets}
 
-    # Si no se encuentra el service_id_tickets, registramos un mensaje
-    Run Keyword Unless    '${service_id_tickets}' != 'None'    Log    No service found with the given schedule ID: ${scheduleId}
-    Log    ${service_id_tickets}
-    
+    Log    Last created service ID: ${service_id_tickets}
 
 Get Driver Token
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -472,7 +476,7 @@ Login User With Email(Obtain Token)
         Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"username":"nicolas+endauto@allrideapp.com","password":"Equilibriozen123#"}
+    ${jsonBody}=    Set Variable    {"username":"nicolas+userpelambres@allrideapp.com","password":"Lolowerty21@"}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -680,304 +684,3 @@ Validate With QR Assistant(Pending Assigned2)
 
 
 
-Link Validation to active Departure With QR
-    ##
-    #SE HACE CON ASSISTANt TOKEN#
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAssistant}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/assistant/departures/link/${departureId}
-    ...    data={"validations":["${validationId}"],"vehicleQR":"${assistantVehicleId}"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-
-Get Assigned Tickets After Validation(Nico)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
-    ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set Variable    ${response.json()}
-    ${assignedQty}=    Set Variable    None
-
-    # Obtenemos la cantidad de objetos de scheduledServices
-    ${num_user_tickets}=    Get Length    ${responseJson}
-
-    # Iteramos sobre los objetos de scheduledServices
-    FOR    ${index}    IN RANGE    ${num_user_tickets}
-        ${user}=    Set Variable    ${responseJson[${index}]}
-        ${assignedQtyNico}=    Set Variable    ${user}[availableTickets]
-        IF    "${user}[id]" == "${idNico}"    BREAK
-        Set Global Variable    ${assignedQtyNico}
-    END
-    Convert To Integer    ${assignedQtyNico}
-    ${assignQtyMinus}=    Evaluate    ${assignQty}-1
-    Convert To Integer    ${assignQtyMinus}
-    Should Be True    ${assignedQtyNico}==${assignQtyMinus}
-
-    # Si no se encuentra el service_id_tickets, registramos un mensaje
-    Log    ${assignedQtyNico}
-
-Validate With QR Assistant(Pending Assigned)
-    #SE HACE CON DEPARTURE TOKEN#
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/assistant/departures/validate
-    ...    data={"validationString":"${qrCodeNico}","timezone":"Chile/Continental","validationLat":"-34.3941091","validationLon":"-70.7813158","assistantId":"66799c8669ce2084bb417b55"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-    Sleep    10s
-    ${pendingValitation}=     Set Variable     ${response.json()}[validated]
-    Should Be Equal As Strings    ${pendingValitation}    False     ##Esto afirma que la validación no está completa, falta vincular
-    ${validationId}=    Set Variable    ${response.json()}[_id]
-    Set Global Variable    ${validationId}
-
-
-
-
-Link Validation to active Departure With Custom
-    #SE HACE CON ASSISTANt TOKEN -----------Duplicar validacion con el mismo usuasrio para luego vincular con patente de vehiculo
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAssistant}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/assistant/departures/link/${departureId}
-    ...    data={"plate":"MORISC","validations":["${validationId}"]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-
-
-Get Assigned Tickets After Validation Custom Link(Nico)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
-    ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set Variable    ${response.json()}
-    ${assignedQty}=    Set Variable    None
-
-    # Obtenemos la cantidad de objetos de scheduledServices
-    ${num_user_tickets}=    Get Length    ${responseJson}
-
-    # Iteramos sobre los objetos de scheduledServices
-    FOR    ${index}    IN RANGE    ${num_user_tickets}
-        ${user}=    Set Variable    ${responseJson[${index}]}
-        ${assignedQtyNico}=    Set Variable    ${user}[availableTickets]
-        IF    "${user}[id]" == "${idNico}"    BREAK
-        Set Global Variable    ${assignedQtyNico}
-    END
-    Convert To Integer    ${assignedQtyNico}
-    ${assignQtyMinus}=    Evaluate    ${assignQty}-2
-    Convert To Integer    ${assignQtyMinus}
-    Should Be True    ${assignedQtyNico}==${assignQtyMinus}
-
-    # Si no se encuentra el service_id_tickets, registramos un mensaje
-    Log    ${assignedQtyNico}
-
-Get Total Tickets After Validation(Nico)
-    ${url}=    Set Variable    ${STAGE_URL}/api/v1/admin/pb/ticket/list?community=${idComunidad}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Obtiene el tiempo de inicio
-    ${start_time}=    Get Current Date    result_format=%H:%M:%S.%f
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    # Obtiene el tiempo de finalización
-    ${end_time}=    Get Current Date    result_format=%H:%M:%S.%f
-
-    # Calcula el tiempo transcurrido (elapsed)
-    ${elapsed}=    Subtract Time From Time    ${end_time}    ${start_time}
-    Log    Elapsed time: ${elapsed}
-
-
-    # Almacena la respuesta JSON en una variable para poder manipularla
-    ${totalTicketsAfterValidation}=    Set Variable    ${response.json()}
-    
-    Convert To Integer    ${totalTicketsAfterRequest}
-    Convert To Integer    ${totalTicketsAfterValidation}
-    ${ticketsMinus}    Evaluate    ${totalTicketsAfterRequest}-2
-    Should Be Equal As Integers    ${totalTicketsAfterValidation}    ${ticketsMinus}
-    Log    La cantidad total de tickets es ${totalTicketsAfterValidation}
-
-    Set Global Variable    ${totalTicketsAfterValidation}
-
-Get Movement Historic Nico After Validation
-    Skip
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/movementHistory?community=${idComunidad}&startDate=${start_date_tickets}&endDate=${end_date_tickets}
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
-    ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set Variable    ${response.json()}[0]
-    Should Be Equal As Strings    ${responseJson}[movementType]    cash
-    ${responseQty}=    Evaluate    ${responseJson}[amountOfTickets] == 1
-    Log    ${responseQty}
-    ${previousQty}=    Evaluate    ${responseJson}[previousTickets] == 2
-    Log    ${previousQty}
-    ${currentQty}=    Evaluate    ${responseJson}[currentTickets] == 1
-    Log    ${currentQty}
-
-Departure Historic
-    # CON ESTE ENDPOINT PUEDO SABER CUALES FUERON LINKEADOS Y VALIDADOS
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/pb/assistant/departures/history
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAssistant}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-Route List(Map View)
-        # CON ESTE ENDPOINT PUEDO SABER CUALES FUERON LINKEADOS Y VALIDADOS
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/pb/assistant/routes
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAssistant}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-Stop Departure With Post Leg
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departure/stop
-    ...    data={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":true,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-
-Stop Post Leg Departure
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departure/stop
-    ...    data={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":false,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-
-Get Report Id
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${tokenAdmin}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
-    ...    data={"advancedSearch":true,"startDate":"${today_date}T04:00:00.000Z","endDate":"${fecha_manana}T03:59:59.999Z","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-
-        Status Should Be    200
-    Log    ${code}
-
-    ${reportId}=    Set Variable    ${response.json()}[departures][0][_id]
-
-    Set Global Variable    ${reportId}
-
-    
-
-Get Passenger Details(Validations)
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/departureValidations/${reportId}?community=${idComunidad}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    ${responseJson}=    Set Variable    ${response.json()}[0]
-    Should Not Be Empty    ${responseJson}
-
-    Log    ${response.content}
-
-Delete Route
-    
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${tokenAdmin}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    DELETE On Session
-    ...    mysesion
-    ...    url=/api/v1/admin/pb/routes/${scheduleId}?community=653fd601f90509541a748683
-    ...    data={}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-    Sleep    5s

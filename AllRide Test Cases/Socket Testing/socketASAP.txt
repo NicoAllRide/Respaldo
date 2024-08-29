@@ -1,0 +1,18 @@
+Rechazar solicitud:
+val obj = JSONObject().apply {
+    put("departureId", request?.departureId)
+    put("userId", request?.user?.id)
+    put("driverId", request?.driverId)
+    put("createdAt", Date())
+}
+socket?.emit("rejectDeparture", obj)
+Aceptar es un endpoint:
+@POST("api/v2/pb/driver/departure/asap/{departureId}")
+{
+        startLat: Double? = null,
+        startLon: Double
+        driverId: String
+        vehicleId: String
+        communityId: String
+        userId: String
+}

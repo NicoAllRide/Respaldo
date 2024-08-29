@@ -1,35 +1,114 @@
-*** Variables ***
-${STAGE_URL}            https://stage.allrideapp.com
-${TESTING_URL}          https://testing.allrideapp.com
-${endPoint}             /api/v1/admin/pb/routes?community=65d35f4f1779211359d1bb2e
-${driverId}             65d3918e5f461d12b748ecc5
-${driverCode}           753
-${vehicleId}            65d3a683012812368f0ec43d
-${vehicleCapacity}      3
-${vehicleCode}          1111
-${addStopOrder}         /api/v1/admin/pb/stop-time?community=${idComunidad}
-${seatReservation}      /api/v1/pb/user/booking
-${idNico}               65d512163032ab0a68de1618
-${idKratos}             65d39975012812368f0eb88b
-${idPedro}              65d3991c012812368f0eb84e
-${idNaruto}             65d398d9012812368f0eb811
-${tokenAdmin}           Bearer 4c6ac6218d8d9fe1261f2af513dd8a136985a70a944fdeb349f56a0f57a682aacfbe5726ca15be917c064b046afc7e3e08c7bdcb35f7b66371244e9d621adc41
-${tokenNico}            Bearer 60c0099c85d42b55bb405bd579d1c64f1629b1e879f290e43c235ef6bbfb8cd35da8055b20fefee31e3a11cb6207b9d91f7039a92eb266f587f11479d9f153f2
-${tokenPedroPascal}     Bearer 2eacdb42a68ffa12b3d9901816b6b6049b1a65c9232c2112a64c5935002683b35bbf10c046ef9670f529241849999f66c4645956ecb1b0ae2a1de5c3209f9f4b
-${tokenKratos}          Bearer fda5651771446906c9a511a066e26b4ef28873fa97ce094f47a2402b4a9a6f652a0032e1a7d3607515d2a873f2bb1eb73033e06c8d1d78e28b725a0537807d6f
-${tokenNaruto}          Bearer fc7d6941c41225c2756ac83a2c0898dcae5c0ef2c0c9f5a7779d51fd3753dca60212278ac0f6fa0bf3ff4c77f482c6524eb2c5b8918b4dc4a3d81c7cba010bef
-${idComunidad}          65d35f4f1779211359d1bb2e
-${idSuperCommunity}     653fd68233d83952fafcd4be
-${shapeId}              65d4dff32d1102d9a2acdbba
-${idAdmin}              653fd89733d83952fafcd6ca
-${assignQty}            2
-${cardIdPedro}            ABCDE159753
+name: Run Robot Framework Tests and Send Email
+
+on:
+  repository_dispatch:
+    types: [trigger-workflow]
+  workflow_dispatch:  # Permite la ejecución manual
+
+concurrency:
+  group: regression-tests-stage-concurrency-group
+  cancel-in-progress: true
+
+env:
+  SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+  TOKEN_ADMIN: ${{ secrets.TOKEN_ADMIN }}
+  TOKEN_NICO: ${{ secrets.TOKEN_NICO }}
+  TOKEN_PEDRO: ${{ secrets.TOKEN_PEDRO }}
+  TOKEN_KRATOS: ${{ secrets.TOKEN_KRATOS }}
+  TOKEN_NARUTO: ${{ secrets.TOKEN_NARUTO }}
+  TZ: America/Santiago
+
+jobs:
+  set_timezone:
+    name: Set Timezone
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Set Timezone
+        uses: szenius/set-timezone@v2.0
+        with:
+          timezoneLinux: "America/Santiago"
+          timezoneMacos: "America/Santiago"
+          timezoneWindows: "America/Santiago"
+          
+  run_tests_and_send_email:
+    name: Run Robot Framework Tests and Send Email
+    runs-on: ubuntu-20.04
+    needs: set_timezone
+    env:
+      ACTIONS_RUNNER_DEBUG: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Obtiene el historial de todas las ramas
+          ref: main  # Asegura obtener el último commit de la rama main
+
+      - name: Ensure latest code
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+
+      - name: Sleep for 20 seconds
+        run: sleep 20
+
+      - name: Setup Python and pip
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+          pip-version: latest
+
+      - name: Install dependencies
+        run: |
+          pip install robotframework
+          pip install robotframework-requests
+          pip install robotframework-seleniumlibrary
+          pip install rpaframework
+          pip install requests
+          pip install slack_sdk
+
+      - name: Run Robot Framework tests RDD Flow
+        run: |
+          robot -d results -o output_rdd.xml "AllRide Test Cases/Test Cases/RDD Flow"
+        continue-on-error: true
+        
+      - name: Sleep for 20 seconds
+        run: sleep 20
+
+      - name: Run Robot Framework tests Regular Flow
+        run: |
+          robot -d results -o output_regular.xml "AllRide Test Cases/Test Cases/Regular Flow"
+        continue-on-error: true
+
+      - name: Sleep for 20 seconds
+        run: sleep 20
+
+      - name: Run Robot Framework tests Scheduled
+        run: |
+          robot -d results -o output_scheduled.xml "AllRide Test Cases/Test Cases/Scheduled Flow/ScheduledTickets"
+        continue-on-error: true
 
 
-# *
-# Listos
-    
-# Endpoint
-# Id comunidad
-# Token Admin
-# # 
+      - name: Fuse outputs
+        run: rebot --output output.xml results/output_rdd.xml results/output_regular.xml results/output_scheduled.xml
+        continue-on-error: true
+        
+      - name: Commit Log File
+        run: |
+          cd /home/runner/work/Stage-Automation-Tests/Stage-Automation-Tests
+          git config --global user.email nicolas@allrideapp.com
+          git config --global user.name NicoAllRide
+          git add log.html
+          git add output.xml
+          git commit -m "Add log file and Output"
+          git push origin main
+        working-directory: ${{ github.workspace }}
+
+      - name: Run sendTestToSlack.py
+        run: python sendTestToSlack.py
+
+
+
+
+
+

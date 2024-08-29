@@ -14,7 +14,7 @@ Library     RPA.JSON
 
 *** Variables ***
 #------------------------DEBE SER RTL TOKEN DEL CONDUCTOR-----------------------------------------#
-${TOKEN}            9859ee27c2f566d314f6f520e5d8e7f36141523c497531f475a1639f29fd407eec9101c4496bfbed16b9673698ba217695f5b28b89cf135b6a77da653ee5c4fb
+${TOKEN}            f8a9cfd98bf36aac0209af699ed4b5becee67ddddc1af1bca57e22847e00393a28d461fece011e97ea44464229832786d29f2bd19bc7c1c02cd5a23b9d210380
 ${URL}              ws://stage.allrideapp.com/socket.io/?token=${TOKEN}&communityId=653fd601f90509541a748683&EIO=3&transport=websocket
 ${LATITUDE}         -34.40274888966042
 ${LONGITUDE}        -70.85938591407319
@@ -30,63 +30,68 @@ ${STAGE_URL}            https://stage.allrideapp.com
 *** Test Cases ***
 
 
-Connect And Emit Events
+Connect Socket CP
     [Documentation]    Test connecting to WebSocket and sending events
     ${my_websocket}=    Connect    ${URL}
+    Set Global Variable    ${my_websocket}
     Log    Connected to WebSocket: ${URL}
 
     Send    ${my_websocket}    40/pbStandby?token=${TOKEN}
-    Log    Sent: 40/pbStandby?token=${TOKEN}&communityId=653fd601f90509541a748683
+    Log    Sent: 40/pbStandby?token=${TOKEN}&communityId=653fd601f90509541a748683&EIO=3&transport=websocket
     Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
-    Log    Received: ${result}
 
+
+Send Join
     # Enviar evento join
-
-    # Enviar pings periódicos
-
-    # Enviar evento updatePosition con nuevas coordenadas y otros datos
-
-    Send
-    ...    ${my_websocket}
-    ...    42/pbStandby,["updatePosition",{"latitude":-34.3941125,"longitude":-70.7812899,"speed":0.0033060382,"createdAt":"Tue Jun 25 11:52:55 GMT-04:00 2024"}]
-    Log
-    ...    Sent: 42/pbStandby,["updatePosition",{"latitude":-34.3941125,"longitude":-70.7812899,"speed":0.0033060382,"createdAt":"Tue Jun 25 11:52:55 GMT-04:00 2024"}]
+    Send    ${my_websocket}    42/pbStandby,["join"]
+    Log    Sent: 42/pbStandby,["join"]
     Sleep    3s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
-    ${result}=    Recv Data    ${my_websocket}
-    Log    Received: ${result}
-    ${result}=    Recv Data    ${my_websocket}
-    Log    Received: ${result}
-    ${result}=    Recv Data    ${my_websocket}
-    Log    Received: ${result}
-    ${result}=    Recv Data    ${my_websocket}
-    Log    Received: ${result}
 
 
+    # Enviar pings periódicos
 
-    # Enviar más pings periódico
-
-Stop Post Leg Departure
+Send Listening To Requests
     Skip
-    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Enviar evento start con latitud y longitud fijos
+    Send    ${my_websocket}    42/pbStandby,["newRequest"]
+    Log    Sent: 42/pbStandby,["newRequest"]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
 
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=Bearer d39b2cd278ccdb8e15bd587d386935b2e727876e2ec225044de7ef7858d6f9a0e26378c14a48bd8a997f129ff7bf73843dce49bbcec490c478ae5dcf948e81b8
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departure/stop
-    ...    data={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":false,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
 
-    Sleep    10s
+    # Enviar evento updatePosition con nuevas coordenadas y otros datos
+Send updatePosition
+    Send
+    ...    ${my_websocket}
+    ...    42/pbStandby,["updatePosition",{"latitude":-34.3941093,"longitude":-70.7813055}]
+    Log
+    ...    Sent: 42/pbStandby,["updatePosition",{"latitude":-34.3941093,"longitude":-70.7813055}]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+
+Send Listening To Requests ESTE NO APLICA
+    Skip
+    # Enviar evento start con latitud y longitud fijos
+    Send    ${my_websocket}    42/pbStandby,["newRequest"]
+    Log    Sent: 42/pbStandby,["newRequest"]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+
+##Realizar una RDD inmediata, captarla con el conductor con 
+# 
+
+
+# /
+# 
+# 
+# 
+# 
+# 
+# #

@@ -1,6 +1,24 @@
+Server Errors:
+--------------------------------------------------
+
 Failed Test Cases:
-File Name: createRegularFlow.robot
-Test Name: Create Regular Route Alto - Apumanque
-Error Message: Variable '${today_date}' not found.
-URL: No URL found
+File Name: assistantFlow.robot
+Error Message: Doesn't discounts tickets after link validation with QR, Expected tickets: 1, Actual Tickets 2
+Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683
+
+--------------------------------------------------
+File Name: assistantFlow.robot
+Error Message: Doesn't discounts tickets after link validation with Custom, Expected tickets: 0, Actual Tickets 2
+Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683
+
+--------------------------------------------------
+File Name: assistantFlow.robot
+Error Message: Total Tickets should be 1048 but the total is 1050: 1050 != 1048
+Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/ticket/list?community=653fd601f90509541a748683
+
+--------------------------------------------------
+File Name: assistantFlow.robot
+Error Message: No validations Found in the departure
+Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/departureValidations/66c651654dcc7934fa6abdd3?community=653fd601f90509541a748683
+
 --------------------------------------------------
