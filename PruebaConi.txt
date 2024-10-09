@@ -1,450 +1,250 @@
-Paso 0
-  Set Location    -33.493571     -70.512244
-  Sleep    3s
-Paso 1
-  Set Location    -33.493447     -70.512372
-  Sleep    3s
-Paso 2
-  Set Location    -33.493447     -70.512372
-  Sleep    3s
-Paso 3
-  Set Location    -33.493135     -70.512663
-  Sleep    3s
-Paso 4
-  Set Location    -33.493135     -70.512663
-  Sleep    3s
-Paso 5
-  Set Location    -33.489121     -70.517118
-  Sleep    3s
-Paso 6
-  Set Location    -33.489075     -70.518537
-  Sleep    3s
-Paso 7
-  Set Location    -33.488393     -70.519154
-  Sleep    3s
-Paso 8
-  Set Location    -33.488393     -70.519154
-  Sleep    3s
-Paso 9
-  Set Location    -33.486376     -70.518628
-  Sleep    3s
-Paso 10
-  Set Location    -33.48637     -70.518733
-  Sleep    3s
-Paso 11
-  Set Location    -33.48637     -70.518733
-  Sleep    3s
-Paso 12
-  Set Location    -33.489013     -70.516372
-  Sleep    3s
-Paso 13
-  Set Location    -33.491105     -70.513632
-  Sleep    3s
-Paso 14
-  Set Location    -33.491717     -70.513363
-  Sleep    3s
-Paso 15
-  Set Location    -33.492308     -70.513507
-  Sleep    3s
-Paso 16
-  Set Location    -33.492308     -70.513507
-  Sleep    3s
-Paso 17
-  Set Location    -33.49328     -70.512536
-  Sleep    3s
-Paso 18
-  Set Location    -33.49328     -70.512536
-  Sleep    3s
-Paso 19
-  Set Location    -33.49392     -70.511748
-  Sleep    3s
-Paso 20
-  Set Location    -33.49387     -70.511857
-  Sleep    3s
-Paso 21
-  Set Location    -33.493667     -70.51214
-  Sleep    3s
-Paso 22
-  Set Location    -33.493667     -70.51214
-  Sleep    3s
-Paso 23
-  Set Location    -33.493614     -70.512193
-  Sleep    3s
-Paso 24
-  Set Location    -33.493614     -70.512193
-  Sleep    3s
-Paso 25
-  Set Location    -33.493611     -70.512231
-  Sleep    3s
-Paso 26
-  Set Location    -33.493529     -70.51236
-  Sleep    3s
-Paso 27
-  Set Location    -33.493034     -70.512781
-  Sleep    3s
-Paso 28
-  Set Location    -33.49205     -70.513569
-  Sleep    3s
-Paso 29
-  Set Location    -33.490985     -70.513656
-  Sleep    3s
-Paso 30
-  Set Location    -33.490632     -70.514521
-  Sleep    3s
-Paso 31
-  Set Location    -33.490566     -70.514607
-  Sleep    3s
-Paso 32
-  Set Location    -33.490566     -70.514607
-  Sleep    3s
-Paso 33
-  Set Location    -33.489058     -70.516186
-  Sleep    3s
-Paso 34
-  Set Location    -33.488992     -70.516617
-  Sleep    3s
-Paso 35
-  Set Location    -33.489034     -70.518585
-  Sleep    3s
-Paso 36
-  Set Location    -33.489034     -70.518585
-  Sleep    3s
-Paso 37
-  Set Location    -33.488071     -70.519276
-  Sleep    3s
-Paso 38
-  Set Location    -33.486539     -70.518608
-  Sleep    3s
-Paso 39
-  Set Location    -33.486363     -70.518622
-  Sleep    3s
-Paso 40
-  Set Location    -33.486355     -70.518629
-  Sleep    3s
-Paso 41
-  Set Location    -33.486355     -70.518629
-  Sleep    3s
-Paso 42
-  Set Location    -33.486337     -70.518688
-  Sleep    3s
-Paso 43
-  Set Location    -33.489106     -70.518642
-  Sleep    3s
-Paso 44
-  Set Location    -33.489084     -70.518199
-  Sleep    3s
-Paso 45
-  Set Location    -33.489084     -70.518199
-  Sleep    3s
-Paso 46
-  Set Location    -33.489161     -70.516187
-  Sleep    3s
-Paso 47
-  Set Location    -33.489832     -70.516121
-  Sleep    3s
-Paso 48
-  Set Location    -33.490421     -70.515467
-  Sleep    3s
-Paso 49
-  Set Location    -33.490738     -70.514596
-  Sleep    3s
-Paso 50
-  Set Location    -33.490707     -70.514509
-  Sleep    3s
-Paso 51
-  Set Location    -33.490811     -70.513819
-  Sleep    3s
-Paso 52
-  Set Location    -33.491016     -70.513653
-  Sleep    3s
-Paso 53
-  Set Location    -33.491695     -70.513374
-  Sleep    3s
-Paso 54
-  Set Location    -33.492503     -70.513261
-  Sleep    3s
-Paso 55
-  Set Location    -33.492503     -70.513261
-  Sleep    3s
-Paso 56
-  Set Location    -33.493784     -70.511988
-  Sleep    3s
-Paso 57
-  Set Location    -33.493913     -70.511784
-  Sleep    3s
-Paso 58
-  Set Location    -33.493834     -70.511909
-  Sleep    3s
-Paso 59
-  Set Location    -33.493834     -70.511909
-  Sleep    3s
-Paso 60
-  Set Location    -33.493589     -70.51223
-  Sleep    3s
-Paso 61
-  Set Location    -33.493589     -70.51223
-  Sleep    3s
-Paso 62
-  Set Location    -33.493673     -70.512379
-  Sleep    3s
-Paso 63
-  Set Location    -33.493673     -70.512379
-  Sleep    3s
-Paso 64
-  Set Location    -33.493516     -70.512528
-  Sleep    3s
-Paso 65
-  Set Location    -33.49211     -70.513629
-  Sleep    3s
-Paso 66
-  Set Location    -33.491496     -70.513444
-  Sleep    3s
-Paso 67
-  Set Location    -33.490821     -70.513904
-  Sleep    3s
-Paso 68
-  Set Location    -33.490606     -70.514666
-  Sleep    3s
-Paso 69
-  Set Location    -33.490606     -70.514666
-  Sleep    3s
-Paso 70
-  Set Location    -33.489806     -70.516067
-  Sleep    3s
-Paso 71
-  Set Location    -33.48909     -70.516229
-  Sleep    3s
-Paso 72
-  Set Location    -33.489083     -70.516978
-  Sleep    3s
-Paso 73
-  Set Location    -33.489232     -70.517836
-  Sleep    3s
-Paso 74
-  Set Location    -33.488866     -70.518796
-  Sleep    3s
-Paso 75
-  Set Location    -33.488866     -70.518796
-  Sleep    3s
-Paso 76
-  Set Location    -33.48748     -70.519071
-  Sleep    3s
-Paso 77
-  Set Location    -33.486461     -70.518648
-  Sleep    3s
-Paso 78
-  Set Location    -33.486461     -70.518648
-  Sleep    3s
-Paso 79
-  Set Location    -33.486394     -70.518657
-  Sleep    3s
-Paso 80
-  Set Location    -33.486394     -70.518657
-  Sleep    3s
-Paso 81
-  Set Location    -33.486728     -70.51898
-  Sleep    3s
-Paso 82
-  Set Location    -33.486728     -70.51898
-  Sleep    3s
-Paso 83
-  Set Location    -33.486851     -70.519051
-  Sleep    3s
-Paso 84
-  Set Location    -33.486851     -70.519051
-  Sleep    3s
-Paso 85
-  Set Location    -33.487746     -70.519423
-  Sleep    3s
-Paso 86
-  Set Location    -33.487746     -70.519423
-  Sleep    3s
-Paso 87
-  Set Location    -33.489162     -70.518544
-  Sleep    3s
-Paso 88
-  Set Location    -33.489162     -70.518544
-  Sleep    3s
-Paso 89
-  Set Location    -33.489162     -70.518544
-  Sleep    3s
-Paso 90
-  Set Location    -33.489824     -70.516135
-  Sleep    3s
-Paso 91
-  Set Location    -33.489824     -70.516135
-  Sleep    3s
-Paso 92
-  Set Location    -33.490132     -70.516126
-  Sleep    3s
-Paso 93
-  Set Location    -33.490132     -70.516126
-  Sleep    3s
-Paso 94
-  Set Location    -33.490781     -70.514628
-  Sleep    3s
-Paso 95
-  Set Location    -33.490781     -70.514628
-  Sleep    3s
-Paso 96
-  Set Location    -33.490713     -70.514279
-  Sleep    3s
-Paso 97
-  Set Location    -33.490713     -70.514279
-  Sleep    3s
-Paso 98
-  Set Location    -33.491065     -70.51367
-  Sleep    3s
-Paso 99
-  Set Location    -33.491065     -70.51367
-  Sleep    3s
-Paso 100
-  Set Location    -33.491684     -70.513372
-  Sleep    3s
-Paso 101
-  Set Location    -33.491684     -70.513372
-  Sleep    3s
-Paso 102
-  Set Location    -33.492391     -70.513488
-  Sleep    3s
-Paso 103
-  Set Location    -33.492391     -70.513488
-  Sleep    3s
-Paso 104
-  Set Location    -33.492799     -70.51297
-  Sleep    3s
-Paso 105
-  Set Location    -33.492799     -70.51297
-  Sleep    3s
-Paso 106
-  Set Location    -33.493972     -70.511714
-  Sleep    3s
-Paso 107
-  Set Location    -33.493972     -70.511714
-  Sleep    3s
-Paso 108
-  Set Location    -33.493953     -70.511836
-  Sleep    3s
-Paso 109
-  Set Location    -33.493953     -70.511836
-  Sleep    3s
-Paso 110
-  Set Location    -33.493809     -70.512009
-  Sleep    3s
-Paso 111
-  Set Location    -33.493809     -70.512009
-  Sleep    3s
-Paso 112
-  Set Location    -33.493629     -70.512232
-  Sleep    3s
-Paso 113
-  Set Location    -33.493629     -70.512232
-  Sleep    3s
-Paso 114
-  Set Location    -33.493572     -70.512297
-  Sleep    3s
-Paso 115
-  Set Location    -33.493572     -70.512297
-  Sleep    3s
-Paso 116
-  Set Location    -33.49216     -70.513582
-  Sleep    3s
-Paso 117
-  Set Location    -33.49216     -70.513582
-  Sleep    3s
-Paso 118
-  Set Location    -33.491634     -70.513362
-  Sleep    3s
-Paso 119
-  Set Location    -33.491634     -70.513362
-  Sleep    3s
-Paso 120
-  Set Location    -33.490858     -70.513828
-  Sleep    3s
-Paso 121
-  Set Location    -33.490858     -70.513828
-  Sleep    3s
-Paso 122
-  Set Location    -33.490681     -70.514528
-  Sleep    3s
-Paso 123
-  Set Location    -33.490681     -70.514528
-  Sleep    3s
-Paso 124
-  Set Location    -33.490611     -70.514614
-  Sleep    3s
-Paso 125
-  Set Location    -33.490611     -70.514614
-  Sleep    3s
-Paso 126
-  Set Location    -33.487163     -70.5189
-  Sleep    3s
-Paso 127
-  Set Location    -33.487163     -70.5189
-  Sleep    3s
-Paso 128
-  Set Location    -33.486931     -70.518781
-  Sleep    3s
-Paso 129
-  Set Location    -33.486931     -70.518781
-  Sleep    3s
-Paso 130
-  Set Location    -33.486506     -70.518661
-  Sleep    3s
-Paso 131
-  Set Location    -33.486506     -70.518661
-  Sleep    3s
-Paso 132
-  Set Location    -33.486445     -70.518656
-  Sleep    3s
-Paso 133
-  Set Location    -33.486445     -70.518656
-  Sleep    3s
-Paso 134
-  Set Location    -33.486648     -70.518889
-  Sleep    3s
-Paso 135
-  Set Location    -33.486648     -70.518889
-  Sleep    3s
-Paso 136
-  Set Location    -33.488542     -70.519109
-  Sleep    3s
-Paso 137
-  Set Location    -33.488542     -70.519109
-  Sleep    3s
-Paso 138
-  Set Location    -33.488952     -70.518762
-  Sleep    3s
-Paso 139
-  Set Location    -33.488952     -70.518762
-  Sleep    3s
-Paso 140
-  Set Location    -33.489155     -70.51854
-  Sleep    3s
-Paso 141
-  Set Location    -33.489155     -70.51854
-  Sleep    3s
-Paso 142
-  Set Location    -33.489149     -70.518105
-  Sleep    3s
-Paso 143
-  Set Location    -33.489149     -70.518105
-  Sleep    3s
-Paso 144
-  Set Location    -33.489248     -70.517575
-  Sleep    3s
-Paso 145
-  Set Location    -33.489248     -70.517575
-  Sleep    3s
-Paso 146
-  Set Location    -33.489027     -70.516669
-  Sleep    3s
-Paso 147
-  Set Location    -33.489027     -70.516669
-  Sleep    3s
-Paso 148
-  Set Location    -33.489887     -70.51615
-  Sleep    3s
-Paso 149
-  Set Location    -33.489887     -70.51615
-  Sleep    3s
+Get Today Service Id
+    [Tags]    test:retry(1)
+    
+    # Define la URL del recurso que requiere autenticación para la semana 1
+    ${url}=    Set Variable    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_tomorrow}&onlyODDs=false
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
+    ${response}=    GET    url=${url}    headers=${headers}
+    ${responseJson}=    Set Variable    ${response.json()}
+
+# Filtramos los servicios para obtener solo aquellos con el routeId específico
+    ${filtered_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '66cc94821125fb1232f990a1']    json
+
+# Ordenamos los servicios filtrados por la fecha de creación en orden descendente
+    ${sorted_services}=    Evaluate    sorted(${filtered_services}, key=lambda service: service['createdAt'], reverse=True)    json
+
+# Verificamos que se encuentre exactamente un servicio para la semana 1
+    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found in Week 1 with routeId._id = '66cc94821125fb1232f990a1'. Stopping test"
+
+    ${service}=    Set Variable    ${sorted_services[0]}
+    ${service_id}=    Set Variable    ${service['_id']}
+
+    Set Global Variable    ${service_id}
+
+
+Assign Resources
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url= /api/v1/admin/pb/assignServiceResources/${service_id}?community=${idComunidad2}
+    ...    data=[{"multipleDrivers":false,"driver":{"driverId":"${driverId2}"},"drivers":[],"vehicle":{"vehicleId":"${vehicleId2}","capacity":"46"},"passengers":[],"departure":null}]
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
+
+    Sleep    2s
+
+Get departureId And verify reservation on departure 0
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/admin/pb/service/${service_id}?community=${idComunidad}
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    # Almacenamos la respuesta de json en una variable para poder jugar con ella
+    ${responseJson}=    Set Variable    ${response.json()}
+
+    ${departureId}=    Set Variable    ${response.json()}[resources][0][departure][departureId]
+    Set Global Variable    ${departureId}
+
+    Log    ${departureId}
+
+Get Driver Token
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/admin/pb/drivers/?community=${idComunidad2}&driverId=${driverId2}
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${access_token}=    Set Variable    ${response.json()['accessToken']}
+    ${tokenDriver}=    Evaluate    "Bearer " + "${access_token}"
+    Set Global Variable    ${tokenDriver}
+
+    Log    ${tokenDriver}
+    Log    ${response.content}
+
+Start Departure Leg
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary
+    ...    Authorization=${tokenDriver}
+    ...    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/departure
+    ...    data={"communityId":"${idComunidad2}","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"customParamsAtTheEnd":[],"routeId":"${restrictionRoute}","capacity":46,"busCode":"171222","driverCode":"159159","vehicleId":"${vehicleId2}","shareToUsers":false,"customParams":[]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+
+    ${access_token}=    Set Variable    ${response.json()}[token]
+    ${departureToken}=    Evaluate    "Bearer " + "${access_token}"
+    Set Global Variable    ${departureToken}
+    Log    ${departureToken}
+    Log    ${code}
+
+Get User QR(Nico)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad2}
+    ...    data={"ids":["666078059a5ece0ee6e95904"]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+
+    ${qrCodeNico}=    Set Variable    ${response.json()}[0][qrCode]
+    Set Global Variable    ${qrCodeNico}
+    Log    ${qrCodeNico}
+    Log    ${code}
+Get User QR(User 2)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad2}
+    ...    data={"ids":["66d8cf4f4a7101503b01f84a"]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+
+    ${qrCodeUser2}=    Set Variable    ${response.json()}[0][qrCode]
+    Set Global Variable    ${qrCodeUser2}
+    Log    ${qrCodeUser2}
+    Log    ${code}
+Get User QR(No match any parameter)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad2}
+    ...    data={"ids":["6667489cb5433b5dc2fa94e9"]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+
+    ${qrCodeUser3}=    Set Variable    ${response.json()}[0][qrCode]
+    Set Global Variable    ${qrCodeUser3}
+    Log    ${qrCodeUser3}
+    Log    ${code}
+
+Validate With QR(Nico) Should be able to validate no restrictions applied
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/departures/validate
+    ...    data={"validationString":"${qrCodeNico}"}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+    Log    ${code}
+    Sleep    10s
+Validate With QR(Barbara) Should be able to validate no restrictions applied
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/departures/validate
+    ...    data={"validationString":"${qrCodeUser2}"}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+    Log    ${code}
+    Sleep    10s
+
+Validate With QR(No match user) Should be able to validate no restrictions applied
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/departures/validate
+    ...    data={"validationString":"${qrCodeUser3}"}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+    Log    ${code}
+    Sleep    10s
+
+Stop Post Leg Departure
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary
+    ...    Authorization=${departureToken}
+    ...    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/departure/stop
+    ...    data={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":false,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+    Log    ${code}
+

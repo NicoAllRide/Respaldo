@@ -281,42 +281,6 @@ Get departureId And verify reservation on departure 0
 
     Log    ${departureId}
 
-Seat Reservation(User 2--Only This User should be able to make a reservation)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenUser2}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    ${seatReservation}
-    ...    data={"serviceId":"${service_id}","departureId":"${departureId}"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-      ${code}=    convert to string    ${response.status_code}
-    Run Keyword If    '${code}' == '200' or '${code}' == '409'    Log    Status code is acceptable: ${code}
-    ...    ELSE    Fail    Unexpected status code: ${code}
-    Log    ${code}
-    ${reservationId}=    Set Variable    ${response.json()}[0][_id]
-    Set Global Variable    ${reservationId}
-
-Seat Reservation(User1--Should not be able to make a reservation)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud POST en la sesión
-    ${response}=    Run Keyword And Ignore Error    POST On Session
-    ...    mysesion
-    ...    ${seatReservation}
-    ...    data={"serviceId":"${service_id}","departureId":"${departureId}"}
-    ...    headers=${headers}
-
-    # Verifica que la solicitud falle con un código de error esperado
-    Run Keyword If    '${response}[0]' == 'FAIL'    Log    Reservation failed as expected with error: ${response}[1]
-    ...    ELSE    Fail    Reservation should have failed but returned status code: ${response}[1].status_code
 
 Get Driver Token
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -462,23 +426,4 @@ Stop Post Leg Departure
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
-    Log    ${code}
-
-Delete Reservation1
-    
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    DELETE On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/user/booking/${reservationId}
-    ...    data={}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Run Keyword If    '${code}' == '200' or '${code}' == '409'    Log    Status code is acceptable: ${code}
-    ...    ELSE    Fail    Unexpected status code: ${code}
     Log    ${code}

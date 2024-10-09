@@ -1,0 +1,31 @@
+Server Errors:
+File Name: openRddFlow.robot
+Error Message: HTTPError: 500 Server Error: Internal Server Error for url: https://stage.allrideapp.com/api/v1/admin/pb/odd/assignDriver/66d202a701435692ff7b85a1?community=653fd601f90509541a748683
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/odd/assignDriver/66d20232ce48bc99d8351ef7?community=653fd601f90509541a748683
+--------------------------------------------------
+--------------------------------------------------
+Failed Test Cases:
+File Name: openRddFlow.robot
+Error Message: HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v1/admin/pb/odd/approve/66d202a401435692ff7b8565?community=653fd601f90509541a748683
+Request Info: PUT Request : url=https://stage.allrideapp.com/api/v1/admin/pb/odd/approve/66d20232ce48bc99d8351ef7?community=653fd601f90509541a748683
+--------------------------------------------------
+File Name: JoinServices.robot
+Error Message: HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v1/admin/pb/odd/66d202a5ce48bc99d83521a4?community=653fd601f90509541a748683
+Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/odd/66d202a5ce48bc99d83521a4?community=653fd601f90509541a748683
+--------------------------------------------------
+File Name: openRddFlow.robot
+Error Message: HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v1/admin/pb/odd/assignVehicle/66d202a701435692ff7b85a1?community=653fd601f90509541a748683
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/odd/assignVehicle/66d20232ce48bc99d8351ef7?community=653fd601f90509541a748683
+--------------------------------------------------
+File Name: openRddFlow.robot
+Error Message: HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v2/pb/driver/oddepartures/start/66d202a701435692ff7b85a1
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v2/pb/driver/oddepartures/start/66d20232ce48bc99d8351ef7
+--------------------------------------------------
+File Name: openRddFlow.robot
+Error Message: HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v2/pb/driver/oddepartures/stops/66d202a701435692ff7b85a1
+Request Info: GET Request : url=https://stage.allrideapp.com/api/v2/pb/driver/oddepartures/stops/66d20232ce48bc99d8351ef7
+--------------------------------------------------
+File Name: openRddFlow.robot
+Error Message: HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v2/pb/driver/departure/end/statistics/66d202a701435692ff7b85a1
+Request Info: GET Request : url=https://stage.allrideapp.com/api/v2/pb/driver/departure/end/statistics/66d20232ce48bc99d8351ef7
+--------------------------------------------------

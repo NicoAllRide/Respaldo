@@ -31,6 +31,9 @@ ${assistantVehicleId}        66830b98bb41bfd79a4620ac
 ${idComunidad2}        6654ae4eba54fe502d4e4187
 ${CrisServer}            201.239.18.192:3000
 ${driverId2}            668309b8bb41bfd79a461dc3
+${driverId3}            6654cec2ba54fe502d4e6a0a
 ${vehicleId2}            66830b98bb41bfd79a4620ac
 ${restrictionRoute}        66cc94821125fb1232f990a1
+${assistantFlowRoute}    66954794b24db9885e5aed7e
+
 

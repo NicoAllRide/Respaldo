@@ -1,0 +1,78 @@
+--------- beginning of main
+2024-10-04 18:05:27.993 23487-23599 connectionService       com.allride.buses                    E  Error syncOfflineAssistant: Software caused connection abort
+2024-10-04 18:05:28.088 23487-23487 ConnectivityReceiver    com.allride.buses                    D  onReceive true
+2024-10-04 18:05:28.094 23487-23487 connectionService       com.allride.buses                    D  socketUpdateReceiver onReceive stateReceiver true
+2024-10-04 18:05:28.094 23487-23487 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-10-04 18:05:28.094 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:28.138 23487-23487 connectionService       com.allride.buses                    D  syncOfflineAssistant offline: departures 1 - services 0 - validations 1
+2024-10-04 18:05:28.144 23487-23487 connectionService       com.allride.buses                    D  syncOfflineAssistant validations: [{"assignedSeat":"5","assistantId":"66ccdf58193998eca49014c3","communityId":"6654ae4eba54fe502d4e4187","createdAt":"Oct 4, 2024 6:05:18 PM","departureId":"6700580655f7c464fd0ece65","_id":"4369d24a-e0d5-45a8-8185-b9761804b9aa","isCustom":false,"isDNI":false,"isManual":false,"latitude":21.1643,"loc":{"float1":-86.82619,"float2":21.1643},"longitude":-86.82619,"qrCode":"0249e5b8a880cf8588b3f38f85efab1291e4ad8623f604f9a923eb447798e24f02c27fd92ee87d5683ae9af993adef4a28e9f88eee313cf0fbd1132713a199e9666078059a5ece0ee6e95904003","reason":[],"remainingTickets":0,"routeId":"66f310608e6c377a3f43968e","synced":false,"token":"eb03631557aa14eb62724a10f71ec67ad38546e7857bce5d46f0911803ae0a3750fd233c7f5bddb16a852e5b1ee710744b0d48288687adadb4cc38d67bbd3585","userId":"666078059a5ece0ee6e95904","validated":true}]
+2024-10-04 18:05:28.148 23487-23487 connectionService       com.allride.buses                    D  syncOfflineAssistant newDepartures: [{"enabledSeats":[{"available":true,"_id":"6700580655f7c464fd0ece66","seat":"1","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece67","seat":"2","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece68","seat":"3","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece69","seat":"4","userId":""},{"available":false,"_id":"6700580655f7c464fd0ece6a","seat":"5","userId":"666078059a5ece0ee6e95904"},{"available":true,"_id":"6700580655f7c464fd0ece6b","seat":"6","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece6c","seat":"7","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece6d","seat":"8","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece6e","seat":"9","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece6f","seat":"10","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece70","seat":"11","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece71","seat":"12","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece72","seat":"13","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece73","seat":"14","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece74","seat":"15","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece75","seat":"16","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece76","seat":"17","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece77","seat":"18","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece78","seat":"19","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece79","seat":"20","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece7a","seat":"21","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece7b","seat":"22","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece7c","seat":"23","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece7d","seat":"24","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece7e","seat":"25","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece7f","seat":"26","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece80","seat":"27","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece81","seat":"28","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece82","seat":"29","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece83","seat":"30","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece84","seat":"31","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece85","seat":"32","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece86","seat":"33","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece87","seat":"34","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece88","seat":"35","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece89","seat":"36","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece8a","seat":"37","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece8b","seat":"38","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece8c","seat":"39","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece8d","seat":"40","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece8e","seat":"41","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece8f","seat":"42","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece90","seat":"43","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece91","seat":"44","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece92","seat":"45","userId":""},{"available":true,"_id":"6700580655f7c464fd0ece93","seat":"46","userId":""}],"_id":"6700580655f7c464fd0ece65","reservations":[]}]
+2024-10-04 18:05:28.148 23487-23487 connectionService       com.allride.buses                    D  syncOfflineAssistant services: []
+2024-10-04 18:05:28.149 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:28.149 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:28.149 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:28.149 23487-23487 ConnectivityReceiver    com.allride.buses                    D  onReceive true
+2024-10-04 18:05:28.159 23487-23487 connectionService       com.allride.buses                    D  socketUpdateReceiver onReceive stateReceiver true
+2024-10-04 18:05:28.160 23487-23487 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-10-04 18:05:28.160 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:28.160 23487-23487 connectionService       com.allride.buses                    I  syncOfflineAssistant loadingCheckOnlineData is true
+2024-10-04 18:05:28.160 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:28.160 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:28.160 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:28.206 23487-26229 AllRideOAuth2Service    com.allride.buses                    I  getAccessToken a4acea42a6a1f2b8abd43b0e218c507d2370847f51cd6559e868a4a063671f9f6ec4ea2002abc0ad1bfaa13af0ba37724fdabd713829d5075a737b210912feae
+2024-10-04 18:05:28.640 23487-26380 SocketClient            com.allride.buses                    D  Socket reconnecting
+2024-10-04 18:05:29.281 23487-26426 SocketClient            com.allride.buses                    D  Socket reconnected
+2024-10-04 18:05:29.282 23487-23487 connectionService       com.allride.buses                    D  socketUpdateReceiver onReceive EVENT_RECONNECT true
+2024-10-04 18:05:29.282 23487-23487 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-10-04 18:05:29.282 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:29.282 23487-23487 connectionService       com.allride.buses                    I  syncOfflineAssistant loadingCheckOnlineData is true
+2024-10-04 18:05:29.282 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:29.282 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:29.282 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:29.287 23487-26426 SocketClient            com.allride.buses                    D  Socket reconnecting
+2024-10-04 18:05:29.560 23487-26459 AssistantActivity       com.allride.buses                    D  Success starting socket
+2024-10-04 18:05:29.560 23487-26459 AssistantActivity       com.allride.buses                    D  configSocket
+2024-10-04 18:05:29.562 23487-26459 SocketClient            com.allride.buses                    D  Socket connected
+2024-10-04 18:05:29.566 23487-23487 connectionService       com.allride.buses                    D  socketUpdateReceiver onReceive CONNECT true
+2024-10-04 18:05:29.567 23487-23487 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-10-04 18:05:29.567 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:29.567 23487-23487 connectionService       com.allride.buses                    I  syncOfflineAssistant loadingCheckOnlineData is true
+2024-10-04 18:05:29.567 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:29.567 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:29.567 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:29.915 23487-26478 SocketClient            com.allride.buses                    D  Socket reconnected
+2024-10-04 18:05:29.925 23487-23487 connectionService       com.allride.buses                    D  socketUpdateReceiver onReceive EVENT_RECONNECT true
+2024-10-04 18:05:29.925 23487-23487 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-10-04 18:05:29.925 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:29.925 23487-23487 connectionService       com.allride.buses                    I  syncOfflineAssistant loadingCheckOnlineData is true
+2024-10-04 18:05:29.925 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:29.925 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:29.926 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:30.078 23487-26497 AssistantActivity       com.allride.buses                    D  Success starting socket
+2024-10-04 18:05:30.078 23487-26497 AssistantActivity       com.allride.buses                    D  configSocket
+2024-10-04 18:05:30.079 23487-26497 SocketClient            com.allride.buses                    D  Socket connected
+2024-10-04 18:05:30.080 23487-23487 connectionService       com.allride.buses                    D  socketUpdateReceiver onReceive CONNECT true
+2024-10-04 18:05:30.081 23487-23487 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-10-04 18:05:30.081 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:30.081 23487-23487 connectionService       com.allride.buses                    I  syncOfflineAssistant loadingCheckOnlineData is true
+2024-10-04 18:05:30.081 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:30.081 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:30.081 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-10-04 18:05:44.051 23487-26229 AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=POST, url=https://stage.allrideapp.com/api/v1/pb/assistant/offline/sync, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.syncOfflineAssistant() [com.allride.buses.api.AllRideAPI$DepartureData@b410dd7]}}
+2024-10-04 18:05:44.136 23487-23599 DepartureRealm          com.allride.buses                    I  update departures 1
+2024-10-04 18:05:44.157 23487-23599 connectionService       com.allride.buses                    D  Success syncOfflineAssistant: departures 1 - services null - validations 0
+2024-10-04 18:05:44.158 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive UPDATE_DEPARTURE false
+2024-10-04 18:05:44.945 23487-23565 TRuntime.C...ortBackend com.allride.buses                    I  Making request to: https://firebaselogging.googleapis.com/v0cc/log/batch?format=json_proto3
+2024-10-04 18:05:45.135 23487-23565 TRuntime.C...ortBackend com.allride.buses                    I  Status Code: 200
+2024-10-04 18:05:47.041 23487-23487 Utils                   com.allride.buses                    D  BroadcastReceiver unregisterReceiver successfully
+2024-10-04 18:05:47.056 23487-23559 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 2 to service
+2024-10-04 18:05:47.057 23487-23624 SessionLifecycleService com.allride.buses                    D  Activity backgrounding at 713358498
+2024-10-04 18:05:49.107 23487-27172 FA                      com.allride.buses                    I  Application backgrounded at: timestamp_millis: 1728075947105
+2024-10-04 18:05:49.172 23487-23572 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 1 to service
+2024-10-04 18:05:49.172 23487-23624 SessionLifecycleService com.allride.buses                    D  Activity foregrounding at 713360614.
+2024-10-04 18:05:49.182 23487-23487 Utils                   com.allride.buses                    D  startConnectivityService is exits - AssistantActivity
+2024-10-04 18:05:49.182 23487-23487 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-10-04 18:05:49.182 23487-23487 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-10-04 18:05:49.275 23487-23487 connectionService       com.allride.buses                    I  syncOfflineAssistant offline all empty
+2024-10-04 18:05:49.276 23487-23487 Utils                   com.allride.buses                    D  BroadcastReceiver registerReceiver successfully
+2024-10-04 18:05:49.281 23487-23487 AssistantActivity       com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true

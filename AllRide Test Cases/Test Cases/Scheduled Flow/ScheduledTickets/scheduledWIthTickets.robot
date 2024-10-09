@@ -690,7 +690,7 @@ Validate With QR(Nico)
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v2/pb/driver/departures/validate
-    ...    data={"validationString":"${qrCodeNico}"}
+    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNico}","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
