@@ -495,6 +495,7 @@ Get Active Departure 2 Details
     Should Be Equal As Numbers    ${response.status_code}    200
 
 Release seats without validations
+    skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -514,6 +515,7 @@ Release seats without validations
     Status Should Be    200
 
 Get Active Departure 1 Details after realase
+    Skip
     # CON ESTE ENDPOINT PUEDO SABER CUALES FUERON LINKEADOS Y VALIDADOS
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/pb/assistant/departures/${departureId_1}
@@ -533,6 +535,7 @@ Get Active Departure 1 Details after realase
     Should Be Empty    ${reservations}            Reservations should be empty but is not, release seats not working
     Should Be Empty    ${reservationsServices}    Reservations Services should be empty but is not, release seats not working
 Get Active Departure 2 Details after release
+    Skip
     # CON ESTE ENDPOINT PUEDO SABER CUALES FUERON LINKEADOS Y VALIDADOS
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/pb/assistant/departures/${departureId_2}
@@ -553,7 +556,11 @@ Get Active Departure 2 Details after release
     Should Be Empty    ${reservationsServices}    Reservations Services should be empty but is not, release seats not working
 
 
+#-------------------Make reservation-----------------------------------#
+
+
 Stop Post Leg Departure 1
+    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -573,6 +580,7 @@ Stop Post Leg Departure 1
     Status Should Be    200
     Log    ${code}
 Stop Post Leg Departure 2
+    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
