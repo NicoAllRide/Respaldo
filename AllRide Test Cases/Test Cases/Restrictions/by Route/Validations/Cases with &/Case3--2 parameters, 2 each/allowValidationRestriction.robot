@@ -124,6 +124,7 @@ Modify Route (Validation Allow to User and create new service)
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
+    Sleep    90s
     Log    ${code}
 
 Login User (Nico Azul Perro, can see the route)
@@ -171,6 +172,7 @@ Login User Barbara(Azul -Gato Should not be able to see the route)
     ${accessToken}=    Set Variable    ${response.json()}[accessToken]
     ${accessTokenUser2}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenUser2}
+    Sleep    10s
 
 ##-------------------RUTA RESTRICCIONES RF VISTA EXPLORAR------------------------##
 
@@ -243,69 +245,7 @@ Get Routes and Check "Restricciones RF" Should be present User No match paramete
 
 #---Buscar un servicio con el id de la ruta para poder hacer una reservacion exitosa, servicio debe ser pasado----#
 
-Get Today Service Id
-    [Tags]    test:retry(1)
-    
-    # Define la URL del recurso que requiere autenticación para la semana 1
-    ${url}=    Set Variable    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_tomorrow}&onlyODDs=false
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
-    ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set Variable    ${response.json()}
 
-# Filtramos los servicios para obtener solo aquellos con el routeId específico
-    ${filtered_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '66cc94821125fb1232f990a1']    json
-
-# Ordenamos los servicios filtrados por la fecha de creación en orden descendente
-    ${sorted_services}=    Evaluate    sorted(${filtered_services}, key=lambda service: service['createdAt'], reverse=True)    json
-
-# Verificamos que se encuentre exactamente un servicio para la semana 1
-    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found in Week 1 with routeId._id = '66cc94821125fb1232f990a1'. Stopping test"
-
-    ${service}=    Set Variable    ${sorted_services[0]}
-    ${service_id}=    Set Variable    ${service['_id']}
-
-    Set Global Variable    ${service_id}
-
-
-Assign Resources
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url= /api/v1/admin/pb/assignServiceResources/${service_id}?community=${idComunidad2}
-    ...    data=[{"multipleDrivers":false,"driver":{"driverId":"${driverId2}"},"drivers":[],"vehicle":{"vehicleId":"${vehicleId2}","capacity":"46"},"passengers":[],"departure":null}]
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-
-    Sleep    2s
-
-Get departureId And verify reservation on departure 0
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/service/${service_id}?community=${idComunidad}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    # Almacenamos la respuesta de json en una variable para poder jugar con ella
-    ${responseJson}=    Set Variable    ${response.json()}
-
-    ${departureId}=    Set Variable    ${response.json()}[resources][0][departure][departureId]
-    Set Global Variable    ${departureId}
-
-    Log    ${departureId}
 
 Get Driver Token
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -340,8 +280,8 @@ Start Departure Leg
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/departure
-    ...    data={"communityId":"${idComunidad2}","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"customParamsAtTheEnd":[],"routeId":"${restrictionRoute}","capacity":46,"busCode":"171222","driverCode":"159159","vehicleId":"${vehicleId2}","shareToUsers":false,"customParams":[]}
+    ...    url=/api/v2/pb/driver/departures
+    ...    data={"communityId":"${idComunidad2}","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"routeId":"66cc94821125fb1232f990a1","capacity":46,"busCode":"171222","vehicleId":"${vehicleId2}","shareToUsers":false,"customParams":[],"pin":null}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -352,6 +292,34 @@ Start Departure Leg
     Set Global Variable    ${departureToken}
     Log    ${departureToken}
     Log    ${code}
+
+Get Service Id
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_tomorrow}&onlyODDs=false
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
+    ${response}=    GET    url=${url}    headers=${headers}
+    ${responseJson}=    Set Variable    ${response.json()}
+    ${service_id_tickets}=    Set Variable    None
+
+    # Obtenemos la cantidad de objetos de scheduledServices
+    ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
+    
+    # Ordenamos los servicios por createdAt
+
+    ${sorted_services}=    Evaluate    [service for service in ${responseJson}[regularDepartures] if service['routeId']['_id'] == '66cc94821125fb1232f990a1']    json
+
+    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found with routeId._id = "66cc94821125fb1232f990a1"
+    
+    # Obtenemos el último servicio creado
+    ${last_service}=    Set Variable    ${sorted_services[-1]}
+    ${service_id}=    Set Variable    ${last_service['_id']}
+    ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
+    Should Be Equal As Strings    66cc94821125fb1232f990a1    ${last_service_route}
+    Set Global Variable    ${service_id}
+
+    Log    Last created service ID: ${service_id}
+
 
 Get User QR(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true

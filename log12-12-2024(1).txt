@@ -1,0 +1,113 @@
+--------- beginning of crash
+--------- beginning of system
+--------- beginning of main
+2024-12-12 10:33:07.882  5872-5872  m.allride.buse          com.allride.buses                    I  Late-enabling -Xcheck:jni
+2024-12-12 10:33:07.911  5872-5872  m.allride.buse          com.allride.buses                    I  Using CollectorTypeCC GC.
+2024-12-12 10:33:07.983  5872-5872  ProcessState            com.allride.buses                    D  Binder ioctl to enable oneway spam detection failed: Invalid argument
+2024-12-12 10:33:08.126  5872-5872  Compatibil...geReporter com.allride.buses                    D  Compat change id reported: 171979766; UID 10762; state: ENABLED
+2024-12-12 10:33:08.518  5872-5872  nativeloader            com.allride.buses                    D  Configuring clns-4 for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=34, uses_libraries=ALL, library_path=/data/app/~~trUuQpTra5e-cGfqRGDxSg==/com.allride.buses-6ZBLrxnQIEWkyxyaR4HDng==/lib/arm64:/data/app/~~trUuQpTra5e-cGfqRGDxSg==/com.allride.buses-6ZBLrxnQIEWkyxyaR4HDng==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.allride.buses
+2024-12-12 10:33:08.519  5872-5872  nativeloader            com.allride.buses                    D  Extending system_exposed_libraries: libvraudio_client.qti.so:libbinauralrenderer_wrapper.qti.so:libhoaeffects.qti.so:libupdateprof.qti.so:libdiag_system.qti.so:libqape.qti.so:libqesdk_ndk_platform.qti.so:liblistenjni.qti.so:libimgTuner_jni.motoimagetuner.so:libjni_helper.motocameradesktop.so:libmcf_native_window_helper.motocamera.so
+2024-12-12 10:33:08.571  5872-5872  ziparchive              com.allride.buses                    W  Unable to open '/apex/com.android.extservices/javalib/android.ext.adservices.dm': No such file or directory
+2024-12-12 10:33:08.571  5872-5872  ziparchive              com.allride.buses                    W  Unable to open '/apex/com.android.extservices/javalib/android.ext.adservices.dm': No such file or directory
+2024-12-12 10:33:08.652  5872-5872  nativeloader            com.allride.buses                    D  Configuring clns-5 for other apk /apex/com.android.extservices/javalib/android.ext.adservices.jar. target_sdk_version=34, uses_libraries=ALL, library_path=/data/app/~~trUuQpTra5e-cGfqRGDxSg==/com.allride.buses-6ZBLrxnQIEWkyxyaR4HDng==/lib/arm64:/data/app/~~trUuQpTra5e-cGfqRGDxSg==/com.allride.buses-6ZBLrxnQIEWkyxyaR4HDng==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.allride.buses
+2024-12-12 10:33:08.652  5872-5872  nativeloader            com.allride.buses                    D  Extending system_exposed_libraries: libvraudio_client.qti.so:libbinauralrenderer_wrapper.qti.so:libhoaeffects.qti.so:libupdateprof.qti.so:libdiag_system.qti.so:libqape.qti.so:libqesdk_ndk_platform.qti.so:liblistenjni.qti.so:libimgTuner_jni.motoimagetuner.so:libjni_helper.motocameradesktop.so:libmcf_native_window_helper.motocamera.so
+2024-12-12 10:33:08.665  5872-5872  nativeloader            com.allride.buses                    D  InitApexLibraries:
+                                                                                                      com_android_appsearch: libicing.so
+                                                                                                      com_android_art: libartservice.so
+                                                                                                      com_android_conscrypt: libjavacrypto.so
+                                                                                                      com_android_extservices: libtflite_support_classifiers_native.so
+                                                                                                      com_android_mediaprovider: libpdfclient.so
+                                                                                                      com_android_os_statsd: libstats_jni.so
+                                                                                                      com_android_tethering: libandroid_net_connectivity_com_android_net_module_util_jni.so:libcrypto.so:libframework-connectivity-jni.so:libframework-connectivity-tiramisu-jni.so:libmainlinecronet.126.0.6423.0.so:libservice-connectivity.so:libservice-thread-jni.so:libssl.so
+2024-12-12 10:33:08.671  5872-5872  ziparchive              com.allride.buses                    W  Unable to open '/data/app/~~trUuQpTra5e-cGfqRGDxSg==/com.allride.buses-6ZBLrxnQIEWkyxyaR4HDng==/base.dm': No such file or directory
+2024-12-12 10:33:08.671  5872-5872  ziparchive              com.allride.buses                    W  Unable to open '/data/app/~~trUuQpTra5e-cGfqRGDxSg==/com.allride.buses-6ZBLrxnQIEWkyxyaR4HDng==/base.dm': No such file or directory
+2024-12-12 10:33:10.952  5872-5872  nativeloader            com.allride.buses                    D  Configuring clns-6 for other apk /data/app/~~trUuQpTra5e-cGfqRGDxSg==/com.allride.buses-6ZBLrxnQIEWkyxyaR4HDng==/base.apk. target_sdk_version=34, uses_libraries=, library_path=/data/app/~~trUuQpTra5e-cGfqRGDxSg==/com.allride.buses-6ZBLrxnQIEWkyxyaR4HDng==/lib/arm64:/data/app/~~trUuQpTra5e-cGfqRGDxSg==/com.allride.buses-6ZBLrxnQIEWkyxyaR4HDng==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.allride.buses
+2024-12-12 10:33:11.043  5872-5872  GraphicsEnvironment     com.allride.buses                    V  ANGLE Developer option for 'com.allride.buses' set to: 'default'
+2024-12-12 10:33:11.045  5872-5872  GraphicsEnvironment     com.allride.buses                    V  ANGLE GameManagerService for com.allride.buses: false
+2024-12-12 10:33:11.046  5872-5872  GraphicsEnvironment     com.allride.buses                    V  Neither updatable production driver nor prerelease driver is supported.
+2024-12-12 10:33:11.055  5872-5872  NetworkSecurityConfig   com.allride.buses                    D  Using Network Security Config from resource network_security_config debugBuild: true
+2024-12-12 10:33:11.105  5872-5872  NetworkSecurityConfig   com.allride.buses                    D  Using Network Security Config from resource network_security_config debugBuild: true
+2024-12-12 10:33:11.421  5872-5872  SessionsDependencies    com.allride.buses                    D  Dependency to CRASHLYTICS added.
+2024-12-12 10:33:11.515  5872-5872  FirebaseApp             com.allride.buses                    I  Device unlocked: initializing all Firebase APIs for app [DEFAULT]
+2024-12-12 10:33:12.062  5872-5872  FirebaseSessions        com.allride.buses                    D  Initializing Firebase Sessions SDK.
+2024-12-12 10:33:12.225  5872-5872  FirebaseCrashlytics     com.allride.buses                    I  Initializing Firebase Crashlytics 19.1.0 for com.allride.buses
+2024-12-12 10:33:12.360  5872-5872  SessionsDependencies    com.allride.buses                    D  Subscriber CRASHLYTICS registered.
+2024-12-12 10:33:12.612  5872-6110  DynamiteModule          com.allride.buses                    I  Considering local module com.google.android.gms.measurement.dynamite:122 and remote module com.google.android.gms.measurement.dynamite:132
+2024-12-12 10:33:12.612  5872-6110  DynamiteModule          com.allride.buses                    I  Selected remote version of com.google.android.gms.measurement.dynamite, version >= 132
+2024-12-12 10:33:12.612  5872-6110  DynamiteModule          com.allride.buses                    V  Dynamite loader version >= 2, using loadModule2NoCrashUtils
+2024-12-12 10:33:12.695  5872-6110  System                  com.allride.buses                    W  ClassLoader referenced unknown path: 
+2024-12-12 10:33:12.696  5872-6110  nativeloader            com.allride.buses                    D  Configuring clns-7 for other apk . target_sdk_version=34, uses_libraries=, library_path=/data/app/~~tFH2yEzksP9PKXuL18Z-2Q==/com.google.android.gms-DOfFmsYi0ByCw4H5ftvqgQ==/lib/arm64:/data/app/~~tFH2yEzksP9PKXuL18Z-2Q==/com.google.android.gms-DOfFmsYi0ByCw4H5ftvqgQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+2024-12-12 10:33:12.841  5872-6113  LifecycleServiceBinder  com.allride.buses                    D  Binding service to application.
+2024-12-12 10:33:13.094  5872-5872  FirebaseCrashlytics     com.allride.buses                    I  Initializing Crashlytics blocked main for 885 ms
+2024-12-12 10:33:13.097  5872-5872  FirebaseInitProvider    com.allride.buses                    I  FirebaseApp initialization successful
+2024-12-12 10:33:13.148  5872-6167  m.allride.buse          com.allride.buses                    E  No package ID 76 found for ID 0x760b000f.
+2024-12-12 10:33:13.149  5872-6167  m.allride.buse          com.allride.buses                    E  No package ID 76 found for ID 0x760b000f.
+2024-12-12 10:33:13.167  5872-6167  FA                      com.allride.buses                    I  App measurement initialized, version: 110015
+2024-12-12 10:33:13.168  5872-6167  FA                      com.allride.buses                    I  To enable debug logging run: adb shell setprop log.tag.FA VERBOSE
+2024-12-12 10:33:13.168  5872-6167  FA                      com.allride.buses                    I  To enable faster debug mode event logging run:
+                                                                                                      adb shell setprop debug.firebase.analytics.app com.allride.buses
+2024-12-12 10:33:13.235  5872-5872  AllRideBusesApplication com.allride.buses                    I  * showInfoApp *
+                                                                                                    MODEL : moto g71 5G | BRAND: motorola | MANUFACTURER : motorola
+                                                                                                    VERSION_CODE : 113 | VERSION_NAME : 3.0.29-DBG
+2024-12-12 10:33:14.096  5872-6114  FirebaseCrashlytics     com.allride.buses                    I  No version control information found
+2024-12-12 10:33:14.212  5872-5872  nativeloader            com.allride.buses                    D  Load /data/app/~~trUuQpTra5e-cGfqRGDxSg==/com.allride.buses-6ZBLrxnQIEWkyxyaR4HDng==/base.apk!/lib/arm64-v8a/librealm-jni.so using ns clns-6 from class loader (caller=/data/app/~~trUuQpTra5e-cGfqRGDxSg==/com.allride.buses-6ZBLrxnQIEWkyxyaR4HDng==/base.apk): ok
+2024-12-12 10:33:14.468  5872-6128  AllRideBusesApplication com.allride.buses                    D  Clave existente encontrada. Desencriptando...
+2024-12-12 10:33:14.588  5872-5872  Utils                   com.allride.buses                    D  Success adjustLocale: US - es
+2024-12-12 10:33:14.609  5872-5872  SessionLifecycleService com.allride.buses                    D  Service bound to new client on process 5872
+2024-12-12 10:33:14.618  5872-5872  Choreographer           com.allride.buses                    I  Skipped 84 frames!  The application may be doing too much work on its main thread.
+2024-12-12 10:33:14.620  5872-5872  SessionLifecycleClient  com.allride.buses                    D  Connected to SessionLifecycleService. Queue size 0
+2024-12-12 10:33:14.625  5872-6299  SessionLifecycleService com.allride.buses                    D  App has not yet foregrounded. Using previously stored session: null
+2024-12-12 10:33:14.625  5872-6299  SessionLifecycleService com.allride.buses                    D  Client android.os.Messenger@cc87524 bound at 6618400. Clients: 1
+2024-12-12 10:33:14.909  5872-6128  AllRideBusesApplication com.allride.buses                    E  Error al abrir la base de datos Realm: Failed to open Realm file at path '/data/user/0/com.allride.buses/files/default.realm': Realm file decryption failed (Decryption failed: 'unable to decrypt after 0 seconds (retry_count=4, from=i != bytes_read, size=4096)') (/data/user/0/com.allride.buses/files/default.realm) in /tmp/realm-java/realm/realm-library/src/main/cpp/io_realm_internal_OsSharedRealm.cpp line 107
+                                                                                                    io.realm.exceptions.RealmFileException: Failed to open Realm file at path '/data/user/0/com.allride.buses/files/default.realm': Realm file decryption failed (Decryption failed: 'unable to decrypt after 0 seconds (retry_count=4, from=i != bytes_read, size=4096)') (/data/user/0/com.allride.buses/files/default.realm) in /tmp/realm-java/realm/realm-library/src/main/cpp/io_realm_internal_OsSharedRealm.cpp line 107 Kind: ACCESS_ERROR.
+                                                                                                    	at io.realm.internal.OsSharedRealm.nativeGetSharedRealm(Native Method)
+                                                                                                    	at io.realm.internal.OsSharedRealm.<init>(OsSharedRealm.java:175)
+                                                                                                    	at io.realm.internal.OsSharedRealm.getInstance(OsSharedRealm.java:260)
+                                                                                                    	at io.realm.BaseRealm.<init>(BaseRealm.java:142)
+                                                                                                    	at io.realm.BaseRealm.<init>(BaseRealm.java:109)
+                                                                                                    	at io.realm.Realm.<init>(Realm.java:161)
+                                                                                                    	at io.realm.Realm.createInstance(Realm.java:535)
+                                                                                                    	at io.realm.RealmCache.createInstance(RealmCache.java:508)
+                                                                                                    	at io.realm.RealmCache.doCreateRealmOrGetFromCache(RealmCache.java:461)
+                                                                                                    	at io.realm.RealmCache.createRealmOrGetFromCache(RealmCache.java:422)
+                                                                                                    	at io.realm.Realm.getDefaultInstance(Realm.java:443)
+                                                                                                    	at com.allride.buses.AllRideBusesApplication$initializeRealm$1.invokeSuspend(AllRideBusesApplication.kt:65)
+                                                                                                    	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+                                                                                                    	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+                                                                                                    	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+                                                                                                    	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+2024-12-12 10:33:14.943  5872-6128  AllRideBusesApplication com.allride.buses                    E  Error al recrear la base de datos Realm: Failed to open Realm file at path '/data/user/0/com.allride.buses/files/default.realm': Realm file decryption failed (Decryption failed: 'unable to decrypt after 0 seconds (retry_count=4, from=i != bytes_read, size=4096)') (/data/user/0/com.allride.buses/files/default.realm) in /tmp/realm-java/realm/realm-library/src/main/cpp/io_realm_internal_OsSharedRealm.cpp line 107
+                                                                                                    io.realm.exceptions.RealmFileException: Failed to open Realm file at path '/data/user/0/com.allride.buses/files/default.realm': Realm file decryption failed (Decryption failed: 'unable to decrypt after 0 seconds (retry_count=4, from=i != bytes_read, size=4096)') (/data/user/0/com.allride.buses/files/default.realm) in /tmp/realm-java/realm/realm-library/src/main/cpp/io_realm_internal_OsSharedRealm.cpp line 107 Kind: ACCESS_ERROR.
+                                                                                                    	at io.realm.internal.OsSharedRealm.nativeGetSharedRealm(Native Method)
+                                                                                                    	at io.realm.internal.OsSharedRealm.<init>(OsSharedRealm.java:175)
+                                                                                                    	at io.realm.internal.OsSharedRealm.getInstance(OsSharedRealm.java:260)
+                                                                                                    	at io.realm.BaseRealm.<init>(BaseRealm.java:142)
+                                                                                                    	at io.realm.BaseRealm.<init>(BaseRealm.java:109)
+                                                                                                    	at io.realm.Realm.<init>(Realm.java:161)
+                                                                                                    	at io.realm.Realm.createInstance(Realm.java:535)
+                                                                                                    	at io.realm.RealmCache.createInstance(RealmCache.java:508)
+                                                                                                    	at io.realm.RealmCache.doCreateRealmOrGetFromCache(RealmCache.java:461)
+                                                                                                    	at io.realm.RealmCache.createRealmOrGetFromCache(RealmCache.java:422)
+                                                                                                    	at io.realm.Realm.getDefaultInstance(Realm.java:443)
+                                                                                                    	at com.allride.buses.AllRideBusesApplication$recreateRealmDatabase$2.invokeSuspend(AllRideBusesApplication.kt:79)
+                                                                                                    	at com.allride.buses.AllRideBusesApplication$recreateRealmDatabase$2.invoke(Unknown Source:8)
+                                                                                                    	at com.allride.buses.AllRideBusesApplication$recreateRealmDatabase$2.invoke(Unknown Source:4)
+                                                                                                    	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+                                                                                                    	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:167)
+                                                                                                    	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source:1)
+                                                                                                    	at com.allride.buses.AllRideBusesApplication.recreateRealmDatabase(AllRideBusesApplication.kt:77)
+                                                                                                    	at com.allride.buses.AllRideBusesApplication.access$recreateRealmDatabase(AllRideBusesApplication.kt:33)
+                                                                                                    	at com.allride.buses.AllRideBusesApplication$initializeRealm$1.invokeSuspend(AllRideBusesApplication.kt:71)
+                                                                                                    	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+                                                                                                    	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+                                                                                                    	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+                                                                                                    	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+2024-12-12 10:33:20.614  5872-6316  ProfileInstaller        com.allride.buses                    D  Installing profile for com.allride.buses

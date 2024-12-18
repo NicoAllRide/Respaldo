@@ -1,0 +1,17 @@
+token is 0b2d997aa7a0412b2815fa41c6f276d0168cfd868846247b57fa00b4dd5467d096673b83a56df3dce2dbab2c9049687362678bacf996f3998216d91b7a9c5ffc
+2024-11-04 12:53:12.807 16572-20352 UtilsService            com.allride.core                     D  Response Code > 200
+2024-11-04 12:53:12.807 16572-20352 UtilsService            com.allride.core                     D  URL > Request{method=GET, url=https://testing.allrideapp.com/api/v1/payment_methods/list, tags={class retrofit2.Invocation=com.allride.payments.repository.domain.PaymentsAPI.getPaymentMethods() []}}
+2024-11-04 12:53:12.860 16572-16572 PaymentsViewModel       com.allride.core                     D  Time taken (Main) to getPaymentMethods: 319 ms
+2024-11-04 12:53:12.875 16572-16572 FIAM.Display            com.allride.core                     I  Unbinding from activity: com.allride.payments.view.activities.PaymentsActivity
+2024-11-04 12:53:12.875 16572-16572 FIAM.Headless           com.allride.core                     I  Removing display event component
+2024-11-04 12:53:12.972 16572-16572 FIAM.Display            com.allride.core                     I  Binding to activity: com.allride.payments.view.activities.TransbankActivity
+2024-11-04 12:53:12.972 16572-16572 FIAM.Headless           com.allride.core                     I  Setting display event component
+2024-11-04 12:53:13.016 16572-20352 UtilsService            com.allride.core                     D  token is 0b2d997aa7a0412b2815fa41c6f276d0168cfd868846247b57fa00b4dd5467d096673b83a56df3dce2dbab2c9049687362678bacf996f3998216d91b7a9c5ffc
+2024-11-04 12:53:14.492 16572-20352 UtilsService            com.allride.core                     D  Response Code > 200
+2024-11-04 12:53:14.492 16572-20352 UtilsService            com.allride.core                     D  URL > Request{method=POST, url=https://testing.allrideapp.com/api/v2/products/6728e704dd53902a3a33a59f/purchase, tags={class retrofit2.Invocation=com.allride.payments.repository.domain.PaymentsAPI.buyProductByTransbank() [6728e704dd53902a3a33a59f, com.allride.payments.repository.domain.PaymentsAPI$ProductBody@da0c6d1]}}
+2024-11-04 12:53:14.495 16572-16572 TransbankViewModel      com.allride.core                     D  Time taken (Main) to getPaymentMethods: 1524 ms
+2024-11-04 12:53:14.681 16572-16572 TransbankFragment       com.allride.core                     D  data:text/html,<html>    <body onload="document.f.submit();">        <form id="f"name="f" method="post" action='https://webpay3gint.transbank.cl/webpayserver/init_transaction.cgi'>                            <input type="hidden" name="token_ws"                       value="01ab72ebc4831a65da437d9ec540a4a8cb3711806e60b4a1b7411afee3c7c864" />                            <input type="hidden" name="ANALYTICS_REFERER" value="" />            </form>    </body></html>
+2024-11-04 12:53:14.681 16572-16572 TransbankFragment       com.allride.core                     D  WebClient Page Finished
+2024-11-04 12:53:15.223 16572-16572 TransbankFragment       com.allride.core                     D  https://webpay3gint.transbank.cl/webpayserver/dist/#/
+2024-11-04 12:53:15.223 16572-16572 TransbankFragment       com.allride.core                     D  WebClient Page Finished
+2024-11-04 12:53:18.877 16572-16572 om.allride.cor          com.allride.core                     W  Accessing hidden method Landroid/view/MotionEvent;->getEventTimeNano()J (unsupported, reflection, allowed)

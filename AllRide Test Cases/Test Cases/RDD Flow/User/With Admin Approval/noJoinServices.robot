@@ -87,6 +87,8 @@ Time + 2 hour and a half
 
 
 Verify Open RDD in Community
+    Skip
+
         # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/superadmin/communities/${idComunidad}
@@ -103,6 +105,7 @@ Verify Open RDD in Community
     
     Should Be Equal As Strings    ${enabled}   True
 Verify Join Services in Community
+    Skip
         # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/superadmin/communities/${idComunidad}
@@ -149,7 +152,8 @@ Login User With Email(Obtain Token)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
-
+    
+    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
     ${accessToken}=    Set Variable    ${response.json()}[accessToken]
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}

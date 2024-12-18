@@ -8,8 +8,7 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 from xml.etree import ElementTree as ET
 
-SLACK_TOKEN = ""
-
+SLACK_TOKEN = os.environ["SLACK_TOKEN"]
 # Configurar el nivel de depuración del registro
 logging.basicConfig(level=logging.DEBUG)
 
@@ -104,29 +103,14 @@ if __name__ == '__main__':
         f"Passed Percentage: {passed_percentage:.2f}%\n"
     )
 
-    # Guardar el detalle de los errores en un archivo
-    with open("detalle_pruebas.txt", "w") as file:
-        file.write("Server Errors:\n")
-        for error_info in analyzer.server_errors:
-            file.write(f"{error_info}\n")
-            file.write("-" * 50 + "\n")
-
-        file.write("--------------------------------------------------\n\n")
-        file.write("Failed Test Cases:\n")
-        for test_info in analyzer.failed_test_info:
-            file.write(f"{test_info}\n")
-            file.write("-" * 50 + "\n")
-
-    print("Detalle de las pruebas guardado en 'detalle_pruebas.txt'.")
-
     # Inicializar el cliente de la API web de Slack con tu token de autenticación
     client = WebClient(token=SLACK_TOKEN)
 
     try:
-        # Enviar el resumen a Slack sin los detalles repetidos
+        # Enviar el resumen a Slack
         response = client.chat_postMessage(
-            channel="C070FNX0CHG",  # Reemplaza esto con el ID de tu canal
-            text=message_text  # Pasar solo el resumen sin detalles repetidos
+            channel="C071RRWNYF9",  # Reemplaza con el ID de tu canal
+            text=message_text
         )
 
         if response["ok"]:
@@ -134,23 +118,42 @@ if __name__ == '__main__':
         else:
             print(f"Error al enviar el mensaje a Slack: {response['error']}")
 
-        # Subir el archivo con los detalles
-        with open("detalle_pruebas.txt", "r") as file:
-            file_content = file.read()
+        # Verificar si hay pruebas fallidas para enviar el archivo con detalles
+        if analyzer.failed_tests > 0 or len(analyzer.server_errors) > 0:
+            # Guardar el detalle de los errores en un archivo
+            with open("detalle_pruebas.txt", "w") as file:
+                file.write("Server Errors:\n")
+                for error_info in analyzer.server_errors:
+                    file.write(f"{error_info}\n")
+                    file.write("-" * 50 + "\n")
 
-        new_file = client.files_upload_v2(
-            title="detalle_pruebas",
-            filename="detalle_pruebas.txt",
-            content=file_content,
-        )
+                file.write("--------------------------------------------------\n\n")
+                file.write("Failed Test Cases:\n")
+                for test_info in analyzer.failed_test_info:
+                    file.write(f"{test_info}\n")
+                    file.write("-" * 50 + "\n")
 
-        file_url = new_file.get("file").get("permalink")
-        new_message = client.chat_postMessage(
-            channel="C070FNX0CHG",  # Reemplaza esto con el ID de tu canal
-            text=f"Detalle de pruebas fallidas: {file_url}",
-        )
+            print("Detalle de las pruebas guardado en 'detalle_pruebas.txt'.")
 
-        print(f"Archivo subido y compartido en Slack: {file_url}")
+            # Subir el archivo a Slack
+            with open("detalle_pruebas.txt", "r") as file:
+                file_content = file.read()
+
+            new_file = client.files_upload_v2(
+                title="detalle_pruebas",
+                filename="detalle_pruebas.txt",
+                content=file_content,
+            )
+
+            file_url = new_file.get("file").get("permalink")
+            new_message = client.chat_postMessage(
+                channel="C071RRWNYF9",  # Reemplaza con el ID de tu canal
+                text=f"Detalle de pruebas fallidas: {file_url}",
+            )
+
+            print(f"Archivo subido y compartido en Slack: {file_url}")
+        else:
+            print("Todas las pruebas pasaron. No se enviará archivo de detalles.")
 
     except SlackApiError as e:
         print(f"Error al enviar el mensaje a Slack: {e.response['error']}")

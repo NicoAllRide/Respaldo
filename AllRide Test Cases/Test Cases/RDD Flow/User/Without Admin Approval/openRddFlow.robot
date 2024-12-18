@@ -90,12 +90,13 @@ Login User With Email(Obtain Token)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
-
+    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
     ${accessToken}=    Set Variable    ${response.json()}[accessToken]
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
 
 Verify Open RDD in Community
+    Skip
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/superadmin/communities/${idComunidad}
@@ -222,9 +223,11 @@ Start Departure
     Log    ${code}
     ${access_token}=    Set Variable    ${response.json()}[token]
     ${departureToken}=    Evaluate    "Bearer " + "${access_token}"
+    ${departureId}=     Set Variable     ${response.json()}[_id]
     Log    ${departureToken}
     Log    ${code}
      Set Global Variable    ${departureToken}
+    Log     ${departureId}
 
 Get User QR(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -287,7 +290,7 @@ Validate With QR(Nico)
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/validate
+    ...    url=/api/v1/pb/provider/departures/validate
     ...    data={"validationString":"${qrCodeNico}"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)

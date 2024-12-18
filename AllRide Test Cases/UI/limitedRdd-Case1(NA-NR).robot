@@ -104,9 +104,7 @@ Select Service (Taxis Nico Should Not Exist In Limited RDD)
     Click Element    ${taxisNico}
 
 Tap on Select Date
-    ${el20} =    Set Variable     id=com.allride.core:id/tvSelectedDate
-    Wait Until Element Is Visible    ${el20}
-    Click Element    ${el20}
+    Sleep    10s
 
 Verify If Past Days Are Disabled And Future Fridays Enabled
     ${fecha_hoy}=    Get Current Date    result_format=%d

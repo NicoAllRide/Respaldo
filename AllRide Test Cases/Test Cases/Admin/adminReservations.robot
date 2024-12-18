@@ -93,7 +93,8 @@ Create Schedule Alto - Apumanque 19:00 hrs
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
-
+    
+    Should Contain    ${response}    _id     No id Found, Failing
     ${scheduleId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${scheduleId}
 

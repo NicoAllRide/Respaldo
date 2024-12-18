@@ -93,6 +93,24 @@ Create Default Schedule Alto - Apumanque 19:00 hrs
     Set Global Variable    ${scheduleId}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     Sleep    2s
+Create services
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/createServices/653fd601f90509541a748683?community=653fd601f90509541a748683
+    ...    data={}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    Sleep    2s
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
@@ -110,7 +128,7 @@ Get Service Id
     Log     ${sorted_services}
 
     # Verificar si se encontraron servicios
-    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found with routeId._id = "${scheduleId}"
+    Run Keyword If    ${sorted_services} == []    Fatal Error   msg= No services were created with routeId._id = "${scheduleId}" All createSheduledWithDefaultResources Tests Failing(Fatal error)
     
     # Obtenemos el último servicio creado
     ${last_service}=    Set Variable    ${sorted_services[-1]}
@@ -216,7 +234,7 @@ Login User With Email(Obtain Token)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
-
+    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
     ${accessToken}=    Set Variable    ${response.json()}[accessToken]
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
@@ -376,7 +394,7 @@ Validate With QR(Nico)
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/validate
+    ...    url=/api/v1/pb/provider/departures/validate
     ...    data={"validationString":"${qrCodeNico}"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)

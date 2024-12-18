@@ -1,0 +1,135 @@
+Paso 44
+  Set Location    -34.3949     -70.78123000000001
+  Sleep    3s
+Paso 43
+  Set Location    -34.395250000000004     -70.78141000000001
+  Sleep    3s
+Paso 42
+  Set Location    -34.395430000000005     -70.78160000000001
+  Sleep    3s
+Paso 41
+  Set Location    -34.39578     -70.78252
+  Sleep    3s
+Paso 40
+  Set Location    -34.39687     -70.78171
+  Sleep    3s
+Paso 39
+  Set Location    -34.397040000000004     -70.78166
+  Sleep    3s
+Paso 38
+  Set Location    -34.39882     -70.78226000000001
+  Sleep    3s
+Paso 37
+  Set Location    -34.399550000000005     -70.78272000000001
+  Sleep    3s
+Paso 36
+  Set Location    -34.40008     -70.78235000000001
+  Sleep    3s
+Paso 35
+  Set Location    -34.40119     -70.78407
+  Sleep    3s
+Paso 34
+  Set Location    -34.40109     -70.78446000000001
+  Sleep    3s
+Paso 33
+  Set Location    -34.404030000000006     -70.78939000000001
+  Sleep    3s
+Paso 32
+  Set Location    -34.407920000000004     -70.7962
+  Sleep    3s
+Paso 31
+  Set Location    -34.40664     -70.79700000000001
+  Sleep    3s
+Paso 30
+  Set Location    -34.40551     -70.79848000000001
+  Sleep    3s
+Paso 29
+  Set Location    -34.40404     -70.79917
+  Sleep    3s
+Paso 28
+  Set Location    -34.40424     -70.80014
+  Sleep    3s
+Paso 27
+  Set Location    -34.404250000000005     -70.80188000000001
+  Sleep    3s
+Paso 26
+  Set Location    -34.40466     -70.8035
+  Sleep    3s
+Paso 25
+  Set Location    -34.40527     -70.80415
+  Sleep    3s
+Paso 24
+  Set Location    -34.405620000000006     -70.80497000000001
+  Sleep    3s
+Paso 23
+  Set Location    -34.406670000000005     -70.80617000000001
+  Sleep    3s
+Paso 22
+  Set Location    -34.40769     -70.80719
+  Sleep    3s
+Paso 21
+  Set Location    -34.40916     -70.80898
+  Sleep    3s
+Paso 20
+  Set Location    -34.41037     -70.8121
+  Sleep    3s
+Paso 19
+  Set Location    -34.41068     -70.81312000000001
+  Sleep    3s
+Paso 18
+  Set Location    -34.40997     -70.81436000000001
+  Sleep    3s
+Paso 17
+  Set Location    -34.40968     -70.81502
+  Sleep    3s
+Paso 16
+  Set Location    -34.409060000000004     -70.81747
+  Sleep    3s
+Paso 15
+  Set Location    -34.40782     -70.81975
+  Sleep    3s
+Paso 14
+  Set Location    -34.406130000000005     -70.82332000000001
+  Sleep    3s
+Paso 13
+  Set Location    -34.40598     -70.82654000000001
+  Sleep    3s
+Paso 12
+  Set Location    -34.405660000000005     -70.82864000000001
+  Sleep    3s
+Paso 11
+  Set Location    -34.40545     -70.82964000000001
+  Sleep    3s
+Paso 10
+  Set Location    -34.40379     -70.83406000000001
+  Sleep    3s
+Paso 9
+  Set Location    -34.40344     -70.8354
+  Sleep    3s
+Paso 8
+  Set Location    -34.40229     -70.84241
+  Sleep    3s
+Paso 7
+  Set Location    -34.40229     -70.84376
+  Sleep    3s
+Paso 6
+  Set Location    -34.40267     -70.84552000000001
+  Sleep    3s
+Paso 5
+  Set Location    -34.402800000000006     -70.84736000000001
+  Sleep    3s
+Paso 4
+  Set Location    -34.40296     -70.84740000000001
+  Sleep    3s
+Paso 3
+  Set Location    -34.40496     -70.84995
+  Sleep    3s
+Paso 2
+  Set Location    -34.40699     -70.852
+  Sleep    3s
+Paso 1
+  Set Location    -34.408530000000006     -70.85308
+  Sleep    3s
+Paso 0
+  Set Location    -34.41107     -70.85381000000001
+  Sleep    3s

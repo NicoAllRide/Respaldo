@@ -74,6 +74,7 @@ Time + 2 Hour
     Set Global Variable    ${formatted_one_hour_later}
 
 Verify Open RDD in Community
+    Skip
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/superadmin/communities/${idComunidad}

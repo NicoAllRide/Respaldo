@@ -1,0 +1,3564 @@
+Paso 0
+  Set Location    -33.4934676     -70.5123276
+  Sleep    3s
+Paso 1
+  Set Location    -33.4934676     -70.5123276
+  Sleep    3s
+Paso 2
+  Set Location    -33.4934915     -70.5123563
+  Sleep    3s
+Paso 3
+  Set Location    -33.4934915     -70.5123563
+  Sleep    3s
+Paso 4
+  Set Location    -33.4934967     -70.5123852
+  Sleep    3s
+Paso 5
+  Set Location    -33.4934967     -70.5123852
+  Sleep    3s
+Paso 6
+  Set Location    -33.4934966     -70.5123852
+  Sleep    3s
+Paso 7
+  Set Location    -33.4934966     -70.5123852
+  Sleep    3s
+Paso 8
+  Set Location    -33.4934459     -70.5124379
+  Sleep    3s
+Paso 9
+  Set Location    -33.4934459     -70.5124379
+  Sleep    3s
+Paso 10
+  Set Location    -33.4930735     -70.5128242
+  Sleep    3s
+Paso 11
+  Set Location    -33.4930735     -70.5128242
+  Sleep    3s
+Paso 12
+  Set Location    -33.4924775     -70.5134036
+  Sleep    3s
+Paso 13
+  Set Location    -33.4924775     -70.5134036
+  Sleep    3s
+Paso 14
+  Set Location    -33.4915677     -70.5133952
+  Sleep    3s
+Paso 15
+  Set Location    -33.4915677     -70.5133952
+  Sleep    3s
+Paso 16
+  Set Location    -33.4907737     -70.5139965
+  Sleep    3s
+Paso 17
+  Set Location    -33.4907737     -70.5139965
+  Sleep    3s
+Paso 18
+  Set Location    -33.4906418     -70.5145562
+  Sleep    3s
+Paso 19
+  Set Location    -33.4906418     -70.5145562
+  Sleep    3s
+Paso 20
+  Set Location    -33.4905826     -70.5146373
+  Sleep    3s
+Paso 21
+  Set Location    -33.4905826     -70.5146373
+  Sleep    3s
+Paso 22
+  Set Location    -33.490294     -70.5154609
+  Sleep    3s
+Paso 23
+  Set Location    -33.490294     -70.5154609
+  Sleep    3s
+Paso 24
+  Set Location    -33.4900548     -70.5160087
+  Sleep    3s
+Paso 25
+  Set Location    -33.4900548     -70.5160087
+  Sleep    3s
+Paso 26
+  Set Location    -33.4890993     -70.5162136
+  Sleep    3s
+Paso 27
+  Set Location    -33.4890993     -70.5162136
+  Sleep    3s
+Paso 28
+  Set Location    -33.4891354     -70.5172393
+  Sleep    3s
+Paso 29
+  Set Location    -33.4891354     -70.5172393
+  Sleep    3s
+Paso 30
+  Set Location    -33.4891281     -70.5182767
+  Sleep    3s
+Paso 31
+  Set Location    -33.4891281     -70.5182767
+  Sleep    3s
+Paso 32
+  Set Location    -33.4889278     -70.5187673
+  Sleep    3s
+Paso 33
+  Set Location    -33.4889278     -70.5187673
+  Sleep    3s
+Paso 34
+  Set Location    -33.4881562     -70.5192974
+  Sleep    3s
+Paso 35
+  Set Location    -33.4881562     -70.5192974
+  Sleep    3s
+Paso 36
+  Set Location    -33.4869999     -70.5188839
+  Sleep    3s
+Paso 37
+  Set Location    -33.4869999     -70.5188839
+  Sleep    3s
+Paso 38
+  Set Location    -33.4865386     -70.5186591
+  Sleep    3s
+Paso 39
+  Set Location    -33.4865386     -70.5186591
+  Sleep    3s
+Paso 40
+  Set Location    -33.486398     -70.5186716
+  Sleep    3s
+Paso 41
+  Set Location    -33.486398     -70.5186716
+  Sleep    3s
+Paso 42
+  Set Location    -33.4864006     -70.5186715
+  Sleep    3s
+Paso 43
+  Set Location    -33.4864006     -70.5186715
+  Sleep    3s
+Paso 44
+  Set Location    -33.4863792     -70.5187731
+  Sleep    3s
+Paso 45
+  Set Location    -33.4863792     -70.5187731
+  Sleep    3s
+Paso 46
+  Set Location    -33.4866534     -70.5189292
+  Sleep    3s
+Paso 47
+  Set Location    -33.4866534     -70.5189292
+  Sleep    3s
+Paso 48
+  Set Location    -33.4875201     -70.5194274
+  Sleep    3s
+Paso 49
+  Set Location    -33.4875201     -70.5194274
+  Sleep    3s
+Paso 50
+  Set Location    -33.4883601     -70.5192187
+  Sleep    3s
+Paso 51
+  Set Location    -33.4883601     -70.5192187
+  Sleep    3s
+Paso 52
+  Set Location    -33.4891804     -70.5186385
+  Sleep    3s
+Paso 53
+  Set Location    -33.4891804     -70.5186385
+  Sleep    3s
+Paso 54
+  Set Location    -33.4892978     -70.5177001
+  Sleep    3s
+Paso 55
+  Set Location    -33.4892978     -70.5177001
+  Sleep    3s
+Paso 56
+  Set Location    -33.4890646     -70.5163534
+  Sleep    3s
+Paso 57
+  Set Location    -33.4890646     -70.5163534
+  Sleep    3s
+Paso 58
+  Set Location    -33.4898508     -70.5160946
+  Sleep    3s
+Paso 59
+  Set Location    -33.4898508     -70.5160946
+  Sleep    3s
+Paso 60
+  Set Location    -33.4903388     -70.5157944
+  Sleep    3s
+Paso 61
+  Set Location    -33.4903388     -70.5157944
+  Sleep    3s
+Paso 62
+  Set Location    -33.4907164     -70.5149043
+  Sleep    3s
+Paso 63
+  Set Location    -33.4907164     -70.5149043
+  Sleep    3s
+Paso 64
+  Set Location    -33.4908315     -70.5146173
+  Sleep    3s
+Paso 65
+  Set Location    -33.4908315     -70.5146173
+  Sleep    3s
+Paso 66
+  Set Location    -33.4908314     -70.5146184
+  Sleep    3s
+Paso 67
+  Set Location    -33.4908314     -70.5146184
+  Sleep    3s
+Paso 68
+  Set Location    -33.4908187     -70.5146011
+  Sleep    3s
+Paso 69
+  Set Location    -33.4908187     -70.5146011
+  Sleep    3s
+Paso 70
+  Set Location    -33.4908189     -70.5146011
+  Sleep    3s
+Paso 71
+  Set Location    -33.4908189     -70.5146011
+  Sleep    3s
+Paso 72
+  Set Location    -33.4908872     -70.513944
+  Sleep    3s
+Paso 73
+  Set Location    -33.4908872     -70.513944
+  Sleep    3s
+Paso 74
+  Set Location    -33.4917086     -70.5133575
+  Sleep    3s
+Paso 75
+  Set Location    -33.4917086     -70.5133575
+  Sleep    3s
+Paso 76
+  Set Location    -33.4925968     -70.5132386
+  Sleep    3s
+Paso 77
+  Set Location    -33.4925968     -70.5132386
+  Sleep    3s
+Paso 78
+  Set Location    -33.4926974     -70.5130486
+  Sleep    3s
+Paso 79
+  Set Location    -33.4926974     -70.5130486
+  Sleep    3s
+Paso 80
+  Set Location    -33.492708     -70.5130496
+  Sleep    3s
+Paso 81
+  Set Location    -33.492708     -70.5130496
+  Sleep    3s
+Paso 82
+  Set Location    -33.4931862     -70.51269
+  Sleep    3s
+Paso 83
+  Set Location    -33.4931862     -70.51269
+  Sleep    3s
+Paso 84
+  Set Location    -33.4938767     -70.5119996
+  Sleep    3s
+Paso 85
+  Set Location    -33.4938767     -70.5119996
+  Sleep    3s
+Paso 86
+  Set Location    -33.4940308     -70.5117293
+  Sleep    3s
+Paso 87
+  Set Location    -33.4940308     -70.5117293
+  Sleep    3s
+Paso 88
+  Set Location    -33.4939774     -70.5118677
+  Sleep    3s
+Paso 89
+  Set Location    -33.4939774     -70.5118677
+  Sleep    3s
+Paso 90
+  Set Location    -33.4935981     -70.5122911
+  Sleep    3s
+Paso 91
+  Set Location    -33.4935981     -70.5122911
+  Sleep    3s
+Paso 92
+  Set Location    -33.4935312     -70.5123547
+  Sleep    3s
+Paso 93
+  Set Location    -33.4935312     -70.5123547
+  Sleep    3s
+Paso 94
+  Set Location    -33.4932603     -70.5126241
+  Sleep    3s
+Paso 95
+  Set Location    -33.4932603     -70.5126241
+  Sleep    3s
+Paso 96
+  Set Location    -33.4928764     -70.512915
+  Sleep    3s
+Paso 97
+  Set Location    -33.4928764     -70.512915
+  Sleep    3s
+Paso 98
+  Set Location    -33.4924466     -70.5134752
+  Sleep    3s
+Paso 99
+  Set Location    -33.4924466     -70.5134752
+  Sleep    3s
+Paso 100
+  Set Location    -33.4914954     -70.5134375
+  Sleep    3s
+Paso 101
+  Set Location    -33.4914954     -70.5134375
+  Sleep    3s
+Paso 102
+  Set Location    -33.4908005     -70.514083
+  Sleep    3s
+Paso 103
+  Set Location    -33.4908005     -70.514083
+  Sleep    3s
+Paso 104
+  Set Location    -33.4906918     -70.514549
+  Sleep    3s
+Paso 105
+  Set Location    -33.4906918     -70.514549
+  Sleep    3s
+Paso 106
+  Set Location    -33.4906071     -70.5146221
+  Sleep    3s
+Paso 107
+  Set Location    -33.4906071     -70.5146221
+  Sleep    3s
+Paso 108
+  Set Location    -33.4904536     -70.5152529
+  Sleep    3s
+Paso 109
+  Set Location    -33.4904536     -70.5152529
+  Sleep    3s
+Paso 110
+  Set Location    -33.4902476     -70.5157491
+  Sleep    3s
+Paso 111
+  Set Location    -33.4902476     -70.5157491
+  Sleep    3s
+Paso 112
+  Set Location    -33.4899359     -70.5161261
+  Sleep    3s
+Paso 113
+  Set Location    -33.4899359     -70.5161261
+  Sleep    3s
+Paso 114
+  Set Location    -33.4890647     -70.5163188
+  Sleep    3s
+Paso 115
+  Set Location    -33.4890647     -70.5163188
+  Sleep    3s
+Paso 116
+  Set Location    -33.4891922     -70.5174356
+  Sleep    3s
+Paso 117
+  Set Location    -33.4891922     -70.5174356
+  Sleep    3s
+Paso 118
+  Set Location    -33.4891231     -70.518343
+  Sleep    3s
+Paso 119
+  Set Location    -33.4891231     -70.518343
+  Sleep    3s
+Paso 120
+  Set Location    -33.4886824     -70.5190164
+  Sleep    3s
+Paso 121
+  Set Location    -33.4886824     -70.5190164
+  Sleep    3s
+Paso 122
+  Set Location    -33.4874912     -70.5191168
+  Sleep    3s
+Paso 123
+  Set Location    -33.4874912     -70.5191168
+  Sleep    3s
+Paso 124
+  Set Location    -33.4867651     -70.5187343
+  Sleep    3s
+Paso 125
+  Set Location    -33.4867651     -70.5187343
+  Sleep    3s
+Paso 126
+  Set Location    -33.4865364     -70.5186566
+  Sleep    3s
+Paso 127
+  Set Location    -33.4865364     -70.5186566
+  Sleep    3s
+Paso 128
+  Set Location    -33.486351     -70.5186734
+  Sleep    3s
+Paso 129
+  Set Location    -33.486351     -70.5186734
+  Sleep    3s
+Paso 130
+  Set Location    -33.4863273     -70.5187253
+  Sleep    3s
+Paso 131
+  Set Location    -33.4863273     -70.5187253
+  Sleep    3s
+Paso 132
+  Set Location    -33.4865709     -70.5189064
+  Sleep    3s
+Paso 133
+  Set Location    -33.4865709     -70.5189064
+  Sleep    3s
+Paso 134
+  Set Location    -33.4867194     -70.5189654
+  Sleep    3s
+Paso 135
+  Set Location    -33.4867194     -70.5189654
+  Sleep    3s
+Paso 136
+  Set Location    -33.4868923     -70.5190568
+  Sleep    3s
+Paso 137
+  Set Location    -33.4868923     -70.5190568
+  Sleep    3s
+Paso 138
+  Set Location    -33.4868922     -70.5190568
+  Sleep    3s
+Paso 139
+  Set Location    -33.4868922     -70.5190568
+  Sleep    3s
+Paso 140
+  Set Location    -33.4871124     -70.5191758
+  Sleep    3s
+Paso 141
+  Set Location    -33.4871124     -70.5191758
+  Sleep    3s
+Paso 142
+  Set Location    -33.4876905     -70.5194251
+  Sleep    3s
+Paso 143
+  Set Location    -33.4876905     -70.5194251
+  Sleep    3s
+Paso 144
+  Set Location    -33.4878796     -70.5193912
+  Sleep    3s
+Paso 145
+  Set Location    -33.4878796     -70.5193912
+  Sleep    3s
+Paso 146
+  Set Location    -33.4879641     -70.5193436
+  Sleep    3s
+Paso 147
+  Set Location    -33.4879641     -70.5193436
+  Sleep    3s
+Paso 148
+  Set Location    -33.4879831     -70.519327
+  Sleep    3s
+Paso 149
+  Set Location    -33.4879831     -70.519327
+  Sleep    3s
+Paso 150
+  Set Location    -33.4886281     -70.5190502
+  Sleep    3s
+Paso 151
+  Set Location    -33.4886281     -70.5190502
+  Sleep    3s
+Paso 152
+  Set Location    -33.4891122     -70.5186911
+  Sleep    3s
+Paso 153
+  Set Location    -33.4891122     -70.5186911
+  Sleep    3s
+Paso 154
+  Set Location    -33.4891651     -70.5180574
+  Sleep    3s
+Paso 155
+  Set Location    -33.4891651     -70.5180574
+  Sleep    3s
+Paso 156
+  Set Location    -33.4890808     -70.5168396
+  Sleep    3s
+Paso 157
+  Set Location    -33.4890808     -70.5168396
+  Sleep    3s
+Paso 158
+  Set Location    -33.4894053     -70.5161799
+  Sleep    3s
+Paso 159
+  Set Location    -33.4894053     -70.5161799
+  Sleep    3s
+Paso 160
+  Set Location    -33.4900614     -70.5161849
+  Sleep    3s
+Paso 161
+  Set Location    -33.4900614     -70.5161849
+  Sleep    3s
+Paso 162
+  Set Location    -33.4905051     -70.5154179
+  Sleep    3s
+Paso 163
+  Set Location    -33.4905051     -70.5154179
+  Sleep    3s
+Paso 164
+  Set Location    -33.4908017     -70.5147611
+  Sleep    3s
+Paso 165
+  Set Location    -33.4908017     -70.5147611
+  Sleep    3s
+Paso 166
+  Set Location    -33.490821     -70.5145723
+  Sleep    3s
+Paso 167
+  Set Location    -33.490821     -70.5145723
+  Sleep    3s
+Paso 168
+  Set Location    -33.4908156     -70.5140913
+  Sleep    3s
+Paso 169
+  Set Location    -33.4908156     -70.5140913
+  Sleep    3s
+Paso 170
+  Set Location    -33.4914151     -70.5134812
+  Sleep    3s
+Paso 171
+  Set Location    -33.4914151     -70.5134812
+  Sleep    3s
+Paso 172
+  Set Location    -33.4920151     -70.5135141
+  Sleep    3s
+Paso 173
+  Set Location    -33.4920151     -70.5135141
+  Sleep    3s
+Paso 174
+  Set Location    -33.4921312     -70.5135505
+  Sleep    3s
+Paso 175
+  Set Location    -33.4921312     -70.5135505
+  Sleep    3s
+Paso 176
+  Set Location    -33.4923951     -70.513478
+  Sleep    3s
+Paso 177
+  Set Location    -33.4923951     -70.513478
+  Sleep    3s
+Paso 178
+  Set Location    -33.4925075     -70.513362
+  Sleep    3s
+Paso 179
+  Set Location    -33.4925075     -70.513362
+  Sleep    3s
+Paso 180
+  Set Location    -33.4925649     -70.5132597
+  Sleep    3s
+Paso 181
+  Set Location    -33.4925649     -70.5132597
+  Sleep    3s
+Paso 182
+  Set Location    -33.4925704     -70.5132415
+  Sleep    3s
+Paso 183
+  Set Location    -33.4925704     -70.5132415
+  Sleep    3s
+Paso 184
+  Set Location    -33.492854     -70.5129077
+  Sleep    3s
+Paso 185
+  Set Location    -33.492854     -70.5129077
+  Sleep    3s
+Paso 186
+  Set Location    -33.4933936     -70.512461
+  Sleep    3s
+Paso 187
+  Set Location    -33.4933936     -70.512461
+  Sleep    3s
+Paso 188
+  Set Location    -33.4935848     -70.5122821
+  Sleep    3s
+Paso 189
+  Set Location    -33.4935848     -70.5122821
+  Sleep    3s
+Paso 190
+  Set Location    -33.4937721     -70.5120842
+  Sleep    3s
+Paso 191
+  Set Location    -33.4937721     -70.5120842
+  Sleep    3s
+Paso 192
+  Set Location    -33.4937815     -70.5120802
+  Sleep    3s
+Paso 193
+  Set Location    -33.4937815     -70.5120802
+  Sleep    3s
+Paso 194
+  Set Location    -33.4937811     -70.5120802
+  Sleep    3s
+Paso 195
+  Set Location    -33.4937811     -70.5120802
+  Sleep    3s
+Paso 196
+  Set Location    -33.4938528     -70.5120051
+  Sleep    3s
+Paso 197
+  Set Location    -33.4938528     -70.5120051
+  Sleep    3s
+Paso 198
+  Set Location    -33.4938693     -70.5119671
+  Sleep    3s
+Paso 199
+  Set Location    -33.4938693     -70.5119671
+  Sleep    3s
+Paso 200
+  Set Location    -33.4938707     -70.5119454
+  Sleep    3s
+Paso 201
+  Set Location    -33.4938707     -70.5119454
+  Sleep    3s
+Paso 202
+  Set Location    -33.4939971     -70.5117878
+  Sleep    3s
+Paso 203
+  Set Location    -33.4939971     -70.5117878
+  Sleep    3s
+Paso 204
+  Set Location    -33.4940166     -70.5117302
+  Sleep    3s
+Paso 205
+  Set Location    -33.4940166     -70.5117302
+  Sleep    3s
+Paso 206
+  Set Location    -33.4940019     -70.5117395
+  Sleep    3s
+Paso 207
+  Set Location    -33.4940019     -70.5117395
+  Sleep    3s
+Paso 208
+  Set Location    -33.4939945     -70.5117863
+  Sleep    3s
+Paso 209
+  Set Location    -33.4939945     -70.5117863
+  Sleep    3s
+Paso 210
+  Set Location    -33.4938642     -70.5119708
+  Sleep    3s
+Paso 211
+  Set Location    -33.4938642     -70.5119708
+  Sleep    3s
+Paso 212
+  Set Location    -33.4934855     -70.512404
+  Sleep    3s
+Paso 213
+  Set Location    -33.4934855     -70.512404
+  Sleep    3s
+Paso 214
+  Set Location    -33.4934792     -70.5123961
+  Sleep    3s
+Paso 215
+  Set Location    -33.4934792     -70.5123961
+  Sleep    3s
+Paso 216
+  Set Location    -33.4931622     -70.5126849
+  Sleep    3s
+Paso 217
+  Set Location    -33.4931622     -70.5126849
+  Sleep    3s
+Paso 218
+  Set Location    -33.4927689     -70.5129901
+  Sleep    3s
+Paso 219
+  Set Location    -33.4927689     -70.5129901
+  Sleep    3s
+Paso 220
+  Set Location    -33.4925448     -70.5132367
+  Sleep    3s
+Paso 221
+  Set Location    -33.4925448     -70.5132367
+  Sleep    3s
+Paso 222
+  Set Location    -33.4919245     -70.5135484
+  Sleep    3s
+Paso 223
+  Set Location    -33.4919245     -70.5135484
+  Sleep    3s
+Paso 224
+  Set Location    -33.49085     -70.5137881
+  Sleep    3s
+Paso 225
+  Set Location    -33.49085     -70.5137881
+  Sleep    3s
+Paso 226
+  Set Location    -33.4907073     -70.5143988
+  Sleep    3s
+Paso 227
+  Set Location    -33.4907073     -70.5143988
+  Sleep    3s
+Paso 228
+  Set Location    -33.4906304     -70.5146482
+  Sleep    3s
+Paso 229
+  Set Location    -33.4906304     -70.5146482
+  Sleep    3s
+Paso 230
+  Set Location    -33.4906306     -70.5146483
+  Sleep    3s
+Paso 231
+  Set Location    -33.4906306     -70.5146483
+  Sleep    3s
+Paso 232
+  Set Location    -33.4906024     -70.5147907
+  Sleep    3s
+Paso 233
+  Set Location    -33.4906024     -70.5147907
+  Sleep    3s
+Paso 234
+  Set Location    -33.4903681     -70.5153674
+  Sleep    3s
+Paso 235
+  Set Location    -33.4903681     -70.5153674
+  Sleep    3s
+Paso 236
+  Set Location    -33.4901635     -70.5158447
+  Sleep    3s
+Paso 237
+  Set Location    -33.4901635     -70.5158447
+  Sleep    3s
+Paso 238
+  Set Location    -33.4891074     -70.5161953
+  Sleep    3s
+Paso 239
+  Set Location    -33.4891074     -70.5161953
+  Sleep    3s
+Paso 240
+  Set Location    -33.489149     -70.5171196
+  Sleep    3s
+Paso 241
+  Set Location    -33.489149     -70.5171196
+  Sleep    3s
+Paso 242
+  Set Location    -33.4891348     -70.5183081
+  Sleep    3s
+Paso 243
+  Set Location    -33.4891348     -70.5183081
+  Sleep    3s
+Paso 244
+  Set Location    -33.4889752     -70.5186964
+  Sleep    3s
+Paso 245
+  Set Location    -33.4889752     -70.5186964
+  Sleep    3s
+Paso 246
+  Set Location    -33.4882884     -70.5192434
+  Sleep    3s
+Paso 247
+  Set Location    -33.4882884     -70.5192434
+  Sleep    3s
+Paso 248
+  Set Location    -33.4875488     -70.5190912
+  Sleep    3s
+Paso 249
+  Set Location    -33.4875488     -70.5190912
+  Sleep    3s
+Paso 250
+  Set Location    -33.4872337     -70.5188901
+  Sleep    3s
+Paso 251
+  Set Location    -33.4872337     -70.5188901
+  Sleep    3s
+Paso 252
+  Set Location    -33.4866046     -70.5186005
+  Sleep    3s
+Paso 253
+  Set Location    -33.4866046     -70.5186005
+  Sleep    3s
+Paso 254
+  Set Location    -33.4863948     -70.5186211
+  Sleep    3s
+Paso 255
+  Set Location    -33.4863948     -70.5186211
+  Sleep    3s
+Paso 256
+  Set Location    -33.4864135     -70.5186054
+  Sleep    3s
+Paso 257
+  Set Location    -33.4864135     -70.5186054
+  Sleep    3s
+Paso 258
+  Set Location    -33.4863963     -70.5185911
+  Sleep    3s
+Paso 259
+  Set Location    -33.4863963     -70.5185911
+  Sleep    3s
+Paso 260
+  Set Location    -33.4863786     -70.5186018
+  Sleep    3s
+Paso 261
+  Set Location    -33.4863786     -70.5186018
+  Sleep    3s
+Paso 262
+  Set Location    -33.4863698     -70.5186105
+  Sleep    3s
+Paso 263
+  Set Location    -33.4863698     -70.5186105
+  Sleep    3s
+Paso 264
+  Set Location    -33.4864512     -70.5187803
+  Sleep    3s
+Paso 265
+  Set Location    -33.4864512     -70.5187803
+  Sleep    3s
+Paso 266
+  Set Location    -33.4867258     -70.5189813
+  Sleep    3s
+Paso 267
+  Set Location    -33.4867258     -70.5189813
+  Sleep    3s
+Paso 268
+  Set Location    -33.4879969     -70.5193677
+  Sleep    3s
+Paso 269
+  Set Location    -33.4879969     -70.5193677
+  Sleep    3s
+Paso 270
+  Set Location    -33.4886831     -70.5189883
+  Sleep    3s
+Paso 271
+  Set Location    -33.4886831     -70.5189883
+  Sleep    3s
+Paso 272
+  Set Location    -33.4891379     -70.5186699
+  Sleep    3s
+Paso 273
+  Set Location    -33.4891379     -70.5186699
+  Sleep    3s
+Paso 274
+  Set Location    -33.489257     -70.5177963
+  Sleep    3s
+Paso 275
+  Set Location    -33.489257     -70.5177963
+  Sleep    3s
+Paso 276
+  Set Location    -33.4890705     -70.5165409
+  Sleep    3s
+Paso 277
+  Set Location    -33.4890705     -70.5165409
+  Sleep    3s
+Paso 278
+  Set Location    -33.4896208     -70.5161012
+  Sleep    3s
+Paso 279
+  Set Location    -33.4896208     -70.5161012
+  Sleep    3s
+Paso 280
+  Set Location    -33.4900749     -70.5161582
+  Sleep    3s
+Paso 281
+  Set Location    -33.4900749     -70.5161582
+  Sleep    3s
+Paso 282
+  Set Location    -33.4905367     -70.5153967
+  Sleep    3s
+Paso 283
+  Set Location    -33.4905367     -70.5153967
+  Sleep    3s
+Paso 284
+  Set Location    -33.4907922     -70.5146927
+  Sleep    3s
+Paso 285
+  Set Location    -33.4907922     -70.5146927
+  Sleep    3s
+Paso 286
+  Set Location    -33.4907947     -70.5144952
+  Sleep    3s
+Paso 287
+  Set Location    -33.4907947     -70.5144952
+  Sleep    3s
+Paso 288
+  Set Location    -33.4908246     -70.5141228
+  Sleep    3s
+Paso 289
+  Set Location    -33.4908246     -70.5141228
+  Sleep    3s
+Paso 290
+  Set Location    -33.4908836     -70.5139336
+  Sleep    3s
+Paso 291
+  Set Location    -33.4908836     -70.5139336
+  Sleep    3s
+Paso 292
+  Set Location    -33.4909479     -70.5138041
+  Sleep    3s
+Paso 293
+  Set Location    -33.4909479     -70.5138041
+  Sleep    3s
+Paso 294
+  Set Location    -33.490965     -70.5137422
+  Sleep    3s
+Paso 295
+  Set Location    -33.490965     -70.5137422
+  Sleep    3s
+Paso 296
+  Set Location    -33.4910138     -70.5136708
+  Sleep    3s
+Paso 297
+  Set Location    -33.4910138     -70.5136708
+  Sleep    3s
+Paso 298
+  Set Location    -33.4911135     -70.5136424
+  Sleep    3s
+Paso 299
+  Set Location    -33.4911135     -70.5136424
+  Sleep    3s
+Paso 300
+  Set Location    -33.4913014     -70.513514
+  Sleep    3s
+Paso 301
+  Set Location    -33.4913014     -70.513514
+  Sleep    3s
+Paso 302
+  Set Location    -33.4914797     -70.5133982
+  Sleep    3s
+Paso 303
+  Set Location    -33.4914797     -70.5133982
+  Sleep    3s
+Paso 304
+  Set Location    -33.4918564     -70.5134246
+  Sleep    3s
+Paso 305
+  Set Location    -33.4918564     -70.5134246
+  Sleep    3s
+Paso 306
+  Set Location    -33.4920546     -70.5135628
+  Sleep    3s
+Paso 307
+  Set Location    -33.4920546     -70.5135628
+  Sleep    3s
+Paso 308
+  Set Location    -33.4922502     -70.5135699
+  Sleep    3s
+Paso 309
+  Set Location    -33.4922502     -70.5135699
+  Sleep    3s
+Paso 310
+  Set Location    -33.4924005     -70.5134719
+  Sleep    3s
+Paso 311
+  Set Location    -33.4924005     -70.5134719
+  Sleep    3s
+Paso 312
+  Set Location    -33.49248     -70.5133862
+  Sleep    3s
+Paso 313
+  Set Location    -33.49248     -70.5133862
+  Sleep    3s
+Paso 314
+  Set Location    -33.4924886     -70.5133766
+  Sleep    3s
+Paso 315
+  Set Location    -33.4924886     -70.5133766
+  Sleep    3s
+Paso 316
+  Set Location    -33.4924884     -70.5133766
+  Sleep    3s
+Paso 317
+  Set Location    -33.4924884     -70.5133766
+  Sleep    3s
+Paso 318
+  Set Location    -33.4925385     -70.5133813
+  Sleep    3s
+Paso 319
+  Set Location    -33.4925385     -70.5133813
+  Sleep    3s
+Paso 320
+  Set Location    -33.4926299     -70.5131952
+  Sleep    3s
+Paso 321
+  Set Location    -33.4926299     -70.5131952
+  Sleep    3s
+Paso 322
+  Set Location    -33.49273     -70.5130587
+  Sleep    3s
+Paso 323
+  Set Location    -33.49273     -70.5130587
+  Sleep    3s
+Paso 324
+  Set Location    -33.4927283     -70.5130587
+  Sleep    3s
+Paso 325
+  Set Location    -33.4927283     -70.5130587
+  Sleep    3s
+Paso 326
+  Set Location    -33.4927281     -70.5130587
+  Sleep    3s
+Paso 327
+  Set Location    -33.4927281     -70.5130587
+  Sleep    3s
+Paso 328
+  Set Location    -33.4928776     -70.5128974
+  Sleep    3s
+Paso 329
+  Set Location    -33.4928776     -70.5128974
+  Sleep    3s
+Paso 330
+  Set Location    -33.4929014     -70.5128953
+  Sleep    3s
+Paso 331
+  Set Location    -33.4929014     -70.5128953
+  Sleep    3s
+Paso 332
+  Set Location    -33.4929023     -70.5129055
+  Sleep    3s
+Paso 333
+  Set Location    -33.4929023     -70.5129055
+  Sleep    3s
+Paso 334
+  Set Location    -33.4930131     -70.5128166
+  Sleep    3s
+Paso 335
+  Set Location    -33.4930131     -70.5128166
+  Sleep    3s
+Paso 336
+  Set Location    -33.4931838     -70.5126793
+  Sleep    3s
+Paso 337
+  Set Location    -33.4931838     -70.5126793
+  Sleep    3s
+Paso 338
+  Set Location    -33.4933789     -70.5124924
+  Sleep    3s
+Paso 339
+  Set Location    -33.4933789     -70.5124924
+  Sleep    3s
+Paso 340
+  Set Location    -33.493924     -70.5119015
+  Sleep    3s
+Paso 341
+  Set Location    -33.493924     -70.5119015
+  Sleep    3s
+Paso 342
+  Set Location    -33.4940004     -70.5117101
+  Sleep    3s
+Paso 343
+  Set Location    -33.4940004     -70.5117101
+  Sleep    3s
+Paso 344
+  Set Location    -33.4939829     -70.5118352
+  Sleep    3s
+Paso 345
+  Set Location    -33.4939829     -70.5118352
+  Sleep    3s
+Paso 346
+  Set Location    -33.4937829     -70.5120567
+  Sleep    3s
+Paso 347
+  Set Location    -33.4937829     -70.5120567
+  Sleep    3s
+Paso 348
+  Set Location    -33.4935074     -70.5123368
+  Sleep    3s
+Paso 349
+  Set Location    -33.4935074     -70.5123368
+  Sleep    3s
+Paso 350
+  Set Location    -33.4935137     -70.512339
+  Sleep    3s
+Paso 351
+  Set Location    -33.4935137     -70.512339
+  Sleep    3s
+Paso 352
+  Set Location    -33.493176     -70.5126879
+  Sleep    3s
+Paso 353
+  Set Location    -33.493176     -70.5126879
+  Sleep    3s
+Paso 354
+  Set Location    -33.4925879     -70.5131933
+  Sleep    3s
+Paso 355
+  Set Location    -33.4925879     -70.5131933
+  Sleep    3s
+Paso 356
+  Set Location    -33.4915095     -70.5134092
+  Sleep    3s
+Paso 357
+  Set Location    -33.4915095     -70.5134092
+  Sleep    3s
+Paso 358
+  Set Location    -33.4907231     -70.5141416
+  Sleep    3s
+Paso 359
+  Set Location    -33.4907231     -70.5141416
+  Sleep    3s
+Paso 360
+  Set Location    -33.4905801     -70.5146207
+  Sleep    3s
+Paso 361
+  Set Location    -33.4905801     -70.5146207
+  Sleep    3s
+Paso 362
+  Set Location    -33.4905309     -70.5149407
+  Sleep    3s
+Paso 363
+  Set Location    -33.4905309     -70.5149407
+  Sleep    3s
+Paso 364
+  Set Location    -33.4902109     -70.5157281
+  Sleep    3s
+Paso 365
+  Set Location    -33.4902109     -70.5157281
+  Sleep    3s
+Paso 366
+  Set Location    -33.489536     -70.5161104
+  Sleep    3s
+Paso 367
+  Set Location    -33.489536     -70.5161104
+  Sleep    3s
+Paso 368
+  Set Location    -33.4890433     -70.5163346
+  Sleep    3s
+Paso 369
+  Set Location    -33.4890433     -70.5163346
+  Sleep    3s
+Paso 370
+  Set Location    -33.489147     -70.5173401
+  Sleep    3s
+Paso 371
+  Set Location    -33.489147     -70.5173401
+  Sleep    3s
+Paso 372
+  Set Location    -33.4890846     -70.5182408
+  Sleep    3s
+Paso 373
+  Set Location    -33.4890846     -70.5182408
+  Sleep    3s
+Paso 374
+  Set Location    -33.4890803     -70.5185664
+  Sleep    3s
+Paso 375
+  Set Location    -33.4890803     -70.5185664
+  Sleep    3s
+Paso 376
+  Set Location    -33.4887584     -70.5188745
+  Sleep    3s
+Paso 377
+  Set Location    -33.4887584     -70.5188745
+  Sleep    3s
+Paso 378
+  Set Location    -33.4878627     -70.5193207
+  Sleep    3s
+Paso 379
+  Set Location    -33.4878627     -70.5193207
+  Sleep    3s
+Paso 380
+  Set Location    -33.4868545     -70.5187561
+  Sleep    3s
+Paso 381
+  Set Location    -33.4868545     -70.5187561
+  Sleep    3s
+Paso 382
+  Set Location    -33.4865369     -70.5186481
+  Sleep    3s
+Paso 383
+  Set Location    -33.4865369     -70.5186481
+  Sleep    3s
+Paso 384
+  Set Location    -33.4863507     -70.5186265
+  Sleep    3s
+Paso 385
+  Set Location    -33.4863507     -70.5186265
+  Sleep    3s
+Paso 386
+  Set Location    -33.4863566     -70.5186324
+  Sleep    3s
+Paso 387
+  Set Location    -33.4863566     -70.5186324
+  Sleep    3s
+Paso 388
+  Set Location    -33.4863672     -70.5186443
+  Sleep    3s
+Paso 389
+  Set Location    -33.4863672     -70.5186443
+  Sleep    3s
+Paso 390
+  Set Location    -33.4867357     -70.5190179
+  Sleep    3s
+Paso 391
+  Set Location    -33.4867357     -70.5190179
+  Sleep    3s
+Paso 392
+  Set Location    -33.4874275     -70.519427
+  Sleep    3s
+Paso 393
+  Set Location    -33.4874275     -70.519427
+  Sleep    3s
+Paso 394
+  Set Location    -33.4879476     -70.51938
+  Sleep    3s
+Paso 395
+  Set Location    -33.4879476     -70.51938
+  Sleep    3s
+Paso 396
+  Set Location    -33.4886345     -70.518997
+  Sleep    3s
+Paso 397
+  Set Location    -33.4886345     -70.518997
+  Sleep    3s
+Paso 398
+  Set Location    -33.4891175     -70.5186856
+  Sleep    3s
+Paso 399
+  Set Location    -33.4891175     -70.5186856
+  Sleep    3s
+Paso 400
+  Set Location    -33.4891635     -70.5181817
+  Sleep    3s
+Paso 401
+  Set Location    -33.4891635     -70.5181817
+  Sleep    3s
+Paso 402
+  Set Location    -33.4891874     -70.517079
+  Sleep    3s
+Paso 403
+  Set Location    -33.4891874     -70.517079
+  Sleep    3s
+Paso 404
+  Set Location    -33.4892496     -70.51615
+  Sleep    3s
+Paso 405
+  Set Location    -33.4892496     -70.51615
+  Sleep    3s
+Paso 406
+  Set Location    -33.4899585     -70.5161097
+  Sleep    3s
+Paso 407
+  Set Location    -33.4899585     -70.5161097
+  Sleep    3s
+Paso 408
+  Set Location    -33.4901048     -70.5161468
+  Sleep    3s
+Paso 409
+  Set Location    -33.4901048     -70.5161468
+  Sleep    3s
+Paso 410
+  Set Location    -33.4902602     -70.5159315
+  Sleep    3s
+Paso 411
+  Set Location    -33.4902602     -70.5159315
+  Sleep    3s
+Paso 412
+  Set Location    -33.4904247     -70.5156586
+  Sleep    3s
+Paso 413
+  Set Location    -33.4904247     -70.5156586
+  Sleep    3s
+Paso 414
+  Set Location    -33.490472     -70.5155096
+  Sleep    3s
+Paso 415
+  Set Location    -33.490472     -70.5155096
+  Sleep    3s
+Paso 416
+  Set Location    -33.4904952     -70.5154066
+  Sleep    3s
+Paso 417
+  Set Location    -33.4904952     -70.5154066
+  Sleep    3s
+Paso 418
+  Set Location    -33.4905414     -70.5152287
+  Sleep    3s
+Paso 419
+  Set Location    -33.4905414     -70.5152287
+  Sleep    3s
+Paso 420
+  Set Location    -33.4906924     -70.5149704
+  Sleep    3s
+Paso 421
+  Set Location    -33.4906924     -70.5149704
+  Sleep    3s
+Paso 422
+  Set Location    -33.490755     -70.5148826
+  Sleep    3s
+Paso 423
+  Set Location    -33.490755     -70.5148826
+  Sleep    3s
+Paso 424
+  Set Location    -33.4908259     -70.5145536
+  Sleep    3s
+Paso 425
+  Set Location    -33.4908259     -70.5145536
+  Sleep    3s
+Paso 426
+  Set Location    -33.4908346     -70.5145611
+  Sleep    3s
+Paso 427
+  Set Location    -33.4908346     -70.5145611
+  Sleep    3s
+Paso 428
+  Set Location    -33.490854     -70.5145615
+  Sleep    3s
+Paso 429
+  Set Location    -33.490854     -70.5145615
+  Sleep    3s
+Paso 430
+  Set Location    -33.4907789     -70.5144092
+  Sleep    3s
+Paso 431
+  Set Location    -33.4907789     -70.5144092
+  Sleep    3s
+Paso 432
+  Set Location    -33.4910118     -70.5136801
+  Sleep    3s
+Paso 433
+  Set Location    -33.4910118     -70.5136801
+  Sleep    3s
+Paso 434
+  Set Location    -33.4919651     -70.5134901
+  Sleep    3s
+Paso 435
+  Set Location    -33.4919651     -70.5134901
+  Sleep    3s
+Paso 436
+  Set Location    -33.4925957     -70.5131898
+  Sleep    3s
+Paso 437
+  Set Location    -33.4925957     -70.5131898
+  Sleep    3s
+Paso 438
+  Set Location    -33.4931333     -70.5127239
+  Sleep    3s
+Paso 439
+  Set Location    -33.4931333     -70.5127239
+  Sleep    3s
+Paso 440
+  Set Location    -33.4935499     -70.5123067
+  Sleep    3s
+Paso 441
+  Set Location    -33.4935499     -70.5123067
+  Sleep    3s
+Paso 442
+  Set Location    -33.4936355     -70.5122108
+  Sleep    3s
+Paso 443
+  Set Location    -33.4936355     -70.5122108
+  Sleep    3s
+Paso 444
+  Set Location    -33.4939704     -70.511725
+  Sleep    3s
+Paso 445
+  Set Location    -33.4939704     -70.511725
+  Sleep    3s
+Paso 446
+  Set Location    -33.4939002     -70.5119096
+  Sleep    3s
+Paso 447
+  Set Location    -33.4939002     -70.5119096
+  Sleep    3s
+Paso 448
+  Set Location    -33.4935516     -70.5123315
+  Sleep    3s
+Paso 449
+  Set Location    -33.4935516     -70.5123315
+  Sleep    3s
+Paso 450
+  Set Location    -33.4935485     -70.5123416
+  Sleep    3s
+Paso 451
+  Set Location    -33.4935485     -70.5123416
+  Sleep    3s
+Paso 452
+  Set Location    -33.4934599     -70.5124053
+  Sleep    3s
+Paso 453
+  Set Location    -33.4934599     -70.5124053
+  Sleep    3s
+Paso 454
+  Set Location    -33.4930988     -70.5127361
+  Sleep    3s
+Paso 455
+  Set Location    -33.4930988     -70.5127361
+  Sleep    3s
+Paso 456
+  Set Location    -33.4925841     -70.5131879
+  Sleep    3s
+Paso 457
+  Set Location    -33.4925841     -70.5131879
+  Sleep    3s
+Paso 458
+  Set Location    -33.4925747     -70.5132759
+  Sleep    3s
+Paso 459
+  Set Location    -33.4925747     -70.5132759
+  Sleep    3s
+Paso 460
+  Set Location    -33.4918165     -70.5133408
+  Sleep    3s
+Paso 461
+  Set Location    -33.4918165     -70.5133408
+  Sleep    3s
+Paso 462
+  Set Location    -33.490821     -70.513944
+  Sleep    3s
+Paso 463
+  Set Location    -33.490821     -70.513944
+  Sleep    3s
+Paso 464
+  Set Location    -33.4906764     -70.5145555
+  Sleep    3s
+Paso 465
+  Set Location    -33.4906764     -70.5145555
+  Sleep    3s
+Paso 466
+  Set Location    -33.4906098     -70.5146146
+  Sleep    3s
+Paso 467
+  Set Location    -33.4906098     -70.5146146
+  Sleep    3s
+Paso 468
+  Set Location    -33.4905056     -70.5151452
+  Sleep    3s
+Paso 469
+  Set Location    -33.4905056     -70.5151452
+  Sleep    3s
+Paso 470
+  Set Location    -33.4902753     -70.5157537
+  Sleep    3s
+Paso 471
+  Set Location    -33.4902753     -70.5157537
+  Sleep    3s
+Paso 472
+  Set Location    -33.4893998     -70.5161514
+  Sleep    3s
+Paso 473
+  Set Location    -33.4893998     -70.5161514
+  Sleep    3s
+Paso 474
+  Set Location    -33.4890702     -70.5168252
+  Sleep    3s
+Paso 475
+  Set Location    -33.4890702     -70.5168252
+  Sleep    3s
+Paso 476
+  Set Location    -33.489297     -70.5178032
+  Sleep    3s
+Paso 477
+  Set Location    -33.489297     -70.5178032
+  Sleep    3s
+Paso 478
+  Set Location    -33.4891944     -70.5184161
+  Sleep    3s
+Paso 479
+  Set Location    -33.4891944     -70.5184161
+  Sleep    3s
+Paso 480
+  Set Location    -33.4887618     -70.5190194
+  Sleep    3s
+Paso 481
+  Set Location    -33.4887618     -70.5190194
+  Sleep    3s
+Paso 482
+  Set Location    -33.4878802     -70.5192308
+  Sleep    3s
+Paso 483
+  Set Location    -33.4878802     -70.5192308
+  Sleep    3s
+Paso 484
+  Set Location    -33.4871377     -70.5188371
+  Sleep    3s
+Paso 485
+  Set Location    -33.4871377     -70.5188371
+  Sleep    3s
+Paso 486
+  Set Location    -33.4868687     -70.5186907
+  Sleep    3s
+Paso 487
+  Set Location    -33.4868687     -70.5186907
+  Sleep    3s
+Paso 488
+  Set Location    -33.4868548     -70.518696
+  Sleep    3s
+Paso 489
+  Set Location    -33.4868548     -70.518696
+  Sleep    3s
+Paso 490
+  Set Location    -33.4868544     -70.5186961
+  Sleep    3s
+Paso 491
+  Set Location    -33.4868544     -70.5186961
+  Sleep    3s
+Paso 492
+  Set Location    -33.4868523     -70.5186938
+  Sleep    3s
+Paso 493
+  Set Location    -33.4868523     -70.5186938
+  Sleep    3s
+Paso 494
+  Set Location    -33.4868309     -70.5187078
+  Sleep    3s
+Paso 495
+  Set Location    -33.4868309     -70.5187078
+  Sleep    3s
+Paso 496
+  Set Location    -33.486798     -70.5187141
+  Sleep    3s
+Paso 497
+  Set Location    -33.486798     -70.5187141
+  Sleep    3s
+Paso 498
+  Set Location    -33.4863911     -70.5186509
+  Sleep    3s
+Paso 499
+  Set Location    -33.4863911     -70.5186509
+  Sleep    3s
+Paso 500
+  Set Location    -33.4863847     -70.5186483
+  Sleep    3s
+Paso 501
+  Set Location    -33.4863847     -70.5186483
+  Sleep    3s
+Paso 502
+  Set Location    -33.4865912     -70.518915
+  Sleep    3s
+Paso 503
+  Set Location    -33.4865912     -70.518915
+  Sleep    3s
+Paso 504
+  Set Location    -33.4876517     -70.5194343
+  Sleep    3s
+Paso 505
+  Set Location    -33.4876517     -70.5194343
+  Sleep    3s
+Paso 506
+  Set Location    -33.4880871     -70.5192812
+  Sleep    3s
+Paso 507
+  Set Location    -33.4880871     -70.5192812
+  Sleep    3s
+Paso 508
+  Set Location    -33.4890207     -70.5187135
+  Sleep    3s
+Paso 509
+  Set Location    -33.4890207     -70.5187135
+  Sleep    3s
+Paso 510
+  Set Location    -33.4891796     -70.5181806
+  Sleep    3s
+Paso 511
+  Set Location    -33.4891796     -70.5181806
+  Sleep    3s
+Paso 512
+  Set Location    -33.489159     -70.5169938
+  Sleep    3s
+Paso 513
+  Set Location    -33.489159     -70.5169938
+  Sleep    3s
+Paso 514
+  Set Location    -33.4894957     -70.5161652
+  Sleep    3s
+Paso 515
+  Set Location    -33.4894957     -70.5161652
+  Sleep    3s
+Paso 516
+  Set Location    -33.489918     -70.5161468
+  Sleep    3s
+Paso 517
+  Set Location    -33.489918     -70.5161468
+  Sleep    3s
+Paso 518
+  Set Location    -33.4899531     -70.5161655
+  Sleep    3s
+Paso 519
+  Set Location    -33.4899531     -70.5161655
+  Sleep    3s
+Paso 520
+  Set Location    -33.4899736     -70.5161699
+  Sleep    3s
+Paso 521
+  Set Location    -33.4899736     -70.5161699
+  Sleep    3s
+Paso 522
+  Set Location    -33.4900165     -70.5161628
+  Sleep    3s
+Paso 523
+  Set Location    -33.4900165     -70.5161628
+  Sleep    3s
+Paso 524
+  Set Location    -33.4900537     -70.5161488
+  Sleep    3s
+Paso 525
+  Set Location    -33.4900537     -70.5161488
+  Sleep    3s
+Paso 526
+  Set Location    -33.4901106     -70.5160725
+  Sleep    3s
+Paso 527
+  Set Location    -33.4901106     -70.5160725
+  Sleep    3s
+Paso 528
+  Set Location    -33.4902388     -70.5158296
+  Sleep    3s
+Paso 529
+  Set Location    -33.4902388     -70.5158296
+  Sleep    3s
+Paso 530
+  Set Location    -33.4902385     -70.5158299
+  Sleep    3s
+Paso 531
+  Set Location    -33.4902385     -70.5158299
+  Sleep    3s
+Paso 532
+  Set Location    -33.4903568     -70.5156118
+  Sleep    3s
+Paso 533
+  Set Location    -33.4903568     -70.5156118
+  Sleep    3s
+Paso 534
+  Set Location    -33.4906213     -70.5150631
+  Sleep    3s
+Paso 535
+  Set Location    -33.4906213     -70.5150631
+  Sleep    3s
+Paso 536
+  Set Location    -33.4907474     -70.5147482
+  Sleep    3s
+Paso 537
+  Set Location    -33.4907474     -70.5147482
+  Sleep    3s
+Paso 538
+  Set Location    -33.4907715     -70.5145326
+  Sleep    3s
+Paso 539
+  Set Location    -33.4907715     -70.5145326
+  Sleep    3s
+Paso 540
+  Set Location    -33.4907721     -70.5145341
+  Sleep    3s
+Paso 541
+  Set Location    -33.4907721     -70.5145341
+  Sleep    3s
+Paso 542
+  Set Location    -33.4907456     -70.5141168
+  Sleep    3s
+Paso 543
+  Set Location    -33.4907456     -70.5141168
+  Sleep    3s
+Paso 544
+  Set Location    -33.4912952     -70.5134736
+  Sleep    3s
+Paso 545
+  Set Location    -33.4912952     -70.5134736
+  Sleep    3s
+Paso 546
+  Set Location    -33.4922868     -70.5134883
+  Sleep    3s
+Paso 547
+  Set Location    -33.4922868     -70.5134883
+  Sleep    3s
+Paso 548
+  Set Location    -33.4923364     -70.5134699
+  Sleep    3s
+Paso 549
+  Set Location    -33.4923364     -70.5134699
+  Sleep    3s
+Paso 550
+  Set Location    -33.4923337     -70.5134547
+  Sleep    3s
+Paso 551
+  Set Location    -33.4923337     -70.5134547
+  Sleep    3s
+Paso 552
+  Set Location    -33.492697     -70.5129827
+  Sleep    3s
+Paso 553
+  Set Location    -33.492697     -70.5129827
+  Sleep    3s
+Paso 554
+  Set Location    -33.4930864     -70.5126718
+  Sleep    3s
+Paso 555
+  Set Location    -33.4930864     -70.5126718
+  Sleep    3s
+Paso 556
+  Set Location    -33.493121     -70.5126413
+  Sleep    3s
+Paso 557
+  Set Location    -33.493121     -70.5126413
+  Sleep    3s
+Paso 558
+  Set Location    -33.4934059     -70.5124004
+  Sleep    3s
+Paso 559
+  Set Location    -33.4934059     -70.5124004
+  Sleep    3s
+Paso 560
+  Set Location    -33.4936062     -70.5122063
+  Sleep    3s
+Paso 561
+  Set Location    -33.4936062     -70.5122063
+  Sleep    3s
+Paso 562
+  Set Location    -33.4937666     -70.5119542
+  Sleep    3s
+Paso 563
+  Set Location    -33.4937666     -70.5119542
+  Sleep    3s
+Paso 564
+  Set Location    -33.4938231     -70.5117339
+  Sleep    3s
+Paso 565
+  Set Location    -33.4938231     -70.5117339
+  Sleep    3s
+Paso 566
+  Set Location    -33.4938387     -70.5118406
+  Sleep    3s
+Paso 567
+  Set Location    -33.4938387     -70.5118406
+  Sleep    3s
+Paso 568
+  Set Location    -33.4934748     -70.5123054
+  Sleep    3s
+Paso 569
+  Set Location    -33.4934748     -70.5123054
+  Sleep    3s
+Paso 570
+  Set Location    -33.4934763     -70.512315
+  Sleep    3s
+Paso 571
+  Set Location    -33.4934763     -70.512315
+  Sleep    3s
+Paso 572
+  Set Location    -33.4934519     -70.5123326
+  Sleep    3s
+Paso 573
+  Set Location    -33.4934519     -70.5123326
+  Sleep    3s
+Paso 574
+  Set Location    -33.4928159     -70.5128456
+  Sleep    3s
+Paso 575
+  Set Location    -33.4928159     -70.5128456
+  Sleep    3s
+Paso 576
+  Set Location    -33.4926786     -70.5129206
+  Sleep    3s
+Paso 577
+  Set Location    -33.4926786     -70.5129206
+  Sleep    3s
+Paso 578
+  Set Location    -33.4916472     -70.5133259
+  Sleep    3s
+Paso 579
+  Set Location    -33.4916472     -70.5133259
+  Sleep    3s
+Paso 580
+  Set Location    -33.4907999     -70.5138778
+  Sleep    3s
+Paso 581
+  Set Location    -33.4907999     -70.5138778
+  Sleep    3s
+Paso 582
+  Set Location    -33.4907088     -70.5144992
+  Sleep    3s
+Paso 583
+  Set Location    -33.4907088     -70.5144992
+  Sleep    3s
+Paso 584
+  Set Location    -33.4906327     -70.5145829
+  Sleep    3s
+Paso 585
+  Set Location    -33.4906327     -70.5145829
+  Sleep    3s
+Paso 586
+  Set Location    -33.4906266     -70.5146127
+  Sleep    3s
+Paso 587
+  Set Location    -33.4906266     -70.5146127
+  Sleep    3s
+Paso 588
+  Set Location    -33.4906186     -70.5147677
+  Sleep    3s
+Paso 589
+  Set Location    -33.4906186     -70.5147677
+  Sleep    3s
+Paso 590
+  Set Location    -33.4902242     -70.5157798
+  Sleep    3s
+Paso 591
+  Set Location    -33.4902242     -70.5157798
+  Sleep    3s
+Paso 592
+  Set Location    -33.4890933     -70.516311
+  Sleep    3s
+Paso 593
+  Set Location    -33.4890933     -70.516311
+  Sleep    3s
+Paso 594
+  Set Location    -33.4892639     -70.517971
+  Sleep    3s
+Paso 595
+  Set Location    -33.4892639     -70.517971
+  Sleep    3s
+Paso 596
+  Set Location    -33.4887725     -70.5190037
+  Sleep    3s
+Paso 597
+  Set Location    -33.4887725     -70.5190037
+  Sleep    3s
+Paso 598
+  Set Location    -33.4882336     -70.5193362
+  Sleep    3s
+Paso 599
+  Set Location    -33.4882336     -70.5193362
+  Sleep    3s
+Paso 600
+  Set Location    -33.4868068     -70.5186631
+  Sleep    3s
+Paso 601
+  Set Location    -33.4868068     -70.5186631
+  Sleep    3s
+Paso 602
+  Set Location    -33.4865119     -70.5186543
+  Sleep    3s
+Paso 603
+  Set Location    -33.4865119     -70.5186543
+  Sleep    3s
+Paso 604
+  Set Location    -33.4864563     -70.5186644
+  Sleep    3s
+Paso 605
+  Set Location    -33.4864563     -70.5186644
+  Sleep    3s
+Paso 606
+  Set Location    -33.4864582     -70.518647
+  Sleep    3s
+Paso 607
+  Set Location    -33.4864582     -70.518647
+  Sleep    3s
+Paso 608
+  Set Location    -33.4864617     -70.5186094
+  Sleep    3s
+Paso 609
+  Set Location    -33.4864617     -70.5186094
+  Sleep    3s
+Paso 610
+  Set Location    -33.4867553     -70.5189796
+  Sleep    3s
+Paso 611
+  Set Location    -33.4867553     -70.5189796
+  Sleep    3s
+Paso 612
+  Set Location    -33.4878398     -70.5193953
+  Sleep    3s
+Paso 613
+  Set Location    -33.4878398     -70.5193953
+  Sleep    3s
+Paso 614
+  Set Location    -33.4887583     -70.5188529
+  Sleep    3s
+Paso 615
+  Set Location    -33.4887583     -70.5188529
+  Sleep    3s
+Paso 616
+  Set Location    -33.4891518     -70.5185534
+  Sleep    3s
+Paso 617
+  Set Location    -33.4891518     -70.5185534
+  Sleep    3s
+Paso 618
+  Set Location    -33.4892374     -70.5176563
+  Sleep    3s
+Paso 619
+  Set Location    -33.4892374     -70.5176563
+  Sleep    3s
+Paso 620
+  Set Location    -33.489019     -70.5165771
+  Sleep    3s
+Paso 621
+  Set Location    -33.489019     -70.5165771
+  Sleep    3s
+Paso 622
+  Set Location    -33.4899328     -70.5161292
+  Sleep    3s
+Paso 623
+  Set Location    -33.4899328     -70.5161292
+  Sleep    3s
+Paso 624
+  Set Location    -33.4904541     -70.5153506
+  Sleep    3s
+Paso 625
+  Set Location    -33.4904541     -70.5153506
+  Sleep    3s
+Paso 626
+  Set Location    -33.4907131     -70.5145832
+  Sleep    3s
+Paso 627
+  Set Location    -33.4907131     -70.5145832
+  Sleep    3s
+Paso 628
+  Set Location    -33.4906802     -70.5145484
+  Sleep    3s
+Paso 629
+  Set Location    -33.4906802     -70.5145484
+  Sleep    3s
+Paso 630
+  Set Location    -33.4906783     -70.5145447
+  Sleep    3s
+Paso 631
+  Set Location    -33.4906783     -70.5145447
+  Sleep    3s
+Paso 632
+  Set Location    -33.4906338     -70.5143708
+  Sleep    3s
+Paso 633
+  Set Location    -33.4906338     -70.5143708
+  Sleep    3s
+Paso 634
+  Set Location    -33.4908886     -70.5136743
+  Sleep    3s
+Paso 635
+  Set Location    -33.4908886     -70.5136743
+  Sleep    3s
+Paso 636
+  Set Location    -33.491061     -70.5136045
+  Sleep    3s
+Paso 637
+  Set Location    -33.491061     -70.5136045
+  Sleep    3s
+Paso 638
+  Set Location    -33.4920161     -70.5135648
+  Sleep    3s
+Paso 639
+  Set Location    -33.4920161     -70.5135648
+  Sleep    3s
+Paso 640
+  Set Location    -33.492486     -70.513177
+  Sleep    3s
+Paso 641
+  Set Location    -33.492486     -70.513177
+  Sleep    3s
+Paso 642
+  Set Location    -33.4930285     -70.5127038
+  Sleep    3s
+Paso 643
+  Set Location    -33.4930285     -70.5127038
+  Sleep    3s
+Paso 644
+  Set Location    -33.4933824     -70.5124172
+  Sleep    3s
+Paso 645
+  Set Location    -33.4933824     -70.5124172
+  Sleep    3s
+Paso 646
+  Set Location    -33.4936972     -70.512094
+  Sleep    3s
+Paso 647
+  Set Location    -33.4936972     -70.512094
+  Sleep    3s
+Paso 648
+  Set Location    -33.4938071     -70.5119341
+  Sleep    3s
+Paso 649
+  Set Location    -33.4938071     -70.5119341
+  Sleep    3s
+Paso 650
+  Set Location    -33.4938249     -70.5117991
+  Sleep    3s
+Paso 651
+  Set Location    -33.4938249     -70.5117991
+  Sleep    3s
+Paso 652
+  Set Location    -33.4938241     -70.5118141
+  Sleep    3s
+Paso 653
+  Set Location    -33.4938241     -70.5118141
+  Sleep    3s
+Paso 654
+  Set Location    -33.4938194     -70.5118159
+  Sleep    3s
+Paso 655
+  Set Location    -33.4938194     -70.5118159
+  Sleep    3s
+Paso 656
+  Set Location    -33.4938022     -70.5118797
+  Sleep    3s
+Paso 657
+  Set Location    -33.4938022     -70.5118797
+  Sleep    3s
+Paso 658
+  Set Location    -33.4937417     -70.5119423
+  Sleep    3s
+Paso 659
+  Set Location    -33.4937417     -70.5119423
+  Sleep    3s
+Paso 660
+  Set Location    -33.4933915     -70.5123605
+  Sleep    3s
+Paso 661
+  Set Location    -33.4933915     -70.5123605
+  Sleep    3s
+Paso 662
+  Set Location    -33.4933963     -70.5123624
+  Sleep    3s
+Paso 663
+  Set Location    -33.4933963     -70.5123624
+  Sleep    3s
+Paso 664
+  Set Location    -33.4932469     -70.5125078
+  Sleep    3s
+Paso 665
+  Set Location    -33.4932469     -70.5125078
+  Sleep    3s
+Paso 666
+  Set Location    -33.4923673     -70.513353
+  Sleep    3s
+Paso 667
+  Set Location    -33.4923673     -70.513353
+  Sleep    3s
+Paso 668
+  Set Location    -33.4912856     -70.5135409
+  Sleep    3s
+Paso 669
+  Set Location    -33.4912856     -70.5135409
+  Sleep    3s
+Paso 670
+  Set Location    -33.4907141     -70.5141111
+  Sleep    3s
+Paso 671
+  Set Location    -33.4907141     -70.5141111
+  Sleep    3s
+Paso 672
+  Set Location    -33.4906881     -70.5144678
+  Sleep    3s
+Paso 673
+  Set Location    -33.4906881     -70.5144678
+  Sleep    3s
+Paso 674
+  Set Location    -33.4906164     -70.5146068
+  Sleep    3s
+Paso 675
+  Set Location    -33.4906164     -70.5146068
+  Sleep    3s
+Paso 676
+  Set Location    -33.4905831     -70.5148061
+  Sleep    3s
+Paso 677
+  Set Location    -33.4905831     -70.5148061
+  Sleep    3s
+Paso 678
+  Set Location    -33.4902869     -70.5156826
+  Sleep    3s
+Paso 679
+  Set Location    -33.4902869     -70.5156826
+  Sleep    3s
+Paso 680
+  Set Location    -33.4894169     -70.5161461
+  Sleep    3s
+Paso 681
+  Set Location    -33.4894169     -70.5161461
+  Sleep    3s
+Paso 682
+  Set Location    -33.489125     -70.5171618
+  Sleep    3s
+Paso 683
+  Set Location    -33.489125     -70.5171618
+  Sleep    3s
+Paso 684
+  Set Location    -33.4891187     -70.5185098
+  Sleep    3s
+Paso 685
+  Set Location    -33.4891187     -70.5185098
+  Sleep    3s
+Paso 686
+  Set Location    -33.4881799     -70.5192957
+  Sleep    3s
+Paso 687
+  Set Location    -33.4881799     -70.5192957
+  Sleep    3s
+Paso 688
+  Set Location    -33.4868913     -70.5187317
+  Sleep    3s
+Paso 689
+  Set Location    -33.4868913     -70.5187317
+  Sleep    3s
+Paso 690
+  Set Location    -33.4863943     -70.5186468
+  Sleep    3s
+Paso 691
+  Set Location    -33.4863943     -70.5186468
+  Sleep    3s
+Paso 692
+  Set Location    -33.4863702     -70.5186171
+  Sleep    3s
+Paso 693
+  Set Location    -33.4863702     -70.5186171
+  Sleep    3s
+Paso 694
+  Set Location    -33.4863766     -70.5186097
+  Sleep    3s
+Paso 695
+  Set Location    -33.4863766     -70.5186097
+  Sleep    3s
+Paso 696
+  Set Location    -33.4863751     -70.5186091
+  Sleep    3s
+Paso 697
+  Set Location    -33.4863751     -70.5186091
+  Sleep    3s
+Paso 698
+  Set Location    -33.486339     -70.5186392
+  Sleep    3s
+Paso 699
+  Set Location    -33.486339     -70.5186392
+  Sleep    3s
+Paso 700
+  Set Location    -33.4866381     -70.5189642
+  Sleep    3s
+Paso 701
+  Set Location    -33.4866381     -70.5189642
+  Sleep    3s
+Paso 702
+  Set Location    -33.4877699     -70.5194302
+  Sleep    3s
+Paso 703
+  Set Location    -33.4877699     -70.5194302
+  Sleep    3s
+Paso 704
+  Set Location    -33.4879523     -70.5193623
+  Sleep    3s
+Paso 705
+  Set Location    -33.4879523     -70.5193623
+  Sleep    3s
+Paso 706
+  Set Location    -33.4883037     -70.519217
+  Sleep    3s
+Paso 707
+  Set Location    -33.4883037     -70.519217
+  Sleep    3s
+Paso 708
+  Set Location    -33.4890182     -70.5187141
+  Sleep    3s
+Paso 709
+  Set Location    -33.4890182     -70.5187141
+  Sleep    3s
+Paso 710
+  Set Location    -33.4891269     -70.5181435
+  Sleep    3s
+Paso 711
+  Set Location    -33.4891269     -70.5181435
+  Sleep    3s
+Paso 712
+  Set Location    -33.4891207     -70.517046
+  Sleep    3s
+Paso 713
+  Set Location    -33.4891207     -70.517046
+  Sleep    3s
+Paso 714
+  Set Location    -33.4890813     -70.5162375
+  Sleep    3s
+Paso 715
+  Set Location    -33.4890813     -70.5162375
+  Sleep    3s
+Paso 716
+  Set Location    -33.4899965     -70.516177
+  Sleep    3s
+Paso 717
+  Set Location    -33.4899965     -70.516177
+  Sleep    3s
+Paso 718
+  Set Location    -33.4900815     -70.5161106
+  Sleep    3s
+Paso 719
+  Set Location    -33.4900815     -70.5161106
+  Sleep    3s
+Paso 720
+  Set Location    -33.490382     -70.5155496
+  Sleep    3s
+Paso 721
+  Set Location    -33.490382     -70.5155496
+  Sleep    3s
+Paso 722
+  Set Location    -33.4906412     -70.5149229
+  Sleep    3s
+Paso 723
+  Set Location    -33.4906412     -70.5149229
+  Sleep    3s
+Paso 724
+  Set Location    -33.4907098     -70.5145644
+  Sleep    3s
+Paso 725
+  Set Location    -33.4907098     -70.5145644
+  Sleep    3s
+Paso 726
+  Set Location    -33.4907098     -70.5145645
+  Sleep    3s
+Paso 727
+  Set Location    -33.4907098     -70.5145645
+  Sleep    3s
+Paso 728
+  Set Location    -33.490689     -70.5145255
+  Sleep    3s
+Paso 729
+  Set Location    -33.490689     -70.5145255
+  Sleep    3s
+Paso 730
+  Set Location    -33.4906368     -70.5143071
+  Sleep    3s
+Paso 731
+  Set Location    -33.4906368     -70.5143071
+  Sleep    3s
+Paso 732
+  Set Location    -33.490689     -70.5140265
+  Sleep    3s
+Paso 733
+  Set Location    -33.490689     -70.5140265
+  Sleep    3s
+Paso 734
+  Set Location    -33.4913089     -70.5134895
+  Sleep    3s
+Paso 735
+  Set Location    -33.4913089     -70.5134895
+  Sleep    3s
+Paso 736
+  Set Location    -33.4922359     -70.5134389
+  Sleep    3s
+Paso 737
+  Set Location    -33.4922359     -70.5134389
+  Sleep    3s
+Paso 738
+  Set Location    -33.4927803     -70.5128194
+  Sleep    3s
+Paso 739
+  Set Location    -33.4927803     -70.5128194
+  Sleep    3s
+Paso 740
+  Set Location    -33.493404     -70.5123567
+  Sleep    3s
+Paso 741
+  Set Location    -33.493404     -70.5123567
+  Sleep    3s
+Paso 742
+  Set Location    -33.4936446     -70.5121078
+  Sleep    3s
+Paso 743
+  Set Location    -33.4936446     -70.5121078
+  Sleep    3s
+Paso 744
+  Set Location    -33.4937379     -70.5119792
+  Sleep    3s
+Paso 745
+  Set Location    -33.4937379     -70.5119792
+  Sleep    3s
+Paso 746
+  Set Location    -33.4937808     -70.511918
+  Sleep    3s
+Paso 747
+  Set Location    -33.4937808     -70.511918
+  Sleep    3s
+Paso 748
+  Set Location    -33.4938552     -70.5117277
+  Sleep    3s
+Paso 749
+  Set Location    -33.4938552     -70.5117277
+  Sleep    3s
+Paso 750
+  Set Location    -33.4938555     -70.5117278
+  Sleep    3s
+Paso 751
+  Set Location    -33.4938555     -70.5117278
+  Sleep    3s
+Paso 752
+  Set Location    -33.4938403     -70.5117513
+  Sleep    3s
+Paso 753
+  Set Location    -33.4938403     -70.5117513
+  Sleep    3s
+Paso 754
+  Set Location    -33.4938322     -70.5118388
+  Sleep    3s
+Paso 755
+  Set Location    -33.4938322     -70.5118388
+  Sleep    3s
+Paso 756
+  Set Location    -33.4937567     -70.5119353
+  Sleep    3s
+Paso 757
+  Set Location    -33.4937567     -70.5119353
+  Sleep    3s
+Paso 758
+  Set Location    -33.4934972     -70.5123184
+  Sleep    3s
+Paso 759
+  Set Location    -33.4934972     -70.5123184
+  Sleep    3s
+Paso 760
+  Set Location    -33.4934615     -70.5123461
+  Sleep    3s
+Paso 761
+  Set Location    -33.4934615     -70.5123461
+  Sleep    3s
+Paso 762
+  Set Location    -33.4934455     -70.5123513
+  Sleep    3s
+Paso 763
+  Set Location    -33.4934455     -70.5123513
+  Sleep    3s
+Paso 764
+  Set Location    -33.4934275     -70.5123609
+  Sleep    3s
+Paso 765
+  Set Location    -33.4934275     -70.5123609
+  Sleep    3s
+Paso 766
+  Set Location    -33.4933632     -70.5124126
+  Sleep    3s
+Paso 767
+  Set Location    -33.4933632     -70.5124126
+  Sleep    3s
+Paso 768
+  Set Location    -33.4926815     -70.513002
+  Sleep    3s
+Paso 769
+  Set Location    -33.4926815     -70.513002
+  Sleep    3s
+Paso 770
+  Set Location    -33.4918793     -70.5134525
+  Sleep    3s
+Paso 771
+  Set Location    -33.4918793     -70.5134525
+  Sleep    3s
+Paso 772
+  Set Location    -33.4908659     -70.5138089
+  Sleep    3s
+Paso 773
+  Set Location    -33.4908659     -70.5138089
+  Sleep    3s
+Paso 774
+  Set Location    -33.4907383     -70.514433
+  Sleep    3s
+Paso 775
+  Set Location    -33.4907383     -70.514433
+  Sleep    3s
+Paso 776
+  Set Location    -33.4906505     -70.5145954
+  Sleep    3s
+Paso 777
+  Set Location    -33.4906505     -70.5145954
+  Sleep    3s
+Paso 778
+  Set Location    -33.4905606     -70.514987
+  Sleep    3s
+Paso 779
+  Set Location    -33.4905606     -70.514987
+  Sleep    3s
+Paso 780
+  Set Location    -33.4900741     -70.5160101
+  Sleep    3s
+Paso 781
+  Set Location    -33.4900741     -70.5160101
+  Sleep    3s
+Paso 782
+  Set Location    -33.4890702     -70.516362
+  Sleep    3s
+Paso 783
+  Set Location    -33.4890702     -70.516362
+  Sleep    3s
+Paso 784
+  Set Location    -33.4892472     -70.5179001
+  Sleep    3s
+Paso 785
+  Set Location    -33.4892472     -70.5179001
+  Sleep    3s
+Paso 786
+  Set Location    -33.4887887     -70.5188808
+  Sleep    3s
+Paso 787
+  Set Location    -33.4887887     -70.5188808
+  Sleep    3s
+Paso 788
+  Set Location    -33.4877269     -70.5192133
+  Sleep    3s
+Paso 789
+  Set Location    -33.4877269     -70.5192133
+  Sleep    3s
+Paso 790
+  Set Location    -33.4866685     -70.5186598
+  Sleep    3s
+Paso 791
+  Set Location    -33.4866685     -70.5186598
+  Sleep    3s
+Paso 792
+  Set Location    -33.4863938     -70.5187556
+  Sleep    3s
+Paso 793
+  Set Location    -33.4863938     -70.5187556
+  Sleep    3s
+Paso 794
+  Set Location    -33.4872419     -70.5192844
+  Sleep    3s
+Paso 795
+  Set Location    -33.4872419     -70.5192844
+  Sleep    3s
+Paso 796
+  Set Location    -33.4872473     -70.5192873
+  Sleep    3s
+Paso 797
+  Set Location    -33.4872473     -70.5192873
+  Sleep    3s
+Paso 798
+  Set Location    -33.4872565     -70.519286
+  Sleep    3s
+Paso 799
+  Set Location    -33.4872565     -70.519286
+  Sleep    3s
+Paso 800
+  Set Location    -33.4880032     -70.5193587
+  Sleep    3s
+Paso 801
+  Set Location    -33.4880032     -70.5193587
+  Sleep    3s
+Paso 802
+  Set Location    -33.4880102     -70.5193431
+  Sleep    3s
+Paso 803
+  Set Location    -33.4880102     -70.5193431
+  Sleep    3s
+Paso 804
+  Set Location    -33.4888789     -70.5187467
+  Sleep    3s
+Paso 805
+  Set Location    -33.4888789     -70.5187467
+  Sleep    3s
+Paso 806
+  Set Location    -33.4891565     -70.5185094
+  Sleep    3s
+Paso 807
+  Set Location    -33.4891565     -70.5185094
+  Sleep    3s
+Paso 808
+  Set Location    -33.4892294     -70.5175893
+  Sleep    3s
+Paso 809
+  Set Location    -33.4892294     -70.5175893
+  Sleep    3s
+Paso 810
+  Set Location    -33.4890252     -70.5162555
+  Sleep    3s
+Paso 811
+  Set Location    -33.4890252     -70.5162555
+  Sleep    3s
+Paso 812
+  Set Location    -33.4899728     -70.5161647
+  Sleep    3s
+Paso 813
+  Set Location    -33.4899728     -70.5161647
+  Sleep    3s
+Paso 814
+  Set Location    -33.4905449     -70.5152639
+  Sleep    3s
+Paso 815
+  Set Location    -33.4905449     -70.5152639
+  Sleep    3s
+Paso 816
+  Set Location    -33.4906329     -70.5143094
+  Sleep    3s
+Paso 817
+  Set Location    -33.4906329     -70.5143094
+  Sleep    3s
+Paso 818
+  Set Location    -33.4909567     -70.5136226
+  Sleep    3s
+Paso 819
+  Set Location    -33.4909567     -70.5136226
+  Sleep    3s
+Paso 820
+  Set Location    -33.491932     -70.5135366
+  Sleep    3s
+Paso 821
+  Set Location    -33.491932     -70.5135366
+  Sleep    3s
+Paso 822
+  Set Location    -33.4925974     -70.5130555
+  Sleep    3s
+Paso 823
+  Set Location    -33.4925974     -70.5130555
+  Sleep    3s
+Paso 824
+  Set Location    -33.4932     -70.512581
+  Sleep    3s
+Paso 825
+  Set Location    -33.4932     -70.512581
+  Sleep    3s
+Paso 826
+  Set Location    -33.493422     -70.5124044
+  Sleep    3s
+Paso 827
+  Set Location    -33.493422     -70.5124044
+  Sleep    3s
+Paso 828
+  Set Location    -33.4938743     -70.5118778
+  Sleep    3s
+Paso 829
+  Set Location    -33.4938743     -70.5118778
+  Sleep    3s
+Paso 830
+  Set Location    -33.4939108     -70.5118228
+  Sleep    3s
+Paso 831
+  Set Location    -33.4939108     -70.5118228
+  Sleep    3s
+Paso 832
+  Set Location    -33.4937156     -70.5121053
+  Sleep    3s
+Paso 833
+  Set Location    -33.4937156     -70.5121053
+  Sleep    3s
+Paso 834
+  Set Location    -33.4935614     -70.5122667
+  Sleep    3s
+Paso 835
+  Set Location    -33.4935614     -70.5122667
+  Sleep    3s
+Paso 836
+  Set Location    -33.4935007     -70.5123083
+  Sleep    3s
+Paso 837
+  Set Location    -33.4935007     -70.5123083
+  Sleep    3s
+Paso 838
+  Set Location    -33.4934633     -70.5123596
+  Sleep    3s
+Paso 839
+  Set Location    -33.4934633     -70.5123596
+  Sleep    3s
+Paso 840
+  Set Location    -33.4934531     -70.5123466
+  Sleep    3s
+Paso 841
+  Set Location    -33.4934531     -70.5123466
+  Sleep    3s
+Paso 842
+  Set Location    -33.4934376     -70.5123311
+  Sleep    3s
+Paso 843
+  Set Location    -33.4934376     -70.5123311
+  Sleep    3s
+Paso 844
+  Set Location    -33.4933589     -70.512415
+  Sleep    3s
+Paso 845
+  Set Location    -33.4933589     -70.512415
+  Sleep    3s
+Paso 846
+  Set Location    -33.4927743     -70.5129185
+  Sleep    3s
+Paso 847
+  Set Location    -33.4927743     -70.5129185
+  Sleep    3s
+Paso 848
+  Set Location    -33.4918873     -70.5135046
+  Sleep    3s
+Paso 849
+  Set Location    -33.4918873     -70.5135046
+  Sleep    3s
+Paso 850
+  Set Location    -33.4909317     -70.5137069
+  Sleep    3s
+Paso 851
+  Set Location    -33.4909317     -70.5137069
+  Sleep    3s
+Paso 852
+  Set Location    -33.4906278     -70.5145639
+  Sleep    3s
+Paso 853
+  Set Location    -33.4906278     -70.5145639
+  Sleep    3s
+Paso 854
+  Set Location    -33.4906006     -70.5145962
+  Sleep    3s
+Paso 855
+  Set Location    -33.4906006     -70.5145962
+  Sleep    3s
+Paso 856
+  Set Location    -33.4906124     -70.5146035
+  Sleep    3s
+Paso 857
+  Set Location    -33.4906124     -70.5146035
+  Sleep    3s
+Paso 858
+  Set Location    -33.4905957     -70.514803
+  Sleep    3s
+Paso 859
+  Set Location    -33.4905957     -70.514803
+  Sleep    3s
+Paso 860
+  Set Location    -33.4904843     -70.5151041
+  Sleep    3s
+Paso 861
+  Set Location    -33.4904843     -70.5151041
+  Sleep    3s
+Paso 862
+  Set Location    -33.4901692     -70.5159367
+  Sleep    3s
+Paso 863
+  Set Location    -33.4901692     -70.5159367
+  Sleep    3s
+Paso 864
+  Set Location    -33.489037     -70.5162505
+  Sleep    3s
+Paso 865
+  Set Location    -33.489037     -70.5162505
+  Sleep    3s
+Paso 866
+  Set Location    -33.4892385     -70.5176686
+  Sleep    3s
+Paso 867
+  Set Location    -33.4892385     -70.5176686
+  Sleep    3s
+Paso 868
+  Set Location    -33.4890678     -70.5186241
+  Sleep    3s
+Paso 869
+  Set Location    -33.4890678     -70.5186241
+  Sleep    3s
+Paso 870
+  Set Location    -33.4882747     -70.5192564
+  Sleep    3s
+Paso 871
+  Set Location    -33.4882747     -70.5192564
+  Sleep    3s
+Paso 872
+  Set Location    -33.487484     -70.5190281
+  Sleep    3s
+Paso 873
+  Set Location    -33.487484     -70.5190281
+  Sleep    3s
+Paso 874
+  Set Location    -33.4867496     -70.518643
+  Sleep    3s
+Paso 875
+  Set Location    -33.4867496     -70.518643
+  Sleep    3s
+Paso 876
+  Set Location    -33.4863765     -70.5186083
+  Sleep    3s
+Paso 877
+  Set Location    -33.4863765     -70.5186083
+  Sleep    3s
+Paso 878
+  Set Location    -33.486358     -70.5185979
+  Sleep    3s
+Paso 879
+  Set Location    -33.486358     -70.5185979
+  Sleep    3s
+Paso 880
+  Set Location    -33.4863281     -70.5185699
+  Sleep    3s
+Paso 881
+  Set Location    -33.4863281     -70.5185699
+  Sleep    3s
+Paso 882
+  Set Location    -33.4863248     -70.5185774
+  Sleep    3s
+Paso 883
+  Set Location    -33.4863248     -70.5185774
+  Sleep    3s
+Paso 884
+  Set Location    -33.4864352     -70.5187755
+  Sleep    3s
+Paso 885
+  Set Location    -33.4864352     -70.5187755
+  Sleep    3s
+Paso 886
+  Set Location    -33.4868715     -70.5190344
+  Sleep    3s
+Paso 887
+  Set Location    -33.4868715     -70.5190344
+  Sleep    3s
+Paso 888
+  Set Location    -33.4879564     -70.519346
+  Sleep    3s
+Paso 889
+  Set Location    -33.4879564     -70.519346
+  Sleep    3s
+Paso 890
+  Set Location    -33.4883342     -70.5191803
+  Sleep    3s
+Paso 891
+  Set Location    -33.4883342     -70.5191803
+  Sleep    3s
+Paso 892
+  Set Location    -33.4890503     -70.5187067
+  Sleep    3s
+Paso 893
+  Set Location    -33.4890503     -70.5187067
+  Sleep    3s
+Paso 894
+  Set Location    -33.4891533     -70.5184026
+  Sleep    3s
+Paso 895
+  Set Location    -33.4891533     -70.5184026
+  Sleep    3s
+Paso 896
+  Set Location    -33.4892438     -70.5175359
+  Sleep    3s
+Paso 897
+  Set Location    -33.4892438     -70.5175359
+  Sleep    3s
+Paso 898
+  Set Location    -33.4890263     -70.5162686
+  Sleep    3s
+Paso 899
+  Set Location    -33.4890263     -70.5162686
+  Sleep    3s
+Paso 900
+  Set Location    -33.4899713     -70.5161345
+  Sleep    3s
+Paso 901
+  Set Location    -33.4899713     -70.5161345
+  Sleep    3s
+Paso 902
+  Set Location    -33.4905033     -70.5153016
+  Sleep    3s
+Paso 903
+  Set Location    -33.4905033     -70.5153016
+  Sleep    3s
+Paso 904
+  Set Location    -33.4907308     -70.5145607
+  Sleep    3s
+Paso 905
+  Set Location    -33.4907308     -70.5145607
+  Sleep    3s
+Paso 906
+  Set Location    -33.4906641     -70.5143776
+  Sleep    3s
+Paso 907
+  Set Location    -33.4906641     -70.5143776
+  Sleep    3s
+Paso 908
+  Set Location    -33.4909263     -70.5136851
+  Sleep    3s
+Paso 909
+  Set Location    -33.4909263     -70.5136851
+  Sleep    3s
+Paso 910
+  Set Location    -33.4919365     -70.5135298
+  Sleep    3s
+Paso 911
+  Set Location    -33.4919365     -70.5135298
+  Sleep    3s
+Paso 912
+  Set Location    -33.4926653     -70.5130406
+  Sleep    3s
+Paso 913
+  Set Location    -33.4926653     -70.5130406
+  Sleep    3s
+Paso 914
+  Set Location    -33.4931036     -70.5127071
+  Sleep    3s
+Paso 915
+  Set Location    -33.4931036     -70.5127071
+  Sleep    3s
+Paso 916
+  Set Location    -33.4931207     -70.5126952
+  Sleep    3s
+Paso 917
+  Set Location    -33.4931207     -70.5126952
+  Sleep    3s
+Paso 918
+  Set Location    -33.4933505     -70.512475
+  Sleep    3s
+Paso 919
+  Set Location    -33.4933505     -70.512475
+  Sleep    3s
+Paso 920
+  Set Location    -33.4936463     -70.5121796
+  Sleep    3s
+Paso 921
+  Set Location    -33.4936463     -70.5121796
+  Sleep    3s
+Paso 922
+  Set Location    -33.4939223     -70.5118321
+  Sleep    3s
+Paso 923
+  Set Location    -33.4939223     -70.5118321
+  Sleep    3s
+Paso 924
+  Set Location    -33.4939131     -70.5117724
+  Sleep    3s
+Paso 925
+  Set Location    -33.4939131     -70.5117724
+  Sleep    3s
+Paso 926
+  Set Location    -33.4938469     -70.5118818
+  Sleep    3s
+Paso 927
+  Set Location    -33.4938469     -70.5118818
+  Sleep    3s
+Paso 928
+  Set Location    -33.493509     -70.5123663
+  Sleep    3s
+Paso 929
+  Set Location    -33.493509     -70.5123663
+  Sleep    3s
+Paso 930
+  Set Location    -33.4934415     -70.5124024
+  Sleep    3s
+Paso 931
+  Set Location    -33.4934415     -70.5124024
+  Sleep    3s
+Paso 932
+  Set Location    -33.4934618     -70.5123973
+  Sleep    3s
+Paso 933
+  Set Location    -33.4934618     -70.5123973
+  Sleep    3s
+Paso 934
+  Set Location    -33.4930449     -70.5127302
+  Sleep    3s
+Paso 935
+  Set Location    -33.4930449     -70.5127302
+  Sleep    3s
+Paso 936
+  Set Location    -33.4924199     -70.5134411
+  Sleep    3s
+Paso 937
+  Set Location    -33.4924199     -70.5134411
+  Sleep    3s
+Paso 938
+  Set Location    -33.4914959     -70.5133814
+  Sleep    3s
+Paso 939
+  Set Location    -33.4914959     -70.5133814
+  Sleep    3s
+Paso 940
+  Set Location    -33.4907409     -70.5141308
+  Sleep    3s
+Paso 941
+  Set Location    -33.4907409     -70.5141308
+  Sleep    3s
+Paso 942
+  Set Location    -33.4906182     -70.5145686
+  Sleep    3s
+Paso 943
+  Set Location    -33.4906182     -70.5145686
+  Sleep    3s
+Paso 944
+  Set Location    -33.490615     -70.5146736
+  Sleep    3s
+Paso 945
+  Set Location    -33.490615     -70.5146736
+  Sleep    3s
+Paso 946
+  Set Location    -33.4904199     -70.5152246
+  Sleep    3s
+Paso 947
+  Set Location    -33.4904199     -70.5152246
+  Sleep    3s
+Paso 948
+  Set Location    -33.4899357     -70.5160166
+  Sleep    3s
+Paso 949
+  Set Location    -33.4899357     -70.5160166
+  Sleep    3s
+Paso 950
+  Set Location    -33.4890599     -70.5163983
+  Sleep    3s
+Paso 951
+  Set Location    -33.4890599     -70.5163983
+  Sleep    3s
+Paso 952
+  Set Location    -33.489225     -70.5178857
+  Sleep    3s
+Paso 953
+  Set Location    -33.489225     -70.5178857
+  Sleep    3s
+Paso 954
+  Set Location    -33.4888102     -70.518841
+  Sleep    3s
+Paso 955
+  Set Location    -33.4888102     -70.518841
+  Sleep    3s
+Paso 956
+  Set Location    -33.4875917     -70.5191176
+  Sleep    3s
+Paso 957
+  Set Location    -33.4875917     -70.5191176
+  Sleep    3s
+Paso 958
+  Set Location    -33.486548     -70.5185745
+  Sleep    3s
+Paso 959
+  Set Location    -33.486548     -70.5185745
+  Sleep    3s
+Paso 960
+  Set Location    -33.4863773     -70.5186281
+  Sleep    3s
+Paso 961
+  Set Location    -33.4863773     -70.5186281
+  Sleep    3s
+Paso 962
+  Set Location    -33.4863749     -70.5186411
+  Sleep    3s
+Paso 963
+  Set Location    -33.4863749     -70.5186411
+  Sleep    3s
+Paso 964
+  Set Location    -33.486375     -70.5186411
+  Sleep    3s
+Paso 965
+  Set Location    -33.486375     -70.5186411
+  Sleep    3s
+Paso 966
+  Set Location    -33.4863565     -70.5186461
+  Sleep    3s
+Paso 967
+  Set Location    -33.4863565     -70.5186461
+  Sleep    3s
+Paso 968
+  Set Location    -33.4864847     -70.5188432
+  Sleep    3s
+Paso 969
+  Set Location    -33.4864847     -70.5188432
+  Sleep    3s
+Paso 970
+  Set Location    -33.4874351     -70.5193376
+  Sleep    3s
+Paso 971
+  Set Location    -33.4874351     -70.5193376
+  Sleep    3s
+Paso 972
+  Set Location    -33.4881564     -70.5192511
+  Sleep    3s
+Paso 973
+  Set Location    -33.4881564     -70.5192511
+  Sleep    3s
+Paso 974
+  Set Location    -33.4890124     -70.5186972
+  Sleep    3s
+Paso 975
+  Set Location    -33.4890124     -70.5186972
+  Sleep    3s
+Paso 976
+  Set Location    -33.4891091     -70.5182168
+  Sleep    3s
+Paso 977
+  Set Location    -33.4891091     -70.5182168
+  Sleep    3s
+Paso 978
+  Set Location    -33.4890799     -70.5170535
+  Sleep    3s
+Paso 979
+  Set Location    -33.4890799     -70.5170535
+  Sleep    3s
+Paso 980
+  Set Location    -33.4893026     -70.5161565
+  Sleep    3s
+Paso 981
+  Set Location    -33.4893026     -70.5161565
+  Sleep    3s
+Paso 982
+  Set Location    -33.4900954     -70.51614
+  Sleep    3s
+Paso 983
+  Set Location    -33.4900954     -70.51614
+  Sleep    3s
+Paso 984
+  Set Location    -33.4906103     -70.515216
+  Sleep    3s
+Paso 985
+  Set Location    -33.4906103     -70.515216
+  Sleep    3s
+Paso 986
+  Set Location    -33.4907117     -70.5142449
+  Sleep    3s
+Paso 987
+  Set Location    -33.4907117     -70.5142449
+  Sleep    3s
+Paso 988
+  Set Location    -33.4912881     -70.5135842
+  Sleep    3s
+Paso 989
+  Set Location    -33.4912881     -70.5135842
+  Sleep    3s
+Paso 990
+  Set Location    -33.4922115     -70.5135969
+  Sleep    3s
+Paso 991
+  Set Location    -33.4922115     -70.5135969
+  Sleep    3s
+Paso 992
+  Set Location    -33.4928327     -70.512952
+  Sleep    3s
+Paso 993
+  Set Location    -33.4928327     -70.512952
+  Sleep    3s
+Paso 994
+  Set Location    -33.4936185     -70.5123105
+  Sleep    3s
+Paso 995
+  Set Location    -33.4936185     -70.5123105
+  Sleep    3s
+Paso 996
+  Set Location    -33.4939867     -70.5117452
+  Sleep    3s
+Paso 997
+  Set Location    -33.4939867     -70.5117452
+  Sleep    3s
+Paso 998
+  Set Location    -33.4939473     -70.5118806
+  Sleep    3s
+Paso 999
+  Set Location    -33.4939473     -70.5118806
+  Sleep    3s
+Paso 1000
+  Set Location    -33.4937898     -70.5120802
+  Sleep    3s
+Paso 1001
+  Set Location    -33.4937898     -70.5120802
+  Sleep    3s
+Paso 1002
+  Set Location    -33.4934892     -70.512369
+  Sleep    3s
+Paso 1003
+  Set Location    -33.4934892     -70.512369
+  Sleep    3s
+Paso 1004
+  Set Location    -33.4934156     -70.5124238
+  Sleep    3s
+Paso 1005
+  Set Location    -33.4934156     -70.5124238
+  Sleep    3s
+Paso 1006
+  Set Location    -33.4926707     -70.5130516
+  Sleep    3s
+Paso 1007
+  Set Location    -33.4926707     -70.5130516
+  Sleep    3s
+Paso 1008
+  Set Location    -33.4918977     -70.5134504
+  Sleep    3s
+Paso 1009
+  Set Location    -33.4918977     -70.5134504
+  Sleep    3s
+Paso 1010
+  Set Location    -33.4908762     -70.5137276
+  Sleep    3s
+Paso 1011
+  Set Location    -33.4908762     -70.5137276
+  Sleep    3s
+Paso 1012
+  Set Location    -33.4906517     -70.5145366
+  Sleep    3s
+Paso 1013
+  Set Location    -33.4906517     -70.5145366
+  Sleep    3s
+Paso 1014
+  Set Location    -33.490622     -70.5145621
+  Sleep    3s
+Paso 1015
+  Set Location    -33.490622     -70.5145621
+  Sleep    3s
+Paso 1016
+  Set Location    -33.4905411     -70.5149856
+  Sleep    3s
+Paso 1017
+  Set Location    -33.4905411     -70.5149856
+  Sleep    3s
+Paso 1018
+  Set Location    -33.4904051     -70.5152541
+  Sleep    3s
+Paso 1019
+  Set Location    -33.4904051     -70.5152541
+  Sleep    3s
+Paso 1020
+  Set Location    -33.489369     -70.5160911
+  Sleep    3s
+Paso 1021
+  Set Location    -33.489369     -70.5160911
+  Sleep    3s
+Paso 1022
+  Set Location    -33.489041     -70.5167845
+  Sleep    3s
+Paso 1023
+  Set Location    -33.489041     -70.5167845
+  Sleep    3s
+Paso 1024
+  Set Location    -33.4891562     -70.5179955
+  Sleep    3s
+Paso 1025
+  Set Location    -33.4891562     -70.5179955
+  Sleep    3s
+Paso 1026
+  Set Location    -33.4887249     -70.5188644
+  Sleep    3s
+Paso 1027
+  Set Location    -33.4887249     -70.5188644
+  Sleep    3s
+Paso 1028
+  Set Location    -33.4875534     -70.5190763
+  Sleep    3s
+Paso 1029
+  Set Location    -33.4875534     -70.5190763
+  Sleep    3s
+Paso 1030
+  Set Location    -33.4865347     -70.518601
+  Sleep    3s
+Paso 1031
+  Set Location    -33.4865347     -70.518601
+  Sleep    3s
+Paso 1032
+  Set Location    -33.4863523     -70.5186041
+  Sleep    3s
+Paso 1033
+  Set Location    -33.4863523     -70.5186041
+  Sleep    3s
+Paso 1034
+  Set Location    -33.4863693     -70.5186387
+  Sleep    3s
+Paso 1035
+  Set Location    -33.4863693     -70.5186387
+  Sleep    3s
+Paso 1036
+  Set Location    -33.4863459     -70.5186249
+  Sleep    3s
+Paso 1037
+  Set Location    -33.4863459     -70.5186249
+  Sleep    3s
+Paso 1038
+  Set Location    -33.4863396     -70.5186178
+  Sleep    3s
+Paso 1039
+  Set Location    -33.4863396     -70.5186178
+  Sleep    3s
+Paso 1040
+  Set Location    -33.4866801     -70.5189503
+  Sleep    3s
+Paso 1041
+  Set Location    -33.4866801     -70.5189503
+  Sleep    3s
+Paso 1042
+  Set Location    -33.4877773     -70.5193988
+  Sleep    3s
+Paso 1043
+  Set Location    -33.4877773     -70.5193988
+  Sleep    3s
+Paso 1044
+  Set Location    -33.4886735     -70.5189805
+  Sleep    3s
+Paso 1045
+  Set Location    -33.4886735     -70.5189805
+  Sleep    3s
+Paso 1046
+  Set Location    -33.4891698     -70.5185104
+  Sleep    3s
+Paso 1047
+  Set Location    -33.4891698     -70.5185104
+  Sleep    3s
+Paso 1048
+  Set Location    -33.4892109     -70.5175034
+  Sleep    3s
+Paso 1049
+  Set Location    -33.4892109     -70.5175034
+  Sleep    3s
+Paso 1050
+  Set Location    -33.4890856     -70.5162278
+  Sleep    3s
+Paso 1051
+  Set Location    -33.4890856     -70.5162278
+  Sleep    3s
+Paso 1052
+  Set Location    -33.4900141     -70.5161733
+  Sleep    3s
+Paso 1053
+  Set Location    -33.4900141     -70.5161733
+  Sleep    3s
+Paso 1054
+  Set Location    -33.4905352     -70.5152091
+  Sleep    3s
+Paso 1055
+  Set Location    -33.4905352     -70.5152091
+  Sleep    3s
+Paso 1056
+  Set Location    -33.4907499     -70.5145804
+  Sleep    3s
+Paso 1057
+  Set Location    -33.4907499     -70.5145804
+  Sleep    3s
+Paso 1058
+  Set Location    -33.4906939     -70.5144675
+  Sleep    3s
+Paso 1059
+  Set Location    -33.4906939     -70.5144675
+  Sleep    3s
+Paso 1060
+  Set Location    -33.4908482     -70.5137994
+  Sleep    3s
+Paso 1061
+  Set Location    -33.4908482     -70.5137994
+  Sleep    3s
+Paso 1062
+  Set Location    -33.4917777     -70.5133778
+  Sleep    3s
+Paso 1063
+  Set Location    -33.4917777     -70.5133778
+  Sleep    3s
+Paso 1064
+  Set Location    -33.4925035     -70.5132386
+  Sleep    3s
+Paso 1065
+  Set Location    -33.4925035     -70.5132386
+  Sleep    3s
+Paso 1066
+  Set Location    -33.4930827     -70.5126857
+  Sleep    3s
+Paso 1067
+  Set Location    -33.4930827     -70.5126857
+  Sleep    3s
+Paso 1068
+  Set Location    -33.4938032     -70.5120126
+  Sleep    3s
+Paso 1069
+  Set Location    -33.4938032     -70.5120126
+  Sleep    3s
+Paso 1070
+  Set Location    -33.4939401     -70.5117719
+  Sleep    3s
+Paso 1071
+  Set Location    -33.4939401     -70.5117719
+  Sleep    3s
+Paso 1072
+  Set Location    -33.4938366     -70.5119005
+  Sleep    3s
+Paso 1073
+  Set Location    -33.4938366     -70.5119005
+  Sleep    3s
+Paso 1074
+  Set Location    -33.4934644     -70.512348
+  Sleep    3s
+Paso 1075
+  Set Location    -33.4934644     -70.512348
+  Sleep    3s
+Paso 1076
+  Set Location    -33.4934651     -70.5123511
+  Sleep    3s
+Paso 1077
+  Set Location    -33.4934651     -70.5123511
+  Sleep    3s
+Paso 1078
+  Set Location    -33.4934651     -70.5123273
+  Sleep    3s
+Paso 1079
+  Set Location    -33.4934651     -70.5123273
+  Sleep    3s
+Paso 1080
+  Set Location    -33.4934801     -70.5123148
+  Sleep    3s
+Paso 1081
+  Set Location    -33.4934801     -70.5123148
+  Sleep    3s
+Paso 1082
+  Set Location    -33.4934834     -70.5123206
+  Sleep    3s
+Paso 1083
+  Set Location    -33.4934834     -70.5123206
+  Sleep    3s
+Paso 1084
+  Set Location    -33.4934043     -70.5124056
+  Sleep    3s
+Paso 1085
+  Set Location    -33.4934043     -70.5124056
+  Sleep    3s
+Paso 1086
+  Set Location    -33.4927832     -70.5129754
+  Sleep    3s
+Paso 1087
+  Set Location    -33.4927832     -70.5129754
+  Sleep    3s
+Paso 1088
+  Set Location    -33.4918921     -70.5134994
+  Sleep    3s
+Paso 1089
+  Set Location    -33.4918921     -70.5134994
+  Sleep    3s
+Paso 1090
+  Set Location    -33.490806     -70.5138581
+  Sleep    3s
+Paso 1091
+  Set Location    -33.490806     -70.5138581
+  Sleep    3s
+Paso 1092
+  Set Location    -33.4907141     -70.5147054
+  Sleep    3s
+Paso 1093
+  Set Location    -33.4907141     -70.5147054
+  Sleep    3s
+Paso 1094
+  Set Location    -33.4900061     -70.5160269
+  Sleep    3s
+Paso 1095
+  Set Location    -33.4900061     -70.5160269
+  Sleep    3s
+Paso 1096
+  Set Location    -33.4890726     -70.5164044
+  Sleep    3s
+Paso 1097
+  Set Location    -33.4890726     -70.5164044
+  Sleep    3s
+Paso 1098
+  Set Location    -33.4892021     -70.5180059
+  Sleep    3s
+Paso 1099
+  Set Location    -33.4892021     -70.5180059
+  Sleep    3s
+Paso 1100
+  Set Location    -33.4886893     -70.5189702
+  Sleep    3s
+Paso 1101
+  Set Location    -33.4886893     -70.5189702
+  Sleep    3s
+Paso 1102
+  Set Location    -33.4873657     -70.5190064
+  Sleep    3s
+Paso 1103
+  Set Location    -33.4873657     -70.5190064
+  Sleep    3s
+Paso 1104
+  Set Location    -33.4864544     -70.5186173
+  Sleep    3s
+Paso 1105
+  Set Location    -33.4864544     -70.5186173
+  Sleep    3s
+Paso 1106
+  Set Location    -33.4863668     -70.5185897
+  Sleep    3s
+Paso 1107
+  Set Location    -33.4863668     -70.5185897
+  Sleep    3s
+Paso 1108
+  Set Location    -33.4863727     -70.5186055
+  Sleep    3s
+Paso 1109
+  Set Location    -33.4863727     -70.5186055
+  Sleep    3s
+Paso 1110
+  Set Location    -33.4863824     -70.5186299
+  Sleep    3s
+Paso 1111
+  Set Location    -33.4863824     -70.5186299
+  Sleep    3s
+Paso 1112
+  Set Location    -33.4863859     -70.5186362
+  Sleep    3s
+Paso 1113
+  Set Location    -33.4863859     -70.5186362
+  Sleep    3s
+Paso 1114
+  Set Location    -33.486387     -70.5186386
+  Sleep    3s
+Paso 1115
+  Set Location    -33.486387     -70.5186386
+  Sleep    3s
+Paso 1116
+  Set Location    -33.4863876     -70.5186375
+  Sleep    3s
+Paso 1117
+  Set Location    -33.4863876     -70.5186375
+  Sleep    3s
+Paso 1118
+  Set Location    -33.4863726     -70.5186398
+  Sleep    3s
+Paso 1119
+  Set Location    -33.4863726     -70.5186398
+  Sleep    3s
+Paso 1120
+  Set Location    -33.4863733     -70.5186306
+  Sleep    3s
+Paso 1121
+  Set Location    -33.4863733     -70.5186306
+  Sleep    3s
+Paso 1122
+  Set Location    -33.4869299     -70.519079
+  Sleep    3s
+Paso 1123
+  Set Location    -33.4869299     -70.519079
+  Sleep    3s
+Paso 1124
+  Set Location    -33.4877764     -70.5194128
+  Sleep    3s
+Paso 1125
+  Set Location    -33.4877764     -70.5194128
+  Sleep    3s
+Paso 1126
+  Set Location    -33.4887524     -70.5188959
+  Sleep    3s
+Paso 1127
+  Set Location    -33.4887524     -70.5188959
+  Sleep    3s
+Paso 1128
+  Set Location    -33.489135     -70.5184141
+  Sleep    3s
+Paso 1129
+  Set Location    -33.489135     -70.5184141
+  Sleep    3s
+Paso 1130
+  Set Location    -33.4891247     -70.5172806
+  Sleep    3s
+Paso 1131
+  Set Location    -33.4891247     -70.5172806
+  Sleep    3s
+Paso 1132
+  Set Location    -33.4891976     -70.5161837
+  Sleep    3s
+Paso 1133
+  Set Location    -33.4891976     -70.5161837
+  Sleep    3s
+Paso 1134
+  Set Location    -33.4901666     -70.5160003
+  Sleep    3s
+Paso 1135
+  Set Location    -33.4901666     -70.5160003
+  Sleep    3s
+Paso 1136
+  Set Location    -33.4906702     -70.5149215
+  Sleep    3s
+Paso 1137
+  Set Location    -33.4906702     -70.5149215
+  Sleep    3s
+Paso 1138
+  Set Location    -33.490787     -70.5138935
+  Sleep    3s
+Paso 1139
+  Set Location    -33.490787     -70.5138935
+  Sleep    3s
+Paso 1140
+  Set Location    -33.4915704     -70.5133442
+  Sleep    3s
+Paso 1141
+  Set Location    -33.4915704     -70.5133442
+  Sleep    3s
+Paso 1142
+  Set Location    -33.4923801     -70.5133833
+  Sleep    3s
+Paso 1143
+  Set Location    -33.4923801     -70.5133833
+  Sleep    3s
+Paso 1144
+  Set Location    -33.4928815     -70.5128545
+  Sleep    3s
+Paso 1145
+  Set Location    -33.4928815     -70.5128545
+  Sleep    3s
+Paso 1146
+  Set Location    -33.4933896     -70.5124004
+  Sleep    3s
+Paso 1147
+  Set Location    -33.4933896     -70.5124004
+  Sleep    3s
+Paso 1148
+  Set Location    -33.4933963     -70.512398
+  Sleep    3s
+Paso 1149
+  Set Location    -33.4933963     -70.512398
+  Sleep    3s
+Paso 1150
+  Set Location    -33.4934069     -70.5123898
+  Sleep    3s
+Paso 1151
+  Set Location    -33.4934069     -70.5123898
+  Sleep    3s
+Paso 1152
+  Set Location    -33.4938078     -70.5119329
+  Sleep    3s
+Paso 1153
+  Set Location    -33.4938078     -70.5119329
+  Sleep    3s
+Paso 1154
+  Set Location    -33.4939099     -70.5117446
+  Sleep    3s
+Paso 1155
+  Set Location    -33.4939099     -70.5117446
+  Sleep    3s
+Paso 1156
+  Set Location    -33.4939078     -70.5118723
+  Sleep    3s
+Paso 1157
+  Set Location    -33.4939078     -70.5118723
+  Sleep    3s
+Paso 1158
+  Set Location    -33.4935718     -70.5122954
+  Sleep    3s
+Paso 1159
+  Set Location    -33.4935718     -70.5122954
+  Sleep    3s
+Paso 1160
+  Set Location    -33.4934822     -70.5123934
+  Sleep    3s
+Paso 1161
+  Set Location    -33.4934822     -70.5123934
+  Sleep    3s
+Paso 1162
+  Set Location    -33.493453     -70.5123894
+  Sleep    3s
+Paso 1163
+  Set Location    -33.493453     -70.5123894
+  Sleep    3s
+Paso 1164
+  Set Location    -33.4934291     -70.5123006
+  Sleep    3s
+Paso 1165
+  Set Location    -33.4934291     -70.5123006
+  Sleep    3s
+Paso 1166
+  Set Location    -33.493443     -70.5122771
+  Sleep    3s
+Paso 1167
+  Set Location    -33.493443     -70.5122771
+  Sleep    3s
+Paso 1168
+  Set Location    -33.4934426     -70.5122845
+  Sleep    3s
+Paso 1169
+  Set Location    -33.4934426     -70.5122845
+  Sleep    3s
+Paso 1170
+  Set Location    -33.4934522     -70.5123119
+  Sleep    3s
+Paso 1171
+  Set Location    -33.4934522     -70.5123119
+  Sleep    3s
+Paso 1172
+  Set Location    -33.4934469     -70.5123102
+  Sleep    3s
+Paso 1173
+  Set Location    -33.4934469     -70.5123102
+  Sleep    3s
+Paso 1174
+  Set Location    -33.4934333     -70.5122987
+  Sleep    3s
+Paso 1175
+  Set Location    -33.4934333     -70.5122987
+  Sleep    3s
+Paso 1176
+  Set Location    -33.4934249     -70.5123015
+  Sleep    3s
+Paso 1177
+  Set Location    -33.4934249     -70.5123015
+  Sleep    3s
+Paso 1178
+  Set Location    -33.4933955     -70.5122687
+  Sleep    3s
+Paso 1179
+  Set Location    -33.4933955     -70.5122687
+  Sleep    3s
+Paso 1180
+  Set Location    -33.4934183     -70.5122813
+  Sleep    3s
+Paso 1181
+  Set Location    -33.4934183     -70.5122813
+  Sleep    3s
+Paso 1182
+  Set Location    -33.4934314     -70.5122757
+  Sleep    3s
+Paso 1183
+  Set Location    -33.4934314     -70.5122757
+  Sleep    3s
+Paso 1184
+  Set Location    -33.4934462     -70.5122913
+  Sleep    3s
+Paso 1185
+  Set Location    -33.4934462     -70.5122913
+  Sleep    3s
+Paso 1186
+  Set Location    -33.493431     -70.5123014
+  Sleep    3s
+Paso 1187
+  Set Location    -33.493431     -70.5123014
+  Sleep    3s

@@ -1,24 +1,76 @@
-Server Errors:
+
+Failed Test Cases (Summary):
+--------------------------------------------------
+Failed (JoinServices.robot) Test Cases:
+Fail reason: No accessToken found in Login!, Failing
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
+--------------------------------------------------
+Failed (openRddFlow.robot) Test Cases:
+Fail reason: No accessToken found in Login!, Failing
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
+--------------------------------------------------
+Failed (createScheduled.robot) Test Cases:
+Fail reason: No accessToken found in Login!, Failing
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
+--------------------------------------------------
+Failed (createScheduledWithTickets.robot) Test Cases:
+Fail reason: No accessToken found in Login!, Failing
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
+--------------------------------------------------
+Failed (scheduledWithDefaultResources.robot) Test Cases:
+Fail reason: No accessToken found in Login!, Failing
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
 --------------------------------------------------
 
-Failed Test Cases:
-File Name: assistantFlow.robot
-Error Message: Doesn't discounts tickets after link validation with QR, Expected tickets: 1, Actual Tickets 2
-Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683
-
+All Failed Test Cases:
 --------------------------------------------------
-File Name: assistantFlow.robot
-Error Message: Doesn't discounts tickets after link validation with Custom, Expected tickets: 0, Actual Tickets 2
-Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683
-
+[Test Name: Create RDD As User(Nico)]
+File Name: JoinServices.robot
+Error Message: Variable '${accessTokenNico}' not found.
+Request Info: No request info found
 --------------------------------------------------
-File Name: assistantFlow.robot
-Error Message: Total Tickets should be 1048 but the total is 1050: 1050 != 1048
-Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/ticket/list?community=653fd601f90509541a748683
-
+[Test Name: Create RDD As User]
+File Name: openRddFlow.robot
+Error Message: Variable '${accessTokenNico}' not found.
+Request Info: No request info found
 --------------------------------------------------
-File Name: assistantFlow.robot
-Error Message: No validations Found in the departure
-Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/departureValidations/66c651654dcc7934fa6abdd3?community=653fd601f90509541a748683
-
+[Test Name: Validate With QR(Nico)]
+File Name: openRddFlow.robot
+Error Message: HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
+--------------------------------------------------
+[Test Name: Seat Reservation(User1-NicoEnd)]
+File Name: createScheduled.robot
+Error Message: Variable '${accessTokenNico}' not found.
+Request Info: No request info found
+--------------------------------------------------
+[Test Name: Seat Reservation(User1-NicoEnd)]
+File Name: createScheduledWithTickets.robot
+Error Message: Variable '${accessTokenNico}' not found.
+Request Info: No request info found
+--------------------------------------------------
+[Test Name: Login User With Email(Obtain Token)]
+File Name: JoinServices.robot
+Error Message: No accesToken found in Login!, Failing
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
+--------------------------------------------------
+[Test Name: Login User With Email(Obtain Token)]
+File Name: openRddFlow.robot
+Error Message: No accesToken found in Login!, Failing
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
+--------------------------------------------------
+[Test Name: Login User With Email(Obtain Token)]
+File Name: createScheduled.robot
+Error Message: No accesToken found in Login!, Failing
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
+--------------------------------------------------
+[Test Name: Login User With Email(Obtain Token)]
+File Name: createScheduledWithTickets.robot
+Error Message: No accesToken found in Login!, Failing
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
+--------------------------------------------------
+[Test Name: Login User With Email(Obtain Token)]
+File Name: scheduledWithDefaultResources.robot
+Error Message: No accesToken found in Login!, Failing
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
 --------------------------------------------------

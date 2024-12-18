@@ -6858,7 +6858,7 @@ json_data = '''
 '''
 
 # Ruta del archivo de texto donde se almacenarán las latitudes y longitudes
-ruta_txt = 'lat_lon_ADO+VUELTAS-cris.txt'
+ruta_txt = 'NICOTESDT.txt'
 
 # Función para extraer latitudes y longitudes y escribir en el archivo de texto
 def extraer_lat_lon(json_data, ruta_txt):

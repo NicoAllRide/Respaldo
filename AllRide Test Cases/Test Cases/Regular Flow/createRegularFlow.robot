@@ -166,7 +166,7 @@ Start Departure Leg
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
 
-    ${access_token}=    Set Variable    ${response.json()}[token]
+    ${access_token}=    Set Variable    ${response.json()}[token]    
     ${departureToken}=    Evaluate    "Bearer " + "${access_token}"
     Set Global Variable    ${departureToken}
     Log    ${departureToken}
@@ -188,7 +188,7 @@ Get Service Id
 
     ${sorted_services}=    Evaluate    [service for service in ${responseJson}[regularDepartures] if service['routeId']['_id'] == '${regularRouteId}']    json
 
-    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found with routeId._id = "${regularRouteId}"
+    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services were creatred with routeId._id = "${regularRouteId}" Failing all test(Fatal Error)
     
     # Obtenemos el último servicio creado
     ${last_service}=    Set Variable    ${sorted_services[-1]}
@@ -230,7 +230,7 @@ Validate With QR(Nico)
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/validate
+    ...    url=/api/v1/pb/provider/departures/validate
     ...    data={"validationString":"${qrCodeNico}"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
