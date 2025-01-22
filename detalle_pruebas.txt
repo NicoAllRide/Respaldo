@@ -1,76 +1,62 @@
 
-Failed Test Cases (Summary):
+Server Errors:
 --------------------------------------------------
-Failed (JoinServices.robot) Test Cases:
-Fail reason: No accessToken found in Login!, Failing
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
+[Test Name: Create services]
+File Name: assistantReleaseSeats.robot
+Error Message: HTTPError: 502 Server Error: Bad Gateway for url: https://stage.allrideapp.com/api/v1/admin/pb/createServices/6654ae4eba54fe502d4e4187?community=6654ae4eba54fe502d4e4187
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/createServices/653fd601f90509541a748683?community=653fd601f90509541a748683
 --------------------------------------------------
-Failed (openRddFlow.robot) Test Cases:
-Fail reason: No accessToken found in Login!, Failing
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
---------------------------------------------------
-Failed (createScheduled.robot) Test Cases:
-Fail reason: No accessToken found in Login!, Failing
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
---------------------------------------------------
-Failed (createScheduledWithTickets.robot) Test Cases:
-Fail reason: No accessToken found in Login!, Failing
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
---------------------------------------------------
-Failed (scheduledWithDefaultResources.robot) Test Cases:
-Fail reason: No accessToken found in Login!, Failing
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
---------------------------------------------------
+
 
 All Failed Test Cases:
 --------------------------------------------------
-[Test Name: Create RDD As User(Nico)]
-File Name: JoinServices.robot
-Error Message: Variable '${accessTokenNico}' not found.
-Request Info: No request info found
+[Test Name: Create services]
+File Name: assistantReleaseSeats.robot
+Error Message: HTTPError: 502 Server Error: Bad Gateway for url: https://stage.allrideapp.com/api/v1/admin/pb/createServices/6654ae4eba54fe502d4e4187?community=6654ae4eba54fe502d4e4187
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/createServices/653fd601f90509541a748683?community=653fd601f90509541a748683
 --------------------------------------------------
-[Test Name: Create RDD As User]
-File Name: openRddFlow.robot
-Error Message: Variable '${accessTokenNico}' not found.
-Request Info: No request info found
+[Test Name: Make Bulk Reservation(3 should pass, one fail)]
+File Name: assistantReleaseSeats.robot
+Error Message: HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v1/admin/pb/bookService/bulk/676de1f0164bc26319c0f08f?community=6654ae4eba54fe502d4e4187
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/bookService/bulk/677fdbc12dae749edbef2529?community=6654ae4eba54fe502d4e4187
 --------------------------------------------------
-[Test Name: Validate With QR(Nico)]
-File Name: openRddFlow.robot
+[Test Name: Make Bulk Reservation(all should failed, already booked)]
+File Name: assistantReleaseSeats.robot
+Error Message: HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v1/admin/pb/bookService/bulk/676de1f0164bc26319c0f08f?community=6654ae4eba54fe502d4e4187
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/bookService/bulk/676de1f0164bc26319c0f08f?community=6654ae4eba54fe502d4e4187
+--------------------------------------------------
+[Test Name: Resource Assignment(Driver and Vehicle Without reservations assignment)]
+File Name: assistantReleaseSeats.robot
+Error Message: Length of '[]' should be 3 but is 0.
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/assignServiceResources/677fdbc12dae749edbef2529?community=6654ae4eba54fe502d4e4187
+--------------------------------------------------
+[Test Name: Get Active Departures]
+File Name: assistantReleaseSeats.robot
+Error Message: List '${response.json()}' has no item in index 0.
+Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/pb/assistant/departures/actives
+--------------------------------------------------
+[Test Name: Validate With QR Assistant(Should be able to validate as user without reservation)]
+File Name: assistantReleaseSeats.robot
 Error Message: HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
 Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
 --------------------------------------------------
-[Test Name: Seat Reservation(User1-NicoEnd)]
-File Name: createScheduled.robot
-Error Message: Variable '${accessTokenNico}' not found.
-Request Info: No request info found
+[Test Name: Validate With QR Barbara(Pending Assigned2 User Dont have tickets)]
+File Name: assistantReleaseSeats.robot
+Error Message: HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
 --------------------------------------------------
-[Test Name: Seat Reservation(User1-NicoEnd)]
-File Name: createScheduledWithTickets.robot
-Error Message: Variable '${accessTokenNico}' not found.
-Request Info: No request info found
+[Test Name: Validate With QR Morita(SHould not be able to validate, all seats taken, seat1)]
+File Name: assistantReleaseSeats.robot
+Error Message: Expected error 'HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate' did not occur.
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
 --------------------------------------------------
-[Test Name: Login User With Email(Obtain Token)]
-File Name: JoinServices.robot
-Error Message: No accesToken found in Login!, Failing
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
+[Test Name: Validate With QR Morita(SHould be able to validate, departure2)]
+File Name: assistantReleaseSeats.robot
+Error Message: HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
+Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
 --------------------------------------------------
-[Test Name: Login User With Email(Obtain Token)]
-File Name: openRddFlow.robot
-Error Message: No accesToken found in Login!, Failing
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
---------------------------------------------------
-[Test Name: Login User With Email(Obtain Token)]
-File Name: createScheduled.robot
-Error Message: No accesToken found in Login!, Failing
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
---------------------------------------------------
-[Test Name: Login User With Email(Obtain Token)]
-File Name: createScheduledWithTickets.robot
-Error Message: No accesToken found in Login!, Failing
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
---------------------------------------------------
-[Test Name: Login User With Email(Obtain Token)]
-File Name: scheduledWithDefaultResources.robot
-Error Message: No accesToken found in Login!, Failing
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/login/email
+[Test Name: Delete Recent Validation]
+File Name: assistantReleaseSeats.robot
+Error Message: Variable '${validationMorita}' not found.
+Request Info: DELETE Request : url=https://stage.allrideapp.com/api/v1/pb/assistant/departures/validation/677fdbcef623e0590359fe88
 --------------------------------------------------

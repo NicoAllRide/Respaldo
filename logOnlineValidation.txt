@@ -1,0 +1,565 @@
+2024-12-26 15:12:43.217 21433-21433 AssistStructure         com.allride.buses                    I  Flattened final assist data: 7096 bytes, containing 1 windows, 53 views
+2024-12-26 15:12:43.845 21433-21433 TripActivityViewModel   com.allride.buses                    D  Pre startTrip: {"busCode":"171222","capacity":46,"communityId":"653fd68233d83952fafcd4be","driverCode":"159159","reason":"","routeId":"66f310608e6c377a3f43968e","shareToUsers":true,"startLat":-34.3941109,"startLon":-70.7812732,"vehicleId":"66830b98bb41bfd79a4620ac"}
+2024-12-26 15:12:43.849 21433-23690 AllRideOAuth2Service    com.allride.buses                    I  getAccessToken 838ef4e481d12aa90c6c11a538997f7a6fa4e013b319bfb86d801d41a935528dde1f77b88e88411352868ef4c83db841c3ef4cd0816d6f9ca75ec20682d87d43
+2024-12-26 15:12:44.997 21433-23690 AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=POST, url=https://stage.allrideapp.com/api/v2/pb/driver/departure, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.createDepartureNew() [com.allride.buses.api.AllRideAPI$CreateDepartureData@ad8eba4]}}
+2024-12-26 15:12:45.017 21433-21433 TripActivityViewModel   com.allride.buses                    D  Response createDeparture: 676d9c9d2a1ac0a2eb0093ac
+2024-12-26 15:12:45.024 21433-21433 DepartureRealm          com.allride.buses                    I  update 676d9c9d2a1ac0a2eb0093ac
+2024-12-26 15:12:45.067 21433-21433 TripActivityViewModel   com.allride.buses                    D  Success createDeparture: 676d9c9d2a1ac0a2eb0093ac
+2024-12-26 15:12:45.070 21433-21433 SocketClient            com.allride.buses                    D  initSocket null
+2024-12-26 15:12:45.070 21433-21433 SocketClient            com.allride.buses                    D  https://stage.allrideapp.com/pbDriver
+2024-12-26 15:12:45.071 21433-21433 SocketClient            com.allride.buses                    D  CONNECTING SOCKET token=71968a5c1ddc7722ce27ecf8c384a824988db53e6861647f86ec8d65bed9a45c7383eafb576ab3c1dedb311cd160d4bb661f84028b6922af3335233a6642ca2a
+2024-12-26 15:12:45.120 21433-21433 TripService             com.allride.buses                    D  Start Command null
+2024-12-26 15:12:45.120 21433-21433 TripService             com.allride.buses                    D  setupBroadcastReceiver
+2024-12-26 15:12:45.120 21433-21433 TripService             com.allride.buses                    D  Success registerReceiver socketUpdateReceiver
+2024-12-26 15:12:45.123 21433-21433 TripService             com.allride.buses                    D  Start Location com.allride.buses.services.TripService@e8aca91
+2024-12-26 15:12:45.124 21433-21433 TripService             com.allride.buses                    D  Sending event 'start' socket: null
+2024-12-26 15:12:45.137 21433-21481 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 2 to service
+2024-12-26 15:12:45.138 21433-21578 SessionLifecycleService com.allride.buses                    D  Activity backgrounding at 223022195
+2024-12-26 15:12:45.149 21433-21433 Google Android Maps SDK com.allride.buses                    D  For capability in capabilities, log:
+                                                                                                    "AdvancedMarkers: false: Capabilities unavailable without a Map ID."Data-driven styling: false
+2024-12-26 15:12:45.153 21433-21433 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.181 21433-21433 MainActivity            com.allride.buses                    D  onDestroy
+2024-12-26 15:12:45.206 21433-21433 MapsInitializer         com.allride.buses                    D  preferredRenderer: null
+2024-12-26 15:12:45.206 21433-21433 zzcc                    com.allride.buses                    D  preferredRenderer: null
+2024-12-26 15:12:45.207 21433-21433 Google Android Maps SDK com.allride.buses                    I  Google Play services package version: 244738029
+2024-12-26 15:12:45.207 21433-21433 Google Android Maps SDK com.allride.buses                    I  Google Play services maps renderer version(maps_core): 244125202
+2024-12-26 15:12:45.331 21433-21433 Utils                   com.allride.buses                    D  getCommunityFirst auth {"accessToken":"838ef4e481d12aa90c6c11a538997f7a6fa4e013b319bfb86d801d41a935528dde1f77b88e88411352868ef4c83db841c3ef4cd0816d6f9ca75ec20682d87d43","active":true,"canCreateRoutes":false,"canReleaseReservations":true,"code":"159159","communities":["653fd601f90509541a748683","6654ae4eba54fe502d4e4187"],"communityId":"653fd601f90509541a748683","config":{"autoLogout":{"enabled":false,"enum":"afterDepartureEnd","timer":{"amount":0,"unit":"minutes"}}},"device":{"accessToken":"","build":"","communities":[],"communityId":"","_id":"","model":"moto g71 5G","notificationToken":"","superCommunityId":""},"email":"nicolas+conductorsc1@allrideapp.com","hasToChangePassword":false,"_id":"668309b8bb41bfd79a461dc3","name":"Conductor Super Comunidad","refreshToken":"","rtlToken":"9e7ceac1b71173d5ee4d3095804f3f52df1a06595b2a17dc87a9fa61d36cd5dfe98e61635ef1b999adc4745acd67261b014fa1375eddabf13220004d247833ed","superCommunities":["653fd68233d83952fafcd4be"],"superCommunityId":"653fd68233d83952fafcd4be"}
+2024-12-26 15:12:45.331 21433-21433 Utils                   com.allride.buses                    D  getCommunityFirst routeId 66f310608e6c377a3f43968e
+2024-12-26 15:12:45.337 21433-21433 Utils                   com.allride.buses                    D  getCommunityFirst 1 - 6654ae4eba54fe502d4e4187 : Comunidad Automatización 2
+2024-12-26 15:12:45.343 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  getVehicleName: MORISC
+2024-12-26 15:12:45.350 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  configSocket
+2024-12-26 15:12:45.352 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  Success registerReceiver setupBroadcastReceiver
+2024-12-26 15:12:45.352 21433-21433 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-12-26 15:12:45.352 21433-21433 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-12-26 15:12:45.371 21433-21433 connectionService       com.allride.buses                    D  checkInMap false
+2024-12-26 15:12:45.390 21433-21433 connectionService       com.allride.buses                    D  checkPendingOfflineSync false false true
+2024-12-26 15:12:45.390 21433-21433 connectionService       com.allride.buses                    D  sendNotifyPendingOfflineSync true - 
+2024-12-26 15:12:45.390 21433-21433 connectionService       com.allride.buses                    I  checkSyncOffline current 'departure' : [offline=false, validations=false, images=false, departure=true, deviceHistory=false, driverMuc=false]
+2024-12-26 15:12:45.390 21433-21433 connectionService       com.allride.buses                    I  checkOnlineDataAsync
+2024-12-26 15:12:45.390 21433-21433 connectionService       com.allride.buses                    I  checkOnlineDataAsync dataAsyncList is empty
+2024-12-26 15:12:45.392 21433-23690 AllRideOAuth2Service    com.allride.buses                    I  getAccessToken 838ef4e481d12aa90c6c11a538997f7a6fa4e013b319bfb86d801d41a935528dde1f77b88e88411352868ef4c83db841c3ef4cd0816d6f9ca75ec20682d87d43
+2024-12-26 15:12:45.435 21433-21433 TextToSpeech            com.allride.buses                    I  Sucessfully bound to com.google.android.tts
+2024-12-26 15:12:45.436 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  dataAsyncList getTimeServer - list is [time, route, stopsOdd, users, auth, validatableUsers]
+2024-12-26 15:12:45.436 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  dataAsyncList getRoute - list is [time, route, stopsOdd, users, auth, validatableUsers]
+2024-12-26 15:12:45.438 21433-21433 UserRealm               com.allride.buses                    D  Validatable false
+2024-12-26 15:12:45.439 21433-23682 AllRideOAuth2Service    com.allride.buses                    I  getAccessToken 838ef4e481d12aa90c6c11a538997f7a6fa4e013b319bfb86d801d41a935528dde1f77b88e88411352868ef4c83db841c3ef4cd0816d6f9ca75ec20682d87d43
+2024-12-26 15:12:45.439 21433-21433 SocketClientAsap        com.allride.buses                    D  STOPPING SOCKET
+2024-12-26 15:12:45.440 21433-23688 AllRideOAuth2Service    com.allride.buses                    I  getAccessToken 838ef4e481d12aa90c6c11a538997f7a6fa4e013b319bfb86d801d41a935528dde1f77b88e88411352868ef4c83db841c3ef4cd0816d6f9ca75ec20682d87d43
+2024-12-26 15:12:45.443 21433-24636 AllRideOAuth2Service    com.allride.buses                    I  getAccessToken 838ef4e481d12aa90c6c11a538997f7a6fa4e013b319bfb86d801d41a935528dde1f77b88e88411352868ef4c83db841c3ef4cd0816d6f9ca75ec20682d87d43
+2024-12-26 15:12:45.445 21433-21433 Utils                   com.allride.buses                    D  BroadcastReceiver registered successfully
+2024-12-26 15:12:45.447 21433-21433 MapActivity             com.allride.buses                    E  ADD HISTORY USE: BATTERY_OPTIMIZATION
+2024-12-26 15:12:45.459 21433-21433 MapActivity             com.allride.buses                    E  ADD HISTORY USE: NO_TYPE_MOBILE_DATA
+2024-12-26 15:12:45.472 21433-21433 MapActivity             com.allride.buses                    I  initViewModel
+2024-12-26 15:12:45.487 21433-21433 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.490 21433-21433 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.491 21433-21433 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.491 21433-21433 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.493 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.494 21433-21433 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.494 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.495 21433-21433 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.496 21433-21433 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.500 21433-21433 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.500 21433-21433 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.523 21433-21433 MapActivity             com.allride.buses                    D  onStart
+2024-12-26 15:12:45.523 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  onResumeMap
+2024-12-26 15:12:45.523 21433-21433 MapActivity             com.allride.buses                    D  Success registerReceiver setupBroadcastReceiver
+2024-12-26 15:12:45.523 21433-21433 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-12-26 15:12:45.523 21433-21433 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-12-26 15:12:45.538 21433-21433 connectionService       com.allride.buses                    D  checkInMap exit for loadingCheckOnlineData
+2024-12-26 15:12:45.539 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  typeMap com.allride.buses.data.models.PBDeparture@dbf2a40
+2024-12-26 15:12:45.539 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel typeMap regular
+2024-12-26 15:12:45.539 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel capacity 46
+2024-12-26 15:12:45.539 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel capacityColor 2E7D32
+2024-12-26 15:12:45.544 21433-21433 Utils                   com.allride.buses                    D  startConnectivityService is exits - MapActivity
+2024-12-26 15:12:45.544 21433-21433 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-12-26 15:12:45.544 21433-21433 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-12-26 15:12:45.546 21433-21482 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 1 to service
+2024-12-26 15:12:45.546 21433-21578 SessionLifecycleService com.allride.buses                    D  Activity foregrounding at 223022603.
+2024-12-26 15:12:45.566 21433-21433 connectionService       com.allride.buses                    D  checkInMap exit for loadingCheckOnlineData
+2024-12-26 15:12:45.632 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-12-26 15:12:45.633 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-12-26 15:12:45.687 21433-21441 PowerManager            com.allride.buses                    E  WakeLock finalized while still held: Buses::RTL
+2024-12-26 15:12:45.693 21433-21433 SocketClient            com.allride.buses                    D  initSocket null
+2024-12-26 15:12:45.693 21433-21433 SocketClient            com.allride.buses                    D  https://stage.allrideapp.com/pbDriver
+2024-12-26 15:12:45.694 21433-21433 SocketClient            com.allride.buses                    D  CONNECTING SOCKET token=71968a5c1ddc7722ce27ecf8c384a824988db53e6861647f86ec8d65bed9a45c7383eafb576ab3c1dedb311cd160d4bb661f84028b6922af3335233a6642ca2a
+2024-12-26 15:12:45.698 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.698 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.707 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.707 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.729 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.730 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.745 21433-23630 AllRideDepartureService com.allride.buses                    I  Departure token: 71968a5c1ddc7722ce27ecf8c384a824988db53e6861647f86ec8d65bed9a45c7383eafb576ab3c1dedb311cd160d4bb661f84028b6922af3335233a6642ca2a
+2024-12-26 15:12:45.783 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.783 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.787 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.787 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.793 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.793 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.799 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.799 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.801 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.801 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.809 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.809 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.812 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.812 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.816 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.816 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.819 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.819 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.821 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.821 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.823 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.823 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.826 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.826 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.829 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.829 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.831 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.831 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.834 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.834 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.836 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.836 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.840 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.840 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.851 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.851 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.877 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.878 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.940 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.940 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.945 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.945 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.948 21433-24676 SocketClient            com.allride.buses                    D  Socket connected
+2024-12-26 15:12:45.951 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.951 21433-24648 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.952 21433-21433 connectionService       com.allride.buses                    D  socketUpdateReceiver onReceive CONNECT true
+2024-12-26 15:12:45.964 21433-24651 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.969 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.969 21433-24646 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.975 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:45.975 21433-24647 ProxyAndro...gerBackend com.allride.buses                    W  Too many Flogger logs received before configuration. Dropping old logs.
+2024-12-26 15:12:46.076 21433-23630 AllRideDepartureService com.allride.buses                    I  Response Code > 200
+2024-12-26 15:12:46.076 21433-23630 AllRideDepartureService com.allride.buses                    I  URL > Request{method=GET, url=https://stage.allrideapp.com/api/v1/pb/provider/currentTime, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.getTimeServer() []}}
+2024-12-26 15:12:46.077 21433-23690 AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=GET, url=https://stage.allrideapp.com/api/v2/pb/driver/departures/current, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.getCurrentDeparture() []}}
+2024-12-26 15:12:46.080 21433-23694 connectionService       com.allride.buses                    D  Success getCurrentDeparture
+2024-12-26 15:12:46.080 21433-23682 AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=GET, url=https://stage.allrideapp.com/api/v1/pb/provider/route/653fd68233d83952fafcd4be/66f310608e6c377a3f43968e, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.getRoute() [653fd68233d83952fafcd4be, 66f310608e6c377a3f43968e]}}
+2024-12-26 15:12:46.080 21433-23694 DepartureRealm          com.allride.buses                    I  update 676d9c9d2a1ac0a2eb0093ac
+2024-12-26 15:12:46.085 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  Success getTimeServer: "1735236766992"
+2024-12-26 15:12:46.097 21433-23688 AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=GET, url=https://stage.allrideapp.com/api/v1/pb/provider/me, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.getAuthMe() []}}
+2024-12-26 15:12:46.101 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  Success getAuthMe - {"auth":{"accessToken":"838ef4e481d12aa90c6c11a538997f7a6fa4e013b319bfb86d801d41a935528dde1f77b88e88411352868ef4c83db841c3ef4cd0816d6f9ca75ec20682d87d43","active":true,"canCreateRoutes":false,"canReleaseReservations":true,"code":"159159","communities":["653fd601f90509541a748683","6654ae4eba54fe502d4e4187"],"communityId":"653fd601f90509541a748683","config":{"autoLogout":{"enabled":false,"enum":"afterDepartureEnd","timer":{"amount":0,"unit":"minutes"}}},"device":{"accessToken":"","build":"","communityId":"","_id":"","model":"moto g71 5G","notificationToken":"","superCommunityId":""},"email":"nicolas+conductorsc1@allrideapp.com","hasToChangePassword":false,"_id":"668309b8bb41bfd79a461dc3","name":"Conductor Super Comunidad","refreshToken":"","rtlToken":"9e7ceac1b71173d5ee4d3095804f3f52df1a06595b2a17dc87a9fa61d36cd5dfe98e61635ef1b999adc4745acd67261b014fa1375eddabf13220004d247833ed","superCommunities":["653fd68233d83952fafcd4be"],"superCommunityId":"653fd68233d83952fafcd4be"},"type":"driver"}
+2024-12-26 15:12:46.108 21433-24636 AllRideOAuth2Service    com.allride.buses                    I  Response Code > 500 - Request > Request{method=GET, url=https://stage.allrideapp.com/api/v1/pb/provider/validatableUsers/66f310608e6c377a3f43968e?usesPasses=false&usesTickets=true, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.validatableUsers() [66f310608e6c377a3f43968e, false, true]}}
+2024-12-26 15:12:46.112 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  typeMap com.allride.buses.data.models.PBDeparture@8ac1cd1
+2024-12-26 15:12:46.112 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel typeMap regular
+2024-12-26 15:12:46.112 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel capacity 46
+2024-12-26 15:12:46.119 21433-21433 ActiveDepa...eViewModel com.allride.buses                    E  Error validatableUsers: HTTP 500 
+2024-12-26 15:12:46.119 21433-23694 connectionService       com.allride.buses                    D  sendUpdateDeparture
+2024-12-26 15:12:46.120 21433-21433 TripService             com.allride.buses                    D  socketUpdateReceiver onReceive UPDATE_DEPARTURE
+2024-12-26 15:12:46.120 21433-23694 connectionService       com.allride.buses                    D  startActivityMap
+2024-12-26 15:12:46.120 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  socketUpdateReceiver onReceive UPDATE_DEPARTURE
+2024-12-26 15:12:46.120 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  socketUpdateReceiver onReceive UPDATE_DEPARTURE
+2024-12-26 15:12:46.120 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive UPDATE_DEPARTURE false
+2024-12-26 15:12:46.162 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  Success getRoute 66f310608e6c377a3f43968e
+2024-12-26 15:12:46.181 21433-23694 connectionService       com.allride.buses                    D  checkPendingOfflineSync false false true
+2024-12-26 15:12:46.181 21433-23694 connectionService       com.allride.buses                    D  sendNotifyPendingOfflineSync true - 
+2024-12-26 15:12:46.181 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive pendingOfflineSync true
+2024-12-26 15:12:46.181 21433-23694 connectionService       com.allride.buses                    I  checkSyncOffline current 'deviceHistory' : [offline=false, validations=false, images=false, departure=false, deviceHistory=true, driverMuc=false]
+2024-12-26 15:12:46.183 21433-23682 AllRideOAuth2Service    com.allride.buses                    I  getAccessToken 838ef4e481d12aa90c6c11a538997f7a6fa4e013b319bfb86d801d41a935528dde1f77b88e88411352868ef4c83db841c3ef4cd0816d6f9ca75ec20682d87d43
+2024-12-26 15:12:46.249 21433-23291 TextToSpeech            com.allride.buses                    I  Connected to TTS engine
+2024-12-26 15:12:46.285 21433-24592 TextToSpeech            com.allride.buses                    I  Setting up the connection to TTS engine...
+2024-12-26 15:12:46.452 21433-21433 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-12-26 15:12:46.452 21433-21433 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-12-26 15:12:46.460 21433-21433 connectionService       com.allride.buses                    D  checkInMap exit for loadingCheckOnlineData
+2024-12-26 15:12:46.460 21433-21433 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-12-26 15:12:46.460 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-12-26 15:12:46.461 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-12-26 15:12:46.542 21433-24690 ActiveDepa...eViewModel com.allride.buses                    I  Starting departure socket
+2024-12-26 15:12:46.542 21433-24690 ActiveDepa...eViewModel com.allride.buses                    D  configSocket
+2024-12-26 15:12:46.544 21433-24690 SocketClient            com.allride.buses                    D  Socket connected
+2024-12-26 15:12:46.544 21433-21433 connectionService       com.allride.buses                    D  socketUpdateReceiver onReceive CONNECT true
+2024-12-26 15:12:46.952 21433-23682 AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=POST, url=https://stage.allrideapp.com/api/v2/pb/driver/departure/device/history, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.saveDeviceHistoryConnection() [com.allride.buses.api.AllRideAPI$HistoryUse@6c1d27b]}}
+2024-12-26 15:12:46.986 21433-21880 connectionService       com.allride.buses                    D  checkPendingOfflineSync false false true
+2024-12-26 15:12:46.986 21433-21880 connectionService       com.allride.buses                    D  sendNotifyPendingOfflineSync true - 
+2024-12-26 15:12:46.987 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive pendingOfflineSync true
+2024-12-26 15:12:46.987 21433-21880 connectionService       com.allride.buses                    I  checkSyncOffline dataList isEmpty
+2024-12-26 15:12:46.987 21433-21880 connectionService       com.allride.buses                    D  Success saveDeviceHistoryConnection: 2
+2024-12-26 15:12:47.044 21433-21433 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-12-26 15:12:47.044 21433-21433 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-12-26 15:12:47.055 21433-21433 connectionService       com.allride.buses                    D  checkInMap false
+2024-12-26 15:12:47.071 21433-21433 connectionService       com.allride.buses                    D  checkPendingOfflineSync false false true
+2024-12-26 15:12:47.071 21433-21433 connectionService       com.allride.buses                    D  sendNotifyPendingOfflineSync true - 
+2024-12-26 15:12:47.071 21433-21433 connectionService       com.allride.buses                    I  checkSyncOffline current 'departure' : [offline=false, validations=false, images=false, departure=true, deviceHistory=false, driverMuc=false]
+2024-12-26 15:12:47.071 21433-21433 connectionService       com.allride.buses                    I  checkOnlineDataAsync
+2024-12-26 15:12:47.071 21433-21433 connectionService       com.allride.buses                    I  checkOnlineDataAsync dataAsyncList is empty
+2024-12-26 15:12:47.071 21433-21433 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-12-26 15:12:47.071 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-12-26 15:12:47.072 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive pendingOfflineSync true
+2024-12-26 15:12:47.072 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-12-26 15:12:47.073 21433-23682 AllRideOAuth2Service    com.allride.buses                    I  getAccessToken 838ef4e481d12aa90c6c11a538997f7a6fa4e013b319bfb86d801d41a935528dde1f77b88e88411352868ef4c83db841c3ef4cd0816d6f9ca75ec20682d87d43
+2024-12-26 15:12:47.747 21433-23682 AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=GET, url=https://stage.allrideapp.com/api/v2/pb/driver/departures/current, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.getCurrentDeparture() []}}
+2024-12-26 15:12:47.759 21433-21880 connectionService       com.allride.buses                    D  Success getCurrentDeparture
+2024-12-26 15:12:47.759 21433-21880 DepartureRealm          com.allride.buses                    I  update 676d9c9d2a1ac0a2eb0093ac
+2024-12-26 15:12:47.773 21433-21880 connectionService       com.allride.buses                    D  sendUpdateDeparture
+2024-12-26 15:12:47.773 21433-21880 connectionService       com.allride.buses                    D  startActivityMap
+2024-12-26 15:12:47.773 21433-21433 TripService             com.allride.buses                    D  socketUpdateReceiver onReceive UPDATE_DEPARTURE
+2024-12-26 15:12:47.773 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  socketUpdateReceiver onReceive UPDATE_DEPARTURE
+2024-12-26 15:12:47.773 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  socketUpdateReceiver onReceive UPDATE_DEPARTURE
+2024-12-26 15:12:47.773 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive UPDATE_DEPARTURE false
+2024-12-26 15:12:47.792 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  typeMap com.allride.buses.data.models.PBDeparture@6056f70
+2024-12-26 15:12:47.793 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel typeMap regular
+2024-12-26 15:12:47.793 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel capacity 46
+2024-12-26 15:12:47.810 21433-21880 connectionService       com.allride.buses                    D  checkPendingOfflineSync false false true
+2024-12-26 15:12:47.810 21433-21880 connectionService       com.allride.buses                    D  sendNotifyPendingOfflineSync true - 
+2024-12-26 15:12:47.811 21433-21880 connectionService       com.allride.buses                    I  checkSyncOffline dataList isEmpty
+2024-12-26 15:12:47.822 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive pendingOfflineSync true
+2024-12-26 15:12:48.296 21433-21433 UserRealm               com.allride.buses                    D  isWorking false
+2024-12-26 15:12:48.312 21433-21482 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 2 to service
+2024-12-26 15:12:48.313 21433-21578 SessionLifecycleService com.allride.buses                    D  Activity backgrounding at 223025370
+2024-12-26 15:12:48.389 21433-21433 Utils                   com.allride.buses                    D  BroadcastReceiver registered successfully
+2024-12-26 15:12:48.391 21433-21433 CapturePas...erActivity com.allride.buses                    E  ADD HISTORY USE: NO_TYPE_MOBILE_DATA
+2024-12-26 15:12:48.415 21433-21439 m.allride.buse          com.allride.buses                    I  Background concurrent copying GC freed 14MB AllocSpace bytes, 142(6180KB) LOS objects, 36% free, 42MB/66MB, paused 201us,61us total 102.771ms
+2024-12-26 15:12:48.418 21433-21433 CapturePas...erActivity com.allride.buses                    D  startCamera
+2024-12-26 15:12:48.421 21433-21433 CamLifecycleController  com.allride.buses                    D  CameraProvider is not ready.
+2024-12-26 15:12:48.421 21433-21433 CameraController        com.allride.buses                    D  Use cases not attached to camera.
+2024-12-26 15:12:48.422 21433-24006 DynamiteModule          com.allride.buses                    I  Considering local module com.google.mlkit.dynamite.barcode:10000 and remote module com.google.mlkit.dynamite.barcode:0
+2024-12-26 15:12:48.422 21433-24006 DynamiteModule          com.allride.buses                    I  Selected local version of com.google.mlkit.dynamite.barcode
+2024-12-26 15:12:48.422 21433-21433 ViewReaderQR            com.allride.buses                    D  startQRAnalysis
+2024-12-26 15:12:48.435 21433-21433 CapturePas...erActivity com.allride.buses                    D  onResumeCamera
+2024-12-26 15:12:48.435 21433-21433 ViewReaderQR            com.allride.buses                    D  onResumeCamera
+2024-12-26 15:12:48.435 21433-21433 ViewReaderQR            com.allride.buses                    D  startQRAnalysis
+2024-12-26 15:12:48.435 21433-21460 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 1 to service
+2024-12-26 15:12:48.436 21433-21433 Utils                   com.allride.buses                    D  BroadcastReceiver registered successfully
+2024-12-26 15:12:48.439 21433-21578 SessionLifecycleService com.allride.buses                    D  Activity foregrounding at 223025497.
+2024-12-26 15:12:48.497 21433-21433 LoginActivity           com.allride.buses                    D  getNetworkStatus: {"pingTime":51,"signalStrength":4,"status":true,"type":"wifi"}
+2024-12-26 15:12:48.527 21433-21433 CamLifecycleController  com.allride.buses                    D  CameraProvider is not ready.
+2024-12-26 15:12:48.528 21433-21433 CameraController        com.allride.buses                    D  Use cases not attached to camera.
+2024-12-26 15:12:48.542 21433-21433 TripService             com.allride.buses                    D  Sending event 'newPosition' socket: 0ad10982-6989-4cc6-a2c9-7aacd2668cd8 - [-34.3941089,-70.7812718]
+2024-12-26 15:12:48.546 21433-21433 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-12-26 15:12:48.546 21433-21433 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-12-26 15:12:48.551 21433-21433 DynamicRangeResolver    com.allride.buses                    D  Resolved dynamic range for use case androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00 to no compatible HDR dynamic ranges.
+                                                                                                    DynamicRange@ed8e517{encoding=UNSPECIFIED, bitDepth=0}
+                                                                                                    ->
+                                                                                                    DynamicRange@1f52596{encoding=SDR, bitDepth=8}
+2024-12-26 15:12:48.552 21433-21433 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-12-26 15:12:48.553 21433-21433 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-12-26 15:12:48.554 21433-21433 DeferrableSurface       com.allride.buses                    D  Surface created[total_surfaces=1, used_surfaces=0](androidx.camera.core.processing.SurfaceEdge$SettableSurface@4f5b62}
+2024-12-26 15:12:48.555 21433-21433 DeferrableSurface       com.allride.buses                    D  Surface created[total_surfaces=2, used_surfaces=0](androidx.camera.core.SurfaceRequest$2@a4bcbae}
+2024-12-26 15:12:48.556 21433-21433 DeferrableSurface       com.allride.buses                    D  New surface in use[total_surfaces=2, used_surfaces=1](androidx.camera.core.SurfaceRequest$2@a4bcbae}
+2024-12-26 15:12:48.556 21433-21433 DeferrableSurface       com.allride.buses                    D  use count+1, useCount=1 androidx.camera.core.SurfaceRequest$2@a4bcbae
+2024-12-26 15:12:48.556 21433-21433 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-12-26 15:12:48.558 21433-21433 ImageCapture            com.allride.buses                    D  createPipeline(cameraId: 0, streamSpec: StreamSpec{resolution=3264x2448, dynamicRange=DynamicRange@1f52596{encoding=SDR, bitDepth=8}, expectedFrameRateRange=[0, 0], implementationOptions=androidx.camera.camera2.impl.Camera2ImplConfig@5710f6b})
+2024-12-26 15:12:48.559 21433-21433 DeferrableSurface       com.allride.buses                    D  Surface created[total_surfaces=3, used_surfaces=1](androidx.camera.core.impl.ImmediateSurface@b985ac8}
+2024-12-26 15:12:48.561 21433-22804 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use case androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937 ACTIVE
+2024-12-26 15:12:48.561 21433-21433 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-12-26 15:12:48.561 21433-22804 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-12-26 15:12:48.561 21433-21433 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-12-26 15:12:48.562 21433-21433 DeferrableSurface       com.allride.buses                    D  Surface created[total_surfaces=4, used_surfaces=1](androidx.camera.core.impl.ImmediateSurface@f3747}
+2024-12-26 15:12:48.564 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use case androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272 ACTIVE
+2024-12-26 15:12:48.564 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-12-26 15:12:48.564 21433-21433 UsbSerialService        com.allride.buses                    D  onCreate
+2024-12-26 15:12:48.565 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use case androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937 ACTIVE
+2024-12-26 15:12:48.565 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-12-26 15:12:48.566 21433-21433 UsbSerialService        com.allride.buses                    D  findSerialPortDevice: []
+2024-12-26 15:12:48.566 21433-21433 UsbSerialService        com.allride.buses                    D  No compatible USB device found
+2024-12-26 15:12:48.567 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use case androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198 ACTIVE
+2024-12-26 15:12:48.567 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-12-26 15:12:48.568 21433-21433 PreviewView             com.allride.buses                    D  Surface requested by Preview.
+2024-12-26 15:12:48.569 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-12-26 15:12:48.571 21433-21433 PreviewView             com.allride.buses                    D  Preview transformation info updated. TransformationInfo{getCropRect=Rect(0, 117 - 1600, 1083), getRotationDegrees=90, getTargetRotation=-1, hasCameraTransform=true, getSensorToBufferTransform=Matrix{[0.39215687, 0.0, -1.5686275][0.0, 0.39215687, -3.9215686][0.0, 0.0, 1.0]}, getMirroring=false}
+2024-12-26 15:12:48.571 21433-21433 PreviewTransform        com.allride.buses                    D  Transformation info set: TransformationInfo{getCropRect=Rect(0, 117 - 1600, 1083), getRotationDegrees=90, getTargetRotation=-1, hasCameraTransform=true, getSensorToBufferTransform=Matrix{[0.39215687, 0.0, -1.5686275][0.0, 0.39215687, -3.9215686][0.0, 0.0, 1.0]}, getMirroring=false} 1600x1200 false
+2024-12-26 15:12:48.572 21433-21433 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-12-26 15:12:48.574 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use cases [androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272, androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198] now ATTACHED
+2024-12-26 15:12:48.578 21433-22793 UseCaseAttachState      com.allride.buses                    D  All use case: [androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272, androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198] for camera: 0
+2024-12-26 15:12:48.580 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272, androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198] for camera: 0
+2024-12-26 15:12:48.581 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Resetting Capture Session
+2024-12-26 15:12:48.581 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Releasing session in state INITIALIZED
+2024-12-26 15:12:48.582 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Attempting to force open the camera.
+2024-12-26 15:12:48.582 21433-22793 CameraStateRegistry     com.allride.buses                    D  tryOpenCamera(Camera@f00f3d4[id=0]) [Available Cameras: 1, Already Open: false (Previous state: CLOSED)] --> SUCCESS
+2024-12-26 15:12:48.582 21433-22793 CameraStateRegistry     com.allride.buses                    D  Recalculating open cameras:
+                                                                                                    Camera                                       State                 
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Camera@f00f3d4[id=0]                         OPENING               
+                                                                                                    Camera@a7f9ba5[id=1]                         UNKNOWN               
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Open count: 1 (Max allowed: 1)
+2024-12-26 15:12:48.582 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Opening camera.
+2024-12-26 15:12:48.582 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Transitioning camera internal state: INITIALIZED --> OPENING
+2024-12-26 15:12:48.583 21433-22793 CameraStateMachine      com.allride.buses                    D  New public camera state CameraState{type=OPENING, error=null} from OPENING and null
+2024-12-26 15:12:48.583 21433-22793 CameraStateMachine      com.allride.buses                    D  Publishing new public camera state CameraState{type=OPENING, error=null}
+2024-12-26 15:12:48.583 21433-22793 UseCaseAttachState      com.allride.buses                    D  All use case: [androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272, androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198] for camera: 0
+2024-12-26 15:12:48.584 21433-21433 SurfaceViewImpl         com.allride.buses                    D  Surface created.
+2024-12-26 15:12:48.584 21433-21433 SurfaceViewImpl         com.allride.buses                    D  Surface changed. Size: 1600x1200
+2024-12-26 15:12:48.585 21433-21433 SurfaceViewImpl         com.allride.buses                    D  Surface set on Preview.
+2024-12-26 15:12:48.623 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use case androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272 ACTIVE
+2024-12-26 15:12:48.624 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272, androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198] for camera: 0
+2024-12-26 15:12:48.624 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use case androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937 ACTIVE
+2024-12-26 15:12:48.625 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272, androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198] for camera: 0
+2024-12-26 15:12:48.626 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use case androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198 ACTIVE
+2024-12-26 15:12:48.626 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272, androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198] for camera: 0
+2024-12-26 15:12:48.628 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} CameraDevice.onOpened()
+2024-12-26 15:12:48.628 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Transitioning camera internal state: OPENING --> OPENED
+2024-12-26 15:12:48.628 21433-22793 CameraStateRegistry     com.allride.buses                    D  Recalculating open cameras:
+                                                                                                    Camera                                       State                 
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Camera@f00f3d4[id=0]                         OPEN                  
+                                                                                                    Camera@a7f9ba5[id=1]                         UNKNOWN               
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Open count: 1 (Max allowed: 1)
+2024-12-26 15:12:48.629 21433-22793 CameraStateMachine      com.allride.buses                    D  New public camera state CameraState{type=OPEN, error=null} from OPEN and null
+2024-12-26 15:12:48.629 21433-22793 CameraStateMachine      com.allride.buses                    D  Publishing new public camera state CameraState{type=OPEN, error=null}
+2024-12-26 15:12:48.629 21433-22793 UseCaseAttachState      com.allride.buses                    D  All use case: [androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272, androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198] for camera: 0
+2024-12-26 15:12:48.630 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272, androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198] for camera: 0
+2024-12-26 15:12:48.631 21433-22793 SyncCaptureSessionBase  com.allride.buses                    D  [androidx.camera.camera2.internal.SynchronizedCaptureSessionBaseImpl@7b6d072] getSurface...done
+2024-12-26 15:12:48.632 21433-22793 CaptureSession          com.allride.buses                    D  Opening capture session.
+2024-12-26 15:12:48.633 21433-22793 DeferrableSurface       com.allride.buses                    D  use count+1, useCount=2 androidx.camera.core.SurfaceRequest$2@a4bcbae
+2024-12-26 15:12:48.633 21433-22793 DeferrableSurface       com.allride.buses                    D  New surface in use[total_surfaces=4, used_surfaces=2](androidx.camera.core.impl.ImmediateSurface@b985ac8}
+2024-12-26 15:12:48.633 21433-22793 DeferrableSurface       com.allride.buses                    D  use count+1, useCount=1 androidx.camera.core.impl.ImmediateSurface@b985ac8
+2024-12-26 15:12:48.633 21433-22793 DeferrableSurface       com.allride.buses                    D  New surface in use[total_surfaces=4, used_surfaces=3](androidx.camera.core.impl.ImmediateSurface@f3747}
+2024-12-26 15:12:48.633 21433-22793 DeferrableSurface       com.allride.buses                    D  use count+1, useCount=1 androidx.camera.core.impl.ImmediateSurface@f3747
+2024-12-26 15:12:48.717 21433-22793 CaptureSession          com.allride.buses                    D  Attempting to send capture request onConfigured
+2024-12-26 15:12:48.717 21433-22793 CaptureSession          com.allride.buses                    D  Issuing request for session.
+2024-12-26 15:12:48.717 21433-22793 Camera2Cap...estBuilder com.allride.buses                    D  createCaptureRequest
+2024-12-26 15:12:48.720 21433-22793 CaptureSession          com.allride.buses                    D  CameraCaptureSession.onConfigured() mState=OPENED
+2024-12-26 15:12:48.720 21433-22793 CaptureSession          com.allride.buses                    D  CameraCaptureSession.onReady() OPENED
+2024-12-26 15:12:48.765 21433-21433 MapActivity             com.allride.buses                    D  onStop
+2024-12-26 15:12:48.765 21433-21433 MapActivity             com.allride.buses                    D  Success unregisterReceiver setupBroadcastReceiver
+2024-12-26 15:12:48.978 21433-22793 StreamStateObserver     com.allride.buses                    D  Update Preview stream state to STREAMING
+2024-12-26 15:12:48.981 21433-24010 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.020 21433-21433 TripService             com.allride.buses                    D  Sending event 'newPosition' socket: 08540a3a-f444-48c7-9002-fc8914cabc0c - [-34.3941092,-70.7812733]
+2024-12-26 15:12:49.021 21433-24012 tflite                  com.allride.buses                    I  Replacing 43 out of 43 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for the whole graph.
+2024-12-26 15:12:49.022 21433-24012 tflite                  com.allride.buses                    I  Replacing 35 out of 47 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 23 partitions for the whole graph.
+2024-12-26 15:12:49.023 21433-24012 native                  com.allride.buses                    I  I0000 00:00:1735236769.023499   24012 oned_decoder_client.cc:696] barhopper::deep_learning::OnedDecoderClient is created successfully.
+2024-12-26 15:12:49.080 21433-24010 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.083 21433-24013 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.128 21433-24013 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.139 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.187 21433-23948 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.188 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.208 21433-24012 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.273 21433-24012 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.273 21433-24012 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.288 21433-24013 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.345 21433-24013 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.345 21433-24013 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.355 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.427 21433-23948 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.427 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.428 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.442 21433-24011 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.506 21433-24011 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.507 21433-24011 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.516 21433-24008 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.577 21433-24008 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.578 21433-24008 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.584 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.645 21433-23948 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.646 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.649 21433-24011 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.712 21433-24011 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.713 21433-24011 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.716 21433-24008 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.772 21433-24008 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.772 21433-24008 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.781 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.838 21433-23948 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:49.839 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.848 21433-24011 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:49.897 21433-21433 ViewReaderQR            com.allride.buses                    D  barcodeScanner: 87ecbaf1e980438b5e7d19457a0a88d41f32066bb72bda50fbe6c09bb1624537ce1a447fc70065645c714849cf8585fa2ac7ef4bc5bd23b11c68349c5acef8b766d8cf4f4a7101503b01f84a004
+2024-12-26 15:12:49.897 21433-21433 ViewReaderQR            com.allride.buses                    D  onPauseCamera
+2024-12-26 15:12:49.898 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  onlineValidationQR: 87ecbaf1e980438b5e7d19457a0a88d41f32066bb72bda50fbe6c09bb1624537ce1a447fc70065645c714849cf8585fa2ac7ef4bc5bd23b11c68349c5acef8b766d8cf4f4a7101503b01f84a004
+2024-12-26 15:12:49.899 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  Pre validatePassenger {"communityId":"653fd68233d83952fafcd4be","timezone":"America/Santiago","validationInternalId":"75748074-6460-48ed-9994-70cb45902368","validationLat":-34.3941092,"validationLon":-70.7812733,"validationString":"87ecbaf1e980438b5e7d19457a0a88d41f32066bb72bda50fbe6c09bb1624537ce1a447fc70065645c714849cf8585fa2ac7ef4bc5bd23b11c68349c5acef8b766d8cf4f4a7101503b01f84a004"}
+2024-12-26 15:12:49.901 21433-22804 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use case androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198 INACTIVE
+2024-12-26 15:12:49.902 21433-22804 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272] for camera: 0
+2024-12-26 15:12:49.903 21433-22804 CaptureSession          com.allride.buses                    D  Attempting to submit CaptureRequest after setting
+2024-12-26 15:12:49.903 21433-22804 CaptureSession          com.allride.buses                    D  Issuing request for session.
+2024-12-26 15:12:49.903 21433-22804 Camera2Cap...estBuilder com.allride.buses                    D  createCaptureRequest
+2024-12-26 15:12:50.033 21433-24011 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:50.048 21433-24011 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:50.269 21433-23630 AllRideDepartureService com.allride.buses                    I  Departure token: 71968a5c1ddc7722ce27ecf8c384a824988db53e6861647f86ec8d65bed9a45c7383eafb576ab3c1dedb311cd160d4bb661f84028b6922af3335233a6642ca2a
+2024-12-26 15:12:50.769 21433-23630 AllRideDepartureService com.allride.buses                    I  Response Code > 200
+2024-12-26 15:12:50.769 21433-23630 AllRideDepartureService com.allride.buses                    I  URL > Request{method=POST, url=https://stage.allrideapp.com/api/v1/pb/provider/departures/validate, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.validatePassenger() [com.allride.buses.api.AllRideAPI$ValidatePassengerData@b37a166]}}
+2024-12-26 15:12:50.778 21433-23694 ActiveDepa...eViewModel com.allride.buses                    D  Success validatePassenger {"assignedSeat":"","communityId":"6654ae4eba54fe502d4e4187","createdAt":"Dec 26, 2024 3:12:51 PM","departureId":"676d9c9d2a1ac0a2eb0093ac","distance":8859.704,"_id":"676d9ca32a1ac0a2eb009436","internalId":"75748074-6460-48ed-9994-70cb45902368","isCustom":false,"isDNI":false,"isManual":false,"lat":-34.394108,"latitude":-34.394108,"loc":{"float1":-70.78127,"float2":-34.394108},"lon":-70.78127,"longitude":-70.78127,"reason":["ext_web_control"],"remainingTickets":0,"routeId":"66f310608e6c377a3f43968e","synced":true,"token":"","user":{"avatar":"https://s3.amazonaws.com/adedo.users-avatars/user_placeholder.png","_id":"66d8cf4f4a7101503b01f84a","name":"Barbara Lisboa"},"userId":"66d8cf4f4a7101503b01f84a","validated":true}
+2024-12-26 15:12:50.782 21433-23694 Validations             com.allride.buses                    D  updateValidation {"assignedSeat":"","communityId":"6654ae4eba54fe502d4e4187","createdAt":"Dec 26, 2024 3:12:51 PM","departureId":"676d9c9d2a1ac0a2eb0093ac","distance":8859.704,"_id":"676d9ca32a1ac0a2eb009436","internalId":"75748074-6460-48ed-9994-70cb45902368","isCustom":false,"isDNI":false,"isManual":false,"lat":-34.394108,"latitude":-34.394108,"loc":{"float1":-70.78127,"float2":-34.394108},"lon":-70.78127,"longitude":-70.78127,"reason":["ext_web_control"],"remainingTickets":0,"routeId":"66f310608e6c377a3f43968e","synced":true,"token":"","user":{"avatar":"https://s3.amazonaws.com/adedo.users-avatars/user_placeholder.png","_id":"66d8cf4f4a7101503b01f84a","name":"Barbara Lisboa"},"userId":"66d8cf4f4a7101503b01f84a","validated":true}
+2024-12-26 15:12:50.788 21433-23694 ValidationRealm         com.allride.buses                    D  validatePassenger validationInfo {"assignedSeat":"","communityId":"6654ae4eba54fe502d4e4187","createdAt":"Dec 26, 2024 3:12:51 PM","departureId":"676d9c9d2a1ac0a2eb0093ac","_id":"676d9ca32a1ac0a2eb009436","reason":["ext_web_control"],"synced":true,"userId":"66d8cf4f4a7101503b01f84a","validated":true}
+2024-12-26 15:12:50.831 21433-23694 ActiveDepa...eViewModel com.allride.buses                    D  BLEManager sendCommandBLE
+2024-12-26 15:12:50.858 21433-21433 AudioTrack              com.allride.buses                    I  createTrack_l(-1275068307): AUDIO_OUTPUT_FLAG_FAST successful; frameCount 960 -> 960
+2024-12-26 15:12:50.858 21433-21433 AudioTrack              com.allride.buses                    D  setVolume: mRelativePercentage:1.000000, left:1.000000, right:1.000000
+2024-12-26 15:12:51.009 21433-24785 ActiveDepa...eViewModel com.allride.buses                    D  SocketClient - current : {"color":"2E7D32","capacity":45}
+2024-12-26 15:12:51.010 21433-24785 DepartureRealm          com.allride.buses                    D  setCapacity 45
+2024-12-26 15:12:51.263 21433-24777 AudioTrack              com.allride.buses                    D  stop(3398): called with 15168 frames delivered
+2024-12-26 15:12:52.601 21433-21433 InputEventReceiver      com.allride.buses                    W  Attempted to finish an input event but the input event receiver has already been disposed.
+2024-12-26 15:12:52.601 21433-21433 CapturePas...erActivity com.allride.buses                    D  hideDialogValidation
+2024-12-26 15:12:52.601 21433-21433 CapturePas...erActivity com.allride.buses                    D  onResumeCamera
+2024-12-26 15:12:52.601 21433-21433 ViewReaderQR            com.allride.buses                    D  onResumeCamera
+2024-12-26 15:12:52.601 21433-21433 ViewReaderQR            com.allride.buses                    D  startQRAnalysis
+2024-12-26 15:12:52.602 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use case androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198 ACTIVE
+2024-12-26 15:12:52.603 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272, androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198] for camera: 0
+2024-12-26 15:12:52.604 21433-22793 CaptureSession          com.allride.buses                    D  Attempting to submit CaptureRequest after setting
+2024-12-26 15:12:52.604 21433-22793 CaptureSession          com.allride.buses                    D  Issuing request for session.
+2024-12-26 15:12:52.604 21433-22793 Camera2Cap...estBuilder com.allride.buses                    D  createCaptureRequest
+2024-12-26 15:12:52.904 21433-24008 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:52.972 21433-24008 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:52.975 21433-24008 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:52.995 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.022 21433-21433 TripService             com.allride.buses                    D  Sending event 'newPosition' socket: 397e496c-dee5-47e9-a171-d1dd9d9beb7a - [-34.3941099,-70.7812756]
+2024-12-26 15:12:53.107 21433-23948 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:53.108 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.108 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.108 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.115 21433-24012 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.162 21433-24012 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:53.162 21433-24012 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.170 21433-24013 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.227 21433-24013 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:53.228 21433-24013 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.235 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.305 21433-23948 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:53.306 21433-23948 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.314 21433-24012 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.371 21433-24012 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:53.372 21433-24012 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.377 21433-24013 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.445 21433-24013 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:53.446 21433-24013 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.447 21433-24013 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.479 21433-24008 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.600 21433-24008 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:53.604 21433-24008 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.605 21433-24008 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.606 21433-24008 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.610 21433-24010 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-26 15:12:53.648 21433-21433 UserRealm               com.allride.buses                    D  isWorking false
+2024-12-26 15:12:53.671 21433-21433 CapturePas...erActivity com.allride.buses                    D  onPauseCamera
+2024-12-26 15:12:53.671 21433-21433 ViewReaderQR            com.allride.buses                    D  onPauseCamera
+2024-12-26 15:12:53.673 21433-22804 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use case androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198 INACTIVE
+2024-12-26 15:12:53.675 21433-22804 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272] for camera: 0
+2024-12-26 15:12:53.677 21433-22804 CaptureSession          com.allride.buses                    D  Attempting to submit CaptureRequest after setting
+2024-12-26 15:12:53.677 21433-22804 CaptureSession          com.allride.buses                    D  Issuing request for session.
+2024-12-26 15:12:53.678 21433-22804 Camera2Cap...estBuilder com.allride.buses                    D  createCaptureRequest
+2024-12-26 15:12:53.714 21433-21433 MapActivity             com.allride.buses                    D  onStart
+2024-12-26 15:12:53.718 21433-21460 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 2 to service
+2024-12-26 15:12:53.718 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  onResumeMap
+2024-12-26 15:12:53.719 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  onResumeMap getCurrent
+2024-12-26 15:12:53.720 21433-21433 MapActivity             com.allride.buses                    D  Success registerReceiver setupBroadcastReceiver
+2024-12-26 15:12:53.720 21433-21433 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-12-26 15:12:53.720 21433-21433 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-12-26 15:12:53.720 21433-21578 SessionLifecycleService com.allride.buses                    D  Activity backgrounding at 223030775
+2024-12-26 15:12:53.760 21433-21433 connectionService       com.allride.buses                    D  checkInMap false
+2024-12-26 15:12:53.792 21433-24010 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-26 15:12:53.799 21433-21433 connectionService       com.allride.buses                    D  checkPendingOfflineSync false false true
+2024-12-26 15:12:53.799 21433-21433 connectionService       com.allride.buses                    D  sendNotifyPendingOfflineSync true - 
+2024-12-26 15:12:53.799 21433-21433 connectionService       com.allride.buses                    I  checkSyncOffline current 'departure' : [offline=false, validations=false, images=false, departure=true, deviceHistory=true, driverMuc=false]
+2024-12-26 15:12:53.799 21433-21433 connectionService       com.allride.buses                    I  checkOnlineDataAsync
+2024-12-26 15:12:53.799 21433-21433 connectionService       com.allride.buses                    I  checkOnlineDataAsync dataAsyncList is empty
+2024-12-26 15:12:53.800 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  typeMap com.allride.buses.data.models.PBDeparture@c6172a5
+2024-12-26 15:12:53.800 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel typeMap regular
+2024-12-26 15:12:53.800 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel capacity 45
+2024-12-26 15:12:53.800 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel capacityColor 2E7D32
+2024-12-26 15:12:53.808 21433-23682 AllRideOAuth2Service    com.allride.buses                    I  getAccessToken 838ef4e481d12aa90c6c11a538997f7a6fa4e013b319bfb86d801d41a935528dde1f77b88e88411352868ef4c83db841c3ef4cd0816d6f9ca75ec20682d87d43
+2024-12-26 15:12:53.814 21433-21433 Utils                   com.allride.buses                    D  startConnectivityService is exits - MapActivity
+2024-12-26 15:12:53.814 21433-21433 connectionService       com.allride.buses                    D  checkConnectivity: true
+2024-12-26 15:12:53.814 21433-21433 connectionService       com.allride.buses                    D  sendNotifyConnectivity true
+2024-12-26 15:12:53.817 21433-21478 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 1 to service
+2024-12-26 15:12:53.824 21433-21578 SessionLifecycleService com.allride.buses                    D  Activity foregrounding at 223030880.
+2024-12-26 15:12:53.837 21433-21433 connectionService       com.allride.buses                    D  checkInMap exit for loadingCheckOnlineData
+2024-12-26 15:12:53.896 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-12-26 15:12:53.897 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive pendingOfflineSync true
+2024-12-26 15:12:53.897 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive connectivity true
+2024-12-26 15:12:53.999 21433-24808 ActiveDepa...eViewModel com.allride.buses                    D  SocketClient - current : {"color":"2E7D32","capacity":45}
+2024-12-26 15:12:54.000 21433-24808 DepartureRealm          com.allride.buses                    D  setCapacity 45
+2024-12-26 15:12:54.122 21433-21433 SurfaceViewImpl         com.allride.buses                    D  Surface destroyed.
+2024-12-26 15:12:54.122 21433-21433 SurfaceViewImpl         com.allride.buses                    D  Surface closed androidx.camera.core.SurfaceRequest@515bc29
+2024-12-26 15:12:54.122 21433-21433 DeferrableSurface       com.allride.buses                    D  surface closed,  useCount=2 closed=true androidx.camera.core.SurfaceRequest$2@a4bcbae
+2024-12-26 15:12:54.130 21433-22351 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#37(BLAST Consumer)37](id:53b900000032,api:4,p:1401,c:21433) queueBuffer: BufferQueue has been abandoned
+2024-12-26 15:12:54.133 21433-22351 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#37(BLAST Consumer)37](id:53b900000032,api:4,p:1401,c:21433) dequeueBuffer: BufferQueue has been abandoned
+2024-12-26 15:12:54.138 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Use cases [androidx.camera.core.Preview-1b671261-cdab-4f16-ba0b-404f9c91db00258661272, androidx.camera.core.ImageCapture-e77ae915-f890-4a2a-8e24-12b78588faf5251133937, androidx.camera.core.ImageAnalysis-224361a4-ab0e-4685-a0a8-cfad6048629783466198] now DETACHED for camera
+2024-12-26 15:12:54.139 21433-22793 UseCaseAttachState      com.allride.buses                    D  All use case: [] for camera: 0
+2024-12-26 15:12:54.140 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Resetting Capture Session
+2024-12-26 15:12:54.141 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Releasing session in state OPENED
+2024-12-26 15:12:54.143 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-12-26 15:12:54.145 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-12-26 15:12:54.148 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Closing camera.
+2024-12-26 15:12:54.148 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Transitioning camera internal state: OPENED --> CLOSING
+2024-12-26 15:12:54.150 21433-22793 CameraStateRegistry     com.allride.buses                    D  Recalculating open cameras:
+                                                                                                    Camera                                       State                 
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Camera@f00f3d4[id=0]                         CLOSING               
+                                                                                                    Camera@a7f9ba5[id=1]                         UNKNOWN               
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Open count: 1 (Max allowed: 1)
+2024-12-26 15:12:54.151 21433-22793 CameraStateMachine      com.allride.buses                    D  New public camera state CameraState{type=CLOSING, error=null} from CLOSING and null
+2024-12-26 15:12:54.151 21433-22793 CameraStateMachine      com.allride.buses                    D  Publishing new public camera state CameraState{type=CLOSING, error=null}
+2024-12-26 15:12:54.151 21433-21433 CameraOrientationUtil   com.allride.buses                    D  getRelativeImageRotation: destRotationDegrees=0, sourceRotationDegrees=90, isOppositeFacing=true, result=90
+2024-12-26 15:12:54.151 21433-21433 DeferrableSurface       com.allride.buses                    D  surface closed,  useCount=0 closed=true androidx.camera.core.processing.SurfaceEdge$SettableSurface@4f5b62
+2024-12-26 15:12:54.151 21433-21433 DeferrableSurface       com.allride.buses                    D  Surface terminated[total_surfaces=3, used_surfaces=3](androidx.camera.core.processing.SurfaceEdge$SettableSurface@4f5b62}
+2024-12-26 15:12:54.151 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Resetting Capture Session
+2024-12-26 15:12:54.151 21433-21433 DeferrableSurface       com.allride.buses                    D  use count-1,  useCount=1 closed=true androidx.camera.core.SurfaceRequest$2@a4bcbae
+2024-12-26 15:12:54.152 21433-21433 ImageCapture            com.allride.buses                    D  clearPipeline
+2024-12-26 15:12:54.152 21433-21433 DeferrableSurface       com.allride.buses                    D  surface closed,  useCount=1 closed=true androidx.camera.core.impl.ImmediateSurface@b985ac8
+2024-12-26 15:12:54.152 21433-21433 DeferrableSurface       com.allride.buses                    D  surface closed,  useCount=1 closed=true androidx.camera.core.impl.ImmediateSurface@f3747
+2024-12-26 15:12:54.153 21433-21433 CapturePas...erActivity com.allride.buses                    D  onDestroyCamera
+2024-12-26 15:12:54.154 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Releasing session in state CLOSING
+2024-12-26 15:12:54.156 21433-22793 CaptureSession          com.allride.buses                    D  onSessionFinished()
+2024-12-26 15:12:54.164 21433-21433 UsbSerialService        com.allride.buses                    D  onDestroy
+2024-12-26 15:12:54.165 21433-21433 StreamStateObserver     com.allride.buses                    D  Update Preview stream state to IDLE
+2024-12-26 15:12:54.170 21433-23291 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#37(BLAST Consumer)37](id:53b900000032,api:4,p:1401,c:21433) queueBuffer: BufferQueue has been abandoned
+2024-12-26 15:12:54.176 21433-23291 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#37(BLAST Consumer)37](id:53b900000032,api:4,p:1401,c:21433) cancelBuffer: BufferQueue has been abandoned
+2024-12-26 15:12:54.177 21433-23291 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#37(BLAST Consumer)37](id:53b900000032,api:4,p:1401,c:21433) cancelBuffer: BufferQueue has been abandoned
+2024-12-26 15:12:54.178 21433-23291 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#37(BLAST Consumer)37](id:53b900000032,api:4,p:1401,c:21433) cancelBuffer: BufferQueue has been abandoned
+2024-12-26 15:12:54.179 21433-23291 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#37(BLAST Consumer)37](id:53b900000032,api:4,p:1401,c:21433) cancelBuffer: BufferQueue has been abandoned
+2024-12-26 15:12:54.180 21433-23291 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#37(BLAST Consumer)37](id:53b900000032,api:4,p:1401,c:21433) cancelBuffer: BufferQueue has been abandoned
+2024-12-26 15:12:54.181 21433-23291 BufferQueueProducer     com.allride.buses                    E  [SurfaceView[com.allride.buses/com.allride.buses.ui.view.activities.drivers.CapturePassengerActivity]#37(BLAST Consumer)37](id:53b900000032,api:4,p:1401,c:21433) cancelBuffer: BufferQueue has been abandoned
+2024-12-26 15:12:54.284 21433-22793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [] for camera: 0
+2024-12-26 15:12:54.288 21433-22793 DeferrableSurface       com.allride.buses                    D  use count-1,  useCount=0 closed=true androidx.camera.core.SurfaceRequest$2@a4bcbae
+2024-12-26 15:12:54.289 21433-22793 DeferrableSurface       com.allride.buses                    D  Surface no longer in use[total_surfaces=3, used_surfaces=2](androidx.camera.core.SurfaceRequest$2@a4bcbae}
+2024-12-26 15:12:54.289 21433-22793 DeferrableSurface       com.allride.buses                    D  Surface terminated[total_surfaces=2, used_surfaces=2](androidx.camera.core.SurfaceRequest$2@a4bcbae}
+2024-12-26 15:12:54.290 21433-22793 DeferrableSurface       com.allride.buses                    D  use count-1,  useCount=0 closed=true androidx.camera.core.impl.ImmediateSurface@b985ac8
+2024-12-26 15:12:54.290 21433-21433 SurfaceViewImpl         com.allride.buses                    D  Safe to release surface.
+2024-12-26 15:12:54.290 21433-22793 DeferrableSurface       com.allride.buses                    D  Surface no longer in use[total_surfaces=2, used_surfaces=1](androidx.camera.core.impl.ImmediateSurface@b985ac8}
+2024-12-26 15:12:54.290 21433-22793 DeferrableSurface       com.allride.buses                    D  Surface terminated[total_surfaces=1, used_surfaces=1](androidx.camera.core.impl.ImmediateSurface@b985ac8}
+2024-12-26 15:12:54.290 21433-22793 DeferrableSurface       com.allride.buses                    D  use count-1,  useCount=0 closed=true androidx.camera.core.impl.ImmediateSurface@f3747
+2024-12-26 15:12:54.290 21433-22793 DeferrableSurface       com.allride.buses                    D  Surface no longer in use[total_surfaces=1, used_surfaces=0](androidx.camera.core.impl.ImmediateSurface@f3747}
+2024-12-26 15:12:54.291 21433-22793 DeferrableSurface       com.allride.buses                    D  Surface terminated[total_surfaces=0, used_surfaces=0](androidx.camera.core.impl.ImmediateSurface@f3747}
+2024-12-26 15:12:54.292 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} CameraDevice.onClosed()
+2024-12-26 15:12:54.292 21433-22793 Camera2CameraImpl       com.allride.buses                    D  {Camera@f00f3d4[id=0]} Transitioning camera internal state: CLOSING --> INITIALIZED
+2024-12-26 15:12:54.293 21433-22793 CameraStateRegistry     com.allride.buses                    D  Recalculating open cameras:
+                                                                                                    Camera                                       State                 
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Camera@f00f3d4[id=0]                         CLOSED                
+                                                                                                    Camera@a7f9ba5[id=1]                         UNKNOWN               
+                                                                                                    -------------------------------------------------------------------
+                                                                                                    Open count: 0 (Max allowed: 1)
+2024-12-26 15:12:54.293 21433-22793 CameraStateMachine      com.allride.buses                    D  New public camera state CameraState{type=CLOSED, error=null} from CLOSED and null
+2024-12-26 15:12:54.293 21433-22793 CameraStateMachine      com.allride.buses                    D  Publishing new public camera state CameraState{type=CLOSED, error=null}
+2024-12-26 15:12:54.616 21433-23682 AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=GET, url=https://stage.allrideapp.com/api/v2/pb/driver/departures/current, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.getCurrentDeparture() []}}
+2024-12-26 15:12:54.621 21433-23694 connectionService       com.allride.buses                    D  Success getCurrentDeparture
+2024-12-26 15:12:54.622 21433-23694 DepartureRealm          com.allride.buses                    I  update 676d9c9d2a1ac0a2eb0093ac
+2024-12-26 15:12:54.635 21433-23694 connectionService       com.allride.buses                    D  sendUpdateDeparture
+2024-12-26 15:12:54.635 21433-23694 connectionService       com.allride.buses                    D  startActivityMap
+2024-12-26 15:12:54.635 21433-21433 TripService             com.allride.buses                    D  socketUpdateReceiver onReceive UPDATE_DEPARTURE
+2024-12-26 15:12:54.635 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  socketUpdateReceiver onReceive UPDATE_DEPARTURE
+2024-12-26 15:12:54.635 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  socketUpdateReceiver onReceive UPDATE_DEPARTURE
+2024-12-26 15:12:54.635 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive UPDATE_DEPARTURE false
+2024-12-26 15:12:54.656 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel capacity 45
+2024-12-26 15:12:54.656 21433-21433 ActiveDepa...eViewModel com.allride.buses                    D  typeMap com.allride.buses.data.models.PBDeparture@ea8e277
+2024-12-26 15:12:54.657 21433-21433 MapActivity             com.allride.buses                    D  ActiveDepartureViewModel typeMap regular
+2024-12-26 15:12:54.675 21433-23694 connectionService       com.allride.buses                    D  checkPendingOfflineSync false false true
+2024-12-26 15:12:54.675 21433-23694 connectionService       com.allride.buses                    D  sendNotifyPendingOfflineSync true - 
+2024-12-26 15:12:54.675 21433-23694 connectionService       com.allride.buses                    I  checkSyncOffline current 'deviceHistory' : [offline=false, validations=false, images=false, departure=false, deviceHistory=true, driverMuc=false]
+2024-12-26 15:12:54.677 21433-23682 AllRideOAuth2Service    com.allride.buses                    I  getAccessToken 838ef4e481d12aa90c6c11a538997f7a6fa4e013b319bfb86d801d41a935528dde1f77b88e88411352868ef4c83db841c3ef4cd0816d6f9ca75ec20682d87d43
+2024-12-26 15:12:54.689 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive pendingOfflineSync true
+2024-12-26 15:12:55.516 21433-23682 AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=POST, url=https://stage.allrideapp.com/api/v2/pb/driver/departure/device/history, tags={class retrofit2.Invocation=com.allride.buses.api.AllRideAPI.saveDeviceHistoryConnection() [com.allride.buses.api.AllRideAPI$HistoryUse@d8126ac]}}
+2024-12-26 15:12:55.579 21433-21659 connectionService       com.allride.buses                    D  checkPendingOfflineSync false false true
+2024-12-26 15:12:55.579 21433-21659 connectionService       com.allride.buses                    D  sendNotifyPendingOfflineSync true - 
+2024-12-26 15:12:55.579 21433-21659 connectionService       com.allride.buses                    I  checkSyncOffline dataList isEmpty
+2024-12-26 15:12:55.579 21433-21659 connectionService       com.allride.buses                    D  Success saveDeviceHistoryConnection: 1
+2024-12-26 15:12:55.592 21433-21478 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 2 to service
+2024-12-26 15:12:55.593 21433-21578 SessionLifecycleService com.allride.buses                    D  Activity backgrounding at 223032649
+2024-12-26 15:12:55.603 21433-21433 MapActivity             com.allride.buses                    D  setupBroadcastReceiver onReceive pendingOfflineSync true
+2024-12-26 15:12:55.618 21433-21433 MapActivity             com.allride.buses                    D  onStop
+2024-12-26 15:12:55.619 21433-21433 MapActivity             com.allride.buses                    D  Success unregisterReceiver setupBroadcastReceiver
+2024-12-26 15:12:56.224 21433-21433 MapActivity             com.allride.buses                    E  ADD HISTORY USE: ACTION_SCREEN_OFF
+2024-12-26 15:12:57.660 21433-23648 FA                      com.allride.buses                    I  Application backgrounded at: timestamp_millis: 1735236775657
+2024-12-26 15:12:58.017 21433-21433 TripService             com.allride.buses                    D  Sending event 'newPosition' socket: 7a6f6ab7-4641-4152-b1f8-9b8e923c5749 - [-34.394112,-70.7812812]

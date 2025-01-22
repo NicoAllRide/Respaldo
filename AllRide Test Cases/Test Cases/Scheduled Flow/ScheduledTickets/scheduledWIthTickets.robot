@@ -791,7 +791,7 @@ Get Assigned Tickets After Validation(Nico)
     # Si no se encuentra el service_id_tickets, registramos un mensaje
     Log    ${assignedQtyNico}
 
-Get Total Tickets After Validation(Nico)(THIS WORKS EVALUATE IS USED FOR MATH EXPRESSION)
+Get Total Tickets After Validation(Nico)
     ${url}=    Set Variable    ${STAGE_URL}/api/v1/admin/pb/ticket/list?community=${idComunidad}
 
     # Configura las opciones de la solicitud (headers, auth)

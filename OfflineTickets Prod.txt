@@ -1,0 +1,22 @@
+onlineValidationQR: e79cb4af91720adc5a2e22cd440c3785012fa3b8cef0471989308c74d5f11edaed1ec8493386c0e406e7525a842d6c791e349accec0daa66551ac1631b5bcbf96749e75176dabef2ea9dc912003
+2024-12-20 11:52:26.532 29137-29793 UseCaseAttachState      com.allride.buses                    D  Active and attached use case: [androidx.camera.core.ImageCapture-1bf3a8fe-9284-47b6-84bb-94b27cb7313c168766166, androidx.camera.core.Preview-306f0ef6-aa28-440d-b86b-15a254f2f904158072561] for camera: 0
+2024-12-20 11:52:26.535 29137-29137 ActiveDepa...eViewModel com.allride.buses                    D  Pre validatePassenger {"communityId":"672cf731c6b9606aeade24b3","timezone":"America/Santiago","validationInternalId":"b9df7099-9605-4035-a534-8a3cc49e76c1","validationLat":-33.49067,"validationLon":-70.51491,"validationString":"e79cb4af91720adc5a2e22cd440c3785012fa3b8cef0471989308c74d5f11edaed1ec8493386c0e406e7525a842d6c791e349accec0daa66551ac1631b5bcbf96749e75176dabef2ea9dc912003"}
+2024-12-20 11:52:26.537 29137-29793 CaptureSession          com.allride.buses                    D  Attempting to submit CaptureRequest after setting
+2024-12-20 11:52:26.537 29137-29793 CaptureSession          com.allride.buses                    D  Issuing request for session.
+2024-12-20 11:52:26.537 29137-29793 Camera2Cap...estBuilder com.allride.buses                    D  createCaptureRequest
+2024-12-20 11:52:26.545 29137-29855 PipelineManager         com.allride.buses                    D  OCR process succeeded via visionkit pipeline.
+2024-12-20 11:52:26.546 29137-29855 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-20 11:52:26.546 29137-29855 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-20 11:52:26.546 29137-29855 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-20 11:52:26.546 29137-29855 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-20 11:52:26.546 29137-29855 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-20 11:52:26.546 29137-29855 PipelineManager         com.allride.buses                    D  Start process YUV
+2024-12-20 11:52:26.629 29137-29947 ActiveDepa...eViewModel com.allride.buses                    E  Error validatePassenger: Unable to resolve host "api.allrideapp.com": No address associated with hostname
+2024-12-20 11:52:26.630 29137-29947 ActiveDepa...eViewModel com.allride.buses                    D  offlineValidationQR: e79cb4af91720adc5a2e22cd440c3785012fa3b8cef0471989308c74d5f11edaed1ec8493386c0e406e7525a842d6c791e349accec0daa66551ac1631b5bcbf96749e75176dabef2ea9dc912003
+2024-12-20 11:52:26.676 29137-29947 ActiveDepa...eViewModel com.allride.buses                    D  offlineValidationQR check muc driver : 4 - [MUC_sha25620000$672cf0b0cca5586a94d2b06b$8C2ceEVzzIK1uieYurLsSEFA7fbDoQC1P65hoyUBb74=, MUC_sha25620000$672cf0b0cca5586a94d2b06b$vRWL76HADLQZRGFDAOt2OIBBWS8KMG+8AgMtIgLX+HQ=, MUC_sha25620000$672cf348523eb06aa4609e85$I3jyD9tJp10hs+UcOBlMiJLejt5K0vOZjrRv3YaVIck=, MUC_sha25620000$672cf0b0cca5586a94d2b06b$KW6G7167TdugrYZzPWW/AMm24fj0CAfoSxvsY7AhxaU=]
+2024-12-20 11:52:26.677 29137-29947 ActiveDepa...eViewModel com.allride.buses                    D  offlineValidationQR departureId: 676584931d5d5848fa61e875
+2024-12-20 11:52:26.693 29137-29947 ActiveDepa...eViewModel com.allride.buses                    D  offlineValidationQR userId in QR: 6749e75176dabef2ea9dc912
+2024-12-20 11:52:26.693 29137-29947 UserRealm               com.allride.buses                    D  isWorking false
+2024-12-20 11:52:26.730 29137-29947 ActiveDepa...eViewModel com.allride.buses                    D  offlineValidationQR validationConfig: true
+2024-12-20 11:52:26.730 29137-29947 ActiveDepa...eViewModel com.allride.buses                    D  offlineValidationQR usesTickets: true - usesPasses: false
+2024-12-20 11:52:26.778 29137-29947 ValidationRealm         com.allride.buses                    D  validatePassenger validationInfo {"assignedSeat":"","communityId":"672cef828bb0e26b04321fc8","createdAt":"Dec 20, 2024 11:52:26 AM","departureId":"676584931d5d5848fa61e875","_id":"b9df7099-9605-4035-a534-8a3cc49e76c1","reason":["offline_no_ticket_number"],"synced":false,"userId":"6749e75176dabef2ea9dc912","validated":false}

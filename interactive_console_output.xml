@@ -1,57 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20241128 11:43:12.654" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250108 11:21:33.664" rpa="false" schemaversion="4">
 <suite id="s1" name="Robot Interactive Console" source="c:\Users\UsuarioCompuElite\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
+<kw name="Skip" library="BuiltIn">
+<doc>Skips the rest of the current test.</doc>
+<msg timestamp="20250108 11:21:33.909" level="SKIP">Skipped with Skip keyword.</msg>
+<status status="SKIP" starttime="20250108 11:21:33.909" endtime="20250108 11:21:33.909"/>
+</kw>
 <kw name="Create Session">
 <arg>mysesion</arg>
 <arg>${STAGE_URL}</arg>
 <arg>verify=true</arg>
-<msg timestamp="20241128 11:43:13.317" level="FAIL">No keyword with name 'Create Session' found.</msg>
-<status status="FAIL" starttime="20241128 11:43:13.316" endtime="20241128 11:43:13.317"/>
+<status status="NOT RUN" starttime="20250108 11:21:33.910" endtime="20250108 11:21:33.910"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
-<arg>Authorization=${tokenAdmin}</arg>
+<arg>Authorization=${departureToken}</arg>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="NOT RUN" starttime="20241128 11:43:13.317" endtime="20241128 11:43:13.317"/>
+<status status="NOT RUN" starttime="20250108 11:21:33.910" endtime="20250108 11:21:33.910"/>
 </kw>
 <kw name="POST On Session">
 <var>${response}</var>
 <arg>mysesion</arg>
-<arg>url= /api/v1/admin/pb/assignServiceResources/${service_id}?community=${idComunidad2}</arg>
-<arg>data=[{"multipleDrivers":false,"driver":{"driverId":"${driverId2}"},"drivers":[],"vehicle":{"vehicleId":"${vehicleId2}","capacity":"46"},"passengers":[],"departure":null}]</arg>
+<arg>url=/api/v2/pb/driver/departure/stop</arg>
+<arg>data={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":false,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false}</arg>
 <arg>headers=${headers}</arg>
-<status status="NOT RUN" starttime="20241128 11:43:13.318" endtime="20241128 11:43:13.318"/>
+<status status="NOT RUN" starttime="20250108 11:21:33.911" endtime="20250108 11:21:33.911"/>
 </kw>
 <kw name="Convert To String" library="BuiltIn">
 <var>${code}</var>
 <arg>${response.status_code}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" starttime="20241128 11:43:13.318" endtime="20241128 11:43:13.318"/>
+<status status="NOT RUN" starttime="20250108 11:21:33.911" endtime="20250108 11:21:33.911"/>
 </kw>
-<kw name="Should Be Equal As Numbers" library="BuiltIn">
-<arg>${code}</arg>
+<kw name="Status Should Be">
 <arg>200</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<status status="NOT RUN" starttime="20241128 11:43:13.318" endtime="20241128 11:43:13.318"/>
+<status status="NOT RUN" starttime="20250108 11:21:33.912" endtime="20250108 11:21:33.912"/>
 </kw>
 <kw name="Log" library="BuiltIn">
 <arg>${code}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20241128 11:43:13.318" endtime="20241128 11:43:13.318"/>
+<status status="NOT RUN" starttime="20250108 11:21:33.912" endtime="20250108 11:21:33.912"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
-<arg>2s</arg>
+<arg>10s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20241128 11:43:13.318" endtime="20241128 11:43:13.318"/>
+<status status="NOT RUN" starttime="20250108 11:21:33.912" endtime="20250108 11:21:33.912"/>
 </kw>
-<status status="PASS" starttime="20241128 11:43:12.669" endtime="20241128 11:43:14.840"/>
+<status status="PASS" starttime="20250108 11:21:33.680" endtime="20250108 11:21:36.814"/>
 </kw>
-<status status="PASS" starttime="20241128 11:43:12.669" endtime="20241128 11:43:14.840"/>
+<status status="PASS" starttime="20250108 11:21:33.679" endtime="20250108 11:21:36.814"/>
 </test>
-<status status="PASS" starttime="20241128 11:43:12.655" endtime="20241128 11:43:14.840"/>
+<status status="PASS" starttime="20250108 11:21:33.665" endtime="20250108 11:21:36.814"/>
 </suite>
 <statistics>
 <total>

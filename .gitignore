@@ -15,3 +15,5 @@ temp/
 testrun/*
 .~lock*
 *.pkl
+sendFileToSlack.py
+sendFileToSlack2modified.py

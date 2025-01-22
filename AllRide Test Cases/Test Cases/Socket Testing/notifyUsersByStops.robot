@@ -125,7 +125,7 @@ Create new service in the selected route
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"_id":"675059ea3c067a6cd3e2ed80","trail":{"enabled":false,"adjustByRounds":false},"rounds":{"enabled":false,"anchorStops":[]},"notifyUsersByStop":{"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"enabled":true},"notifyUnboardedPassengers":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"sendAt":"eachStop"},"notifyPassengersWithoutReservation":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"sendAt":"eachStop"},"notifySkippedStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]}},"excludePassengers":{"active":false,"excludeType":"dontHide"},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":5,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":5,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"defaultServiceCost":null,"schedule":[{"enabled":true,"day":"${schedule_day}","time":"${formatted_one_hour_later}","estimatedArrival":null,"capped":{"enabled":false,"capacity":0},"vehicleCategoryId":null,"restrictPassengers":{"enabled":false,"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"serviceCost":0,"observations":"","reservations":{"enabled":false,"list":[]},"stopSchedule":[{"_id":"67505a4efdee9ba9e9416903","stopId":"655d11d88a5a1a1ff0328464","scheduledDate":"2024-12-04T14:00:00.600Z"},{"_id":"67505a4efdee9ba9e9416904","stopId":"655d11d88a5a1a1ff0328466","scheduledDate":null}],"defaultResources":[],"_ogIndex":0}],"stopOnReservation":false,"restrictions":{"customParams":{"enabled":false,"params":[]}},"reservations":{"enabled":false,"list":[]}},"rating":{"enabled":false,"withValidation":false},"endDepartureNotice":{"enabled":false,"lastStop":null},"restrictPassengers":{"enabled":false,"allowed":["675059ea3c067a6cd3e2ed80"],"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"snapshots":{"enabled":false},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"canResume":{"timeLimit":{"enabled":false,"amount":5,"unit":"minutes"},"enabled":false},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"validateDeparture":{"enabled":false},"minimumConfirmationTime":{"enabled":false,"amount":1,"unit":"hours"},"minimumTimeToForceDeparture":{"enabled":false,"amount":5,"unit":"minutes"},"endServiceLegAutomatically":{"timer":{"amount":5,"unit":"minutes"},"distance":100},"codeValidationOptions":{"enabled":false,"type":"qr","failureMessage":"Solo puedes presentar el código de AllRide o de tu cédula de identidad."},"assistantIds":[],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["653fd601f90509541a748683"],"active":true,"visible":true,"internal":false,"anchorStops":[],"isStatic":false,"labels":[],"hasExternalGPS":false,"hasCapacity":false,"hasBeacons":false,"hasRounds":false,"hasBoardingCount":false,"hasUnboardingCount":false,"usesBusCode":false,"usesVehicleList":true,"dynamicSeatAssignment":false,"usesDriverCode":false,"usesDriverPin":false,"usesTickets":false,"usesPasses":false,"usesTextToSpeech":false,"allowsManualValidation":false,"allowsRating":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"allowsDebugging":false,"startsOnStop":false,"notNearStop":false,"allowsNonServiceSnapshots":false,"allowsServiceSnapshots":false,"allowsDistance":true,"usesOfflineCount":false,"hasBoardings":false,"hasUnboardings":false,"usesManualSeat":true,"noPassengerInfo":false,"showParable":false,"showStops":true,"allowGenericVehicles":false,"usesVehicleQRLink":false,"skipDeclaration":false,"skipQRValidation":false,"assistantAssignsSeat":true,"hasBarrier":false,"name":"Ruta userByStops","shapeId":"675059ea3c067a6cd3e2ed61","description":"Correo validaciones parciales","extraInfo":"","color":"704646","canReserve":null,"legOptions":[],"ownerIds":[{"_id":"675059ea3c067a6cd3e2ed84","id":"653fd601f90509541a748683","role":"community"}],"segments":[],"roundOrder":[{"stopId":"655d11d88a5a1a1ff0328464","notifyIfPassed":false},{"stopId":"655d11d88a5a1a1ff0328466","notifyIfPassed":false}],"communityId":"653fd601f90509541a748683","timeOnRoute":9,"distance":5,"distanceInMeters":5107,"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"createdAt":"2024-12-04T13:32:26.585Z","updatedAt":"2024-12-04T13:54:55.130Z","__v":2,"destinationStop":"655d11d88a5a1a1ff0328466","originStop":"655d11d88a5a1a1ff0328464","routeDeviation":{"maxDistance":100,"maxTime":5,"enabled":false},"superCommunityId":"653fd68233d83952fafcd4be","useServiceReservations":false,"routeCost":0,"ticketCost":0}
+    ${jsonBody}=    Set Variable    {"_id":"675059ea3c067a6cd3e2ed80","trail":{"enabled":false,"adjustByRounds":false},"rounds":{"enabled":false,"anchorStops":[]},"notifyUsersByStop":{"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"enabled":true},"notifyUnboardedPassengers":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"sendAt":"eachStop"},"notifyPassengersWithoutReservation":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"sendAt":"eachStop"},"notifySkippedStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]}},"excludePassengers":{"active":false,"excludeType":"dontHide"},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":5,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":5,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"defaultServiceCost":null,"schedule":[{"enabled":true,"day":"${schedule_day}","time":"${formatted_one_hour_later}","estimatedArrival":null,"capped":{"enabled":false,"capacity":0},"vehicleCategoryId":null,"restrictPassengers":{"enabled":false,"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"serviceCost":0,"observations":"","reservations":{"enabled":false,"list":[]},"stopSchedule":[{"_id":"67505a4efdee9ba9e9416903","stopId":"655d11d88a5a1a1ff0328464","scheduledDate":"2024-12-04T14:00:00.600Z"},{"_id":"67505a4efdee9ba9e9416904","stopId":"655d11d88a5a1a1ff0328466","scheduledDate":null}],"defaultResources":[],"_ogIndex":0}],"stopOnReservation":false,"restrictions":{"customParams":{"enabled":false,"params":[]}},"reservations":{"enabled":false,"list":[]}},"rating":{"enabled":false,"withValidation":false},"endDepartureNotice":{"enabled":false,"lastStop":null},"restrictPassengers":{"enabled":false,"allowed":["675059ea3c067a6cd3e2ed80"],"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"snapshots":{"enabled":false},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"canResume":{"timeLimit":{"enabled":false,"amount":5,"unit":"minutes"},"enabled":false},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"validateDeparture":{"enabled":false},"minimumConfirmationTime":{"enabled":false,"amount":1,"unit":"hours"},"minimumTimeToForceDeparture":{"enabled":false,"amount":5,"unit":"minutes"},"endServiceLegAutomatically":{"timer":{"amount":5,"unit":"minutes"},"distance":100},"codeValidationOptions":{"enabled":false,"type":"qr","failureMessage":"Solo puedes presentar el código de AllRide o de tu cédula de identidad."},"assistantIds":[],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["653fd601f90509541a748683"],"active":true,"visible":true,"internal":false,"anchorStops":[],"isStatic":false,"labels":[],"hasExternalGPS":false,"hasCapacity":false,"hasBeacons":false,"hasRounds":false,"hasBoardingCount":false,"hasUnboardingCount":false,"usesBusCode":false,"usesVehicleList":true,"dynamicSeatAssignment":true,"usesDriverCode":false,"usesDriverPin":false,"usesTickets":false,"usesPasses":false,"usesTextToSpeech":false,"allowsManualValidation":false,"allowsRating":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"allowsDebugging":false,"startsOnStop":false,"notNearStop":false,"allowsNonServiceSnapshots":false,"allowsServiceSnapshots":false,"allowsDistance":true,"usesOfflineCount":false,"hasBoardings":false,"hasUnboardings":false,"usesManualSeat":true,"noPassengerInfo":false,"showParable":false,"showStops":true,"allowGenericVehicles":false,"usesVehicleQRLink":false,"skipDeclaration":false,"skipQRValidation":false,"assistantAssignsSeat":true,"hasBarrier":false,"name":"Ruta userByStops","shapeId":"675059ea3c067a6cd3e2ed61","description":"Correo validaciones parciales","extraInfo":"","color":"704646","canReserve":null,"legOptions":[],"ownerIds":[{"_id":"675059ea3c067a6cd3e2ed84","id":"653fd601f90509541a748683","role":"community"}],"segments":[],"roundOrder":[{"stopId":"655d11d88a5a1a1ff0328464","notifyIfPassed":false},{"stopId":"655d11d88a5a1a1ff0328466","notifyIfPassed":false}],"communityId":"653fd601f90509541a748683","timeOnRoute":9,"distance":5,"distanceInMeters":5107,"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"createdAt":"2024-12-04T13:32:26.585Z","updatedAt":"2024-12-04T13:54:55.130Z","__v":2,"destinationStop":"655d11d88a5a1a1ff0328466","originStop":"655d11d88a5a1a1ff0328464","routeDeviation":{"maxDistance":100,"maxTime":5,"enabled":false},"superCommunityId":"653fd68233d83952fafcd4be","useServiceReservations":false,"routeCost":0,"ticketCost":0}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -324,7 +324,7 @@ Validation QR Without Tickets
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/validate
+    ...    url=/api/v1/pb/provider/departures/validate
     ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNoTickets}","timezone":"Chile/Continental","validationLat":-33.40975694626073,"validationLon":-70.56736916087651}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -354,7 +354,7 @@ Get User QR(Nico)
     Log    ${qrCodeNico}
     Log    ${code}
 
-Validation QR Without Tickets
+Validation QR With Tickets
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -364,7 +364,7 @@ Validation QR Without Tickets
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/validate
+    ...    url=/api/v1/pb/provider/departures/validate
     ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNico}","timezone":"Chile/Continental","validationLat":-33.40975694626073,"validationLon":-70.56736916087651}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -375,7 +375,8 @@ Validation QR Without Tickets
 
 Connect And Emit Events
     [Documentation]    Test connecting to WebSocket and sending events
-    ${URL_with_token}=     Set variable    wss://stage.allrideapp.com/socket.io/?token=${access_token}&EIO=3&transport=websocket
+    ${URL_with_token}=    Set variable
+    ...    ws://190.211.47.68:3000/socket.io/?token=${access_token}&EIO=3&transport=websocket
     ${my_websocket}=    Connect    ${URL_with_token}
     Log    Connected to WebSocket
 
@@ -443,9 +444,152 @@ Connect And Emit Events
     Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
-
-    
     Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    Log
+    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    Sleep    5s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received: ${result}
+
+     Send
     ...    ${my_websocket}
     ...    42/pbDriver,["stop",{}]
     Log
@@ -458,6 +602,7 @@ Connect And Emit Events
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
 
+##### GENERAR COORDENADAS DEL TRAZADO PARA SIMULAR UNA RUTA ALTERNA Y ENTRAR A LA SIGUIENTE PARADA
 
 
 
