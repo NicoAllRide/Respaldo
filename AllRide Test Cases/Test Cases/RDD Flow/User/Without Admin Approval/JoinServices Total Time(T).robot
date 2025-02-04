@@ -72,6 +72,17 @@ Time + 1 Hour
     Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
     Set Global Variable    ${formatted_one_hour_later}
 
+Time + 3 minutes
+    ${date}    Get Current Date    time_zone=UTC    exclude_millis=yes
+    ${formatted_date}    Convert Date    ${date}    result_format=%Y-%m-%dT%H:%M:%S.%fZ
+    Log    Hora Actual: ${formatted_date}
+
+    # Sumar una hora
+    ${3_minute_later}    Add Time To Date    ${date}    4 minutes
+    ${formatted_3_minute_later}    Convert Date    ${3_minute_later}    result_format=%Y-%m-%dT%H:%M:%S.%fZ
+    Log    Hora Actual + 1 hora: ${formatted_3_minute_later}
+    Set Global Variable    ${formatted_3_minute_later}
+
 
 Verify Open RDD in Community
     Skip
@@ -147,7 +158,7 @@ Create RDD As User(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"endLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"}}
+    ${jsonBody}=    Set Variable     {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"},"endLocation":{"placeId":"67a0fd0e3bde41ae913b0bb8","lat":"-33.4104918","lon":"-70.5722345","loc":["-70.5722345","-33.4104918"],"address":"Intermedia 1"}}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -163,12 +174,12 @@ Create RDD As User(Nico)
 
     ${rddId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${rddId}
-    Sleep    3s
+    Sleep    1s
 Create RDD As User(Pedro)
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"endLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"}}
+    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"},"endLocation":{"placeId":"67a0fd0e3bde41ae913b0bb8","lat":"-33.4104918","lon":"-70.5722345","loc":["-70.5722345","-33.4104918"],"address":"Intermedia 1"}}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=${tokenPedroPascal}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -185,29 +196,7 @@ Create RDD As User(Pedro)
     ${rddIdPedro}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${rddIdPedro}
 
-Verificar Condiciones
-    Skip
-    ${state_rddId}=    Set Variable    waitingForJoin
-    ${state_rddIdPedro}=    Set Variable    waitingForJoin
 
-    ${url_rddId}=    Set Variable    ${STAGE_URL}/api/v1/admin/pb/odd/${rddId}?community=653fd601f90509541a748683
-    ${url_rddIdPedro}=    Set Variable    ${STAGE_URL}/api/v1/admin/pb/odd/${rddIdPedro}?community=653fd601f90509541a748683
-
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET para rddId
-    ${response_rddId}=    GET    url=${url_rddId}    headers=${headers}
-    ${state_rddId_response}=    Set Variable    ${response_rddId.json()}[stateHistory][1][state]
-
-    # Realiza la solicitud GET para rddIdPedro
-    ${response_rddIdPedro}=    GET    url=${url_rddIdPedro}    headers=${headers}
-    ${state_rddIdPedro_response}=    Set Variable    ${response_rddIdPedro.json()}[stateHistory][1][state]
-
-    # Verifica las condiciones
-    Run Keyword If    '${rddId}' == '${rddIdPedro}' or '${state_rddId}' == '${state_rddIdPedro}' or '${state_rddId}' == '${state_rddIdPedro_response}'    Should Be Equal As Strings    ${state_rddId}    waitingForJoin
-
-
-    
 
 
 ####################################################

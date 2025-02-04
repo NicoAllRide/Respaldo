@@ -1,59 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250108 11:21:33.664" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250128 10:46:20.500" rpa="false" schemaversion="4">
 <suite id="s1" name="Robot Interactive Console" source="c:\Users\UsuarioCompuElite\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
-<kw name="Skip" library="BuiltIn">
-<doc>Skips the rest of the current test.</doc>
-<msg timestamp="20250108 11:21:33.909" level="SKIP">Skipped with Skip keyword.</msg>
-<status status="SKIP" starttime="20250108 11:21:33.909" endtime="20250108 11:21:33.909"/>
-</kw>
-<kw name="Create Session">
-<arg>mysesion</arg>
-<arg>${STAGE_URL}</arg>
-<arg>verify=true</arg>
-<status status="NOT RUN" starttime="20250108 11:21:33.910" endtime="20250108 11:21:33.910"/>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad}&amp;startDate=${start_date_today}&amp;endDate=${end_date_tomorrow}&amp;onlyODDs=false</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250128 10:46:21.054" level="FAIL">Variable '${STAGE_URL}' not found.</msg>
+<status status="FAIL" starttime="20250128 10:46:21.052" endtime="20250128 10:46:21.054"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
-<arg>Authorization=${departureToken}</arg>
-<arg>Content-Type=application/json</arg>
+<arg>Authorization=${tokenAdmin}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="NOT RUN" starttime="20250108 11:21:33.910" endtime="20250108 11:21:33.910"/>
+<status status="NOT RUN" starttime="20250128 10:46:21.054" endtime="20250128 10:46:21.054"/>
 </kw>
-<kw name="POST On Session">
+<kw name="GET">
 <var>${response}</var>
-<arg>mysesion</arg>
-<arg>url=/api/v2/pb/driver/departure/stop</arg>
-<arg>data={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":false,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false}</arg>
+<arg>url=${url}</arg>
 <arg>headers=${headers}</arg>
-<status status="NOT RUN" starttime="20250108 11:21:33.911" endtime="20250108 11:21:33.911"/>
+<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" starttime="20250108 11:21:33.911" endtime="20250108 11:21:33.911"/>
+<kw name="Set Variable" library="BuiltIn">
+<var>${responseJson}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
 </kw>
-<kw name="Status Should Be">
-<arg>200</arg>
-<status status="NOT RUN" starttime="20250108 11:21:33.912" endtime="20250108 11:21:33.912"/>
+<kw name="Evaluate" library="BuiltIn">
+<var>${filtered_services}</var>
+<arg>[service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '67097560bbc506c3081aee9a']</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20250108 11:21:33.912" endtime="20250108 11:21:33.912"/>
+<kw name="Evaluate" library="BuiltIn">
+<var>${sorted_services}</var>
+<arg>sorted(${filtered_services}, key=lambda service: service['createdAt'], reverse=True)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>10s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20250108 11:21:33.912" endtime="20250108 11:21:33.912"/>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${sorted_services} == []</arg>
+<arg>Fatal Error</arg>
+<arg>"No services found in Week 1 with routeId._id = '66f310608e6c377a3f43968e'. Stopping test"</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
 </kw>
-<status status="PASS" starttime="20250108 11:21:33.680" endtime="20250108 11:21:36.814"/>
+<kw name="Set Variable" library="BuiltIn">
+<var>${service}</var>
+<arg>${sorted_services[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
 </kw>
-<status status="PASS" starttime="20250108 11:21:33.679" endtime="20250108 11:21:36.814"/>
+<kw name="Set Variable" library="BuiltIn">
+<var>${service_id}</var>
+<arg>${service['_id']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${service_id}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
+</kw>
+<status status="PASS" starttime="20250128 10:46:20.514" endtime="20250128 10:46:23.072"/>
+</kw>
+<status status="PASS" starttime="20250128 10:46:20.513" endtime="20250128 10:46:23.072"/>
 </test>
-<status status="PASS" starttime="20250108 11:21:33.665" endtime="20250108 11:21:36.814"/>
+<status status="PASS" starttime="20250128 10:46:20.500" endtime="20250128 10:46:23.072"/>
 </suite>
 <statistics>
 <total>
