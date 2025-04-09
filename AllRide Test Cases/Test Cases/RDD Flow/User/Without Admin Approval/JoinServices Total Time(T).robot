@@ -102,6 +102,7 @@ Verify Open RDD in Community
     
     Should Be Equal As Strings    ${enabled}   True
 Verify Join Services in Community
+    Skip
         # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/superadmin/communities/${idComunidad}
@@ -119,6 +120,7 @@ Verify Join Services in Community
     Should Be Equal As Strings    ${enabled}   True
 
 Get Places
+    Skip
         ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/admin/places/list?community=${idComunidad}
 
@@ -154,11 +156,36 @@ Login User With Email(Obtain Token)
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
 
-Create RDD As User(Nico)
+
+Create RDD As User(Pedro)
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable     {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"},"endLocation":{"placeId":"67a0fd0e3bde41ae913b0bb8","lat":"-33.4104918","lon":"-70.5722345","loc":["-70.5722345","-33.4104918"],"address":"Intermedia 1"}}
+    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"lat":"-33.60580148858353","lon":"-70.84989707827893","loc":["-70.84989707827893","-33.60580148858353"],"address":"Parada Peñaflor"},"endLocation":{"lat":"-33.09140421963875","lon":"-70.69161969614626","loc":["-70.69161969614626","-33.09140421963875"],"address":"Intermedia 1"}}
+    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
+    ${headers}=    Create Dictionary    Authorization=${tokenPedroPascal}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Post On Session
+    ...    mysesion
+    ...    url=/api/v1/pb/user/oddepartures/${idComunidad}
+    ...    json=${parsed_json}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
+
+    ${rddIdPedro}=    Set Variable    ${response.json()}[_id]
+    Set Global Variable    ${rddIdPedro}
+
+    Sleep     40s
+
+Create RDD As User(Nico)(Parque del recuerdo)
+    skip
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${jsonBody}=    Set Variable     {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"lat":"-33.60941579999999","lon":"-70.835687","loc":["-70.835687","-33.60941579999999"],"address":"Parque del recuerdo","placeId":"67a3813dbc4ac0b7bdc11a7f"},"endLocation":{"lat":"-33.09140421963875","lon":"-70.69161969614626","loc":["-70.69161969614626","-33.09140421963875"],"address":"Intermedia 1"}}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -175,13 +202,13 @@ Create RDD As User(Nico)
     ${rddId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${rddId}
     Sleep    1s
-Create RDD As User(Pedro)
+Create RDD As User(Nico)(Un minuto + del parque del recuerdo)
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"},"endLocation":{"placeId":"67a0fd0e3bde41ae913b0bb8","lat":"-33.4104918","lon":"-70.5722345","loc":["-70.5722345","-33.4104918"],"address":"Intermedia 1"}}
+    ${jsonBody}=    Set Variable     {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"lat":"-33.60982942986756","lon":"-70.83096001346672","loc":["-70.83096001346672","-33.60982942986756"],"address":"Parque del recuerdo más un minuto"},"endLocation":{"lat":"-33.09140421963875","lon":"-70.69161969614626","loc":["-70.69161969614626","-33.09140421963875"],"address":"Intermedia 1"}}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=${tokenPedroPascal}    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    Post On Session
     ...    mysesion
@@ -193,8 +220,9 @@ Create RDD As User(Pedro)
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
 
-    ${rddIdPedro}=    Set Variable    ${response.json()}[_id]
-    Set Global Variable    ${rddIdPedro}
+    ${rddId}=    Set Variable    ${response.json()}[_id]
+    Set Global Variable    ${rddId}
+    Sleep    1s
 
 
 

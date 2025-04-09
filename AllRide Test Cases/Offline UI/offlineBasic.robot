@@ -97,7 +97,7 @@ Verify Validations
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
     ...    data={"advancedSearch":false,"startDate":"2024-03-04T03:00:00.000Z","endDate":"${end_date_tomorrow2}","searchAll":"","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -192,7 +192,7 @@ Verify Validation Offline 1
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
     ...    data={"advancedSearch":false,"startDate":"2024-03-04T03:00:00.000Z","endDate":"${end_date_tomorrow2}","searchAll":"","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -293,7 +293,7 @@ Verify Validation Offline 2
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
     ...    data={"advancedSearch":false,"startDate":"2024-03-04T03:00:00.000Z","endDate":"${end_date_tomorrow2}","searchAll":"","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -394,7 +394,7 @@ Verify Validation Offline 3
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
     ...    data={"advancedSearch":false,"startDate":"2024-03-04T03:00:00.000Z","endDate":"${end_date_tomorrow2}","searchAll":"","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -477,7 +477,7 @@ Verify Validation Offline 4
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
     ...    data={"advancedSearch":false,"startDate":"2024-03-04T03:00:00.000Z","endDate":"${end_date_tomorrow2}","searchAll":"","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -582,7 +582,7 @@ Verify Validation Offline 5
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
     ...    data={"advancedSearch":false,"startDate":"2024-03-04T03:00:00.000Z","endDate":"${end_date_tomorrow2}","searchAll":"","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -685,7 +685,7 @@ Verify Validation Offline 6
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
     ...    data={"advancedSearch":false,"startDate":"2024-03-04T03:00:00.000Z","endDate":"${end_date_tomorrow2}","searchAll":"","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -808,7 +808,7 @@ Verify Validation Offline 7
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
     ...    data={"advancedSearch":false,"startDate":"2024-03-04T03:00:00.000Z","endDate":"${end_date_tomorrow2}","searchAll":"","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -935,7 +935,7 @@ Verify Validation Offline 8
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    url=${STAGE_URL}/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
     ...    data={"advancedSearch":false,"startDate":"2024-03-04T03:00:00.000Z","endDate":"${end_date_tomorrow2}","searchAll":"","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)

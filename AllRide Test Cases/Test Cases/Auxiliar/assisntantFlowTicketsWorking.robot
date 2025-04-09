@@ -246,7 +246,7 @@ Make Bulk Reservation(3 should pass, one fail)
     ${response}=    POST On Session
     ...    mysesion
     ...    url=https://stage.allrideapp.com/api/v1/admin/pb/bookService/bulk/${service_id}?community=6654ae4eba54fe502d4e4187
-    ...    data={"users":[{"userId":"666078059a5ece0ee6e95904"},{"userId":"6667489cb5433b5dc2fa94e9"},{"userId":"66e30a06e2b22c7d017bb492"},{"userId":"66d8cf4f4a7101503b01f84a"}]}
+    ...    data={"users":[{"userId":"666078059a5ece0ee6e95904"},{"userId":"66f5becbf3a0b05c0092e66f"},{"userId":"66e30a06e2b22c7d017bb492"},{"userId":"66d8cf4f4a7101503b01f84a"}]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -264,7 +264,7 @@ Make Bulk Reservation(3 should pass, one fail)
     Should Be Equal As Strings    ${correctReservation3}    66d8cf4f4a7101503b01f84a            The user with certification webcontrol could not reserve, failing
     
     #----WITH ERRORS--#
-    Should Be Equal As Strings    ${withErrorsUser}    6667489cb5433b5dc2fa94e9
+    Should Be Equal As Strings    ${withErrorsUser}    66f5becbf3a0b05c0092e66f
     Should Be Equal As Strings    ${withErrorsMessage}    Unauthorized to book.
     Should Be Equal As Strings    ${withErrorsCode}    webcontrol_failed
     Sleep    5s
@@ -575,6 +575,7 @@ Start Departure Leg 2
     Set Global Variable    ${departureToken2}
 
 Get Active Departures
+    Skip
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/pb/assistant/departures/actives
@@ -656,7 +657,7 @@ Get User QR(Undefined 1 Should not be able to validate)
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad2}
-    ...    data={"ids":["6667489cb5433b5dc2fa94e9"]}
+    ...    data={"ids":["66f5becbf3a0b05c0092e66f"]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}

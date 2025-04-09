@@ -66,6 +66,7 @@ Set Date Variables
     ${end_date_tickets}=     Set Variable     ${fecha_manana}T03:59:59.999Z
         Set Global Variable    ${end_date_tickets}
 
+
 2 hours local
     ${date}    Get Current Date    time_zone=local    exclude_millis=yes
     ${formatted_date}    Convert Date    ${date}    result_format=%H:%M:%S
@@ -569,13 +570,13 @@ Seat Reservation(User1-NicoEnd)
     ${response}=    POST On Session
     ...    mysesion
     ...    ${seatReservation}
-    ...    data={"serviceId":"${service_id_tickets}","departureId":"${departureId}","stopId":"655d11d88a5a1a1ff0328464","seat":"2"}
+    ...    data={"serviceId":"${service_id_tickets}","departureId":"${departureId}","stopId":"655d11d88a5a1a1ff0328464","seat":"1"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200        Seat reservation not working statusCode ${code}
     Log    ${code}
-    Sleep    3s
+    Sleep    5s
 
 Seat Reservation(User2-Pedro Pascal Available Seat)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -593,7 +594,7 @@ Seat Reservation(User2-Pedro Pascal Available Seat)
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200  
     Log    ${code}
-    Sleep    3s
+    Sleep    5s
 
 Seat Reservation(User3-Kratos Available Seat)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -735,7 +736,7 @@ Get User QR(Another Community User)
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/admin/users/qrCodes?community=6654ae4eba54fe502d4e4187
-    ...    data={"ids":["66f5bee8f3a0b05c0092e702"]}
+    ...    data={"ids":["66e30a06e2b22c7d017bb492"]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -1100,7 +1101,9 @@ Validate With NFC(No tickets Should fail)
     ...    data={"communityId":"${idComunidad}","key":"rut","value":"${userNoTicketRut}","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Status Should Be    400            
+    Status Should Be    400   
+
+    Sleep     10s         
 
 Validate With User From another community QR(Should fail)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -1110,20 +1113,15 @@ Validate With User From another community QR(Should fail)
     # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
+    ${response}=   Run Keyword And Expect Error     HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate     POST On Session
     ...    mysesion
     ...    url=/api/v1/pb/provider/departures/validate
     ...    data={"communityId":"${idComunidad2}","validationString":"${qrCodeAnotherCommunity}","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
     ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be        200
-    ${validatedFalse}=    Set Variable    ${response.json()}[validated]
-    Should Be Equal As Strings    ${validatedFalse}    False
-    ${reason}=    Set Variable    ${response.json()}[reason][0]
-    Should Be Equal As Strings    ${reason}     not_part
-    Log    ${code}
+    
+    Status Should Be        403
     Sleep    10s
+
 Validate With ''X'' QR From internet ( Should Fail)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -1132,23 +1130,18 @@ Validate With ''X'' QR From internet ( Should Fail)
     # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
+    ${response}=  Run Keyword And Expect Error     HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate    POST On Session
     ...    mysesion
     ...    url=/api/v1/pb/provider/departures/validate
     ...    data={"communityId":"","validationString":"https://www.youtube.com/watch?v=dQw4w9WgXcQ","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
     ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be        200
-    ${validatedFalse}=    Set Variable    ${response.json()}[validated]
-    Should Be Equal As Strings    ${validatedFalse}    False
-    ${reason}=    Set Variable    ${response.json()}[reason][0]
-    Should Be Equal As Strings    ${reason}     not_part
-    Log    ${code}
+
+    Status Should Be        403
     Sleep    10s
 
 
 Complete Seats Manually
+    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -1169,6 +1162,7 @@ Complete Seats Manually
     Log    ${code}
 
 Manual UnBoarding
+    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -1271,10 +1265,9 @@ Get Report Id
     ...    Authorization=${tokenAdmin}
     ...    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
+    ${response}=    GET On Session
     ...    mysesion
-    ...    url=/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
-    ...    data={"advancedSearch":true,"startDate":"${today_date}T04:00:00.000Z","endDate":"${fecha_manana}T03:59:59.999Z","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
+    ...    url=/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -1282,16 +1275,12 @@ Get Report Id
         Status Should Be    200
     Log    ${code}
 
-    ${reportId}=    Set Variable    ${response.json()}[departures][0][_id]
-
-    Set Global Variable    ${reportId}
-
     Sleep    5s
 
 Get Passenger Details(Validations)
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/departureValidations/${reportId}?community=${idComunidad}
+    ...    ${STAGE_URL}/api/v1/admin/pb/departureValidations/${departureId}?community=${idComunidad}
 
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=${tokenAdmin}

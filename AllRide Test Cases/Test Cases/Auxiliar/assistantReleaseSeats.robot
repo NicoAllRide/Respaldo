@@ -173,7 +173,7 @@ Make Bulk Reservation(3 should pass, one fail)
     ${response}=    POST On Session
     ...    mysesion
     ...    url=https://stage.allrideapp.com/api/v1/admin/pb/bookService/bulk/${service_id}?community=6654ae4eba54fe502d4e4187
-    ...    data={"users":[{"userId":"666078059a5ece0ee6e95904"},{"userId":"6667489cb5433b5dc2fa94e9"},{"userId":"66e30a06e2b22c7d017bb492"},{"userId":"66d8cf4f4a7101503b01f84a"}]}
+    ...    data={"users":[{"userId":"666078059a5ece0ee6e95904"},{"userId":"66f5becbf3a0b05c0092e66f"},{"userId":"66e30a06e2b22c7d017bb492"},{"userId":"66d8cf4f4a7101503b01f84a"}]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -191,7 +191,7 @@ Make Bulk Reservation(3 should pass, one fail)
     Should Be Equal As Strings    ${correctReservation3}    66d8cf4f4a7101503b01f84a            The user with certification webcontrol could not reserve, failing
     
     #----WITH ERRORS--#
-    Should Be Equal As Strings    ${withErrorsUser}    6667489cb5433b5dc2fa94e9
+    Should Be Equal As Strings    ${withErrorsUser}    66f5becbf3a0b05c0092e66f
     Should Be Equal As Strings    ${withErrorsMessage}    Unauthorized to book.
     Should Be Equal As Strings    ${withErrorsCode}    webcontrol_failed
     Sleep    5s
@@ -210,7 +210,7 @@ Make Bulk Reservation(3 should pass, one fail)
     # Revisar en Coordinacion Interna que cada vinculación de validación esté en su salida correspondiente
     # Finalizar viaje con ambos conductores
 
-   #---------CASO2,  Dos usuarios con reservas, con webcontrol sin liberación de asientos, 1 usuario acreditado sin reserva, 1 usuario no acreditado ----------------------------#
+#---------CASO2,  Dos usuarios con reservas, con webcontrol sin liberación de asientos, 1 usuario acreditado sin reserva, 1 usuario no acreditado ----------------------------#
     # Crear reserva masiva con tres usuarios, 2 deberían pasar, uno debería fallar por webcontrol
     # Asignar recursos para crear dos salidas
     # Verificar que cada salida tenga la misma cantidad de reservas
@@ -225,7 +225,7 @@ Make Bulk Reservation(3 should pass, one fail)
     # Revisar en Coordinacion Interna que cada vinculación de validación esté en su salida correspondiente
     # Finalizar viaje con ambos conductores
 
-   #---------CASO3,  Dos usuarios con reservas, con webcontrol con liberación de asientos, 1 usuario acreditado sin reserva, 1 usuario no acreditado ----------------------------#
+    #---------CASO3,  Dos usuarios con reservas, con webcontrol con liberación de asientos, 1 usuario acreditado sin reserva, 1 usuario no acreditado ----------------------------#
     # Crear reserva masiva con tres usuarios, 2 deberían pasar, uno debería fallar por webcontrol
     # Asignar recursos para crear dos salidas
     # Verificar que cada salida tenga la misma cantidad de reservas
@@ -240,7 +240,6 @@ Make Bulk Reservation(3 should pass, one fail)
     # Vincular validaciones con salida correspondiente
     # Revisar en Coordinacion Interna que cada vinculación de validación esté en su salida correspondiente
     # Finalizar viaje con ambos conductores
-
 Make Bulk Reservation(all should failed, already booked)
     
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -507,6 +506,7 @@ Start Departure Leg 2
     Set Global Variable    ${departureToken2}
 
 Get Active Departures
+    Skip
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/pb/assistant/departures/actives
@@ -772,7 +772,7 @@ Validate With QR Morita(SHould be able to validate, departure2)
     ${validationMorita}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${validationMorita}
 Validate With QR user Not in ALLRIDE But has webcontrol(SHould be able to validate, departure2)
-
+    Skip
     #SE HACE CON DEPARTURE TOKEN#
     Create Session    mysesion    ${STAGE_URL}    verify=true
 

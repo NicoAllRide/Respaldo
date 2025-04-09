@@ -1,76 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250128 10:46:20.500" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250407 16:29:20.416" rpa="false" schemaversion="4">
 <suite id="s1" name="Robot Interactive Console" source="c:\Users\UsuarioCompuElite\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
-<kw name="Set Variable" library="BuiltIn">
-<var>${url}</var>
-<arg>${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad}&amp;startDate=${start_date_today}&amp;endDate=${end_date_tomorrow}&amp;onlyODDs=false</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250128 10:46:21.054" level="FAIL">Variable '${STAGE_URL}' not found.</msg>
-<status status="FAIL" starttime="20250128 10:46:21.052" endtime="20250128 10:46:21.054"/>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>TRACE</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<msg timestamp="20250407 16:29:21.219" level="TRACE">Return: 'INFO'</msg>
+<status status="PASS" starttime="20250407 16:29:21.219" endtime="20250407 16:29:21.219"/>
+</kw>
+<kw name="Create Session">
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<msg timestamp="20250407 16:29:21.220" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<status status="FAIL" starttime="20250407 16:29:21.220" endtime="20250407 16:29:21.221"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Authorization=${tokenAdmin}</arg>
+<arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="NOT RUN" starttime="20250128 10:46:21.054" endtime="20250128 10:46:21.054"/>
+<status status="NOT RUN" starttime="20250407 16:29:21.221" endtime="20250407 16:29:21.221"/>
 </kw>
-<kw name="GET">
+<kw name="POST On Session">
 <var>${response}</var>
-<arg>url=${url}</arg>
+<arg>mysesion</arg>
+<arg>url=https://stage.allrideapp.com/api/v1/admin/pb/validations/list?community=67b879e99a2ba09f940ea7c5&amp;page=1&amp;pageSize=200</arg>
+<arg>data={"advancedSearch":false,"startDate":"${fecha_hoy}T03:00:00.000Z","endDate":"${fecha_manana}T02:59:59.999Z","searchAll":"","route":"0","stop":"0","communityId":"0","validated":null,"reason":"","user":"","email":"","vehicleId":"","customParams":[{"key":"Rut","value":""},{"key":"color","value":""},{"key":"animal","value":""},{"key":"Empresa","value":""}],"driver":"0","startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null}</arg>
 <arg>headers=${headers}</arg>
-<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
+<status status="NOT RUN" starttime="20250407 16:29:21.221" endtime="20250407 16:29:21.221"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${responseJson}</var>
 <arg>${response.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
+<status status="NOT RUN" starttime="20250407 16:29:21.221" endtime="20250407 16:29:21.221"/>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
-<var>${filtered_services}</var>
-<arg>[service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '67097560bbc506c3081aee9a']</arg>
+<var>${sorted_validations}</var>
+<arg>sorted(${responseJson}[validations], key=lambda x: x['createdAt'])</arg>
 <arg>json</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${sorted_services}</var>
-<arg>sorted(${filtered_services}, key=lambda service: service['createdAt'], reverse=True)</arg>
-<arg>json</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>${sorted_services} == []</arg>
-<arg>Fatal Error</arg>
-<arg>"No services found in Week 1 with routeId._id = '66f310608e6c377a3f43968e'. Stopping test"</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
+<status status="NOT RUN" starttime="20250407 16:29:21.221" endtime="20250407 16:29:21.221"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
-<var>${service}</var>
-<arg>${sorted_services[0]}</arg>
+<var>${last_validation}</var>
+<arg>${sorted_validations[-1]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
+<status status="NOT RUN" starttime="20250407 16:29:21.221" endtime="20250407 16:29:21.221"/>
+</kw>
+<kw name="Get From List">
+<var>${last_reason}</var>
+<arg>${last_validation['reason']}</arg>
+<arg>0</arg>
+<status status="NOT RUN" starttime="20250407 16:29:21.222" endtime="20250407 16:29:21.222"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
-<var>${service_id}</var>
-<arg>${service['_id']}</arg>
+<var>${validated}</var>
+<arg>${last_validation['validated']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
+<status status="NOT RUN" starttime="20250407 16:29:21.222" endtime="20250407 16:29:21.222"/>
 </kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${service_id}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<status status="NOT RUN" starttime="20250128 10:46:21.055" endtime="20250128 10:46:21.055"/>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${validated}</arg>
+<arg>False</arg>
+<arg>Validation status should be false, but is not</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20250407 16:29:21.223" endtime="20250407 16:29:21.223"/>
 </kw>
-<status status="PASS" starttime="20250128 10:46:20.514" endtime="20250128 10:46:23.072"/>
+<kw name="Length Should Be" library="BuiltIn">
+<arg>${last_validation['reason']}</arg>
+<arg>1</arg>
+<arg>Reason length should be only one "departure_limit", but is showing more</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="NOT RUN" starttime="20250407 16:29:21.223" endtime="20250407 16:29:21.223"/>
 </kw>
-<status status="PASS" starttime="20250128 10:46:20.513" endtime="20250128 10:46:23.072"/>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${last_reason}</arg>
+<arg>departure_limit</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20250407 16:29:21.223" endtime="20250407 16:29:21.223"/>
+</kw>
+<kw name="Status Should Be">
+<arg>200</arg>
+<status status="NOT RUN" starttime="20250407 16:29:21.224" endtime="20250407 16:29:21.224"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Última validación: ${last_validation}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250407 16:29:21.224" endtime="20250407 16:29:21.224"/>
+</kw>
+<msg timestamp="20250407 16:29:21.925" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20250407 16:29:20.432" endtime="20250407 16:29:21.925"/>
+</kw>
+<status status="PASS" starttime="20250407 16:29:20.432" endtime="20250407 16:29:21.925"/>
 </test>
-<status status="PASS" starttime="20250128 10:46:20.500" endtime="20250128 10:46:23.072"/>
+<status status="PASS" starttime="20250407 16:29:20.417" endtime="20250407 16:29:21.927"/>
 </suite>
 <statistics>
 <total>

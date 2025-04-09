@@ -25,7 +25,7 @@ ${IS_FULL}          false
 ${IS_PANICKING}     false
 ${CAPACITY}         4
 ${SPEED}            50.5
-${STAGE_URL}            https://stage.allrideapp.com
+${STAGEQA_URL}            https://stage.allrideapp.com
 
 
 *** Test Cases ***
@@ -99,7 +99,7 @@ Set Date Variables
 Get Driver Token
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/drivers/?community=${idComunidad}&driverId=668309b8bb41bfd79a461dc3
+    ...    ${STAGEQA_URL}/api/v1/admin/pb/drivers/?community=${idComunidad}&driverId=668309b8bb41bfd79a461dc3
 
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
@@ -122,7 +122,7 @@ Get Driver Token
 
 
 Start Departure Leg
-    Create Session    mysesion    ${STAGE_URL}    verify=true
+    Create Session    mysesion    ${STAGEQA_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -134,7 +134,7 @@ Start Departure Leg
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v2/pb/driver/departure
-    ...    data={"communityId":"67166fb78361574e33c76b3b","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"customParamsAtTheEnd":[],"routeId":"67166fb78361574e33c76b3b","capacity":2,"busCode":"1111","driverCode":"159753","vehicleId":"666941a7b8d6ea30f9281110","shareToUsers":false,"customParams":[]}
+    ...    data={"communityId":"653fd601f90509541a748683","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"customParamsAtTheEnd":[],"routeId":"67166fb78361574e33c76b3b","capacity":2,"busCode":"1111","driverCode":"159753","vehicleId":"666941a7b8d6ea30f9281110","shareToUsers":false,"customParams":[]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -151,7 +151,7 @@ Start Departure Leg
 
 Connect And Emit Events
     [Documentation]    Test connecting to WebSocket and sending events
-    ${URL_with_token}=     Set variable    wss://stage.allrideapp.com/socket.io/?token=${access_token}&EIO=3&transport=websocket
+    ${URL_with_token}=     Set variable    wss://stageqa.allrideapp.com/socket.io/?token=${access_token}&EIO=3&transport=websocket
     ${my_websocket}=    Connect    ${URL_with_token}
     Log    Connected to WebSocket
 
@@ -318,6 +318,11 @@ Connect And Emit Events
 
 
 
+    Send
+    ...    ${my_websocket}
+    ...    42/pbDriver,["stop",{}]
+    Log
+    ...    Sent: 42/pbDriver,["stop",{}]
     Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
@@ -326,7 +331,6 @@ Connect And Emit Events
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
 
-
 ##### GENERAR COORDENADAS DEL TRAZADO PARA SIMULAR UNA RUTA ALTERNA Y ENTRAR A LA SIGUIENTE PARADA
 
 
@@ -334,7 +338,7 @@ Get Departure in admin, should be activeFalse
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/departures/${departureId}?community=653fd601f90509541a748683
+    ...    ${STAGEQA_URL}/api/v1/admin/pb/departures/${departureId}?community=653fd601f90509541a748683
 
 
     # Configura las opciones de la solicitud (headers, auth)

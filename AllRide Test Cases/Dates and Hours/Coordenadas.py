@@ -1,23 +1,35 @@
 from geopy.geocoders import GoogleV3
 import pandas as pd
 
-# Google Maps API Key
-API_KEY = 'AIzaSyA9d6vMUQx-mWMv4uHDLztlMA-It0ozG2w'
-# Ruta al archivo Excel
-archivo_excel = 'Listado Trabajadores 2025-01 ORIZON.xlsx'
+# Configura tu API key de Google Maps
+API_KEY = 'AIzaSyA9d6vMUQx-mWMv4uHDLztlMA-It0ozG2w'  # Reemplaza con tu propia API key
 
-# Cargar archivo Excel
-df = pd.read_excel(archivo_excel, header=0, skiprows=4)
+# Ruta al archivo Excel
+archivo_excel = 'PARADAS FINAL TRP 2025.xlsx'
+
+# Cargar el archivo Excel en un DataFrame
+# Asegurando que "DIRECCION FINAL" y "COMUNA" se lean correctamente
+df = pd.read_excel(archivo_excel, header=0, skiprows=0, usecols="A,B")
+
+# Renombrar columnas por si hay espacios extra o problemas de formato
+df.rename(columns={df.columns[0]: 'DIRECCION FINAL', df.columns[1]: 'COMUNA'}, inplace=True)
+
+# Convertir a mayúsculas para garantizar consistencia
+df['DIRECCION FINAL'] = df['DIRECCION FINAL'].astype(str).str.upper()
+df['COMUNA'] = df['COMUNA'].astype(str).str.upper()
 
 # Inicializa el geocodificador de Google
 geolocator = GoogleV3(api_key=API_KEY)
 
-# Función para obtener coordenadas
-def obtener_coordenadas(direccion, comuna):
+# Función para obtener coordenadas en base a dirección y comuna
+def obtener_coordenadas_chile(direccion, comuna):
+    if pd.isna(direccion) or pd.isna(comuna) or not isinstance(direccion, str) or not isinstance(comuna, str) or direccion.strip() == "" or comuna.strip() == "":
+        return None, None  # Evita procesar valores vacíos
+    
+    direccion_completa = f"{direccion}, {comuna}, Chile"
+    
     try:
-        # Construir dirección completa solo para Chile
-        direccion_completa = f"{direccion}, {comuna}, Chile"
-        location = geolocator.geocode(direccion_completa)
+        location = geolocator.geocode(direccion_completa, components={'country': 'CL'})
         if location:
             return location.latitude, location.longitude
         else:
@@ -26,14 +38,17 @@ def obtener_coordenadas(direccion, comuna):
         print(f"Error al geocodificar la dirección {direccion_completa}: {e}")
         return None, None
 
-# Filtrar filas con direcciones válidas para Chile
-df = df[df['Comuna'].notna()]  # Asegura que la columna "Comuna" no esté vacía
+# Aplica la función a cada fila del DataFrame
+df['Coordenadas'] = df.apply(lambda row: obtener_coordenadas_chile(row['DIRECCION FINAL'], row['COMUNA']), axis=1)
 
-# Aplicar función para obtener coordenadas solo para direcciones en Chile
-df['Coordenadas'] = df.apply(lambda row: obtener_coordenadas(row['Dirección'], row['Comuna']), axis=1)
-
-# Divide las coordenadas en columnas separadas (latitud y longitud)
+# Divide las coordenadas en columnas separadas (Latitud y Longitud)
 df[['Latitud', 'Longitud']] = pd.DataFrame(df['Coordenadas'].tolist(), index=df.index)
 
+# Elimina la columna temporal de coordenadas combinadas
+df.drop(columns=['Coordenadas'], inplace=True)
+
 # Guarda el DataFrame actualizado en un nuevo archivo Excel
-df.to_excel('Listado Trabajadores 2025-01 ORIZON Coordenadas Chile.xlsx', index=False)
+archivo_salida = 'Coordenadas_PARADAS_TRP2025.xlsx'
+df.to_excel(archivo_salida, index=False)
+
+print(f"Proceso finalizado. Se guardaron las coordenadas en '{archivo_salida}'.")

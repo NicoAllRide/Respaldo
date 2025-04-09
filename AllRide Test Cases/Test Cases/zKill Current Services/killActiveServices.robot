@@ -78,7 +78,7 @@ Search Active Departures
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    url=/api/v1/admin/pb/departures/list?community=6654ae4eba54fe502d4e4187&page=1&pageSize=20
     ...    data={"advancedSearch":true,"startDate":"${fecha_mes_pasado}T04:00:00.000Z","endDate":"${fecha_manana}T03:59:59.999Z","route":"0","label":"","driver":"0","vehicleId":"","active":true,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)

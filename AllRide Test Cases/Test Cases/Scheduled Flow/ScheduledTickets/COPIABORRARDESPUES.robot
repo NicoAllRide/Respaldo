@@ -923,7 +923,7 @@ Get Report Id
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v1/admin/pb/departures/list?community=${idComunidad}&from=0
+    ...    url=/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
     ...    data={"advancedSearch":true,"startDate":"${today_date}T04:00:00.000Z","endDate":"${fecha_manana}T03:59:59.999Z","route":"0","label":"","driver":"0","vehicleId":"","active":null,"startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null,"onlyInternal":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -941,7 +941,7 @@ Get Report Id
 Get Passenger Details(Validations)
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/departureValidations/${reportId}?community=${idComunidad}
+    ...    ${STAGE_URL}/api/v1/admin/pb/departureValidations/${idComunidad}?community=${idComunidad}
 
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=${tokenAdmin}

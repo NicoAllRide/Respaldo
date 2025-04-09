@@ -1,0 +1,126 @@
+Emit event 'updatePosition' with data: {"latitude":-34.3940622,"longitude":-70.7812825,"speed":0.09759723,"createdAt":"Thu Feb 20 12:11:16 GMT-03:00 2025","vehicleId":"67b5f76fb5c11f24f63fe29d"}
+2025-02-20 12:11:17.125 30175-958   SocketClientStandby     com.allride.buses                    D  Event received: newPosition with args: {"location":{"latitude":-34.3940622,"longitude":-70.7812825},"latitude":-34.3940622,"longitude":-70.7812825,"ignition":true,"plate":"GPS DEVICE","vehicle":{"_id":"67b5f76fb5c11f24f63fe29d","plate":"GPS DEVICE"},"type":"standbyVehicle","deviceId":"67b74467b5c11f24f6403d42"}
+2025-02-20 12:11:19.318 30175-30237 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 2 to service
+2025-02-20 12:11:19.319 30175-30296 SessionLifecycleService com.allride.buses                    D  Activity backgrounding at 339943229
+2025-02-20 12:11:19.335 30175-30175 SplashActivity          com.allride.buses                    D  onCreate
+2025-02-20 12:11:19.364 30175-30175 SplashActivity          com.allride.buses                    D  appLinkAction: null
+2025-02-20 12:11:19.722 30175-30175 SocketClient            com.allride.buses                    W  Socket instance is null. Nothing to stop.
+2025-02-20 12:11:19.773 30175-30175 SocketClient            com.allride.buses                    W  Socket instance is null. Nothing to stop.
+2025-02-20 12:11:19.774 30175-30175 InitAppFragment         com.allride.buses                    D  setDeviceLinkedVehicle 67b74467b5c11f24f6403d42
+2025-02-20 12:11:19.808 30175-30175 LoginActivityVM         com.allride.buses                    D  Pre getDeviceLinkedVehicleMe
+2025-02-20 12:11:19.839 30175-30175 LoginActivity           com.allride.buses                    D  getNetworkStatus: {"status":true,"type":"wifi"}
+2025-02-20 12:11:19.885 30175-30175 InitAppFragment         com.allride.buses                    D  showDeviceLinkedVehicle true
+2025-02-20 12:11:19.891 30175-30175 InitAppFragment         com.allride.buses                    D  showDeviceLinkedVehicle true
+2025-02-20 12:11:19.954 30175-30175 Utils                   com.allride.buses                    D  Success startConnectivityService
+2025-02-20 12:11:19.956 30175-30175 InitAppFragment         com.allride.buses                    D  showDeviceLinkedVehicle true
+2025-02-20 12:11:19.958 30175-30234 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 1 to service
+2025-02-20 12:11:19.958 30175-30296 SessionLifecycleService com.allride.buses                    D  Activity foregrounding at 339943868.
+2025-02-20 12:11:19.966 30175-30175 Choreographer           com.allride.buses                    I  Skipped 31 frames!  The application may be doing too much work on its main thread.
+2025-02-20 12:11:19.990 30175-1162  AllRideOAuth2Service    com.allride.buses                    I  DeviceLinkedVehicle f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:20.022 30175-30175 SplashActivity          com.allride.buses                    D  onDestroy
+2025-02-20 12:11:20.025 30175-30175 SocketClientStandby     com.allride.buses                    D  Emit event 'updatePosition' with data: {"latitude":-33.39143,"longitude":-70.55264,"speed":0,"createdAt":"Thu Feb 20 12:11:20 GMT-03:00 2025","vehicleId":"67b5f76fb5c11f24f63fe29d"}
+2025-02-20 12:11:20.106 30175-30175 serviceConnectivity     com.allride.buses                    D  start ConnectivityService
+2025-02-20 12:11:20.108 30175-30175 serviceConnectivity     com.allride.buses                    D  setupBroadcastReceiver
+2025-02-20 12:11:20.113 30175-30175 serviceConnectivity     com.allride.buses                    D  Success registerReceiver setupBroadcastReceiver
+2025-02-20 12:11:20.115 30175-30175 Utils                   com.allride.buses                    D  BroadcastReceiver registered successfully
+2025-02-20 12:11:20.132 30175-30175 ConnectivityReceiver    com.allride.buses                    D  onReceive true
+2025-02-20 12:11:20.134 30175-30175 serviceConnectivity     com.allride.buses                    D  socketUpdateReceiver onReceive stateReceiver true
+2025-02-20 12:11:20.215 30175-1184  SocketClientStandby     com.allride.buses                    D  Event received: newPosition with args: {"location":{"latitude":-33.39143,"longitude":-70.55264},"latitude":-33.39143,"longitude":-70.55264,"ignition":true,"plate":"GPS DEVICE","vehicle":{"_id":"67b5f76fb5c11f24f63fe29d","plate":"GPS DEVICE"},"type":"standbyVehicle","deviceId":"67b74467b5c11f24f6403d42"}
+2025-02-20 12:11:20.805 30175-1162  AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=GET, url=https://stageqa.allrideapp.com/api/v1/pb/provider/me, tags={class retrofit2.Invocation=com.allride.pttools.api.AllRideAPI.getAuthMe() []}}
+2025-02-20 12:11:20.828 30175-1162  AllRideOAuth2Service    com.allride.buses                    I  DeviceLinkedVehicle f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:20.901 30175-30175 LoginActivityVM         com.allride.buses                    D  Success getDeviceLinkedVehicleMe - {"auth":{"accessToken":"f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04","active":true,"communities":["6654ae4eba54fe502d4e4187"],"externalDeviceToken":"de1054c7a43b8b0cfd41b450df172f74b559435ccc0cbd8f8b2a6045e1c3f96ce651b5d8665fe7417fd651b5755edd47ee7a452a138be1251b6acf196580a069","hasToChangePassword":false,"_id":"67b74467b5c11f24f6403d42","rtlToken":"457715993456b9790a8b1555d2dc1d2761d6416d1b37676b77a04e6e002bb2222b3a721e6cadaa30f9178ffb401cb58bd8fc9f89a849abefa625565844e4982a","superCommunities":["653fd68233d83952fafcd4be"],"type":"device_linked_vehicle","vehicle":{"communities":["6654ae4eba54fe502d4e4187"],"_id":"67b5f76fb5c11f24f63fe29d","superCommunities":["653fd68233d83952fafcd4be"]}},"type":"device"}
+2025-02-20 12:11:20.901 30175-30175 LoginActivityVM         com.allride.buses                    D  Pre getAllVehicles
+2025-02-20 12:11:20.934 30175-30175 serviceConnectivity     com.allride.buses                    D  sendNotifyConnectivity true
+2025-02-20 12:11:20.941 30175-1232  AllRideOAuth2Service    com.allride.buses                    I  DeviceLinkedVehicle f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:20.965 30175-30175 serviceConnectivity     com.allride.buses                    D  checkConnectivity: true - device
+2025-02-20 12:11:20.986 30175-30175 serviceConnectivity     com.allride.buses                    D  checkInMain false
+2025-02-20 12:11:21.046 30175-30248 serviceConnectivity     com.allride.buses                    D  checkPendingOfflineSync false false true
+2025-02-20 12:11:21.046 30175-30248 serviceConnectivity     com.allride.buses                    D  sendNotifyPendingOfflineSync true - 
+2025-02-20 12:11:21.046 30175-30248 serviceConnectivity     com.allride.buses                    I  checkSyncOffline current 'CURRENT_DEPARTURE' : [SYNC_DEPARTURE=false, SYNC_VALIDATIONS=false, SYNC_IMAGES=false, CURRENT_DEPARTURE=true, DEVICE_HISTORY=false, DRIVER_MUC=false, VALIDATABLE_USERS=false]
+2025-02-20 12:11:21.047 30175-30248 serviceConnectivity     com.allride.buses                    I  checkOnlineDataAsync
+2025-02-20 12:11:21.053 30175-1254  serviceConnectivity     com.allride.buses                    D  dataAsyncList getCommunity 653fd68233d83952fafcd4be - list is [COMMUNITY=true, USERS=true, DRIVERS=true]
+2025-02-20 12:11:21.053 30175-30248 UserRealm               com.allride.buses                    D  isWorking false
+2025-02-20 12:11:21.053 30175-30248 serviceConnectivity     com.allride.buses                    D  dataAsyncList getUsers 653fd68233d83952fafcd4be - list is [COMMUNITY=true, USERS=true, DRIVERS=true]
+2025-02-20 12:11:21.055 30175-1242  serviceConnectivity     com.allride.buses                    D  dataAsyncList getDrivers 653fd68233d83952fafcd4be - list is [COMMUNITY=true, USERS=true, DRIVERS=true]
+2025-02-20 12:11:21.097 30175-1258  AllRideOAuth2Service    com.allride.buses                    I  getAccessToken f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:21.116 30175-1263  AllRideOAuth2Service    com.allride.buses                    I  getAccessToken f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:21.124 30175-1262  AllRideOAuth2Service    com.allride.buses                    I  getAccessToken f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:21.149 30175-1264  AllRideOAuth2Service    com.allride.buses                    I  getAccessToken f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:21.783 30175-1258  AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=GET, url=https://stageqa.allrideapp.com/api/v1/pb/provider/driver/653fd68233d83952fafcd4be, tags={class retrofit2.Invocation=com.allride.pttools.api.AllRideAPI.getCommunityDrivers() [653fd68233d83952fafcd4be]}}
+2025-02-20 12:11:21.804 30175-1258  AllRideOAuth2Service    com.allride.buses                    I  getAccessToken f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:21.823 30175-30245 serviceConnectivity     com.allride.buses                    D  Success getCommunityDrivers: 13
+2025-02-20 12:11:21.830 30175-1264  AllRideOAuth2Service    com.allride.buses                    I  Response Code > 410 - Request > Request{method=GET, url=https://stageqa.allrideapp.com/api/v2/pb/driver/departures/current, tags={class retrofit2.Invocation=com.allride.pttools.api.AllRideAPI.getCurrentDeparture() []}}
+2025-02-20 12:11:21.854 30175-1264  AllRideOAuth2Service    com.allride.buses                    I  getAccessToken f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:21.857 30175-30245 serviceConnectivity     com.allride.buses                    E  Error getCurrentDeparture: HTTP 410 
+2025-02-20 12:11:21.857 30175-30245 serviceConnectivity     com.allride.buses                    I  HttpException getCurrentDeparture: no_active_departure - no_active_departure
+2025-02-20 12:11:21.857 30175-30245 serviceConnectivity     com.allride.buses                    D  startActivityMain
+2025-02-20 12:11:21.857 30175-30245 SocketClient            com.allride.buses                    W  Socket instance is null. Nothing to stop.
+2025-02-20 12:11:21.858 30175-30245 Utils                   com.allride.buses                    D  Success startActivityMain: SplashActivity
+2025-02-20 12:11:21.888 30175-30248 DepartureRealm          com.allride.buses                    D  stopAllDepartures
+2025-02-20 12:11:21.891 30175-30223 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 2 to service
+2025-02-20 12:11:21.892 30175-30296 SessionLifecycleService com.allride.buses                    D  Activity backgrounding at 339945801
+2025-02-20 12:11:21.922 30175-30175 SplashActivity          com.allride.buses                    D  onCreate
+2025-02-20 12:11:21.939 30175-30175 SplashActivity          com.allride.buses                    D  appLinkAction: null
+2025-02-20 12:11:22.043 30175-1232  AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=GET, url=https://stageqa.allrideapp.com/api/v1/pb/provider/vehicles, tags={class retrofit2.Invocation=com.allride.pttools.api.AllRideAPI.getAllVehicles() []}}
+2025-02-20 12:11:22.058 30175-30175 SocketClient            com.allride.buses                    W  Socket instance is null. Nothing to stop.
+2025-02-20 12:11:22.064 30175-1232  AllRideOAuth2Service    com.allride.buses                    I  DeviceLinkedVehicle f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:22.085 30175-30248 serviceConnectivity     com.allride.buses                    D  checkPendingOfflineSync false false true
+2025-02-20 12:11:22.085 30175-30248 serviceConnectivity     com.allride.buses                    D  sendNotifyPendingOfflineSync true - 
+2025-02-20 12:11:22.085 30175-30248 serviceConnectivity     com.allride.buses                    I  checkSyncOffline dataList isEmpty
+2025-02-20 12:11:22.107 30175-30175 serviceConnectivity     com.allride.buses                    E  Stopping service
+2025-02-20 12:11:22.107 30175-30175 SocketClient            com.allride.buses                    W  Socket instance is null. Nothing to stop.
+2025-02-20 12:11:22.108 30175-30175 InitAppFragment         com.allride.buses                    D  setDeviceLinkedVehicle 67b74467b5c11f24f6403d42
+2025-02-20 12:11:22.141 30175-30175 LoginActivityVM         com.allride.buses                    D  Pre getDeviceLinkedVehicleMe
+2025-02-20 12:11:22.153 30175-30175 LoginActivity           com.allride.buses                    D  getNetworkStatus: {"status":true,"type":"wifi"}
+2025-02-20 12:11:22.184 30175-30175 InitAppFragment         com.allride.buses                    D  showDeviceLinkedVehicle true
+2025-02-20 12:11:22.186 30175-30175 InitAppFragment         com.allride.buses                    D  showDeviceLinkedVehicle true
+2025-02-20 12:11:22.190 30175-1296  AllRideOAuth2Service    com.allride.buses                    I  DeviceLinkedVehicle f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:22.211 30175-30175 Utils                   com.allride.buses                    D  Success startConnectivityService
+2025-02-20 12:11:22.213 30175-30175 InitAppFragment         com.allride.buses                    D  showDeviceLinkedVehicle true
+2025-02-20 12:11:22.214 30175-30240 SessionLifecycleClient  com.allride.buses                    D  Sending lifecycle 1 to service
+2025-02-20 12:11:22.215 30175-30296 SessionLifecycleService com.allride.buses                    D  Activity foregrounding at 339946124.
+2025-02-20 12:11:22.226 30175-30175 serviceConnectivity     com.allride.buses                    D  onDestroy
+2025-02-20 12:11:22.226 30175-30175 serviceConnectivity     com.allride.buses                    D  closeService
+2025-02-20 12:11:22.226 30175-30175 serviceConnectivity     com.allride.buses                    D  Success unregisterReceiver socketUpdateReceiver
+2025-02-20 12:11:22.227 30175-30175 serviceConnectivity     com.allride.buses                    D  Success unregisterReceiver ConnectivityReceiver
+2025-02-20 12:11:22.229 30175-30245 serviceConnectivity     com.allride.buses                    E  Error in async calls: Job was cancelled
+2025-02-20 12:11:22.235 30175-1243  VehicleRealm            com.allride.buses                    D  Pre deleteAndUpdates started with 23
+2025-02-20 12:11:22.310 30175-30175 serviceConnectivity     com.allride.buses                    D  start ConnectivityService
+2025-02-20 12:11:22.310 30175-30175 serviceConnectivity     com.allride.buses                    D  setupBroadcastReceiver
+2025-02-20 12:11:22.310 30175-30175 serviceConnectivity     com.allride.buses                    D  Success registerReceiver setupBroadcastReceiver
+2025-02-20 12:11:22.311 30175-30175 Utils                   com.allride.buses                    D  BroadcastReceiver registered successfully
+2025-02-20 12:11:22.326 30175-1310  AllRideOAuth2Service    com.allride.buses                    I  getAccessToken f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:22.357 30175-30175 ConnectivityReceiver    com.allride.buses                    D  onReceive true
+2025-02-20 12:11:22.360 30175-30175 serviceConnectivity     com.allride.buses                    D  socketUpdateReceiver onReceive stateReceiver true
+2025-02-20 12:11:22.372 30175-30175 SplashActivity          com.allride.buses                    D  onDestroy
+2025-02-20 12:11:22.397 30175-1243  VehicleRealm            com.allride.buses                    D  Success deleteAndUpdates in 162 ms
+2025-02-20 12:11:22.402 30175-30175 VehicleRealm            com.allride.buses                    E  Error deleteAndUpdates: Job was cancelled
+2025-02-20 12:11:22.877 30175-1296  AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=GET, url=https://stageqa.allrideapp.com/api/v1/pb/provider/me, tags={class retrofit2.Invocation=com.allride.pttools.api.AllRideAPI.getAuthMe() []}}
+2025-02-20 12:11:22.913 30175-1296  AllRideOAuth2Service    com.allride.buses                    I  DeviceLinkedVehicle f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:22.959 30175-30175 Utils                   com.allride.buses                    D  checkContinuousGps vehicle 67b5f76fb5c11f24f63fe29d: true
+2025-02-20 12:11:22.959 30175-30175 SocketClientStandby     com.allride.buses                    W  Socket connected token is same
+2025-02-20 12:11:22.959 30175-30175 LoginActivityVM         com.allride.buses                    D  Success getAllVehicles: 23
+2025-02-20 12:11:22.960 30175-30175 Choreographer           com.allride.buses                    I  Skipped 32 frames!  The application may be doing too much work on its main thread.
+2025-02-20 12:11:23.030 30175-30175 LoginActivityVM         com.allride.buses                    D  Success getDeviceLinkedVehicleMe - {"auth":{"accessToken":"f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04","active":true,"communities":["6654ae4eba54fe502d4e4187"],"externalDeviceToken":"de1054c7a43b8b0cfd41b450df172f74b559435ccc0cbd8f8b2a6045e1c3f96ce651b5d8665fe7417fd651b5755edd47ee7a452a138be1251b6acf196580a069","hasToChangePassword":false,"_id":"67b74467b5c11f24f6403d42","rtlToken":"457715993456b9790a8b1555d2dc1d2761d6416d1b37676b77a04e6e002bb2222b3a721e6cadaa30f9178ffb401cb58bd8fc9f89a849abefa625565844e4982a","superCommunities":["653fd68233d83952fafcd4be"],"type":"device_linked_vehicle","vehicle":{"communities":["6654ae4eba54fe502d4e4187"],"_id":"67b5f76fb5c11f24f63fe29d","superCommunities":["653fd68233d83952fafcd4be"]}},"type":"device"}
+2025-02-20 12:11:23.030 30175-30175 LoginActivityVM         com.allride.buses                    D  Pre getAllVehicles
+2025-02-20 12:11:23.059 30175-1319  AllRideOAuth2Service    com.allride.buses                    I  DeviceLinkedVehicle f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:23.160 30175-30175 serviceConnectivity     com.allride.buses                    D  sendNotifyConnectivity true
+2025-02-20 12:11:23.184 30175-30175 serviceConnectivity     com.allride.buses                    D  checkConnectivity: true - device
+2025-02-20 12:11:23.202 30175-30175 serviceConnectivity     com.allride.buses                    D  checkInMain false
+2025-02-20 12:11:23.276 30175-30248 serviceConnectivity     com.allride.buses                    D  checkPendingOfflineSync false false true
+2025-02-20 12:11:23.276 30175-30248 serviceConnectivity     com.allride.buses                    D  sendNotifyPendingOfflineSync true - 
+2025-02-20 12:11:23.277 30175-30248 serviceConnectivity     com.allride.buses                    I  checkSyncOffline current 'CURRENT_DEPARTURE' : [SYNC_DEPARTURE=false, SYNC_VALIDATIONS=false, SYNC_IMAGES=false, CURRENT_DEPARTURE=true, DEVICE_HISTORY=false, DRIVER_MUC=false, VALIDATABLE_USERS=false]
+2025-02-20 12:11:23.277 30175-30248 serviceConnectivity     com.allride.buses                    I  checkOnlineDataAsync
+2025-02-20 12:11:23.279 30175-30248 UserRealm               com.allride.buses                    D  isWorking false
+2025-02-20 12:11:23.280 30175-30248 serviceConnectivity     com.allride.buses                    D  dataAsyncList getUsers 653fd68233d83952fafcd4be - list is [COMMUNITY=true, USERS=true, DRIVERS=false]
+2025-02-20 12:11:23.282 30175-1322  serviceConnectivity     com.allride.buses                    D  dataAsyncList getCommunity 653fd68233d83952fafcd4be - list is [COMMUNITY=true, USERS=true, DRIVERS=false]
+2025-02-20 12:11:23.320 30175-1324  AllRideOAuth2Service    com.allride.buses                    I  getAccessToken f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:23.339 30175-1325  AllRideOAuth2Service    com.allride.buses                    I  getAccessToken f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:23.347 30175-1328  AllRideOAuth2Service    com.allride.buses                    I  getAccessToken f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:23.990 30175-1319  AllRideOAuth2Service    com.allride.buses                    I  Response Code > 200 - Request > Request{method=GET, url=https://stageqa.allrideapp.com/api/v1/pb/provider/vehicles, tags={class retrofit2.Invocation=com.allride.pttools.api.AllRideAPI.getAllVehicles() []}}
+2025-02-20 12:11:24.015 30175-1319  AllRideOAuth2Service    com.allride.buses                    I  DeviceLinkedVehicle f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:24.039 30175-1243  VehicleRealm            com.allride.buses                    D  Pre deleteAndUpdates started with 23
+2025-02-20 12:11:24.086 30175-1243  VehicleRealm            com.allride.buses                    D  Success deleteAndUpdates in 47 ms
+2025-02-20 12:11:24.168 30175-1328  AllRideOAuth2Service    com.allride.buses                    I  Response Code > 410 - Request > Request{method=GET, url=https://stageqa.allrideapp.com/api/v2/pb/driver/departures/current, tags={class retrofit2.Invocation=com.allride.pttools.api.AllRideAPI.getCurrentDeparture() []}}
+2025-02-20 12:11:24.201 30175-1328  AllRideOAuth2Service    com.allride.buses                    I  getAccessToken f170709979efd057e4ee6ef53f55ceee08e88cd494fe1f3c6eb449697803cad069304811a4aa2de6eda0e98d9143109ceb1cfeaef2db00a5dbc1629a83a6fa04
+2025-02-20 12:11:24.205 30175-1243  serviceConnectivity     com.allride.buses                    E  Error getCurrentDeparture: HTTP 410 
