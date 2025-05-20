@@ -1,8 +1,11 @@
 *** Variables ***
 ${STAGE_URL}            https://stage.allrideapp.com
+${CRIS_URL}            http://179.56.2.122:3000
 ${STAGEQA_URL}            https://stageqa.allrideapp.com
 ${TESTING_URL}          https://testing.allrideapp.com
 ${endPoint}             /api/v1/admin/pb/routes?community=653fd601f90509541a748683
+${endPoint2}             /api/v1/admin/pb/routes?community=6654ae4eba54fe502d4e4187
+${endPoint3}             /api/v1/admin/pb/routes?community=67b879e99a2ba09f940ea7c5
 ${driverId}             6582e724938e4e7b3bcf9f0a
 ${driverIdQr}             66a13057d19c400e03885f77
 ${driverCode}           753
@@ -12,10 +15,11 @@ ${vehicleCode}          1111
 ${addStopOrder}         /api/v1/admin/pb/stop-time?community=${idComunidad}
 ${seatReservation}      /api/v1/pb/user/booking
 ${idNico}               65e8e076337a90a35ba6e8dd
+${idDNI}               653ff52433d83952fafcf397
 ${idKratos}             65e092afca7842b1032f12e2
 ${idPedro}              654a5148bf3e9410d0bcd39a
 ${idNaruto}             653ff69df90509541a74988b
-${tokenAdmin}           Bearer 1075c22849d77962ee71d206d1ed0e669fdae4a5c1803952a8843139c899bc7c843bd52c13eb445ae83eed09c7ac47c61ee46d85294a5cc0f229260484bab0a6
+${tokenAdmin}           Bearer 68fd24598801ef2c015d5603a7ac122a41e13c7db543d4a48488c4a45c3560bdb134b8b9e90ea657f34e835fcb02398f74e6bd3ed5975f3e928ec681d4eba214
 ${tokenNico}            Bearer 496877632cc5c424ae72182e0ff61b8c6c3a09c8fff8bcde60fa7c2a5e50c40500ad6f1cb5a19ebaf5fdc42d250552654bc57cc10298efbd771aeaa018ebcecb
 ${tokenPedroPascal}     Bearer 2eacdb42a68ffa12b3d9901816b6b6049b1a65c9232c2112a64c5935002683b35bbf10c046ef9670f529241849999f66c4645956ecb1b0ae2a1de5c3209f9f4b
 ${tokenKratos}          Bearer fda5651771446906c9a511a066e26b4ef28873fa97ce094f47a2402b4a9a6f652a0032e1a7d3607515d2a873f2bb1eb73033e06c8d1d78e28b725a0537807d6f

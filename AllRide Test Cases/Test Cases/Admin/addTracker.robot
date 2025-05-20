@@ -7,7 +7,8 @@ Library     DateTime
 Library     Collections
 Library     SeleniumLibrary
 Library     RPA.JSON
-Resource    ../../../Variables/variablesStage.robot
+Resource    ../Variables/variablesStage.robot
+
 
 
 *** Test Cases ***
@@ -60,86 +61,72 @@ Set Date Variables
     Set Global Variable    ${end_date_tomorrow}
     ${expiration_date_qr}=    Set Variable    ${fecha_manana}T14:10:37.968Z
     Set Global Variable    ${expiration_date_qr}
+    ${start_date_tickets}=     Set Variable     ${fecha_hoy}T04:00:00.000Z
+        Set Global Variable    ${start_date_tickets}
+    ${end_date_tickets}=     Set Variable     ${fecha_manana}T03:59:59.999Z
+        Set Global Variable    ${end_date_tickets}
 
-Time + 2 Hour
-    ${date}    Get Current Date    time_zone=UTC    exclude_millis=yes
-    ${formatted_date}    Convert Date    ${date}    result_format=%Y-%m-%dT%H:%M:%S.%fZ
+    ${end_date_pasado_manana}=    Set Variable    ${fecha_pasado_manana}T03:00:00.000Z
+    Set Global Variable    ${end_date_pasado_manana}
+
+        ${end_date_pastTomorrow}=    Set Variable    ${fecha_pasado_manana}T03:00:00.000Z
+    Set Global Variable    ${end_date_pastTomorrow}
+
+Generate Random 10 Digit Value
+    ${random_value1}=    Evaluate    "".join([str(random.randint(0,9)) for _ in range(10)])    random
+    Log    Valor aleatorio generado: ${random_value1}
+    Set Global Variable    ${random_value1}
+
+2 hours local 
+    ${date}    Get Current Date    time_zone=local    exclude_millis=yes
+    ${formatted_date}    Convert Date    ${date}    result_format=%H:%M:%S
     Log    Hora Actual: ${formatted_date}
 
     # Sumar una hora
-    ${one_hour_later}    Add Time To Date    ${date}    2 hour
-    ${formatted_one_hour_later}    Convert Date    ${one_hour_later}    result_format=%Y-%m-%dT%H:%M:%S.%fZ
+    ${one_hour_later}    Add Time To Date    ${date}    1 hour
+    ${formatted_one_hour_later}    Convert Date    ${one_hour_later}    result_format=%H:%M
     Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
     Set Global Variable    ${formatted_one_hour_later}
 
-Login User With Email(Obtain Token)
-        Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"username":"nicolas+comunidad2@allrideapp.com","password":"Lolowerty21@"}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Post On Session
-    ...    mysesion
-    ...    url=${loginUserUrl}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
-    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
-    ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
-    Set Global Variable    ${accessTokenNico}
 
-Create RDD As User(Nico)
+Create new tracker(Only ESN)
+    
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
     # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"oddType":"Limitada Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"placeId":"666854f90c80b160cb022b91","lat":"-34.3944","lon":"-70.8504","loc":["-70.8504","-34.3944"],"address":"Cesfam Rengo"},"endLocation":{"lat":"-34.4111","lon":"70.8537","loc":["-70.8537","-34.4111"],"address":"Hospital Rengo","placeId":"6654d4acba54fe502d4e6b6b"}}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
     # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Post On Session
+    ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v1/pb/user/oddepartures/${idComunidad2}
-    ...    json=${parsed_json}
+    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/tracker?community=6654ae4eba54fe502d4e4187
+    ...    data={"esn":"TRACKER ${random_value1}","model":"LMU-2630","module":"privateBus","enabled":true,"vehicleId":"666941a7b8d6ea30f9281110","communities":["6654ae4eba54fe502d4e4187"],"superCommunities":["653fd68233d83952fafcd4be"]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
 
-    ${rddId}=    Set Variable    ${response.json()}[_id]
-    Set Global Variable    ${rddId}
-Create RDD As User(Pedro)
-    Skip
+    ${vehicleId}=    Set Variable    ${response.json()}[vehicleId]
+    Should Be Equal As Strings    ${vehicleId}    666941a7b8d6ea30f9281110      msg=Vehicle assigned to tracker is not correct
+Create new tracker(ESN and IMEI)
+    
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
     # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_3_minute_later}","startLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"endLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"}}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=${tokenPedroPascal}    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
     # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Post On Session
+    ${response}=  POST On Session
     ...    mysesion
-    ...    url=/api/v1/pb/user/oddepartures/${idComunidad}
-    ...    json=${parsed_json}
+    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/tracker?community=6654ae4eba54fe502d4e4187
+    ...    data={"esn":"ESN ${random_value1}","imei":"IMEI ${random_value1}","model":"LMU-2630","module":"privateBus","enabled":true,"vehicleId":"681bc78dbf82d0fbc058a4f9","communities":["6654ae4eba54fe502d4e4187"],"superCommunities":["653fd68233d83952fafcd4be"]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
 
-    ${rddIdPedro}=    Set Variable    ${response.json()}[_id]
-    Set Global Variable    ${rddIdPedro}
+    ${vehicleId}=    Set Variable    ${response.json()}[vehicleId]
+    Should Be Equal As Strings    ${vehicleId}    681bc78dbf82d0fbc058a4f9      msg=Vehicle assigned to tracker is not correct
 
-
-
-
-####################################################
-##Get Routes As Driver Pendiente
-
-#######################################################

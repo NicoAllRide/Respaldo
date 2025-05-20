@@ -62,6 +62,9 @@ Set Date Variables
     ${expiration_date_qr}=    Set Variable    ${fecha_manana}T14:10:37.968Z
     Set Global Variable    ${expiration_date_qr}
 
+    ${end_date_pasado_manana}=    Set Variable    ${fecha_pasado_manana}T03:00:00.000Z
+    Set Global Variable    ${end_date_pasado_manana}
+
 2 hours local
     ${date}    Get Current Date    time_zone=local    exclude_millis=yes
     ${formatted_date}    Convert Date    ${date}    result_format=%H:%M:%S
@@ -117,7 +120,7 @@ Create services
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGEQA_URL}/api/v1/admin/pb/allServices?community=${idComunidadQA}&startDate=${start_date_today}&endDate=${end_date_tomorrow}&onlyODDs=false
+    ...    ${STAGEQA_URL}/api/v1/admin/pb/allServices?community=${idComunidadQA}&startDate=${start_date_today}&endDate=${end_date_pasado_manana}&onlyODDs=false
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}
@@ -162,42 +165,6 @@ Get departureId
     Set Global Variable    ${departureId}
 
     Log    ${departureId}
-
-
-Add Order Stops(Alto Las Condes (1))
-    Create Session    mysesion    ${STAGEQA_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    ${addStopOrder}
-    ...    data={"routeId":"${scheduleId}","stopId":"67b883979a2ba09f940eaa20","stop_sequence":2,"cost":0,"sequence":"2","ownerIds":[{"id":"${idComunidadQA}","role":"community"}],"communities":["${idComunidadQA}"],"superCommunities":["${idSuperCommunity}"]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-
-Add Order Stops(Mall Apumanque (2))
-    Create Session    mysesion    ${STAGEQA_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    ${addStopOrder}
-    ...    data={"routeId":"${scheduleId}","stopId":"67b883869a2ba09f940eaa14","stop_sequence":1,"cost":0,"sequence":"1","ownerIds":[{"id":"${idComunidadQA}","role":"community"}],"communities":["${idComunidadQA}"],"superCommunities":["${idSuperCommunity}"]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-
 
 
 Seat Reservation(User1-NicoEnd)

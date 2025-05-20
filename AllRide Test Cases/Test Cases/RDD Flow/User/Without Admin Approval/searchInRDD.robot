@@ -73,38 +73,11 @@ Time + 2 Hour
     Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
     Set Global Variable    ${formatted_one_hour_later}
 
-Time + 2 hour and a half
-    ${date}    Get Current Date    time_zone=UTC    exclude_millis=yes
-    ${formatted_date}    Convert Date    ${date}    result_format=%Y-%m-%dT%H:%M:%S.%fZ
-    Log    Hora Actual: ${formatted_date}
-
-    # Sumar una hora
-    ${one_hour_later}    Add Time To Date    ${date}    2 hour
-    # Sumar treinta minutos adicionales
-    ${one_hour_and_thirty_minutes_later}    Add Time To Date    ${one_hour_later}    30 minutes
-    ${formatted_one_hour_and_thirty_minutes_later}    Convert Date    ${one_hour_and_thirty_minutes_later}    result_format=%Y-%m-%dT%H:%M:%S.%fZ
-    Log    Hora Actual + 1 hora + 30 minutos: ${formatted_one_hour_and_thirty_minutes_later}
-    Set Global Variable    ${formatted_one_hour_and_thirty_minutes_later}
-
-
-Get Places
-        ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/places/list?community=${idComunidad}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-    Should Not Be Empty    ${response.json()}
-
 Login User With Email(Obtain Token)
         Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"username":"nicolas+endauto@allrideapp.com","password":"Equilibriozen123#"}
+    ${jsonBody}=    Set Variable    {"username":"nicolas+comunidad2@allrideapp.com","password":"Lolowerty21@"}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -117,49 +90,70 @@ Login User With Email(Obtain Token)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
-
+    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
     ${accessToken}=    Set Variable    ${response.json()}[accessToken]
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
-    
-Create RDD As User(Nico)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"},"endLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"}}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    ${response}=    Post On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/user/oddepartures/${idComunidad}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    ${rddId}=    Set Variable    ${response.json()}[_id]
-    Set Global Variable    ${rddId}
+Search places should not return any points
+    ${url}=    Set Variable
+    ...    ${CRIS_URL}/api/v1/pb/user/routes/points/${idComunidad2}?originLat=-41.4693622&originLon=-72.9424405&destinationLat=-41.9662408&destinationLon=-72.471219&extraRoutes=false
 
-Create RDD As User(Pedro)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"endLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"}}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=${tokenPedroPascal}    Content-Type=application/json
-    ${response}=    Post On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/user/oddepartures/${idComunidad}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    ${rddIdPedro}=    Set Variable    ${response.json()}[_id]
-    Set Global Variable    ${rddIdPedro}
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${accessTokenNico}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${routesInSearch}=    Get Length    ${response.json()}
+
+    # Verifica que el resultado esté vacío
+    Should Be Empty    ${response.json()}    It should be empty but found ${routesInSearch} routes
+
+Search places Extra should return all routes(except with restriction)
+    ${url}=    Set Variable
+    ...    ${CRIS_URL}/api/v1/pb/user/routes/points/${idComunidad2}?originLat=-41.4693622&originLon=-72.9424405&destinationLat=-41.9662408&destinationLon=-72.471219&extraRoutes=true
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${accessTokenNico}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${routesInSearch}=    Get Length    ${response.json()}
+
+    # Verifica que el resultado esté vacío
+    Should Not Be Empty    ${response.json()}    Expected routes to be present, but no routes were returned.
+    ${route_names}=    Evaluate    [route['name'] for route in ${response.json()}]    json
+    Log    Routes found: ${route_names}
+    Should Not Contain    ${route_names}    Ruta Restricción asientos    Restricted route should not be visible due to visibility restriction.
+
+Search places should return routes(Hospital rengo - MediaLuna) Except restriction
+
+    ${url}=    Set Variable
+    ...    ${CRIS_URL}/api/v1/pb/user/routes/points/6654ae4eba54fe502d4e4187?originLat=-34.4111&originLon=-70.8537&destinationLat=-34.3945&destinationLon=-70.7819&extraRoutes=false
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${accessTokenNico}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${routesInSearch}=    Get Length    ${response.json()}
+
+    # Verifica que el resultado esté vacío
+    Should Not Be Empty    ${response.json()}   Expected routes to be present, but no routes were returned.
+# Verificar que la ruta "Ruta Restricción asiento" no esté presente
+    ${route_names}=    Evaluate    [route['name'] for route in ${response.json()}]    json
+    Log    Routes found: ${route_names}
+    Should Not Contain    ${route_names}    Ruta Restricción asientos    Restricted route should not be visible due to visibility restriction.
 
 
-Verify If RDD Id Nico Not Equals RDD Pedro(No Join)
-    Should Not Be Equal As Strings    ${rddId}    ${rddIdPedro}
-
-
-####################################################
-##Get Routes As Driver Pendiente
-
-#######################################################

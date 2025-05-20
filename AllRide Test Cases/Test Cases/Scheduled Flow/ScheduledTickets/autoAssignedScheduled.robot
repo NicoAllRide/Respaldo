@@ -353,7 +353,7 @@ Start Departure Leg
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/departure/${departureId}
+    ...    url=/api/v2/pb/driver/departure/${serviceId}
     ...    data={"departureId":"${departureId}","communityId":"${idComunidad}","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"customParamsAtTheEnd":[],"routeId":"${scheduleId}","capacity":3,"busCode":"1111","driverCode":"753","vehicleId":"${vehicleId}","shareToUsers":false,"customParams":[]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)

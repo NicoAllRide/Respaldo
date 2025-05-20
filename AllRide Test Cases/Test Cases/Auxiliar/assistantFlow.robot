@@ -66,6 +66,10 @@ Set Date Variables
     ${end_date_tickets}=     Set Variable     ${fecha_manana}T03:59:59.999Z
         Set Global Variable    ${end_date_tickets}
 
+    ${end_date_pasado_manana}=    Set Variable    ${fecha_pasado_manana}T03:00:00.000Z
+    Set Global Variable    ${end_date_pasado_manana}
+
+
 2 hours local 
     ${date}    Get Current Date    time_zone=local    exclude_millis=yes
     ${formatted_date}    Convert Date    ${date}    result_format=%H:%M:%S
@@ -317,7 +321,7 @@ Create Assistant Route
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_tomorrow}&onlyODDs=false
+    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_pasado_manana}&onlyODDs=false
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}

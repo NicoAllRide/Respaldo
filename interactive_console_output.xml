@@ -1,102 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250407 16:29:20.416" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250512 12:40:00.253" rpa="false" schemaversion="4">
 <suite id="s1" name="Robot Interactive Console" source="c:\Users\UsuarioCompuElite\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
-<kw name="Set Log Level" library="BuiltIn">
-<arg>TRACE</arg>
-<doc>Sets the log threshold to the specified level and returns the old level.</doc>
-<msg timestamp="20250407 16:29:21.219" level="TRACE">Return: 'INFO'</msg>
-<status status="PASS" starttime="20250407 16:29:21.219" endtime="20250407 16:29:21.219"/>
-</kw>
 <kw name="Create Session">
 <arg>mysesion</arg>
 <arg>${STAGE_URL}</arg>
 <arg>verify=true</arg>
-<msg timestamp="20250407 16:29:21.220" level="FAIL">No keyword with name 'Create Session' found.</msg>
-<status status="FAIL" starttime="20250407 16:29:21.220" endtime="20250407 16:29:21.221"/>
+<msg timestamp="20250512 12:40:00.745" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<status status="FAIL" starttime="20250512 12:40:00.745" endtime="20250512 12:40:00.745"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${jsonBody}</var>
+<arg>{"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"endLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"}}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20250512 12:40:00.745" endtime="20250512 12:40:00.745"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${parsed_json}</var>
+<arg>json.loads($jsonBody)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20250512 12:40:00.745" endtime="20250512 12:40:00.745"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
-<arg>Authorization=${tokenAdmin}</arg>
+<arg>Authorization=${accessTokenNico}</arg>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="NOT RUN" starttime="20250407 16:29:21.221" endtime="20250407 16:29:21.221"/>
+<status status="NOT RUN" starttime="20250512 12:40:00.745" endtime="20250512 12:40:00.745"/>
 </kw>
-<kw name="POST On Session">
+<kw name="Post On Session">
 <var>${response}</var>
 <arg>mysesion</arg>
-<arg>url=https://stage.allrideapp.com/api/v1/admin/pb/validations/list?community=67b879e99a2ba09f940ea7c5&amp;page=1&amp;pageSize=200</arg>
-<arg>data={"advancedSearch":false,"startDate":"${fecha_hoy}T03:00:00.000Z","endDate":"${fecha_manana}T02:59:59.999Z","searchAll":"","route":"0","stop":"0","communityId":"0","validated":null,"reason":"","user":"","email":"","vehicleId":"","customParams":[{"key":"Rut","value":""},{"key":"color","value":""},{"key":"animal","value":""},{"key":"Empresa","value":""}],"driver":"0","startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null}</arg>
+<arg>url=/api/v1/pb/user/oddepartures/${idComunidad}</arg>
+<arg>json=${parsed_json}</arg>
 <arg>headers=${headers}</arg>
-<status status="NOT RUN" starttime="20250407 16:29:21.221" endtime="20250407 16:29:21.221"/>
+<status status="NOT RUN" starttime="20250512 12:40:00.746" endtime="20250512 12:40:00.746"/>
 </kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${responseJson}</var>
-<arg>${response.json()}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" starttime="20250407 16:29:21.221" endtime="20250407 16:29:21.221"/>
+<kw name="Convert To String" library="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20250512 12:40:00.746" endtime="20250512 12:40:00.746"/>
 </kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${sorted_validations}</var>
-<arg>sorted(${responseJson}[validations], key=lambda x: x['createdAt'])</arg>
-<arg>json</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" starttime="20250407 16:29:21.221" endtime="20250407 16:29:21.221"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${last_validation}</var>
-<arg>${sorted_validations[-1]}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" starttime="20250407 16:29:21.221" endtime="20250407 16:29:21.221"/>
-</kw>
-<kw name="Get From List">
-<var>${last_reason}</var>
-<arg>${last_validation['reason']}</arg>
-<arg>0</arg>
-<status status="NOT RUN" starttime="20250407 16:29:21.222" endtime="20250407 16:29:21.222"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${validated}</var>
-<arg>${last_validation['validated']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" starttime="20250407 16:29:21.222" endtime="20250407 16:29:21.222"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${validated}</arg>
-<arg>False</arg>
-<arg>Validation status should be false, but is not</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="NOT RUN" starttime="20250407 16:29:21.223" endtime="20250407 16:29:21.223"/>
-</kw>
-<kw name="Length Should Be" library="BuiltIn">
-<arg>${last_validation['reason']}</arg>
-<arg>1</arg>
-<arg>Reason length should be only one "departure_limit", but is showing more</arg>
-<doc>Verifies that the length of the given item is correct.</doc>
-<status status="NOT RUN" starttime="20250407 16:29:21.223" endtime="20250407 16:29:21.223"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${last_reason}</arg>
-<arg>departure_limit</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="NOT RUN" starttime="20250407 16:29:21.223" endtime="20250407 16:29:21.223"/>
-</kw>
-<kw name="Status Should Be">
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${code}</arg>
 <arg>200</arg>
-<status status="NOT RUN" starttime="20250407 16:29:21.224" endtime="20250407 16:29:21.224"/>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" starttime="20250512 12:40:00.746" endtime="20250512 12:40:00.746"/>
 </kw>
 <kw name="Log" library="BuiltIn">
-<arg>Última validación: ${last_validation}</arg>
+<arg>${code}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20250407 16:29:21.224" endtime="20250407 16:29:21.224"/>
+<status status="NOT RUN" starttime="20250512 12:40:00.747" endtime="20250512 12:40:00.747"/>
 </kw>
-<msg timestamp="20250407 16:29:21.925" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20250407 16:29:20.432" endtime="20250407 16:29:21.925"/>
+<kw name="Set Variable" library="BuiltIn">
+<var>${rddId}</var>
+<arg>${response.json()}[_id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20250512 12:40:00.747" endtime="20250512 12:40:00.747"/>
 </kw>
-<status status="PASS" starttime="20250407 16:29:20.432" endtime="20250407 16:29:21.925"/>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${rddId}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" starttime="20250512 12:40:00.747" endtime="20250512 12:40:00.747"/>
+</kw>
+<status status="PASS" starttime="20250512 12:40:00.266" endtime="20250512 12:40:01.616"/>
+</kw>
+<status status="PASS" starttime="20250512 12:40:00.266" endtime="20250512 12:40:01.616"/>
 </test>
-<status status="PASS" starttime="20250407 16:29:20.417" endtime="20250407 16:29:21.927"/>
+<status status="PASS" starttime="20250512 12:40:00.254" endtime="20250512 12:40:01.617"/>
 </suite>
 <statistics>
 <total>

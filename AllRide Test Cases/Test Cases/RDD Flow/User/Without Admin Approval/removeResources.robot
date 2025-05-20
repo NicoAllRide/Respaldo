@@ -95,36 +95,7 @@ Login User With Email(Obtain Token)
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
 
-Verify Open RDD in Community
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    https://stage.allrideapp.com/api/v1/support/communities/653fd601f90509541a74868
 
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set variable    ${response.json()}
-    ${enabled}=    Set Variable
-    ...    ${responseJson}[config][privateBus][oDDServices][0][userRequests][freeRequests][enabled]
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    Should Be Equal As Strings    ${enabled}    True
-
-Get Places
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/places/list?community=${idComunidad}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-    Should Not Be Empty    ${response.json()}
 
 Create RDD As User
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -159,7 +130,7 @@ Assign Driver
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/admin/pb/odd/assignDriver/${rddId}?community=${idComunidad}
-    ...    data={"driver":{"driverId":"${driverId}","driverCode":"${driverCode}"},"drivers":[]}
+    ...    data={"driver":{"driverId":"67190091acb3ff4bdfbf5821","driverCode":"2"},"drivers":[]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -185,7 +156,7 @@ Assign Vehicle
 Get Driver Token
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/drivers/?community=${idComunidad}&driverId=${driverId}
+    ...    ${STAGE_URL}/api/v1/admin/pb/drivers/?community=${idComunidad}&driverId=67190091acb3ff4bdfbf5821
 
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
@@ -203,72 +174,11 @@ Get Driver Token
     Log    ${tokenDriver}
     Log    ${response.content}
 
-Start Departure 
-    Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenDriver}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/oddepartures/start/${rddId}
-    ...    data={"startLat":"-33.41952308267422","startLon":"-70.6314178632461"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-    ${access_token}=    Set Variable    ${response.json()}[token]
-    ${departureToken}=    Evaluate    "Bearer " + "${access_token}"
-    ${departureId}=     Set Variable     ${response.json()}[_id]
-    Log    ${departureToken}
-    Log    ${code}
-     Set Global Variable    ${departureToken}
-    Log     ${departureId}
-
-Get User QR(Nico)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad}
-    ...    data={"ids":["${idNico}"]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-
-    ${qrCodeNico}=    Set Variable    ${response.json()}[0][qrCode]
-    Set Global Variable    ${qrCodeNico}
-    Log    ${qrCodeNico}
-    Log    ${code}
-
-
-
-Get Current Time
+Get All Services From Driver
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v2/pb/driver/currentTime
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${departureToken}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-Get RDD Stops As Driver
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v2/pb/driver/oddepartures/stops/${rddId}
+    ...    ${STAGE_URL}/api/v2/pb/driver/departures/oddAndScheduled
 
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=${tokenDriver}
@@ -279,87 +189,37 @@ Get RDD Stops As Driver
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Should Be Equal As Numbers    ${response.status_code}    200
 
-Validate With QR(Nico)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
+    Get Length    ${response.json()}
 
+    ${response.Length}=    Get Length    ${response.json()}
+    
+    Should Be Equal As Numbers    1    ${response.Length}    Length should be 1, but found ${response.Length}
+
+    Sleep    30S
+Remove assigned resources
+    Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
     # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
     # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
+    ${response}=    PUT On Session
     ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"validationString":"${qrCodeNico}"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-    Sleep    10s
-Action On Stop
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/oddepartures/action/${rddId}
+    ...    url=/api/v1/admin/pb/clearServiceResources/${rddId}?community=653fd601f90509541a748683&type=odd
     ...    data={}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-    Sleep    10s
+    
+    ${state}=    Set Variable    ${response.json()}[state]
 
-Stop Departure With Post Leg
-    Create Session    mysesion    ${STAGE_URL}    verify=true
+    Should Be Equal As Strings    ${response.json()}[state]    pendingDriverAssignment    msg=The service state should be "pendingDriverAssignment", but the response returned ${state}
 
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departure/stop
-    ...    data={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":true,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
 
-Stop Post Leg Departure
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departure/stop
-    ...    data={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":false,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-
-Get Stadistics
+Get All Services From Driver After Remove resources
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v2/pb/driver/departure/end/statistics/${rddId}
+    ...    ${STAGE_URL}/api/v2/pb/driver/departures/oddAndScheduled
 
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=${tokenDriver}
@@ -369,4 +229,5 @@ Get Stadistics
 
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Should Be Equal As Numbers    ${response.status_code}    200
-    Log    ${response.content}
+
+    Should Be Empty    ${response.json()}

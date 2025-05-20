@@ -1,450 +1,156 @@
-Paso 0
-  Set Location    -33.493571     -70.512244
-  Sleep    3s
-Paso 1
-  Set Location    -33.493447     -70.512372
-  Sleep    3s
-Paso 2
-  Set Location    -33.493447     -70.512372
-  Sleep    3s
-Paso 3
-  Set Location    -33.493135     -70.512663
-  Sleep    3s
-Paso 4
-  Set Location    -33.493135     -70.512663
-  Sleep    3s
-Paso 5
-  Set Location    -33.489121     -70.517118
-  Sleep    3s
-Paso 6
-  Set Location    -33.489075     -70.518537
-  Sleep    3s
-Paso 7
-  Set Location    -33.488393     -70.519154
-  Sleep    3s
-Paso 8
-  Set Location    -33.488393     -70.519154
-  Sleep    3s
-Paso 9
-  Set Location    -33.486376     -70.518628
-  Sleep    3s
-Paso 10
-  Set Location    -33.48637     -70.518733
-  Sleep    3s
-Paso 11
-  Set Location    -33.48637     -70.518733
-  Sleep    3s
-Paso 12
-  Set Location    -33.489013     -70.516372
-  Sleep    3s
-Paso 13
-  Set Location    -33.491105     -70.513632
-  Sleep    3s
-Paso 14
-  Set Location    -33.491717     -70.513363
-  Sleep    3s
-Paso 15
-  Set Location    -33.492308     -70.513507
-  Sleep    3s
-Paso 16
-  Set Location    -33.492308     -70.513507
-  Sleep    3s
-Paso 17
-  Set Location    -33.49328     -70.512536
-  Sleep    3s
-Paso 18
-  Set Location    -33.49328     -70.512536
-  Sleep    3s
-Paso 19
-  Set Location    -33.49392     -70.511748
-  Sleep    3s
-Paso 20
-  Set Location    -33.49387     -70.511857
-  Sleep    3s
-Paso 21
-  Set Location    -33.493667     -70.51214
-  Sleep    3s
-Paso 22
-  Set Location    -33.493667     -70.51214
-  Sleep    3s
-Paso 23
-  Set Location    -33.493614     -70.512193
-  Sleep    3s
-Paso 24
-  Set Location    -33.493614     -70.512193
-  Sleep    3s
-Paso 25
-  Set Location    -33.493611     -70.512231
-  Sleep    3s
-Paso 26
-  Set Location    -33.493529     -70.51236
-  Sleep    3s
-Paso 27
-  Set Location    -33.493034     -70.512781
-  Sleep    3s
-Paso 28
-  Set Location    -33.49205     -70.513569
-  Sleep    3s
-Paso 29
-  Set Location    -33.490985     -70.513656
-  Sleep    3s
-Paso 30
-  Set Location    -33.490632     -70.514521
-  Sleep    3s
-Paso 31
-  Set Location    -33.490566     -70.514607
-  Sleep    3s
-Paso 32
-  Set Location    -33.490566     -70.514607
-  Sleep    3s
-Paso 33
-  Set Location    -33.489058     -70.516186
-  Sleep    3s
-Paso 34
-  Set Location    -33.488992     -70.516617
-  Sleep    3s
-Paso 35
-  Set Location    -33.489034     -70.518585
-  Sleep    3s
-Paso 36
-  Set Location    -33.489034     -70.518585
-  Sleep    3s
-Paso 37
-  Set Location    -33.488071     -70.519276
-  Sleep    3s
-Paso 38
-  Set Location    -33.486539     -70.518608
-  Sleep    3s
-Paso 39
-  Set Location    -33.486363     -70.518622
-  Sleep    3s
-Paso 40
-  Set Location    -33.486355     -70.518629
-  Sleep    3s
-Paso 41
-  Set Location    -33.486355     -70.518629
-  Sleep    3s
-Paso 42
-  Set Location    -33.486337     -70.518688
-  Sleep    3s
-Paso 43
-  Set Location    -33.489106     -70.518642
-  Sleep    3s
-Paso 44
-  Set Location    -33.489084     -70.518199
-  Sleep    3s
-Paso 45
-  Set Location    -33.489084     -70.518199
-  Sleep    3s
-Paso 46
-  Set Location    -33.489161     -70.516187
-  Sleep    3s
-Paso 47
-  Set Location    -33.489832     -70.516121
-  Sleep    3s
-Paso 48
-  Set Location    -33.490421     -70.515467
-  Sleep    3s
-Paso 49
-  Set Location    -33.490738     -70.514596
-  Sleep    3s
-Paso 50
-  Set Location    -33.490707     -70.514509
-  Sleep    3s
-Paso 51
-  Set Location    -33.490811     -70.513819
-  Sleep    3s
-Paso 52
-  Set Location    -33.491016     -70.513653
-  Sleep    3s
-Paso 53
-  Set Location    -33.491695     -70.513374
-  Sleep    3s
-Paso 54
-  Set Location    -33.492503     -70.513261
-  Sleep    3s
-Paso 55
-  Set Location    -33.492503     -70.513261
-  Sleep    3s
-Paso 56
-  Set Location    -33.493784     -70.511988
-  Sleep    3s
-Paso 57
-  Set Location    -33.493913     -70.511784
-  Sleep    3s
-Paso 58
-  Set Location    -33.493834     -70.511909
-  Sleep    3s
-Paso 59
-  Set Location    -33.493834     -70.511909
-  Sleep    3s
-Paso 60
-  Set Location    -33.493589     -70.51223
-  Sleep    3s
-Paso 61
-  Set Location    -33.493589     -70.51223
-  Sleep    3s
-Paso 62
-  Set Location    -33.493673     -70.512379
-  Sleep    3s
-Paso 63
-  Set Location    -33.493673     -70.512379
-  Sleep    3s
-Paso 64
-  Set Location    -33.493516     -70.512528
-  Sleep    3s
-Paso 65
-  Set Location    -33.49211     -70.513629
-  Sleep    3s
-Paso 66
-  Set Location    -33.491496     -70.513444
-  Sleep    3s
-Paso 67
-  Set Location    -33.490821     -70.513904
-  Sleep    3s
-Paso 68
-  Set Location    -33.490606     -70.514666
-  Sleep    3s
-Paso 69
-  Set Location    -33.490606     -70.514666
-  Sleep    3s
-Paso 70
-  Set Location    -33.489806     -70.516067
-  Sleep    3s
-Paso 71
-  Set Location    -33.48909     -70.516229
-  Sleep    3s
-Paso 72
-  Set Location    -33.489083     -70.516978
-  Sleep    3s
-Paso 73
-  Set Location    -33.489232     -70.517836
-  Sleep    3s
-Paso 74
-  Set Location    -33.488866     -70.518796
-  Sleep    3s
-Paso 75
-  Set Location    -33.488866     -70.518796
-  Sleep    3s
-Paso 76
-  Set Location    -33.48748     -70.519071
-  Sleep    3s
-Paso 77
-  Set Location    -33.486461     -70.518648
-  Sleep    3s
-Paso 78
-  Set Location    -33.486461     -70.518648
-  Sleep    3s
-Paso 79
-  Set Location    -33.486394     -70.518657
-  Sleep    3s
-Paso 80
-  Set Location    -33.486394     -70.518657
-  Sleep    3s
-Paso 81
-  Set Location    -33.486728     -70.51898
-  Sleep    3s
-Paso 82
-  Set Location    -33.486728     -70.51898
-  Sleep    3s
-Paso 83
-  Set Location    -33.486851     -70.519051
-  Sleep    3s
-Paso 84
-  Set Location    -33.486851     -70.519051
-  Sleep    3s
-Paso 85
-  Set Location    -33.487746     -70.519423
-  Sleep    3s
-Paso 86
-  Set Location    -33.487746     -70.519423
-  Sleep    3s
-Paso 87
-  Set Location    -33.489162     -70.518544
-  Sleep    3s
-Paso 88
-  Set Location    -33.489162     -70.518544
-  Sleep    3s
-Paso 89
-  Set Location    -33.489162     -70.518544
-  Sleep    3s
-Paso 90
-  Set Location    -33.489824     -70.516135
-  Sleep    3s
-Paso 91
-  Set Location    -33.489824     -70.516135
-  Sleep    3s
-Paso 92
-  Set Location    -33.490132     -70.516126
-  Sleep    3s
-Paso 93
-  Set Location    -33.490132     -70.516126
-  Sleep    3s
-Paso 94
-  Set Location    -33.490781     -70.514628
-  Sleep    3s
-Paso 95
-  Set Location    -33.490781     -70.514628
-  Sleep    3s
-Paso 96
-  Set Location    -33.490713     -70.514279
-  Sleep    3s
-Paso 97
-  Set Location    -33.490713     -70.514279
-  Sleep    3s
-Paso 98
-  Set Location    -33.491065     -70.51367
-  Sleep    3s
-Paso 99
-  Set Location    -33.491065     -70.51367
-  Sleep    3s
-Paso 100
-  Set Location    -33.491684     -70.513372
-  Sleep    3s
-Paso 101
-  Set Location    -33.491684     -70.513372
-  Sleep    3s
-Paso 102
-  Set Location    -33.492391     -70.513488
-  Sleep    3s
-Paso 103
-  Set Location    -33.492391     -70.513488
-  Sleep    3s
-Paso 104
-  Set Location    -33.492799     -70.51297
-  Sleep    3s
-Paso 105
-  Set Location    -33.492799     -70.51297
-  Sleep    3s
-Paso 106
-  Set Location    -33.493972     -70.511714
-  Sleep    3s
-Paso 107
-  Set Location    -33.493972     -70.511714
-  Sleep    3s
-Paso 108
-  Set Location    -33.493953     -70.511836
-  Sleep    3s
-Paso 109
-  Set Location    -33.493953     -70.511836
-  Sleep    3s
-Paso 110
-  Set Location    -33.493809     -70.512009
-  Sleep    3s
-Paso 111
-  Set Location    -33.493809     -70.512009
-  Sleep    3s
-Paso 112
-  Set Location    -33.493629     -70.512232
-  Sleep    3s
-Paso 113
-  Set Location    -33.493629     -70.512232
-  Sleep    3s
-Paso 114
-  Set Location    -33.493572     -70.512297
-  Sleep    3s
-Paso 115
-  Set Location    -33.493572     -70.512297
-  Sleep    3s
-Paso 116
-  Set Location    -33.49216     -70.513582
-  Sleep    3s
-Paso 117
-  Set Location    -33.49216     -70.513582
-  Sleep    3s
-Paso 118
-  Set Location    -33.491634     -70.513362
-  Sleep    3s
-Paso 119
-  Set Location    -33.491634     -70.513362
-  Sleep    3s
-Paso 120
-  Set Location    -33.490858     -70.513828
-  Sleep    3s
-Paso 121
-  Set Location    -33.490858     -70.513828
-  Sleep    3s
-Paso 122
-  Set Location    -33.490681     -70.514528
-  Sleep    3s
-Paso 123
-  Set Location    -33.490681     -70.514528
-  Sleep    3s
-Paso 124
-  Set Location    -33.490611     -70.514614
-  Sleep    3s
-Paso 125
-  Set Location    -33.490611     -70.514614
-  Sleep    3s
-Paso 126
-  Set Location    -33.487163     -70.5189
-  Sleep    3s
-Paso 127
-  Set Location    -33.487163     -70.5189
-  Sleep    3s
-Paso 128
-  Set Location    -33.486931     -70.518781
-  Sleep    3s
-Paso 129
-  Set Location    -33.486931     -70.518781
-  Sleep    3s
-Paso 130
-  Set Location    -33.486506     -70.518661
-  Sleep    3s
-Paso 131
-  Set Location    -33.486506     -70.518661
-  Sleep    3s
-Paso 132
-  Set Location    -33.486445     -70.518656
-  Sleep    3s
-Paso 133
-  Set Location    -33.486445     -70.518656
-  Sleep    3s
-Paso 134
-  Set Location    -33.486648     -70.518889
-  Sleep    3s
-Paso 135
-  Set Location    -33.486648     -70.518889
-  Sleep    3s
-Paso 136
-  Set Location    -33.488542     -70.519109
-  Sleep    3s
-Paso 137
-  Set Location    -33.488542     -70.519109
-  Sleep    3s
-Paso 138
-  Set Location    -33.488952     -70.518762
-  Sleep    3s
-Paso 139
-  Set Location    -33.488952     -70.518762
-  Sleep    3s
-Paso 140
-  Set Location    -33.489155     -70.51854
-  Sleep    3s
-Paso 141
-  Set Location    -33.489155     -70.51854
-  Sleep    3s
-Paso 142
-  Set Location    -33.489149     -70.518105
-  Sleep    3s
-Paso 143
-  Set Location    -33.489149     -70.518105
-  Sleep    3s
-Paso 144
-  Set Location    -33.489248     -70.517575
-  Sleep    3s
-Paso 145
-  Set Location    -33.489248     -70.517575
-  Sleep    3s
-Paso 146
-  Set Location    -33.489027     -70.516669
-  Sleep    3s
-Paso 147
-  Set Location    -33.489027     -70.516669
-  Sleep    3s
-Paso 148
-  Set Location    -33.489887     -70.51615
-  Sleep    3s
-Paso 149
-  Set Location    -33.489887     -70.51615
-  Sleep    3s
+--------- beginning of crash
+--------- beginning of system
+--------- beginning of main
+2025-04-16 15:59:44.039 30426-30426 FIAM.Display            com.allride.core                     I  Unbinding from activity: com.allride.usersession.view.activities.OnboardingActivity
+2025-04-16 15:59:44.039 30426-30426 FIAM.Headless           com.allride.core                     I  Removing display event component
+2025-04-16 15:59:44.064 30426-30451 SessionLifecycleClient  com.allride.core                     D  Sending lifecycle 2 to service
+2025-04-16 15:59:44.069 30426-30557 SessionLifecycleService com.allride.core                     D  Activity backgrounding at 210553451
+2025-04-16 15:59:46.136 30426-15009 FA                      com.allride.core                     I  Application backgrounded at: timestamp_millis: 1744833584134
+2025-04-16 15:59:51.561 30426-30426 FIAM.Headless           com.allride.core                     I  went foreground
+2025-04-16 15:59:51.561 30426-30455 SessionLifecycleClient  com.allride.core                     D  Sending lifecycle 1 to service
+2025-04-16 15:59:51.564 30426-30557 SessionLifecycleService com.allride.core                     D  Activity foregrounding at 210560948.
+2025-04-16 15:59:51.576 30426-30426 FIAM.Display            com.allride.core                     I  Binding to activity: com.allride.usersession.view.activities.OnboardingActivity
+2025-04-16 15:59:51.576 30426-30426 FIAM.Headless           com.allride.core                     I  Setting display event component
+2025-04-16 15:59:52.592 30426-30432 om.allride.cor          com.allride.core                     I  Background concurrent copying GC freed 19MB AllocSpace bytes, 121(7908KB) LOS objects, 49% free, 22MB/45MB, paused 124us,45us total 275.954ms
+2025-04-16 15:59:53.843 30426-30525 OpenGLRenderer          com.allride.core                     I  Davey! duration=9223161473733ms; Flags=0, FrameTimelineVsyncId=16549848, IntendedVsync=210563120811234, Vsync=210563120811234, InputEventId=491318451, HandleInputStart=210563121312382, AnimationStart=210563121313632, PerformTraversalsStart=210563121329778, DrawStart=210563136956862, FrameDeadline=210563137477900, FrameInterval=210563121309362, FrameStartTime=16666666, SyncQueued=210563140035560, SyncStart=210563140078112, IssueDrawCommandsStart=210563141218060, SwapBuffers=210563215787330, FrameCompleted=9223372036854775807, DequeueBufferDuration=22083, QueueBufferDuration=1046459, GpuCompleted=9223372036854775807, SwapBuffersCompleted=210563217080351, DisplayPresentTime=0, 
+2025-04-16 15:59:54.467 30426-30426 FIAM.Display            com.allride.core                     I  Unbinding from activity: com.allride.usersession.view.activities.OnboardingActivity
+2025-04-16 15:59:54.467 30426-30426 FIAM.Headless           com.allride.core                     I  Removing display event component
+2025-04-16 15:59:54.468 30426-30451 SessionLifecycleClient  com.allride.core                     D  Sending lifecycle 2 to service
+2025-04-16 15:59:54.468 30426-30557 SessionLifecycleService com.allride.core                     D  Activity backgrounding at 210563855
+2025-04-16 15:59:54.533 30426-30426 TextInputLayout         com.allride.core                     I  EditText added is not a TextInputEditText. Please switch to using that class instead.
+2025-04-16 15:59:54.551 30426-30426 FIAM.Display            com.allride.core                     I  Binding to activity: com.allride.usersession.view.activities.LoginActivity
+2025-04-16 15:59:54.551 30426-30426 FIAM.Headless           com.allride.core                     I  Setting display event component
+2025-04-16 15:59:54.552 30426-30451 SessionLifecycleClient  com.allride.core                     D  Sending lifecycle 1 to service
+2025-04-16 15:59:54.552 30426-30557 SessionLifecycleService com.allride.core                     D  Activity foregrounding at 210563938.
+2025-04-16 15:59:57.221 30426-30518 OpenGLRenderer          com.allride.core                     D  endAllActiveAnimators on 0xb40000700d6085d0 (RippleDrawable) with handle 0xb400006f1d545a70
+2025-04-16 15:59:57.256 30426-30426 FIAM.Display            com.allride.core                     I  Unbinding from activity: com.allride.usersession.view.activities.LoginActivity
+2025-04-16 15:59:57.256 30426-30426 FIAM.Headless           com.allride.core                     I  Removing display event component
+2025-04-16 15:59:57.256 30426-30455 SessionLifecycleClient  com.allride.core                     D  Sending lifecycle 2 to service
+2025-04-16 15:59:57.257 30426-30557 SessionLifecycleService com.allride.core                     D  Activity backgrounding at 210566643
+2025-04-16 15:59:57.290 30426-30426 FIAM.Display            com.allride.core                     I  Binding to activity: com.facebook.FacebookActivity
+2025-04-16 15:59:57.290 30426-30426 FIAM.Headless           com.allride.core                     I  Setting display event component
+2025-04-16 15:59:57.290 30426-30454 SessionLifecycleClient  com.allride.core                     D  Sending lifecycle 1 to service
+2025-04-16 15:59:57.290 30426-30557 SessionLifecycleService com.allride.core                     D  Activity foregrounding at 210566677.
+2025-04-16 15:59:57.300 30426-30426 com.facebo...veProtocol com.allride.core                     W  Apps that target Android API 30+ (Android 11+) cannot call Facebook native apps unless the package visibility needs are declared. Please follow https://developers.facebook.com/docs/android/troubleshooting/#faq_267321845055988 to make the declaration.
+2025-04-16 15:59:57.300 30426-30487 com.facebo...veProtocol com.allride.core                     W  Apps that target Android API 30+ (Android 11+) cannot call Facebook native apps unless the package visibility needs are declared. Please follow https://developers.facebook.com/docs/android/troubleshooting/#faq_267321845055988 to make the declaration.
+2025-04-16 15:59:57.321 30426-30426 FIAM.Display            com.allride.core                     I  Unbinding from activity: com.facebook.FacebookActivity
+2025-04-16 15:59:57.321 30426-30426 FIAM.Headless           com.allride.core                     I  Removing display event component
+2025-04-16 15:59:57.322 30426-30455 SessionLifecycleClient  com.allride.core                     D  Sending lifecycle 2 to service
+2025-04-16 15:59:57.322 30426-30557 SessionLifecycleService com.allride.core                     D  Activity backgrounding at 210566708
+2025-04-16 15:59:59.324 30426-15009 FA                      com.allride.core                     I  Application backgrounded at: timestamp_millis: 1744833597322
+2025-04-16 16:00:04.818 30426-30426 LoginFragment           com.allride.core                     D  Facebook onSuccess
+2025-04-16 16:00:04.835 30426-30426 FIAM.Headless           com.allride.core                     I  went foreground
+2025-04-16 16:00:04.835 30426-30426 FIAM.Display            com.allride.core                     I  Binding to activity: com.allride.usersession.view.activities.LoginActivity
+2025-04-16 16:00:04.835 30426-30426 FIAM.Headless           com.allride.core                     I  Setting display event component
+2025-04-16 16:00:04.836 30426-30451 SessionLifecycleClient  com.allride.core                     D  Sending lifecycle 1 to service
+2025-04-16 16:00:04.836 30426-30557 SessionLifecycleService com.allride.core                     D  Activity foregrounding at 210574222.
+2025-04-16 16:00:07.326 30426-15394 UtilsService            com.allride.core                     D  Response Code: 200 | Method: POST | URL: https://stage.allrideapp.com/api/v1/login/facebook
+2025-04-16 16:00:07.551 30426-30426 LoginViewModel          com.allride.core                     D  Response Time (Main) to login facebook: 2698 ms
+2025-04-16 16:00:07.552 30426-30426 UserSessionRest         com.allride.core                     D  refresh token de70cd77f0d72e31ae164aad85765b8da924a11274eacac9563814991cc313c77afdabea0f8b92cb300a1c17ea6007694cbf11d68238b51e8df7b98e205525c2
+2025-04-16 16:00:07.748 30426-15394 UtilsService            com.allride.core                     D  Response Code: 200 | Method: POST | URL: https://stage.allrideapp.com/api/v1/auth/refreshAccess
+2025-04-16 16:00:07.752 30426-30426 UserSessionRest         com.allride.core                     D  token bf2818bccb3b75d617ad76dced1aa78ee1e817a238e6140da8b6ec30c183a6f8f60ca4b2e195964143cff8171b3fa0ebdf5b8d57874fd714b45e39d773023f8a
+2025-04-16 16:00:08.204 30426-15394 UtilsService            com.allride.core                     D  Using Token: bf2818bccb3b75d617ad76dced1aa78ee1e817a238e6140da8b6ec30c183a6f8f60ca4b2e195964143cff8171b3fa0ebdf5b8d57874fd714b45e39d773023f8a
+2025-04-16 16:00:09.087 30426-30426 FirebaseHelper          com.allride.core                     D  Firebase token is eXlU7Az-RwOjBsIyzP1kqD:APA91bHBhsLnp8O72UnoXkUY0Hk2DmXindgWGeEzsrrKe8HYIJJqZTFzUjVSeINXnkjhKZoXuWGkqW6Z1CJSpJA_hUJxSlaZ9mvJykNqVQUya7B3LbeuMgc
+2025-04-16 16:00:09.087 30426-30473 LoginViewModel          com.allride.core                     D  Firebase instance is not null
+2025-04-16 16:00:09.087 30426-30473 LoginViewModel          com.allride.core                     D  Response Time (IO) to subscribe to FCM: 891 ms
+2025-04-16 16:00:09.089 30426-15440 NotificationService     com.allride.core                     D  Refreshed token: eXlU7Az-RwOjBsIyzP1kqD:APA91bHBhsLnp8O72UnoXkUY0Hk2DmXindgWGeEzsrrKe8HYIJJqZTFzUjVSeINXnkjhKZoXuWGkqW6Z1CJSpJA_hUJxSlaZ9mvJykNqVQUya7B3LbeuMgc
+2025-04-16 16:00:09.097 30426-30473 NotificationController  com.allride.core                     D  Response Time (IO) to FCM subscribe: 2 ms
+2025-04-16 16:00:09.100 30426-15441 UtilsService            com.allride.core                     D  Using Token: bf2818bccb3b75d617ad76dced1aa78ee1e817a238e6140da8b6ec30c183a6f8f60ca4b2e195964143cff8171b3fa0ebdf5b8d57874fd714b45e39d773023f8a
+2025-04-16 16:00:11.037 30426-15394 UtilsService            com.allride.core                     D  Response Code: 200 | Method: GET | URL: https://stage.allrideapp.com/api/v1/communities/all?country=cl
+2025-04-16 16:00:11.651 30426-30426 LoginViewModel          com.allride.core                     D  Response Time (Main) to refresh token: 4099 ms
+2025-04-16 16:00:11.699 30426-30426 FIAM.Display            com.allride.core                     I  Unbinding from activity: com.allride.usersession.view.activities.LoginActivity
+2025-04-16 16:00:11.699 30426-30426 FIAM.Headless           com.allride.core                     I  Removing display event component
+2025-04-16 16:00:11.699 30426-30451 SessionLifecycleClient  com.allride.core                     D  Sending lifecycle 2 to service
+2025-04-16 16:00:11.700 30426-30557 SessionLifecycleService com.allride.core                     D  Activity backgrounding at 210581086
+2025-04-16 16:00:11.946 30426-30426 MyCommunity             com.allride.core                     D  add listener com.allride.commonui.view.activities.MainActivity$myCommunityListener$1@47ed2a9
+2025-04-16 16:00:11.967 30426-30426 MainActivity            com.allride.core                     D  section df
+2025-04-16 16:00:11.973 30426-30426 Navigator               com.allride.core                     D  controller androidx.navigation.NavHostController@78c27cf
+2025-04-16 16:00:11.986 30426-30426 MainActivity            com.allride.core                     D  action null
+2025-04-16 16:00:11.986 30426-30426 MainActivity            com.allride.core                     D  action null
+2025-04-16 16:00:11.994 30426-15660 UtilsService            com.allride.core                     D  Using Token: bf2818bccb3b75d617ad76dced1aa78ee1e817a238e6140da8b6ec30c183a6f8f60ca4b2e195964143cff8171b3fa0ebdf5b8d57874fd714b45e39d773023f8a
+2025-04-16 16:00:12.072 30426-30426 MapsInitializer         com.allride.core                     D  preferredRenderer: null
+2025-04-16 16:00:12.072 30426-30426 zzcc                    com.allride.core                     D  preferredRenderer: null
+2025-04-16 16:00:12.086 30426-30426 Google Android Maps SDK com.allride.core                     I  Google Play services package version: 251333029
+2025-04-16 16:00:12.087 30426-30426 Google Android Maps SDK com.allride.core                     I  Google Play services maps renderer version(maps_core): 250625400
+2025-04-16 16:00:12.112 30426-30426 MyCommunity             com.allride.core                     D  add listener com.allride.carpool_old.presentation.view.fragment.CarpoolFragment$myCommunityListener$1@4e423a1
+2025-04-16 16:00:12.228 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.294 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.303 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.303 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.304 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.304 30426-15687 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.304 30426-15687 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.304 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.305 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.307 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.307 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.319 30426-30426 MyCommunity             com.allride.core                     D  remove listener
+2025-04-16 16:00:12.320 30426-30426 Google Android Maps SDK com.allride.core                     D  For capability in capabilities, log:
+                                                                                                    "AdvancedMarkers: false: Capabilities unavailable without a Map ID."Data-driven styling: false
+2025-04-16 16:00:12.321 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.321 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.352 30426-15686 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.352 30426-15686 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.357 30426-15687 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.357 30426-15687 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.361 30426-30426 MapsInitializer         com.allride.core                     D  preferredRenderer: null
+2025-04-16 16:00:12.362 30426-30426 zzcc                    com.allride.core                     D  preferredRenderer: null
+2025-04-16 16:00:12.363 30426-30426 Google Android Maps SDK com.allride.core                     I  Google Play services package version: 251333029
+2025-04-16 16:00:12.363 30426-30426 Google Android Maps SDK com.allride.core                     I  Google Play services maps renderer version(maps_core): 250625400
+2025-04-16 16:00:12.366 30426-30426 MyCommunity             com.allride.core                     D  add listener com.allride.carpool_old.presentation.view.fragment.CarpoolFragment$myCommunityListener$1@d3104b8
+2025-04-16 16:00:12.377 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.378 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.378 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.378 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.378 30426-15687 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.379 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.379 30426-15688 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.379 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.379 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.380 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.380 30426-30426 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.386 30426-30426 FIAM.Display            com.allride.core                     I  Binding to activity: com.allride.commonui.view.activities.MainActivity
+2025-04-16 16:00:12.387 30426-30451 SessionLifecycleClient  com.allride.core                     D  Sending lifecycle 1 to service
+2025-04-16 16:00:12.387 30426-30557 SessionLifecycleService com.allride.core                     D  Activity foregrounding at 210581773.
+2025-04-16 16:00:12.389 30426-30426 FIAM.Headless           com.allride.core                     I  Setting display event component
+2025-04-16 16:00:12.408 30426-30426 Choreographer           com.allride.core                     I  Skipped 40 frames!  The application may be doing too much work on its main thread.
+2025-04-16 16:00:12.459 30426-15710 UtilsService            com.allride.core                     D  Using Token: bf2818bccb3b75d617ad76dced1aa78ee1e817a238e6140da8b6ec30c183a6f8f60ca4b2e195964143cff8171b3fa0ebdf5b8d57874fd714b45e39d773023f8a
+2025-04-16 16:00:12.460 30426-15711 UtilsService            com.allride.core                     D  Using Token: bf2818bccb3b75d617ad76dced1aa78ee1e817a238e6140da8b6ec30c183a6f8f60ca4b2e195964143cff8171b3fa0ebdf5b8d57874fd714b45e39d773023f8a
+2025-04-16 16:00:12.475 30426-30437 OpenGLRenderer          com.allride.core                     I  Davey! duration=722ms; Flags=1, FrameTimelineVsyncId=16551947, IntendedVsync=210581113971538, Vsync=210581780638178, InputEventId=0, HandleInputStart=210581794637063, AnimationStart=210581794638209, PerformTraversalsStart=210581794694823, DrawStart=210581823662792, FrameDeadline=210581130638204, FrameInterval=210581794577844, FrameStartTime=16666666, SyncQueued=210581828984823, SyncStart=210581830244302, IssueDrawCommandsStart=210581830448261, SwapBuffers=210581836165240, FrameCompleted=210581837532427, DequeueBufferDuration=13021, QueueBufferDuration=986511, GpuCompleted=210581837532427, SwapBuffersCompleted=210581837446907, DisplayPresentTime=0, 
+2025-04-16 16:00:12.475 30426-30437 OpenGLRenderer          com.allride.core                     I  Davey! duration=729ms; Flags=1, FrameTimelineVsyncId=16551947, IntendedVsync=210581113971538, Vsync=210581780638178, InputEventId=0, HandleInputStart=210581794637063, AnimationStart=210581794638209, PerformTraversalsStart=210581794694823, DrawStart=210581839268625, FrameDeadline=210581130638204, FrameInterval=210581794577844, FrameStartTime=16666666, SyncQueued=210581839473782, SyncStart=210581839556646, IssueDrawCommandsStart=210581839615136, SwapBuffers=210581841840032, FrameCompleted=210581843636646, DequeueBufferDuration=14948, QueueBufferDuration=839479, GpuCompleted=210581843636646, SwapBuffersCompleted=210581843043000, DisplayPresentTime=0, 
+2025-04-16 16:00:12.510 30426-15687 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.510 30426-15687 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.514 30426-15688 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.514 30426-15688 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.528 30426-15686 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.528 30426-15686 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.529 30426-15686 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.529 30426-15686 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.540 30426-15686 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.540 30426-15686 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.540 30426-15686 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.540 30426-15686 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.554 30426-15688 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.554 30426-15688 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.561 30426-15687 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.561 30426-15687 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.635 30426-15703 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.637 30426-30432 om.allride.cor          com.allride.core                     I  Background young concurrent copying GC freed 10MB AllocSpace bytes, 60(3964KB) LOS objects, 13% free, 39MB/45MB, paused 594us,92us total 152.748ms
+2025-04-16 16:00:12.653 30426-15688 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:12.653 30426-15688 ProxyAndro...gerBackend com.allride.core                     W  Too many Flogger logs received before configuration. Dropping old logs.
+2025-04-16 16:00:13.142 30426-15710 UtilsService            com.allride.core                     D  Response Code: 200 | Method: GET | URL: https://stage.allrideapp.com/api/v1/trips/list
+2025-04-16 16:00:14.512 30426-15711 UtilsService            com.allride.core                     D  Response Code: 200 | Method: GET | URL: https://stage.allrideapp.com/api/v1/trips/list
+2025-04-16 16:00:14.529 30426-30426 MainTripBehaviour       com.allride.core                     D  behaviour main start
+2025-04-16 16:00:14.530 30426-30426 CarpoolFragment         com.allride.core                     D  notification id -> 
+2025-04-16 16:00:14.530 30426-30426 CarpoolFragment         com.allride.core                     D  section is null
+2025-04-16 16:00:14.567 30426-30426 MainTripBottomFragment  com.allride.core                     D  snapPosition -1
+2025-04-16 16:00:14.567 30426-30426 MainTripBehaviour       com.allride.core                     D  bottom MainTripBottomFragment{2f7ea48} (bfa489b4-023f-448a-ac53-7839b4009559 id=0x7f0900f3)
+2025-04-16 16:00:14.567 30426-30426 MainTripBehaviour       com.allride.core                     D  bottom MainTripBottomFragment{2f7ea48} (bfa489b4-023f-448a-ac53-7839b4009559 id=0x7f0900f3)
+2025-04-16 16:00:14.568 30426-30426 MainTripBottomFragment  com.allride.core                     D  trips true, snapPosition -1
+2025-04-16 16:00:14.581 30426-30426 MainTripBottomFragment  com.allride.core                     D  enter scroll 1
+2025-04-16 16:00:14.582 30426-30426 MainTripBehaviour       com.allride.core                     D  bottom MainTripBottomFragment{2f7ea48} (bfa489b4-023f-448a-ac53-7839b4009559 id=0x7f0900f3)
+2025-04-16 16:00:14.582 30426-30426 MainTripBehaviour       com.allride.core                     D  bottom MainTripBottomFragment{2f7ea48} (bfa489b4-023f-448a-ac53-7839b4009559 id=0x7f0900f3)
+2025-04-16 16:00:14.582 30426-30426 MainTripBottomFragment  com.allride.core                     D  trips true, snapPosition -1
+2025-04-16 16:00:14.582 30426-30426 MainTripBehaviour       com.allride.core                     D  bottom MainTripBottomFragment{2f7ea48} (bfa489b4-023f-448a-ac53-7839b4009559 id=0x7f0900f3)
+2025-04-16 16:00:14.582 30426-30426 MainTripBehaviour       com.allride.core                     D  bottom MainTripBottomFragment{2f7ea48} (bfa489b4-023f-448a-ac53-7839b4009559 id=0x7f0900f3)
+2025-04-16 16:00:14.582 30426-30426 MainTripBottomFragment  com.allride.core                     D  trips true, snapPosition -1

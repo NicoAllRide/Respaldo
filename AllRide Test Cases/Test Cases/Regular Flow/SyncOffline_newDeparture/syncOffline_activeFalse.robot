@@ -167,8 +167,9 @@ Sync Departures Offline(Create departure, sync as active departure)
     #--------------------Validations------------------------#
     ${validations}=    Set Variable    ${response.json()}[validations]
     FOR    ${validation}    IN    @{validations}
+        Should Not Be Empty    ${validation}         Validation entry is empty in the response after sync
         ${validated}=    Set Variable    ${validation}[validated]
-        Should Be Equal As Strings    ${validated}    True
+        Should Be Equal As Strings    ${validated}    True    Expected validation to be true, but it was false.
         ${reasons}=    Set Variable    ${validation}[reason]
         Run Keyword If    'manual_validation' in ${reasons}    Should Contain    ${reasons}    offline_validation
         Run Keyword If    'custom' in ${reasons}    Should Contain    ${reasons}    offline_validation

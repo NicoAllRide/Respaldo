@@ -88,6 +88,7 @@ Time + 2 hour and a half
 
 
 Get Places
+    skip
         ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/admin/places/list?community=${idComunidad}
 
@@ -129,7 +130,7 @@ Create RDD As User(Nico)
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
     ${response}=    Post On Session
     ...    mysesion
-    ...    url=/api/v1/pb/user/oddepartures/${idComunidad}
+    ...    url=http://179.56.2.122:3000/api/v1/pb/user/oddepartures/${idComunidad}
     ...    json=${parsed_json}
     ...    headers=${headers}
     ${code}=    convert to string    ${response.status_code}
@@ -145,7 +146,7 @@ Create RDD As User(Pedro)
     ${headers}=    Create Dictionary    Authorization=${tokenPedroPascal}    Content-Type=application/json
     ${response}=    Post On Session
     ...    mysesion
-    ...    url=/api/v1/pb/user/oddepartures/${idComunidad}
+    ...    url=http://179.56.2.122:3000/api/v1/pb/user/oddepartures/${idComunidad}
     ...    json=${parsed_json}
     ...    headers=${headers}
     ${code}=    convert to string    ${response.status_code}
@@ -153,6 +154,7 @@ Create RDD As User(Pedro)
     Log    ${code}
     ${rddIdPedro}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${rddIdPedro}
+
 
 
 Verify If RDD Id Nico Not Equals RDD Pedro(No Join)

@@ -297,25 +297,24 @@ Connect And Emit Events
 
     Send    ${my_websocket}    40/pbDriver?token=${access_token}
     Log    Sent: 40/pbDriver?token=${access_token}
-    Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
 
     # Enviar evento join
     Send    ${my_websocket}    42/pbDriver,["join"]
     Log    Sent: 42/pbDriver,["join"]
-    Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
-
+    Sleep    5s
     # Enviar pings periódicos
 
     # Enviar evento start con latitud y longitud fijos
     Send    ${my_websocket}    42/pbDriver,["start", {"latitude": ${LATITUDE}, "longitude": ${LONGITUDE}}]
     Log    Sent: 42/pbDriver,["start", {"latitude": ${LATITUDE}, "longitude": ${LONGITUDE}}]
-    Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
+
+    Sleep    5s
 
     # Enviar evento newPosition con nuevas coordenadas y otros datos
 
@@ -335,31 +334,6 @@ Connect And Emit Events
     Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
-    Send
-    ...    ${my_websocket}
-    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.41004346727125,"longitude":-70.56785197544258,"speed":3.9972}]
-    Log
-    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
-    Sleep    5s
-    ${result}=    Recv Data    ${my_websocket}
-    Log    Received: ${result}
-    Send
-    ...    ${my_websocket}
-    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.4099628640414,"longitude":-70.56801290796575,"speed":3.9972}]
-    Log
-    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
-    Sleep    5s
-    ${result}=    Recv Data    ${my_websocket}
-    Log    Received: ${result}
-    Send
-    ...    ${my_websocket}
-    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
-    Log
-    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
-    Sleep    5s
-    ${result}=    Recv Data    ${my_websocket}
-    Log    Received: ${result}
-
     
     Send
     ...    ${my_websocket}

@@ -60,15 +60,17 @@ Set Date Variables
     Set Global Variable    ${end_date_tomorrow}
     ${expiration_date_qr}=    Set Variable    ${fecha_manana}T14:10:37.968Z
     Set Global Variable    ${expiration_date_qr}
+    ${end_date_pastTomorrow}=    Set Variable    ${fecha_pasado_manana}T03:00:00.000Z
+    Set Global Variable    ${end_date_pastTomorrow}
 
 2 hours local
-    ${date}    Get Current Date    time_zone=local    exclude_millis=yes
-    ${formatted_date}    Convert Date    ${date}    result_format=%H:%M:%S
+    ${date}=    Get Current Date    time_zone=local    exclude_millis=yes
+    ${formatted_date}=    Convert Date    ${date}    result_format=%H:%M:%S
     Log    Hora Actual: ${formatted_date}
 
     # Sumar una hora
-    ${one_hour_later}    Add Time To Date    ${date}    1 hour
-    ${formatted_one_hour_later}    Convert Date    ${one_hour_later}    result_format=%H:%M
+    ${one_hour_later}=    Add Time To Date    ${date}    1 hour
+    ${formatted_one_hour_later}=    Convert Date    ${one_hour_later}    result_format=%H:%M
     Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
     Set Global Variable    ${formatted_one_hour_later}
 
@@ -93,6 +95,7 @@ Create Default Schedule Alto - Apumanque 19:00 hrs
     Set Global Variable    ${scheduleId}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     Sleep    2s
+
 Create services
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -111,10 +114,11 @@ Create services
     Log    ${code}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     Sleep    2s
+
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_tomorrow}&onlyODDs=false
+    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_pastTomorrow}&onlyODDs=false
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}
@@ -122,23 +126,45 @@ Get Service Id
 
     # Obtenemos la cantidad de objetos de scheduledServices
     ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
-    
+
     # Ordenamos los servicios por createdAt
-    ${sorted_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']    json
-    Log     ${sorted_services}
+    ${sorted_services}=    Evaluate
+    ...    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']
+    ...    json
+    Log    ${sorted_services}
 
     # Verificar si se encontraron servicios
-    Run Keyword If    ${sorted_services} == []    Fatal Error   msg= No services were created with routeId._id = "${scheduleId}" All createSheduledWithDefaultResources Tests Failing(Fatal error)
-    
+    IF    ${sorted_services} == []
+        Fatal Error
+        ...    msg= No services were created with routeId._id = "${scheduleId}" All createSheduledWithDefaultResources Tests Failing(Fatal error)
+    END
+
     # Obtenemos el último servicio creado
     ${last_service}=    Set Variable    ${sorted_services[-1]}
     ${service_id_default}=    Set Variable    ${last_service['_id']}
     ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
     Should Be Equal As Strings    ${scheduleId}    ${last_service_route}
-    
+
     Set Global Variable    ${service_id_default}
 
     Log    Last created service ID: ${service_id_default}
+
+Verify capacity in vehicle (After default resources)
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/admin/pb/service/${service_id_default}?community=653fd601f90509541a748683
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${capacityVehicle}=    Set Variable    ${response.json()}[resources][0][vehicle]
+    Should Contain    ${capacityVehicle}    capacity    Vehicle in resources doesn't contain the 'capacity' property
 
 Get Driver Token
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -182,7 +208,6 @@ Get departureId
 
     Log    ${departureId}
 
-
 Add Order Stops(Alto Las Condes (1))
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -218,7 +243,7 @@ Add Order Stops(Mall Apumanque (2))
     Log    ${code}
 
 Login User With Email(Obtain Token)
-        Create Session    mysesion    ${STAGE_URL}    verify=true
+    Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
     ${jsonBody}=    Set Variable    {"username":"nicolas+endauto@allrideapp.com","password":"Equilibriozen123#"}
@@ -234,13 +259,12 @@ Login User With Email(Obtain Token)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
-    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
+    List Should Contain Value    ${response.json()}    accessToken    No accesToken found in Login!, Failing
     ${accessToken}=    Set Variable    ${response.json()}[accessToken]
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
 
 Seat Reservation(User1-NicoEnd)
-    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -254,12 +278,14 @@ Seat Reservation(User1-NicoEnd)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Run Keyword If    '${code}' == '200' or '${code}' == '409'    Log    Status code is acceptable: ${code}
-    ...    ELSE    Fail    Unexpected status code: ${code}
+    IF    '${code}' == '200' or '${code}' == '409'
+        Log    Status code is acceptable: ${code}
+    ELSE
+        Fail    Unexpected status code: ${code}
+    END
     Log    ${code}
 
 Seat Reservation(User2-Pedro Pascal Available Seat)
-    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -273,12 +299,14 @@ Seat Reservation(User2-Pedro Pascal Available Seat)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Run Keyword If    '${code}' == '200' or '${code}' == '409'    Log    Status code is acceptable: ${code}
-    ...    ELSE    Fail    Unexpected status code: ${code}
+    IF    '${code}' == '200' or '${code}' == '409'
+        Log    Status code is acceptable: ${code}
+    ELSE
+        Fail    Unexpected status code: ${code}
+    END
     Log    ${code}
 
 Seat Reservation(User3-Kratos Available Seat)
-    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -292,8 +320,11 @@ Seat Reservation(User3-Kratos Available Seat)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Run Keyword If    '${code}' == '200' or '${code}' == '409'    Log    Status code is acceptable: ${code}
-    ...    ELSE    Fail    Unexpected status code: ${code}
+    IF    '${code}' == '200' or '${code}' == '409'
+        Log    Status code is acceptable: ${code}
+    ELSE
+        Fail    Unexpected status code: ${code}
+    END
     Log    ${code}
 
 Driver Accept Service
@@ -573,10 +604,8 @@ Get Report Id
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
 
-        Status Should Be    200
+    Status Should Be    200
     Log    ${code}
-
-    
 
 Get Passenger Details(Validations)
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -593,7 +622,7 @@ Get Passenger Details(Validations)
     Should Be Equal As Numbers    ${response.status_code}    200
 
     ${responseJson}=    Set Variable    ${response.json()}
-    Should Not Be Empty    ${responseJson}        No validations found
+    Should Not Be Empty    ${responseJson}    No validations found
 
     Log    ${response.content}
 

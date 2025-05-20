@@ -22,7 +22,7 @@ Seat Reservation(User1 Should be the only one who can reserve)
     ${response}=    POST On Session
     ...    mysesion
     ...    ${seatReservation}
-    ...    data={"serviceId":"679a891e4de4b4d5ddda5800"}
+    ...    data={"serviceId":"6812ccfa867ed57a99829f83", "seat": "1"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -38,7 +38,7 @@ Seat Reservation(User2 Should not be able to make a reservation (Capacity 1))
     ${response}=    POST On Session
     ...    mysesion
     ...    ${seatReservation}
-    ...    data={"serviceId":"679a891e4de4b4d5ddda5800"}
+    ...    data={"serviceId":"6812ccfa867ed57a99829f83", "seat": "1"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}

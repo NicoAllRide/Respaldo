@@ -83,7 +83,7 @@ Create Schedule Alto - Apumanque 19:00 hrs
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    ${endPoint}
+    ...    url=/api/v1/admin/pb/routes?community=653fd601f90509541a748683
     ...    data={"name":"Limite validaciones RF(1)","description":"Limite validaciones RF","communities":["67b879e99a2ba09f940ea7c5"],"superCommunities":["653fd68233d83952fafcd4be"],"ownerIds":[{"id":"67b879e99a2ba09f940ea7c5","role":"community"}],"externalInfo":{"uuid":""},"assistantIds":[],"shapeId":"67fd1ec97b753207e7fcfb0d","usesBusCode":false,"usesVehicleList":true,"usesDriverCode":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"dynamicSeatAssignment":false,"usesTickets":false,"startsOnStop":false,"notNearStop":false,"routeCost":0,"ticketCost":0,"excludePassengers":{"active":false,"excludeType":"dontHide"},"restrictPassengers":{"enabled":false,"allowed":[],"visibility":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"},"reservation":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"},"validation":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"}},"endDepartureNotice":{"enabled":false,"lastStop":null},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"defaultServiceCost":null,"schedule":[{"enabled":true,"day":"${schedule_day}","time":"${formatted_one_hour_later}","estimatedArrival":null,"stopSchedule":[],"capped":{"enabled":false,"capacity":0,"by":"vehicle"},"vehicleCategoryId":null,"defaultResources":[],"serviceCost":0,"observations":"","reservations":{"enabled":false,"list":[]},"_ogIndex":0}],"stopOnReservation":false,"restrictions":{"customParams":{"enabled":false,"params":[]}},"reservations":{"enabled":false,"list":[]},"serviceCreationLimit":{"enabled":false,"date":null}},"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"allowsServiceSnapshots":false,"allowsNonServiceSnapshots":false,"labels":[],"roundOrder":[],"anchorStops":[],"originStop":"67b883869a2ba09f940eaa14","destinationStop":"67b883979a2ba09f940eaa20","hasBeacons":false,"hasCapacity":false,"isStatic":false,"showParable":false,"extraInfo":"","color":"602e2e","usesManualSeat":false,"allowsManualValidation":false,"usesDriverPin":false,"hasBoardings":false,"hasUnboardings":false,"allowsDistance":false,"allowGenericVehicles":false,"hasExternalGPS":false,"departureHourFulfillment":{"enabled":false,"ranges":[]},"usesOfflineCount":false,"useServiceReservations":false,"autoStartConditions":{"enabled":false,"ignition":false,"acceptedStatus":false,"delay":{"enabled":false,"time":0,"unit":"minutes"},"nearRoute":{"enabled":false,"distance":0}},"visible":true,"active":true,"usesTextToSpeech":false,"hasBoardingCount":false,"hasRounds":false,"hasUnboardingCount":false,"timeOnRoute":9,"distance":5,"distanceInMeters":5105,"legOptions":[{"legType":"service","preTripChecklist":{"enabled":false,"params":[]},"customParamsAtStart":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"startConditions":{"location":{"enabled":false,"type":"near","stopIds":[]},"schedule":{"enabled":false,"amount":0,"unit":"minutes"}},"moveToNextLegAutomatically":{"enabled":false,"stopId":null,"distance":100}}],"validateDeparture":{"enabled":false},"rounds":{"enabled":false,"anchorStops":[]},"trail":{"enabled":false,"adjustByRounds":false},"notifyUnboardedPassengers":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]},"sendAt":"eachStop"},"notifyPassengersWithoutReservation":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]},"sendAt":"eachStop"},"notifySkippedStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]}},"notifyUsersByStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]}},"assistantAssignsSeat":true,"routeDeviation":{"maxDistance":100,"maxTime":5,"enabled":false},"codeValidationOptions":{"enabled":false,"type":"qr","failureMessage":"Solo puedes presentar el código de AllRide o de tu cédula de identidad."},"internal":false,"endServiceLegAutomatically":{"enabled":false,"stopId":null,"distance":100,"timer":{"amount":5,"unit":"minutes"}},"route_type":3}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -230,7 +230,7 @@ Start Departure Leg
     Log    ${code}
     Set Global Variable    ${departureToken}
 
-Validate With Cédula, first validation should pass
+Validate With Card, first validation should pass
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     ${headers}=    Create Dictionary
@@ -239,15 +239,14 @@ Validate With Cédula, first validation should pass
 
    ${response}=   POST On Session
     ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"validationString": "https://portal.sidiv.registrocivil.cl/docstatus?RUN=21758632-1&type=CEDULA&serial=B54107110&mrz=B541", "validationLat": -34.4111, "validationLon": -70.8537}
+    ...    url=/api/v2/pb/driver/tickets/validation/126278489
+    ...    data={"communityId":"67b879e99a2ba09f940ea7c5","key":"rut","value":"126278489","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
     ...    headers=${headers}
 
-    Status Should Be    200
+    Status Should Be    200        msg=First validation of the first user should pass but is failing
 
 
 Check validation succeeded
-
     Set Log Level    TRACE
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -275,13 +274,12 @@ Check validation succeeded
 
     Should Be True    ${validated}    Validation status should be true, but is false, failing
 
-    Should Be Equal As Strings    ${last_reason}    not_part
+    Should Be Equal As Strings    ${last_reason}    card
     Status Should Be    200
 
     Log    Última validación: ${last_validation}
 
-Validate With Cédula, second validation should fail
-
+Validate With Card, second validation should fail
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -290,17 +288,16 @@ Validate With Cédula, second validation should fail
     ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    Run Keyword And Expect Error
-    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
+    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v2/pb/driver/tickets/validation/126278489
     ...    POST On Session
     ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"validationString":"https://portal.sidiv.registrocivil.cl/docstatus?RUN=21758632-1&type=CEDULA&serial=B54107110&mrz=B541", "validationLat":-34.4111,"validationLon":-70.8537}
+    ...    url=/api/v2/pb/driver/tickets/validation/126278489
+    ...    data={"communityId":"67b879e99a2ba09f940ea7c5","key":"rut","value":"126278489","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Status Should Be    403    msg=Second validation of the same user should fail but is not
+    Status Should Be    403    msg=Second validation of the same user should fail but is not failing
 
 Check validation 2 Failed
-
     Set Log Level    TRACE
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -331,121 +328,39 @@ Check validation 2 Failed
 
     Log    Última validación: ${last_validation}
 
-Get User QR(Nico)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/admin/users/qrCodes?community=67b879e99a2ba09f940ea7c5
-    ...    data={"ids":["67b886639a2ba09f940eab0a"]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-
-    ${qrCodeNico}=    Set Variable    ${response.json()}[0][qrCode]
-    Set Global Variable    ${qrCodeNico}
-    Log    ${qrCodeNico}
-    Log    ${code}
-Validate With QR, first validation should pass
+Validate With Card, first validation of second user should pass
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     ${headers}=    Create Dictionary
     ...    Authorization=${departureToken}
     ...    Content-Type=application/json
 
-       ${response}=    POST On Session
+    ${response}=  Run Keyword And Return Status    POST On Session
     ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"validationString": "${qrCodeNico}"}
+    ...    url=/api/v2/pb/driver/tickets/validation/193111742
+    ...    data={"communityId":"67b879e99a2ba09f940ea7c5","key":"rut","value":"193111742","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
     ...    headers=${headers}
 
-    Status Should Be    200
+    Status Should Be    200      msg=First validation of the second user should pass but is failing
 
-Check validation QR Pass
-
-    Set Log Level    TRACE
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/validations/list?community=67b879e99a2ba09f940ea7c5&page=1&pageSize=200
-    ...    data={"advancedSearch":false,"startDate":"${fecha_hoy}T03:00:00.000Z","endDate":"${fecha_manana}T02:59:59.999Z","searchAll":"","route":"0","stop":"0","communityId":"0","validated":null,"reason":"","user":"","email":"","vehicleId":"","customParams":[{"key":"Rut","value":""},{"key":"color","value":""},{"key":"animal","value":""},{"key":"Empresa","value":""}],"driver":"0","startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${responseJson}=    Set Variable    ${response.json()}
-
-    # Ordenamos las validaciones por createdAt
-    ${sorted_validations}=    Evaluate    sorted(${responseJson}[validations], key=lambda x: x['createdAt'])    json
-
-    # Obtenemos la última validación
-    ${last_validation}=    Set Variable    ${sorted_validations[-1]}
-
-    ${validated}=    Set Variable    ${last_validation['validated']}
-
-    Should Be Equal As Strings    ${validated}    True        Validation status should be true, but is not       
-    Status Should Be    200
-
-    Log    Última validación: ${last_validation}
-
-Validate With QR, second validation should fail
+Validate With Card, second validation with second user should fail
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     ${headers}=    Create Dictionary
     ...    Authorization=${departureToken}
     ...    Content-Type=application/json
 
-       ${response}=   Run Keyword and Expect Error  HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate   POST On Session
+   ${response}=  Run Keyword And Expect Error     HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v2/pb/driver/tickets/validation/193111742    POST On Session
     ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"validationString": "${qrCodeNico}", "validationLat": -34.4111, "validationLon": -70.8537}
+    ...    url=/api/v2/pb/driver/tickets/validation/193111742
+    ...    data={"communityId":"67b879e99a2ba09f940ea7c5","key":"rut","value":"193111742","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
     ...    headers=${headers}
 
-    Status Should Be    403
+    Status Should Be    403      msg=Second validation of the same user should fail but is not failing
 
-Check validation QR Failed
 
-    Set Log Level    TRACE
-    Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/validations/list?community=67b879e99a2ba09f940ea7c5&page=1&pageSize=200
-    ...    data={"advancedSearch":false,"startDate":"${fecha_hoy}T03:00:00.000Z","endDate":"${fecha_manana}T02:59:59.999Z","searchAll":"","route":"0","stop":"0","communityId":"0","validated":null,"reason":"","user":"","email":"","vehicleId":"","customParams":[{"key":"Rut","value":""},{"key":"color","value":""},{"key":"animal","value":""},{"key":"Empresa","value":""}],"driver":"0","startedAtAfter":null,"startedAtBefore":null,"endedAtAfter":null,"endedAtBefore":null}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${responseJson}=    Set Variable    ${response.json()}
-
-    # Ordenamos las validaciones por createdAt
-    ${sorted_validations}=    Evaluate    sorted(${responseJson}[validations], key=lambda x: x['createdAt'])    json
-
-    # Obtenemos la última validación
-    ${last_validation}=    Set Variable    ${sorted_validations[-1]}
-
-    ${last_reason}=    Get From List    ${last_validation['reason']}    0
-    ${validated}=    Set Variable    ${last_validation['validated']}
-
-    Should Be Equal As Strings    ${validated}    False        Validation status should be false, but is not
-    Length Should Be    ${last_validation['reason']}    1    Reason length should be only one "departure_limit", but is showing more
-    Should Be Equal As Strings    ${last_reason}    departure_limit        
-    Status Should Be    200
-
-    Log    Última validación: ${last_validation}
 Stop Post Leg Departure
     Create Session    mysesion    ${STAGE_URL}    verify=true
 

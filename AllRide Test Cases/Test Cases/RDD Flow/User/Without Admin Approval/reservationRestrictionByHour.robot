@@ -73,32 +73,7 @@ Time + 2 Hour
     Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
     Set Global Variable    ${formatted_one_hour_later}
 
-Time + 2 hour and a half
-    ${date}    Get Current Date    time_zone=UTC    exclude_millis=yes
-    ${formatted_date}    Convert Date    ${date}    result_format=%Y-%m-%dT%H:%M:%S.%fZ
-    Log    Hora Actual: ${formatted_date}
 
-    # Sumar una hora
-    ${one_hour_later}    Add Time To Date    ${date}    2 hour
-    # Sumar treinta minutos adicionales
-    ${one_hour_and_thirty_minutes_later}    Add Time To Date    ${one_hour_later}    30 minutes
-    ${formatted_one_hour_and_thirty_minutes_later}    Convert Date    ${one_hour_and_thirty_minutes_later}    result_format=%Y-%m-%dT%H:%M:%S.%fZ
-    Log    Hora Actual + 1 hora + 30 minutos: ${formatted_one_hour_and_thirty_minutes_later}
-    Set Global Variable    ${formatted_one_hour_and_thirty_minutes_later}
-
-
-Get Places
-        ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/places/list?community=${idComunidad}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-    Should Not Be Empty    ${response.json()}
 
 Login User With Email(Obtain Token)
         Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -117,49 +92,49 @@ Login User With Email(Obtain Token)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
-
+    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
     ${accessToken}=    Set Variable    ${response.json()}[accessToken]
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
-    
-Create RDD As User(Nico)
+
+
+
+
+Create RDD with hour restriction(Should not be able to make a reservation)
     Create Session    mysesion    ${STAGE_URL}    verify=true
-    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"},"endLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"}}
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${jsonBody}=    Set Variable    {"oddType":"Restricción por horario","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"endLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"}}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}   Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=  Run Keyword And Expect Error     HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v1/pb/user/oddepartures/653fd601f90509541a748683      Post On Session
+    ...    mysesion
+    ...    url=/api/v1/pb/user/oddepartures/${idComunidad}
+    ...    json=${parsed_json}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Status Should Be    410    
+Create RDD without restriction (Should be able to make a reservation)
+
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"endLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"}}
+    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
+    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}   Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    Post On Session
     ...    mysesion
     ...    url=/api/v1/pb/user/oddepartures/${idComunidad}
     ...    json=${parsed_json}
     ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
+
     ${rddId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${rddId}
 
-Create RDD As User(Pedro)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"endLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"}}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=${tokenPedroPascal}    Content-Type=application/json
-    ${response}=    Post On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/user/oddepartures/${idComunidad}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    ${rddIdPedro}=    Set Variable    ${response.json()}[_id]
-    Set Global Variable    ${rddIdPedro}
 
-
-Verify If RDD Id Nico Not Equals RDD Pedro(No Join)
-    Should Not Be Equal As Strings    ${rddId}    ${rddIdPedro}
-
-
-####################################################
-##Get Routes As Driver Pendiente
-
-#######################################################

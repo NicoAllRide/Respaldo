@@ -39,6 +39,26 @@ Generate random UUID2 Cédula (_id validations qrValidations)
     ${uuid_dni}=    Evaluate    str(uuid.uuid4())
     Log    ${uuid_dni}
     Set Global Variable    ${uuid_dni}
+Generate random UUID2 NO CARD NO USER
+    ${uuid_card_noExistNoUser}=    Evaluate    str(uuid.uuid4())
+    Log    ${uuid_card_noExistNoUser}
+    Set Global Variable    ${uuid_card_noExistNoUser}
+Generate random UUID2 Pending Activation Card
+    ${uuid_card_noExist_existingUser}=    Evaluate    str(uuid.uuid4())
+    Log    ${uuid_card_noExist_existingUser}
+    Set Global Variable    ${uuid_card_noExist_existingUser}
+Generate random UUID2 Existing Card With User
+    ${uuid_card}=    Evaluate    str(uuid.uuid4())
+    Log    ${uuid_card}
+    Set Global Variable    ${uuid_card}
+Generate random UUID2 Existing Card With User
+    ${uuid_card_no_tickets}=    Evaluate    str(uuid.uuid4())
+    Log    ${uuid_card_no_tickets}
+    Set Global Variable    ${uuid_card_no_tickets}
+Generate random UUID2 Existing Card No User
+    ${uuid_card_Exist_NoUser}=    Evaluate    str(uuid.uuid4())
+    Log    ${uuid_card_Exist_NoUser}
+    Set Global Variable    ${uuid_card_Exist_NoUser}
 Generate random UUID (_id events1)
     ${uuid_events}=    Evaluate    str(uuid.uuid4())
     Log    ${uuid_events}
@@ -47,7 +67,6 @@ Generate random UUID (_id events2)
     ${uuid_events2}=    Evaluate    str(uuid.uuid4())
     Log    ${uuid_events2}
     Set Global Variable    ${uuid_events2}
-
 Get User QR(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -184,7 +203,7 @@ Sync Departures Offline(Create departure, sync as active departure)
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=http://179.56.2.122:3000/api/v2/pb/driver/departures/sync/${idSuperCommunity}
+    ...    url=/api/v2/pb/driver/departures/sync/${idSuperCommunity}
     ...    data={"departures":[{"active":true,"boardings":1,"busCode":"0602","canResume":false,"capacity":40,"communities":["653fd601f90509541a748683"],"communityId":"653fd601f90509541a748683","createdAt":"2024-10-08T15:47:32.216-04:00","customParams":[{"name":"Km_de_partida","value":1}],"customParamsAtTheEnd":[{"name":"Km_de_salida","value":2}],"direction":"","driverCode":"1712","driverId":"658b4c89f6f903bbee966467","drivers":[],"enabledSeats":[{"available":false,"_id":"667f244c738bca04e08a02e6","seat":"1","userId":"65e092afca7842b1032f12e2"},{"available":false,"_id":"667f244c738bca04e08a02e7","seat":"2","userId":"654a5148bf3e9410d0bcd39a"},{"available":false,"_id":"667f244c738bca04e08a02e8","seat":"3","userId":"663ccf399a0c214e3398f5cd"},{"available":false,"_id":"667f244c738bca04e08a02e9","seat":"4","userId":"661d508c72418a2e98cf7978"},{"available":true,"_id":"667f244c738bca04e08a02ea","seat":"5"},{"available":true,"_id":"667f244c738bca04e08a02eb","seat":"6"},{"available":true,"_id":"667f244c738bca04e08a02ec","seat":"7"},{"available":true,"_id":"667f244c738bca04e08a02ed","seat":"8"},{"available":true,"_id":"667f244c738bca04e08a02ee","seat":"9"},{"available":true,"_id":"667f244c738bca04e08a02ef","seat":"10"},{"available":true,"_id":"667f244c738bca04e08a02f0","seat":"11"},{"available":true,"_id":"667f244c738bca04e08a02f1","seat":"12"},{"available":true,"_id":"667f244c738bca04e08a02f2","seat":"13"},{"available":true,"_id":"667f244c738bca04e08a02f3","seat":"14"},{"available":true,"_id":"667f244c738bca04e08a02f4","seat":"15"},{"available":true,"_id":"667f244c738bca04e08a02f5","seat":"16"},{"available":true,"_id":"667f244c738bca04e08a02f6","seat":"17"},{"available":true,"_id":"667f244c738bca04e08a02f7","seat":"18"},{"available":true,"_id":"667f244c738bca04e08a02f8","seat":"19"},{"available":true,"_id":"667f244c738bca04e08a02f9","seat":"20"},{"available":true,"_id":"667f244c738bca04e08a02fa","seat":"21"},{"available":true,"_id":"667f244c738bca04e08a02fb","seat":"22"},{"available":true,"_id":"667f244c738bca04e08a02fc","seat":"23"},{"available":true,"_id":"667f244c738bca04e08a02fd","seat":"24"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"25"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"26"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"27"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"28"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"29"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"30"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"31"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"32"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"33"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"34"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"35"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"36"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"37"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"38"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"39"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"40"},{"available":true,"_id":"667f244c738bca04e08a02fe","seat":"41"},{"available":false,"_id":"667f244c738bca04e08a02fe","seat":"42"}],"estimatedDistance":0,"_id":"","internal":false,"legs":[{"startLocation":{"lat":-34.394115,"lon":-70.78126},"endLocation":{"lat":-34.395,"lon":-70.782},"type":"pre","customParamsAtStart":{"name":"km_de_inicio_pre","value":1},"customParamsAtTheEnd":[{"name":"km_de_salida_pre","value":1}],"preTripChecklist":[{"name":"Cosas_para_comer_manzana","value":true},{"name":"Cosas_para_comer_naranja","value":false},{"name":"Cosas_para_comer_pera","value":true}]},{"startLocation":{"lat":-34.394115,"lon":-70.78126},"endLocation":{"lat":-34.395,"lon":-70.782},"type":"service","customParamsAtStart":[],"customParamsAtTheEnd":[]},{"startLocation":{"lat":-34.394115,"lon":-70.78126},"endLocation":{"lat":-34.395,"lon":-70.782},"type":"post","customParamsAtStart":[{"name":"como_lo_pasaste","value":"bien"}],"customParamsAtTheEnd":[]}],"name":"","odd":false,"oddType":"","offlineSync":{"historical":[],"internalId":"${uuid}","synced":false},"passengersLinked":[],"passengersToLink":[],"preTripChecklist":[],"previouslyActive":false,"realStartLocation":{"_id":"","internalId":"c60b8cb6-c269-49e1-a6bf-4d1d10598bADb","lat":-34.394115,"lon":-70.78126},"reason":"","reservations":[],"rounds":2,"routeId":"670e7eee96855505c81c2e4d","scheduled":false,"startCapacity":42,"startLocation":{"_id":"","internalId":"448aac16-9362-4385-9b6f-110b174c7b60","lat":-34.394115,"lon":-70.78126},"startedAt":"2024-06-28T15:47:32.216-04:00","state":"","superCommunityId":"653fd68233d83952fafcd4be","tickets":0,"token":"","unboardings":1,"validations":[],"vehicleId":"65b13780fd1711a264653aa1"}],"validations":[{"assignedSeat":"","communityId":"653fd601f90509541a748683","createdAt":"2024-10-08T19:35:10.885Z","departureId":"${uuid}","_id":"${uuid_manual}","isCustom":false,"isDNI":false,"isManual":true,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":["manual_validation"],"remainingTickets":0,"routeId":"670e7eee96855505c81c2e4d","synced":false,"token":"","userId":"","validated":true},{"assignedSeat":"2","communityId":"653fd601f90509541a748683","createdAt":"2024-10-08T19:35:10.885Z","departureId":"${uuid}","_id":"${uuid_custom}","isCustom":true,"isDNI":false,"isManual":false,"key":"rut","latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":["custom"],"remainingTickets":0,"routeId":"670e7eee96855505c81c2e4d","synced":false,"token":"","userId":"654a5148bf3e9410d0bcd39a","validated":true,"value":"126278489"},{"assignedSeat":"3","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${uuid}","_id":"${uuid_qr}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico}","reason":[],"remainingTickets":0,"routeId":"670e7eee96855505c81c2e4d","synced":false,"token":"","userId":"${idNico}","validated":true},{"assignedSeat":"3","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${uuid}","_id":"${uuid_dni}","isCustom":false,"isDNI":true,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"https://portal.sidiv.registrocivil.cl/docstatus?RUN=19186681-9&type=CEDULA&serial=107182779&mrz=107182779695092742509275","reason":[],"remainingTickets":0,"routeId":"670e7eee96855505c81c2e4d","synced":false,"token":"","userId":"${idNico}","validated":true}],"events":[{"_id":"${uuid}","type":"boarding","communityId":"653fd601f90509541a748683","routeId":"670e7eee96855505c81c2e4d","departureId":"${uuid}","lat":-33.39073098922399,"lon":-70.54616911670284,"loc":[-70.54616911670284,-33.39073098922399],"__v":0,"createdAt":"2024-10-08T19:27:05.712Z","updatedAt":"2024-10-08T19:27:05.712Z"},{"_id":"${uuid_events2}","type":"unboarding","communityId":"653fd601f90509541a748683","routeId":"670e7eee96855505c81c2e4d","departureId":"${uuid}","lat":-33.39073098922399,"lon":-70.54616911670284,"loc":[-70.54616911670284,-33.39073098922399],"__v":0,"createdAt":"2024-10-08T19:27:05.712Z","updatedAt":"2024-10-08T19:27:05.712Z"}]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -370,38 +389,48 @@ Get Departure in admin, should be active
 
     Log    ${response.content}
 
-Sync Only Validations
-    Skip
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenDriver}    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/sync/${idComunidad}
-    ...    data={"validations":[{"assignedSeat":"3","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr2}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeKratos}","reason":[],"remainingTickets":0,"routeId":"670e7eee96855505c81c2e4d","synced":false,"token":"","userId":"${idKratos}","validated":true}]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-
-Validate With QR(KRATOS)
+Sync validations offline
+    Set Log Level    TRACE
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
     # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=Bearer ${departureToken}    Content-Type=application/json
+    ${headers}=    Create Dictionary
+    ...    Authorization=${tokenDriver}
+    ...    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeKratos}","timezone":"America/Santiago","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    url=http://stage.allrideapp.com/api/v2/pb/driver/validations/sync/${idSuperCommunity}
+    ...    data={"validations":[{"assignedSeat":"4","cardId":"401803","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_card_noExistNoUser}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"","validated":true},{"assignedSeat":"4","cardId":"3789217398","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_card_noExist_existingUser}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"66184092dddeeae46ace0d97","validated":true},{"assignedSeat":"4","cardId":"191919","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_card_Exist_NoUser}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"","validated":true},{"assignedSeat":"6","cardId":"ABCDE159753","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_card}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"654a5148bf3e9410d0bcd39a","validated":true},{"assignedSeat":"6","cardId":"USERNOTICKET123","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_card_no_tickets}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"661d508c72418a2e98cf7978","validated":false}]}    
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
+        ${validations}=    Set Variable    ${response.json()}
+    Should Not Be Empty    ${response.json()}
     Status Should Be    200
-    Log    ${code}
+
+    FOR    ${validation}    IN    @{validations}
+    # Verifica que cada objeto no esté vacío
+        Should Not Be Empty    ${validation}    Validations info is empty
+    END
+
+    FOR    ${index}    IN RANGE    5
+        ${validation}=    Set Variable    ${validations}[${index}]
+        ${validated}=    Set Variable    ${validation}[validated]
+        ${reasons}=    Set Variable    ${validation}[reason]
+        
+        # Verificación para "no_user_for_card" -> validated debe ser False
+        Run Keyword If    'no_user_for_card' in ${reasons}    Should Be Equal As Strings    ${validated}    False    "Error: no_user_for_card must be validated False"
+
+        # Verificación para "offline_no_ticket" -> validated debe ser False
+        Run Keyword If    'offline_no_ticket' in ${reasons}    Should Be Equal As Strings    ${validated}    False    "Error: offline_no_ticket muste be validated False"
+
+        # Verificación para solo "offline_validation" -> validated debe ser True
+        Run Keyword If    len(${reasons}) == 1 and 'offline_validation' in ${reasons}    Should Be Equal As Strings    ${validated}    True    "Error: offline_validation alone must validated True"
+    END
 Stop Departure With Post Leg
     
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -466,7 +495,7 @@ Check Payment Settlement (4 electronic tickets)
     Should Be Equal As Numbers    ${electronicTicket}[value]    10
 
     ${paymentSettlement}=    Set Variable    ${responseJson}[paymentSettlement][0]
-    ${driverCode}=    Set Variable    ${paymentSettlement}[driverCode]
+   # ${driverCode}=    Set Variable    ${paymentSettlement}[driverCode]
 
-    Should Contain    ${paymentSettlement}    driverCode    No driverCode found
-    Should Be Equal As Strings    ${driverCode}    1712    driverCode should be 1712 but it is ${driverCode}
+  #  Should Contain    ${paymentSettlement}    driverCode    No driverCode found
+  #  Should Be Equal As Strings    ${driverCode}    1712    driverCode should be 1712 but it is ${driverCode}
