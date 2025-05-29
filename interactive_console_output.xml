@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250512 12:40:00.253" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250528 16:56:59.168" rpa="false" schemaversion="4">
 <suite id="s1" name="Robot Interactive Console" source="c:\Users\UsuarioCompuElite\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
@@ -7,70 +7,61 @@
 <arg>mysesion</arg>
 <arg>${STAGE_URL}</arg>
 <arg>verify=true</arg>
-<msg timestamp="20250512 12:40:00.745" level="FAIL">No keyword with name 'Create Session' found.</msg>
-<status status="FAIL" starttime="20250512 12:40:00.745" endtime="20250512 12:40:00.745"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${jsonBody}</var>
-<arg>{"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"endLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"}}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" starttime="20250512 12:40:00.745" endtime="20250512 12:40:00.745"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${parsed_json}</var>
-<arg>json.loads($jsonBody)</arg>
-<arg>json</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" starttime="20250512 12:40:00.745" endtime="20250512 12:40:00.745"/>
+<msg timestamp="20250528 16:56:59.460" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<status status="FAIL" starttime="20250528 16:56:59.460" endtime="20250528 16:56:59.460"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
-<arg>Authorization=${accessTokenNico}</arg>
+<arg>Authorization=${tokenDriver}</arg>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="NOT RUN" starttime="20250512 12:40:00.745" endtime="20250512 12:40:00.745"/>
+<status status="NOT RUN" starttime="20250528 16:56:59.460" endtime="20250528 16:56:59.460"/>
 </kw>
-<kw name="Post On Session">
+<kw name="POST On Session">
 <var>${response}</var>
 <arg>mysesion</arg>
-<arg>url=/api/v1/pb/user/oddepartures/${idComunidad}</arg>
-<arg>json=${parsed_json}</arg>
+<arg>url=/api/v2/pb/driver/departure/${departureId}</arg>
+<arg>data={"departureId":"${departureId}","communityId":"${idComunidad}","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"customParamsAtTheEnd":[],"routeId":"${scheduleId}","capacity":3,"busCode":"1111","driverCode":"753","vehicleId":"${vehicleId}","shareToUsers":false,"customParams":[]}</arg>
 <arg>headers=${headers}</arg>
-<status status="NOT RUN" starttime="20250512 12:40:00.746" endtime="20250512 12:40:00.746"/>
+<status status="NOT RUN" starttime="20250528 16:56:59.461" endtime="20250528 16:56:59.461"/>
 </kw>
 <kw name="Convert To String" library="BuiltIn">
 <var>${code}</var>
 <arg>${response.status_code}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" starttime="20250512 12:40:00.746" endtime="20250512 12:40:00.746"/>
+<status status="NOT RUN" starttime="20250528 16:56:59.461" endtime="20250528 16:56:59.461"/>
 </kw>
-<kw name="Should Be Equal As Numbers" library="BuiltIn">
-<arg>${code}</arg>
+<kw name="Status Should Be">
 <arg>200</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<status status="NOT RUN" starttime="20250512 12:40:00.746" endtime="20250512 12:40:00.746"/>
+<status status="NOT RUN" starttime="20250528 16:56:59.462" endtime="20250528 16:56:59.462"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${access_token}</var>
+<arg>${response.json()}[token]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20250528 16:56:59.462" endtime="20250528 16:56:59.462"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${departureToken}</var>
+<arg>"Bearer " + "${access_token}"</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20250528 16:56:59.462" endtime="20250528 16:56:59.462"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${departureToken}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250528 16:56:59.462" endtime="20250528 16:56:59.462"/>
 </kw>
 <kw name="Log" library="BuiltIn">
 <arg>${code}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20250512 12:40:00.747" endtime="20250512 12:40:00.747"/>
+<status status="NOT RUN" starttime="20250528 16:56:59.462" endtime="20250528 16:56:59.462"/>
 </kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${rddId}</var>
-<arg>${response.json()}[_id]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" starttime="20250512 12:40:00.747" endtime="20250512 12:40:00.747"/>
+<status status="PASS" starttime="20250528 16:56:59.181" endtime="20250528 16:57:04.572"/>
 </kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${rddId}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<status status="NOT RUN" starttime="20250512 12:40:00.747" endtime="20250512 12:40:00.747"/>
-</kw>
-<status status="PASS" starttime="20250512 12:40:00.266" endtime="20250512 12:40:01.616"/>
-</kw>
-<status status="PASS" starttime="20250512 12:40:00.266" endtime="20250512 12:40:01.616"/>
+<status status="PASS" starttime="20250528 16:56:59.181" endtime="20250528 16:57:04.572"/>
 </test>
-<status status="PASS" starttime="20250512 12:40:00.254" endtime="20250512 12:40:01.617"/>
+<status status="PASS" starttime="20250528 16:56:59.168" endtime="20250528 16:57:04.572"/>
 </suite>
 <statistics>
 <total>

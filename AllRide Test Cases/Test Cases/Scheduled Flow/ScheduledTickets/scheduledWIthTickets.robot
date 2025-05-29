@@ -623,7 +623,7 @@ Seat Reservation(User2-Pedro Pascal Available Seat)
     ${response}=    POST On Session
     ...    mysesion
     ...    ${seatReservation}
-    ...    data={"serviceId":"${service_id_tickets}","departureId":"${departureId}","stopId":"655d11d88a5a1a1ff0328464","seat":"1"}
+    ...    data={"serviceId":"${service_id_tickets}","departureId":"${departureId}","stopId":"655d11d88a5a1a1ff0328464","seat":"2"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -641,13 +641,13 @@ Seat Reservation(User3-Kratos Available Seat)
     ${response}=    POST On Session
     ...    mysesion
     ...    ${seatReservation}
-    ...    data={"serviceId":"${service_id_tickets}","departureId":"${departureId}","stopId":"655d11d88a5a1a1ff0328464","seat":"1"}
+    ...    data={"serviceId":"${service_id_tickets}","departureId":"${departureId}","stopId":"655d11d88a5a1a1ff0328464","seat":"3"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
     Log    ${code}
-    Sleep    3s
+    Sleep    5s
 
 Driver Accept Service
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -1061,45 +1061,6 @@ Get Movement Historic Pedro After Validation
     ${currentQty}=    Evaluate    ${responseJson}[currentTickets] == 1
     Log    ${currentQty}
 
-Manual Boarding
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/boarding
-    ...    data={"routeId":"${scheduleId}","departureId":"${departureId}","lat":-33.39073098922399,"lon":-70.54616911670284,"amount":3}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-
-Manual Validation
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/validateWithManual
-    ...    data={"communityId":"${idComunidad}","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
 
 Validation QR Without Tickets (Should Fail)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -1179,6 +1140,24 @@ Validate With User From another community QR(Should fail)
     Sleep    10s
 
 Validate With ''X'' QR From internet ( Should Fail)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Run Keyword And Expect Error
+    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
+    ...    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/pb/provider/departures/validate
+    ...    data={"communityId":"","validationString":"https://www.youtube.com/watch?v=dQw4w9WgXcQ","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    headers=${headers}
+
+    Status Should Be    403
+    Sleep    10s
+Validate With User No Reservation
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)

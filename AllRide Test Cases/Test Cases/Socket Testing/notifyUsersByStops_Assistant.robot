@@ -89,43 +89,6 @@ Set Date Variables
     ${end_date_pastTomorrow}=    Set Variable    ${fecha_pasado_manana}T03:00:00.000Z
     Set Global Variable    ${end_date_pastTomorrow}
 
-Generate random UUID (DepartureId)
-    ${uuid}=    Evaluate    str(uuid.uuid4())
-    Log    ${uuid}
-    Set Global Variable    ${uuid}
-
-Generate random UUID (_id Manual validations)
-    ${uuid_manual}=    Evaluate    str(uuid.uuid4())
-    Log    ${uuid_manual}
-    Set Global Variable    ${uuid_manual}
-
-Generate random UUID (_id validations customValidations)
-    ${uuid_custom}=    Evaluate    str(uuid.uuid4())
-    Log    ${uuid_custom}
-    Set Global Variable    ${uuid_custom}
-
-Generate random UUID (_id validations qrValidations)
-    ${uuid_qr}=    Evaluate    str(uuid.uuid4())
-    Log    ${uuid_qr}
-    Set Global Variable    ${uuid_qr}
-Generate random UUID2 (_id validations qrValidations)
-    ${uuid_qr2}=    Evaluate    str(uuid.uuid4())
-    Log    ${uuid_qr2}
-    Set Global Variable    ${uuid_qr2}
-Generate random UUID2 Cédula (_id validations qrValidations)
-    ${uuid_dni}=    Evaluate    str(uuid.uuid4())
-    Log    ${uuid_dni}
-    Set Global Variable    ${uuid_dni}
-Generate random UUID (_id events1)
-    ${uuid_events}=    Evaluate    str(uuid.uuid4())
-    Log    ${uuid_events}
-    Set Global Variable    ${uuid_events}
-Generate random UUID (_id events2)
-    ${uuid_events2}=    Evaluate    str(uuid.uuid4())
-    Log    ${uuid_events2}
-    Set Global Variable    ${uuid_events2}
-
-
 1 hours local 
     ${date}    Get Current Date    time_zone=local    exclude_millis=yes
     ${formatted_date}    Convert Date    ${date}    result_format=%H:%M:%S
@@ -167,7 +130,7 @@ Create new service in the selected route
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"_id":"675059ea3c067a6cd3e2ed80","trail":{"enabled":false,"adjustByRounds":false},"rounds":{"enabled":false,"anchorStops":[]},"notifyUsersByStop":{"sendTo":{"destinataries":"specificEmails","emails":["nico2795@gmail.com"],"adminLevels":[],"roles":[]},"enabled":true},"notifyUnboardedPassengers":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"sendAt":"eachStop"},"notifyPassengersWithoutReservation":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"sendAt":"eachStop"},"notifySkippedStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]}},"excludePassengers":{"active":false,"excludeType":"dontHide"},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":5,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":5,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"defaultServiceCost":null,"schedule":[{"enabled":true,"day":"${schedule_day}","time":"${formatted_one_hour_later}","estimatedArrival":null,"capped":{"enabled":false,"capacity":0},"vehicleCategoryId":null,"restrictPassengers":{"enabled":false,"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"serviceCost":0,"observations":"","reservations":{"enabled":false,"list":[]},"stopSchedule":[{"_id":"67505a4efdee9ba9e9416903","stopId":"655d11d88a5a1a1ff0328464","scheduledDate":"2024-12-04T14:00:00.600Z"},{"_id":"67505a4efdee9ba9e9416904","stopId":"655d11d88a5a1a1ff0328466","scheduledDate":null}],"defaultResources":[],"_ogIndex":0}],"stopOnReservation":false,"restrictions":{"customParams":{"enabled":false,"params":[]}},"reservations":{"enabled":false,"list":[]}},"rating":{"enabled":false,"withValidation":false},"endDepartureNotice":{"enabled":false,"lastStop":null},"restrictPassengers":{"enabled":false,"allowed":["675059ea3c067a6cd3e2ed80"],"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"snapshots":{"enabled":false},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"canResume":{"timeLimit":{"enabled":false,"amount":5,"unit":"minutes"},"enabled":false},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"validateDeparture":{"enabled":false},"minimumConfirmationTime":{"enabled":false,"amount":1,"unit":"hours"},"minimumTimeToForceDeparture":{"enabled":false,"amount":5,"unit":"minutes"},"endServiceLegAutomatically":{"timer":{"amount":5,"unit":"minutes"},"distance":100},"codeValidationOptions":{"enabled":false,"type":"qr","failureMessage":"Solo puedes presentar el código de AllRide o de tu cédula de identidad."},"assistantIds":["66ce519a3851012ba459ab1f"],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["653fd601f90509541a748683"],"active":true,"visible":true,"internal":false,"anchorStops":[],"isStatic":false,"labels":[],"hasExternalGPS":false,"hasCapacity":false,"hasBeacons":false,"hasRounds":false,"hasBoardingCount":false,"hasUnboardingCount":false,"usesBusCode":false,"usesVehicleList":true,"dynamicSeatAssignment":true,"usesDriverCode":false,"usesDriverPin":false,"usesTickets":false,"usesPasses":false,"usesTextToSpeech":false,"allowsManualValidation":false,"allowsRating":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"allowsDebugging":false,"startsOnStop":false,"notNearStop":false,"allowsNonServiceSnapshots":false,"allowsServiceSnapshots":false,"allowsDistance":true,"usesOfflineCount":false,"hasBoardings":false,"hasUnboardings":false,"usesManualSeat":true,"noPassengerInfo":false,"showParable":false,"showStops":true,"allowGenericVehicles":false,"usesVehicleQRLink":false,"skipDeclaration":false,"skipQRValidation":false,"assistantAssignsSeat":true,"hasBarrier":false,"name":"Ruta userByStops","shapeId":"675059ea3c067a6cd3e2ed61","description":"Correo validaciones parciales","extraInfo":"","color":"704646","canReserve":null,"legOptions":[],"ownerIds":[{"_id":"675059ea3c067a6cd3e2ed84","id":"653fd601f90509541a748683","role":"community"}],"segments":[],"roundOrder":[{"stopId":"655d11d88a5a1a1ff0328464","notifyIfPassed":false},{"stopId":"655d11d88a5a1a1ff0328466","notifyIfPassed":false}],"communityId":"653fd601f90509541a748683","timeOnRoute":9,"distance":5,"distanceInMeters":5107,"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"createdAt":"2024-12-04T13:32:26.585Z","updatedAt":"2024-12-04T13:54:55.130Z","__v":2,"destinationStop":"655d11d88a5a1a1ff0328466","originStop":"655d11d88a5a1a1ff0328464","routeDeviation":{"maxDistance":100,"maxTime":5,"enabled":false},"superCommunityId":"653fd68233d83952fafcd4be","useServiceReservations":false,"routeCost":0,"ticketCost":0,"custom":{"ui":{"color":"832828","marker":{"1":{"5x":""},"1x":"","2x":"","3x":"","4x":""}}}}
+    ${jsonBody}=    Set Variable    {"_id":"675059ea3c067a6cd3e2ed80","trail":{"enabled":false,"adjustByRounds":false},"rounds":{"enabled":false,"anchorStops":[]},"notifyUsersByStop":{"sendTo":{"destinataries":"specificEmails","emails":["nico2795@gmail.com"],"adminLevels":[],"roles":[]},"enabled":true},"notifyUnboardedPassengers":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"sendAt":"eachStop"},"notifyPassengersWithoutReservation":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"sendAt":"eachStop"},"notifySkippedStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]}},"excludePassengers":{"active":false,"excludeType":"dontHide"},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":5,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":5,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"defaultServiceCost":null,"schedule":[{"enabled":true,"day":"${schedule_day}","time":"${formatted_one_hour_later}","estimatedArrival":null,"capped":{"enabled":false,"capacity":0},"vehicleCategoryId":null,"restrictPassengers":{"enabled":false,"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"serviceCost":0,"observations":"","reservations":{"enabled":false,"list":[]},"stopSchedule":[{"_id":"67505a4efdee9ba9e9416903","stopId":"655d11d88a5a1a1ff0328464","scheduledDate":"2024-12-04T14:00:00.600Z"},{"_id":"67505a4efdee9ba9e9416904","stopId":"655d11d88a5a1a1ff0328466","scheduledDate":null}],"defaultResources":[],"_ogIndex":0}],"stopOnReservation":false,"restrictions":{"customParams":{"enabled":false,"params":[]}},"reservations":{"enabled":false,"list":[]}},"rating":{"enabled":false,"withValidation":false},"endDepartureNotice":{"enabled":false,"lastStop":null},"restrictPassengers":{"enabled":false,"allowed":["675059ea3c067a6cd3e2ed80"],"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"snapshots":{"enabled":false},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"canResume":{"timeLimit":{"enabled":false,"amount":5,"unit":"minutes"},"enabled":false},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"validateDeparture":{"enabled":false},"minimumConfirmationTime":{"enabled":false,"amount":1,"unit":"hours"},"minimumTimeToForceDeparture":{"enabled":false,"amount":5,"unit":"minutes"},"endServiceLegAutomatically":{"timer":{"amount":5,"unit":"minutes"},"distance":100},"codeValidationOptions":{"enabled":false,"type":"qr","failureMessage":"Solo puedes presentar el código de AllRide o de tu cédula de identidad."},"assistantIds":["664516a11859f8e2c4093a72"],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["653fd601f90509541a748683"],"active":true,"visible":true,"internal":false,"anchorStops":[],"isStatic":false,"labels":[],"hasExternalGPS":false,"hasCapacity":false,"hasBeacons":false,"hasRounds":false,"hasBoardingCount":false,"hasUnboardingCount":false,"usesBusCode":false,"usesVehicleList":true,"dynamicSeatAssignment":true,"usesDriverCode":false,"usesDriverPin":false,"usesTickets":false,"usesPasses":false,"usesTextToSpeech":false,"allowsManualValidation":false,"allowsRating":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"allowsDebugging":false,"startsOnStop":false,"notNearStop":false,"allowsNonServiceSnapshots":false,"allowsServiceSnapshots":false,"allowsDistance":true,"usesOfflineCount":false,"hasBoardings":false,"hasUnboardings":false,"usesManualSeat":true,"noPassengerInfo":false,"showParable":false,"showStops":true,"allowGenericVehicles":false,"usesVehicleQRLink":false,"skipDeclaration":false,"skipQRValidation":false,"assistantAssignsSeat":true,"hasBarrier":false,"name":"Ruta userByStops","shapeId":"675059ea3c067a6cd3e2ed61","description":"Correo validaciones parciales","extraInfo":"","color":"704646","canReserve":null,"legOptions":[],"ownerIds":[{"_id":"675059ea3c067a6cd3e2ed84","id":"653fd601f90509541a748683","role":"community"}],"segments":[],"roundOrder":[{"stopId":"655d11d88a5a1a1ff0328464","notifyIfPassed":false},{"stopId":"655d11d88a5a1a1ff0328466","notifyIfPassed":false}],"communityId":"653fd601f90509541a748683","timeOnRoute":9,"distance":5,"distanceInMeters":5107,"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"createdAt":"2024-12-04T13:32:26.585Z","updatedAt":"2024-12-04T13:54:55.130Z","__v":2,"destinationStop":"655d11d88a5a1a1ff0328466","originStop":"655d11d88a5a1a1ff0328464","routeDeviation":{"maxDistance":100,"maxTime":5,"enabled":false},"superCommunityId":"653fd68233d83952fafcd4be","useServiceReservations":false,"routeCost":0,"ticketCost":0,"custom":{"ui":{"color":"832828","marker":{"1":{"5x":""},"1x":"","2x":"","3x":"","4x":""}}}}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -369,17 +332,13 @@ Validation QR Without Tickets
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNoTickets}","timezone":"Chile/Continental","validationLat":-33.40975694626073,"validationLon":-70.56736916087651, "assistantId": "66ce519a3851012ba459ab1f"}
+    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNoTickets}","timezone":"Chile/Continental","validationLat":-33.40975694626073,"validationLon":-70.56736916087651}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
     Log    ${code}
     Sleep    10s
-
-
-    ${validationId1}=    Set Variable    ${response.json()}[_id]
-    Set Global Variable    ${validationId1}
 Get User QR(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -402,40 +361,6 @@ Get User QR(Nico)
     Log    ${qrCodeNico}
     Log    ${code}
 
-Sync validations offline
-    Set Log Level    TRACE
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${tokenDriver}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/validations/sync/${idSuperCommunity}
-    ...    data={"validations":[{"assignedSeat":"3","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_dni}","isCustom":false,"isDNI":true,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"https://portal.sidiv.registrocivil.cl/docstatus?RUN=19186681-9&type=CEDULA&serial=107182779&mrz=107182779695092742509275","reason":[],"remainingTickets":0,"routeId":"675059ea3c067a6cd3e2ed80","synced":false,"token":"","userId":"${idDNI}","validated":true, "assistantId":"66ce519a3851012ba459ab1f"}]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    
-    Should Not Be Empty    ${response.json()}
-
-    ${validations}=    Set Variable    ${response.json()}
-
-    FOR    ${validation}    IN    @{validations}
-    # Verifica que cada objeto no esté vacío
-        Should Not Be Empty    ${validation}    Validations info is empty
-    END
-
-    Status Should Be    200
-
-    ${offlineValidationId}=     Set Variable    ${response.json()}[0][_id]
-    Set Global Variable    ${offlineValidationId}
-
-
 Validation QR With Tickets
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -447,7 +372,7 @@ Validation QR With Tickets
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNico}","timezone":"Chile/Continental","validationLat":-33.40975694626073,"validationLon":-70.56736916087651,"assistantId": "66ce519a3851012ba459ab1f"}
+    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNico}","timezone":"Chile/Continental","validationLat":-33.40975694626073,"validationLon":-70.56736916087651}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -455,52 +380,7 @@ Validation QR With Tickets
     Log    ${code}
     Sleep    10s
 
-    ${validationId2}=    Set Variable    ${response.json()}[_id]
-    Set Global Variable    ${validationId2}
-
-
-Get Assistant Token
-    skip
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/assistants/list?community=${idComunidad}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    ${access_token}=    Set Variable    ${response.json()[0]['accessToken']}
-    ${tokenAssistant}=    Evaluate    "Bearer " + "${access_token}"
-    Set Global Variable    ${tokenAssistant}
-
-    Log    ${tokenAssistant}
-    Log    ${response.content}
-
-
-
-Link Validation to active Departure 1 With Custom
-    #SE HACE CON ASSISTANt TOKEN -----------Duplicar validacion con el mismo usuasrio para luego vincular con patente de vehiculo
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=Bearer 16a0a9db0bcdb0770b62dbb5eedc3e4646f433389fa057f184c8a82dd03ffcd3451352fd8fb883c14aa45f6b03dd3b2a9c1c6f2eb2fe079704d32b16e091f36b    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/assistant/departures/link/${departureId}
-    ...    data={"plate":"MORI2","validations":["${validationId1}","${offlineValidationId}", "${validationId2}"]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
+    
 
 Connect And Emit Events
     [Documentation]    Test connecting to WebSocket and sending events

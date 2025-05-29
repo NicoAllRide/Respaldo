@@ -181,45 +181,13 @@ Get departureId
     # Almacenamos la respuesta de json en una variable para poder jugar con ella
     ${responseJson}=    Set Variable    ${response.json()}
 
-    ${departureId}=    Set Variable    ${response.json()}[resources][0][departure][departureId]
+        ${departureId}=    Set Variable    ${response.json()}[resources][0][departure][departureId]
     Set Global Variable    ${departureId}
 
     Log    ${departureId}
 
 
-Add Order Stops(Alto Las Condes (1))
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    ${addStopOrder}
-    ...    data={"routeId":"${scheduleId}","stopId":"655d11d88a5a1a1ff0328466","stop_sequence":1,"cost":0,"sequence":"1","ownerIds":[{"id":"${idComunidad}","role":"community"}],"communities":["${idComunidad}"],"superCommunities":["${idSuperCommunity}"]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-
-Add Order Stops(Mall Apumanque (2))
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    ${addStopOrder}
-    ...    data={"routeId":"${scheduleId}","stopId":"655d11d88a5a1a1ff0328464","stop_sequence":2,"cost":0,"sequence":"2","ownerIds":[{"id":"${idComunidad}","role":"community"}],"communities":["${idComunidad}"],"superCommunities":["${idSuperCommunity}"]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
 
 Login User With Email(Obtain Token)
         Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -243,7 +211,7 @@ Login User With Email(Obtain Token)
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
 
-Seat Reservation(User1-NicoEnd)
+SSeat Reservation(User1-NicoEnd)
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -253,16 +221,15 @@ Seat Reservation(User1-NicoEnd)
     ${response}=    POST On Session
     ...    mysesion
     ...    ${seatReservation}
-    ...    data={"serviceId":"${service_id}","departureId":"${departureId}","stopId":"655d11d88a5a1a1ff0328464","seat":"2"}
+    ...    data={"serviceId":"${service_id}","departureId":"${departureId}","stopId":"655d11d88a5a1a1ff0328464","seat":"1"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Run Keyword If    '${code}' == '200' or '${code}' == '409'    Log    Status code is acceptable: ${code}
-    ...    ELSE    Fail    Unexpected status code: ${code}
+    Should Be Equal As Numbers    ${code}    200    Seat reservation not working statusCode ${code}
     Log    ${code}
+    Sleep    5s
 
 Seat Reservation(User2-Pedro Pascal Available Seat)
-    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -272,16 +239,15 @@ Seat Reservation(User2-Pedro Pascal Available Seat)
     ${response}=    POST On Session
     ...    mysesion
     ...    ${seatReservation}
-    ...    data={"serviceId":"${service_id}","departureId":"${departureId}","stopId":"655d11d88a5a1a1ff0328464","seat":"1"}
+    ...    data={"serviceId":"${service_id}","departureId":"${departureId}","stopId":"655d11d88a5a1a1ff0328464","seat":"2"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Run Keyword If    '${code}' == '200' or '${code}' == '409'    Log    Status code is acceptable: ${code}
-    ...    ELSE    Fail    Unexpected status code: ${code}
+    Status Should Be    200
     Log    ${code}
+   Sleep    5s
 
 Seat Reservation(User3-Kratos Available Seat)
-    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -295,9 +261,9 @@ Seat Reservation(User3-Kratos Available Seat)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Run Keyword If    '${code}' == '200' or '${code}' == '409'    Log    Status code is acceptable: ${code}
-    ...    ELSE    Fail    Unexpected status code: ${code}
+    Status Should Be    200
     Log    ${code}
+    Sleep    5s
 
 Driver Accept Service
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -318,6 +284,7 @@ Driver Accept Service
     Log    ${code}
 
 Start Departure PreLeg
+    skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -364,6 +331,7 @@ Start Departure Leg
     ${departureToken}=    Evaluate    "Bearer " + "${access_token}"
     Log    ${departureToken}
     Log    ${code}
+    Set Global Variable    ${departureToken}
 
 Get User QR(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -385,6 +353,69 @@ Get User QR(Nico)
     ${qrCodeNico}=    Set Variable    ${response.json()}[0][qrCode]
     Set Global Variable    ${qrCodeNico}
     Log    ${qrCodeNico}
+    Log    ${code}
+Get User QR(No reservation 1)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad}
+    ...    data={"ids":["66184092dddeeae46ace0db5"]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+
+    ${qrCodeNoReservation1}=    Set Variable    ${response.json()}[0][qrCode]
+    Set Global Variable    ${qrCodeNoReservation1}
+    Log    ${qrCodeNoReservation1}
+    Log    ${code}
+Get User QR(No reservation 2)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad}
+    ...    data={"ids":["66184092dddeeae46ace0da6"]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+
+    ${qrCodeNoReservation2}=    Set Variable    ${response.json()}[0][qrCode]
+    Set Global Variable    ${qrCodeNoReservation2}
+    Log    ${qrCodeNoReservation2}
+    Log    ${code}
+Get User QR(No reservation 3)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad}
+    ...    data={"ids":["66184092dddeeae46ace0dab"]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+
+    ${qrCodeNoReservation3}=    Set Variable    ${response.json()}[0][qrCode]
+    Set Global Variable    ${qrCodeNoReservation3}
+    Log    ${qrCodeNoReservation3}
     Log    ${code}
 
 Validate With QR(Nico)
@@ -423,85 +454,74 @@ Validate With Custom(Kratos)
     Status Should Be    200
     Log    ${code}
 
-Manual Boarding
+Validate With NFC(Pedro)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
     # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/boarding
-    ...    data={"routeId":"${scheduleId}","departureId":"${departureId}","lat":-33.39073098922399,"lon":-70.54616911670284,"amount":3}
+    ...    url=/api/v2/pb/driver/tickets/validation/${cardIdPedro}
+    ...    data={"communityId":"${idComunidad}","key":"rut","value":"126606826","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
     Log    ${code}
 
-Manual Validation
+Validate With QR(No reservation 1 Should pass)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
     # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/validateWithManual
-    ...    data={"communityId":"${idComunidad}","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    url=/api/v1/pb/provider/departures/validate
+    ...    data={"validationString":"${qrCodeNoReservation1}"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
     Log    ${code}
-
-Complete Seats Manually
+Validate With QR(No reservation 2 Should pass)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
     # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/departure/completeSeatsWithManual
-    ...    data={"validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    url=/api/v1/pb/provider/departures/validate
+    ...    data={"validationString":"${qrCodeNoReservation2}"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
     Log    ${code}
-
-Manual UnBoarding
+Validate With QR(No reservation 3 Should NOT pass. No seats available)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
     # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
+    ${response}=   Run Keyword And Expect Error  HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate   POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/unboarding
-    ...    data={"routeId":"${scheduleId}","departureId":"${departureId}","lat":-33.39073098922399,"lon":-70.54616911670284,"amount":3}
+    ...    url=/api/v1/pb/provider/departures/validate
+    ...    data={"validationString":"${qrCodeNoReservation3}"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
+
+
 
 Get Passenger List
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
