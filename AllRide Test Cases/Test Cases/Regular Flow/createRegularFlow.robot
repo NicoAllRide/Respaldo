@@ -230,97 +230,19 @@ Validate With QR(Nico)
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
     # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=Bearer Nico86d174zd6e6f33b2cfu3a6m0c14cdf2ff32o3fbb56N7p10s4647bf62ad5ae2277ae6sb549e455b736n    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"validationString":"97e262d57a74b3e6dd36d7cb83de05216ca45c6b96e04cb973c51aef32095346810c119f7d1fc8308bce33f30ab32dcab30a785b219a797060d302e6da82245e666078059a5ece0ee6e95904000"}
+    ...    url=/ext/api/v1/departures/validate
+    ...    data={"validationString":"https://portal.sidiv.registrocivil.cl/docstatus?RUN=19040685-7&type=CEDULA&serial=107182779&mrz=107182779695092742509275"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
     Log    ${code}
 
-Manual Boarding
-    Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/boarding
-    ...    data={"routeId":"${regularRouteId}","departureId":"${service_Id}","lat":-33.39073098922399,"lon":-70.54616911670284,"amount":3}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-
-Manual Validation
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/validateWithManual
-    ...    data={"communityId":"${idComunidad}","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-
-Complete Seats Manually
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departure/completeSeatsWithManual
-    ...    data={"validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-
-Manual UnBoarding
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/unboarding
-    ...    data={"routeId":"${regularRouteId}","departureId":"${service_Id}","lat":-33.39073098922399,"lon":-70.54616911670284,"amount":3}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
 
 Get Passenger List
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)

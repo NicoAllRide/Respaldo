@@ -8,7 +8,7 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 from xml.etree import ElementTree as ET
 
-SLACK_TOKEN = "xoxb-3501329970642-7009206964070-Wk86svxwZwdJaY11UpUJ1qP1"
+SLACK_TOKEN = os.environ["SLACK_TOKEN"]
 logging.basicConfig(level=logging.DEBUG)
 
 class TestResultAnalyzer(ResultVisitor):
@@ -36,7 +36,6 @@ class TestResultAnalyzer(ResultVisitor):
             self.failed_tests += 1
             error_message = self.extract_detailed_error_message(test.message)
             request_info = self.extract_request_info_from_logs(test.name)
-            documentation = test.doc or "No documentation provided."
 
             logging.debug(f"Test Failed: {test.name}, Error Message: {error_message}")
 
@@ -44,7 +43,6 @@ class TestResultAnalyzer(ResultVisitor):
                 self.server_errors.append({
                     "file_name": self.current_file,
                     "test_name": test.name,
-                    "documentation": documentation,
                     "error_message": error_message,
                     "request_info": request_info,
                 })
@@ -56,19 +54,18 @@ class TestResultAnalyzer(ResultVisitor):
                     "fail_reason": fail_reason,
                     "request_info": request_info,
                     "test_name": test.name,
-                    "documentation": documentation,
                     "error_message": error_message,
                 })
             else:
                 self.failed_test_info.append({
                     "file_name": self.current_file,
                     "test_name": test.name,
-                    "documentation": documentation,
                     "error_message": error_message,
                     "request_info": request_info,
                 })
 
     def is_server_error(self, error_message):
+        """Determina si el mensaje de error contiene un código de estado HTTP 5xx."""
         return re.search(r'5\d{2} Server Error', error_message) is not None
 
     def has_custom_message(self, error_message):
@@ -142,38 +139,38 @@ class TestResultAnalyzer(ResultVisitor):
 
         report_sections = []
 
+        # Sección de errores de servidor (solo si existen)
         if self.server_errors:
             server_error_section = "\nServer Errors:\n" + "-" * 50 + "\n"
             for error in self.server_errors:
                 server_error_section += (
                     f"[Test Name: {error['test_name']}]\n"
                     f"File Name: {error['file_name']}\n"
-                    f"Documentation: {error['documentation']}\n"
                     f"Error Message: {error['error_message']}\n"
                     f"Request Info: {error['request_info']}\n"
                     + "-" * 50 + "\n"
                 )
             report_sections.append(server_error_section)
 
+        # Sección de casos fallidos con mensajes personalizados (solo si existen)
         if self.custom_failed_test_info:
             custom_fail_section = "\nFailed Test Cases (Summary):\n" + "-" * 50 + "\n"
             for test in self.custom_failed_test_info:
                 custom_fail_section += (
                     f"Failed ({test['file_name']}) Test Cases:\n"
                     f"Fail reason: {test['fail_reason']}\n"
-                    f"Documentation: {test['documentation']}\n"
                     f"Request Info: {test['request_info']}\n"
                     + "-" * 50 + "\n"
                 )
             report_sections.append(custom_fail_section)
 
+        # Sección de todos los casos fallidos (solo si existen)
         if self.failed_test_info or self.custom_failed_test_info:
             all_fail_section = "\nAll Failed Test Cases:\n" + "-" * 50 + "\n"
             for test in self.failed_test_info + self.custom_failed_test_info:
                 all_fail_section += (
                     f"[Test Name: {test['test_name']}]\n"
                     f"File Name: {test['file_name']}\n"
-                    f"Documentation: {test['documentation']}\n"
                     f"Error Message: {test['error_message']}\n"
                     f"Request Info: {test['request_info']}\n"
                     + "-" * 50 + "\n"
@@ -209,7 +206,7 @@ if __name__ == '__main__':
 
     try:
         response = client.chat_postMessage(
-            channel="C070FNX0CHG",
+            channel="C071RRWNYF9",
             text=message_text
         )
 
@@ -235,7 +232,7 @@ if __name__ == '__main__':
 
             file_url = new_file.get("file").get("permalink")
             client.chat_postMessage(
-                channel="C070FNX0CHG",
+                channel="C071RRWNYF9",
                 text=f"Detalle de pruebas fallidas: {file_url}",
             )
 

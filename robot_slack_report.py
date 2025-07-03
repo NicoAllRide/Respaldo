@@ -11,6 +11,53 @@ from xml.etree import ElementTree as ET
 SLACK_TOKEN = "xoxb-3501329970642-7009206964070-Wk86svxwZwdJaY11UpUJ1qP1"
 logging.basicConfig(level=logging.DEBUG)
 
+# Mensajes personalizados predictivos
+CUSTOM_PREDICTIVE_MESSAGES = {
+    "Validar reserva con fixedDeparture": {
+        "file": "reservation/test_validate_fixed_departure.robot",
+        "title": "More Than One Reservation Found When Only One Was Expected",
+        "analysis": "Este test valida que si un servicio tiene `fixedDeparture: true`, no se permitan múltiples reservas. La lógica busca asegurar exclusividad.",
+        "cause": "El backend permite crear más de una reserva aunque `fixedDeparture` esté activo, lo que contradice la lógica de negocio.",
+        "endpoint": "POST /api/v1/reservations/add"
+    },
+    "Validar reserva sin acceso con parámetros inválidos": {
+        "file": "reservation/test_validate_fixed_departure.robot",
+        "title": "Unauthorized Reservation Attempt with Invalid Params",
+        "analysis": "Este test evalúa que las reservas con parámetros inválidos (o sin access token) sean correctamente bloqueadas.",
+        "cause": "El sistema permite reservas sin autenticación válida o con datos erróneos.",
+        "endpoint": "POST /api/v1/reservations/add"
+    },
+    "Validar reserva en ruta sin salida activa": {
+        "file": "reservation/test_validate_fixed_departure.robot",
+        "title": "Reservation Attempt on Route Without Active Departure",
+        "analysis": "Este test valida que no se puedan realizar reservas en rutas que no tengan una salida activa definida.",
+        "cause": "La lógica del backend no valida correctamente si hay una salida activa antes de permitir la reserva.",
+        "endpoint": "POST /api/v1/reservations/add"
+    },
+    "Validar servicio creado con trazado sin paradas": {
+        "file": "reservation/test_validate_fixed_departure.robot",
+        "title": "Service Created with Route Trace but No Stops",
+        "analysis": "Verifica que el sistema bloquee la creación de servicios con trazado pero sin paradas configuradas.",
+        "cause": "El backend permite crear servicios incluso cuando el trazado no tiene paradas asociadas.",
+        "endpoint": "POST /api/v1/services/create"
+    },
+    "Validar que no se creen servicios con trace sin paradas": {
+        "file": "reservation/test_validate_fixed_departure.robot",
+        "title": "Service Should Not Be Created if Trace Has No Stops",
+        "analysis": "Confirma que la lógica impida crear un servicio si el trace no contiene paradas definidas.",
+        "cause": "No hay validación activa en el backend para controlar que un trace tenga paradas al momento de crear el servicio.",
+        "endpoint": "POST /api/v1/services/create"
+    },
+    "Validar reserva con vehículo sin cupo": {
+        "file": "reservation/test_validate_fixed_departure.robot",
+        "title": "Reservation Allowed on Full Vehicle",
+        "analysis": "Este test evalúa que no se permitan reservas cuando el vehículo ya no tiene cupos disponibles.",
+        "cause": "El backend no bloquea correctamente nuevas reservas si el límite de asientos fue alcanzado.",
+        "endpoint": "POST /api/v1/reservations/add"
+    }
+}
+
+
 class TestResultAnalyzer(ResultVisitor):
     def __init__(self, xml_path):
         self.passed_tests = 0
@@ -29,22 +76,18 @@ class TestResultAnalyzer(ResultVisitor):
 
     def visit_test(self, test):
         logging.debug(f"Visiting test: {test.name}, Status: {test.status}")
-
         if test.status == 'PASS':
             self.passed_tests += 1
         elif test.status == 'FAIL':
             self.failed_tests += 1
             error_message = self.extract_detailed_error_message(test.message)
             request_info = self.extract_request_info_from_logs(test.name)
-            documentation = test.doc or "No documentation provided."
-
             logging.debug(f"Test Failed: {test.name}, Error Message: {error_message}")
 
             if self.is_server_error(error_message):
                 self.server_errors.append({
                     "file_name": self.current_file,
                     "test_name": test.name,
-                    "documentation": documentation,
                     "error_message": error_message,
                     "request_info": request_info,
                 })
@@ -56,14 +99,12 @@ class TestResultAnalyzer(ResultVisitor):
                     "fail_reason": fail_reason,
                     "request_info": request_info,
                     "test_name": test.name,
-                    "documentation": documentation,
                     "error_message": error_message,
                 })
             else:
                 self.failed_test_info.append({
                     "file_name": self.current_file,
                     "test_name": test.name,
-                    "documentation": documentation,
                     "error_message": error_message,
                     "request_info": request_info,
                 })
@@ -114,8 +155,6 @@ class TestResultAnalyzer(ResultVisitor):
             return "Release seats functionality failed to work properly."
         if "passenger couldn't validate in service with available seats" in error_message:
             return "Passenger validation failed despite service having available seats."
-        if "Departure has no validation details, check again for possible failing" in error_message:
-            return "Departure has no validation details. This might indicate a failure."
         return "Custom error message not defined"
 
     def extract_detailed_error_message(self, message):
@@ -125,7 +164,6 @@ class TestResultAnalyzer(ResultVisitor):
     def extract_request_info_from_logs(self, test_name):
         tree = ET.parse(self.xml_path)
         root = tree.getroot()
-
         for test in root.iter('test'):
             if test.attrib['name'] == test_name:
                 for kw in test.iter('kw'):
@@ -136,19 +174,13 @@ class TestResultAnalyzer(ResultVisitor):
         return "No request info found"
 
     def generate_fail_report(self):
-        logging.debug(f"Custom failed tests count: {len(self.custom_failed_test_info)}")
-        logging.debug(f"General failed tests count: {len(self.failed_test_info)}")
-        logging.debug(f"Server errors count: {len(self.server_errors)}")
-
         report_sections = []
-
         if self.server_errors:
             server_error_section = "\nServer Errors:\n" + "-" * 50 + "\n"
             for error in self.server_errors:
                 server_error_section += (
                     f"[Test Name: {error['test_name']}]\n"
                     f"File Name: {error['file_name']}\n"
-                    f"Documentation: {error['documentation']}\n"
                     f"Error Message: {error['error_message']}\n"
                     f"Request Info: {error['request_info']}\n"
                     + "-" * 50 + "\n"
@@ -161,7 +193,6 @@ class TestResultAnalyzer(ResultVisitor):
                 custom_fail_section += (
                     f"Failed ({test['file_name']}) Test Cases:\n"
                     f"Fail reason: {test['fail_reason']}\n"
-                    f"Documentation: {test['documentation']}\n"
                     f"Request Info: {test['request_info']}\n"
                     + "-" * 50 + "\n"
                 )
@@ -173,15 +204,25 @@ class TestResultAnalyzer(ResultVisitor):
                 all_fail_section += (
                     f"[Test Name: {test['test_name']}]\n"
                     f"File Name: {test['file_name']}\n"
-                    f"Documentation: {test['documentation']}\n"
                     f"Error Message: {test['error_message']}\n"
                     f"Request Info: {test['request_info']}\n"
                     + "-" * 50 + "\n"
                 )
             report_sections.append(all_fail_section)
-
         return "\n".join(report_sections)
 
+def generate_predictive_messages_from_dict():
+    messages = []
+    for test_name, data in CUSTOM_PREDICTIVE_MESSAGES.items():
+        message = (
+            f"❌ Test: {test_name}\n"
+            f"📁 Suite: {data['file']}\n"
+            f"🔎 Análisis:\n{data['analysis']}\n"
+            f"🔧 Posible causa: {data['cause']}\n"
+            f"🔗 Endpoint involucrado: {data['endpoint']}\n"
+        )
+        messages.append(message)
+    return messages
 
 if __name__ == '__main__':
     try:
@@ -213,18 +254,17 @@ if __name__ == '__main__':
             text=message_text
         )
 
-        if response["ok"]:
-            print("Mensaje enviado a Slack exitosamente.")
-        else:
-            print(f"Error al enviar el mensaje a Slack: {response['error']}")
+        fail_report = analyzer.generate_fail_report()
+        predictive = generate_predictive_messages_from_dict()
 
-        if analyzer.failed_tests > 0 or len(analyzer.server_errors) > 0:
-            with open("detalle_pruebas.txt", "w") as file:
-                file.write(analyzer.generate_fail_report())
+        if analyzer.failed_tests > 0 or analyzer.server_errors:
+            with open("detalle_pruebas.txt", "w", encoding="utf-8") as file:
+                file.write(fail_report)
+                file.write("\n\n⚠️ Mensajes generados automáticamente para cada test (en caso de futuras fallas):\n")
+                file.write("=" * 60 + "\n\n")
+                file.write("\n\n".join(predictive))
 
-            print("Detalle de las pruebas guardado en 'detalle_pruebas.txt'.")
-
-            with open("detalle_pruebas.txt", "r") as file:
+            with open("detalle_pruebas.txt", "r", encoding="utf-8") as file:
                 file_content = file.read()
 
             new_file = client.files_upload_v2(
@@ -232,16 +272,14 @@ if __name__ == '__main__':
                 filename="detalle_pruebas.txt",
                 content=file_content,
             )
-
             file_url = new_file.get("file").get("permalink")
+
             client.chat_postMessage(
                 channel="C070FNX0CHG",
                 text=f"Detalle de pruebas fallidas: {file_url}",
             )
 
-            print(f"Archivo subido y compartido en Slack: {file_url}")
         else:
-            print("Todas las pruebas pasaron. No se enviará archivo de detalles.")
-
+            print("Todas las pruebas pasaron.")
     except SlackApiError as e:
         print(f"Error al enviar el mensaje a Slack: {e.response['error']}")

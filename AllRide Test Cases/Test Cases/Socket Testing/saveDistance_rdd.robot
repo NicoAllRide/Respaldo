@@ -7,7 +7,23 @@ Library     DateTime
 Library     Collections
 Library     SeleniumLibrary
 Library     RPA.JSON
-Resource    ../../../Variables/variablesStage.robot
+
+Library     WebSocketClient
+Resource    ../Variables/variablesStage.robot
+
+*** Variables ***
+#------------------------DEBE SER DEPARTURE TOKEN, NO RTL-----------------------------------------#
+${TOKEN}            d39b2cd278ccdb8e15bd587d386935b2e727876e2ec225044de7ef7858d6f9a0e26378c14a48bd8a997f129ff7bf73843dce49bbcec490c478ae5dcf948e81b8
+${URL}              ws://stage.allrideapp.com/socket.io/?token=${TOKEN}&EIO=3&transport=websocket
+${LATITUDE}         -33.40783132925352
+${LONGITUDE}        -70.56331367840907
+${NEW_LATITUDE}     -34.40274888966042
+${NEW_LONGITUDE}    -70.85938591407319
+${IS_FULL}          false
+${IS_PANICKING}     false
+${CAPACITY}         4
+${SPEED}            50.5
+${STAGE_URL}            https://stage.allrideapp.com
 
 
 *** Test Cases ***
@@ -124,40 +140,7 @@ Create RDD As Admin
     ${rddId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${rddId}
 
-Login User With Email(Obtain Token)
-        Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"username":"nicolas+endauto@allrideapp.com","password":"Equilibriozen123#"}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Post On Session
-    ...    mysesion
-    ...    url=${loginUserUrl}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
-    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
-    ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
-    Set Global Variable    ${accessTokenNico}
 
-App Notification(after admin reservation)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET On Session
-    ...    mysesion
-    ...    url=/api/v1/users/notifications
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 ####################################################
 ##Get Routes As Driver Pendiente
 
@@ -234,7 +217,8 @@ Driver Accept Service
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
     Log    ${code}
-Start Departure 
+
+Start Departure PreLeg
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -244,132 +228,104 @@ Start Departure
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/oddepartures/start/${rddId}
-    ...    data={"startLat":"-33.41952308267422","startLon":"-70.6314178632461"}
+    ...    url=/api/v2/pb/driver/leg/start
+    ...    data={"departureId":"${rddId}","communityId":"${idComunidad}","startLat":-33.3908833,"startLon":-70.54620129999999,"legType":"pre","customParamsAtStart":[],"preTripChecklist":[],"capacity":3,"busCode":"1111","driverCode":"753","vehicleId":"${vehicleId}","shareToUsers":false,"customParams":[]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
-    Log    ${code}
+
     ${access_token}=    Set Variable    ${response.json()}[token]
+    ${departureToken}=    Evaluate    "Bearer " + "${access_token}"
+    Set Global Variable    ${departureToken}
+    Set Global Variable    ${access_token}
+
+    Log    ${departureToken}
+    Log    ${code}
+
+Connect PRE
+    ${URL_with_token}=    Set Variable    wss://stage.allrideapp.com/socket.io/?token=${access_token}&EIO=3&transport=websocket
+    ${my_websocket}=    Connect    ${URL_with_token}
+    Log    Connected to WebSocket
+
+    Send    ${my_websocket}    40/pbDriver?token=${access_token}
+    Sleep    2s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received (auth): ${result}
+
+    Send    ${my_websocket}    42/pbDriver,["join"]
+    Sleep    2s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received (join): ${result}
+
+    Send    ${my_websocket}    42/pbDriver,["start", {"latitude": -33.408000, "longitude": -70.565000}]
+    Sleep    2s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received (start): ${result}
+
+    Send    ${my_websocket}    42/pbDriver,["newPosition",{"latitude": -33.408100, "longitude": -70.565100, "capacity": 0, "speed": 4.0, "panicking": false, "full": false}]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Posición inicial enviada: ${result}
+
+    Send    ${my_websocket}    42/pbDriver,["newPosition",{"latitude": -33.4100434, "longitude": -70.5678520, "capacity": 0, "speed": 4.0, "panicking": false, "full": false}]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Posición inicial desviada final: ${result}
+Start Departure Leg
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary
+    ...    Authorization=${tokenDriver}
+    ...    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/departure/${rddId}
+    ...    data={"departureId":"${rddId}","communityId":"${idComunidad}","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"customParamsAtTheEnd":[],"capacity":2,"busCode":"1111","driverCode":"159753","vehicleId":"666941a7b8d6ea30f9281110","shareToUsers":false,"customParams":[]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+
+    ${access_token}=    Set Variable    ${response.json()}[token]
+    Set Global Variable    ${access_token}
     ${departureToken}=    Evaluate    "Bearer " + "${access_token}"
     Log    ${departureToken}
     Log    ${code}
-     Set Global Variable    ${departureToken}
+    Set Global Variable    ${departureToken}
 
-App Notification(after admin reservation)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+Tramo 1
+   ${URL_with_token}=    Set Variable    wss://stage.allrideapp.com/socket.io/?token=${access_token}&EIO=3&transport=websocket
+    ${my_websocket}=    Connect    ${URL_with_token}
+    Log    Connected to WebSocket
 
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET On Session
-    ...    mysesion
-    ...    url=/api/v1/users/notifications
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Send    ${my_websocket}    40/pbDriver?token=${access_token}
+    Sleep    2s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received (auth): ${result}
 
-Get User QR(Nico)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
+    Send    ${my_websocket}    42/pbDriver,["join"]
+    Sleep    2s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received (join): ${result}
+    Send    ${my_websocket}    42/pbDriver,["newPosition",{"latitude": -33.4087627, "longitude": -70.5670580, "capacity": 0, "speed": 4.0, "panicking": false, "full": false}]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Pos1: ${result}
 
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    Send    ${my_websocket}    42/pbDriver,["newPosition",{"latitude": -33.4100434, "longitude": -70.5678520, "capacity": 0, "speed": 4.0, "panicking": false, "full": false}]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Pos2: ${result}
 
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad}
-    ...    data={"ids":["${idNico}"]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-
-    ${qrCodeNico}=    Set Variable    ${response.json()}[0][qrCode]
-    Set Global Variable    ${qrCodeNico}
-    Log    ${qrCodeNico}
-    Log    ${code}
-
-
-
-Get Current Time
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v2/pb/driver/currentTime
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${departureToken}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-Get RDD Stops As Driver
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v2/pb/driver/oddepartures/stops/${rddId}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenDriver}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-Validate With QR(Nico)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"validationString":"${qrCodeNico}"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-    Sleep    10s
-
-App Notification(after admin reservation)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET On Session
-    ...    mysesion
-    ...    url=/api/v1/users/notifications
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-Action On Stop
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/oddepartures/action/${rddId}
-    ...    data={}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-    Sleep    10s
+    Send    ${my_websocket}    42/pbDriver,["newPosition",{"latitude": -33.4100434, "longitude": -70.5678520, "capacity": 0, "speed": 4.0, "panicking": false, "full": false}]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Pos2: ${result}
 
 Stop Departure With Post Leg
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -391,6 +347,33 @@ Stop Departure With Post Leg
     Status Should Be    200
     Log    ${code}
 
+Tramo 2 y Stop
+   ${URL_with_token}=    Set Variable    wss://stage.allrideapp.com/socket.io/?token=${access_token}&EIO=3&transport=websocket
+    ${my_websocket}=    Connect    ${URL_with_token}
+    Log    Connected to WebSocket
+
+    Send    ${my_websocket}    40/pbDriver?token=${access_token}
+    Sleep    2s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received (auth): ${result}
+
+    Send    ${my_websocket}    42/pbDriver,["join"]
+    Sleep    2s
+    Send    ${my_websocket}    42/pbDriver,["newPosition",{"latitude": -33.4099628, "longitude": -70.5680129, "capacity": 0, "speed": 4.0, "panicking": false, "full": false}]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Pos3: ${result}
+
+    Send    ${my_websocket}    42/pbDriver,["newPosition",{"latitude": -33.4098553, "longitude": -70.5711779, "capacity": 0, "speed": 4.0, "panicking": false, "full": false}]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Pos4: ${result}
+
+    Send    ${my_websocket}    42/pbDriver,["stop",{}]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    STOP: ${result}
+
 Stop Post Leg Departure
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -407,33 +390,21 @@ Stop Post Leg Departure
     ...    data={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":false,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-App Notification(after admin reservation)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    
+    ${legs}=    Get From Dictionary    ${response.json()}    legs
 
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET On Session
-    ...    mysesion
-    ...    url=/api/v1/users/notifications
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${lengthValue}=    Get Length    ${legs}
+    # Verify there are exactly 3 legs
+    Length Should Be    ${legs}    3    msg=Expected 3 legs but found ${lengthValue}
 
-Get Stadistics
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v2/pb/driver/departure/end/statistics/${rddId}
+    # Verify order: pre, service, post
+    Should Be Equal As Strings    ${legs[0]["type"]}    pre    msg=The first leg should be 'pre'
+    Should Be Equal As Strings    ${legs[1]["type"]}    service    msg=The second leg should be 'service'
+    Should Be Equal As Strings    ${legs[2]["type"]}    post    msg=The third leg should be 'post'
 
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenDriver}
+    # Check that each leg has a distance greater than 0
+    FOR    ${leg}    IN    @{legs}
+        ${dist}=    Get From Dictionary    ${leg}    distance
+        Should Be True    ${dist} > 0    msg= ${leg["type"]} Leg has distance ${dist}, which should be greater than 0
+    END
 
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-    Log    ${response.content}

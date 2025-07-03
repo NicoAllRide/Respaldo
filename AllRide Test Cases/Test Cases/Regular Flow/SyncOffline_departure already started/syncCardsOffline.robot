@@ -297,7 +297,7 @@ Sync validations offline
 
     FOR    ${validation}    IN    @{validations}
     # Verifica que cada objeto no esté vacío
-        Should Not Be Empty    ${validation}    msg=Validations info is empty after sync offline
+        Should Not Be Empty    ${validation}    Validations info is empty
     END
 
     FOR    ${index}    IN RANGE    5
@@ -336,7 +336,7 @@ Get Assigned Tickets After Validation(Pedro)
     END
     Convert To Integer    ${assignedQtyPedro}
     Convert To Integer    ${assignQty}
-    Should Be True    ${assignedQtyPedro}==(${assignQty}-1)        Assigned quantity Pedro is not correct, should be 1 but it is ${assignedQtyPedro}
+    Should Be True    ${assignedQtyPedro}==(${assignQty}-1)        Assigned quantity Pedro is not correct, should be ${assignQty} but it is ${assignedQtyPedro}
 
     # Si no se encuentra el service_id_tickets, registramos un mensaje
     Log    ${assignedQtyPedro}
@@ -392,4 +392,3 @@ Check Payment Settlement (1 electronic tickets)
 
   #  Should Contain    ${paymentSettlement}    driverCode    No driverCode found
   #  Should Be Equal As Strings    ${driverCode}    1712    driverCode should be 1712 but it is ${driverCode}
-

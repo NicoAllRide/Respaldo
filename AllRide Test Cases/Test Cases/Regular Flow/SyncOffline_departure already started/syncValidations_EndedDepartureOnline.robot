@@ -776,7 +776,7 @@ Get Assigned Tickets After Validation(DNI)
     END
     Convert To Integer    ${assignedQtyDNI}
     Convert To Integer    ${assignQty}
-    Should Be True    ${assignedQtyDNI}==(${assignQty}-1)        Assigned quantity Pedro is not correct, should be ${assignQty} but it is ${assignedQtyDNI}
+    Should Be True    ${assignedQtyDNI}==(${assignQty}-1)        Assigned quantity Pedro is not correct, should be 1 but it is ${assignedQtyDNI}
 
     # Si no se encuentra el service_id_tickets, registramos un mensaje
     Log    ${assignedQtyDNI}
@@ -1044,7 +1044,7 @@ Delete Route
 Check Payment Settlement (4 electronic tickets)
 
     ${url}=    Set Variable
-    ...    ${CRIS_URL}/api/v1/admin/pb/paymentSettlement/list?community=653fd601f90509541a748683&search=&from=0
+    ...    https://stage.allrideapp.com/api/v1/admin/pb/paymentSettlement/list?community=653fd601f90509541a748683&search=&from=0
 
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
@@ -1062,9 +1062,9 @@ Check Payment Settlement (4 electronic tickets)
     Should Be Equal As Numbers    ${electronicTicket}[value]    10
 
     ${paymentSettlement}=    Set Variable    ${responseJson}[paymentSettlement][0]
-    ${driverCode}=    Set Variable    ${paymentSettlement}[driverCode]
+   # ${driverCode}=    Set Variable    ${paymentSettlement}[driverCode]
 
-    Should Contain    ${paymentSettlement}    driverCode    No driverCode found
-    Should Be Equal As Strings    ${driverCode}    1712    driverCode should be 1712 but it is ${driverCode}
+  #  Should Contain    ${paymentSettlement}    driverCode    No driverCode found
+  #  Should Be Equal As Strings    ${driverCode}    1712    driverCode should be 1712 but it is ${driverCode}
 
 

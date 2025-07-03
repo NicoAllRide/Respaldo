@@ -235,6 +235,30 @@ Resource Assignment(Driver and Vehicle)
     Set Global Variable    ${departureId}
     Log    ${code}
 
+Get Departure Info After Resource Assignment
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=6654ae4eba54fe502d4e4187
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${capacity}=    Set Variable  ${response.json()}[capacity]
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]as
+    
+    
+    Should Be Equal As Numbers    ${capacity}    46
+    ...    msg=❌ 'capacity' should be 46 but was ${capacity}
+    
+        Should Be Equal    ${startCapacity}    46as
+    ...    msg=❌ 'startCapacity' should be 46 but was ${startCapacity}
+
 Make User reservation Admin(Paulina pasajero) After resource Assignment
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -254,6 +278,30 @@ Make User reservation Admin(Paulina pasajero) After resource Assignment
 
     ${scheduleId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${scheduleId}
+
+Get Departure Info After User Reservation
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=6654ae4eba54fe502d4e4187
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${capacity}=    Set Variable  ${response.json()}[capacity]
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]as
+    
+    
+    Should Be Equal As Numbers    ${capacity}    45
+    ...    msg=❌ 'capacity' should be 45 but was ${capacity}
+    
+        Should Be Equal    ${startCapacity}    46as
+    ...    msg=❌ 'startCapacity' should be 46 but was ${startCapacity}
 
 Get reservation before cancel (After resource assignment)
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -295,7 +343,7 @@ Cancel reservation After Resources
     ...    json=${parsed_json}
     ...    headers=${headers}
 
-Get reservation after cancel (After resource assignment)
+Get reservation after cancel (After resource assignment) in service
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    https://stage.allrideapp.com/api/v1/admin/pb/service/${service_id}?community=6654ae4eba54fe502d4e4187
@@ -311,7 +359,33 @@ Get reservation after cancel (After resource assignment)
 
     ${reservations}=    Set Variable  ${response.json()}[reservations]
     Length Should Be    ${reservations}    0        Has found a reservation when it should be none
+Get reservation after cancel (After resource assignment) in departure
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=6654ae4eba54fe502d4e4187
 
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${reservations}=    Set Variable  ${response.json()}[reservations]
+    Length Should Be    ${reservations}    0        Has found a reservation when it should be none
+    
+    
+    ${capacity}=    Set Variable  ${response.json()}[capacity]
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]as
+    
+    
+    Should Be Equal As Numbers    ${capacity}    46
+    ...    msg=❌ 'capacity' should be 46 but was ${capacity}
+    
+        Should Be Equal    ${startCapacity}    46as
+    ...    msg=❌ 'startCapacity' should be 46 but was ${startCapacity}
 
 
 
@@ -379,3 +453,86 @@ Get reservation before cancel (After resource assignment) user2
     Set Global Variable    ${reservationId}
 
     Log    ${response.content}
+
+Get Departure Info After user reservation from app(Capacity and Start Capacity)
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=6654ae4eba54fe502d4e4187
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${capacity}=    Set Variable  ${response.json()}[capacity]
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]as
+    
+    
+    Should Be Equal As Numbers    ${capacity}    45
+    ...    msg=❌ 'capacity' should be 46 but was ${capacity}
+    
+        Should Be Equal    ${startCapacity}    46as
+    ...    msg=❌ 'startCapacity' should be 46 but was ${startCapacity}
+
+
+Cancel reservation From app
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    DELETE On Session
+    ...    mysesion
+    ...    url=https://stage.allrideapp.com/api/v1/pb/user/booking/${service_id}
+    ...    headers=${headers}
+
+Get reservation after cancel from app(service)
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    https://stage.allrideapp.com/api/v1/admin/pb/service/${service_id}?community=6654ae4eba54fe502d4e4187
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${reservations}=    Set Variable  ${response.json()}[reservations]
+    Length Should Be    ${reservations}    0        Has found a reservation when it should be none
+
+Get reservation after cancel from app (departure)
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=6654ae4eba54fe502d4e4187
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${reservations}=    Set Variable  ${response.json()}[reservations]
+    Length Should Be    ${reservations}    0        Has found a reservation when it should be none
+
+    ${capacity}=    Set Variable  ${response.json()}[capacity]
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]as
+    
+    
+    Should Be Equal As Numbers    ${capacity}    46
+    ...    msg=❌ 'capacity' should be 45 but was ${capacity}
+    
+        Should Be Equal    ${startCapacity}    46as
+    ...    msg=❌ 'startCapacity' should be 46 but was ${startCapacity}
+
+
+##Crear nuevas reservas para ver sii se vuelve a cambiar el capacity

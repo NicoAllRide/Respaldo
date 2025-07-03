@@ -60,6 +60,7 @@ Set Date Variables
     Set Global Variable    ${end_date_tomorrow}
     ${expiration_date_qr}=    Set Variable    ${fecha_manana}T14:10:37.968Z
     Set Global Variable    ${expiration_date_qr}
+        Sleep    3s
 
 
 Get Driver Token
@@ -82,6 +83,7 @@ Get Driver Token
 
     Log    ${tokenDriver}
     Log    ${response.content}
+        Sleep    3s
 
 Activate time Limit validation on community(1 validation in 5 minutes)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -101,6 +103,7 @@ Activate time Limit validation on community(1 validation in 5 minutes)
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
     Status Should Be    200
+        Sleep    3s
 
 Start Departure Leg
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -127,6 +130,7 @@ Start Departure Leg
     Set Global Variable    ${departureToken}
     Log    ${departureToken}
     Log    ${code}
+        Sleep    3s
 
 Get User QR(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -149,6 +153,7 @@ Get User QR(Nico)
     Set Global Variable    ${qrCodeNico}
     Log    ${qrCodeNico}
     Log    ${code}
+        Sleep    3s
 Get User QR(Morita)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -170,6 +175,7 @@ Get User QR(Morita)
     Set Global Variable    ${qrCodeMorita}
     Log    ${qrCodeMorita}
     Log    ${code}
+        Sleep    3s
 
 Validate With QR Nico
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -186,6 +192,7 @@ Validate With QR Nico
     ...    headers=${headers}
 
     Status Should Be    200
+        Sleep    3s
 Validate With QR Morita
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -199,6 +206,7 @@ Validate With QR Morita
     ...    data={"validationString": "${qrCodeMorita}"}
     ...    headers=${headers}
    Status Should Be    200
+       Sleep    3s
 
 Check validation succeeded
     Skip
@@ -234,6 +242,7 @@ Check validation succeeded
     Status Should Be    200
 
     Log    Última validación: ${last_validation}
+        Sleep    3s
 
 Validate With QR, second validation should fail Nico
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -252,6 +261,7 @@ Validate With QR, second validation should fail Nico
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Status Should Be    403    msg=Second validation of the same user should fail but is not
+        Sleep    3s
 Validate With QR, second validation should fail Morita
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -269,6 +279,7 @@ Validate With QR, second validation should fail Morita
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Status Should Be    403    msg=Second validation of the same user should fail but is not
+        Sleep    3s
 
 Check validation 2 Failed
     Set Log Level    TRACE
@@ -301,6 +312,7 @@ Check validation 2 Failed
     Status Should Be    200
 
     Log    Última validación: ${last_validation}
+        Sleep    3s
 
 Validate With Card, first validation should pass
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -316,6 +328,8 @@ Validate With Card, first validation should pass
     ...    headers=${headers}
 
     Status Should Be    200        msg=First validation of the first user should pass but is failing
+
+    Sleep    3s
 
 Validate With Card, second validation should fail
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -334,6 +348,8 @@ Validate With Card, second validation should fail
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Status Should Be    403    msg=Second validation of the same user should fail but is not failing
+
+    Sleep    3s
 Stop Post Leg Departure
         Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true

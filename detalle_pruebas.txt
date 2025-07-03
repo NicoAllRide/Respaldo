@@ -1,62 +1,9 @@
 
-Server Errors:
---------------------------------------------------
-[Test Name: Create services]
-File Name: assistantReleaseSeats.robot
-Error Message: HTTPError: 502 Server Error: Bad Gateway for url: https://stage.allrideapp.com/api/v1/admin/pb/createServices/6654ae4eba54fe502d4e4187?community=6654ae4eba54fe502d4e4187
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/createServices/653fd601f90509541a748683?community=653fd601f90509541a748683
---------------------------------------------------
-
-
 All Failed Test Cases:
 --------------------------------------------------
-[Test Name: Create services]
-File Name: assistantReleaseSeats.robot
-Error Message: HTTPError: 502 Server Error: Bad Gateway for url: https://stage.allrideapp.com/api/v1/admin/pb/createServices/6654ae4eba54fe502d4e4187?community=6654ae4eba54fe502d4e4187
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/createServices/653fd601f90509541a748683?community=653fd601f90509541a748683
---------------------------------------------------
-[Test Name: Make Bulk Reservation(3 should pass, one fail)]
-File Name: assistantReleaseSeats.robot
-Error Message: HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v1/admin/pb/bookService/bulk/676de1f0164bc26319c0f08f?community=6654ae4eba54fe502d4e4187
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/bookService/bulk/677fdbc12dae749edbef2529?community=6654ae4eba54fe502d4e4187
---------------------------------------------------
-[Test Name: Make Bulk Reservation(all should failed, already booked)]
-File Name: assistantReleaseSeats.robot
-Error Message: HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v1/admin/pb/bookService/bulk/676de1f0164bc26319c0f08f?community=6654ae4eba54fe502d4e4187
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/bookService/bulk/676de1f0164bc26319c0f08f?community=6654ae4eba54fe502d4e4187
---------------------------------------------------
-[Test Name: Resource Assignment(Driver and Vehicle Without reservations assignment)]
-File Name: assistantReleaseSeats.robot
-Error Message: Length of '[]' should be 3 but is 0.
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/assignServiceResources/677fdbc12dae749edbef2529?community=6654ae4eba54fe502d4e4187
---------------------------------------------------
-[Test Name: Get Active Departures]
-File Name: assistantReleaseSeats.robot
-Error Message: List '${response.json()}' has no item in index 0.
-Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/pb/assistant/departures/actives
---------------------------------------------------
-[Test Name: Validate With QR Assistant(Should be able to validate as user without reservation)]
-File Name: assistantReleaseSeats.robot
-Error Message: HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
---------------------------------------------------
-[Test Name: Validate With QR Barbara(Pending Assigned2 User Dont have tickets)]
-File Name: assistantReleaseSeats.robot
-Error Message: HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
---------------------------------------------------
-[Test Name: Validate With QR Morita(SHould not be able to validate, all seats taken, seat1)]
-File Name: assistantReleaseSeats.robot
-Error Message: Expected error 'HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate' did not occur.
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
---------------------------------------------------
-[Test Name: Validate With QR Morita(SHould be able to validate, departure2)]
-File Name: assistantReleaseSeats.robot
-Error Message: HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
-Request Info: POST Request : url=https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
---------------------------------------------------
-[Test Name: Delete Recent Validation]
-File Name: assistantReleaseSeats.robot
-Error Message: Variable '${validationMorita}' not found.
-Request Info: DELETE Request : url=https://stage.allrideapp.com/api/v1/pb/assistant/departures/validation/677fdbcef623e0590359fe88
+[Test Name: Get ODD Details]
+File Name: joinODD_WhenOneIsApproved.robot
+Documentation: Verifica que la solicitud ODD esté unificada correctamente: debe haber más de una reserva, incluyendo una de Pedro Pascal y otra de Naru To, de lo contrario indica un fallo en la unión de solicitudes.
+Error Message: ❌ Solo hay una reserva. La solicitud por aprobar no se unió a una ya aprobada
+Request Info: GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/odd/684c584e8ec52d00fd68dbb5?community=653fd601f90509541a748683&populate=true
 --------------------------------------------------

@@ -148,6 +148,12 @@ Get Service Id
     Set Global Variable    ${service_id_default}
 
     Log    Last created service ID: ${service_id_default}
+    
+    FOR    ${resource}    IN    @{last_service['resources']}
+        ${res_state}=    Set Variable    ${resource['departure']['state']}
+        Should Be Equal As Strings    ${res_state}    pending    msg=Expected resource departure.state to be 'pending' but got '${res_state}'
+    END
+
 
 Verify capacity in vehicle (After default resources)
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)

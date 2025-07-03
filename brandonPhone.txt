@@ -1,0 +1,110 @@
+--------- beginning of main
+--------- beginning of system
+17:21:09.521 zza                     ForceRecaptchaV2Flow from phoneAuthOptions = false, ForceRecaptchav2Flow from firebaseSettings = false
+17:21:09.521 System                  Ignoring header X-Firebase-Locale because its value was null.
+17:21:09.838 zza                     Failed to initialize reCAPTCHA config: No Recaptcha Enterprise siteKey configured for tenant/project *
+17:21:09.839 System                  Ignoring header X-Firebase-Locale because its value was null.
+17:21:10.177 PlayCore                UID: [10138]  PID: [9622] IntegrityService : requestIntegrityToken(IntegrityTokenRequest{nonce=gqf1Gylo3BEY5yUjTmGvg425zkFV1XbLMXS3FeNvfic, cloudProjectNumber=551503664846, network=null})
+17:21:10.178 PlayCore                UID: [10138]  PID: [9622] IntegrityService : Initiate binding to the service.
+17:21:10.181 PlayCore                UID: [10138]  PID: [9622] IntegrityService : ServiceConnectionImpl.onServiceConnected(ComponentInfo{com.android.vending/com.google.android.finsky.integrityservice.IntegrityService})
+17:21:10.182 PlayCore                UID: [10138]  PID: [9622] IntegrityService : linkToDeath
+17:21:10.607 PlayCore                UID: [10138]  PID: [9622] OnRequestIntegrityTokenCallback : onRequestIntegrityToken
+17:21:10.607 PlayCore                UID: [10138]  PID: [9622] IntegrityService : Unbind from service.
+17:21:10.607 zza                     Play Integrity Token fetch failed, falling back to Recaptcha-17: Integrity API error (-17): There is a transient error on the calling device.
+                                     Retry with an exponential backoff.
+                                      (https://developer.android.com/google/play/integrity/reference/com/google/android/play/core/integrity/model/IntegrityErrorCode.html#CLIENT_TRANSIENT_ERROR).
+17:21:10.613 FIAM.Display            Unbinding from activity: com.allride.tools.ui.activities.AddPhoneActivity
+17:21:10.613 FIAM.Headless           Removing display event component
+17:21:10.613 SessionLifecycleClient  Sending lifecycle 2 to service
+17:21:10.613 SessionLifecycleService Activity backgrounding at 24040431
+17:21:10.617 ActivityThread          handleWindowVisibility: no activity for token android.os.BinderProxy@54a6f05
+17:21:10.625 FIAM.Display            Binding to activity: com.google.firebase.auth.internal.RecaptchaActivity
+17:21:10.625 FIAM.Headless           Setting display event component
+17:21:10.625 SessionLifecycleClient  Sending lifecycle 1 to service
+17:21:10.625 SessionLifecycleService Activity foregrounding at 24040443.
+17:21:10.661 System                  Ignoring header X-Firebase-Locale because its value was null.
+17:21:10.716 EGL_emulation           tid 9703: eglSurfaceAttrib(1719): error 0x3009 (EGL_BAD_MATCH)
+17:21:10.716 OpenGLRenderer          Failed to set EGL_SWAP_BEHAVIOR on surface 0x7181c7d01400, error=EGL_BAD_MATCH
+17:21:10.721 EGL_emulation           eglMakeCurrent: 0x7181e6f90a00: ver 3 2 (tinfo 0x7181e6ecf1e0)
+17:21:10.918 FIAM.Display            Unbinding from activity: com.google.firebase.auth.internal.RecaptchaActivity
+17:21:10.918 FIAM.Headless           Removing display event component
+17:21:10.919 SessionLifecycleClient  Sending lifecycle 2 to service
+17:21:10.919 SessionLifecycleService Activity backgrounding at 24040737
+17:21:10.972 EGL_emulation           eglMakeCurrent: 0x7181e6f90a00: ver 3 2 (tinfo 0x7181e6ecf1e0)
+17:21:10.983 RecaptchaActivity       Could not start operation - already in progress
+17:21:10.991 FIAM.Display            Binding to activity: com.google.firebase.auth.internal.RecaptchaActivity
+17:21:10.991 SessionLifecycleClient  Sending lifecycle 1 to service
+17:21:10.991 SessionLifecycleService Activity foregrounding at 24040809.
+17:21:10.991 FIAM.Headless           Setting display event component
+17:21:11.013 System                  Ignoring header X-Firebase-Locale because its value was null.
+17:21:11.021 FIAM.Display            Unbinding from activity: com.google.firebase.auth.internal.RecaptchaActivity
+17:21:11.021 FIAM.Headless           Removing display event component
+17:21:11.021 SessionLifecycleClient  Sending lifecycle 2 to service
+17:21:11.021 SessionLifecycleService Activity backgrounding at 24040839
+17:21:11.100 TextInputLayout         EditText added is not a TextInputEditText. Please switch to using that class instead.
+17:21:11.156 TextInputLayout         EditText added is not a TextInputEditText. Please switch to using that class instead.
+17:21:11.161 FIAM.Display            Binding to activity: com.allride.tools.ui.activities.AddPhoneActivity
+17:21:11.161 SessionLifecycleClient  Sending lifecycle 1 to service
+17:21:11.161 FIAM.Headless           Setting display event component
+17:21:11.161 SessionLifecycleService Activity foregrounding at 24040979.
+17:21:11.170 SessionLifecycleClient  Sending lifecycle 2 to service
+17:21:11.170 FIAM.Display            Unbinding from activity: com.allride.tools.ui.activities.AddPhoneActivity
+17:21:11.170 SessionLifecycleService Activity backgrounding at 24040988
+17:21:11.170 FIAM.Headless           Removing display event component
+17:21:11.301 JavaBinder              BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.google.android.play.integrity.internal.u
+17:21:11.302 System                  A resource failed to call end. 
+17:21:13.234 FA                      Application backgrounded at: timestamp_millis: 1751491271217
+17:21:15.268 RecaptchaActivity       Could not start operation - already in progress
+17:21:15.273 FIAM.Headless           went foreground
+17:21:15.273 FIAM.Display            Binding to activity: com.google.firebase.auth.internal.RecaptchaActivity
+17:21:15.273 FIAM.Headless           Setting display event component
+17:21:15.274 FIAM.Headless           Forcing fetch from service rather than cache. Test Device: false | App Fresh Install: true
+17:21:15.275 SessionLifecycleClient  Sending lifecycle 1 to service
+17:21:15.275 SessionLifecycleService Activity foregrounding at 24045093.
+17:21:15.275 FIAM.Headless           Fetching campaigns from service.
+17:21:15.276 DynamiteModule          Local module descriptor class for com.google.android.gms.providerinstaller.dynamite not found.
+17:21:15.278 DynamiteModule          Considering local module com.google.android.gms.providerinstaller.dynamite:0 and remote module com.google.android.gms.providerinstaller.dynamite:0
+17:21:15.278 ProviderInstaller       Failed to load providerinstaller module: No acceptable module com.google.android.gms.providerinstaller.dynamite found. Local version is 0 and remote version is 0.
+17:21:15.278 ProviderInstaller       Failed to report request stats: reportRequestStats [class android.content.Context, long, long]
+17:21:15.320 TextInputLayout         EditText added is not a TextInputEditText. Please switch to using that class instead.
+17:21:15.338 TextInputLayout         EditText added is not a TextInputEditText. Please switch to using that class instead.
+17:21:15.372 TextInputLayout         EditText added is not a TextInputEditText. Please switch to using that class instead.
+17:21:15.382 FIAM.Display            Binding to activity: com.allride.tools.ui.activities.AddPhoneActivity
+17:21:15.382 FIAM.Headless           Setting display event component
+17:21:15.382 SessionLifecycleClient  Sending lifecycle 1 to service
+17:21:15.382 SessionLifecycleService Activity foregrounding at 24045200.
+17:21:15.389 FIAM.Display            Unbinding from activity: com.allride.tools.ui.activities.AddPhoneActivity
+17:21:15.390 FIAM.Headless           Removing display event component
+17:21:15.390 SessionLifecycleClient  Sending lifecycle 2 to service
+17:21:15.390 SessionLifecycleService Activity backgrounding at 24045208
+17:21:15.443 SessionLifecycleClient  Sending lifecycle 2 to service
+17:21:15.443 SessionLifecycleService Activity backgrounding at 24045261
+17:21:15.453 EGL_emulation           tid 9703: eglSurfaceAttrib(1719): error 0x3009 (EGL_BAD_MATCH)
+17:21:15.453 OpenGLRenderer          Failed to set EGL_SWAP_BEHAVIOR on surface 0x7181d2a68900, error=EGL_BAD_MATCH
+17:21:15.501 EGL_emulation           eglMakeCurrent: 0x7181e6f90a00: ver 3 2 (tinfo 0x7181e6ecf1e0)
+17:21:15.509 FIAM.Display            Binding to activity: com.allride.tools.ui.activities.AddPhoneActivity
+17:21:15.509 FIAM.Headless           Setting display event component
+17:21:15.509 SessionLifecycleClient  Sending lifecycle 1 to service
+17:21:15.510 SessionLifecycleService Activity foregrounding at 24045327.
+17:21:15.545 FIAM.Headless           Successfully fetched 0 messages from backend
+17:21:16.105 AddPhoneFragment        onCodeSent AD8T5Iuzwkz457K3jxual4rr1_LC5GM77wyhcHeC4AMa3ZwK3doeeZ8SM7qGtQUkZebwxAQBOSNhDXYrROnjniJM-k67YvoxdUs6s1_sIiGA5SXKPf49U8TYsbKGps6GQ1NfVAeNycFyPyzyAgkwSXzfkt4WeZvLlFLRUrN-Erv4FgnWPPRanVrQUlk4gJArcUziIURB1PKQhnIbZOdNqW3Glxvs4o5oJTjiwPGm8LxEUydSIg9s7Ct-BA0vuxjO-7O-3MLdsWo3
+--------- beginning of crash
+17:21:16.105 AndroidRuntime          Shutting down VM
+17:21:16.105 AndroidRuntime          FATAL EXCEPTION: main
+                                     Process: com.allride.core, PID: 9622
+                                     java.lang.NullPointerException
+                                     	at com.allride.tools.ui.fragments.AddPhoneFragment.getBinding(AddPhoneFragment.kt:33)
+                                     	at com.allride.tools.ui.fragments.AddPhoneFragment.access$getBinding(AddPhoneFragment.kt:30)
+                                     	at com.allride.tools.ui.fragments.AddPhoneFragment$callbacks$1.onCodeSent(AddPhoneFragment.kt:57)
+                                     	at com.google.android.gms.internal.firebase-auth-api.zzaeu.onCodeSent(com.google.firebase:firebase-auth@@23.1.0:5)
+                                     	at com.google.android.gms.internal.firebase-auth-api.zzadz.zza(com.google.firebase:firebase-auth@@23.1.0:2)
+                                     	at com.google.android.gms.internal.firebase-auth-api.zzaed.run(com.google.firebase:firebase-auth@@23.1.0:4)
+                                     	at android.os.Handler.handleCallback(Handler.java:873)
+                                     	at android.os.Handler.dispatchMessage(Handler.java:99)
+                                     	at android.os.Looper.loop(Looper.java:193)
+                                     	at android.app.ActivityThread.main(ActivityThread.java:6816)
+                                     	at java.lang.reflect.Method.invoke(Native Method)
+                                     	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:518)
+                                     	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:858)
+17:21:16.159 System                  A resource failed to call end. 
+17:22:15.552 FirebaseAuth            [SmsRetrieverHelper] Timed out waiting for SMS.

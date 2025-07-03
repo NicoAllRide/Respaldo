@@ -61,6 +61,8 @@ Set Date Variables
     Set Global Variable    ${end_date_tomorrow}
     ${expiration_date_qr}=    Set Variable    ${fecha_manana}T14:10:37.968Z
     Set Global Variable    ${expiration_date_qr}
+        ${end_date_pastTomorrow}=    Set Variable    ${fecha_pasado_manana}T03:00:00.000Z
+    Set Global Variable    ${end_date_pastTomorrow}
 
 2 hours local
     ${date}    Get Current Date    time_zone=local    exclude_millis=yes
@@ -74,6 +76,7 @@ Set Date Variables
     Set Global Variable    ${formatted_one_hour_later}
 
 Create Schedule Alto - Apumanque 19:00 hrs
+    [Documentation]    Crea una ruta desde 0, fijando un horario relativo a la hora actual y limitando la capacidad a 1 pasajero.
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -93,9 +96,9 @@ Create Schedule Alto - Apumanque 19:00 hrs
     ${scheduleId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${scheduleId}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    Sleep    2s
-
+    Sleep    3s
 Create services
+    [Documentation]    Crea servicios asociados al schedule previamente creado. Se espera que al menos un servicio se cree exitosamente.
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -112,12 +115,12 @@ Create services
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    Sleep    2s
-
+    Sleep    3s
 Get Service Id
+    [Documentation]    Obtiene el ID del último servicio creado con el schedule actual. Verifica también que se haya creado correctamente.
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_tomorrow}&onlyODDs=false
+    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_pastTomorrow}&onlyODDs=false
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}
@@ -140,8 +143,10 @@ Get Service Id
     Set Global Variable    ${service_id}
 
     Log    Last created service ID: ${service_id}
+    Sleep    3s
 
 Get Driver Token
+    [Documentation]    Obtiene el accessToken de un conductor registrado, a partir de su ID y comunidad, para autenticación en futuras validaciones.
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/admin/pb/drivers/?community=${idComunidad}&driverId=${driverId}
@@ -162,9 +167,10 @@ Get Driver Token
 
     Log    ${tokenDriver}
     Log    ${response.content}
-
+    Sleep    3s
 
 Login User With Email(Obtain Token)
+    [Documentation]    Realiza login del usuario "nicolas+endauto" y guarda su token de autenticación para ser usado en la reserva de asientos.
         Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
@@ -185,8 +191,11 @@ Login User With Email(Obtain Token)
     ${accessToken}=    Set Variable    ${response.json()}[accessToken]
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
+    Sleep    3s
 
 Seat Reservation(User1-NicoEnd)
+    [Documentation]    Realiza la reserva de asiento del primer usuario (NicoEnd). Si la capacidad del servicio es 1, esta debería ser la única reserva válida permitida.
+
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -203,9 +212,10 @@ Seat Reservation(User1-NicoEnd)
     Run Keyword If    '${code}' == '200' or '${code}' == '409'    Log    Status code is acceptable: ${code}
     ...    ELSE    Fail    Unexpected status code: ${code}
     Log    ${code}
-    Sleep    5s
-
+    Sleep    3s
 Seat Reservation(User2-Pedro Pascal Available Seat)
+    [Documentation]    Si el usuario 1 ya reservó correctamente y la capacidad está llena, este usuario no debería poder reservar. Se espera un error 409.
+
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -219,7 +229,9 @@ Seat Reservation(User2-Pedro Pascal Available Seat)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Sleep    5s
+
 Seat Reservation(User3-Kratos Available Seat)
+    [Documentation]    Si la capacidad sigue siendo 1 y el usuario 1 ya reservó, este usuario tampoco debería poder reservar. Se espera un error 409.
 
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -235,6 +247,8 @@ Seat Reservation(User3-Kratos Available Seat)
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Sleep    3s
 Get reservations (Should only be one)
+    [Documentation]    Verifica que solo exista una reserva asociada al servicio. Si hay más de una, indica que el control de capacidad falló.
+
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    https://stage.allrideapp.com/api/v1/admin/pb/service/${service_id}?community=${idComunidad}
@@ -255,8 +269,10 @@ Get reservations (Should only be one)
     Set Global Variable    ${reservationId}
 
     Log    ${response.content}
-
+    Sleep    3s
 Delete Route
+    [Documentation]    Elimina la ruta y su programación asociada, dejando el sistema limpio tras la ejecución de las pruebas.
+
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)

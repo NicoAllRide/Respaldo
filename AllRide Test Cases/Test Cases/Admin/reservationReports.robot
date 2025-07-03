@@ -161,84 +161,6 @@ Get Service Id
 
 
 
-Make Bulk Reservation(3 should pass, one fail)
-    skip
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/bookService/bulk/${service_id}?community=6654ae4eba54fe502d4e4187
-    ...    data={"users":[{"userId":"666078059a5ece0ee6e95904"},{"userId":"66f5becbf3a0b05c0092e66f"},{"userId":"66e30a06e2b22c7d017bb492"},{"userId":"66d8cf4f4a7101503b01f84a"}]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-
-    ${correctReservation1}=      Set Variable    ${response.json()}[correct][0][userId]
-    ${correctReservation2}=      Set Variable    ${response.json()}[correct][1][userId]
-    ${correctReservation3}=      Set Variable    ${response.json()}[correct][2][userId]
-    ${withErrorsUser}=      Set Variable    ${response.json()}[withErrors][0][user]
-    ${withErrorsMessage}=      Set Variable    ${response.json()}[withErrors][0][message]
-    ${withErrorsCode}=      Set Variable    ${response.json()}[withErrors][0][code]
-    Should Be Equal As Strings    ${correctReservation1}    666078059a5ece0ee6e95904            The user with certification webcontrol could not reserve, failing
-    Should Be Equal As Strings    ${correctReservation2}    66e30a06e2b22c7d017bb492            The user with certification webcontrol could not reserve, failing
-    Should Be Equal As Strings    ${correctReservation3}    66d8cf4f4a7101503b01f84a            The user with certification webcontrol could not reserve, failing
-    
-    #----WITH ERRORS--#
-    Should Be Equal As Strings    ${withErrorsUser}    66f5becbf3a0b05c0092e66f
-    Should Be Equal As Strings    ${withErrorsMessage}    Unauthorized to book.
-    Should Be Equal As Strings    ${withErrorsCode}    webcontrol_failed
-    Sleep    5s
-    #---------CASO1 Tres usuarios con reservas, con webcontrol sin liberación de asientos, 1 usuario no acreditado----------------------------#
-    # Crear reserva masiva con 4 usuarios, 3 deberían pasar, uno debería fallar por webcontrol
-    # Asignar recursos para crear dos salidas
-    # Verificar que cada salida tenga la misma cantidad de reservas
-    # Verificar que cada salida tenga el mismo serviceId
-    # Aceptar servicio con ambos conductores
-    # Iniciar sesión cómo auxiliar
-    # Obtener salidas andando, deberían ser dos, estas salidas deberían tener la misma cantidad de reservas
-    # Validar usuarios con QR, solamente aquellos que tienen reserva y webcontrol deberían pasar
-    # Usuario que no cuenta con webcontrol no debería funcionar la validación
-    # Buses cuentan con solo dos asientos, por lo que solo debería dejar validarme dos usuarios en una salida, y uno en la siguiente.
-    # Vincular validaciones con salida correspondiente
-    # Revisar en Coordinacion Interna que cada vinculación de validación esté en su salida correspondiente
-    # Finalizar viaje con ambos conductores
-
-#---------CASO2,  Dos usuarios con reservas, con webcontrol sin liberación de asientos, 1 usuario acreditado sin reserva, 1 usuario no acreditado ----------------------------#
-    # Crear reserva masiva con tres usuarios, 2 deberían pasar, uno debería fallar por webcontrol
-    # Asignar recursos para crear dos salidas
-    # Verificar que cada salida tenga la misma cantidad de reservas
-    # Verificar que cada salida tenga el mismo serviceId
-    # Aceptar servicio con ambos conductores
-    # Iniciar sesión cómo auxiliar
-    # Obtener salidas andando, deberían ser dos, estas salidas deberían tener la misma cantidad de reservas
-    # Validar usuarios con QR, solamente aquellos que tienen webcontrol deberían pasar (3 usuarios, 2 que tienen reserva, 1 que no)
-    # Usuario que no cuenta con webcontrol no debería funcionar la validación
-    # Buses cuentan con solo dos asientos, por lo que solo debería dejar validarme dos usuarios en una salida, y uno en la siguiente. Hacer el intento de validarme en una salida donde ya hay reservas, no debería dejarme continuar, pero si en la salida siguiente(Luego de validados los dos usuarios)
-    # Vincular validaciones con salida correspondiente
-    # Revisar en Coordinacion Interna que cada vinculación de validación esté en su salida correspondiente
-    # Finalizar viaje con ambos conductores
-
-    #---------CASO3,  Dos usuarios con reservas, con webcontrol con liberación de asientos, 1 usuario acreditado sin reserva, 1 usuario no acreditado ----------------------------#
-    # Crear reserva masiva con tres usuarios, 2 deberían pasar, uno debería fallar por webcontrol
-    # Asignar recursos para crear dos salidas
-    # Verificar que cada salida tenga la misma cantidad de reservas
-    # Verificar que cada salida tenga el mismo serviceId
-    # Aceptar servicio con ambos conductores
-    # Iniciar sesión cómo auxiliar
-    # Obtener salidas andando, deberían ser dos, estas salidas deberían tener la misma cantidad de reservas
-    # Liberar reservas, verificar que se hayan liberado del servicio completo, no solo de la salida
-    # Validar usuarios con QR, solamente aquellos que tienen webcontrol, por lo que el usuario sin reserva y acreditado, debería poder validarse en cualquiera de las dos salidas, (validar, eliminar validación, y validar en otra salida para probar)
-    # Usuario que no cuenta con webcontrol no debería funcionar la validación
-    # Buses cuentan con solo dos asientos, por lo que solo debería dejar validarme dos usuarios en una salida, y uno en la siguiente. Hacer el intento de validarme en una salida donde ya hay asientos utilizados, no debería dejarme continuar, pero si en la salida siguiente(Luego de validados los dos usuarios)
-    # Vincular validaciones con salida correspondiente
-    # Revisar en Coordinacion Interna que cada vinculación de validación esté en su salida correspondiente
-    # Finalizar viaje con ambos conductores
 
 Get Driver Token
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -283,108 +205,11 @@ Get Driver Token 2
     Log    ${tokenDriver2}
     Log    ${response.content}
 
-Resource Assignment(Driver and Vehicle Without reservations assignment)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/assignServiceResources/${service_id}?community=6654ae4eba54fe502d4e4187
-    ...    data=[{"multipleDrivers":false,"driver":{"driverId":"6654cec2ba54fe502d4e6a0a"},"drivers":[],"vehicle":{"vehicleId":"666941a7b8d6ea30f9281110","capacity":2},"passengers":[],"departure":null},{"multipleDrivers":false,"driver":{"driverId":"668309b8bb41bfd79a461dc3"},"drivers":[],"vehicle":{"vehicleId":"66d86aafd60f7ada27c56e23","capacity":2},"passengers":[],"departure":null}]
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    
-    Dictionary Should Contain Key    ${response.json()}    resources      No resources found in departures, Failing
-
-    ${routeId2} =     Set Variable    ${response.json()}[routeId]
-    Should Be Equal As Strings    ${routeId2}    66f310608e6c377a3f43968e        Departures created dont have the selected route, failing
-    
-    ${resources}=     Set Variable    ${response.json()}[resources]
-    Length Should Be    ${resources}    2            There should be 2 departures, but only found ${resources}
-
-    ${departureId_1}=    Set Variable    ${response.json()}[resources][0][departure][departureId]
-    ${departureId_2}=    Set Variable    ${response.json()}[resources][1][departure][departureId]
-
-    ${reservations}=    Set Variable    ${response.json()}[reservations]
-    #Length Should Be    ${reservations}    3        There should be 3 reservations but only found ${reservations}
-
-    Set Global Variable    ${departureId_1}
-    Set Global Variable    ${departureId_2}
-
-
-Get departureId
-    Skip
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/service/${service_id}?community=${idComunidad}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    # Almacenamos la respuesta de json en una variable para poder jugar con ella
-    ${responseJson}=    Set Variable    ${response.json()}
-
-    ${departureId}=    Set Variable    ${response.json()}[resources][0][departure][departureId]
-    Set Global Variable    ${departureId}
-
-    Log    ${departureId}
-
-
-
-Get Assistant Token
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/assistants/list?community=${idComunidad2}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    List Should Contain Value    ${response.json()}[0]        accessToken    No accessToken was found in Assistant, Failing
-    ${access_token}=    Set Variable    ${response.json()[0]['accessToken']}
-    ${tokenAssistant}=    Evaluate    "Bearer " + "${access_token}"
-    Set Global Variable    ${tokenAssistant}
-
-    Log    ${tokenAssistant}
-    Log    ${response.content}
-
-Get Assistant Info(Self)
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/pb/provider/me
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAssistant}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-    Should Not Be Empty    ${response.json()}
-
-Login User With Email(Obtain Token)
-    Skip
+Login User With Email(Obtain Token) Barbi
         Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"username":"nicolas+userpelambres@allrideapp.com","password":"Lolowerty21@"}
+    ${jsonBody}=    Set Variable    {"username":"nicolas+barbara@allrideapp.com","password":"Lowerty21@"}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -399,106 +224,38 @@ Login User With Email(Obtain Token)
     Log    ${code}
     List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
     ${accessToken}=    Set Variable    ${response.json()}[accessToken]
-    ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
-    Set Global Variable    ${accessTokenNico}
+    ${accessTokenBarbi}=    Evaluate    "Bearer ${accessToken}"
+    Set Global Variable    ${accessTokenBarbi}
 
 
-Driver Accept Service 1
+Seat Reservation(User2-Barbi)
     Create Session    mysesion    ${STAGE_URL}    verify=true
-
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
     # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenDriver1}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    PUT On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/acceptOrReject/${departureId_1}
-    ...    data={"state":"accepted"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-    Dictionary Should Contain Key    ${response.json()}    stateHistory        No State History Found in depararture, failing
-
-    ${stateHistory}=    Set Variable    ${response.json()}[stateHistory]
-    ${stateHistory3}=    Set Variable    ${stateHistory}[3][state]
-    Should Be Equal As Strings    ${stateHistory3}    accepted            State should be accepted but is ${stateHistory3}
-
-Driver Accept Service 2
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenDriver2}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    PUT On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/acceptOrReject/${departureId_2}
-    ...    data={"state":"accepted"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
-
-    Dictionary Should Contain Key    ${response.json()}    stateHistory    No State History Found in depararture, failing
-
-    ${stateHistory}=    Set Variable    ${response.json()}[stateHistory]
-    ${stateHistory3}=    Set Variable    ${stateHistory}[3][state]
-    Should Be Equal As Strings    ${stateHistory3}    accepted    State should be accepted but is ${stateHistory3}
-
-
-
-Start Departure Leg 1
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${tokenDriver1}
-    ...    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${accessTokenBarbi}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/departure/${departureId_1}
-    ...    data={"departureId":"${departureId_1}","communityId":"${idComunidad2}","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"customParamsAtTheEnd":[],"routeId":"${scheduleId}","capacity":2,"busCode":"1111","driverCode":"159753","vehicleId":"666941a7b8d6ea30f9281110","shareToUsers":false,"customParams":[]}
+    ...    url=/api/v1/pb/user/booking
+    ...    data={"serviceId":"${service_id}"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
 
-    ${access_token}=    Set Variable    ${response.json()}[token]
-    ${departureToken1}=    Evaluate    "Bearer " + "${access_token}"
-    Log    ${departureToken1}
-    Log    ${code}
-    Set Global Variable    ${departureToken1}
-Start Departure Leg 2
+
+Search reservation report 
     Create Session    mysesion    ${STAGE_URL}    verify=true
-
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
     # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${tokenDriver2}
-    ...    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
+    ${response}=    GET On Session
     ...    mysesion
-    ...    url=/api/v2/pb/driver/departure/${departureId_2}
-    ...    data={"departureId":"${departureId_2}","communityId":"${idComunidad2}","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"customParamsAtTheEnd":[],"routeId":"${scheduleId}","capacity":3,"busCode":"","driverCode":"159159","vehicleId":"66d86aafd60f7ada27c56e23","shareToUsers":false,"customParams":[]}
+    ...    url=/api/v1/admin/pb/report/reservationsByRoutes?community=6654ae4eba54fe502d4e4187&startDate=${fecha_hoy}T04:00:00.000Z&endDate=${fecha_pasado_manana}T03:59:59.999Z&routeIds=66f310608e6c377a3f43968e
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
+    ${users}=    Set Variable    ${response.json()}
+    ${found}=    Evaluate    any(user.get("name") == "Barbara Lisboa" for user in ${users})
+    Should Be True    ${found}    msg=❌ User "Barbara Lisboa" was not found in the response.
 
-    ${access_token}=    Set Variable    ${response.json()}[token]
-    ${departureToken2}=    Evaluate    "Bearer " + "${access_token}"
-    Log    ${departureToken2}
-    Log    ${code}
-    Set Global Variable    ${departureToken2}
-
-    Sleep    50s

@@ -95,23 +95,7 @@ Login User With Email(Obtain Token)
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
 
-Verify Open RDD in Community
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    https://stage.allrideapp.com/api/v1/support/communities/653fd601f90509541a74868
 
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set variable    ${response.json()}
-    ${enabled}=    Set Variable
-    ...    ${responseJson}[config][privateBus][oDDServices][0][userRequests][freeRequests][enabled]
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    Should Be Equal As Strings    ${enabled}    True
 
 Get Places
     ${url}=    Set Variable
@@ -228,6 +212,22 @@ Start Departure
      Set Global Variable    ${departureToken}
     Log     ${departureId}
 
+Get RTL(Should show active departure - No restriction) 
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET On Session
+    ...    mysesion
+    ...    url=/api/v1/pb/user/lastBusesUpdate/${idComunidad}
+    ...    headers=${headers}
+    Status Should Be    200
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+
+
 Get User QR(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -343,7 +343,7 @@ Stop Post Leg Departure
 
     # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
+    ...    Authorization=Bearer 8b4a5f267c2a446f592d9dbc67f76db83a41af0bfa7c8a4d061d983a3518437e810ca28af58880b6df0110f244b8a3dd559a94de2fc0872f8223c6dde3ece500
     ...    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
@@ -370,3 +370,48 @@ Get Stadistics
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Should Be Equal As Numbers    ${response.status_code}    200
     Log    ${response.content}
+
+Get departure Details
+    skip
+ # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v2/pb/driver/departure/end/statistics/${rddId}
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenDriver}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+   ${json}=    Set Variable    ${response.json()}
+    ${shapeId}=    Set Variable    ${json}[_id]
+    Set Global Variable    ${shapeId}
+
+    ${expected_community}=    Set Variable    653fd601f90509541a748683
+    ${expected_supercommunity}=    Set Variable    653fd68233d83952fafcd4be
+    ${expected_name}=    Set Variable    Solicitud de Taxis Coni y Nico
+    ${expected_odd_type}=    Set Variable    Taxis Coni y Nico
+    ${expected_direction}=    Set Variable    in
+    ${expected_state}=    Set Variable    pending
+    ${expected_capacity}=    Set Variable    4
+    ${expected_start_capacity}=    Set Variable    5
+    ${expected_comment}=    Set Variable    Conducir con precaución
+
+    # Validaciones de strings simples
+    Should Be Equal As Strings    ${json}[name]             ${expected_name}          msg=❌ Nombre incorrecto. Encontrado: "${json}[name]"
+    Should Be Equal As Strings    ${json}[oddType]          ${expected_odd_type}      msg=❌ oddType incorrecto. Encontrado: "${json}[oddType]"
+    Should Be Equal As Strings    ${json}[direction]        ${expected_direction}     msg=❌ Dirección incorrecta. Encontrado: "${json}[direction]"
+    Should Be Equal As Strings    ${json}[state]            ${expected_state}         msg=❌ Estado incorrecto. Encontrado: "${json}[state]"
+    Should Be Equal As Strings    ${json}[comments]         ${expected_comment}       msg=❌ Comentario incorrecto. Encontrado: "${json}[comments]"
+
+    # Validaciones de IDs de comunidad
+    Should Be Equal As Strings    ${json}[communityId]      ${expected_community}     msg=❌ communityId incorrecto. Encontrado: "${json}[communityId]"
+    Should Be Equal As Strings    ${json}[superCommunityId] ${expected_supercommunity} msg=❌ superCommunityId incorrecto. Encontrado: "${json}[superCommunityId]"
+
+    # Validaciones de arrays
+    Should Contain    ${json}[communities][0][_id]         ${expected_community}     msg=❌ Falta ID de comunidad en communities
+    Should Contain    ${json}[superCommunities][0][_id]    ${expected_supercommunity} msg=❌ Falta ID de supercomunidad en superCommunities
+
+    # Validaciones numéricas
+    Should Be Equal As Integers    ${json}[capacity]        ${expected_capacity}      msg=❌ Capacidad incorrecta. Encontrado: "${json}[capacity]"
+    Should Be Equal As Integers    ${json}[startCapacity]   ${expected_start_capacity} msg=❌ startCapacity incorrecto. Encontrado: "${json}[startCapacity]"

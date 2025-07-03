@@ -123,6 +123,8 @@ Create RDD As Admin With Approval
 
     ${rddId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${rddId}
+
+    Sleep    5s
 Reject RDD
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)

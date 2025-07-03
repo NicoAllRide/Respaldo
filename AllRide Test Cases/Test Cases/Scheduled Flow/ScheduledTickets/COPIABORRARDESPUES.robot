@@ -7,12 +7,14 @@ Library     DateTime
 Library     Collections
 Library     SeleniumLibrary
 Library     RPA.JSON
+Library    RPA.Database
 Resource    ../../Variables/variablesStage.robot
 
 
 
 *** Test Cases ***
 Set Date Variables
+    [Documentation]  Esta prueba consiste en tanto  
     ${fecha_hoy}=    Get Current Date    result_format=%Y-%m-%d
     Set Global Variable    ${fecha_hoy}
 
