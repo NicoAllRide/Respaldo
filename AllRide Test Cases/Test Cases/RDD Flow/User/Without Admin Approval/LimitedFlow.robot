@@ -86,6 +86,7 @@ Get Next Monday At 14 CLT (UTC 18)
 
     # Sumar días para obtener el próximo lunes
     ${next_monday}=    Add Time To Date    ${now}    ${days_until_monday} days
+    Set Global Variable    ${next_monday}
 
     # Obtener solo la fecha y combinarla con hora 18:00:00 UTC (14:00 hora Chile UTC-4)
     ${next_monday_date}=    Convert Date    ${next_monday}    result_format=%Y-%m-%d
@@ -93,6 +94,7 @@ Get Next Monday At 14 CLT (UTC 18)
 
     Log    Próximo lunes a las 14:00 CLT (UTC 18:00): ${next_monday_at_18}
     Set Global Variable    ${next_monday_at_18}
+    Set Global Variable    ${next_monday_date}
 
 Get Next 4 Mondays At 14 CLT (UTC 18)
     # Obtener fecha actual en UTC
@@ -220,7 +222,7 @@ Create ODD Limited As User(Restricted:userLocation)
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
     ${jsonBody}=    Set Variable
-    ...    {"startLocation":{"placeId":"6852fa6a402dddfa16b72eee","stopId":"6862e536e036e36d0ebc80c3","lat":"-34.40302280653645","lon":"-70.83805069327354","loc":["-70.83805069327354","-34.40302280653645"],"address":"Dirección personalizada Los Césares 905Rengo, Chile","isUserStop":true},"endLocation":{"placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b","lat":"-34.4111","lon":"-70.8537","loc":["-70.8537","-34.4111"],"address":"Hospital Rengo","isUserStop":false},"direction":"in","oddType":"Limitada Nico","comments":"Conducir con precaución","serviceDate":"${next_monday_at_18}","name":"Solicitud Limitada Nico"}
+    ...    {"startLocation":{"placeId":"6852fa6a402dddfa16b72eee","stopId":"6862e536e036e36d0ebc80c3","lat":"-34.40302280653645","lon":"-70.83805069327354","loc":["-70.83805069327354","-34.40302280653645"],"address":"Dirección personalizada Los Césares 905Rengo, Chile","isUserStop":true},"endLocation":{"placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b","lat":"-34.4111","lon":"-70.8537","loc":["-70.8537","-34.4111"],"address":"Hospital Rengo","isUserStop":false},"direction":"in","oddType":"Limitada Nico","comments":"","serviceDate":"${next_monday_at_18}","name":"Solicitud Limitada Nico"}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -287,7 +289,7 @@ Create Same ODD Limited As User(Should Fail 409)
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
     ${jsonBody}=    Set Variable
-    ...    {"startLocation":{"placeId":"6852fa6a402dddfa16b72eee","stopId":"6862e536e036e36d0ebc80c3","lat":"-34.40302280653645","lon":"-70.83805069327354","loc":["-70.83805069327354","-34.40302280653645"],"address":"Dirección personalizada Los Césares 905Rengo, Chile","isUserStop":true},"endLocation":{"placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b","lat":"-34.4111","lon":"-70.8537","loc":["-70.8537","-34.4111"],"address":"Hospital Rengo","isUserStop":false},"direction":"in","oddType":"Limitada Nico","comments":"Conducir con precaución","serviceDate":"${next_monday_at_18}","name":"Solicitud Limitada Nico"}
+    ...    {"startLocation":{"placeId":"6852fa6a402dddfa16b72eee","stopId":"6862e536e036e36d0ebc80c3","lat":"-34.40302280653645","lon":"-70.83805069327354","loc":["-70.83805069327354","-34.40302280653645"],"address":"Dirección personalizada Los Césares 905Rengo, Chile","isUserStop":true},"endLocation":{"placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b","lat":"-34.4111","lon":"-70.8537","loc":["-70.8537","-34.4111"],"address":"Hospital Rengo","isUserStop":false},"direction":"in","oddType":"Limitada Nico","comments":"","serviceDate":"${next_monday_at_18}","name":"Solicitud Limitada Nico"}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -303,7 +305,7 @@ Create Limited ODD (Invalid day outside allowed configuration, should Fail 410)
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
     ${jsonBody}=    Set Variable
-    ...    {"startLocation":{"placeId":"6852fa6a402dddfa16b72eee","stopId":"6862e536e036e36d0ebc80c3","lat":"-34.40302280653645","lon":"-70.83805069327354","loc":["-70.83805069327354","-34.40302280653645"],"address":"Dirección personalizada Los Césares 905Rengo, Chile","isUserStop":true},"endLocation":{"placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b","lat":"-34.4111","lon":"-70.8537","loc":["-70.8537","-34.4111"],"address":"Hospital Rengo","isUserStop":false},"direction":"in","oddType":"Limitada Nico","comments":"Conducir con precaución","serviceDate":"${next_wednesday_at_18}","name":"Solicitud Limitada Nico"}
+    ...    {"startLocation":{"placeId":"6852fa6a402dddfa16b72eee","stopId":"6862e536e036e36d0ebc80c3","lat":"-34.40302280653645","lon":"-70.83805069327354","loc":["-70.83805069327354","-34.40302280653645"],"address":"Dirección personalizada Los Césares 905Rengo, Chile","isUserStop":true},"endLocation":{"placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b","lat":"-34.4111","lon":"-70.8537","loc":["-70.8537","-34.4111"],"address":"Hospital Rengo","isUserStop":false},"direction":"in","oddType":"Limitada Nico","comments":"","serviceDate":"${next_wednesday_at_18}","name":"Solicitud Limitada Nico"}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -320,7 +322,7 @@ Create Limited ODD (Invalid origin stop outside allowed configuration, should Fa
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)
     ${jsonBody}=    Set Variable
-    ...    {"startLocation":{"placeId":"6654d4c8713b9a5184cfe1de","stopId":"6654d4c8713b9a5184cfe1df","lat":"-34.396547","lon":"-70.781935","loc":["-70.781935","-34.396547"],"address":"Media luna cerrillos","isUserStop":false},"endLocation":{"placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b","lat":"-34.4111","lon":"-70.8537","loc":["-70.8537","-34.4111"],"address":"Hospital Rengo","isUserStop":false},"direction":"in","oddType":"Limitada Nico","comments":"Conducir con precaución","serviceDate":"${next_monday_at_18}","name":"Solicitud Limitada Nico"}
+    ...    {"startLocation":{"placeId":"6654d4c8713b9a5184cfe1de","stopId":"6654d4c8713b9a5184cfe1df","lat":"-34.396547","lon":"-70.781935","loc":["-70.781935","-34.396547"],"address":"Media luna cerrillos","isUserStop":false},"endLocation":{"placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b","lat":"-34.4111","lon":"-70.8537","loc":["-70.8537","-34.4111"],"address":"Hospital Rengo","isUserStop":false},"direction":"in","oddType":"Limitada Nico","comments":"","serviceDate":"${next_monday_at_18}","name":"Solicitud Limitada Nico"}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
@@ -330,8 +332,73 @@ Create Limited ODD (Invalid origin stop outside allowed configuration, should Fa
     ...    json=${parsed_json}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+Process ODD (CI Table)
+    Set Log Level    TRACE
+    [Documentation]    Procesar RDD
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${jsonBody}=    Set Variable
+    ...    {"superCommunityId":"68542c2a3a0d319ed31a72a6","adminId":"66d75c62a1b7bc9a1dd231c6","adminName":"Soporte AllRide","oddSimpleFlow":false,"state":"pendingDriverAssignment","name":"Solicitud de Limitada Nico","oddType":"Limitada Nico","placeLat":-34.4111,"placeLon":-70.8537,"serviceCost":0,"calculatedCosts":{},"apportionByParams":[],"direction":"in","comments":"","serviceDate":"${next_monday_date}T17:55:21.000Z","extraMinutes":0,"estimatedArrival":"${next_monday_at_18}","reservations":[{"manuallyBooked":true,"userId":"6862e490e036e36d0ebc7dc4","stopId":"6862e536e036e36d0ebc80c3","placeId":null,"order":0,"estimatedArrival":"${next_monday_date}T17:55:21.000Z","distances":{"fromPrevious":0,"toNext":1993,"distanceToLocation":1993,"pctToLocation":1}}],"waypoints":[[-70.83805000000001,-34.40301],[-70.84125,-34.4025],[-70.84184,-34.402390000000004],[-70.84241,-34.40229],[-70.84303,-34.402260000000005],[-70.84376,-34.40229],[-70.84433,-34.402390000000004],[-70.84458000000001,-34.402440000000006],[-70.84540000000001,-34.402640000000005],[-70.8456,-34.402680000000004],[-70.84599,-34.40272],[-70.84715,-34.40279],[-70.84736000000001,-34.402800000000006],[-70.84736000000001,-34.40283],[-70.84737000000001,-34.4029],[-70.84742,-34.40297],[-70.84789,-34.40336],[-70.84813000000001,-34.40353],[-70.84913,-34.404270000000004],[-70.85003,-34.40502],[-70.85045000000001,-34.405460000000005],[-70.85126000000001,-34.406200000000005],[-70.85182,-34.40679],[-70.85251000000001,-34.4076],[-70.85308,-34.408530000000006],[-70.85337000000001,-34.409600000000005],[-70.85367000000001,-34.410720000000005],[-70.85381000000001,-34.41107]],"estimatedDistance":1993,"startLocation":{"lat":-34.40302280653645,"lon":-70.83805069327354,"loc":[-70.83805069327354,-34.40302280653645],"placeId":null,"stopId":"6862e536e036e36d0ebc80c3"},"endLocation":{"lat":-34.4111,"lon":-70.8537,"loc":[-70.8537,-34.4111],"placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b","referencePoint":true},"placeWaitTime":0,"linkedDeparture":"${oddId}","linkedDepartures":[],"reservationsToLink":[{"userId":"6862e490e036e36d0ebc7dc4","departureId":"${oddId}"}],"cabify":{"productId":null},"asap":false,"isEmergency":false,"isPastService":false,"communityId":"6654ae4eba54fe502d4e4187","serviceHour":"","placeName":"Hospital Rengo","placeLongName":"Hospital Rengo","hourIsDepartureOrArrival":"arrival","roundedDistance":"1.99","travelTime":279,"originalEstimatedArrival":"","originalServiceDate":"","originalTravelTime":279,"adjustmentFactor":1,"totalReservations":1,"arrivalDate":"${next_monday_at_18}"}
+    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=       Post On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/pb/odd?community=6654ae4eba54fe502d4e4187
+    ...    json=${parsed_json}
+    ...    headers=${headers}
+    
+    ${json}=    Set Variable    ${response.json()}
+    ${oddId_procceced}=    Set Variable    ${response.json()}[_id]
+    Set Global Variable    ${oddId_procceced}
+
+      # Estado actual debe ser 'pendingDriverAssignment'
+    Should Be Equal As Strings    ${json}[state]    pendingDriverAssignment
+    ...    msg=❌ Expected state to be 'pendingDriverAssignment' but got '${json}[state]'
+
+
+    # La reserva fue creada manualmente
+    Should Be True    ${json}[reservations][0][manuallyBooked]
+    ...    msg=❌ Reservation must be marked as manually booked
+
+    # La reserva fue aprobada por el conductor
+    Should Be True    ${json}[reservations][0][approvedByDriver]
+    ...    msg=❌ Reservation must be approved by driver
+
+    # oddType debe ser 'Limitada Nico'
+    Should Be Equal As Strings    ${json}[oddType]    Limitada Nico
+    ...    msg=❌ Expected oddType to be 'Limitada Nico' but got '${json}[oddType]'
+
+    # Verifica que haya coordenadas en waypoints
+    Should Not Be Empty    ${json}[waypoints][coordinates]
+    ...    msg=❌ Expected non-empty waypoints coordinates
+
+    # Verifica que estimatedDistance no sea 0
+    Should Not Be Equal As Numbers    ${json}[estimatedDistance]    0
+    ...    msg=❌ estimatedDistance should not be 0
+
+    # Validar que el adminId no esté vacío
+    Should Not Be Empty    ${json}[adminId]
+    ...    msg=❌ adminId should not be empty
+
+    # Primer estado debe ser 'created'
+    Should Be Equal As Strings    ${response.json()}[stateHistory][0][state]    created
+    ...    msg=❌ First state should be 'created' but got '${json}[stateHistory][0][state]'
+
+    # Segundo estado debe ser 'pendingDriverAssignment'
+    Should Be Equal As Strings    ${response.json()}[stateHistory][1][state]    pendingDriverAssignment
+    ...    msg=❌ Second state should be 'pendingDriverAssignment' but got '${json}[stateHistory][1][state]'
+
+    # Verifica que ambos estados tengan adminId
+    Should Not Be Empty    ${response.json()}[stateHistory][0][adminId]
+    ...    msg=❌ First state missing adminId
+
+    Should Not Be Empty    ${response.json()}[stateHistory][1][adminId]
+    ...    msg=❌ Second state missing adminId
 
 Cancel ODD from admin
+
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)https://stage.allrideapp.com/api/v1/admin/pb/odd/cancel/6863ff704193d3bf454699e1?community=6654ae4eba54fe502d4e4187
@@ -385,41 +452,23 @@ Cancel ODD from admin
     Should Be True    ${json}[startLocation][referencePoint]
     ...    msg=❌ startLocation.referencePoint should be True but got ${json}[startLocation][referencePoint]
 
+Cancel new ODD from admin
+
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)https://stage.allrideapp.com/api/v1/admin/pb/odd/cancel/6863ff704193d3bf454699e1?community=6654ae4eba54fe502d4e4187
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Post On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/pb/odd/cancel/${oddId_procceced}?community=6654ae4eba54fe502d4e4187
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+
+    ${json}=   Set Variable    ${response.json()}
+
 
 #------------------------Combinación de paradas--------------------------------#
-Create ODD Limited As User(Restricted: stopId) Wrong stop, should Fail
-    skip
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable
-    ...    {"startLocation":{"placeId":"6852fa6a402dddfa16b72eee","stopId":"6862e536e036e36d0ebc80c3","lat":"-34.40302280653645","lon":"-70.83805069327354","loc":["-70.83805069327354","-34.40302280653645"],"address":"Dirección personalizada Los Césares 905Rengo, Chile","isUserStop":true},"endLocation":{"placeId":"666728c8fea8eb2b26b20e81","stopId":"666728c8fea8eb2b26b20e82","lat":"-34.3965","lon":"-70.8721","loc":["-70.8721","-34.3965"],"address":"Minuto Verde Rengo","isUserStop":false},"direction":"in","oddType":"Limitada Nico","comments":"Conducir con precaución","serviceDate":"${next_thursday_at_22}","name":"Solicitud Limitada Nico"}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=  Run Keyword And Expect Error  HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v1/pb/user/oddepartures/6654ae4eba54fe502d4e4187  Post On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/user/oddepartures/${idComunidad2}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-
-Create ODD Limited As User(Restricted: stopId) correct stop, should pass
-    skip
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable
-    ...    {"startLocation":{"placeId":"66673701fea8eb2b26b23990","stopId":"66673701fea8eb2b26b23991","lat":"-34.3963","lon":"-70.8555","loc":["-70.8555","-34.3963"],"address":"Patitas Peludas Rengo","isUserStop":true},"endLocation":{"placeId":"666728c8fea8eb2b26b20e81","stopId":"666728c8fea8eb2b26b20e82","lat":"-34.3965","lon":"-70.8721","loc":["-70.8721","-34.3965"],"address":"Minuto Verde Rengo","isUserStop":false},"direction":"in","oddType":"Limitada Nico","comments":"Conducir con precaución","serviceDate":"${next_thursday_at_22}","name":"Solicitud Limitada Nico"}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=  Post On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/user/oddepartures/${idComunidad2}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
 Create ODD Limited As User(multiple dates) correct stop, should pass
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -489,7 +538,87 @@ Create ODD Limited As User(multiple dates) same request, should fail 409
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
-##Cancel ODD multiple stops and stopsId
+#Verificar odds compatibles para procesar, en este caso deberían ser las 4 que se crearon, siempre y cuando tengan estado por procesar
+
+Check compatible limited odd
+    skip
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=  GET On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/pb/odd/compatibleLimitedODDs/?community=6654ae4eba54fe502d4e4187&startLocation=null&endLocation=6654d4acba54fe502d4e6b6b&oddType=Limitada%20Nico&oddDirection=in&departureOrArrival=arrival&serviceDate=${next_monday_1_at_18}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+
+    Length Should Be    ${response}    1
+    ...    msg=❌ Expected only one matching ODD. More than one was found, which means services that shouldn't apply are being included.
+
+    ${json}=    Set Variable    ${response.json()}
+    
+    # Verifica que el estado actual sea 'waitingForCreation'
+    Should Be Equal As Strings    ${json}[state]    waitingForCreation
+    ...    msg=❌ Se esperaba estado 'waitingForCreation' pero se obtuvo '${json}[state]'
+
+    # Verifica que el tipo de ODD sea 'Limitada Nico'
+    Should Be Equal As Strings    ${json}[oddType]    Limitada Nico
+    ...    msg=❌ Se esperaba oddType 'Limitada Nico' pero se obtuvo '${json}[oddType]'
+
+    # Verifica que isLimited en oDDInfo sea True
+    Should Be True    ${json}[oDDInfo][isLimited]
+    ...    msg=❌ Se esperaba oDDInfo.isLimited en True pero se obtuvo ${json}[oDDInfo][isLimited]
+
+    # Verifica que isLimitedODD esté en True
+    Should Be True    ${json}[isLimitedODD]
+    ...    msg=❌ Se esperaba isLimitedODD en True pero se obtuvo ${json}[isLimitedODD]
+
+    # Verifica que haya una sola reserva
+    Length Should Be    ${json}[reservations]    1
+    ...    msg=❌ Se esperaba 1 reserva pero se encontró ${len(${json}[reservations])}
+
+    # Verifica que la reserva no esté validada
+    Should Be Equal As Strings    ${json}[reservations][0][validated]    False
+    ...    msg=❌ La reserva no debería estar validada
+
+    # Verifica que joined sea False
+    Should Be Equal As Strings    ${json}[reservations][0][joined]    False
+    ...    msg=❌ La reserva no debería estar unida (joined = False)
+
+    # Verifica que approvedByDriver sea True
+    Should Be True    ${json}[reservations][0][approvedByDriver]
+    ...    msg=❌ La reserva debería estar aprobada por el conductor
+
+    # Verifica que el usuario venga con nombre
+    Should Not Be Empty    ${json}[reservations][0][userId][name]
+    ...    msg=❌ Se esperaba un nombre de usuario en userId.name
+
+    # Verifica que el stopId exista en la reserva
+    Should Contain    ${json}[reservations][0]    stopId
+    ...    msg=❌ La reserva no contiene stopId
+
+    # Verifica que placeId en endLocation no sea null
+    Should Not Be Empty    ${json}[endLocation][placeId]
+    ...    msg=❌ placeId en endLocation no debería estar vacío
+
+    # Verifica que isLimited en endLocation sea True
+    Should Be True    ${json}[endLocation][isLimited]
+    ...    msg=❌ endLocation.isLimited debería ser True pero se obtuvo ${json}[endLocation][isLimited]
+
+    # Verifica que el startLocation tenga referencePoint en True
+    Should Be True    ${json}[startLocation][referencePoint]
+    ...    msg=❌ startLocation.referencePoint debería ser True pero se obtuvo ${json}[startLocation][referencePoint]
+
+    # Validaciones del stateHistory
+    Length Should Be    ${json}[stateHistory]    2
+    ...    msg=❌ El historial de estados debería tener 2 entradas
+
+    Should Be Equal As Strings    ${json}[stateHistory][0][state]    created
+    ...    msg=❌ El primer estado debería ser 'created' pero fue '${json}[stateHistory][0][state]'
+
+    Should Be Equal As Strings    ${json}[stateHistory][1][state]    waitingForCreation
+    ...    msg=❌ El segundo estado debería ser 'waitingForCreation' pero fue '${json}[stateHistory][1][state]'
 
 Cancel ODD from admin (multiple1)
     Create Session    mysesion    ${STAGE_URL}    verify=true

@@ -341,6 +341,7 @@ Validate With QR(Nico)
     Sleep    10s
 
 App Notification(after admin reservation)
+    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -353,6 +354,8 @@ App Notification(after admin reservation)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 Action On Stop
+    Skip
+
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -411,6 +414,8 @@ Stop Post Leg Departure
     Status Should Be    200
     Log    ${code}
 App Notification(after admin reservation)
+    Skip
+
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 

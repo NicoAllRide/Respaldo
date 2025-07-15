@@ -96,6 +96,22 @@ Create RDD As User(Pedro)
 
     ${rddIdPedro}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${rddIdPedro}
+Create RDD As User(Kratos - 410 expected)
+    [Documentation]     Intento de creación de RDD con un usuario que no tiene habilitado ningún servicio, debería fallar con error 410
+    Create Session    mysesion    ${Stage_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"endLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"}}
+    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
+    ${headers}=    Create Dictionary    Authorization=${tokenKratos}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=     Run Keyword And Expect Error  HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v1/pb/user/oddepartures/653fd601f90509541a748683    Post On Session
+    ...    mysesion
+    ...    url=${stage_url}/api/v1/pb/user/oddepartures/${idComunidad}
+    ...    json=${parsed_json}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+
 
 
 Create RDD As User(Need Admin Approval)

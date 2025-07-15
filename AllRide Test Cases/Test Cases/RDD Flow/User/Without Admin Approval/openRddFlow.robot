@@ -120,7 +120,7 @@ Create RDD As User
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    Post On Session
     ...    mysesion
-    ...    url=/api/v1/pb/user/oddepartures/${idComunidad}
+    ...    url=${CRIS_URL}/api/v1/pb/user/oddepartures/${idComunidad}
     ...    json=${parsed_json}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
