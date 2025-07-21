@@ -96,6 +96,33 @@ Set Date Variables
     Set Global Variable    ${formatted_one_hour_later}
 
 
+Connect PRE
+   ${URL_with_token}=    Set Variable    wss://stage.allrideapp.com/socket.io/?token=f9ba5aa5c820be617ef11c9c342ece3d7feef230f7e3c33ec84ddec91d9da4b8b3a94fb2e777a2c9360758d91e1b3efe31929efa123667fa4f371fbc037d938d&communityId=653fd68233d83952fafcd4be&EIO=3&transport=websocket
+    ${my_websocket}=    Connect    ${URL_with_token}
+    Log    Connected to WebSocket
+
+    Send    ${my_websocket}    40/pbStandby?token=f9ba5aa5c820be617ef11c9c342ece3d7feef230f7e3c33ec84ddec91d9da4b8b3a94fb2e777a2c9360758d91e1b3efe31929efa123667fa4f371fbc037d938d
+    Sleep    2s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received (auth): ${result}
+
+    Send    ${my_websocket}    42/pbStandby,["join"]
+    Sleep    2s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received (join): ${result}
+
+    Send    ${my_websocket}    42/pbStandby,["start"]
+    Sleep    2s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Received (start): ${result}
+
+    Send    ${my_websocket}    42/pbStandby,["updatePosition",{"latitude": -33.408100, "longitude": -70.565100, "speed": 4.0}]
+    Sleep    3s
+    ${result}=    Recv Data    ${my_websocket}
+    Log    Posición inicial enviada: ${result}
+
+
+
 Get Driver Token
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
@@ -290,71 +317,58 @@ Start Departure Leg
 
 Connect And Emit Events
     [Documentation]    Test connecting to WebSocket and sending events
-    ${URL_with_token}=     Set variable    wss://stage.allrideapp.com/socket.io/?token=${access_token}&EIO=3&transport=websocket
+    ${URL_with_token}=     Set variable    wss://stage.allrideapp.com/socket.io/?token=f9ba5aa5c820be617ef11c9c342ece3d7feef230f7e3c33ec84ddec91d9da4b8b3a94fb2e777a2c9360758d91e1b3efe31929efa123667fa4f371fbc037d938d&EIO=3&transport=websocket
     ${my_websocket}=    Connect    ${URL_with_token}
     Log    Connected to WebSocket
 
-    Send    ${my_websocket}    40/pbDriver?token=${access_token}
-    Log    Sent: 40/pbDriver?token=${access_token}
+    Send    ${my_websocket}    40/pbStandby?token=f9ba5aa5c820be617ef11c9c342ece3d7feef230f7e3c33ec84ddec91d9da4b8b3a94fb2e777a2c9360758d91e1b3efe31929efa123667fa4f371fbc037d938d
+    Log    Sent: 40/pbStandby?token=f9ba5aa5c820be617ef11c9c342ece3d7feef230f7e3c33ec84ddec91d9da4b8b3a94fb2e777a2c9360758d91e1b3efe31929efa123667fa4f371fbc037d938d
     Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
 
-    # Enviar evento join
-    Send    ${my_websocket}    42/pbDriver,["join"]
-    Log    Sent: 42/pbDriver,["join"]
-    Sleep    5s
-    ${result}=    Recv Data    ${my_websocket}
-    Log    Received: ${result}
 
-    # Enviar pings periódicos
+    # Enviar pings periódico
 
-    # Enviar evento start con latitud y longitud fijos
-    Send    ${my_websocket}    42/pbDriver,["start", {"latitude": ${LATITUDE}, "longitude": ${LONGITUDE}}]
-    Log    Sent: 42/pbDriver,["start", {"latitude": ${LATITUDE}, "longitude": ${LONGITUDE}}]
-    Sleep    5s
-    ${result}=    Recv Data    ${my_websocket}
-    Log    Received: ${result}
-
-    # Enviar evento newPosition con nuevas coordenadas y otros datos
+    # Enviar evento updatePosition con nuevas coordenadas y otros datos
 
     Send
     ...    ${my_websocket}
-    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.40824331065313,"longitude":-70.56498737648734,"speed":3.9972}]
+    ...    42/pbStandby,["updatePosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.40824331065313,"longitude":-70.56498737648734,"speed":3.9972}]
     Log
-    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    ...    Sent: 42/pbStandby,["updatePosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
     Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
     Send
     ...    ${my_websocket}
-    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.40876276266083,"longitude":-70.56705804166151,"speed":3.9972}]
+    ...    42/pbStandby,["updatePosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.40876276266083,"longitude":-70.56705804166151,"speed":3.9972}]
     Log
-    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    ...    Sent: 42/pbStandby,["updatePosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
     Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
     Send
     ...    ${my_websocket}
-    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.41004346727125,"longitude":-70.56785197544258,"speed":3.9972}]
+    ...    42/pbStandby,["updatePosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.41004346727125,"longitude":-70.56785197544258,"speed":3.9972}]
     Log
-    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    ...    Sent: 42/pbStandby,["updatePosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
     Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
     Send
     ...    ${my_websocket}
-    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.4099628640414,"longitude":-70.56801290796575,"speed":3.9972}]
+    ...    42/pbStandby,["updatePosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.4099628640414,"longitude":-70.56801290796575,"speed":3.9972}]
     Log
-    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    ...    Sent: 42/pbStandby,["updatePosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
     Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
     Send
     ...    ${my_websocket}
-    ...    42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
+    ...    42/pbStandby,["updatePosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.409855392954086,"longitude":-70.57117791476863,"speed":3.9972}]
     Log
-    ...    Sent: 42/pbDriver,["newPosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
+    ...    Sent: 42/pbStandby,["updatePosition",{"full":false,"panicking":false,"capacity":0,"latitude":-33.3908833,"longitude":-70.54620129999999,"speed":3.9972}]
     Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}
@@ -362,9 +376,9 @@ Connect And Emit Events
     
     Send
     ...    ${my_websocket}
-    ...    42/pbDriver,["stop",{}]
+    ...    42/pbStandby,["stop",{}]
     Log
-    ...    Sent: 42/pbDriver,["stop",{}]
+    ...    Sent: 42/pbStandby,["stop",{}]
     Sleep    5s
     ${result}=    Recv Data    ${my_websocket}
     Log    Received: ${result}

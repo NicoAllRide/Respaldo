@@ -10,6 +10,12 @@ Library     RPA.JSON
 Resource    ../../Variables/variablesStage.robot
 
 
+#---------------------------No se puede automatizar, luego de utilizar los pases no se eliminan, entonces el QR que se genera es el del pase ya utilizado, por lo que falla
+# Averiguar la manera de poder eliminar los pases del usuario para poder utilizar solo uno
+# Habría que ejecuar solo uno al día
+# -------------------------------------------------#
+
+
 *** Test Cases ***
 Set Date Variables
     ${fecha_hoy}=    Get Current Date    result_format=%Y-%m-%d

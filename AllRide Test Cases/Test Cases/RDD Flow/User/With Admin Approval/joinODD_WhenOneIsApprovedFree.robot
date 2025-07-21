@@ -103,7 +103,7 @@ Create RDD As User(Kratos - 410 expected)
     # Configura las opciones de la solicitud (headers, auth)
     ${jsonBody}=    Set Variable    {"oddType":"Taxis Coni y Nico","name":"Solicitud y comprobación RDD Abierto RF","direction":"in","comments":"Conducir con precaución","serviceDate":"${formatted_one_hour_later}","startLocation":{"placeId":"655d11d88a5a1a1ff0328466","lat":"-33.3908833","lon":"-70.54620129999999","loc":["-70.54620129999999","-33.3908833"],"address":"Alto Las Condes Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"endLocation":{"lat":"-33.409873","lon":"-70.5673477","loc":["-70.5673477","-33.409873"],"address":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile","placeId":"655d11f68a5a1a1ff03284b1"}}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=${tokenKratos}    Content-Type=application/json
+    ${headers}=    Create Dictionary    Authorization=Bearer b4853fa1f8eefcf2fcf1dd895efa63cedb97fc6ceb56be1158b4da847c49d794aa7a20c13e54aab1d6baccddc63c04056c4a7ba3ac210d44b69482fedc9cc495    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=     Run Keyword And Expect Error  HTTPError: 410 Client Error: Gone for url: https://stage.allrideapp.com/api/v1/pb/user/oddepartures/653fd601f90509541a748683    Post On Session
     ...    mysesion
