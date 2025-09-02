@@ -79,6 +79,46 @@ Set Date Variables
     Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
     Set Global Variable    ${formatted_one_hour_later}
 
+Create Schedule Alto - Apumanque 19:00 hrs
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    ${endPoint}
+    ...    data={"name":"Validaciones Descuento Ticket","description":"templateRobotTickets","communities":["${idComunidad}"],"superCommunities":["${idSuperCommunity}"],"ownerIds":[{"id":"${idComunidad}","role":"community"}],"shapeId":"65ef21aa6f1c17c2eeeb5f98","usesBusCode":false,"usesVehicleList":true,"usesDriverCode":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"dynamicSeatAssignment":true,"usesTickets":true,"startsOnStop":false,"notNearStop":false,"routeCost":"100","ticketCost":"10","excludePassengers":{"active":false,"excludeType":"dontHide"},"restrictPassengers":{"enabled":false,"allowed":[],"visibility":{"enabled":false,"excludes":false,"parameters":[]}},"endDepartureNotice":{"enabled":false,"lastStop":null},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"schedule":[{"enabled":true,"day":"${schedule_day}","time":"${formatted_one_hour_later}","estimatedArrival":null,"stopSchedule":[],"capped":{"enabled":false,"capacity":0},"vehicleCategoryId":null,"defaultResources":[]}],"stopOnReservation":true,"restrictions":{"customParams":{"enabled":false,"params":[]}}},"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"allowsServiceSnapshots":false,"allowsNonServiceSnapshots":false,"labels":[],"roundOrder":[{"stopId":"655d11d88a5a1a1ff0328466","notifyIfPassed":false},{"stopId":"655d11d88a5a1a1ff0328464","notifyIfPassed":false}],"anchorStops":["655d11d88a5a1a1ff0328466","655d11d88a5a1a1ff0328464"],"originStop":"655d11d88a5a1a1ff0328466","destinationStop":"655d11d88a5a1a1ff0328464","hasBeacons":true,"hasCapacity":true,"isStatic":false,"showParable":false,"extraInfo":"","color":"502929","usesManualSeat":true,"allowsManualValidation":true,"usesDriverPin":false,"hasBoardings":true,"hasUnboardings":true,"allowsDistance":false,"allowGenericVehicles":true,"hasExternalGPS":false,"departureHourFulfillment":{"enabled":false,"ranges":[]},"usesOfflineCount":true,"visible":true,"active":true,"usesTextToSpeech":false,"hasBoardingCount":false,"hasRounds":false,"hasUnboardingCount":false,"timeOnRoute":11,"distance":4,"distanceInMeters":3840,"legOptions":[],"route_type":3}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
+
+    ${scheduleId}=    Set Variable    ${response.json()}[_id]
+    Set Global Variable    ${scheduleId}
+    Sleep    2s
+
+Create services
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/createServices/653fd601f90509541a748683?community=653fd601f90509541a748683
+    ...    data={}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Log    ${code}
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    Sleep    15s
+
+
 Login User With Email(Obtain Token)
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -159,7 +199,7 @@ Request Tickets
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/admin/pb/ticket/request?community=${idComunidad}
-    ...    data={"ticketQuantity":10,"cost":10,"voucherUrl":"https://s3.amazonaws.com/allride.uploads/privateBuses_voucher_653fd601f90509541a748683_1710787761571.pdf"}
+    ...    data={"ticketQuantity":10,"cost":100,"voucherUrl":"https://s3.amazonaws.com/allride.uploads/privateBuses_voucher_653fd601f90509541a748683_1710787761571.pdf"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -336,7 +376,7 @@ Assing Tickets(Pedro)
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
     Should Be True    ${totalTicketsAfterRequest} >=${assignQty}
-Assing Tickets(Loki) No reservation User
+Assing Tickets(Loki) No reservation User1
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -346,6 +386,36 @@ Assing Tickets(Loki) No reservation User
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/admin/pb/ticket/assign?community=${idComunidad}&userId=67a231824e4333dad7f36f75&adminId=${idAdmin}&adminLevel=2&ticketsQuantityToAssign=${assignQty}
+    ...    data={}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+
+    Should Be True    ${totalTicketsAfterRequest} >=${assignQty}
+Assing Tickets No reservation User2
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/pb/ticket/assign?community=${idComunidad}&userId=687f9e8b3e5edbeeefe54306&adminId=${idAdmin}&adminLevel=2&ticketsQuantityToAssign=${assignQty}
+    ...    data={}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+
+    Should Be True    ${totalTicketsAfterRequest} >=${assignQty}
+Assing Tickets No reservation User3
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/pb/ticket/assign?community=${idComunidad}&userId=687f9ea75c72270369d2c5d4&adminId=${idAdmin}&adminLevel=2&ticketsQuantityToAssign=${assignQty}
     ...    data={}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -432,45 +502,6 @@ Get Assigned Tickets (Pedro)
 
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
-Create Schedule Alto - Apumanque 19:00 hrs
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    ${endPoint}
-    ...    data={"name":"Validaciones Descuento Ticket","description":"templateRobotTickets","communities":["${idComunidad}"],"superCommunities":["${idSuperCommunity}"],"ownerIds":[{"id":"${idComunidad}","role":"community"}],"shapeId":"65ef21aa6f1c17c2eeeb5f98","usesBusCode":false,"usesVehicleList":true,"usesDriverCode":false,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"dynamicSeatAssignment":true,"usesTickets":true,"startsOnStop":false,"notNearStop":false,"routeCost":"100","ticketCost":"10","excludePassengers":{"active":false,"excludeType":"dontHide"},"restrictPassengers":{"enabled":false,"allowed":[],"visibility":{"enabled":false,"excludes":false,"parameters":[]}},"endDepartureNotice":{"enabled":false,"lastStop":null},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"schedule":[{"enabled":true,"day":"${schedule_day}","time":"${formatted_one_hour_later}","estimatedArrival":null,"stopSchedule":[],"capped":{"enabled":false,"capacity":0},"vehicleCategoryId":null,"defaultResources":[]}],"stopOnReservation":true,"restrictions":{"customParams":{"enabled":false,"params":[]}}},"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"allowsServiceSnapshots":false,"allowsNonServiceSnapshots":false,"labels":[],"roundOrder":[{"stopId":"655d11d88a5a1a1ff0328466","notifyIfPassed":false},{"stopId":"655d11d88a5a1a1ff0328464","notifyIfPassed":false}],"anchorStops":["655d11d88a5a1a1ff0328466","655d11d88a5a1a1ff0328464"],"originStop":"655d11d88a5a1a1ff0328466","destinationStop":"655d11d88a5a1a1ff0328464","hasBeacons":true,"hasCapacity":true,"isStatic":false,"showParable":false,"extraInfo":"","color":"502929","usesManualSeat":true,"allowsManualValidation":true,"usesDriverPin":false,"hasBoardings":true,"hasUnboardings":true,"allowsDistance":false,"allowGenericVehicles":true,"hasExternalGPS":false,"departureHourFulfillment":{"enabled":false,"ranges":[]},"usesOfflineCount":true,"visible":true,"active":true,"usesTextToSpeech":false,"hasBoardingCount":false,"hasRounds":false,"hasUnboardingCount":false,"timeOnRoute":11,"distance":4,"distanceInMeters":3840,"legOptions":[],"route_type":3}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-
-    ${scheduleId}=    Set Variable    ${response.json()}[_id]
-    Set Global Variable    ${scheduleId}
-    Sleep    2s
-
-Create services
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/createServices/653fd601f90509541a748683?community=653fd601f90509541a748683
-    ...    data={}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    Sleep    2s
 
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -713,6 +744,22 @@ Seat Reservation(User3-Kratos Available Seat)
     Log    ${code}
     Sleep    5s
 
+Check services from route_type
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenDriver}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET On Session
+    ...    mysesion
+    ...    url=https://stage.allrideapp.com/api/v2/pb/driver/services/routes
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Not Be Empty    ${response.json()}    
+    ...    msg=❌ Got an empty response — looks like the scheduled services aren't being retrieved, and there should be at least one.
+
+
 Driver Accept Service
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -732,7 +779,6 @@ Driver Accept Service
     Log    ${code}
 
 Start Departure PreLeg
-    Skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -780,30 +826,6 @@ Start Departure Leg
     Set Global Variable    ${departureToken}
     Log    ${departureToken}
     Log    ${code}
-
-Get Departure Info After reservations(Capacity and Start Capacity)
-    Set Log Level    TRACE
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    ${capacity}=    Set Variable  ${response.json()}[capacity]
-    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
-
-        Should Be Equal As Numbers    ${capacity}    2
-    ...    msg=❌ 'capacity' should be 2 but was ${capacity}
-    
-        Should Be Equal    ${startCapacity}    5
-    ...    msg=❌ 'startCapacity' should be 5 but was ${startCapacity}
 
 Get User QR(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -887,11 +909,290 @@ Get User QR(Loki no reservation)
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
 
-    ${qrCodeNoReservation}=    Set Variable    ${response.json()}[0][qrCode]
-    Set Global Variable    ${qrCodeNoReservation}
-    Log    ${qrCodeNoReservation}
+    ${qrCodeNoReservation1}=    Set Variable    ${response.json()}[0][qrCode]
+    Set Global Variable    ${qrCodeNoReservation1}
+    Log    ${qrCodeNoReservation1}
+    Log    ${code}
+Get User QR(No reservation 1)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad}
+    ...    data={"ids":["687f9e8b3e5edbeeefe54306"]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+
+    ${qrCodeNoReservation2}=    Set Variable    ${response.json()}[0][qrCode]
+    Set Global Variable    ${qrCodeNoReservation2}
+    Log    ${qrCodeNoReservation2}
+    Log    ${code}
+Get User QR(No reservation 2)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad}
+    ...    data={"ids":["687f9ea75c72270369d2c5d4"]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+
+    ${qrCodeNoReservation3}=    Set Variable    ${response.json()}[0][qrCode]
+    Set Global Variable    ${qrCodeNoReservation3}
+    Log    ${qrCodeNoReservation3}
     Log    ${code}
 
+Validate With QR(Loki No reservation)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/pb/provider/departures/validate
+    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNoReservation1}","timezone":"America/Santiago","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+    Log    ${code}
+    Sleep    10s
+
+Get Departure Info After QR Validation(No reservation, capacity left)
+    [Documentation]    Capacity debería ser 4 (5 - la validación recién hecha)
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${capacity}=    Set Variable  ${response.json()}[capacity]
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
+
+   
+        Should Be Equal As Numbers    ${capacity}    4
+    ...    msg=❌ 'capacity' should be 4 but was ${capacity}
+    
+        Should Be Equal As Strings   ${startCapacity}    5
+    ...    msg=❌ 'startCapacity' should be 5 but was ${startCapacity}
+    
+
+Validate With No reservation User 2(Should be able to validate)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/pb/provider/departures/validate
+    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNoReservation2}","timezone":"America/Santiago","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+    Log    ${code}
+    Sleep    10s
+Get Departure Info After Custom Validation (No reservation)
+    [Documentation]    Capacity debería ser 3 (5 - 2 validaciones)
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${capacity}=    Set Variable  ${response.json()}[capacity]
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
+
+   
+        Should Be Equal As Numbers    ${capacity}    3
+    ...    msg=❌ 'capacity' should be 3 but was ${capacity}
+    
+        Should Be Equal as Strings   ${startCapacity}    5
+    ...    msg=❌ 'startCapacity' should be 5 but was ${startCapacity}
+
+
+Validate With user No reservation( Should not be able to validaty, no seats left, only for reservations)
+    [Documentation]    Pasajero sin reserva no debería poder validar, no quedan asientos libres, solo asientos con reserva
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=  Run Keyword and expect error     HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate     POST On Session
+    ...    mysesion
+    ...    url=/api/v1/pb/provider/departures/validate
+    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNoReservation3}","timezone":"America/Santiago","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+
+
+Validation QR Without Tickets (Should Fail)
+    [Documentation]    Pasajero sin tickets no debería poder validarse(QR)
+
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Run Keyword And Expect Error
+    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
+    ...    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/pb/provider/departures/validate
+    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNoTickets}","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+
+    Status Should Be    403    msg= User validated, should not be able to validate, no tickets assigned
+
+    Sleep    10s
+
+Validation Custom Without Tickets (Should Fail)
+
+    [Documentation]    Pasajero sin tickets no debería poder validarse(custom)
+
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Run Keyword and expect Error
+    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v2/pb/driver/departures/validateWithCustom
+    ...    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/departures/validateWithCustom
+    ...    data={"communityId":"${idComunidad}","key":"rut","value":"258258258","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+
+    Status Should Be    403
+
+Validate With NFC(No tickets Should fail)
+    [Documentation]    Pasajero sin tickets no debería poder validarse(card)
+
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Run Keyword And Expect Error
+    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v2/pb/driver/tickets/validation/USERNOTICKET123
+    ...    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/tickets/validation/${cardNotickets}
+    ...    data={"communityId":"${idComunidad}","key":"rut","value":"${userNoTicketRut}","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Status Should Be    403
+
+Validate With User From another community QR(Should fail)
+    [Documentation]    Pasajero de otra comunidad no debería poder validarse
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Run Keyword And Expect Error
+    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
+    ...    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/pb/provider/departures/validate
+    ...    data={"communityId":"${idComunidad2}","validationString":"${qrCodeAnotherCommunity}","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    headers=${headers}
+
+    Status Should Be    403
+    Sleep    10s
+
+Validate With ''X'' QR From internet ( Should Fail)
+    [Documentation]    Códido de internet no debería poder validarse
+
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Run Keyword And Expect Error
+    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
+    ...    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/pb/provider/departures/validate
+    ...    data={"communityId":"","validationString":"https://www.youtube.com/watch?v=dQw4w9WgXcQ","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
+    ...    headers=${headers}
+
+    Status Should Be    403
+    Sleep    10s
+
+
+Get Departure Info After reservations(Capacity and Start Capacity)
+    [Documentation]    Capacity debería seguir siendo 3, no hubo validación exitosa previa
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${capacity}=    Set Variable  ${response.json()}[capacity]
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
+
+        Should Be Equal As Numbers    ${capacity}    3
+    ...    msg=❌ 'capacity' should be 2 but was ${capacity}
+    
+        Should Be Equal As Strings    ${startCapacity}    5
+    ...    msg=❌ 'startCapacity' should be 5 but was ${startCapacity}
 Validate With QR(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -912,8 +1213,8 @@ Validate With QR(Nico)
     Sleep    10s
 
 Get Departure Info After QR Validation(Has reservation)
-    [Documentation]    Capacity se debería mantener en 2, ya que el usuario tiene reserva
-    Set Log Level    TRACE
+    [Documentation]    Capacity debería ser 2
+
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
@@ -934,7 +1235,7 @@ Get Departure Info After QR Validation(Has reservation)
         Should Be Equal As Numbers    ${capacity}    2
     ...    msg=❌ 'capacity' should be 2 but was ${capacity}
     
-        Should Be Equal    ${startCapacity}    5
+        Should Be Equal As Strings  ${startCapacity}    5
     ...    msg=❌ 'startCapacity' should be 5 but was ${startCapacity}
     
 
@@ -991,7 +1292,7 @@ Get Total Tickets After Validation(Nico)
 
     Convert To Integer    ${totalTicketsAfterRequest}
     Convert To Integer    ${totalTicketsAfterValidation}
-    ${ticketsMinus}=    Evaluate    ${totalTicketsAfterRequest}-1
+    ${ticketsMinus}=    Evaluate    ${totalTicketsAfterRequest}-3
     Should Be Equal As Integers
     ...    ${totalTicketsAfterValidation}
     ...    ${ticketsMinus}
@@ -1034,7 +1335,7 @@ Validate With Custom(Kratos)
 
 Get Departure Info After Custom Validation (Has reservation)
     [Documentation]    Capacity debe seguir siendo 2, el usuario tiene reserva
-    Set Log Level    TRACE
+
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
@@ -1052,10 +1353,10 @@ Get Departure Info After Custom Validation (Has reservation)
     ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
 
    
-        Should Be Equal As Numbers    ${capacity}    2
-    ...    msg=❌ 'capacity' should be 2 but was ${capacity}
+        Should Be Equal As Numbers    ${capacity}    1
+    ...    msg=❌ 'capacity' should be 1 but was ${capacity}
     
-        Should Be Equal    ${startCapacity}    5
+        Should Be Equal As Strings    ${startCapacity}    5
     ...    msg=❌ 'startCapacity' should be 5 but was ${startCapacity}
 
 Get Assigned Tickets After Validation(Kratos)
@@ -1110,7 +1411,7 @@ Get Total Tickets After Validation(Kratos)
     ${totalTicketsAfterValidation}=    Set Variable    ${response.json()}
     Convert To Integer    ${totalTicketsAfterRequest}
     Convert To Integer    ${totalTicketsAfterValidation}
-    ${ticketsAfterValidation}=    Evaluate    ${totalTicketsAfterRequest}-2
+    ${ticketsAfterValidation}=    Evaluate    ${totalTicketsAfterRequest}-4
     Should Be True
     ...    ${totalTicketsAfterValidation}==${ticketsAfterValidation}
     ...    Doesn't discounts Total tickets after validation with QR, Expected tickets: ${ticketsAfterValidation}, Actual Tickets ${totalTicketsAfterValidation}
@@ -1150,8 +1451,8 @@ Validate With NFC(Pedro)
     Status Should Be    200
     Log    ${code}
 
-Get Departure Info After reservations(Capacity and Start Capacity)3
-    Set Log Level    TRACE
+Get Departure Info After reservations(Capacity should be 0 but able to validate, has reservation)
+
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
@@ -1168,10 +1469,10 @@ Get Departure Info After reservations(Capacity and Start Capacity)3
     ${capacity}=    Set Variable  ${response.json()}[capacity]
     ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
 
-        Should Be Equal As Numbers    ${capacity}    2
-    ...    msg=❌ 'capacity' should be 2 but was ${capacity}
+        Should Be Equal As Numbers    ${capacity}    0
+    ...    msg=❌ 'capacity' should be 0 but was ${capacity}
     
-        Should Be Equal    ${startCapacity}    5
+        Should Be Equal As Strings    ${startCapacity}    5
     ...    msg=❌ 'startCapacity' should be 5 but was ${startCapacity}
 
 Get Assigned Tickets After Validation(Pedro)
@@ -1225,7 +1526,7 @@ Get Total Tickets After Validation(Pedro)
     ${totalTicketsAfterValidation}=    Set Variable    ${response.json()}
     Convert To Integer    ${totalTicketsAfterRequest}
     Convert To Integer    ${totalTicketsAfterValidation}
-    ${ticketsAfterValidation}=    Evaluate    ${totalTicketsAfterRequest}-3
+    ${ticketsAfterValidation}=    Evaluate    ${totalTicketsAfterRequest}-5
     Should Be True
     ...    ${totalTicketsAfterValidation}==${ticketsAfterValidation}
     ...    Total tickets after validation should be ${ticketsAfterValidation} but it is ${totalTicketsAfterValidation}
@@ -1248,180 +1549,7 @@ Get Movement Historic Pedro After Validation
     Log    ${currentQty}
 
 
-Validation QR Without Tickets (Should Fail)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Run Keyword And Expect Error
-    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
-    ...    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNoTickets}","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-
-    Status Should Be    403    msg= User validated, should not be able to validate, no tickets assigned
-
-    Sleep    10s
-Get Departure Info After reservations(Capacity and Start Capacity)3
-    Set Log Level    TRACE
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    ${capacity}=    Set Variable  ${response.json()}[capacity]
-    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
-
-Validation Custom Without Tickets (Should Fail)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Run Keyword and expect Error
-    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v2/pb/driver/departures/validateWithCustom
-    ...    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departures/validateWithCustom
-    ...    data={"communityId":"${idComunidad}","key":"rut","value":"258258258","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-
-    Status Should Be    403
-
-Validate With NFC(No tickets Should fail)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Run Keyword And Expect Error
-    ...    HTTPError: 400 Client Error: Bad Request for url: https://stage.allrideapp.com/api/v2/pb/driver/tickets/validation/USERNOTICKET123
-    ...    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/tickets/validation/${cardNotickets}
-    ...    data={"communityId":"${idComunidad}","key":"rut","value":"${userNoTicketRut}","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Status Should Be    400
-
-Validate With User From another community QR(Should fail)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Run Keyword And Expect Error
-    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
-    ...    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"communityId":"${idComunidad2}","validationString":"${qrCodeAnotherCommunity}","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
-    ...    headers=${headers}
-
-    Status Should Be    403
-    Sleep    10s
-
-Validate With ''X'' QR From internet ( Should Fail)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Run Keyword And Expect Error
-    ...    HTTPError: 403 Client Error: Forbidden for url: https://stage.allrideapp.com/api/v1/pb/provider/departures/validate
-    ...    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"communityId":"","validationString":"https://www.youtube.com/watch?v=dQw4w9WgXcQ","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
-    ...    headers=${headers}
-
-    Status Should Be    403
-    Sleep    10s
-Validate With User No Reservation
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${departureToken}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    
-    ...    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/pb/provider/departures/validate
-    ...    data={"communityId":"${idComunidad}","validationString":"${qrCodeNoReservation}","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
-    ...    headers=${headers}
-
-    Status Should Be    200
-    Sleep    3s
-
-Get Departure Info After QR Validation(No reservation)
-    [Documentation]    Al no tener reserva esta validación debería descontar uno en el capacity, quedando en 1
-    Set Log Level    TRACE
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    ${capacity}=    Set Variable  ${response.json()}[capacity]
-    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
-
-            Should Be Equal As Numbers    ${capacity}    1
-    ...    msg=❌ 'capacity' should be 1 but was ${capacity}
-    
-        Should Be Equal    ${startCapacity}    5
-    ...    msg=❌ 'startCapacity' should be 5 but was ${startCapacity}
-
-Complete Seats Manually
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${departureToken}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v2/pb/driver/departure/completeSeatsWithManual
-    ...    data={"validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-    Log    ${code}
 
 Manual UnBoarding
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -1476,7 +1604,6 @@ Get Current departure
     Log    ${response.content}
 
 Stop Departure With Post Leg
-    skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -1559,7 +1686,7 @@ Get Passenger Details(Validations)
     Log    ${response.content}
 
 Get Departure Info After reservations(Capacity and Start Capacity) 5
-    Set Log Level    TRACE
+
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=${idComunidad}
@@ -1595,7 +1722,6 @@ Delete Route
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
     Log    ${code}
-    Sleep    5s
 
 
 ### Faltaría implementar otra validación de un usuario que tampoco tenga reserva para verificar que si no hay capacity no deje validar al usuario, también verificar que si hay reservas no deje validar a más usuiarios sin reserva hasta que los usuarios qu si tienen reserva ya se hayan validado en el viaje

@@ -110,10 +110,33 @@ Create services
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
+    Should Be Equal As Numbers    ${code}    202
     Log    ${code}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     Sleep    2s
+
+Get Driver Token
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/admin/pb/drivers/?community=67b879e99a2ba09f940ea7c5&driverId=67b884c5b5ebd5b87145e5c3
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${access_token}=    Set Variable    ${response.json()['accessToken']}
+    ${tokenDriver}=    Evaluate    "Bearer " + "${access_token}"
+    Set Global Variable    ${tokenDriver}
+
+    Log    ${tokenDriver}
+    Log    ${response.content}
+
+    sleep     5s
 
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -148,26 +171,7 @@ Get Service Id
     Log    Last created service ID: ${service_id}
 
 
-Get Driver Token
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/drivers/?community=67b879e99a2ba09f940ea7c5&driverId=67b884c5b5ebd5b87145e5c3
 
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    ${access_token}=    Set Variable    ${response.json()['accessToken']}
-    ${tokenDriver}=    Evaluate    "Bearer " + "${access_token}"
-    Set Global Variable    ${tokenDriver}
-
-    Log    ${tokenDriver}
-    Log    ${response.content}
 Resource Assignment(Driver and Vehicle)
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -335,13 +339,13 @@ Validate With Card, first validation of second user should pass
     ...    Authorization=${departureToken}
     ...    Content-Type=application/json
 
-    ${response}=  Run Keyword And Return Status    POST On Session
+   ${response}=  Run Keyword And Return Status    POST On Session
     ...    mysesion
     ...    url=/api/v2/pb/driver/tickets/validation/193111742
     ...    data={"communityId":"67b879e99a2ba09f940ea7c5","key":"rut","value":"193111742","timezone":"Chile/Continental","validationLat":-33.39073098922399,"validationLon":-70.54616911670284}
     ...    headers=${headers}
 
-    Status Should Be    200      msg=First validation of the second user should pass but is failing
+    Status Should Be    200      msg=First validation of the second user should pass but is failing 
 
 Validate With Card, second validation with second user should fail
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -360,6 +364,26 @@ Validate With Card, second validation with second user should fail
 
 
 
+
+Stop Departure With Post Leg
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary
+    ...    Authorization=${departureToken}
+    ...    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/departure/stop
+    ...    data={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":true,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+    Log    ${code}
 
 Stop Post Leg Departure
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -381,7 +405,6 @@ Stop Post Leg Departure
     Status Should Be    200
     Log    ${code}
 
-    Sleep    10s
 
 Delete Route
     Create Session    mysesion    ${STAGE_URL}    verify=true

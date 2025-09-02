@@ -1,65 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250630 17:35:59.167" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250826 10:46:07.472" rpa="false" schemaversion="4">
 <suite id="s1" name="Robot Interactive Console" source="c:\Users\UsuarioCompuElite\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
-<kw name="Create Session">
-<arg>mysesion</arg>
-<arg>${STAGE_URL}</arg>
-<arg>verify=true</arg>
-<msg timestamp="20250630 17:35:59.432" level="FAIL">No keyword with name 'Create Session' found.</msg>
-<status status="FAIL" starttime="20250630 17:35:59.432" endtime="20250630 17:35:59.432"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${jsonBody}</var>
-<arg>{"startLocation":{"placeId":"6852fa6a402dddfa16b72eee","stopId":"6862e536e036e36d0ebc80c3","lat":"-34.40302280653645","lon":"-70.83805069327354","loc":["-70.83805069327354","-34.40302280653645"],"address":"Dirección personalizada Los Césares 905Rengo, Chile","isUserStop":true},"endLocation":{"placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b","lat":"-34.4111","lon":"-70.8537","loc":["-70.8537","-34.4111"],"address":"Hospital Rengo","isUserStop":false},"direction":"in","oddType":"Limitada Nico","comments":"Conducir con precaución","serviceDate":"${next_monday_at_18}","name":"Solicitud Limitada Nico"}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" starttime="20250630 17:35:59.432" endtime="20250630 17:35:59.432"/>
-</kw>
 <kw name="Evaluate" library="BuiltIn">
-<var>${parsed_json}</var>
-<arg>json.loads($jsonBody)</arg>
-<arg>json</arg>
+<var>${uuid_qr2}</var>
+<arg>str(uuid.uuid4())</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" starttime="20250630 17:35:59.432" endtime="20250630 17:35:59.432"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Authorization=${accessTokenNico}</arg>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="NOT RUN" starttime="20250630 17:35:59.432" endtime="20250630 17:35:59.432"/>
-</kw>
-<kw name="Post On Session">
-<var>${response}</var>
-<arg>mysesion</arg>
-<arg>url=/api/v1/pb/user/oddepartures/${idComunidad2}</arg>
-<arg>json=${parsed_json}</arg>
-<arg>headers=${headers}</arg>
-<status status="NOT RUN" starttime="20250630 17:35:59.433" endtime="20250630 17:35:59.433"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" starttime="20250630 17:35:59.433" endtime="20250630 17:35:59.433"/>
-</kw>
-<kw name="Should Not Be Equal" library="BuiltIn">
-<arg>${code}</arg>
-<arg>200</arg>
-<doc>Fails if the given objects are equal.</doc>
-<status status="NOT RUN" starttime="20250630 17:35:59.433" endtime="20250630 17:35:59.433"/>
+<msg timestamp="20250826 10:46:07.749" level="INFO">${uuid_qr2} = acd1fe3e-6522-4572-97bc-fe1fb962912a</msg>
+<status status="PASS" starttime="20250826 10:46:07.749" endtime="20250826 10:46:07.749"/>
 </kw>
 <kw name="Log" library="BuiltIn">
-<arg>${code}</arg>
+<arg>${uuid_qr2}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20250630 17:35:59.433" endtime="20250630 17:35:59.433"/>
+<status status="PASS" starttime="20250826 10:46:07.749" endtime="20250826 10:46:07.750"/>
 </kw>
-<status status="PASS" starttime="20250630 17:35:59.183" endtime="20250630 17:36:00.384"/>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${uuid_qr2}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" starttime="20250826 10:46:07.750" endtime="20250826 10:46:07.750"/>
 </kw>
-<status status="PASS" starttime="20250630 17:35:59.183" endtime="20250630 17:36:00.384"/>
+<status status="PASS" starttime="20250826 10:46:07.488" endtime="20250826 10:46:10.108"/>
+</kw>
+<status status="PASS" starttime="20250826 10:46:07.487" endtime="20250826 10:46:10.108"/>
 </test>
-<status status="PASS" starttime="20250630 17:35:59.168" endtime="20250630 17:36:00.384"/>
+<status status="PASS" starttime="20250826 10:46:07.473" endtime="20250826 10:46:10.109"/>
 </suite>
 <statistics>
 <total>

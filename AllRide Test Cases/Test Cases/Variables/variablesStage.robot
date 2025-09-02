@@ -4,6 +4,7 @@ ${NewAdmin_URL}        https://newadminapi.allrideapp.com
 ${CRIS_URL}            http://179.56.2.122:3000
 ${CRIS_URL2}            http://152.174.98.201:3000
 ${MARTIN_URL}            http://190.100.198.8
+${MARTIN_URL2}            http://190.100.198.8:3000
 ${STAGEQA_URL}            https://stageqa.allrideapp.com
 ${TESTING_URL}          https://testing.allrideapp.com
 ${endPoint}             /api/v1/admin/pb/routes?community=653fd601f90509541a748683
@@ -22,7 +23,7 @@ ${idDNI}               653ff52433d83952fafcf397
 ${idKratos}             65e092afca7842b1032f12e2
 ${idPedro}              654a5148bf3e9410d0bcd39a
 ${idNaruto}             653ff69df90509541a74988b
-${tokenAdmin}           Bearer dd4894aa747153daff1f4864153f278603f675adb13a3ea4551c4f7e51a1751f4b6592cd993d24bd24dc1fc9c5d67169528931b12c16a9bdbc62ab7c99d221aa
+${tokenAdmin}           Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba
 ${tokenNico}            Bearer 496877632cc5c424ae72182e0ff61b8c6c3a09c8fff8bcde60fa7c2a5e50c40500ad6f1cb5a19ebaf5fdc42d250552654bc57cc10298efbd771aeaa018ebcecb
 ${tokenPedroPascal}     Bearer 2eacdb42a68ffa12b3d9901816b6b6049b1a65c9232c2112a64c5935002683b35bbf10c046ef9670f529241849999f66c4645956ecb1b0ae2a1de5c3209f9f4b
 ${tokenKratos}          Bearer fda5651771446906c9a511a066e26b4ef28873fa97ce094f47a2402b4a9a6f652a0032e1a7d3607515d2a873f2bb1eb73033e06c8d1d78e28b725a0537807d6f
@@ -53,3 +54,5 @@ ${tokenBarbaraQA}         Bearer 2f0cc604e8d18e1679ca359fd3d3b59b5abcd5e761080fa
 ${tokenDriverQA}          Bearer b138e80a9355659b5995753adfd98b9f265f2e4f724a90b377aee9977e281cd169204df89e1b39232be5486eac5b2f2daaae37f9a88301c6ef137ac2d29f55bc
 ${tokenAdminTesting}       Bearer 3ce8dc54111e972055b7edcddf301567246c27fc324bbad4f26785aa706b4de5e534632495c4c914eccd2e0162d996133e1dc2001f781c5bd8d094fa88919aeb
 ${tokenAdminProd}        Bearer a027e1d915e918ca18f68c5880947ac525a18d3ab7ba6d9aa2b5d3b37ff4f435165e611a826cfb62fe25e44029d341522d9112e231a16d9285d0eb2f56853fba
+${accessTokenCarpool1}        4717a8af3218fc7ef170ea32bf13771a6cfd93f3333d47274622f698e5fa997c9a35409e87db4617f8d9a4a905c97b878771b71cb727750b37f511ee4e5cb326
+${EXT_API_KEY}           Bearer Riz0QJrwDpBB3GwNuPVFg1gLUE9Vnek9XBVUeArWoW7ubsRCRMcQ6Ag5HPo8lbgK

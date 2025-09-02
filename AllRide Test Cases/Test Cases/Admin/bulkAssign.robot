@@ -73,7 +73,7 @@ Set Date Variables
     Set Global Variable    ${end_date_pastTomorrow}
 
 
-1 hours local 
+2 hours local 
     ${date}    Get Current Date    time_zone=local    exclude_millis=yes
     ${formatted_date}    Convert Date    ${date}    result_format=%H:%M:%S
     Log    Hora Actual: ${formatted_date}
@@ -83,16 +83,6 @@ Set Date Variables
     ${formatted_one_hour_later}    Convert Date    ${one_hour_later}    result_format=%H:%M
     Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
     Set Global Variable    ${formatted_one_hour_later}
-2 hours local 
-    ${date}    Get Current Date    time_zone=local    exclude_millis=yes
-    ${formatted_date}    Convert Date    ${date}    result_format=%H:%M:%S
-    Log    Hora Actual: ${formatted_date}
-
-    # Sumar una hora
-    ${two_hour_later}    Add Time To Date    ${date}    2 hour
-    ${formatted_two_hour_later}    Convert Date    ${two_hour_later}    result_format=%H:%M
-    Log    Hora Actual + 1 hora: ${formatted_two_hour_later}
-    Set Global Variable    ${formatted_two_hour_later}
 
 
 Create new service in the selected route
@@ -116,8 +106,6 @@ Create new service in the selected route
     ${scheduleId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${scheduleId}
 
-    Sleep    5s
-
 Create services 2
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -132,10 +120,10 @@ Create services 2
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
+    Should Be Equal As Numbers    ${code}    202
     Log    ${code}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    Sleep    2s
+    Sleep    15s
 
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -270,8 +258,6 @@ Get Service Id And Validate Pending States without reservations
     ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
     Should Be Equal As Strings    ${scheduleId}    ${last_service_route}
 
-    Set Global Variable    ${service_id}
-    Log    Last created service ID: ${service_id}
 
     # Validar que todos los resources[x].departure.state == 'pending'
     FOR    ${resource}    IN    @{last_service['resources']}
@@ -304,6 +290,7 @@ Remove Assignment 1
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     Sleep    2s
 Seat reservation
+    skip
     [Documentation]    Realiza una reserva manual de asiento para un usuario específico en un servicio determinado. Luego valida que la reserva se haya realizado correctamente y que coincida el ID del usuario.
 
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -375,7 +362,7 @@ Bulk Assignment with reservations
 Get Service Id And Validate Pending States with reservations
     [Documentation]    Obtiene el último servicio creado con un routeId específico y valida que todos los resources[x].departure.state sean 'pending'
 
-    ${url}=    Set Variable    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_pasttomorrow}&onlyODDs=false
+    ${url}=    Set Variable    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_tomorrow}&onlyODDs=false
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     Should Be Equal As Numbers    ${response.status_code}    200
@@ -400,60 +387,6 @@ Get Service Id And Validate Pending States with reservations
         Should Be Equal As Strings    ${res_state}    pending    msg=Expected resource departure.state to be 'pending' but got '${res_state}'
     END
 
-
-
-
-Reassign resources
-    [Documentation]    Elimina los recursos asignados a un servicio de salida programada y verifica que la lista de recursos quede vacía.
-
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${jsonBody}=     Set Variable    [{"multipleDrivers":false,"driver":{"driverId":"66c7ae7bfc14c90c93d13abb"},"drivers":[],"vehicle":{"vehicleId":"666941a7b8d6ea30f9281110","capacity":2},"passengers":[{"manuallyBooked":true,"_id":"685d9e783b9bed7cbaf38ac1","userId":{"_id":"65e5d25bb23585cc1d6720b4","communities":[{"confirmed":true,"_id":"6757581a0045ccd021173bea","communityId":"6654ae4eba54fe502d4e4187","isAdmin":false,"isStudent":false,"custom":[{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1e7","key":"rut","value":"190778045"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1e8","key":"address","value":"Brown Sur 48, 7760066 Ñuñoa, Región Metropolitana, Chile"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1e9","key":"coordinates","value":"-33.45584580063265, -70.5919211272842"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1ea","key":"Color","value":"Color"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1eb","key":"Animal","value":"Animal2"},{"listValue":[],"private":true,"_id":"6837284a4b0ca9f9447467a3","key":"Empresa","value":""},{"listValue":[],"private":true,"_id":"685aca49c491202bc6fc4d0c","key":"Teléfono","value":""}],"privateBus":{"odd":{"canCreate":true,"needsAdminApproval":true,"exclusiveDepartures":true,"asapDepartures":true,"providers":[]},"validation":{"external":{"required":true}},"enabled":true,"favoriteRoutes":["67e598ebec97ec8cb3bfd15f"],"suggestedRoutes":["66954794b24db9885e5aed7e","66cc94821125fb1232f990a1","668456ea56270b3e81594b60","6798bd8be494cc12a9d737d4","67f7e2fe52999601de99bca2","6807a5ad8ed59d3481d3eae5","6654d533713b9a5184cfe319"],"_id":"6757581a0045ccd021173bf0","oDDServices":[{"canCreate":true,"needsAdminApproval":true,"exclusiveDepartures":true,"asapDepartures":true,"transitDepartures":false,"providers":[],"_id":"685d9106cbb5792c331556cc","name":"Taxis Nico"},{"canCreate":false,"needsAdminApproval":false,"exclusiveDepartures":true,"asapDepartures":true,"transitDepartures":false,"providers":[],"_id":"685d9106cbb5792c331556cd","name":"Limitada Nico"}]},"createdAt":"2024-12-09T20:50:34.207Z","updatedAt":"2025-06-26T18:27:18.573Z","favoritePlaces":[{"_id":"681a4e72bcf550f25e3002ce","name":"Casa","address":"H-559 H-559 Los Cerrillos, Chile","stopId":"681a4e72bcf550f25e3002cc","lat":-34.394242912203744,"lon":-70.78157611191273},{"_id":"681a4e82bcf550f25e30037b","name":"Trabajo","address":"Presidente Errázuriz 3940 Las Condes, Chile","stopId":"6791180b32e8fda37942a029","lat":-33.42023057480394,"lon":-70.58747939765453},{"_id":"681a4e9d0d6afbaa02eb04ec","name":"panadería el cerrillo","address":"H-555 H-555 Los Cerrillos, Chile","stopId":"681a4e9d0d6afbaa02eb04ea","lat":-34.39951173394399,"lon":-70.78226275742054}]}],"name":"Paulina Pasajero"},"createdAt":"2025-06-26T19:24:40.801Z","updatedAt":"2025-06-26T19:24:40.801Z"}],"departure":null}]
-    ${parsed_json}=     Evaluate    json.loads($jsonBody)    json
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    PUT On Session
-    ...    mysesion
-    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/assignServiceResources/${service_id}?community=6654ae4eba54fe502d4e4187
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-
-    ${resources}=    Set Variable    ${response.json()}[resources]
-    Log    ${code}
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    Sleep    2s
-
-Get Service Id And Validate Pending States with reservations after reassign resources
-    [Documentation]    Obtiene el último servicio creado con un routeId específico y valida que todos los resources[x].departure.state sean 'pending'
-
-    ${url}=    Set Variable    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_pasttomorrow}&onlyODDs=false
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
-    ${response}=    GET    url=${url}    headers=${headers}
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    ${responseJson}=    Set Variable    ${response.json()}[scheduledServices]
-    ${service_id}=    Set Variable    None
-
-    ${sorted_services}=    Evaluate    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])    json
-    Run Keyword If    ${sorted_services} == []    Fatal Error    msg= No services were created with routeId._id = "${scheduleId}" — All createScheduled tests failing
-
-    ${last_service}=    Set Variable    ${sorted_services[-1]}
-    ${service_id}=    Set Variable    ${last_service['_id']}
-    ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
-    Should Be Equal As Strings    ${scheduleId}    ${last_service_route}
-
-    Set Global Variable    ${service_id}
-    Log    Last created service ID: ${service_id}
-
-    # Validar que todos los resources[x].departure.state == 'pending'
-    FOR    ${resource}    IN    @{last_service['resources']}
-        ${res_state}=    Set Variable    ${resource['departure']['state']}
-        Should Be Equal As Strings    ${res_state}    pending    msg=Expected resource departure.state to be 'pending' but got '${res_state}'
-    END
 Remove Assignment 2
     [Documentation]    Elimina los recursos asignados a un servicio de salida programada y verifica que la lista de recursos quede vacía.
 

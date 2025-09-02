@@ -160,6 +160,7 @@ Create user manually with already existing communityValidation
     ...    headers=${headers}
 
     ${user}=    Set Variable    ${response.json()}[correct][0]
+    
     ${userId}=    Set Variable    ${response.json()}[correct][0][_id]
     Set Global Variable    ${userId}
 
@@ -212,6 +213,24 @@ Create user manually with already existing communityValidation
     Should Be Equal As Strings    ${custom}[5][key]     Empresa
     Should Be Equal As Strings    ${custom}[5][value]   AllRide
     ...    msg=❌ Custom field 'Empresa' mismatch. Found: "${custom}[5][value]"
+    
+    # Validar que el usuario tenga privateBus habilitado
+    ${privateBus}=    Get From Dictionary    ${community}    privateBus
+    Should Be Equal As Strings    ${privateBus}[enabled]    True    msg=❌ 'privateBus' no está habilitado para el usuario
+
+       # Validar que solo existe un oDDService
+    ${services}=    Get From Dictionary    ${privateBus}    oDDServices
+    Length Should Be    ${services}    1    msg=❌ El usuario debería tener solo un oDDService
+
+    # Validar que el único servicio sea 'Limitada Nico' y tenga needsAdminApproval=False
+    ${service}=    Get From List    ${services}    0
+    Should Be Equal As Strings    ${service}[name]    Limitada Nico    msg=❌ El servicio activo debería ser 'Limitada Nico'
+    Should Be Equal As Strings    ${service}[needsAdminApproval]    False    msg=❌ 'Limitada Nico' debería tener needsAdminApproval=False
+ # Validar que odd.needsAdminApproval sea False (debe seguir al único servicio activo)
+    ${odd}=    Get From Dictionary    ${privateBus}    odd
+    Should Be Equal As Strings    ${odd}[needsAdminApproval]    True    msg=❌ 'odd.needsAdminApproval' debería ser True
+
+
 
 
 Find created user manually
@@ -242,6 +261,7 @@ Find created user manually
     # Validar avatar placeholder
     Should Contain    ${last_user}[avatar]    user_placeholder.png
     ...    msg=❌ El avatar debería ser el placeholder por defecto. Se encontró: "${last_user}[avatar]"
+
 
 
 Delete user from community
@@ -366,7 +386,7 @@ Create community Validation bulk (Código de enrolamiento)
 
     Should Be Equal As Strings    ${coords}[key]    coordinates    msg=❌ Second value key should be "coordinates"
 Create user bulk
-    [Documentation]    Creación masiva de usuarios (Solo 1)
+    [Documentation]
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     
@@ -375,7 +395,7 @@ Create user bulk
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/admin/users/bulkCreateUsers?community=6654ae4eba54fe502d4e4187
-    ...    data=[{"communityId":"6654ae4eba54fe502d4e4187","country":"cl","name":"QA TEST RF","customValidation":{"rut":"111111112"},"buses":{"enabled":true,"oDDServices":[{"name":"Taxis Nico","canCreate":true,"needsAdminApproval":true,"exclusiveDepartures":true,"asapDepartures":true},{"name":"Limitada Nico","canCreate":true,"needsAdminApproval":true,"exclusiveDepartures":true,"asapDepartures":true}]}}]
+    ...    data=[{"communityId":"6654ae4eba54fe502d4e4187","country":"cl","name":"QA TEST RF","customValidation":{"rut":"111111112"},"buses":{"enabled":true,"oDDServices":[{"name":"Taxis Nico","canCreate":true,"needsAdminApproval":true,"exclusiveDepartures":true,"asapDepartures":true},{"name":"Limitada Nico","canCreate":true,"needsAdminApproval":false,"exclusiveDepartures":true,"asapDepartures":true}]}}]
     ...    headers=${headers}
 
     ${json}=    Set Variable    ${response.json()}
@@ -422,29 +442,58 @@ Create user bulk
     Should Be Empty    ${json}[cardsWithError]   msg=❌ 'cardsWithError' should be empty
     Should Be Equal As Strings    ${json}[timeStamp]    True    msg=❌ 'timeStamp' should be True
 
+    # Validación de adminApproval según los servicios
+
+    ${privateBus}=    Get From Dictionary    ${community}    privateBus
+    ${odd}=           Get From Dictionary    ${privateBus}    odd
+    ${oddApproval}=   Get From Dictionary    ${odd}    needsAdminApproval
+
+    ${services}=      Get From Dictionary    ${privateBus}    oDDServices
+    ${firstService}=  Get From List          ${services}    0
+    ${firstServiceApproval}=    Get From Dictionary    ${firstService}    needsAdminApproval
+
+
+
+    # 2. Validate individual values per service
+    ${firstService}=    Get From List    ${services}    0
+    ${secondService}=    Get From List    ${services}    1
+
+    Should Be Equal As Strings    ${firstService}[name]    Taxis Nico
+    ...    msg=❌ First service name should be 'Taxis Nico'. Found: '${firstService}[name]'
+
+    Should Be Equal As Strings    ${firstService}[needsAdminApproval]    True
+    ...    msg=❌ 'Taxis Nico' should have needsAdminApproval=True. Found: ${firstService}[needsAdminApproval]
+
+    Should Be Equal As Strings    ${secondService}[name]    Limitada Nico
+    ...    msg=❌ Second service name should be 'Limitada Nico'. Found: '${secondService}[name]'
+
+    Should Be Equal As Strings    ${secondService}[needsAdminApproval]    False
+    ...    msg=❌ 'Limitada Nico' should have needsAdminApproval=False. Found: ${secondService}[needsAdminApproval]
+
+
 Find created user with bulk
-    [Documentation]    Buscar y encontrar al usuario creado masivamente, verificar que solo se haya modificado un usuario
+    [Documentation]    Search and find the user created via bulk process, verify that only one user was modified
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
-    
+
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/admin/users/listPagination?page=1&pageSize=200&community=6654ae4eba54fe502d4e4187
     ...    headers=${headers}
+    
     ${last_user}=    Set Variable    ${response.json()}[users][-1]
 
     Should Be Equal As Strings    ${last_user}[name]    QA TEST RF
-    ...    msg=❌ El nombre del último usuario debería ser 'QA TEST RF'. Se encontró: "${last_user}[name]"
-    
+    ...    msg=❌ The name of the last user should be 'QA TEST RF'. Found: "${last_user}[name]"
+
     Should Be Equal As Strings    ${last_user}[_id]    ${bulkUserId}
-    ...    msg=❌ El _id del último usuario debería ser '${bulkUserId}'. Se encontró: "${last_user}[name]"
+    ...    msg=❌ The _id of the last user should be '${bulkUserId}'. Found: "${last_user}[_id]"
 
-
-    # Validar que fue creado desde admin
+    # Validate that it was created from admin
     Should Be Equal As Strings    ${last_user}[createdFromAdmin]    True
-    ...    msg=❌ El campo 'createdFromAdmin' debería ser True. Se encontró: "${last_user}[createdFromAdmin]"  
+    ...    msg=❌ The 'createdFromAdmin' field should be True. Found: "${last_user}[createdFromAdmin]"
+
 Get User Detail after bulk creation
     [Documentation]    Buscar usuario recién creado, debería tener habilitado buses privados
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -507,12 +556,11 @@ Get User Detail after bulk edit
 
 
 Delete user from community
-    [Documentation]     Eliminar al usuario recién creado de manera masiva
+    [Documentation]    Delete the user recently created via bulk operation
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
-    
+
     ${response}=    DELETE On Session
     ...    mysesion
     ...    url=/api/v1/admin/users/${bulkUserId}?community=6654ae4eba54fe502d4e4187
@@ -521,16 +569,17 @@ Delete user from community
     ${deleted_user}=    Set Variable    ${response.json()}
 
     Should Not Be Empty    ${deleted_user}[deletedAt]
-    ...    msg=❌ El campo 'deletedAt' debería estar presente. Se encontró vacío o nulo.
+    ...    msg=❌ The 'deletedAt' field should be present. Found empty or null.
 
     Should Be Equal As Strings    ${deleted_user}[createdFromAdmin]    True
-    ...    msg=❌ El campo 'createdFromAdmin' debería ser True. Se encontró: "${deleted_user}[createdFromAdmin]"
+    ...    msg=❌ The 'createdFromAdmin' field should be True. Found: "${deleted_user}[createdFromAdmin]"
 
     Should Contain    ${deleted_user}[avatar]    user_placeholder.png
-    ...    msg=❌ El avatar debería ser el placeholder por defecto. Se encontró: "${deleted_user}[avatar]"
+    ...    msg=❌ The avatar should be the default placeholder. Found: "${deleted_user}[avatar]"
 
     Should Be Equal As Strings    ${deleted_user}[country]    cl
-    ...    msg=❌ El campo 'country' debería ser 'cl'. Se encontró: "${deleted_user}[country]"
+    ...    msg=❌ The 'country' field should be 'cl'. Found: "${deleted_user}[country]"
+
 
 
 

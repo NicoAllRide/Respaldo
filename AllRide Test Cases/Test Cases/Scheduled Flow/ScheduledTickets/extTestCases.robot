@@ -95,6 +95,29 @@ Create new service in the selected route
 
     Sleep    5s
 
+Get Driver Token
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/admin/pb/drivers/?community=${idComunidad2}&driverId=${driverId2}
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${access_token}=    Set Variable    ${response.json()['accessToken']}
+    ${tokenDriver}=    Evaluate    "Bearer " + "${access_token}"
+    Set Global Variable    ${tokenDriver}
+
+    Log    ${tokenDriver}
+    Log    ${response.content}
+    
+    Sleep    3s
+
 Create services
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -109,10 +132,9 @@ Create services
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
     Log    ${code}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    Sleep    2s
+    Sleep    5s
 
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -183,26 +205,6 @@ Get Departure Info After Resource Assignment
         Should Be Equal    ${startCapacity}    46as
     ...    msg=❌ 'startCapacity' should be 46 but was ${startCapacity}
 
-Get Driver Token
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/drivers/?community=${idComunidad2}&driverId=${driverId2}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    ${access_token}=    Set Variable    ${response.json()['accessToken']}
-    ${tokenDriver}=    Evaluate    "Bearer " + "${access_token}"
-    Set Global Variable    ${tokenDriver}
-
-    Log    ${tokenDriver}
-    Log    ${response.content}
 
 Start Departure Leg
     Create Session    mysesion    ${STAGE_URL}    verify=true

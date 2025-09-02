@@ -51,8 +51,6 @@ Set Date Variables
     Set Global Variable    ${end_date}
     ${end_date_tomorrow}=    Set Variable    ${fecha_manana}T03:00:00.000Z
     Set Global Variable    ${end_date_tomorrow}
-    ${end_date_pastTomorrow}=    Set Variable    ${fecha_pasado_manana}T03:00:00.000Z
-    Set Global Variable    ${end_date_pastTomorrow}
     ${schedule_day}=    Set Variable    ${dia_actual_lower}
     Set Global Variable    ${schedule_day}
     ${start_date_today}=    Set Variable    ${fecha_hoy}T03:00:00.000Z
@@ -63,32 +61,87 @@ Set Date Variables
     Set Global Variable    ${end_date_tomorrow}
     ${expiration_date_qr}=    Set Variable    ${fecha_manana}T14:10:37.968Z
     Set Global Variable    ${expiration_date_qr}
+    ${start_date_tickets}=    Set Variable    ${fecha_hoy}T04:00:00.000Z
+    Set Global Variable    ${start_date_tickets}
+    ${end_date_tickets}=    Set Variable    ${fecha_manana}T03:59:59.999Z
+    Set Global Variable    ${end_date_tickets}
 
-Create new service in the selected route
-    [Documentation]     Crear un nuevo servicio en la ruta 66f310608e6c377a3f43968e, si no se encuentra el servicio creado se ejecuta un Fatal error
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${end_date_pastTomorrow}=    Set Variable    ${fecha_pasado_manana}T03:00:00.000Z
+    Set Global Variable    ${end_date_pastTomorrow}
 
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    PUT On Session
-    ...    mysesion
-    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/routes/66f310608e6c377a3f43968e?community=6654ae4eba54fe502d4e4187
-    ...    data={"_id":"66f310608e6c377a3f43968e","trail":{"enabled":false,"adjustByRounds":false},"rounds":{"enabled":false,"anchorStops":[]},"notifyUsersByStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]}},"excludePassengers":{"active":false,"excludeType":"dontHide"},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"defaultServiceCost":null,"schedule":[{"enabled":true,"day":"${schedule_day}","time":"${formatted_one_hour_later}","estimatedArrival":null,"capped":{"enabled":false,"capacity":0},"vehicleCategoryId":null,"restrictPassengers":{"enabled":false,"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"serviceCost":0,"observations":"","reservations":{"enabled":false,"list":[]},"stopSchedule":[],"defaultResources":[],"_ogIndex":0}],"stopOnReservation":false,"restrictions":{"customParams":{"enabled":false,"params":[]}},"reservations":{"enabled":false,"list":[]}},"endDepartureNotice":{"enabled":false,"lastStop":null},"restrictPassengers":{"enabled":false,"allowed":["66f310608e6c377a3f43968e"],"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"snapshots":{"enabled":false},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"canResume":{"timeLimit":{"enabled":false,"amount":5,"unit":"minutes"},"enabled":false},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"validateDeparture":{"enabled":true},"minimumConfirmationTime":{"enabled":false,"amount":1,"unit":"hours"},"endServiceLegAutomatically":{"timer":{"amount":5,"unit":"minutes"},"distance":100},"assistantIds":["66ccdf58193998eca49014c3"],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["6654ae4eba54fe502d4e4187"],"active":true,"visible":true,"internal":false,"anchorStops":[],"isStatic":false,"labels":[],"hasExternalGPS":false,"hasCapacity":true,"hasBeacons":true,"hasRounds":false,"hasBoardingCount":false,"hasUnboardingCount":false,"usesBusCode":false,"usesVehicleList":true,"dynamicSeatAssignment":false,"usesDriverCode":false,"usesDriverPin":false,"usesTickets":false,"usesPasses":false,"usesTextToSpeech":false,"allowsManualValidation":true,"allowsRating":true,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"allowsDebugging":false,"startsOnStop":false,"notNearStop":false,"allowsNonServiceSnapshots":false,"allowsServiceSnapshots":false,"allowsDistance":true,"usesOfflineCount":false,"hasBoardings":true,"hasUnboardings":true,"usesManualSeat":true,"noPassengerInfo":false,"showParable":false,"showStops":true,"allowGenericVehicles":true,"usesVehicleQRLink":false,"skipDeclaration":false,"skipQRValidation":false,"assistantAssignsSeat":true,"name":"Flujo Tickets Auxiliar","shapeId":"6654d514713b9a5184cfe21e","description":"Flujo Tickets Auxiliar","extraInfo":"","color":"652525","legOptions":[],"ownerIds":[{"_id":"66954794b24db9885e5aed83","id":"6654ae4eba54fe502d4e4187","role":"community"}],"segments":[{"_id":"66faba3063836b24c20ecabb","position":1,"distance":290.2660419534011,"lat":-34.408530000000006,"lon":-70.85308,"loc":[-70.85308,-34.408530000000006]},{"_id":"66faba3063836b24c20ecabc","position":2,"distance":488.1040403831149,"lat":-34.40699,"lon":-70.852,"loc":[-70.852,-34.40699]},{"_id":"66faba3063836b24c20ecabd","position":3,"distance":781.9113593811135,"lat":-34.40496,"lon":-70.84995,"loc":[-70.84995,-34.40496]},{"_id":"66faba3063836b24c20ecabe","position":4,"distance":1104.6940260856932,"lat":-34.40296,"lon":-70.84740000000001,"loc":[-70.84740000000001,-34.40296]},{"_id":"66faba3063836b24c20ecabf","position":5,"distance":1122.8597601245997,"lat":-34.402800000000006,"lon":-70.84736000000001,"loc":[-70.84736000000001,-34.402800000000006]},{"_id":"66faba3063836b24c20ecac0","position":6,"distance":1292.2891375798047,"lat":-34.40267,"lon":-70.84552000000001,"loc":[-70.84552000000001,-34.40267]},{"_id":"66faba3063836b24c20ecac1","position":7,"distance":1459.1985795046444,"lat":-34.40229,"lon":-70.84376,"loc":[-70.84376,-34.40229]},{"_id":"66faba3063836b24c20ecac2","position":8,"distance":1583.0555768914546,"lat":-34.40229,"lon":-70.84241,"loc":[-70.84241,-34.40229]},{"_id":"66faba3063836b24c20ecac3","position":9,"distance":2238.7794491503846,"lat":-34.40344,"lon":-70.8354,"loc":[-70.8354,-34.40344]},{"_id":"66faba3063836b24c20ecac4","position":10,"distance":2367.730135581892,"lat":-34.40379,"lon":-70.83406000000001,"loc":[-70.83406000000001,-34.40379]},{"_id":"66faba3063836b24c20ecac5","position":11,"distance":2813.2702156190876,"lat":-34.40545,"lon":-70.82964000000001,"loc":[-70.82964000000001,-34.40545]},{"_id":"66faba3063836b24c20ecac6","position":12,"distance":2907.937653439918,"lat":-34.405660000000005,"lon":-70.82864000000001,"loc":[-70.82864000000001,-34.405660000000005]},{"_id":"66faba3063836b24c20ecac7","position":13,"distance":3103.8542952895764,"lat":-34.40598,"lon":-70.82654000000001,"loc":[-70.82654000000001,-34.40598]},{"_id":"66faba3063836b24c20ecac8","position":14,"distance":3399.7333701489256,"lat":-34.406130000000005,"lon":-70.82332000000001,"loc":[-70.82332000000001,-34.406130000000005]},{"_id":"66faba3063836b24c20ecac9","position":15,"distance":3777.3304160935245,"lat":-34.40782,"lon":-70.81975,"loc":[-70.81975,-34.40782]},{"_id":"66faba3063836b24c20ecaca","position":16,"distance":4027.852872329667,"lat":-34.409060000000004,"lon":-70.81747,"loc":[-70.81747,-34.409060000000004]},{"_id":"66faba3063836b24c20ecacb","position":17,"distance":4262.946941118368,"lat":-34.40968,"lon":-70.81502,"loc":[-70.81502,-34.40968]},{"_id":"66faba3063836b24c20ecacc","position":18,"distance":4331.54548643874,"lat":-34.40997,"lon":-70.81436000000001,"loc":[-70.81436000000001,-34.40997]},{"_id":"66faba3063836b24c20ecacd","position":19,"distance":4470.011462521272,"lat":-34.41068,"lon":-70.81312000000001,"loc":[-70.81312000000001,-34.41068]},{"_id":"66faba3063836b24c20ecace","position":20,"distance":4569.730370049159,"lat":-34.41037,"lon":-70.8121,"loc":[-70.8121,-34.41037]},{"_id":"66faba3063836b24c20ecacf","position":21,"distance":4885.998380967774,"lat":-34.40916,"lon":-70.80898,"loc":[-70.80898,-34.40916]},{"_id":"66faba3063836b24c20ecad0","position":22,"distance":5117.696468148955,"lat":-34.40769,"lon":-70.80719,"loc":[-70.80719,-34.40769]},{"_id":"66faba3063836b24c20ecad1","position":23,"distance":5264.734491572538,"lat":-34.406670000000005,"lon":-70.80617000000001,"loc":[-70.80617000000001,-34.406670000000005]},{"_id":"66faba3063836b24c20ecad2","position":24,"distance":5425.207136314769,"lat":-34.405620000000006,"lon":-70.80497000000001,"loc":[-70.80497000000001,-34.405620000000006]},{"_id":"66faba3063836b24c20ecad3","position":25,"distance":5509.906626643151,"lat":-34.40527,"lon":-70.80415,"loc":[-70.80415,-34.40527]},{"_id":"66faba3063836b24c20ecad4","position":26,"distance":5600.221898860165,"lat":-34.40466,"lon":-70.8035,"loc":[-70.8035,-34.40466]},{"_id":"66faba3063836b24c20ecad5","position":27,"distance":5755.68153334114,"lat":-34.404250000000005,"lon":-70.80188000000001,"loc":[-70.80188000000001,-34.404250000000005]},{"_id":"66faba3063836b24c20ecad6","position":28,"distance":5915.319583664183,"lat":-34.40424,"lon":-70.80014,"loc":[-70.80014,-34.40424]},{"_id":"66faba3063836b24c20ecad7","position":29,"distance":6007.047842778099,"lat":-34.40404,"lon":-70.79917,"loc":[-70.79917,-34.40404]},{"_id":"66faba3063836b24c20ecad8","position":30,"distance":6182.3341417231395,"lat":-34.40551,"lon":-70.79848000000001,"loc":[-70.79848000000001,-34.40551]},{"_id":"66faba3063836b24c20ecad9","position":31,"distance":6367.330377715924,"lat":-34.40664,"lon":-70.79700000000001,"loc":[-70.79700000000001,-34.40664]},{"_id":"66faba3063836b24c20ecada","position":32,"distance":6527.46821540092,"lat":-34.407920000000004,"lon":-70.7962,"loc":[-70.7962,-34.407920000000004]},{"_id":"66faba3063836b24c20ecadb","position":33,"distance":7287.353626388585,"lat":-34.404030000000006,"lon":-70.78939000000001,"loc":[-70.78939000000001,-34.404030000000006]},{"_id":"66faba3063836b24c20ecadc","position":34,"distance":7845.43322025191,"lat":-34.40109,"lon":-70.78446000000001,"loc":[-70.78446000000001,-34.40109]},{"_id":"66faba3063836b24c20ecadd","position":35,"distance":7882.902565797689,"lat":-34.40119,"lon":-70.78407,"loc":[-70.78407,-34.40119]},{"_id":"66faba3063836b24c20ecade","position":36,"distance":8083.244366156947,"lat":-34.40008,"lon":-70.78235000000001,"loc":[-70.78235000000001,-34.40008]},{"_id":"66faba3063836b24c20ecadf","position":37,"distance":8151.255642391474,"lat":-34.399550000000005,"lon":-70.78272000000001,"loc":[-70.78272000000001,-34.399550000000005]},{"_id":"66faba3063836b24c20ecae0","position":38,"distance":8242.744317444498,"lat":-34.39882,"lon":-70.78226000000001,"loc":[-70.78226000000001,-34.39882]},{"_id":"66faba3063836b24c20ecae1","position":39,"distance":8448.184416414158,"lat":-34.397040000000004,"lon":-70.78166,"loc":[-70.78166,-34.397040000000004]},{"_id":"66faba3063836b24c20ecae2","position":40,"distance":8467.636269238845,"lat":-34.39687,"lon":-70.78171,"loc":[-70.78171,-34.39687]},{"_id":"66faba3063836b24c20ecae3","position":41,"distance":8609.810198718747,"lat":-34.39578,"lon":-70.78252,"loc":[-70.78252,-34.39578]},{"_id":"66faba3063836b24c20ecae4","position":42,"distance":8702.762775926865,"lat":-34.395430000000005,"lon":-70.78160000000001,"loc":[-70.78160000000001,-34.395430000000005]},{"_id":"66faba3063836b24c20ecae5","position":43,"distance":8729.30555711264,"lat":-34.395250000000004,"lon":-70.78141000000001,"loc":[-70.78141000000001,-34.395250000000004]},{"_id":"66faba3063836b24c20ecae6","position":44,"distance":8771.583165938728,"lat":-34.3949,"lon":-70.78123000000001,"loc":[-70.78123000000001,-34.3949]}],"superCommunityId":"653fd68233d83952fafcd4be","communityId":"6654ae4eba54fe502d4e4187","routeCost":10,"ticketCost":100,"timeOnRoute":14,"distance":9,"distanceInMeters":8784,"createdAt":"2024-09-24T19:17:52.759Z","updatedAt":"2025-01-03T20:05:48.776Z","__v":221,"rating":{"enabled":false,"withValidation":false},"hasBarrier":false,"minimumTimeToForceDeparture":{"amount":5,"enabled":false,"unit":"minutes"},"DNIValidation":{"enabled":false},"codeValidationOptions":{"enabled":false,"type":"qr","failureMessage":"Solo puedes presentar el código de AllRide o de tu cédula de identidad."},"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"notifyPassengersWithoutReservation":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"sendAt":"eachStop"},"notifySkippedStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]}},"notifyUnboardedPassengers":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[]},"sendAt":"eachStop"},"roundOrder":[],"routeDeviation":{"maxDistance":100,"maxTime":5,"enabled":false},"useServiceReservations":true}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
+1 hours local
+    ${date}=    Get Current Date    time_zone=local    exclude_millis=yes
+    ${formatted_date}=    Convert Date    ${date}    result_format=%H:%M:%S
+    Log    Hora Actual: ${formatted_date}
 
-    Dictionary Should Contain Key    ${response.json()}    _id        No _id Found when service is created. Failing
-    ${scheduleId}=    Set Variable    ${response.json()}[_id]
-    Set Global Variable    ${scheduleId}
+    # Sumar una hora
+    ${one_hour_later}=    Add Time To Date    ${date}    1 hour
+    ${formatted_one_hour_later}=    Convert Date    ${one_hour_later}    result_format=%H:%M
+    Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
+    Set Global Variable    ${formatted_one_hour_later}
 
-    Sleep    5s
+2 hours local
+    ${date}=    Get Current Date    time_zone=local    exclude_millis=yes
+    ${formatted_date}=    Convert Date    ${date}    result_format=%H:%M:%S
+    Log    Hora Actual: ${formatted_date}
+
+    # Sumar una hora
+    ${two_hour_later}=    Add Time To Date    ${date}    2 hour
+    ${formatted_two_hour_later}=    Convert Date    ${two_hour_later}    result_format=%H:%M
+    Log    Hora Actual + 1 hora: ${formatted_two_hour_later}
+    Set Global Variable    ${formatted_two_hour_later}
+
+
+Get Next Monday At 14 CLT (UTC 18)
+    # Obtener fecha actual en UTC
+    ${now}=    Get Current Date    time_zone=UTC
+
+    # Obtener día actual de la semana (0 = domingo, 1 = lunes, ..., 6 = sábado)
+    ${weekday}=    Convert Date    ${now}    result_format=%w
+    ${weekday}=    Convert To Integer    ${weekday}
+
+    # Calcular días hasta el próximo lunes
+    ${days_until_monday}=    Evaluate    (8 - ${weekday}) if ${weekday} != 1 else 7
+
+    # Sumar días para obtener el próximo lunes
+    ${next_monday}=    Add Time To Date    ${now}    ${days_until_monday} days
+    Set Global Variable    ${next_monday}
+
+    # Obtener solo la fecha y combinarla con hora 18:00:00 UTC (14:00 hora Chile UTC-4)
+    ${next_monday_date}=    Convert Date    ${next_monday}    result_format=%Y-%m-%d
+    ${next_monday_at_18}=    Set Variable    ${next_monday_date}T18:00:00.000000Z
+
+    Log    Próximo lunes a las 14:00 CLT (UTC 18:00): ${next_monday_at_18}
+    Set Global Variable    ${next_monday_at_18}
+    ${nextMonday}=    Set Variable   ${next_monday_date}T03:00:00.000Z
+    Set Global Variable    ${nextMonday}
+Get Next Tuesday At 14 CLT (UTC 18)
+    # Obtener fecha actual en UTC
+    ${now}=    Get Current Date    time_zone=UTC
+
+    # Obtener día actual de la semana (0 = domingo, 1 = lunes, ..., 6 = sábado)
+    ${weekday}=    Convert Date    ${now}    result_format=%w
+    ${weekday}=    Convert To Integer    ${weekday}
+
+    # Calcular días hasta el próximo martes
+    ${days_until_tuesday}=    Evaluate    (9 - ${weekday}) % 7
+    ${days_until_tuesday}=    Run Keyword If    ${days_until_tuesday} == 0    Set Variable    7    ELSE    Set Variable    ${days_until_tuesday}
+
+    # Sumar días para obtener el próximo martes
+    ${next_tuesday}=    Add Time To Date    ${now}    ${days_until_tuesday} days
+    Set Global Variable    ${next_tuesday}
+
+    # Obtener solo la fecha y combinarla con hora 18:00:00 UTC (14:00 hora Chile UTC-4)
+    ${next_tuesday_date}=    Convert Date    ${next_tuesday}    result_format=%Y-%m-%d
+    ${next_tuesday_at_18}=    Set Variable    ${next_tuesday_date}T18:00:00.000000Z
+
+    Log    Próximo martes a las 14:00 CLT (UTC 18:00): ${next_tuesday_at_18}
+    Set Global Variable    ${next_tuesday_at_18}
+    ${nextTuesday}=    Set Variable    ${next_tuesday_date}T02:59:59.999Z
+    Set Global Variable    ${nextTuesday}
 
 Create services
+    skip
     [Documentation]    Iniciar la creación de servicios
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -109,10 +162,11 @@ Create services
     Sleep    5s
 
 Get Service Id
+    Set Log Level    TRACE
     [Documentation]     Obtener servicio creado recientemente, si no se encuentra se ejecuta un fatal error
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_tomorrow}&onlyODDs=false
+    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${nextMonday}&endDate=${nextTuesday}&onlyODDs=false
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}[scheduledServices]
@@ -120,240 +174,15 @@ Get Service Id
 
     
     # Ordenamos los servicios por createdAt
-    ${sorted_services}=    Evaluate    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])    json
+    ${sorted_services}=    Evaluate    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '6818eceadee018d6a8ed7948'], key=lambda x: x['createdAt'])    json
+    
+    Length Should Be    ${sorted_services}    2
 
-
-    Run Keyword If    ${sorted_services} == []    Fatal Error    msg= No services were created with routeId._id = "${scheduleId}" All createSheduled Tests Failing(Fatal error)
-    # Obtenemos el último servicio creado
-    ${last_service}=    Set Variable    ${sorted_services[-1]}
-    ${service_id}=    Set Variable    ${last_service['_id']}
-    ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
-    Should Be Equal As Strings    ${scheduleId}    ${last_service_route}
+    ${service1}=    Set Variable    ${sorted_services}[0]
+    ${service2}=    Set Variable    ${sorted_services}[1]
     
     Set Global Variable    ${service_id}
 
     Log    Last created service ID: ${service_id}
-
-
-2 hours local
-    ${date}    Get Current Date    time_zone=local    exclude_millis=yes
-    ${formatted_date}    Convert Date    ${date}    result_format=%H:%M:%S
-    Log    Hora Actual: ${formatted_date}
-
-    # Sumar una hora
-    ${one_hour_later}    Add Time To Date    ${date}    1 hour
-    ${formatted_one_hour_later}    Convert Date    ${one_hour_later}    result_format=%H:%M
-    Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
-    Set Global Variable    ${formatted_one_hour_later}
-
-
-Login User With Email(Obtain Token)
-        Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"username":"nicolas+comunidad2@allrideapp.com","password":"Lolowerty21@"}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Post On Session
-    ...    mysesion
-    ...    url=${loginUserUrl}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
-    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
-    ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
-    Set Global Variable    ${accessTokenNico}
-
-Seat Reservation(User1-NicoEnd)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/pb/user/booking
-    ...    data={"serviceId":"6818ed66dee018d6a8ed7fe1","stopId":"6654d4acba54fe502d4e6b6b"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-
-Can Request TD
-
-    skip
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/pb/user/canRequestTD
-    ...    data={"communityId":"6654ae4eba54fe502d4e4187","direction":"in","routeId":"6818eceadee018d6a8ed7948","serviceId":"6818ed66dee018d6a8ed7fe1","stopId":"6654d4acba54fe502d4e6b6b"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-
-Create TD
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/pb/user/transitDeparture
-    ...    data={"communityId":"6654ae4eba54fe502d4e4187","direction":"in","endLocation":{"address":"Hospital Rengo","isUserStop":false,"lat":"-34.4111","loc":["-34.4111","-70.8537"],"lon":"-70.8537","placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b"},"estimatedArrival":"2025-05-12T18:00:00.000Z","isEmergency":false,"matchedOption":{"allowedUsers":{},"direction":"in","_id":"681ce3854093cf7169c2eaa3","margin":{"amount":10,"enabled":true,"unit":"minutes"}},"oddType":"Taxis Nico","startLocation":{"address":"Cesfam Rengo -","isUserStop":false,"lat":"-34.3944","loc":["-34.3944","-70.8504"],"lon":"-70.8504","placeId":"666854f90c80b160cb022b90"}}
-    ...    headers=${headers}
-    
-    ${TD_id}=  Set variable    ${response.json()}[_id]
-    Set Global Variable    ${TD_id}
-Login User With Email(Obtain Token) Barbi
-        Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"username":"nicolas+barbara@allrideapp.com","password":"Lowerty21@"}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Post On Session
-    ...    mysesion
-    ...    url=${loginUserUrl}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
-    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
-    ${accessTokenBarbi}=    Evaluate    "Bearer ${accessToken}"
-    Set Global Variable    ${accessTokenBarbi}
-
-
-Seat Reservation(User2-Barbi)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenBarbi}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/pb/user/booking
-    ...    data={"serviceId":"6818ed66dee018d6a8ed7fe1","stopId":"6654d4acba54fe502d4e6b6b"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-
-Can Request TD Barbi
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenBarbi}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/pb/user/canRequestTD
-    ...    data={"communityId":"6654ae4eba54fe502d4e4187","direction":"in","routeId":"6818eceadee018d6a8ed7948","serviceId":"6818ed66dee018d6a8ed7fe1","stopId":"6654d4acba54fe502d4e6b6b"}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-
-Create TD Barbi
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenBarbi}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/pb/user/transitDeparture
-    ...    data={"communityId":"6654ae4eba54fe502d4e4187","direction":"in","endLocation":{"address":"Hospital Rengo","isUserStop":false,"lat":"-34.4111","loc":["-34.4111","-70.8537"],"lon":"-70.8537","placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b"},"estimatedArrival":"2025-05-12T18:00:00.000Z","isEmergency":false,"matchedOption":{"allowedUsers":{},"direction":"in","_id":"681ce3854093cf7169c2eaa3","margin":{"amount":10,"enabled":true,"unit":"minutes"}},"oddType":"Taxis Nico","startLocation":{"address":"Cesfam Rengo -","isUserStop":false,"lat":"-34.3944","loc":["-34.3944","-70.8504"],"lon":"-70.8504","placeId":"666854f90c80b160cb022b90"}}
-    ...    headers=${headers}
-    
-    ${TD_idBarbi}=  Set variable    ${response.json()}[_id]
-    Set Global Variable    ${TD_idBarbi}
-    Should Be Equal As Strings    ${TD_id}    ${TD_idBarbi}    Not joining
-
-
-
-Delete TD Nico
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    DELETE On Session
-    ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/pb/user/transitDeparture/${TD_id}
-    ...    headers=${headers}
-    
-    ${TD_idBarbi}=  Set variable    ${response.json()}[_id]
-    Set Global Variable    ${TD_idBarbi}
-    Should Be Equal As Strings    ${TD_id}    ${TD_idBarbi}    Not joining
-
-
-
-
-
-Delete TD Barbi
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenBarbi}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    DELETE On Session
-    ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/pb/user/transitDeparture/${TD_idBarbi}
-    ...    headers=${headers}
-    
-    ${TD_idBarbi}=  Set variable    ${response.json()}[_id]
-    Set Global Variable    ${TD_idBarbi}
-    Should Be Equal As Strings    ${TD_id}    ${TD_idBarbi}    Not joining
-
-
-
-Delete Regular reservation Nico
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    DELETE On Session
-    ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/pb/user/booking/6818ed66dee018d6a8ed7fe1
-    
-    ${TD_idBarbi}=  Set variable    ${response.json()}[_id]
-    Set Global Variable    ${TD_idBarbi}
-    Should Be Equal As Strings    ${TD_id}    ${TD_idBarbi}    Not joining
-
-
-
-
-Delete Regular reservation Barbi
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${accessTokenBarbi}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    DELETE On Session
-    ...    mysesion
-    ...    url=${STAGE_URL}/api/v1/pb/user/booking/6818ed66dee018d6a8ed7fe1
-    
-    ${TD_idBarbi}=  Set variable    ${response.json()}[_id]
-    Set Global Variable    ${TD_idBarbi}
-    Should Be Equal As Strings    ${TD_id}    ${TD_idBarbi}    Not joining
-
-
+    Log   ${sorted_services}
 

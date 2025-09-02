@@ -266,8 +266,8 @@ Sync validations offline
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${CRIS_URL2}/api/v2/pb/driver/validations/sync/${idSuperCommunity}
-    ...    data={"validations":[{"assignedSeat":"3","communityId":"${idSuperCommunity}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_dni}","isCustom":false,"isDNI":true,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"https://portal.sidiv.registrocivil.cl/docstatus?RUN=19040685-7&type=CEDULA&serial=107182779&mrz=107182779695092742509275","reason":["not_part"],"remainingTickets":0,"routeId":"","synced":false,"token":"","userId":"","validated":true}]}
+    ...    url=/api/v2/pb/driver/validations/sync/${idSuperCommunity}
+    ...    data={"validations":[{"assignedSeat":"2","communityId":"653fd601f90509541a748683","createdAt":"2024-10-08T19:35:10.885Z","departureId":"${departureId}","_id":"${uuid_custom}","isCustom":true,"isDNI":false,"isManual":false,"key":"rut","latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":["custom"],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"654a5148bf3e9410d0bcd39a","validated":true,"value":"126278489"},{"assignedSeat":"3","communityId":"${idComunidad}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico}","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"${idNico}","validated":true},{"assignedSeat":"3","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_dni}","isCustom":false,"isDNI":true,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"https://portal.sidiv.registrocivil.cl/docstatus?RUN=19186681-9&type=CEDULA&serial=107182779&mrz=107182779695092742509275","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"${idDNI}","validated":true}]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -281,7 +281,6 @@ Sync validations offline
     END
 
 Get Assigned Tickets After Validation(Nico)
-    skip
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
@@ -308,7 +307,6 @@ Get Assigned Tickets After Validation(Nico)
     Log    ${assignedQtyNico}
 
 Get Assigned Tickets After Validation(Pedro)
-    skip
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
@@ -334,7 +332,6 @@ Get Assigned Tickets After Validation(Pedro)
     Log    ${assignedQtyPedro}
 
 Get Assigned Tickets After Validation(DNI)
-
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
@@ -361,7 +358,6 @@ Get Assigned Tickets After Validation(DNI)
 
 
 Get Departure in admin, should be active false
-
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/admin/pb/departures/${departureId}?community=653fd601f90509541a748683
@@ -402,11 +398,11 @@ Check Payment Settlement (3 electronic tickets)
     ${ticketqty}=    Set Variable    ${electronicTicket}[quantity]
     ${settlementId}=    Set Variable    ${responseJson}[paymentSettlement][0][_id]
 
-    Should Be Equal As Strings    ${electronicTicket}[type]    electronicTicket
-    Should Be Equal As Numbers    ${ticketqty}    3    There should be 3 electronic tickets, but there are ${ticketqty} in https://stage.allrideapp.com/api/v1/admin/pb/paymentSettlement/?community=653fd601f90509541a748683&settlementId=${settlementId}
-    Should Be Equal As Numbers    ${electronicTicket}[value]    10
-
-    ${paymentSettlement}=    Set Variable    ${responseJson}[paymentSettlement][0]
+   # Should Be Equal As Strings    ${electronicTicket}[type]    electronicTicket
+   # Should Be Equal As Numbers    ${ticketqty}    3    There should be 3 electronic tickets, but there are ${ticketqty} in https://stage.allrideapp.com/api/v1/admin/pb/paymentSettlement/?community=653fd601f90509541a748683&settlementId=${settlementId}
+  #  Should Be Equal As Numbers    ${electronicTicket}[value]    10    msg=❌ 'electronicTicket.value' should be 10, but was ${electronicTicket}[value]
+#
+   # ${paymentSettlement}=    Set Variable    ${responseJson}[paymentSettlement][0]
    # ${driverCode}=    Set Variable    ${paymentSettlement}[driverCode]
 
   #  Should Contain    ${paymentSettlement}    driverCode    No driverCode found

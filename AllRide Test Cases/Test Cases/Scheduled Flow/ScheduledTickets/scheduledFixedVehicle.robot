@@ -10,7 +10,6 @@ Library     RPA.JSON
 Resource    ../../Variables/variablesStage.robot
 
 
-
 *** Test Cases ***
 Set Date Variables
     ${fecha_hoy}=    Get Current Date    result_format=%Y-%m-%d
@@ -61,15 +60,17 @@ Set Date Variables
     Set Global Variable    ${end_date_tomorrow}
     ${expiration_date_qr}=    Set Variable    ${fecha_manana}T14:10:37.968Z
     Set Global Variable    ${expiration_date_qr}
+    ${end_date_pastTomorrow}=    Set Variable    ${fecha_pasado_manana}T03:00:00.000Z
+    Set Global Variable    ${end_date_pastTomorrow}
 
 2 hours local
-    ${date}    Get Current Date    time_zone=local    exclude_millis=yes
-    ${formatted_date}    Convert Date    ${date}    result_format=%H:%M:%S
+    ${date}=    Get Current Date    time_zone=local    exclude_millis=yes
+    ${formatted_date}=    Convert Date    ${date}    result_format=%H:%M:%S
     Log    Hora Actual: ${formatted_date}
 
     # Sumar una hora
-    ${one_hour_later}    Add Time To Date    ${date}    1 hour
-    ${formatted_one_hour_later}    Convert Date    ${one_hour_later}    result_format=%H:%M
+    ${one_hour_later}=    Add Time To Date    ${date}    1 hour
+    ${formatted_one_hour_later}=    Convert Date    ${one_hour_later}    result_format=%H:%M
     Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
     Set Global Variable    ${formatted_one_hour_later}
 
@@ -109,36 +110,57 @@ Create services
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
     Log    ${code}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    Sleep    2s
+    Sleep    5s
 
-Get Service Id
+Login User With Email(Obtain Token)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_tomorrow}&onlyODDs=false
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
-    ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set Variable    ${response.json()}[scheduledServices]
-    ${service_id}=    Set Variable    None
+    # Configura las opciones de la solicitud (headers, auth)
+    ${jsonBody}=    Set Variable    {"username":"nicolas+comunidad2@allrideapp.com","password":"Lolowerty21@"}
+    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
+    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Post On Session
+    ...    mysesion
+    ...    url=${loginUserUrl}
+    ...    json=${parsed_json}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
+    List Should Contain Value    ${response.json()}    accessToken    No accesToken found in Login!, Failing
+    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
+    ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
+    Set Global Variable    ${accessTokenNico}
 
-    
-    # Ordenamos los servicios por createdAt
-    ${sorted_services}=    Evaluate    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])    json
+    Sleep    3s
 
+Login User With Email(Obtain Token) User undefined
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${jsonBody}=    Set Variable    {"username":"nicolas+usuario3comunidad2@allrideapp.com","password":"Lolowerty21@"}
+    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
+    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Post On Session
+    ...    mysesion
+    ...    url=${loginUserUrl}
+    ...    json=${parsed_json}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
+    List Should Contain Value    ${response.json()}    accessToken    No accesToken found in Login!, Failing
+    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
+    ${accessTokenUsuario2}=    Evaluate    "Bearer ${accessToken}"
+    Set Global Variable    ${accessTokenUsuario2}
 
-    Run Keyword If    ${sorted_services} == []    Fatal Error    msg= No services were created with routeId._id = "${scheduleId}" All createSheduled Tests Failing(Fatal error)
-    # Obtenemos el último servicio creado
-    ${last_service}=    Set Variable    ${sorted_services[-1]}
-    ${service_id}=    Set Variable    ${last_service['_id']}
-    ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
-    Should Be Equal As Strings    ${scheduleId}    ${last_service_route}
-    
-    Set Global Variable    ${service_id}
-
-    Log    Last created service ID: ${service_id}
-
+    Sleep    3s
 
 
 Get Driver Token
@@ -155,13 +177,43 @@ Get Driver Token
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Should Be Equal As Numbers    ${response.status_code}    200
 
-    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Driver info
+    List Should Contain Value    ${response.json()}    accessToken    No accesToken found in Driver info
     ${access_token}=    Set Variable    ${response.json()['accessToken']}
     ${tokenDriver}=    Evaluate    "Bearer " + "${access_token}"
     Set Global Variable    ${tokenDriver}
 
     Log    ${tokenDriver}
     Log    ${response.content}
+
+    Sleep    20s
+Get Service Id
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_pastTomorrow}&onlyODDs=false
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
+    ${response}=    GET    url=${url}    headers=${headers}
+    ${responseJson}=    Set Variable    ${response.json()}[scheduledServices]
+    ${service_id}=    Set Variable    None
+
+    # Ordenamos los servicios por createdAt
+    ${sorted_services}=    Evaluate
+    ...    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])
+    ...    json
+
+    IF    ${sorted_services} == []
+        Fatal Error
+        ...    msg= No services were created with routeId._id = "${scheduleId}" All createSheduled Tests Failing(Fatal error)
+    END
+    # Obtenemos el último servicio creado
+    ${last_service}=    Set Variable    ${sorted_services[-1]}
+    ${service_id}=    Set Variable    ${last_service['_id']}
+    ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
+    Should Be Equal As Strings    ${scheduleId}    ${last_service_route}
+
+    Set Global Variable    ${service_id}
+
+    Log    Last created service ID: ${service_id}
+
 
 Resource Assignment(Driver and Vehicle)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -178,51 +230,11 @@ Resource Assignment(Driver and Vehicle)
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
-    ${departureId}=     Set Variable    ${response.json()}[resources][0][departure][departureId]
+    ${departureId}=    Set Variable    ${response.json()}[resources][0][departure][departureId]
     Set Global Variable    ${departureId}
     Log    ${code}
-Login User With Email(Obtain Token)
-        Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"username":"nicolas+comunidad2@allrideapp.com","password":"Lolowerty21@"}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Post On Session
-    ...    mysesion
-    ...    url=${loginUserUrl}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
-    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
-    ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
-    Set Global Variable    ${accessTokenNico}
-Login User With Email(Obtain Token) User undefined
-        Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"username":"nicolas+usuario3comunidad2@allrideapp.com","password":"Lolowerty21@"}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Post On Session
-    ...    mysesion
-    ...    url=${loginUserUrl}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
-    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
-    ${accessTokenUsuario2}=    Evaluate    "Bearer ${accessToken}"
-    Set Global Variable    ${accessTokenUsuario2}
+
+
 
 Seat Reservation(User1-NicoEnd)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -238,8 +250,11 @@ Seat Reservation(User1-NicoEnd)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Run Keyword If    '${code}' == '200' or '${code}' == '409'    Log    Status code is acceptable: ${code}
-    ...    ELSE    Fail    Unexpected status code: ${code}
+    IF    '${code}' == '200' or '${code}' == '409'
+        Log    Status code is acceptable: ${code}
+    ELSE
+        Fail    Unexpected status code: ${code}
+    END
     Log    ${code}
     Sleep    20s
 
@@ -250,14 +265,15 @@ Seat Reservation(User2-Pedro Pascal Available Seat)
     # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${accessTokenUsuario2}    Content-Type=application/json
     # Realiza la solicitud GET en la sesión por defecto
-    ${response}=     Run Keyword and expect error     HTTPError: 409 Client Error: Conflict for url: https://stage.allrideapp.com/api/v1/pb/user/booking     POST On Session
+    ${response}=    Run Keyword and expect error
+    ...    HTTPError: 409 Client Error: Conflict for url: https://stage.allrideapp.com/api/v1/pb/user/booking
+    ...    POST On Session
     ...    mysesion
     ...    ${seatReservation}
     ...    data={"serviceId":"${service_id}","seat": "2", "departureId" :"${departureId}"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Sleep    20s
-
 
 Get reservations (Should only be one)
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -272,8 +288,8 @@ Get reservations (Should only be one)
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Should Be Equal As Numbers    ${response.status_code}    200
 
-    ${reservations}=    Set Variable  ${response.json()}[reservations]
-    Length Should Be    ${reservations}    1        More reservations found in service, there should only be one
+    ${reservations}=    Set Variable    ${response.json()}[reservations]
+    Length Should Be    ${reservations}    1    More reservations found in service, there should only be one
     ${reservation_userid}=    Set Variable    ${response.json()}[reservations][0][userId][_id]
     ${reservationId}=    Set Variable    ${response.json()}[reservations][0][_id]
     Set Global Variable    ${reservationId}

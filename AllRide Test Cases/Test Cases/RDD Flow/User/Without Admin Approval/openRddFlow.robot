@@ -120,7 +120,7 @@ Create RDD As User
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    Post On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/user/oddepartures/${idComunidad}
+    ...    url=${Stage_URL}/api/v1/pb/user/oddepartures/${idComunidad}
     ...    json=${parsed_json}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -131,7 +131,6 @@ Create RDD As User
     ${rddId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${rddId}
 
-    
 
 Assign Driver
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -186,6 +185,30 @@ Get Driver Token
 
     Log    ${tokenDriver}
     Log    ${response.content}
+
+Start Departure PreLeg
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenDriver}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/leg/start
+    ...    data={"departureId":"${rddId}","communityId":"${idComunidad}","startLat":-33.3908833,"startLon":-70.54620129999999,"legType":"pre","customParamsAtStart":[],"preTripChecklist":[],"capacity":5,"busCode":"1111","driverCode":"753","vehicleId":"${vehicleId}","shareToUsers":false,"customParams":[]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Status Should Be    200
+
+    ${access_token}=    Set Variable    ${response.json()}[token]
+    ${departureToken}=    Evaluate    "Bearer " + "${access_token}"
+    Set Global Variable    ${departureToken}
+
+    Log    ${departureToken}
+    Log    ${code}
 
 Start Departure 
     Create Session    mysesion    ${STAGE_URL}    verify=true

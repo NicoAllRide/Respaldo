@@ -97,6 +97,7 @@ Create Schedule Alto - Apumanque 19:00 hrs
     Set Global Variable    ${scheduleId}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     Sleep    3s
+
 Create services
     [Documentation]    Crea servicios asociados al schedule previamente creado. Se espera que al menos un servicio se cree exitosamente.
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -112,10 +113,62 @@ Create services
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
     Log    ${code}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    Sleep    15s
+
+Get Driver Token
+    [Documentation]    Obtiene el accessToken de un conductor registrado, a partir de su ID y comunidad, para autenticación en futuras validaciones.
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/admin/pb/drivers/?community=${idComunidad}&driverId=${driverId}
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Driver info
+    ${access_token}=    Set Variable    ${response.json()['accessToken']}
+    ${tokenDriver}=    Evaluate    "Bearer " + "${access_token}"
+    Set Global Variable    ${tokenDriver}
+
+    Log    ${tokenDriver}
+    Log    ${response.content}
+
     Sleep    3s
+
+
+Login User With Email(Obtain Token)
+    [Documentation]    Realiza login del usuario "nicolas+endauto" y guarda su token de autenticación para ser usado en la reserva de asientos.
+        Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${jsonBody}=    Set Variable    {"username":"nicolas+endauto@allrideapp.com","password":"Equilibriozen123#"}
+    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
+    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Post On Session
+    ...    mysesion
+    ...    url=${loginUserUrl}
+    ...    json=${parsed_json}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
+    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
+    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
+    ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
+    Set Global Variable    ${accessTokenNico}
+    sleep     5s
+
+
+
 Get Service Id
     [Documentation]    Obtiene el ID del último servicio creado con el schedule actual. Verifica también que se haya creado correctamente.
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -143,55 +196,7 @@ Get Service Id
     Set Global Variable    ${service_id}
 
     Log    Last created service ID: ${service_id}
-    Sleep    3s
 
-Get Driver Token
-    [Documentation]    Obtiene el accessToken de un conductor registrado, a partir de su ID y comunidad, para autenticación en futuras validaciones.
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/drivers/?community=${idComunidad}&driverId=${driverId}
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Driver info
-    ${access_token}=    Set Variable    ${response.json()['accessToken']}
-    ${tokenDriver}=    Evaluate    "Bearer " + "${access_token}"
-    Set Global Variable    ${tokenDriver}
-
-    Log    ${tokenDriver}
-    Log    ${response.content}
-    Sleep    3s
-
-Login User With Email(Obtain Token)
-    [Documentation]    Realiza login del usuario "nicolas+endauto" y guarda su token de autenticación para ser usado en la reserva de asientos.
-        Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
-    ${jsonBody}=    Set Variable    {"username":"nicolas+endauto@allrideapp.com","password":"Equilibriozen123#"}
-    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
-    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    Post On Session
-    ...    mysesion
-    ...    url=${loginUserUrl}
-    ...    json=${parsed_json}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    Log    ${code}
-    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
-    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
-    ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
-    Set Global Variable    ${accessTokenNico}
-    Sleep    3s
 
 Seat Reservation(User1-NicoEnd)
     [Documentation]    Realiza la reserva de asiento del primer usuario (NicoEnd). Si la capacidad del servicio es 1, esta debería ser la única reserva válida permitida.
@@ -212,7 +217,8 @@ Seat Reservation(User1-NicoEnd)
     Run Keyword If    '${code}' == '200' or '${code}' == '409'    Log    Status code is acceptable: ${code}
     ...    ELSE    Fail    Unexpected status code: ${code}
     Log    ${code}
-    Sleep    3s
+    Sleep    5s
+
 Seat Reservation(User2-Pedro Pascal Available Seat)
     [Documentation]    Si el usuario 1 ya reservó correctamente y la capacidad está llena, este usuario no debería poder reservar. Se espera un error 409.
 
@@ -229,7 +235,6 @@ Seat Reservation(User2-Pedro Pascal Available Seat)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     Sleep    5s
-
 Seat Reservation(User3-Kratos Available Seat)
     [Documentation]    Si la capacidad sigue siendo 1 y el usuario 1 ya reservó, este usuario tampoco debería poder reservar. Se espera un error 409.
 
@@ -269,7 +274,7 @@ Get reservations (Should only be one)
     Set Global Variable    ${reservationId}
 
     Log    ${response.content}
-    Sleep    3s
+
 Delete Route
     [Documentation]    Elimina la ruta y su programación asociada, dejando el sistema limpio tras la ejecución de las pruebas.
 

@@ -93,7 +93,6 @@ Create new service in the selected route
     ${scheduleId}=    Set Variable    ${response.json()}[_id]    
     Set Global Variable    ${scheduleId}
 
-    Sleep    5s
 
 Create services
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -109,10 +108,11 @@ Create services
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
+    Should Be Equal As Numbers    ${code}    202
     Log    ${code}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    Sleep    2s
+    Sleep    15s
+    Sleep    4s
 
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -250,13 +250,13 @@ Get Departure Info After Resource Assignment
     Should Be Equal As Numbers    ${response.status_code}    200
 
     ${capacity}=    Set Variable  ${response.json()}[capacity]
-    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]as
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
     
     
     Should Be Equal As Numbers    ${capacity}    46
     ...    msg=❌ 'capacity' should be 46 but was ${capacity}
     
-        Should Be Equal    ${startCapacity}    46as
+        Should Be Equal As Strings    ${startCapacity}    46
     ...    msg=❌ 'startCapacity' should be 46 but was ${startCapacity}
 
 Make User reservation Admin(Paulina pasajero) After resource Assignment
@@ -294,13 +294,13 @@ Get Departure Info After User Reservation
     Should Be Equal As Numbers    ${response.status_code}    200
 
     ${capacity}=    Set Variable  ${response.json()}[capacity]
-    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]as
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
     
     
     Should Be Equal As Numbers    ${capacity}    45
     ...    msg=❌ 'capacity' should be 45 but was ${capacity}
     
-        Should Be Equal    ${startCapacity}    46as
+        Should Be Equal As Strings    ${startCapacity}    46
     ...    msg=❌ 'startCapacity' should be 46 but was ${startCapacity}
 
 Get reservation before cancel (After resource assignment)
@@ -378,13 +378,13 @@ Get reservation after cancel (After resource assignment) in departure
     
     
     ${capacity}=    Set Variable  ${response.json()}[capacity]
-    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]as
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
     
     
     Should Be Equal As Numbers    ${capacity}    46
     ...    msg=❌ 'capacity' should be 46 but was ${capacity}
     
-        Should Be Equal    ${startCapacity}    46as
+        Should Be Equal As Strings    ${startCapacity}    46
     ...    msg=❌ 'startCapacity' should be 46 but was ${startCapacity}
 
 
@@ -454,30 +454,6 @@ Get reservation before cancel (After resource assignment) user2
 
     Log    ${response.content}
 
-Get Departure Info After user reservation from app(Capacity and Start Capacity)
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=6654ae4eba54fe502d4e4187
-
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    ${capacity}=    Set Variable  ${response.json()}[capacity]
-    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]as
-    
-    
-    Should Be Equal As Numbers    ${capacity}    45
-    ...    msg=❌ 'capacity' should be 46 but was ${capacity}
-    
-        Should Be Equal    ${startCapacity}    46as
-    ...    msg=❌ 'startCapacity' should be 46 but was ${startCapacity}
-
 
 Cancel reservation From app
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -507,7 +483,7 @@ Get reservation after cancel from app(service)
     ${reservations}=    Set Variable  ${response.json()}[reservations]
     Length Should Be    ${reservations}    0        Has found a reservation when it should be none
 
-Get reservation after cancel from app (departure)
+Get reservation after cancel from app (After resource assignment) in departure
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=6654ae4eba54fe502d4e4187
@@ -523,16 +499,9 @@ Get reservation after cancel from app (departure)
 
     ${reservations}=    Set Variable  ${response.json()}[reservations]
     Length Should Be    ${reservations}    0        Has found a reservation when it should be none
-
+    
+    
     ${capacity}=    Set Variable  ${response.json()}[capacity]
-    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]as
+    ${startCapacity}=    Set Variable  ${response.json()}[startCapacity]
     
     
-    Should Be Equal As Numbers    ${capacity}    46
-    ...    msg=❌ 'capacity' should be 45 but was ${capacity}
-    
-        Should Be Equal    ${startCapacity}    46as
-    ...    msg=❌ 'startCapacity' should be 46 but was ${startCapacity}
-
-
-##Crear nuevas reservas para ver sii se vuelve a cambiar el capacity

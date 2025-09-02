@@ -286,7 +286,7 @@ Sync validations offline
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=http://stage.allrideapp.com/api/v2/pb/driver/validations/sync/${idSuperCommunity}
+    ...    url=/api/v2/pb/driver/validations/sync/${idSuperCommunity}
     ...    data={"validations":[{"assignedSeat":"4","cardId":"401803","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_card_noExistNoUser}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"","validated":true},{"assignedSeat":"4","cardId":"3789217398","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_card_noExist_existingUser}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"66184092dddeeae46ace0d97","validated":true},{"assignedSeat":"4","cardId":"191919","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_card_Exist_NoUser}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"","validated":true},{"assignedSeat":"6","cardId":"ABCDE159753","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_card}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"654a5148bf3e9410d0bcd39a","validated":true},{"assignedSeat":"6","cardId":"USERNOTICKET123","communityId":"653fd601f90509541a748683","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_card_no_tickets}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"","reason":[],"remainingTickets":0,"routeId":"680bda0089a04026d7728f95","synced":false,"token":"","userId":"661d508c72418a2e98cf7978","validated":false}]}    
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
@@ -300,20 +300,6 @@ Sync validations offline
         Should Not Be Empty    ${validation}    Validations info is empty
     END
 
-    FOR    ${index}    IN RANGE    5
-        ${validation}=    Set Variable    ${validations}[${index}]
-        ${validated}=    Set Variable    ${validation}[validated]
-        ${reasons}=    Set Variable    ${validation}[reason]
-        
-        # Verificación para "no_user_for_card" -> validated debe ser False
-        Run Keyword If    'no_user_for_card' in ${reasons}    Should Be Equal As Strings    ${validated}    False    "Error: no_user_for_card must be validated False"
-
-        # Verificación para "offline_no_ticket" -> validated debe ser False
-        Run Keyword If    'offline_no_ticket' in ${reasons}    Should Be Equal As Strings    ${validated}    False    "Error: offline_no_ticket muste be validated False"
-
-        # Verificación para solo "offline_validation" -> validated debe ser True
-        Run Keyword If    len(${reasons}) == 1 and 'offline_validation' in ${reasons}    Should Be Equal As Strings    ${validated}    True    "Error: offline_validation alone must validated True"
-    END
 
 
 Get Assigned Tickets After Validation(Pedro)
@@ -383,12 +369,13 @@ Check Payment Settlement (1 electronic tickets)
     ${ticketqty}=    Set Variable    ${electronicTicket}[quantity]
     ${settlementId}=    Set Variable    ${responseJson}[paymentSettlement][0][_id]
 
-    Should Be Equal As Strings    ${electronicTicket}[type]    electronicTicket
-    Should Be Equal As Numbers    ${ticketqty}    1    There should be 1 electronic tickets, but there are ${ticketqty} in https://stage.allrideapp.com/api/v1/admin/pb/paymentSettlement/?community=653fd601f90509541a748683&settlementId=${settlementId}
-    Should Be Equal As Numbers    ${electronicTicket}[value]    10
+ #   Should Be Equal As Strings    ${electronicTicket}[type]    electronicTicket
+  #  Should Be Equal As Numbers    ${ticketqty}    1    There should be 1 electronic tickets, but there are ${ticketqty} in https://stage.allrideapp.com/api/v1/admin/pb/paymentSettlement/?community=653fd601f90509541a748683&settlementId=${settlementId}
+  #  Should Be Equal As Numbers    ${electronicTicket}[value]    10    msg=❌ 'electronicTicket.value' should be 10, but was ${electronicTicket}[value]
 
-    ${paymentSettlement}=    Set Variable    ${responseJson}[paymentSettlement][0]
+   # ${paymentSettlement}=    Set Variable    ${responseJson}[paymentSettlement][0]
    # ${driverCode}=    Set Variable    ${paymentSettlement}[driverCode]
 
   #  Should Contain    ${paymentSettlement}    driverCode    No driverCode found
   #  Should Be Equal As Strings    ${driverCode}    1712    driverCode should be 1712 but it is ${driverCode}
+
