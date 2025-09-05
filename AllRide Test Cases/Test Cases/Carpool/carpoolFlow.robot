@@ -251,7 +251,49 @@ Get route just created(Driver)
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    GET    url=${url}    headers=${headers}
     Should Be Equal As Numbers    ${response.status_code}    200
-##Buscar ruta como usuario 1(solicita )https://stage.allrideapp.com/api/v1/search/coordinates?country=cl&origin_lat=-34.4111&origin_lon=-70.8537&destination_lat=-34.3945&destination_lon=-70.7819&origin_name=Hospital%20Rengo&destination_name=Media%20Luna%20Cerrillos&origin_place_id=6654d4acba54fe502d4e6b6a&destination_place_id=6654d4c8713b9a5184cfe1de
+Search Route And Validate ID (User 2)
+    [Documentation]    Recorre el response del endpoint de coordenadas y verifica si existe un objeto con el _id esperado.
+    Set Log Level    TRACE
+
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/search/coordinates?country=cl&origin_lat=-34.4111&origin_lon=-70.8537&destination_lat=-34.3945&destination_lon=-70.7819&origin_name=Hospital%20Rengo&destination_name=Media%20Luna%20Cerrillos&origin_place_id=6654d4acba54fe502d4e6b6a&destination_place_id=6654d4c8713b9a5184cfe1de
+    &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool2}
+
+    ${response}=    GET    url=${url}    headers=${headers}
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${expected_id}=    Set Variable    6757525faa9f4e162d0c105e
+    ${json}=    Set Variable    ${response.json()}
+
+    ${id_found}=    Set Variable    False
+
+    FOR    ${element}    IN    @{json}
+        Log    Revisando ID: ${element["_id"]}
+        IF    '${element["_id"]}' == '${expected_id}'
+            Log    ✅ ID encontrado: ${expected_id}
+            ${id_found}=    Set Variable    True
+            BREAK
+        END
+    END
+
+    IF    not ${id_found}
+        Fail    ❌  Could not find the expected ID (${expected_id}) in the /search/coordinates response.
+    END
+Follow Route(User 2)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}    Content-Type=application/json; charset=utf-8
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/trips/follow/${tripId}
+    ...    data={"pickupPointLat":"0","pickupPointLon":"0"}
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${json}=    Set Variable    ${response.json()}    
+
+
+
 ##Aporte por salida /api/v1/trips/sectionCost
 ##Seguir el viaje como usuario 2 /api/v1/trips/follow/6757525faa9f4e162d0c105e {"pickupPointLat":"0","pickupPointLon":"0"}
 ## Eliminar ruta creada por mi DELETE

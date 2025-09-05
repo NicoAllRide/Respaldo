@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250901 18:25:08.600" rpa="false" schemaversion="4">
-<suite id="s1" name="extTestCases" source="c:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Scheduled Flow\ScheduledTickets\extTestCases.robot">
-<test id="s1-t1" name="Set Date Variables" line="15">
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250905 12:26:08.189" rpa="false" schemaversion="4">
+<suite id="s1" name="Rengo vueltas" source="c:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Offline UI\Rengo vueltas.robot">
+<test id="s1-t1" name="Set Date Variables" line="41">
+<kw name="Skip" library="BuiltIn">
+<doc>Skips the rest of the current test.</doc>
+<msg timestamp="20250905 12:26:08.602" level="SKIP">Skipped with Skip keyword.</msg>
+<status status="SKIP" starttime="20250905 12:26:08.602" endtime="20250905 12:26:08.603"/>
+</kw>
 <kw name="Get Current Date" library="DateTime">
 <var>${fecha_hoy}</var>
 <arg>result_format=%Y-%m-%d</arg>
 <doc>Returns current local or UTC time with an optional increment.</doc>
-<msg timestamp="20250901 18:25:08.990" level="INFO">${fecha_hoy} = 2025-09-01</msg>
-<status status="PASS" starttime="20250901 18:25:08.990" endtime="20250901 18:25:08.991"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.604" endtime="20250905 12:26:08.604"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${fecha_hoy}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:08.992" level="INFO">${fecha_hoy} = 2025-09-01</msg>
-<status status="PASS" starttime="20250901 18:25:08.992" endtime="20250901 18:25:08.992"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.604" endtime="20250905 12:26:08.604"/>
 </kw>
 <kw name="Add Time To Date" library="DateTime">
 <var>${fecha_manana}</var>
@@ -21,14 +24,12 @@
 <arg>1 days</arg>
 <arg>result_format=%Y-%m-%d</arg>
 <doc>Adds time to date and returns the resulting date.</doc>
-<msg timestamp="20250901 18:25:08.994" level="INFO">${fecha_manana} = 2025-09-02</msg>
-<status status="PASS" starttime="20250901 18:25:08.992" endtime="20250901 18:25:08.994"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.605" endtime="20250905 12:26:08.605"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${fecha_manana}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:08.994" level="INFO">${fecha_manana} = 2025-09-02</msg>
-<status status="PASS" starttime="20250901 18:25:08.994" endtime="20250901 18:25:08.994"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.605" endtime="20250905 12:26:08.605"/>
 </kw>
 <kw name="Add Time To Date" library="DateTime">
 <var>${fecha_pasado_manana}</var>
@@ -36,14 +37,12 @@
 <arg>2 days</arg>
 <arg>result_format=%Y-%m-%d</arg>
 <doc>Adds time to date and returns the resulting date.</doc>
-<msg timestamp="20250901 18:25:08.996" level="INFO">${fecha_pasado_manana} = 2025-09-03</msg>
-<status status="PASS" starttime="20250901 18:25:08.996" endtime="20250901 18:25:08.996"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.605" endtime="20250905 12:26:08.606"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${fecha_pasado_manana}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:08.996" level="INFO">${fecha_pasado_manana} = 2025-09-03</msg>
-<status status="PASS" starttime="20250901 18:25:08.996" endtime="20250901 18:25:08.996"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.606" endtime="20250905 12:26:08.606"/>
 </kw>
 <kw name="Add Time To Date" library="DateTime">
 <var>${fecha_pasado_pasado_manana}</var>
@@ -51,1089 +50,115 @@
 <arg>3 days</arg>
 <arg>result_format=%Y-%m-%d</arg>
 <doc>Adds time to date and returns the resulting date.</doc>
-<msg timestamp="20250901 18:25:08.998" level="INFO">${fecha_pasado_pasado_manana} = 2025-09-04</msg>
-<status status="PASS" starttime="20250901 18:25:08.997" endtime="20250901 18:25:08.998"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.606" endtime="20250905 12:26:08.606"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${fecha_pasado_pasado_manana}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:08.998" level="INFO">${fecha_pasado_pasado_manana} = 2025-09-04</msg>
-<status status="PASS" starttime="20250901 18:25:08.998" endtime="20250901 18:25:08.999"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.606" endtime="20250905 12:26:08.606"/>
 </kw>
 <kw name="Convert Date" library="DateTime">
 <var>${dia_actual}</var>
 <arg>${fecha_hoy}</arg>
 <arg>result_format=%a</arg>
 <doc>Converts between supported `date formats`.</doc>
-<msg timestamp="20250901 18:25:08.999" level="INFO">${dia_actual} = Mon</msg>
-<status status="PASS" starttime="20250901 18:25:08.999" endtime="20250901 18:25:08.999"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.608" endtime="20250905 12:26:08.608"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${dia_actual_lower}</var>
 <arg>${dia_actual.lower()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.000" level="INFO">${dia_actual_lower} = mon</msg>
-<status status="PASS" starttime="20250901 18:25:09.000" endtime="20250901 18:25:09.000"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.608" endtime="20250905 12:26:08.608"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${arrival_date}</var>
 <arg>${fecha_manana}T01:00:00.000Z</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.001" level="INFO">${arrival_date} = 2025-09-02T01:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.001" endtime="20250901 18:25:09.001"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.609" endtime="20250905 12:26:08.609"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${arrival_date}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.001" level="INFO">${arrival_date} = 2025-09-02T01:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.001" endtime="20250901 18:25:09.002"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.609" endtime="20250905 12:26:08.609"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${r_estimated_arrival1}</var>
 <arg>${fecha_manana}T14:45:57.000Z</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.002" level="INFO">${r_estimated_arrival1} = 2025-09-02T14:45:57.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.002" endtime="20250901 18:25:09.002"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.609" endtime="20250905 12:26:08.610"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${r_estimated_arrival1}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.003" level="INFO">${r_estimated_arrival1} = 2025-09-02T14:45:57.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.002" endtime="20250901 18:25:09.003"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.610" endtime="20250905 12:26:08.610"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${service_date}</var>
 <arg>${fecha_manana}T00:25:29.000Z</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.003" level="INFO">${service_date} = 2025-09-02T00:25:29.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.003" endtime="20250901 18:25:09.003"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.610" endtime="20250905 12:26:08.610"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${service_date}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.004" level="INFO">${service_date} = 2025-09-02T00:25:29.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.003" endtime="20250901 18:25:09.004"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.611" endtime="20250905 12:26:08.611"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${modified_arrival_date}</var>
 <arg>${fecha_manana}T01:00:00.000Z</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.004" level="INFO">${modified_arrival_date} = 2025-09-02T01:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.004" endtime="20250901 18:25:09.004"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.611" endtime="20250905 12:26:08.611"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${modified_arrival_date}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.005" level="INFO">${modified_arrival_date} = 2025-09-02T01:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.004" endtime="20250901 18:25:09.005"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.611" endtime="20250905 12:26:08.611"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${r_modified_estimated_arrival}</var>
 <arg>${fecha_pasado_manana}T14:45:57.000Z</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.005" level="INFO">${r_modified_estimated_arrival} = 2025-09-03T14:45:57.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.005" endtime="20250901 18:25:09.005"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.612" endtime="20250905 12:26:08.612"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${r_modified_estimated_arrival}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.005" level="INFO">${r_modified_estimated_arrival} = 2025-09-03T14:45:57.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.005" endtime="20250901 18:25:09.005"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.612" endtime="20250905 12:26:08.612"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${modified_service_date}</var>
 <arg>${fecha_manana}T00:25:29.000Z</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.007" level="INFO">${modified_service_date} = 2025-09-02T00:25:29.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.007" endtime="20250901 18:25:09.007"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.613" endtime="20250905 12:26:08.613"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${modified_service_date}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.007" level="INFO">${modified_service_date} = 2025-09-02T00:25:29.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.007" endtime="20250901 18:25:09.008"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.613" endtime="20250905 12:26:08.613"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${service_date_20min}</var>
 <arg>${fecha_manana}T00:20:00.000Z</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.008" level="INFO">${service_date_20min} = 2025-09-02T00:20:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.008" endtime="20250901 18:25:09.008"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.613" endtime="20250905 12:26:08.614"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${service_date_20min}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.008" level="INFO">${service_date_20min} = 2025-09-02T00:20:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.008" endtime="20250901 18:25:09.008"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.614" endtime="20250905 12:26:08.614"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${service_date_22min}</var>
 <arg>${fecha_manana}T00:47:00.000Z</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.009" level="INFO">${service_date_22min} = 2025-09-02T00:47:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.009" endtime="20250901 18:25:09.009"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.614" endtime="20250905 12:26:08.615"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${service_date_22min}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.010" level="INFO">${service_date_22min} = 2025-09-02T00:47:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.010" endtime="20250901 18:25:09.010"/>
+<status status="NOT RUN" starttime="20250905 12:26:08.615" endtime="20250905 12:26:08.615"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${start_date}</var>
 <arg>${fecha_manana}T03:00:00.000Z</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.010" level="INFO">${start_date} = 2025-09-02T03:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.010" endtime="20250901 18:25:09.011"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${start_date}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.011" level="INFO">${start_date} = 2025-09-02T03:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.011" endtime="20250901 18:25:09.011"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${end_date_4weeks}</var>
-<arg>2023-12-30T02:59:59.999Z</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.012" level="INFO">${end_date_4weeks} = 2023-12-30T02:59:59.999Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.012" endtime="20250901 18:25:09.012"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${end_date_4weeks}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.012" level="INFO">${end_date_4weeks} = 2023-12-30T02:59:59.999Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.012" endtime="20250901 18:25:09.012"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${end_date}</var>
-<arg>${fecha_pasado_pasado_manana}T03:00:00.000Z</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.013" level="INFO">${end_date} = 2025-09-04T03:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.013" endtime="20250901 18:25:09.013"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${end_date}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.013" level="INFO">${end_date} = 2025-09-04T03:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.013" endtime="20250901 18:25:09.013"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${end_date_tomorrow}</var>
-<arg>${fecha_manana}T03:00:00.000Z</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.014" level="INFO">${end_date_tomorrow} = 2025-09-02T03:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.014" endtime="20250901 18:25:09.014"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${end_date_tomorrow}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.015" level="INFO">${end_date_tomorrow} = 2025-09-02T03:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.015" endtime="20250901 18:25:09.015"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${end_date_pastTomorrow}</var>
-<arg>${fecha_pasado_manana}T03:00:00.000Z</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.016" level="INFO">${end_date_pastTomorrow} = 2025-09-03T03:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.016" endtime="20250901 18:25:09.016"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${end_date_pastTomorrow}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.016" level="INFO">${end_date_pastTomorrow} = 2025-09-03T03:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.016" endtime="20250901 18:25:09.016"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${schedule_day}</var>
-<arg>${dia_actual_lower}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.016" level="INFO">${schedule_day} = mon</msg>
-<status status="PASS" starttime="20250901 18:25:09.016" endtime="20250901 18:25:09.018"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${schedule_day}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.018" level="INFO">${schedule_day} = mon</msg>
-<status status="PASS" starttime="20250901 18:25:09.018" endtime="20250901 18:25:09.018"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${start_date_today}</var>
-<arg>${fecha_hoy}T03:00:00.000Z</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.018" level="INFO">${start_date_today} = 2025-09-01T03:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.018" endtime="20250901 18:25:09.018"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${start_date_today}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.019" level="INFO">${start_date_today} = 2025-09-01T03:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.019" endtime="20250901 18:25:09.019"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${today_date}</var>
-<arg>${fecha_hoy}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.019" level="INFO">${today_date} = 2025-09-01</msg>
-<status status="PASS" starttime="20250901 18:25:09.019" endtime="20250901 18:25:09.019"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${today_date}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.020" level="INFO">${today_date} = 2025-09-01</msg>
-<status status="PASS" starttime="20250901 18:25:09.020" endtime="20250901 18:25:09.020"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${end_date_tomorrow2}</var>
-<arg>${fecha_manana}T02:59:59.999Z</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.021" level="INFO">${end_date_tomorrow2} = 2025-09-02T02:59:59.999Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.021" endtime="20250901 18:25:09.021"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${end_date_tomorrow}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.022" level="INFO">${end_date_tomorrow} = 2025-09-02T03:00:00.000Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.022" endtime="20250901 18:25:09.022"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${expiration_date_qr}</var>
-<arg>${fecha_manana}T14:10:37.968Z</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.022" level="INFO">${expiration_date_qr} = 2025-09-02T14:10:37.968Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.022" endtime="20250901 18:25:09.023"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${expiration_date_qr}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.023" level="INFO">${expiration_date_qr} = 2025-09-02T14:10:37.968Z</msg>
-<status status="PASS" starttime="20250901 18:25:09.023" endtime="20250901 18:25:09.023"/>
-</kw>
-<status status="PASS" starttime="20250901 18:25:08.990" endtime="20250901 18:25:09.023"/>
-</test>
-<test id="s1-t2" name="2 hours local" line="66">
-<kw name="Get Current Date" library="DateTime">
-<var>${date}</var>
-<arg>time_zone=local</arg>
-<arg>exclude_millis=yes</arg>
-<doc>Returns current local or UTC time with an optional increment.</doc>
-<msg timestamp="20250901 18:25:09.025" level="INFO">${date} = 2025-09-01 18:25:09</msg>
-<status status="PASS" starttime="20250901 18:25:09.024" endtime="20250901 18:25:09.025"/>
-</kw>
-<kw name="Convert Date" library="DateTime">
-<var>${formatted_date}</var>
-<arg>${date}</arg>
-<arg>result_format=%H:%M:%S</arg>
-<doc>Converts between supported `date formats`.</doc>
-<msg timestamp="20250901 18:25:09.025" level="INFO">${formatted_date} = 18:25:09</msg>
-<status status="PASS" starttime="20250901 18:25:09.025" endtime="20250901 18:25:09.025"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Hora Actual: ${formatted_date}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250901 18:25:09.026" level="INFO">Hora Actual: 18:25:09</msg>
-<status status="PASS" starttime="20250901 18:25:09.026" endtime="20250901 18:25:09.026"/>
-</kw>
-<kw name="Add Time To Date" library="DateTime">
-<var>${one_hour_later}</var>
-<arg>${date}</arg>
-<arg>1 hour</arg>
-<doc>Adds time to date and returns the resulting date.</doc>
-<msg timestamp="20250901 18:25:09.027" level="INFO">${one_hour_later} = 2025-09-01 19:25:09.000</msg>
-<status status="PASS" starttime="20250901 18:25:09.027" endtime="20250901 18:25:09.027"/>
-</kw>
-<kw name="Convert Date" library="DateTime">
-<var>${formatted_one_hour_later}</var>
-<arg>${one_hour_later}</arg>
-<arg>result_format=%H:%M</arg>
-<doc>Converts between supported `date formats`.</doc>
-<msg timestamp="20250901 18:25:09.029" level="INFO">${formatted_one_hour_later} = 19:25</msg>
-<status status="PASS" starttime="20250901 18:25:09.028" endtime="20250901 18:25:09.029"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Hora Actual + 1 hora: ${formatted_one_hour_later}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250901 18:25:09.029" level="INFO">Hora Actual + 1 hora: 19:25</msg>
-<status status="PASS" starttime="20250901 18:25:09.029" endtime="20250901 18:25:09.030"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${formatted_one_hour_later}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.030" level="INFO">${formatted_one_hour_later} = 19:25</msg>
-<status status="PASS" starttime="20250901 18:25:09.030" endtime="20250901 18:25:09.030"/>
-</kw>
-<status status="PASS" starttime="20250901 18:25:09.024" endtime="20250901 18:25:09.030"/>
-</test>
-<test id="s1-t3" name="Create new service in the selected route" line="77">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysesion</arg>
-<arg>${STAGE_URL}</arg>
-<arg>verify=true</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20250901 18:25:09.032" level="INFO">Creating Session using : alias=mysesion, url=https://stage.allrideapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
-<status status="PASS" starttime="20250901 18:25:09.032" endtime="20250901 18:25:09.032"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Authorization=${tokenAdmin}</arg>
-<arg>Content-Type=application/json; charset=utf-8</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20250901 18:25:09.033" level="INFO">${headers} = {'Authorization': 'Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba', 'Content-Type': 'application/json; charset=...</msg>
-<status status="PASS" starttime="20250901 18:25:09.032" endtime="20250901 18:25:09.033"/>
-</kw>
-<kw name="PUT On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysesion</arg>
-<arg>url=https://stage.allrideapp.com/api/v1/admin/pb/routes/67f7e2fe52999601de99bca2?community=6654ae4eba54fe502d4e4187</arg>
-<arg>data={"_id":"67f7e2fe52999601de99bca2","trail":{"enabled":false,"adjustByRounds":false},"rounds":{"enabled":false,"anchorStops":[]},"notifyUsersByStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]}},"excludePassengers":{"active":false,"excludeType":"dontHide"},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"defaultServiceCost":null,"schedule":[{"enabled":true,"day":"${schedule_day}","time":"${formatted_one_hour_later}","estimatedArrival":null,"capped":{"enabled":false,"capacity":0,"by":"vehicle"},"vehicleCategoryId":null,"restrictPassengers":{"enabled":false,"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"serviceCost":0,"observations":"","reservations":{"enabled":false,"list":[]},"stopSchedule":[],"defaultResources":[],"_ogIndex":0}],"stopOnReservation":false,"restrictions":{"customParams":{"enabled":false,"params":[]}},"reservations":{"enabled":false,"list":[]},"serviceCreationLimit":{"enabled":false,"date":null}},"rating":{"enabled":false,"withValidation":false},"endDepartureNotice":{"enabled":false,"lastStop":null},"restrictPassengers":{"enabled":false,"allowed":["67f7e2fe52999601de99bca2"],"visibility":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"},"reservation":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"},"validation":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"}},"snapshots":{"enabled":false},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"canResume":{"timeLimit":{"enabled":false,"amount":5,"unit":"minutes"},"enabled":false},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"validateDeparture":{"enabled":true},"minimumConfirmationTime":{"enabled":false,"amount":1,"unit":"hours"},"minimumTimeToForceDeparture":{"enabled":false,"amount":5,"unit":"minutes"},"endServiceLegAutomatically":{"enabled":false,"stopId":null,"distance":100,"timer":{"amount":5,"unit":"minutes"}},"DNIValidation":{"enabled":false,"options":["qr"]},"validation":{"external":[]},"assistantIds":["66ccdf58193998eca49014c3"],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["6654ae4eba54fe502d4e4187"],"active":true,"visible":true,"internal":false,"anchorStops":[],"isStatic":false,"labels":[],"hasExternalGPS":false,"hasCapacity":true,"hasBeacons":true,"hasRounds":false,"hasBoardingCount":false,"hasUnboardingCount":false,"usesBusCode":false,"usesVehicleList":true,"dynamicSeatAssignment":false,"usesDriverCode":false,"usesDriverPin":false,"usesTickets":true,"usesPasses":false,"usesTextToSpeech":false,"allowsManualValidation":true,"allowsRating":true,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"allowsDebugging":false,"startsOnStop":false,"notNearStop":false,"allowsNonServiceSnapshots":false,"allowsServiceSnapshots":false,"allowsDistance":true,"usesOfflineCount":false,"hasBoardings":true,"hasUnboardings":true,"usesManualSeat":true,"noPassengerInfo":false,"showParable":false,"showStops":true,"allowGenericVehicles":true,"usesVehicleQRLink":false,"skipDeclaration":false,"skipQRValidation":false,"assistantAssignsSeat":true,"hasBarrier":false,"name":"Cancel reservation","shapeId":"6654d514713b9a5184cfe21e","description":"Cancel reservation","extraInfo":"","color":"652525","legOptions":[{"legType":"service","preTripChecklist":{"enabled":false,"params":[]},"customParamsAtStart":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"startConditions":{"location":{"enabled":false,"type":"near","stopIds":[]},"schedule":{"enabled":false,"amount":0,"unit":"minutes"}},"moveToNextLegAutomatically":{"enabled":false,"stopId":null,"distance":100}}],"ownerIds":[{"_id":"66954794b24db9885e5aed83","id":"6654ae4eba54fe502d4e4187","role":"community"}],"segments":[],"communityId":"6654ae4eba54fe502d4e4187","timeOnRoute":13,"distance":9,"distanceInMeters":8521,"createdAt":"2025-04-10T15:25:50.512Z","updatedAt":"2025-04-22T16:06:39.555Z","__v":55,"superCommunityId":"653fd68233d83952fafcd4be","routeCost":10,"ticketCost":100,"externalInfo":{"uuid":""},"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"roundOrder":[],"useServiceReservations":false,"autoStartConditions":{"enabled":false,"ignition":false,"acceptedStatus":false,"delay":{"enabled":false,"time":0,"unit":"minutes"},"nearRoute":{"enabled":false,"distance":0}},"notifyUnboardedPassengers":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]},"sendAt":"eachStop"},"notifyPassengersWithoutReservation":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]},"sendAt":"eachStop"},"notifySkippedStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]}},"routeDeviation":{"maxDistance":100,"maxTime":5,"enabled":false},"codeValidationOptions":{"enabled":false,"type":"qr","failureMessage":"Solo puedes presentar el código de AllRide o de tu cédula de identidad."},"custom":{"ui":{"color":"563f3f","marker":{"1x":"","1.5x":"","2x":"","3x":"","4x":""}}}}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20250901 18:25:09.810" level="INFO">PUT Request : url=https://stage.allrideapp.com/api/v1/admin/pb/routes/67f7e2fe52999601de99bca2?community=6654ae4eba54fe502d4e4187 
- path_url=/api/v1/admin/pb/routes/67f7e2fe52999601de99bca2?community=6654ae4eba54fe502d4e4187 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '5569'} 
- body={"_id":"67f7e2fe52999601de99bca2","trail":{"enabled":false,"adjustByRounds":false},"rounds":{"enabled":false,"anchorStops":[]},"notifyUsersByStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]}},"excludePassengers":{"active":false,"excludeType":"dontHide"},"scheduling":{"enabled":true,"limitUnit":"minutes","limitAmount":30,"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"defaultServiceCost":null,"schedule":[{"enabled":true,"day":"mon","time":"19:25","estimatedArrival":null,"capped":{"enabled":false,"capacity":0,"by":"vehicle"},"vehicleCategoryId":null,"restrictPassengers":{"enabled":false,"visibility":{"enabled":false,"excludes":false,"parameters":[]},"reservation":{"enabled":false,"excludes":false,"parameters":[]},"validation":{"enabled":false,"excludes":false,"parameters":[]}},"serviceCost":0,"observations":"","reservations":{"enabled":false,"list":[]},"stopSchedule":[],"defaultResources":[],"_ogIndex":0}],"stopOnReservation":false,"restrictions":{"customParams":{"enabled":false,"params":[]}},"reservations":{"enabled":false,"list":[]},"serviceCreationLimit":{"enabled":false,"date":null}},"rating":{"enabled":false,"withValidation":false},"endDepartureNotice":{"enabled":false,"lastStop":null},"restrictPassengers":{"enabled":false,"allowed":["67f7e2fe52999601de99bca2"],"visibility":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"},"reservation":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"},"validation":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"}},"snapshots":{"enabled":false},"validationParams":{"enabled":false,"driverParams":[],"passengerParams":[]},"canResume":{"timeLimit":{"enabled":false,"amount":5,"unit":"minutes"},"enabled":false},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"validateDeparture":{"enabled":true},"minimumConfirmationTime":{"enabled":false,"amount":1,"unit":"hours"},"minimumTimeToForceDeparture":{"enabled":false,"amount":5,"unit":"minutes"},"endServiceLegAutomatically":{"enabled":false,"stopId":null,"distance":100,"timer":{"amount":5,"unit":"minutes"}},"DNIValidation":{"enabled":false,"options":["qr"]},"validation":{"external":[]},"assistantIds":["66ccdf58193998eca49014c3"],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["6654ae4eba54fe502d4e4187"],"active":true,"visible":true,"internal":false,"anchorStops":[],"isStatic":false,"labels":[],"hasExternalGPS":false,"hasCapacity":true,"hasBeacons":true,"hasRounds":false,"hasBoardingCount":false,"hasUnboardingCount":false,"usesBusCode":false,"usesVehicleList":true,"dynamicSeatAssignment":false,"usesDriverCode":false,"usesDriverPin":false,"usesTickets":true,"usesPasses":false,"usesTextToSpeech":false,"allowsManualValidation":true,"allowsRating":true,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"allowsDebugging":false,"startsOnStop":false,"notNearStop":false,"allowsNonServiceSnapshots":false,"allowsServiceSnapshots":false,"allowsDistance":true,"usesOfflineCount":false,"hasBoardings":true,"hasUnboardings":true,"usesManualSeat":true,"noPassengerInfo":false,"showParable":false,"showStops":true,"allowGenericVehicles":true,"usesVehicleQRLink":false,"skipDeclaration":false,"skipQRValidation":false,"assistantAssignsSeat":true,"hasBarrier":false,"name":"Cancel reservation","shapeId":"6654d514713b9a5184cfe21e","description":"Cancel reservation","extraInfo":"","color":"652525","legOptions":[{"legType":"service","preTripChecklist":{"enabled":false,"params":[]},"customParamsAtStart":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"startConditions":{"location":{"enabled":false,"type":"near","stopIds":[]},"schedule":{"enabled":false,"amount":0,"unit":"minutes"}},"moveToNextLegAutomatically":{"enabled":false,"stopId":null,"distance":100}}],"ownerIds":[{"_id":"66954794b24db9885e5aed83","id":"6654ae4eba54fe502d4e4187","role":"community"}],"segments":[],"communityId":"6654ae4eba54fe502d4e4187","timeOnRoute":13,"distance":9,"distanceInMeters":8521,"createdAt":"2025-04-10T15:25:50.512Z","updatedAt":"2025-04-22T16:06:39.555Z","__v":55,"superCommunityId":"653fd68233d83952fafcd4be","routeCost":10,"ticketCost":100,"externalInfo":{"uuid":""},"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"roundOrder":[],"useServiceReservations":false,"autoStartConditions":{"enabled":false,"ignition":false,"acceptedStatus":false,"delay":{"enabled":false,"time":0,"unit":"minutes"},"nearRoute":{"enabled":false,"distance":0}},"notifyUnboardedPassengers":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]},"sendAt":"eachStop"},"notifyPassengersWithoutReservation":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]},"sendAt":"eachStop"},"notifySkippedStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roles":[],"roleIds":[]}},"routeDeviation":{"maxDistance":100,"maxTime":5,"enabled":false},"codeValidationOptions":{"enabled":false,"type":"qr","failureMessage":"Solo puedes presentar el código de AllRide o de tu cédula de identidad."},"custom":{"ui":{"color":"563f3f","marker":{"1x":"","1.5x":"","2x":"","3x":"","4x":""}}}} 
- </msg>
-<msg timestamp="20250901 18:25:09.812" level="INFO">PUT Response : url=https://stage.allrideapp.com/api/v1/admin/pb/routes/67f7e2fe52999601de99bca2?community=6654ae4eba54fe502d4e4187 
- status=200, reason=OK 
- headers={'Date': 'Mon, 01 Sep 2025 22:25:12 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx', 'X-DNS-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Access-Control-Allow-Origin': '*', 'X-RateLimit-Limit': '200', 'X-RateLimit-Remaining': '198', 'X-RateLimit-Reset': '1756765550', 'ETag': 'W/"fea1-No8vVUJW93t3JqchsytmMtmC2Fs"', 'Content-Encoding': 'gzip'} 
- body={"custom":{"ui":{"color":"563f3f","marker":{"1":{"5x":""},"1x":"","2x":"","3x":"","4x":""}}},"trail":{"enabled":false,"adjustByRounds":false},"rounds":{"enabled":false,"anchorStops":[]},"notifyUsersByStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roleIds":[]}},"notifyUnboardedPassengers":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roleIds":[]},"sendAt":"eachStop"},"notifyPassengersWithoutReservation":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roleIds":[]},"sendAt":"eachStop"},"notifySkippedStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roleIds":[]}},"excludePassengers":{"active":false,"excludeType":"dontHide"},"scheduling":{"enabled":true,"defaultServiceCost":null,"schedule":[{"capped":{"enabled":false,"capacity":0,"by":"vehicle"},"restrictPassengers":{"validation":{"enabled":false,"conditional":"or","excludes":false,"parameters":[],"parameter":[]},"reservation":{"enabled":false,"conditional":"or","excludes":false,"parameters":[],"parameter":[]},"visibility":{"enabled":false,"conditional":"or","excludes":false,"parameters":[],"parameter":[]},"enabled":false},"reservations":{"enabled":false,"list":[]},"specificReservations":{"enabled":false,"list":[]},"enabled":true,"_id":"68b61d483e850ace4d3d4557","day":"mon","time":"19:25","estimatedArrival":null,"vehicleCategoryId":null,"serviceCost":0,"observations":"","stopSchedule":[],"defaultResources":[]}],"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"limitUnit":"minutes","limitAmount":30,"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"restrictions":{"customParams":{"enabled":false,"params":[]},"byQuantity":{"unit":"days","userSkip":[]},"timeRules":{"booking":{"timeWindows":[]}},"_id":"68b61d483e850ace4d3d4558"},"stopOnReservation":false,"serviceCreationLimit":{"enabled":false,"date":null}},"rating":{"enabled":false,"withValidation":false},"endDepartureNotice":{"enabled":false,"lastStop":null},"restrictPassengers":{"enabled":false,"visibility":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"},"reservation":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"},"validation":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"}},"snapshots":{"enabled":false},"validationParams":{"driverParams":[],"passengerParams":[]},"canResume":{"timeLimit":{"enabled":false,"amount":5,"unit":"minutes"},"enabled":false},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"validateDeparture":{"enabled":true},"minimumConfirmationTime":{"enabled":false,"amount":1,"unit":"hours"},"minimumTimeToForceDeparture":{"enabled":false,"amount":5,"unit":"minutes"},"externalInfo":{"uuid":""},"endServiceLegAutomatically":{"enabled":false,"stopId":null,"distance":100,"timer":{"amount":5,"unit":"minutes"}},"autoStartConditions":{"enabled":false,"ignition":false,"acceptedStatus":false,"delay":{"enabled":false,"time":0,"unit":"minutes"},"nearRoute":{"enabled":false,"distance":0}},"codeValidationOptions":{"enabled":false,"type":"qr","failureMessage":"Solo puedes presentar el código de AllRide o de tu cédula de identidad."},"DNIValidation":{"enabled":false,"options":["qr"]},"routeDeviation":{"maxDistance":100,"maxTime":5,"enabled":false},"validation":{"external":[]},"restrictions":{"external":[]},"assistantIds":["66ccdf58193998eca49014c3"],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["6654ae4eba54fe502d4e4187"],"active":true,"visible":true,"internal":false,"anchorStops":[],"isStatic":false,"labels":[],"hasExternalGPS":false,"hasCapacity":true,"hasBeacons":true,"hasRounds":false,"hasBoardingCount":false,"hasUnboardingCount":false,"usesBusCode":false,"usesVehicleList":true,"dynamicSeatAssignment":false,"usesDriverCode":false,"usesDriverPin":false,"usesTickets":true,"usesPasses":false,"usesTextToSpeech":false,"allowsManualValidation":true,"allowsRating":true,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"allowsDebugging":false,"startsOnStop":false,"notNearStop":false,"allowsNonServiceSnapshots":false,"allowsServiceSnapshots":false,"allowsDistance":true,"usesOfflineCount":false,"hasBoardings":true,"hasUnboardings":true,"usesManualSeat":true,"noPassengerInfo":false,"showParable":false,"showStops":true,"allowGenericVehicles":true,"usesVehicleQRLink":false,"skipDeclaration":false,"skipQRValidation":false,"assistantAssignsSeat":true,"hasBarrier":false,"_id":"67f7e2fe52999601de99bca2","name":"Cancel reservation","shapeId":"6654d514713b9a5184cfe21e","description":"Cancel reservation","extraInfo":"","color":"652525","legOptions":[{"startConditions":{"location":{"stopIds":[],"enabled":false,"type":"near"},"schedule":{"enabled":false,"amount":0,"unit":"minutes"}},"moveToNextLegAutomatically":{"distance":100,"enabled":false,"stopId":null},"ETA":{"notify":{"sendTo":{"emails":[],"adminLevels":[],"roleIds":[]}},"visibility":[]},"providers":[],"_id":"68b61d483e850ace4d3d4556","legType":"service","preTripChecklist":{"enabled":false,"params":[]},"customParamsAtStart":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]}}],"ownerIds":[{"_id":"66954794b24db9885e5aed83","id":"6654ae4eba54fe502d4e4187","role":"community"}],"segments":[{"_id":"687ff54660129c90e264e86d","position":10,"distance":630.2284001305624,"lat":-34.40607,"lon":-70.85112000000001,"loc":[-70.85112000000001,-34.40607]},{"_id":"687ff54660129c90e264e86e","position":20,"distance":1135.0970077299114,"lat":-34.402800000000006,"lon":-70.84736000000001,"loc":[-70.84736000000001,-34.402800000000006]},{"_id":"687ff54660129c90e264e86f","position":30,"distance":1524.835161712122,"lat":-34.402260000000005,"lon":-70.84318,"loc":[-70.84318,-34.402260000000005]},{"_id":"687ff54660129c90e264e870","position":40,"distance":2380.346078220618,"lat":-34.40379,"lon":-70.83406000000001,"loc":[-70.83406000000001,-34.40379]},{"_id":"687ff54660129c90e264e871","position":50,"distance":3098.0230976721264,"lat":-34.405950000000004,"lon":-70.82674,"loc":[-70.82674,-34.405950000000004]},{"_id":"687ff54660129c90e264e872","position":60,"distance":3522.606965724758,"lat":-34.40661,"lon":-70.82228,"loc":[-70.82228,-34.40661]},{"_id":"687ff54660129c90e264e873","position":70,"distance":4175.542494520711,"lat":-34.40943,"lon":-70.81608,"loc":[-70.81608,-34.40943]},{"_id":"687ff54660129c90e264e874","position":80,"distance":4459.0835609633195,"lat":-34.41055,"lon":-70.81334000000001,"loc":[-70.81334000000001,-34.41055]},{"_id":"687ff54660129c90e264e875","position":90,"distance":4918.024010118051,"lat":-34.409060000000004,"lon":-70.80883,"loc":[-70.80883,-34.409060000000004]},{"_id":"687ff54660129c90e264e876","position":100,"distance":5480.504496646518,"lat":-34.40543,"lon":-70.80459,"loc":[-70.80459,-34.40543]},{"_id":"687ff54660129c90e264e877","position":110,"distance":5694.29434128775,"lat":-34.40449,"lon":-70.80267,"loc":[-70.80267,-34.40449]},{"_id":"687ff54660129c90e264e878","position":120,"distance":5920.861229514871,"lat":-34.404230000000005,"lon":-70.80026000000001,"loc":[-70.80026000000001,-34.404230000000005]},{"_id":"687ff54660129c90e264e879","position":130,"distance":6363.338267457537,"lat":-34.406510000000004,"lon":-70.79717000000001,"loc":[-70.79717000000001,-34.406510000000004]},{"_id":"687ff54660129c90e264e87a","position":140,"distance":7082.634807121334,"lat":-34.405170000000005,"lon":-70.79138,"loc":[-70.79138,-34.405170000000005]},{"_id":"687ff54660129c90e264e87b","position":150,"distance":7867.630523196868,"lat":-34.40108,"lon":-70.78441000000001,"loc":[-70.78441000000001,-34.40108]},{"_id":"687ff54660129c90e264e87c","position":160,"distance":8073.0176510443025,"lat":-34.400240000000004,"lon":-70.78263000000001,"loc":[-70.78263000000001,-34.400240000000004]},{"_id":"687ff54660129c90e264e87d","position":170,"distance":8421.907819781141,"lat":-34.39746,"lon":-70.78178000000001,"loc":[-70.78178000000001,-34.39746]},{"_id":"687ff54660129c90e264e87e","position":180,"distance":8795.047955934268,"lat":-34.394690000000004,"lon":-70.78245000000001,"loc":[-70.78245000000001,-34.394690000000004]}],"communityId":"6654ae4eba54fe502d4e4187","timeOnRoute":13,"distance":9,"distanceInMeters":8521,"createdAt":"2025-04-10T15:25:50.512Z","updatedAt":"2025-09-01T22:25:12.481Z","__v":500,"superCommunityId":"653fd68233d83952fafcd4be","routeCost":10,"ticketCost":100,"customParams":{"enabled":false,"params":[]},"customParamsAtTheEnd":{"enabled":false,"params":[]},"roundOrder":[],"useServiceReservations":false,"modificationsHistory":[{"modifiedBy":{"adminId":"653fd89733d83952fafcd6ca","adminName":"Nicolás Bustamante"},"_id":"68798f846aec98f004fbbe86","modifiedAt":"2025-07-18T00:04:20.141Z","changes":[{"_id":"68798f846aec98f004fbbe87","field":"scheduling.schedule[0].time","previousValue":"13:06","newValue":"21:04"}]},{"modifiedBy":{"adminId":"653fd89733d83952fafcd6ca","adminName":"Nicolás Bustamante"},"_id":"6879901ee91650e96befd97a","modifiedAt":"2025-07-18T00:06:54.379Z","changes":[{"_id":"6879901ee91650e96befd97b","field":"scheduling.schedule[0].time","previousValue":"21:04","newValue":"21:06"}]},{"modifiedBy":{"adminId":"653fd89733d83952fafcd6ca","adminName":"Nicolás Bustamante"},"_id":"687a4eec944afc58b1aeb4cd","modifiedAt":"2025-07-18T13:41:00.354Z","changes":[{"_id":"687a4eec944afc58b1aeb4ce","field":"scheduling.schedule[0].day","previousValue":"thu","newValue":"fri"},{"_id":"687a4eec944afc58b1aeb4cf","field":"scheduling.schedule[0].time","previousValue":"21:06","newValue":"10:41"}]},{"modifiedBy":{"adminId":"653fd89733d83952fafcd6ca","adminName":"Nicolás Bustamante"},"_id":"687a4f9dff2eb96026de88c8","modifiedAt":"2025-07-18T13:43:57.140Z","changes":[{"_id":"687a4f9dff2eb96026de88c9","field":"scheduling.schedule[0].time","previousValue"... (set the log level to DEBUG or TRACE to see the full content) 
- </msg>
-<msg timestamp="20250901 18:25:09.813" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:09.033" endtime="20250901 18:25:09.813"/>
-</kw>
-<kw name="Status Should Be" library="RequestsLibrary">
-<arg>200</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20250901 18:25:09.814" endtime="20250901 18:25:09.815"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${scheduleId}</var>
-<arg>${response.json()}[_id]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:09.820" level="INFO">${scheduleId} = 67f7e2fe52999601de99bca2</msg>
-<status status="PASS" starttime="20250901 18:25:09.817" endtime="20250901 18:25:09.820"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${scheduleId}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:09.823" level="INFO">${scheduleId} = 67f7e2fe52999601de99bca2</msg>
-<status status="PASS" starttime="20250901 18:25:09.821" endtime="20250901 18:25:09.823"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20250901 18:25:14.825" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20250901 18:25:09.823" endtime="20250901 18:25:14.825"/>
-</kw>
-<status status="PASS" starttime="20250901 18:25:09.031" endtime="20250901 18:25:14.827"/>
-</test>
-<test id="s1-t4" name="Get Driver Token" line="98">
-<kw name="Set Variable" library="BuiltIn">
-<var>${url}</var>
-<arg>${STAGE_URL}/api/v1/admin/pb/drivers/?community=${idComunidad2}&amp;driverId=${driverId2}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:14.831" level="INFO">${url} = https://stage.allrideapp.com/api/v1/admin/pb/drivers/?community=6654ae4eba54fe502d4e4187&amp;driverId=668309b8bb41bfd79a461dc3</msg>
-<status status="PASS" starttime="20250901 18:25:14.831" endtime="20250901 18:25:14.831"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>&amp;{headers}</var>
-<arg>Authorization=${tokenAdmin}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20250901 18:25:14.832" level="INFO">&amp;{headers} = { Authorization=Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba }</msg>
-<status status="PASS" starttime="20250901 18:25:14.831" endtime="20250901 18:25:14.832"/>
-</kw>
-<kw name="GET" library="RequestsLibrary">
-<var>${response}</var>
-<arg>url=${url}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a GET request.</doc>
-<msg timestamp="20250901 18:25:15.316" level="INFO">GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/drivers/?community=6654ae4eba54fe502d4e4187&amp;driverId=668309b8bb41bfd79a461dc3 
- path_url=/api/v1/admin/pb/drivers/?community=6654ae4eba54fe502d4e4187&amp;driverId=668309b8bb41bfd79a461dc3 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba'} 
- body=None 
- </msg>
-<msg timestamp="20250901 18:25:15.316" level="INFO">GET Response : url=https://stage.allrideapp.com/api/v1/admin/pb/drivers/?community=6654ae4eba54fe502d4e4187&amp;driverId=668309b8bb41bfd79a461dc3 
- status=200, reason=OK 
- headers={'Date': 'Mon, 01 Sep 2025 22:25:18 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx', 'X-DNS-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Access-Control-Allow-Origin': '*', 'X-RateLimit-Limit': '200', 'X-RateLimit-Remaining': '198', 'X-RateLimit-Reset': '1756765573', 'ETag': 'W/"dfa-yerkQbIcUEEWDWt3IxeHbjpa68E"', 'Content-Encoding': 'gzip'} 
- body={"device":{"lang":"es","token":"f4VXOg7eSqCd-iJSAwFC1F:APA91bGWmQaRUK4ESWczhQzVpxxQ4HQ4MhtTeSmCG049BMqsK8VkYXMvR55Wv-R_g4BwZdTCm_Pw4lWsnw32CXmNON65WYYif2G3ojLUwdjfnyfzhNP67Ho","build":"134","manufacturer":"samsung","model":"SM-G780G","lastUpdate":null,"appVersion":"3.0.39-STG","lastSeenOnline":"2025-08-13T03:08:32.994Z"},"config":{"autoLogout":{"timer":{"amount":0,"unit":"minutes"},"enum":"afterDepartureEnd","enabled":false}},"externalInfo":{"uuid":"","contract":""},"labels":[],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["653fd601f90509541a748683","6654ae4eba54fe502d4e4187"],"active":true,"canReleaseReservations":true,"enabled":true,"enabledRoutes":[],"_id":"668309b8bb41bfd79a461dc3","code":"159159","ownerIds":[{"_id":"668309b8bb41bfd79a461dc4","id":"653fd68233d83952fafcd4be","role":"superCommunity"}],"notifications":[],"driverParams":[],"superCommunityId":"653fd68233d83952fafcd4be","communityId":"653fd601f90509541a748683","name":"Conductor Super Comunidad","email":"nicolas+conductorsc1@allrideapp.com","hasToChangePassword":false,"createdAt":"2024-07-01T19:55:36.928Z","updatedAt":"2025-08-13T03:08:32.997Z","__v":5,"accessToken":"4d5c9c1e5b7c66691b610b192b6fd0979c38ceb94ba96f69fa7f012b617060b824a23d5e6a77d3ff3f9d2e5bf5431e2315f50d78c477b57c7c9d5ec17cb3b7f3","rtlToken":"62c5f0a7b08f998d0dec8298463fcd3c99b2b8b8c2f1ee974e60f37927201410e9a08d91a2a6bb9bfef02c29501e95ca95c4b9c4219dbfd53ed538111db544d1","customParams":[{"communities":["6654ae4eba54fe502d4e4187"],"_id":"6893678e419d6921c1e0f982","superCommunityId":null,"params":[{"listValue":[],"attachments":["https://s3.amazonaws.com/allride.uploads/driverparam_attach_668309b8bb41bfd79a461dc3_6654ae4eba54fe502d4e4187_1745438823197.png"],"private":false,"_id":"6893678e419d6921c1e0f983","key":"registro_patronal","value":"Está rara esta situación","dateValue":null,"expireDate":null},{"listValue":[],"attachments":["https://s3.amazonaws.com/allride.uploads/driverparam_attach_668309b8bb41bfd79a461dc3_6654ae4eba54fe502d4e4187_1745438779042.png"],"private":false,"_id":"6893678e419d6921c1e0f984","key":"REPE","value":"Hola","dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f985","key":"listado_personal","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f986","key":"onboarding","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f987","key":"SUA","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f988","key":"seguro_social","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f989","key":"certificado_medico","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f98a","key":"antidoping","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f98b","key":" identificacion_oficial","value":null,"dateValue":null,"expireDate":null}]}],"externalDeviceToken":"2a39444093b26fba1595507bfaebde6f5eb8fc73650e8b3b0e58ac6ad76293a9aa866fdd7897401ea371ef4b047cabed80d992b3d035339a316d9268c4aa7d82","chatToken":"072891bd39da9123251d6b627c0ace33e7826978d1ab276646365b4af7a2e05761218486f5a62b86fb98a9ea4c7e4b407af62f1fb8a3748d063f731922bc93d3","canCreateRoutes":false,"id":"668309b8bb41bfd79a461dc3"} 
- </msg>
-<msg timestamp="20250901 18:25:15.316" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:14.832" endtime="20250901 18:25:15.317"/>
-</kw>
-<kw name="Should Be Equal As Numbers" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<msg timestamp="20250901 18:25:15.319" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:15.317" endtime="20250901 18:25:15.319"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${access_token}</var>
-<arg>${response.json()['accessToken']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:15.320" level="INFO">${access_token} = 4d5c9c1e5b7c66691b610b192b6fd0979c38ceb94ba96f69fa7f012b617060b824a23d5e6a77d3ff3f9d2e5bf5431e2315f50d78c477b57c7c9d5ec17cb3b7f3</msg>
-<status status="PASS" starttime="20250901 18:25:15.319" endtime="20250901 18:25:15.321"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${tokenDriver}</var>
-<arg>"Bearer " + "${access_token}"</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250901 18:25:15.321" level="INFO">${tokenDriver} = Bearer 4d5c9c1e5b7c66691b610b192b6fd0979c38ceb94ba96f69fa7f012b617060b824a23d5e6a77d3ff3f9d2e5bf5431e2315f50d78c477b57c7c9d5ec17cb3b7f3</msg>
-<status status="PASS" starttime="20250901 18:25:15.321" endtime="20250901 18:25:15.321"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${tokenDriver}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:15.322" level="INFO">${tokenDriver} = Bearer 4d5c9c1e5b7c66691b610b192b6fd0979c38ceb94ba96f69fa7f012b617060b824a23d5e6a77d3ff3f9d2e5bf5431e2315f50d78c477b57c7c9d5ec17cb3b7f3</msg>
-<status status="PASS" starttime="20250901 18:25:15.322" endtime="20250901 18:25:15.322"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${tokenDriver}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250901 18:25:15.322" level="INFO">Bearer 4d5c9c1e5b7c66691b610b192b6fd0979c38ceb94ba96f69fa7f012b617060b824a23d5e6a77d3ff3f9d2e5bf5431e2315f50d78c477b57c7c9d5ec17cb3b7f3</msg>
-<status status="PASS" starttime="20250901 18:25:15.322" endtime="20250901 18:25:15.322"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250901 18:25:15.324" level="INFO">{"device":{"lang":"es","token":"f4VXOg7eSqCd-iJSAwFC1F:APA91bGWmQaRUK4ESWczhQzVpxxQ4HQ4MhtTeSmCG049BMqsK8VkYXMvR55Wv-R_g4BwZdTCm_Pw4lWsnw32CXmNON65WYYif2G3ojLUwdjfnyfzhNP67Ho","build":"134","manufacturer":"samsung","model":"SM-G780G","lastUpdate":null,"appVersion":"3.0.39-STG","lastSeenOnline":"2025-08-13T03:08:32.994Z"},"config":{"autoLogout":{"timer":{"amount":0,"unit":"minutes"},"enum":"afterDepartureEnd","enabled":false}},"externalInfo":{"uuid":"","contract":""},"labels":[],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["653fd601f90509541a748683","6654ae4eba54fe502d4e4187"],"active":true,"canReleaseReservations":true,"enabled":true,"enabledRoutes":[],"_id":"668309b8bb41bfd79a461dc3","code":"159159","ownerIds":[{"_id":"668309b8bb41bfd79a461dc4","id":"653fd68233d83952fafcd4be","role":"superCommunity"}],"notifications":[],"driverParams":[],"superCommunityId":"653fd68233d83952fafcd4be","communityId":"653fd601f90509541a748683","name":"Conductor Super Comunidad","email":"nicolas+conductorsc1@allrideapp.com","hasToChangePassword":false,"createdAt":"2024-07-01T19:55:36.928Z","updatedAt":"2025-08-13T03:08:32.997Z","__v":5,"accessToken":"4d5c9c1e5b7c66691b610b192b6fd0979c38ceb94ba96f69fa7f012b617060b824a23d5e6a77d3ff3f9d2e5bf5431e2315f50d78c477b57c7c9d5ec17cb3b7f3","rtlToken":"62c5f0a7b08f998d0dec8298463fcd3c99b2b8b8c2f1ee974e60f37927201410e9a08d91a2a6bb9bfef02c29501e95ca95c4b9c4219dbfd53ed538111db544d1","customParams":[{"communities":["6654ae4eba54fe502d4e4187"],"_id":"6893678e419d6921c1e0f982","superCommunityId":null,"params":[{"listValue":[],"attachments":["https://s3.amazonaws.com/allride.uploads/driverparam_attach_668309b8bb41bfd79a461dc3_6654ae4eba54fe502d4e4187_1745438823197.png"],"private":false,"_id":"6893678e419d6921c1e0f983","key":"registro_patronal","value":"Est\xc3\xa1 rara esta situaci\xc3\xb3n","dateValue":null,"expireDate":null},{"listValue":[],"attachments":["https://s3.amazonaws.com/allride.uploads/driverparam_attach_668309b8bb41bfd79a461dc3_6654ae4eba54fe502d4e4187_1745438779042.png"],"private":false,"_id":"6893678e419d6921c1e0f984","key":"REPE","value":"Hola","dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f985","key":"listado_personal","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f986","key":"onboarding","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f987","key":"SUA","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f988","key":"seguro_social","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f989","key":"certificado_medico","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f98a","key":"antidoping","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f98b","key":" identificacion_oficial","value":null,"dateValue":null,"expireDate":null}]}],"externalDeviceToken":"2a39444093b26fba1595507bfaebde6f5eb8fc73650e8b3b0e58ac6ad76293a9aa866fdd7897401ea371ef4b047cabed80d992b3d035339a316d9268c4aa7d82","chatToken":"072891bd39da9123251d6b627c0ace33e7826978d1ab276646365b4af7a2e05761218486f5a62b86fb98a9ea4c7e4b407af62f1fb8a3748d063f731922bc93d3","canCreateRoutes":false,"id":"668309b8bb41bfd79a461dc3"}</msg>
-<status status="PASS" starttime="20250901 18:25:15.323" endtime="20250901 18:25:15.324"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>3s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20250901 18:25:18.330" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20250901 18:25:15.324" endtime="20250901 18:25:18.331"/>
-</kw>
-<status status="PASS" starttime="20250901 18:25:14.830" endtime="20250901 18:25:18.333"/>
-</test>
-<test id="s1-t5" name="Create services" line="121">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysesion</arg>
-<arg>${STAGE_URL}</arg>
-<arg>verify=true</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20250901 18:25:18.337" level="INFO">Creating Session using : alias=mysesion, url=https://stage.allrideapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
-<status status="PASS" starttime="20250901 18:25:18.336" endtime="20250901 18:25:18.338"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Authorization=${tokenAdmin}</arg>
-<arg>Content-Type=application/json; charset=utf-8</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20250901 18:25:18.339" level="INFO">${headers} = {'Authorization': 'Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba', 'Content-Type': 'application/json; charset=...</msg>
-<status status="PASS" starttime="20250901 18:25:18.338" endtime="20250901 18:25:18.339"/>
-</kw>
-<kw name="POST On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysesion</arg>
-<arg>url=https://stage.allrideapp.com/api/v1/admin/pb/createServices/6654ae4eba54fe502d4e4187?community=6654ae4eba54fe502d4e4187</arg>
-<arg>data={}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20250901 18:25:18.812" level="INFO">POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/createServices/6654ae4eba54fe502d4e4187?community=6654ae4eba54fe502d4e4187 
- path_url=/api/v1/admin/pb/createServices/6654ae4eba54fe502d4e4187?community=6654ae4eba54fe502d4e4187 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2'} 
- body={} 
- </msg>
-<msg timestamp="20250901 18:25:18.812" level="INFO">POST Response : url=https://stage.allrideapp.com/api/v1/admin/pb/createServices/6654ae4eba54fe502d4e4187?community=6654ae4eba54fe502d4e4187 
- status=202, reason=Accepted 
- headers={'Date': 'Mon, 01 Sep 2025 22:25:21 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '26', 'Connection': 'keep-alive', 'Server': 'nginx', 'X-DNS-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Access-Control-Allow-Origin': '*', 'X-RateLimit-Limit': '200', 'X-RateLimit-Remaining': '198', 'X-RateLimit-Reset': '1756765579', 'ETag': 'W/"1a-rgpen+A7WbEsD7ogEJREcZgofII"'} 
- body={"message":"job_in_queue"} 
- </msg>
-<msg timestamp="20250901 18:25:18.813" level="INFO">${response} = &lt;Response [202]&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:18.339" endtime="20250901 18:25:18.813"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20250901 18:25:18.815" level="INFO">${code} = 202</msg>
-<status status="PASS" starttime="20250901 18:25:18.813" endtime="20250901 18:25:18.815"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250901 18:25:18.817" level="INFO">202</msg>
-<status status="PASS" starttime="20250901 18:25:18.816" endtime="20250901 18:25:18.817"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20250901 18:25:23.824" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20250901 18:25:18.817" endtime="20250901 18:25:23.824"/>
-</kw>
-<status status="PASS" starttime="20250901 18:25:18.335" endtime="20250901 18:25:23.825"/>
-</test>
-<test id="s1-t6" name="Get Service Id" line="139">
-<kw name="Set Variable" library="BuiltIn">
-<var>${url}</var>
-<arg>${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&amp;startDate=${start_date_today}&amp;endDate=${end_date_pastTomorrow}&amp;onlyODDs=false</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:23.830" level="INFO">${url} = https://stage.allrideapp.com/api/v1/admin/pb/allServices?community=6654ae4eba54fe502d4e4187&amp;startDate=2025-09-01T03:00:00.000Z&amp;endDate=2025-09-03T03:00:00.000Z&amp;onlyODDs=false</msg>
-<status status="PASS" starttime="20250901 18:25:23.830" endtime="20250901 18:25:23.831"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Authorization=${tokenAdmin}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20250901 18:25:23.833" level="INFO">${headers} = {'Authorization': 'Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba'}</msg>
-<status status="PASS" starttime="20250901 18:25:23.833" endtime="20250901 18:25:23.833"/>
-</kw>
-<kw name="GET" library="RequestsLibrary">
-<var>${response}</var>
-<arg>url=${url}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a GET request.</doc>
-<msg timestamp="20250901 18:25:24.983" level="INFO">GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/allServices?community=6654ae4eba54fe502d4e4187&amp;startDate=2025-09-01T03:00:00.000Z&amp;endDate=2025-09-03T03:00:00.000Z&amp;onlyODDs=false 
- path_url=/api/v1/admin/pb/allServices?community=6654ae4eba54fe502d4e4187&amp;startDate=2025-09-01T03:00:00.000Z&amp;endDate=2025-09-03T03:00:00.000Z&amp;onlyODDs=false 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba'} 
- body=None 
- </msg>
-<msg timestamp="20250901 18:25:24.984" level="INFO">GET Response : url=https://stage.allrideapp.com/api/v1/admin/pb/allServices?community=6654ae4eba54fe502d4e4187&amp;startDate=2025-09-01T03:00:00.000Z&amp;endDate=2025-09-03T03:00:00.000Z&amp;onlyODDs=false 
- status=200, reason=OK 
- headers={'Date': 'Mon, 01 Sep 2025 22:25:27 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx', 'X-DNS-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Access-Control-Allow-Origin': '*', 'X-RateLimit-Limit': '200', 'X-RateLimit-Remaining': '198', 'X-RateLimit-Reset': '1756765582', 'ETag': 'W/"131d68-wKY4V84HTLNIh8L7NW6NaSPdVaw"', 'Content-Encoding': 'gzip'} 
- body={"regularDepartures":[{"_id":"689a2d59f1b4515640f77651","superCommunities":[{"_id":"653fd68233d83952fafcd4be","name":"SC - Automatización","avatar":"https://s3.amazonaws.com/allride.uploads/superCommunityAvatar_653fd601f90509541a748683_1699885179092.png"}],"communities":[{"_id":"6654ae4eba54fe502d4e4187","name":"Comunidad Automatización 2","avatar":"https://s3.amazonaws.com/allride.uploads/communityAvatar_6654ae4eba54fe502d4e4187_1717603083265.png"}],"active":false,"disabled":false,"distance":0,"scheduled":true,"odd":false,"state":"pending","routeId":{"_id":"67acba439b62d3b2e09041fb","scheduling":{"limitUnit":"minutes","limitAmount":30},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"labels":[],"name":"AutoStart","shapeId":{"_id":"67acba43bb1a5e88e9bb74df","distanceInMeters":5107},"description":"Pruebas de criterios para iniciar automáticamente una ruta","destinationStop":{"_id":"67506a5fc46fdbfcb4fa01ff","name":"Alto Las Condes. Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"originStop":{"_id":"67506a5fc46fdbfcb4fa0202","name":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile"},"useServiceReservations":true},"serviceId":"689a2d59f1b4515640f77650","serviceDate":"2025-09-02T15:05:00.000Z","observations":"","vehicleId":{"_id":"67b5f76fb5c11f24f63fe29d","plate":"GPS DEVICE","code":"Codigo1"},"driverId":{"_id":"668309b8bb41bfd79a461dc3","code":"159159","name":"Conductor Super Comunidad"},"drivers":[],"stateHistory":[],"apportionByCategories":[],"reservations":[],"estimatedArrival":null,"serviceCost":null,"validations":[]},{"_id":"689a2d5af1b4515640f77695","superCommunities":[{"_id":"653fd68233d83952fafcd4be","name":"SC - Automatización","avatar":"https://s3.amazonaws.com/allride.uploads/superCommunityAvatar_653fd601f90509541a748683_1699885179092.png"}],"communities":[{"_id":"6654ae4eba54fe502d4e4187","name":"Comunidad Automatización 2","avatar":"https://s3.amazonaws.com/allride.uploads/communityAvatar_6654ae4eba54fe502d4e4187_1717603083265.png"}],"active":false,"disabled":false,"distance":0,"scheduled":true,"odd":false,"state":"pending","routeId":{"_id":"67acba439b62d3b2e09041fb","scheduling":{"limitUnit":"minutes","limitAmount":30},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"labels":[],"name":"AutoStart","shapeId":{"_id":"67acba43bb1a5e88e9bb74df","distanceInMeters":5107},"description":"Pruebas de criterios para iniciar automáticamente una ruta","destinationStop":{"_id":"67506a5fc46fdbfcb4fa01ff","name":"Alto Las Condes. Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"originStop":{"_id":"67506a5fc46fdbfcb4fa0202","name":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile"},"useServiceReservations":true},"serviceId":"689a2d5af1b4515640f77694","serviceDate":"2025-09-02T15:10:00.000Z","observations":"","vehicleId":{"_id":"67b5f76fb5c11f24f63fe29d","plate":"GPS DEVICE","code":"Codigo1"},"driverId":{"_id":"668309b8bb41bfd79a461dc3","code":"159159","name":"Conductor Super Comunidad"},"drivers":[],"stateHistory":[],"apportionByCategories":[],"reservations":[],"estimatedArrival":null,"serviceCost":null,"validations":[]},{"_id":"689a2d60f1b4515640f77760","superCommunities":[{"_id":"653fd68233d83952fafcd4be","name":"SC - Automatización","avatar":"https://s3.amazonaws.com/allride.uploads/superCommunityAvatar_653fd601f90509541a748683_1699885179092.png"}],"communities":[{"_id":"6654ae4eba54fe502d4e4187","name":"Comunidad Automatización 2","avatar":"https://s3.amazonaws.com/allride.uploads/communityAvatar_6654ae4eba54fe502d4e4187_1717603083265.png"}],"active":false,"disabled":false,"distance":0,"scheduled":true,"odd":false,"state":"pending","routeId":{"_id":"67cf0d5556535c5b75d43a2a","scheduling":{"limitUnit":"minutes","limitAmount":30},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"labels":[],"name":"AutoStart2","shapeId":{"_id":"67cf0d5456535c5b75d43a0b","distanceInMeters":5107},"description":"AutoStart2","destinationStop":{"_id":"67506a5fc46fdbfcb4fa01ff","name":"Alto Las Condes. Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"originStop":{"_id":"67506a5fc46fdbfcb4fa0202","name":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile"},"useServiceReservations":false},"serviceId":"689a2d60f1b4515640f7775f","serviceDate":"2025-09-02T16:51:00.000Z","observations":"","vehicleId":{"_id":"67b5f76fb5c11f24f63fe29d","plate":"GPS DEVICE","code":"Codigo1"},"driverId":{"_id":"668309b8bb41bfd79a461dc3","code":"159159","name":"Conductor Super Comunidad"},"drivers":[],"stateHistory":[],"apportionByCategories":[],"reservations":[],"estimatedArrival":null,"serviceCost":null,"validations":[]},{"_id":"689a2d60f1b4515640f777a9","superCommunities":[{"_id":"653fd68233d83952fafcd4be","name":"SC - Automatización","avatar":"https://s3.amazonaws.com/allride.uploads/superCommunityAvatar_653fd601f90509541a748683_1699885179092.png"}],"communities":[{"_id":"6654ae4eba54fe502d4e4187","name":"Comunidad Automatización 2","avatar":"https://s3.amazonaws.com/allride.uploads/communityAvatar_6654ae4eba54fe502d4e4187_1717603083265.png"}],"active":false,"disabled":false,"distance":0,"scheduled":true,"odd":false,"state":"pending","routeId":{"_id":"67cf0d5556535c5b75d43a2a","scheduling":{"limitUnit":"minutes","limitAmount":30},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"labels":[],"name":"AutoStart2","shapeId":{"_id":"67cf0d5456535c5b75d43a0b","distanceInMeters":5107},"description":"AutoStart2","destinationStop":{"_id":"67506a5fc46fdbfcb4fa01ff","name":"Alto Las Condes. Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"originStop":{"_id":"67506a5fc46fdbfcb4fa0202","name":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile"},"useServiceReservations":false},"serviceId":"689a2d60f1b4515640f777a8","serviceDate":"2025-09-02T17:32:00.000Z","observations":"","vehicleId":{"_id":"67b5f76fb5c11f24f63fe29d","plate":"GPS DEVICE","code":"Codigo1"},"driverId":{"_id":"668309b8bb41bfd79a461dc3","code":"159159","name":"Conductor Super Comunidad"},"drivers":[],"stateHistory":[],"apportionByCategories":[],"reservations":[],"estimatedArrival":null,"serviceCost":null,"validations":[]},{"_id":"689a2d60f1b4515640f777e8","superCommunities":[{"_id":"653fd68233d83952fafcd4be","name":"SC - Automatización","avatar":"https://s3.amazonaws.com/allride.uploads/superCommunityAvatar_653fd601f90509541a748683_1699885179092.png"}],"communities":[{"_id":"6654ae4eba54fe502d4e4187","name":"Comunidad Automatización 2","avatar":"https://s3.amazonaws.com/allride.uploads/communityAvatar_6654ae4eba54fe502d4e4187_1717603083265.png"}],"active":false,"disabled":false,"distance":0,"scheduled":true,"odd":false,"state":"pending","routeId":{"_id":"67cf0d5556535c5b75d43a2a","scheduling":{"limitUnit":"minutes","limitAmount":30},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"labels":[],"name":"AutoStart2","shapeId":{"_id":"67cf0d5456535c5b75d43a0b","distanceInMeters":5107},"description":"AutoStart2","destinationStop":{"_id":"67506a5fc46fdbfcb4fa01ff","name":"Alto Las Condes. Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"originStop":{"_id":"67506a5fc46fdbfcb4fa0202","name":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile"},"useServiceReservations":false},"serviceId":"689a2d60f1b4515640f777e7","serviceDate":"2025-09-02T17:42:00.000Z","observations":"","vehicleId":{"_id":"67b5f76fb5c11f24f63fe29d","plate":"GPS DEVICE","code":"Codigo1"},"driverId":{"_id":"668309b8bb41bfd79a461dc3","code":"159159","name":"Conductor Super Comunidad"},"drivers":[],"stateHistory":[],"apportionByCategories":[],"reservations":[],"estimatedArrival":null,"serviceCost":null,"validations":[]},{"_id":"689a2d60f1b4515640f77827","superCommunities":[{"_id":"653fd68233d83952fafcd4be","name":"SC - Automatización","avatar":"https://s3.amazonaws.com/allride.uploads/superCommunityAvatar_653fd601f90509541a748683_1699885179092.png"}],"communities":[{"_id":"6654ae4eba54fe502d4e4187","name":"Comunidad Automatización 2","avatar":"https://s3.amazonaws.com/allride.uploads/communityAvatar_6654ae4eba54fe502d4e4187_1717603083265.png"}],"active":false,"disabled":false,"distance":0,"scheduled":true,"odd":false,"state":"pending","routeId":{"_id":"67cf0d5556535c5b75d43a2a","scheduling":{"limitUnit":"minutes","limitAmount":30},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"labels":[],"name":"AutoStart2","shapeId":{"_id":"67cf0d5456535c5b75d43a0b","distanceInMeters":5107},"description":"AutoStart2","destinationStop":{"_id":"67506a5fc46fdbfcb4fa01ff","name":"Alto Las Condes. Avenida Presidente Kennedy Lateral, Las Condes, Chile"},"originStop":{"_id":"67506a5fc46fdbfcb4fa0202","name":"Mall Apumanque Avenida Manquehue Sur, Las Condes, Chile"},"useServiceReservations":false},"serviceId":"689a2d60f1b4515640f77826","serviceDate":"2025-09-02T17:52:00.000Z","observations":"","vehicleId":{"_id":"67b5f76fb5c11f24f63fe29d","plate":"GPS DEVICE","code":"Codigo1"},"driverId":{"_id":"668309b8bb41bfd79a461dc3","code":"159159","name":"Conductor Super Comunidad"},"drivers":[],"stateHistory":[],"apportionByCategories":[],"reservations":[],"estimatedArrival":null,"serviceCost":null,"validations":[]},{"_id":"689a2d60f1b4515640f77866","superCommunities":[{"_id":"653fd68233d83952fafcd4be","name":"SC - Automatización","avatar":"https://s3.amazonaws.com/allride.uploads/superCommunityAvatar_653fd601f90509541a748683_1699885179092.png"}],"communities":[{"_id":"6654ae4eba54fe502d4e4187","name":"Comunidad Automatización 2","avatar":"https://s3.amazonaws.com/allride.uploads/communityAvatar_6654ae4eba54fe502d4e4187_1717603083265.png"}],"active":false,"disabled":false,"distance":0,"scheduled":true,"odd":false,"state":"pending","routeId":{"_... (set the log level to DEBUG or TRACE to see the full content) 
- </msg>
-<msg timestamp="20250901 18:25:24.985" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:23.834" endtime="20250901 18:25:24.985"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${responseJson}</var>
-<arg>${response.json()}[scheduledServices]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:25.001" level="INFO">${responseJson} = [{'_id': '689a2d4ff1b4515640f7759e', 'superCommunities': [{'_id': '653fd68233d83952fafcd4be', 'name': 'SC - Automatización', 'avatar': 'https://s3.amazonaws.com/allride.uploads/superCommunityAvatar_65...</msg>
-<status status="PASS" starttime="20250901 18:25:24.985" endtime="20250901 18:25:25.001"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${service_id}</var>
-<arg>None</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:25.002" level="INFO">${service_id} = None</msg>
-<status status="PASS" starttime="20250901 18:25:25.001" endtime="20250901 18:25:25.002"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${sorted_services}</var>
-<arg>sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])</arg>
-<arg>json</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250901 18:25:25.047" level="INFO">${sorted_services} = [{'_id': '689a2fd7d7c6244a1c906ac3', 'superCommunities': [{'_id': '653fd68233d83952fafcd4be', 'name': 'SC - Automatización', 'avatar': 'https://s3.amazonaws.com/allride.uploads/superCommunityAvatar_65...</msg>
-<status status="PASS" starttime="20250901 18:25:25.002" endtime="20250901 18:25:25.047"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>${sorted_services} == []</arg>
-<arg>Fatal Error</arg>
-<arg>msg= No services were created with routeId._id = "${scheduleId}" All createSheduled Tests Failing(Fatal error)</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250901 18:25:25.047" endtime="20250901 18:25:25.052"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${last_service}</var>
-<arg>${sorted_services[-1]}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:25.053" level="INFO">${last_service} = {'_id': '68b61d393e850ace4d3d4508', 'superCommunities': [{'_id': '653fd68233d83952fafcd4be', 'name': 'SC - Automatización', 'avatar': 'https://s3.amazonaws.com/allride.uploads/superCommunityAvatar_653...</msg>
-<status status="PASS" starttime="20250901 18:25:25.052" endtime="20250901 18:25:25.053"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${service_id}</var>
-<arg>${last_service['_id']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:25.055" level="INFO">${service_id} = 68b61d393e850ace4d3d4508</msg>
-<status status="PASS" starttime="20250901 18:25:25.053" endtime="20250901 18:25:25.055"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${last_service_route}</var>
-<arg>${last_service['routeId']['_id']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:25.056" level="INFO">${last_service_route} = 67f7e2fe52999601de99bca2</msg>
-<status status="PASS" starttime="20250901 18:25:25.055" endtime="20250901 18:25:25.056"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${scheduleId}</arg>
-<arg>${last_service_route}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20250901 18:25:25.057" endtime="20250901 18:25:25.057"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${service_id}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:25.058" level="INFO">${service_id} = 68b61d393e850ace4d3d4508</msg>
-<status status="PASS" starttime="20250901 18:25:25.057" endtime="20250901 18:25:25.058"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Last created service ID: ${service_id}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250901 18:25:25.058" level="INFO">Last created service ID: 68b61d393e850ace4d3d4508</msg>
-<status status="PASS" starttime="20250901 18:25:25.058" endtime="20250901 18:25:25.058"/>
-</kw>
-<status status="PASS" starttime="20250901 18:25:23.828" endtime="20250901 18:25:25.058"/>
-</test>
-<test id="s1-t7" name="Resource Assignment(Driver and Vehicle)" line="164">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysesion</arg>
-<arg>${STAGE_URL}</arg>
-<arg>verify=true</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20250901 18:25:25.059" level="INFO">Creating Session using : alias=mysesion, url=https://stage.allrideapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
-<status status="PASS" starttime="20250901 18:25:25.059" endtime="20250901 18:25:25.060"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Authorization=${tokenAdmin}</arg>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20250901 18:25:25.060" level="INFO">${headers} = {'Authorization': 'Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba', 'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20250901 18:25:25.060" endtime="20250901 18:25:25.060"/>
-</kw>
-<kw name="POST On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysesion</arg>
-<arg>url= /api/v1/admin/pb/assignServiceResources/${service_id}?community=${idComunidad2}</arg>
-<arg>data=[{"multipleDrivers":false,"driver":{"driverId":"${driverId2}"},"drivers":[],"vehicle":{"vehicleId":"${vehicleId2}","capacity":"5"},"passengers":[],"departure":null}]</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20250901 18:25:26.053" level="INFO">POST Request : url=https://stage.allrideapp.com/api/v1/admin/pb/assignServiceResources/68b61d393e850ace4d3d4508?community=6654ae4eba54fe502d4e4187 
- path_url=/api/v1/admin/pb/assignServiceResources/68b61d393e850ace4d3d4508?community=6654ae4eba54fe502d4e4187 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba', 'Content-Type': 'application/json', 'Content-Length': '188'} 
- body=[{"multipleDrivers":false,"driver":{"driverId":"668309b8bb41bfd79a461dc3"},"drivers":[],"vehicle":{"vehicleId":"66830b98bb41bfd79a4620ac","capacity":"5"},"passengers":[],"departure":null}] 
- </msg>
-<msg timestamp="20250901 18:25:26.053" level="INFO">POST Response : url=https://stage.allrideapp.com/api/v1/admin/pb/assignServiceResources/68b61d393e850ace4d3d4508?community=6654ae4eba54fe502d4e4187 
- status=200, reason=OK 
- headers={'Date': 'Mon, 01 Sep 2025 22:25:28 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx', 'X-DNS-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Access-Control-Allow-Origin': '*', 'X-RateLimit-Limit': '200', 'X-RateLimit-Remaining': '198', 'X-RateLimit-Reset': '1756765588', 'ETag': 'W/"43b-ioos7AVLZl+nylqZ9mtP9OSedDQ"', 'Content-Encoding': 'gzip'} 
- body={"capped":{"enabled":false},"restrictPassengers":{"validation":{"enabled":false,"parameters":[]},"reservation":{"enabled":false,"parameters":[]},"visibility":{"enabled":false,"parameters":[]},"enabled":false},"superCommunities":["653fd68233d83952fafcd4be"],"communities":["6654ae4eba54fe502d4e4187"],"active":true,"hasAssignedResources":true,"blocked":false,"disabled":false,"_id":"68b61d393e850ace4d3d4508","routeId":"67f7e2fe52999601de99bca2","serviceDate":"2025-09-01T23:24:00.000Z","observations":"","apportionByCategories":[],"stopSchedule":[],"resources":[{"_id":"68b61d583e850ace4d3d4946","departure":{"departureId":"68b61d583e850ace4d3d48e1","capacity":46},"driver":{"driverId":"668309b8bb41bfd79a461dc3"},"drivers":[],"vehicle":{"vehicleId":"66830b98bb41bfd79a4620ac","capacity":46},"assignedAt":"2025-09-01T22:25:28.811Z"}],"reservations":[],"stateHistory":[],"superCommunityId":"653fd68233d83952fafcd4be","communityId":"6654ae4eba54fe502d4e4187","createdAt":"2025-09-01T22:24:57.470Z","updatedAt":"2025-09-01T22:25:28.814Z","__v":1,"assignedAt":"2025-09-01T22:25:28.393Z"} 
- </msg>
-<msg timestamp="20250901 18:25:26.053" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:25.061" endtime="20250901 18:25:26.053"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20250901 18:25:26.056" level="INFO">${code} = 200</msg>
-<status status="PASS" starttime="20250901 18:25:26.055" endtime="20250901 18:25:26.056"/>
-</kw>
-<kw name="Should Be Equal As Numbers" library="BuiltIn">
-<arg>${code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<status status="PASS" starttime="20250901 18:25:26.057" endtime="20250901 18:25:26.058"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${departureId}</var>
-<arg>${response.json()}[resources][0][departure][departureId]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:26.059" level="INFO">${departureId} = 68b61d583e850ace4d3d48e1</msg>
-<status status="PASS" starttime="20250901 18:25:26.058" endtime="20250901 18:25:26.059"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${departureId}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:26.060" level="INFO">${departureId} = 68b61d583e850ace4d3d48e1</msg>
-<status status="PASS" starttime="20250901 18:25:26.060" endtime="20250901 18:25:26.060"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250901 18:25:26.061" level="INFO">200</msg>
-<status status="PASS" starttime="20250901 18:25:26.060" endtime="20250901 18:25:26.061"/>
-</kw>
-<status status="PASS" starttime="20250901 18:25:25.059" endtime="20250901 18:25:26.061"/>
-</test>
-<test id="s1-t8" name="Get Departure Info After Resource Assignment" line="184">
-<kw name="Set Variable" library="BuiltIn">
-<var>${url}</var>
-<arg>https://stage.allrideapp.com/api/v1/admin/pb/departures/${departureId}?community=6654ae4eba54fe502d4e4187</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:26.063" level="INFO">${url} = https://stage.allrideapp.com/api/v1/admin/pb/departures/68b61d583e850ace4d3d48e1?community=6654ae4eba54fe502d4e4187</msg>
-<status status="PASS" starttime="20250901 18:25:26.062" endtime="20250901 18:25:26.063"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>&amp;{headers}</var>
-<arg>Authorization=${tokenAdmin}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20250901 18:25:26.065" level="INFO">&amp;{headers} = { Authorization=Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba }</msg>
-<status status="PASS" starttime="20250901 18:25:26.063" endtime="20250901 18:25:26.065"/>
-</kw>
-<kw name="GET" library="RequestsLibrary">
-<var>${response}</var>
-<arg>url=${url}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a GET request.</doc>
-<msg timestamp="20250901 18:25:26.742" level="INFO">GET Request : url=https://stage.allrideapp.com/api/v1/admin/pb/departures/68b61d583e850ace4d3d48e1?community=6654ae4eba54fe502d4e4187 
- path_url=/api/v1/admin/pb/departures/68b61d583e850ace4d3d48e1?community=6654ae4eba54fe502d4e4187 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eece023a54669670d941d6211f58c5222509b4693100994090e593f03ad7ba8999c21f202af2f08dee65ee479346640e44a0fb12ca4ec07abe5ab63215e2f5ba'} 
- body=None 
- </msg>
-<msg timestamp="20250901 18:25:26.744" level="INFO">GET Response : url=https://stage.allrideapp.com/api/v1/admin/pb/departures/68b61d583e850ace4d3d48e1?community=6654ae4eba54fe502d4e4187 
- status=200, reason=OK 
- headers={'Date': 'Mon, 01 Sep 2025 22:25:29 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx', 'X-DNS-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Access-Control-Allow-Origin': '*', 'X-RateLimit-Limit': '200', 'X-RateLimit-Remaining': '198', 'X-RateLimit-Reset': '1756765589', 'ETag': 'W/"1b6bc-bKICMBmlWZYZ8OvFsCAj/8oFAVE"', 'Content-Encoding': 'gzip'} 
- body={"_id":"68b61d583e850ace4d3d48e1","restrictPassengers":{"validation":{"enabled":false,"parameters":[]},"reservation":{"enabled":false,"parameters":[]},"visibility":{"enabled":false,"parameters":[]},"enabled":false},"superCommunities":[{"_id":"653fd68233d83952fafcd4be","name":"SC - Automatización","avatar":"https://s3.amazonaws.com/allride.uploads/superCommunityAvatar_653fd601f90509541a748683_1699885179092.png"}],"communities":[{"_id":"6654ae4eba54fe502d4e4187","name":"Comunidad Automatización 2","avatar":"https://s3.amazonaws.com/allride.uploads/communityAvatar_6654ae4eba54fe502d4e4187_1717603083265.png"}],"assistantIds":["66ccdf58193998eca49014c3"],"labels":[],"active":false,"sharing":true,"disabled":false,"internal":false,"rounds":0,"distance":0,"scheduled":true,"odd":false,"estimatedDistance":0,"extraMinutes":0,"placeWaitTime":0,"hasExternalGPS":false,"allowsServiceSnapshots":false,"allowsNonServiceSnapshots":false,"allowsSnapshots":false,"allowsDistance":false,"usesOfflineCount":false,"linkedDepartures":[],"communityId":"6654ae4eba54fe502d4e4187","driverId":{"_id":"668309b8bb41bfd79a461dc3","config":{"autoLogout":{"enabled":false,"timer":{"amount":0,"unit":"minutes"},"enum":"afterDepartureEnd"}},"labels":[],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["653fd601f90509541a748683","6654ae4eba54fe502d4e4187"],"active":true,"enabled":true,"code":"159159","ownerIds":[{"_id":"668309b8bb41bfd79a461dc4","id":"653fd68233d83952fafcd4be","role":"superCommunity"}],"notifications":[],"driverParams":[],"superCommunityId":"653fd68233d83952fafcd4be","communityId":"653fd601f90509541a748683","name":"Conductor Super Comunidad","email":"nicolas+conductorsc1@allrideapp.com","hasToChangePassword":false,"createdAt":"2024-07-01T19:55:36.928Z","updatedAt":"2025-08-13T03:08:32.997Z","__v":5,"accessToken":"4d5c9c1e5b7c66691b610b192b6fd0979c38ceb94ba96f69fa7f012b617060b824a23d5e6a77d3ff3f9d2e5bf5431e2315f50d78c477b57c7c9d5ec17cb3b7f3","device":{"lang":"es","token":"f4VXOg7eSqCd-iJSAwFC1F:APA91bGWmQaRUK4ESWczhQzVpxxQ4HQ4MhtTeSmCG049BMqsK8VkYXMvR55Wv-R_g4BwZdTCm_Pw4lWsnw32CXmNON65WYYif2G3ojLUwdjfnyfzhNP67Ho","build":"134","manufacturer":"samsung","model":"SM-G780G","lastUpdate":null,"appVersion":"3.0.39-STG","lastSeenOnline":"2025-08-13T03:08:32.994Z"},"rtlToken":"62c5f0a7b08f998d0dec8298463fcd3c99b2b8b8c2f1ee974e60f37927201410e9a08d91a2a6bb9bfef02c29501e95ca95c4b9c4219dbfd53ed538111db544d1","canReleaseReservations":true,"enabledRoutes":[],"customParams":[{"communities":["6654ae4eba54fe502d4e4187"],"_id":"6893678e419d6921c1e0f982","superCommunityId":null,"params":[{"listValue":[],"attachments":["https://s3.amazonaws.com/allride.uploads/driverparam_attach_668309b8bb41bfd79a461dc3_6654ae4eba54fe502d4e4187_1745438823197.png"],"private":false,"_id":"6893678e419d6921c1e0f983","key":"registro_patronal","value":"Está rara esta situación","dateValue":null,"expireDate":null},{"listValue":[],"attachments":["https://s3.amazonaws.com/allride.uploads/driverparam_attach_668309b8bb41bfd79a461dc3_6654ae4eba54fe502d4e4187_1745438779042.png"],"private":false,"_id":"6893678e419d6921c1e0f984","key":"REPE","value":"Hola","dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f985","key":"listado_personal","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f986","key":"onboarding","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f987","key":"SUA","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f988","key":"seguro_social","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f989","key":"certificado_medico","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f98a","key":"antidoping","value":null,"dateValue":null,"expireDate":null},{"listValue":[],"attachments":[],"private":false,"_id":"6893678e419d6921c1e0f98b","key":" identificacion_oficial","value":null,"dateValue":null,"expireDate":null}]}],"externalDeviceToken":"2a39444093b26fba1595507bfaebde6f5eb8fc73650e8b3b0e58ac6ad76293a9aa866fdd7897401ea371ef4b047cabed80d992b3d035339a316d9268c4aa7d82","chatToken":"072891bd39da9123251d6b627c0ace33e7826978d1ab276646365b4af7a2e05761218486f5a62b86fb98a9ea4c7e4b407af62f1fb8a3748d063f731922bc93d3","canCreateRoutes":false,"externalInfo":{"uuid":"","contract":""}},"driverCode":"159159","drivers":[],"vehicleId":{"_id":"66830b98bb41bfd79a4620ac","category":"66830b1a30b7052ec7743255","plate":"MORISC","code":"171222"},"busCode":"MORISC","startCapacity":46,"routeId":{"_id":"67f7e2fe52999601de99bca2","trail":{"enabled":false,"adjustByRounds":false},"rounds":{"enabled":false,"anchorStops":[]},"notifyUsersByStop":{"enabled":false,"sendTo":{"destinataries":"admins","emails":[],"adminLevels":[],"roleIds":[]}},"excludePassengers":{"active":false,"excludeType":"dontHide"},"scheduling":{"enabled":true,"defaultServiceCost":null,"schedule":[{"capped":{"enabled":false,"capacity":0,"by":"vehicle"},"restrictPassengers":{"validation":{"enabled":false,"conditional":"or","excludes":false,"parameters":[],"parameter":[]},"reservation":{"enabled":false,"conditional":"or","excludes":false,"parameters":[],"parameter":[]},"visibility":{"enabled":false,"conditional":"or","excludes":false,"parameters":[],"parameter":[]},"enabled":false},"reservations":{"enabled":false,"list":[]},"specificReservations":{"enabled":false,"list":[]},"enabled":true,"_id":"68b61d483e850ace4d3d4557","day":"mon","time":"19:25","estimatedArrival":null,"vehicleCategoryId":null,"serviceCost":0,"observations":"","stopSchedule":[],"defaultResources":[]}],"lateNotification":{"enabled":false,"amount":0,"unit":"minutes"},"stopNotification":{"enabled":false,"amount":0,"unit":"minutes"},"limitUnit":"minutes","limitAmount":30,"startLimit":{"upperLimit":{"amount":60,"unit":"minutes"},"lowerLimit":{"amount":30,"unit":"minutes"}},"restrictions":{"customParams":{"enabled":false,"params":[]},"byQuantity":{"unit":"days","userSkip":[]},"timeRules":{"booking":{"timeWindows":[]}},"_id":"68b61d483e850ace4d3d4558"},"stopOnReservation":false,"serviceCreationLimit":{"enabled":false,"date":null}},"rating":{"enabled":false,"withValidation":false},"endDepartureNotice":{"enabled":false,"lastStop":null},"restrictPassengers":{"enabled":false,"visibility":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"},"reservation":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"},"validation":{"enabled":false,"excludes":false,"parameters":[],"conditional":"or"}},"snapshots":{"enabled":false},"validationParams":{"driverParams":[],"passengerParams":[]},"canResume":{"timeLimit":{"enabled":false,"amount":5,"unit":"minutes"},"enabled":false},"departureHourFulfillment":{"enabled":false,"ranges":[]},"arrivalHourFulfillment":{"enabled":false,"ranges":[]},"validateDeparture":{"enabled":true},"minimumConfirmationTime":{"enabled":false,"amount":1,"unit":"hours"},"minimumTimeToForceDeparture":{"enabled":false,"amount":5,"unit":"minutes"},"endServiceLegAutomatically":{"enabled":false,"stopId":null,"distance":100,"timer":{"amount":5,"unit":"minutes"}},"DNIValidation":{"enabled":false,"options":["qr"]},"validation":{"external":[]},"assistantIds":["66ccdf58193998eca49014c3"],"superCommunities":["653fd68233d83952fafcd4be"],"communities":["6654ae4eba54fe502d4e4187"],"active":true,"visible":true,"internal":false,"anchorStops":[],"isStatic":false,"labels":[],"hasExternalGPS":false,"hasCapacity":true,"hasBeacons":true,"hasRounds":false,"hasBoardingCount":false,"hasUnboardingCount":false,"usesBusCode":false,"usesVehicleList":true,"dynamicSeatAssignment":false,"usesDriverCode":false,"usesDriverPin":false,"usesTickets":true,"usesPasses":false,"usesTextToSpeech":false,"allowsManualValidation":true,"allowsRating":true,"allowsOnlyExistingDrivers":false,"allowsMultipleDrivers":false,"allowsDebugging":false,"startsOnStop":false,"notNearStop":false,"allowsNonServiceSnapshots":false,"allowsServiceSnapshots":false,"allowsDistance":true,"usesOfflineCount":false,"hasBoardings":true,"hasUnboardings":true,"usesManualSeat":true,"noPassengerInfo":false,"showParable":false,"showStops":true,"allowGenericVehicles":true,"usesVehicleQRLink":false,"skipDeclaration":false,"skipQRValidation":false,"assistantAssignsSeat":true,"hasBarrier":false,"name":"Cancel reservation","shapeId":{"_id":"6654d514713b9a5184cfe21e","communities":["6654ae4eba54fe502d4e4187"],"superCommunities":["68542c2a3a0d319ed31a72a6"],"name":"rengo","markers":[{"_id":"6654d514713b9a5184cfe21f","lat":-34.41083169777463,"lng":-70.85323168094108,"draggable":true,"label":"A"},{"_id":"6654d514713b9a5184cfe220","lat":-34.39439473078348,"lng":-70.78211782277208,"draggable":true,"label":"B"}],"avoid":{"ferries":false,"highways":false,"tolls":false},"points":[{"_id":"6842ffc10459d00047b07e25","loc":[-70.85332000000001,-34.41095],"lat":-34.41095,"lon":-70.85332000000001,"sequence":0},{"_id":"6842ffc10459d00047b07e26","loc":[-70.85372000000001,-34.41085],"lat":-34.41085,"lon":-70.85372000000001,"sequence":1},{"_id":"6842ffc10459d00047b07e27","loc":[-70.85358000000001,-34.41033],"lat":-34.41033,"lon":-70.85358000000001,"sequence":2},{"_id":"6842ffc10459d00047b07e28","loc":[-70.85340000000001,-34.409710000000004],"lat":-34.409710000000004,"lon":-70.85340000000001,"sequence":3},{"_id":"6842ffc10459d00047b07e29","loc":[-70.85332000000001,-34.409400000000005],"lat":-34.409400000000005,"lon":-70.85332000000001,"sequence":4},{"_id":"6842ffc10459d00047b07e2a","loc":[-70.85274000000001,-34.407970000000006],"lat":-34.407970000000006,"lon":-70.85274000000001,"sequence":5},{"_id":"6842ffc10459d00047b07e2b","loc":[-70.85227,-34.40731],"lat":-34.40731,"lon":-70.85227,"sequence":6},{"_id":"6842f... (set the log level to DEBUG or TRACE to see the full content) 
- </msg>
-<msg timestamp="20250901 18:25:26.745" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:26.065" endtime="20250901 18:25:26.745"/>
-</kw>
-<kw name="Should Be Equal As Numbers" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<msg timestamp="20250901 18:25:26.748" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:26.746" endtime="20250901 18:25:26.748"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${capacity}</var>
-<arg>${response.json()}[capacity]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:26.752" level="INFO">${capacity} = 46</msg>
-<status status="PASS" starttime="20250901 18:25:26.748" endtime="20250901 18:25:26.752"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${startCapacity}</var>
-<arg>${response.json()}[startCapacity]as</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:26.754" level="INFO">${startCapacity} = 46as</msg>
-<status status="PASS" starttime="20250901 18:25:26.752" endtime="20250901 18:25:26.754"/>
-</kw>
-<kw name="Should Be Equal As Numbers" library="BuiltIn">
-<arg>${capacity}</arg>
-<arg>46</arg>
-<arg>msg=❌ 'capacity' should be 46 but was ${capacity}</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<msg timestamp="20250901 18:25:26.755" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:26.754" endtime="20250901 18:25:26.755"/>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${startCapacity}</arg>
-<arg>46as</arg>
-<arg>msg=❌ 'startCapacity' should be 46 but was ${startCapacity}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20250901 18:25:26.755" endtime="20250901 18:25:26.755"/>
-</kw>
-<status status="PASS" starttime="20250901 18:25:26.062" endtime="20250901 18:25:26.756"/>
-</test>
-<test id="s1-t9" name="Start Departure Leg" line="209">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysesion</arg>
-<arg>${STAGE_URL}</arg>
-<arg>verify=true</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20250901 18:25:26.757" level="INFO">Creating Session using : alias=mysesion, url=https://stage.allrideapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
-<status status="PASS" starttime="20250901 18:25:26.757" endtime="20250901 18:25:26.757"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Authorization=${tokenDriver}</arg>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20250901 18:25:26.758" level="INFO">${headers} = {'Authorization': 'Bearer 4d5c9c1e5b7c66691b610b192b6fd0979c38ceb94ba96f69fa7f012b617060b824a23d5e6a77d3ff3f9d2e5bf5431e2315f50d78c477b57c7c9d5ec17cb3b7f3', 'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20250901 18:25:26.757" endtime="20250901 18:25:26.758"/>
-</kw>
-<kw name="POST On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysesion</arg>
-<arg>url=/api/v2/pb/driver/departures</arg>
-<arg>data={"communityId":"${idComunidad2}","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"routeId":"${scheduleId}","capacity":3,"busCode":"1111","vehicleId":"${vehicleId2}","shareToUsers":false,"customParams":[],"pin":null}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20250901 18:25:27.413" level="INFO">POST Request : url=https://stage.allrideapp.com/api/v2/pb/driver/departures 
- path_url=/api/v2/pb/driver/departures 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer 4d5c9c1e5b7c66691b610b192b6fd0979c38ceb94ba96f69fa7f012b617060b824a23d5e6a77d3ff3f9d2e5bf5431e2315f50d78c477b57c7c9d5ec17cb3b7f3', 'Content-Type': 'application/json', 'Content-Length': '298'} 
- body={"communityId":"6654ae4eba54fe502d4e4187","startLat":-33.3908833,"startLon":-70.54620129999999,"customParamsAtStart":[],"preTripChecklist":[],"routeId":"67f7e2fe52999601de99bca2","capacity":3,"busCode":"1111","vehicleId":"66830b98bb41bfd79a4620ac","shareToUsers":false,"customParams":[],"pin":null} 
- </msg>
-<msg timestamp="20250901 18:25:27.414" level="INFO">POST Response : url=https://stage.allrideapp.com/api/v2/pb/driver/departures 
- status=200, reason=OK 
- headers={'Date': 'Mon, 01 Sep 2025 22:25:30 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx', 'X-DNS-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Access-Control-Allow-Origin': '*', 'ETag': 'W/"12ea-dXqFVIL/al2hlOPMWEYjy8qh4Qs"', 'Content-Encoding': 'gzip'} 
- body={"restrictPassengers":{"validation":{"enabled":false,"parameters":[]},"reservation":{"enabled":false,"parameters":[]},"visibility":{"enabled":false,"parameters":[]},"enabled":false},"superCommunities":[],"communities":["6654ae4eba54fe502d4e4187"],"assistantIds":["66ccdf58193998eca49014c3"],"labels":[],"active":true,"sharing":true,"disabled":false,"internal":false,"rounds":0,"distance":0,"scheduled":false,"odd":false,"estimatedDistance":0,"extraMinutes":0,"placeWaitTime":0,"hasExternalGPS":false,"allowsServiceSnapshots":false,"allowsNonServiceSnapshots":false,"allowsSnapshots":false,"allowsDistance":true,"usesOfflineCount":false,"linkedDepartures":[],"_id":"68b61d5aa761d870e00cf7bd","driverId":"668309b8bb41bfd79a461dc3","routeId":"67f7e2fe52999601de99bca2","drivers":[],"categories":[],"trail":[],"legs":[{"distance":0,"_id":"68b61d5aa761d870e00cf7f7","type":"service","startedAt":"2025-09-01T22:25:30.142Z","realStartLocation":{"_id":"68b61d5aa761d870e00cf7f8","lat":-33.3908833,"lon":-70.54620129999999,"loc":[-70.54620129999999,-33.3908833]},"preTripChecklist":[],"customParamsAtStart":[],"customParamsAtTheEnd":[]}],"stateHistory":[],"deviceHistory":[],"rankingHistory":[],"apportionByCategories":[],"reservations":[],"enabledSeats":[{"available":true,"_id":"68b61d5aa761d870e00cf7c3","seat":"1"},{"available":true,"_id":"68b61d5aa761d870e00cf7c4","seat":"2"},{"available":true,"_id":"68b61d5aa761d870e00cf7c5","seat":"3"},{"available":true,"_id":"68b61d5aa761d870e00cf7c6","seat":"4"},{"available":true,"_id":"68b61d5aa761d870e00cf7c7","seat":"5"},{"available":true,"_id":"68b61d5aa761d870e00cf7c8","seat":"6"},{"available":true,"_id":"68b61d5aa761d870e00cf7c9","seat":"7"},{"available":true,"_id":"68b61d5aa761d870e00cf7ca","seat":"8"},{"available":true,"_id":"68b61d5aa761d870e00cf7cb","seat":"9"},{"available":true,"_id":"68b61d5aa761d870e00cf7cc","seat":"10"},{"available":true,"_id":"68b61d5aa761d870e00cf7cd","seat":"11"},{"available":true,"_id":"68b61d5aa761d870e00cf7ce","seat":"12"},{"available":true,"_id":"68b61d5aa761d870e00cf7cf","seat":"13"},{"available":true,"_id":"68b61d5aa761d870e00cf7d0","seat":"14"},{"available":true,"_id":"68b61d5aa761d870e00cf7d1","seat":"15"},{"available":true,"_id":"68b61d5aa761d870e00cf7d2","seat":"16"},{"available":true,"_id":"68b61d5aa761d870e00cf7d3","seat":"17"},{"available":true,"_id":"68b61d5aa761d870e00cf7d4","seat":"18"},{"available":true,"_id":"68b61d5aa761d870e00cf7d5","seat":"19"},{"available":true,"_id":"68b61d5aa761d870e00cf7d6","seat":"20"},{"available":true,"_id":"68b61d5aa761d870e00cf7d7","seat":"21"},{"available":true,"_id":"68b61d5aa761d870e00cf7d8","seat":"22"},{"available":true,"_id":"68b61d5aa761d870e00cf7d9","seat":"23"},{"available":true,"_id":"68b61d5aa761d870e00cf7da","seat":"24"},{"available":true,"_id":"68b61d5aa761d870e00cf7db","seat":"25"},{"available":true,"_id":"68b61d5aa761d870e00cf7dc","seat":"26"},{"available":true,"_id":"68b61d5aa761d870e00cf7dd","seat":"27"},{"available":true,"_id":"68b61d5aa761d870e00cf7de","seat":"28"},{"available":true,"_id":"68b61d5aa761d870e00cf7df","seat":"29"},{"available":true,"_id":"68b61d5aa761d870e00cf7e0","seat":"30"},{"available":true,"_id":"68b61d5aa761d870e00cf7e1","seat":"31"},{"available":true,"_id":"68b61d5aa761d870e00cf7e2","seat":"32"},{"available":true,"_id":"68b61d5aa761d870e00cf7e3","seat":"33"},{"available":true,"_id":"68b61d5aa761d870e00cf7e4","seat":"34"},{"available":true,"_id":"68b61d5aa761d870e00cf7e5","seat":"35"},{"available":true,"_id":"68b61d5aa761d870e00cf7e6","seat":"36"},{"available":true,"_id":"68b61d5aa761d870e00cf7e7","seat":"37"},{"available":true,"_id":"68b61d5aa761d870e00cf7e8","seat":"38"},{"available":true,"_id":"68b61d5aa761d870e00cf7e9","seat":"39"},{"available":true,"_id":"68b61d5aa761d870e00cf7ea","seat":"40"},{"available":true,"_id":"68b61d5aa761d870e00cf7eb","seat":"41"},{"available":true,"_id":"68b61d5aa761d870e00cf7ec","seat":"42"},{"available":true,"_id":"68b61d5aa761d870e00cf7ed","seat":"43"},{"available":true,"_id":"68b61d5aa761d870e00cf7ee","seat":"44"},{"available":true,"_id":"68b61d5aa761d870e00cf7ef","seat":"45"},{"available":true,"_id":"68b61d5aa761d870e00cf7f0","seat":"46"}],"customParams":[],"customParamsAtTheEnd":[],"preTripChecklist":[],"speedAlerts":[],"deviationAlerts":[],"communityId":"6654ae4eba54fe502d4e4187","busCode":"MORISC","capacity":46,"startCapacity":46,"vehicleId":"66830b98bb41bfd79a4620ac","startedAt":"2025-09-01T22:25:30.125Z","driverCode":"159159","realStartLocation":{"_id":"68b61d5aa761d870e00cf7f5","lat":-33.3908833,"lon":-70.54620129999999,"loc":[-70.54620129999999,-33.3908833]},"token":"aae5f061ca3b69ad418f62e5a8d2b69196009d51eeb3100e35dd5f4cb5505c698bf306d773fdd08fa321bc056d7e6c5c165905e1d6e99ef8ca2729fbfee4d419","createdAt":"2025-09-01T22:25:30.149Z","updatedAt":"2025-09-01T22:25:30.149Z","__v":0} 
- </msg>
-<msg timestamp="20250901 18:25:27.415" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:26.758" endtime="20250901 18:25:27.415"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20250901 18:25:27.417" level="INFO">${code} = 200</msg>
-<status status="PASS" starttime="20250901 18:25:27.416" endtime="20250901 18:25:27.417"/>
-</kw>
-<kw name="Status Should Be" library="RequestsLibrary">
-<arg>200</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20250901 18:25:27.419" endtime="20250901 18:25:27.419"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${access_token}</var>
-<arg>${response.json()}[token]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:27.421" level="INFO">${access_token} = aae5f061ca3b69ad418f62e5a8d2b69196009d51eeb3100e35dd5f4cb5505c698bf306d773fdd08fa321bc056d7e6c5c165905e1d6e99ef8ca2729fbfee4d419</msg>
-<status status="PASS" starttime="20250901 18:25:27.419" endtime="20250901 18:25:27.421"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${departureToken}</var>
-<arg>"Bearer " + "${access_token}"</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250901 18:25:27.421" level="INFO">${departureToken} = Bearer aae5f061ca3b69ad418f62e5a8d2b69196009d51eeb3100e35dd5f4cb5505c698bf306d773fdd08fa321bc056d7e6c5c165905e1d6e99ef8ca2729fbfee4d419</msg>
-<status status="PASS" starttime="20250901 18:25:27.421" endtime="20250901 18:25:27.421"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${departureToken}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:27.422" level="INFO">${departureToken} = Bearer aae5f061ca3b69ad418f62e5a8d2b69196009d51eeb3100e35dd5f4cb5505c698bf306d773fdd08fa321bc056d7e6c5c165905e1d6e99ef8ca2729fbfee4d419</msg>
-<status status="PASS" starttime="20250901 18:25:27.422" endtime="20250901 18:25:27.422"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${departureToken}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250901 18:25:27.423" level="INFO">Bearer aae5f061ca3b69ad418f62e5a8d2b69196009d51eeb3100e35dd5f4cb5505c698bf306d773fdd08fa321bc056d7e6c5c165905e1d6e99ef8ca2729fbfee4d419</msg>
-<status status="PASS" starttime="20250901 18:25:27.422" endtime="20250901 18:25:27.423"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250901 18:25:27.423" level="INFO">200</msg>
-<status status="PASS" starttime="20250901 18:25:27.423" endtime="20250901 18:25:27.423"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${departureId}</var>
-<arg>${response.json()}[_id]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:27.425" level="INFO">${departureId} = 68b61d5aa761d870e00cf7bd</msg>
-<status status="PASS" starttime="20250901 18:25:27.425" endtime="20250901 18:25:27.426"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${departureId}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:27.426" level="INFO">${departureId} = 68b61d5aa761d870e00cf7bd</msg>
-<status status="PASS" starttime="20250901 18:25:27.426" endtime="20250901 18:25:27.426"/>
-</kw>
-<status status="PASS" starttime="20250901 18:25:26.756" endtime="20250901 18:25:27.427"/>
-</test>
-<test id="s1-t10" name="Validate EXT" line="236">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysesion</arg>
-<arg>${STAGE_URL}</arg>
-<arg>verify=true</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20250901 18:25:27.428" level="INFO">Creating Session using : alias=mysesion, url=https://stage.allrideapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
-<status status="PASS" starttime="20250901 18:25:27.428" endtime="20250901 18:25:27.429"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Authorization=Bearer Nico86d174zd6e6f33b2cfu3a6m0c14cdf2ff32o3fbb56N7p10s4647bf62ad5ae2277ae6sb549e455b736n</arg>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20250901 18:25:27.429" level="INFO">${headers} = {'Authorization': 'Bearer Nico86d174zd6e6f33b2cfu3a6m0c14cdf2ff32o3fbb56N7p10s4647bf62ad5ae2277ae6sb549e455b736n', 'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20250901 18:25:27.429" endtime="20250901 18:25:27.429"/>
-</kw>
-<kw name="POST On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysesion</arg>
-<arg>url=/ext/api/v1/departures/validate</arg>
-<arg>data={"validationString":"be3655a0bd8479cfcdf46f8654f2d70341e2fe7428c9ac3a3933740575440ceef4c05aa02e4bef6b04324e25fe841ea1991391f3937b4234be7611bb8267bc0d666078059a5ece0ee6e95904","departureId":"68656a5bc282622e99dfc85c","validationLat":-38.75643,"validationLon":-73.66834}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20250901 18:25:30.803" level="INFO">POST Request : url=https://stage.allrideapp.com/ext/api/v1/departures/validate 
- path_url=/ext/api/v1/departures/validate 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer Nico86d174zd6e6f33b2cfu3a6m0c14cdf2ff32o3fbb56N7p10s4647bf62ad5ae2277ae6sb549e455b736n', 'Content-Type': 'application/json', 'Content-Length': '268'} 
- body={"validationString":"be3655a0bd8479cfcdf46f8654f2d70341e2fe7428c9ac3a3933740575440ceef4c05aa02e4bef6b04324e25fe841ea1991391f3937b4234be7611bb8267bc0d666078059a5ece0ee6e95904","departureId":"68656a5bc282622e99dfc85c","validationLat":-38.75643,"validationLon":-73.66834} 
- </msg>
-<msg timestamp="20250901 18:25:30.805" level="INFO">POST Response : url=https://stage.allrideapp.com/ext/api/v1/departures/validate 
- status=200, reason=OK 
- headers={'Date': 'Mon, 01 Sep 2025 22:25:33 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx', 'X-DNS-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Access-Control-Allow-Origin': '*', 'X-RateLimit-Limit': '30', 'X-RateLimit-Remaining': '28', 'X-RateLimit-Reset': '1756765590', 'ETag': 'W/"37f-PK0z/3QlHQ9UGpkO1/mHg1YP56s"', 'Content-Encoding': 'gzip'} 
- body={"busValidationParams":{"preValidationPassenger":{"answers":[]},"driver":{"answers":[]},"validatedPassenger":{"answers":[]}},"validated":true,"reason":["timestamp"],"_id":"68b61d5d3e850ace4d3d49c0","routeId":"6654d533713b9a5184cfe319","departureId":"68656a5bc282622e99dfc85c","validationString":"be3655a0bd8479cfcdf46f8654f2d70341e2fe7428c9ac3a3933740575440ceef4c05aa02e4bef6b04324e25fe841ea1991391f3937b4234be7611bb8267bc0d666078059a5ece0ee6e95904","history":[],"loc":[-73.66834,-38.75643],"latitude":-38.75643,"longitude":-73.66834,"lat":-38.75643,"lon":-73.66834,"communityId":"6654ae4eba54fe502d4e4187","userId":"666078059a5ece0ee6e95904","assignedSeat":"1","createdAt":"2025-09-01T22:25:33.532Z","updatedAt":"2025-09-01T22:25:33.532Z","__v":0,"user":{"_id":"666078059a5ece0ee6e95904","name":"Nicolas Bustamante","avatar":"https://s3.amazonaws.com/adedo.users-avatars/user_placeholder.png"}} 
- </msg>
-<msg timestamp="20250901 18:25:30.805" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:27.430" endtime="20250901 18:25:30.805"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${json}</var>
-<arg>${response.json()}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:30.806" level="INFO">${json} = {'busValidationParams': {'preValidationPassenger': {'answers': []}, 'driver': {'answers': []}, 'validatedPassenger': {'answers': []}}, 'validated': True, 'reason': ['timestamp'], '_id': '68b61d5d3e850...</msg>
-<status status="PASS" starttime="20250901 18:25:30.805" endtime="20250901 18:25:30.806"/>
-</kw>
-<kw name="Should Not Be Empty" library="BuiltIn">
-<arg>${json}</arg>
-<arg>msg=❌ Validation response is empty — expected validation data but received none.</arg>
-<doc>Verifies that the given item is not empty.</doc>
-<msg timestamp="20250901 18:25:30.807" level="INFO">Length is 20</msg>
-<status status="PASS" starttime="20250901 18:25:30.807" endtime="20250901 18:25:30.807"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${VALIDATION_ID}</var>
-<arg>${json}[_id]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:30.808" level="INFO">${VALIDATION_ID} = 68b61d5d3e850ace4d3d49c0</msg>
-<status status="PASS" starttime="20250901 18:25:30.807" endtime="20250901 18:25:30.808"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${USER_ID}</var>
-<arg>${json}[userId]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:30.808" level="INFO">${USER_ID} = 666078059a5ece0ee6e95904</msg>
-<status status="PASS" starttime="20250901 18:25:30.808" endtime="20250901 18:25:30.810"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${USER_NAME}</var>
-<arg>${json}[user][name]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:30.810" level="INFO">${USER_NAME} = Nicolas Bustamante</msg>
-<status status="PASS" starttime="20250901 18:25:30.810" endtime="20250901 18:25:30.810"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${VALIDATED}</var>
-<arg>${json}[validated]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:30.811" level="INFO">${VALIDATED} = True</msg>
-<status status="PASS" starttime="20250901 18:25:30.810" endtime="20250901 18:25:30.811"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${REASON}</var>
-<arg>${json}[reason][0]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250901 18:25:30.812" level="INFO">${REASON} = timestamp</msg>
-<status status="PASS" starttime="20250901 18:25:30.811" endtime="20250901 18:25:30.812"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${VALIDATION_ID}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:30.812" level="INFO">${VALIDATION_ID} = 68b61d5d3e850ace4d3d49c0</msg>
-<status status="PASS" starttime="20250901 18:25:30.812" endtime="20250901 18:25:30.812"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${USER_ID}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20250901 18:25:30.813" level="INFO">${USER_ID} = 666078059a5ece0ee6e95904</msg>
-<status status="PASS" starttime="20250901 18:25:30.813" endtime="20250901 18:25:30.813"/>
-</kw>
-<kw name="Should Be True" library="BuiltIn">
-<arg>${VALIDATED}</arg>
-<arg>msg=❌ Expected the user to be validated, but got '${VALIDATED}'</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20250901 18:25:30.813" endtime="20250901 18:25:30.814"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${REASON}</arg>
-<arg>timestamp</arg>
-<arg>msg=❌ Expected validation reason to be 'timestamp', but got '${REASON}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20250901 18:25:30.814" endtime="20250901 18:25:30.814"/>
-</kw>
-<kw name="Should Not Be Empty" library="BuiltIn">
-<arg>${USER_ID}</arg>
-<arg>msg=❌ userId is missing or empty</arg>
-<doc>Verifies that the given item is not empty.</doc>
-<msg timestamp="20250901 18:25:30.815" level="INFO">Length is 24</msg>
-<status status="PASS" starttime="20250901 18:25:30.815" endtime="20250901 18:25:30.815"/>
-</kw>
-<kw name="Should Not Be Empty" library="BuiltIn">
-<arg>${USER_NAME}</arg>
-<arg>msg=❌ user.name is missing or empty</arg>
-<doc>Verifies that the given item is not empty.</doc>
-<msg timestamp="20250901 18:25:30.816" level="INFO">Length is 18</msg>
-<status status="PASS" starttime="20250901 18:25:30.815" endtime="20250901 18:25:30.816"/>
-</kw>
-<kw name="Should Be Equal As Numbers" library="BuiltIn">
-<arg>${json}[latitude]</arg>
-<arg>-38.75643</arg>
-<arg>msg=❌ Expected latitude -38.75643 but got ${json}[latitude]</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<msg timestamp="20250901 18:25:30.816" level="INFO">Argument types are:
-&lt;class 'float'&gt;
-&lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:30.816" endtime="20250901 18:25:30.816"/>
-</kw>
-<kw name="Should Be Equal As Numbers" library="BuiltIn">
-<arg>${json}[longitude]</arg>
-<arg>-73.66834</arg>
-<arg>msg=❌ Expected longitude -73.66834 but got ${json}[longitude]</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<msg timestamp="20250901 18:25:30.817" level="INFO">Argument types are:
-&lt;class 'float'&gt;
-&lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:30.817" endtime="20250901 18:25:30.817"/>
-</kw>
-<status status="PASS" starttime="20250901 18:25:27.428" endtime="20250901 18:25:30.818"/>
-</test>
-<test id="s1-t11" name="Stop Post Leg Departure" line="290">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysesion</arg>
-<arg>${STAGE_URL}</arg>
-<arg>verify=true</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20250901 18:25:30.820" level="INFO">Creating Session using : alias=mysesion, url=https://stage.allrideapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
-<status status="PASS" starttime="20250901 18:25:30.820" endtime="20250901 18:25:30.820"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Authorization=${departureToken}</arg>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20250901 18:25:30.821" level="INFO">${headers} = {'Authorization': 'Bearer aae5f061ca3b69ad418f62e5a8d2b69196009d51eeb3100e35dd5f4cb5505c698bf306d773fdd08fa321bc056d7e6c5c165905e1d6e99ef8ca2729fbfee4d419', 'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20250901 18:25:30.821" endtime="20250901 18:25:30.821"/>
-</kw>
-<kw name="POST On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysesion</arg>
-<arg>url=/api/v2/pb/driver/departure/stop</arg>
-<arg>data={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":false,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20250901 18:25:31.669" level="INFO">POST Request : url=https://stage.allrideapp.com/api/v2/pb/driver/departure/stop 
- path_url=/api/v2/pb/driver/departure/stop 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer aae5f061ca3b69ad418f62e5a8d2b69196009d51eeb3100e35dd5f4cb5505c698bf306d773fdd08fa321bc056d7e6c5c165905e1d6e99ef8ca2729fbfee4d419', 'Content-Type': 'application/json', 'Content-Length': '415'} 
- body={"customParamsAtEnd":[],"customParamsAtStart":null,"endLat":"-72.6071614","endLon":"-38.7651863","nextLeg":false,"post":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"pre":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"preTripChecklist":null,"service":{"customParamsAtEnd":null,"customParamsAtStart":null,"preTripChecklist":null},"shareToUsers":false} 
- </msg>
-<msg timestamp="20250901 18:25:31.669" level="INFO">POST Response : url=https://stage.allrideapp.com/api/v2/pb/driver/departure/stop 
- status=200, reason=OK 
- headers={'Date': 'Mon, 01 Sep 2025 22:25:34 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx', 'X-DNS-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Access-Control-Allow-Origin': '*', 'ETag': 'W/"1427-1zoSbf/DKvoRln6GFAguP1b/LHk"', 'Content-Encoding': 'gzip'} 
- body={"restrictPassengers":{"validation":{"enabled":false,"parameters":[]},"reservation":{"enabled":false,"parameters":[]},"visibility":{"enabled":false,"parameters":[]},"enabled":false},"superCommunities":[],"communities":["6654ae4eba54fe502d4e4187"],"assistantIds":["66ccdf58193998eca49014c3"],"labels":[],"active":false,"sharing":true,"disabled":false,"internal":false,"rounds":0,"distance":0,"scheduled":false,"odd":false,"estimatedDistance":0,"extraMinutes":0,"placeWaitTime":0,"hasExternalGPS":false,"allowsServiceSnapshots":false,"allowsNonServiceSnapshots":false,"allowsSnapshots":false,"allowsDistance":true,"usesOfflineCount":false,"linkedDepartures":[],"_id":"68b61d5aa761d870e00cf7bd","driverId":"668309b8bb41bfd79a461dc3","routeId":"67f7e2fe52999601de99bca2","drivers":[],"categories":[],"trail":[],"legs":[{"distance":0,"_id":"68b61d5aa761d870e00cf7f7","type":"service","startedAt":"2025-09-01T22:25:30.142Z","realStartLocation":{"_id":"68b61d5aa761d870e00cf7f8","lat":-33.3908833,"lon":-70.54620129999999,"loc":[-70.54620129999999,-33.3908833]},"preTripChecklist":[],"customParamsAtStart":[],"customParamsAtTheEnd":[],"realEndLocation":{"_id":"68b61d5ea761d870e00cf80c","lat":-72.6071614,"lon":-38.7651863,"loc":[-38.7651863,-72.6071614]},"endedAt":"2025-09-01T22:25:34.232Z"}],"stateHistory":[],"deviceHistory":[],"rankingHistory":[],"apportionByCategories":[],"reservations":[],"enabledSeats":[{"available":true,"_id":"68b61d5aa761d870e00cf7c3","seat":"1"},{"available":true,"_id":"68b61d5aa761d870e00cf7c4","seat":"2"},{"available":true,"_id":"68b61d5aa761d870e00cf7c5","seat":"3"},{"available":true,"_id":"68b61d5aa761d870e00cf7c6","seat":"4"},{"available":true,"_id":"68b61d5aa761d870e00cf7c7","seat":"5"},{"available":true,"_id":"68b61d5aa761d870e00cf7c8","seat":"6"},{"available":true,"_id":"68b61d5aa761d870e00cf7c9","seat":"7"},{"available":true,"_id":"68b61d5aa761d870e00cf7ca","seat":"8"},{"available":true,"_id":"68b61d5aa761d870e00cf7cb","seat":"9"},{"available":true,"_id":"68b61d5aa761d870e00cf7cc","seat":"10"},{"available":true,"_id":"68b61d5aa761d870e00cf7cd","seat":"11"},{"available":true,"_id":"68b61d5aa761d870e00cf7ce","seat":"12"},{"available":true,"_id":"68b61d5aa761d870e00cf7cf","seat":"13"},{"available":true,"_id":"68b61d5aa761d870e00cf7d0","seat":"14"},{"available":true,"_id":"68b61d5aa761d870e00cf7d1","seat":"15"},{"available":true,"_id":"68b61d5aa761d870e00cf7d2","seat":"16"},{"available":true,"_id":"68b61d5aa761d870e00cf7d3","seat":"17"},{"available":true,"_id":"68b61d5aa761d870e00cf7d4","seat":"18"},{"available":true,"_id":"68b61d5aa761d870e00cf7d5","seat":"19"},{"available":true,"_id":"68b61d5aa761d870e00cf7d6","seat":"20"},{"available":true,"_id":"68b61d5aa761d870e00cf7d7","seat":"21"},{"available":true,"_id":"68b61d5aa761d870e00cf7d8","seat":"22"},{"available":true,"_id":"68b61d5aa761d870e00cf7d9","seat":"23"},{"available":true,"_id":"68b61d5aa761d870e00cf7da","seat":"24"},{"available":true,"_id":"68b61d5aa761d870e00cf7db","seat":"25"},{"available":true,"_id":"68b61d5aa761d870e00cf7dc","seat":"26"},{"available":true,"_id":"68b61d5aa761d870e00cf7dd","seat":"27"},{"available":true,"_id":"68b61d5aa761d870e00cf7de","seat":"28"},{"available":true,"_id":"68b61d5aa761d870e00cf7df","seat":"29"},{"available":true,"_id":"68b61d5aa761d870e00cf7e0","seat":"30"},{"available":true,"_id":"68b61d5aa761d870e00cf7e1","seat":"31"},{"available":true,"_id":"68b61d5aa761d870e00cf7e2","seat":"32"},{"available":true,"_id":"68b61d5aa761d870e00cf7e3","seat":"33"},{"available":true,"_id":"68b61d5aa761d870e00cf7e4","seat":"34"},{"available":true,"_id":"68b61d5aa761d870e00cf7e5","seat":"35"},{"available":true,"_id":"68b61d5aa761d870e00cf7e6","seat":"36"},{"available":true,"_id":"68b61d5aa761d870e00cf7e7","seat":"37"},{"available":true,"_id":"68b61d5aa761d870e00cf7e8","seat":"38"},{"available":true,"_id":"68b61d5aa761d870e00cf7e9","seat":"39"},{"available":true,"_id":"68b61d5aa761d870e00cf7ea","seat":"40"},{"available":true,"_id":"68b61d5aa761d870e00cf7eb","seat":"41"},{"available":true,"_id":"68b61d5aa761d870e00cf7ec","seat":"42"},{"available":true,"_id":"68b61d5aa761d870e00cf7ed","seat":"43"},{"available":true,"_id":"68b61d5aa761d870e00cf7ee","seat":"44"},{"available":true,"_id":"68b61d5aa761d870e00cf7ef","seat":"45"},{"available":true,"_id":"68b61d5aa761d870e00cf7f0","seat":"46"}],"customParams":[],"customParamsAtTheEnd":[],"preTripChecklist":[],"speedAlerts":[],"deviationAlerts":[],"communityId":"6654ae4eba54fe502d4e4187","busCode":"MORISC","capacity":46,"startCapacity":46,"vehicleId":"66830b98bb41bfd79a4620ac","startedAt":"2025-09-01T22:25:30.125Z","driverCode":"159159","realStartLocation":{"_id":"68b61d5aa761d870e00cf7f5","lat":-33.3908833,"lon":-70.54620129999999,"loc":[-70.54620129999999,-33.3908833]},"token":"aae5f061ca3b69ad418f62e5a8d2b69196009d51eeb3100e35dd5f4cb5505c698bf306d773fdd08fa321bc056d7e6c5c165905e1d6e99ef8ca2729fbfee4d419","createdAt":"2025-09-01T22:25:30.149Z","updatedAt":"2025-09-01T22:25:30.149Z","__v":0,"realEndLocation":{"_id":"68b61d5ea761d870e00cf80d","lat":-72.6071614,"lon":-38.7651863,"loc":[-38.7651863,-72.6071614]},"endedAt":"2025-09-01T22:25:34.233Z"} 
- </msg>
-<msg timestamp="20250901 18:25:31.670" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20250901 18:25:30.821" endtime="20250901 18:25:31.670"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20250901 18:25:31.671" level="INFO">${code} = 200</msg>
-<status status="PASS" starttime="20250901 18:25:31.670" endtime="20250901 18:25:31.671"/>
-</kw>
-<kw name="Status Should Be" library="RequestsLibrary">
-<arg>200</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20250901 18:25:31.671" endtime="20250901 18:25:31.672"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250901 18:25:31.672" level="INFO">200</msg>
-<status status="PASS" starttime="20250901 18:25:31.672" endtime="20250901 18:25:31.672"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>10s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20250901 18:25:41.679" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20250901 18:25:31.672" endtime="20250901 18:25:41.680"/>
-</kw>
-<status status="PASS" starttime="20250901 18:25:30.818" endtime="20250901 18:25:41.684"/>
-</test>
-<status status="PASS" starttime="20250901 18:25:08.605" endtime="20250901 18:25:41.688"/>
-</suite>
-<statistics>
-<total>
-<stat pass="11" fail="0" skip="0">All Tests</stat>
-</total>
-<tag>
-</tag>
-<suite>
-<stat pass="11" fail="0" skip="0" id="s1" name="extTestCases">extTestCases</stat>
-</suite>
-</statistics>
-<errors>
-</errors>
-</robot>
