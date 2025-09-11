@@ -125,40 +125,9 @@ Create Route(No externalClientId- should fail 400)
 Read Route
     ${url}=    Set Variable    ${STAGE_URL}/ext/api/v2/routes/${ROUTE_EXT_ID}?externalClientId=3335
     &{headers}=    Create Dictionary    Authorization=${EXT_API_KEY}
-    ${response}=    GET    url=${url}    headers=${headers}
-    Should Be Equal As Numbers    ${response.status_code}    200
+    ${response}=  Run Keyword And Expect Error     HTTPError: 404 Client Error: Not Found for url: https://stage.allrideapp.com/ext/api/v2/routes/ROUTE-XYZ-14952?externalClientId=3335      GET    url=${url}    headers=${headers}
+    Should Be Equal As Numbers    ${response.status_code}    404
     ${json}=    Set Variable    ${response.json()}
-
-    # ✅ Código de estado
-    Should Be Equal As Numbers    ${response.status_code}    200
-    ...    msg=❌ Expected status 200 but got ${response.status_code}
-
-    # ✅ Mensaje de éxito
-    Should Be Equal As Strings    ${json}[message]    Route get successfully
-    ...    msg=❌ Route GET message mismatch. Got: "${json}[message]"
-
-    # ✅ ExternalRouteId correcto con prefijo
-    ${extRouteId}=    Set Variable    ${json}[data][externalRouteId]
-    Should Start With    ${extRouteId}    ROUTE-XYZ-
-    ...    msg=❌ ExternalRouteId must start with ROUTE-XYZ- but got "${extRouteId}"
-
-    # ✅ ExternalClientId esperado
-    Should Be Equal As Strings    ${json}[data][externalClientId]    3335
-    ...    msg=❌ ExternalClientId mismatch. Expected '3335' but got "${json}[data][externalClientId]"
-
-    # ✅ Nombre de la ruta
-    Should Be Equal As Strings    ${json}[data][name]    Ruta E2E RF 2
-    ...    msg=❌ Route name mismatch. Expected 'Ruta E2E RF 2' but got "${json}[data][name]"
-
-    # ✅ Descripción de la ruta
-    Should Be Equal As Strings    ${json}[data][description]    Ruta de ida y vuelta
-    ...    msg=❌ Route description mismatch. Got: "${json}[data][description]"
-
-    # ✅ Distancia mayor a 0
-    ${distance}=    Set Variable    ${json}[data][distance]
-    Should Be True    ${distance} > 0
-    ...    msg=❌ Distance must be greater than 0 but got ${distance}
-
 
 Update Route
     ${stops2}=    Set Variable

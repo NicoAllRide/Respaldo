@@ -282,7 +282,7 @@ Search Route And Validate ID (User 2)
 Follow Route(User 2)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}    Content-Type=application/json; charset=utf-8
+    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool2}    Content-Type=application/json; charset=utf-8
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/trips/follow/${tripId}
@@ -293,7 +293,137 @@ Follow Route(User 2)
     ${json}=    Set Variable    ${response.json()}    
 
 
+Get requested user following route()
+    [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
 
-##Aporte por salida /api/v1/trips/sectionCost
-##Seguir el viaje como usuario 2 /api/v1/trips/follow/6757525faa9f4e162d0c105e {"pickupPointLat":"0","pickupPointLon":"0"}
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/users/68b7576fc6280f9b167a25c8
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${user}=    Set Variable    ${response.json()}
+
+    #✅ Validar estado general del usuario
+    Should Be True    ${user['active']}    ❌ Expected user to be active but it was inactive.
+
+    #✅ Validar nombre
+    Should Be Equal As Strings    ${user['name']}    Nico QA Carpool 2    ❌ User name is incorrect. Expected 'Nico QA Carpool 2' but found '${user['name']}'.
+
+    #✅ Validar país
+    Should Be Equal As Strings    ${user['country']}    cl    ❌ User country is incorrect. Expected 'cl' but found '${user['country']}'.
+
+    #✅ Validar comunidad
+    ${communities}=    Set Variable    ${user['communities']}
+    Should Not Be Empty    ${communities}    ❌ No communities found for user.
+    Should Be Equal As Strings    ${communities}[0]['communityId']    6654ae4eba54fe502d4e4187    ❌ Community ID mismatch. Expected '6654ae4eba54fe502d4e4187' but found '${communities}[0]['communityId']}'.
+
+    #✅ Validar custom rut
+    ${custom}=    Set Variable    ${communities}[0]['custom']
+    ${rut_entry}=    Evaluate    [c for c in ${custom} if c["key"] == "rut"][0]
+    Should Be Equal As Strings    ${rut_entry['value']}    492086282    ❌ RUT is incorrect. Expected '492086282' but found '${rut_entry['value']}'.
+
+    #✅ Validar privateBus ODD services
+    ${odd_services}=    Set Variable    ${communities}[0]['privateBus']['oDDServices']
+    Should Not Be Empty    ${odd_services}    ❌ No ODD services found for user.
+    Should Be Equal As Strings    ${odd_services}[0]['name']    Limitada Nico    ❌ ODD service name is incorrect. Expected 'Limitada Nico' but found '${odd_services}[0]['name']}'.
+
+    #✅ Validar auth tokens
+    Should Not Be Empty    ${user['auth']['accessToken']}    ❌ Access token is missing.
+    Should Not Be Empty    ${user['auth']['realtimeToken']}    ❌ Realtime token is missing.
+    Should Not Be Empty    ${user['auth']['chatToken']}    ❌ Chat token is missing.
+
+Accept follower
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}    Content-Type=application/json; charset=utf-8
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/trips/accept/${tripId}/68b7576fc6280f9b167a25c8
+    ...    data={"pickupPointLat":"0","pickupPointLon":"0"}
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${json}=    Set Variable    ${response.json()}    
+Confirm tripInstances
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}    Content-Type=application/json; charset=utf-8
+    ${response}=    PUT On Session
+    ...    mysesion
+    ...    url=/api/v1/tripinstances/confirm/${tripinstance1}
+    ...    data=""
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${json}=    Set Variable    ${response.json()}    
+Board reservation as user
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool2}    Content-Type=application/json; charset=utf-8
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/tripinstances/board/${tripinstance1}
+    ...    data=""
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${json}=    Set Variable    ${response.json()}    
+Start carpool departure
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}    Content-Type=application/json; charset=utf-8
+    ${response}=    PUT On Session
+    ...    mysesion
+    ...    url=/api/v1/tripinstances/start/${tripinstance1}
+    ...    data=""
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${json}=    Set Variable    ${response.json()}
+    ${accessTokenDeparture}=   Set Variable    []   ###Reeemplazar 
+
+Get Chats
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool2}    Content-Type=application/json; charset=utf-8
+    ${response}=    GET On Session
+    ...    mysesion
+    ...    url=/api/v1/chat/public/${tripId}
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${json}=    Set Variable    ${response.json()}    
+Get Chats (user)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool2}    Content-Type=application/json; charset=utf-8
+    ${response}=    GET On Session
+    ...    mysesion
+    ...    url=/api/v1/chat/messages/${tripId}
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${json}=    Set Variable    ${response.json()}    
+
+Get Chats (driver)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool2}    Content-Type=application/json; charset=utf-8
+    ${response}=    GET On Session
+    ...    mysesion
+    ...    url=/api/v1/chat/messages/${tripId}
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${json}=    Set Variable    ${response.json()}    
+
+
+
+##Iniciar el viaje
+## Chat
 ## Eliminar ruta creada por mi DELETE

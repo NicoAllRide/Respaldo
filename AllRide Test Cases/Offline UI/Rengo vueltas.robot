@@ -100,76 +100,48 @@ Round Full Online
 
     ## Activate Application    com.allride.buses
 
+Paso Punto de partida LOCALIZACION
+  Set Location    -33.41965735128926    -70.58532597316609
+  Sleep    30s
 Paso Punto de partida
-  Set Location    -34.41212945007269     -70.85422675459023
-  Sleep    30s
+  Set Location    -33.41965735128926    -70.58532597316609
+  Sleep    10s
 Paso 1
-  Set Location    -34.41102503370746     -70.85368108555384
-  Sleep    30s
+  Set Location    -33.42003094343397    -70.58748051982494
+  Sleep    10s
 Paso 2
-  Set Location    -34.41085884988376     -70.85371657703962
-  Sleep    30s
+  Set Location    -33.42056283456148    -70.58982472728121
+  Sleep    10s
 Paso 3
-  Set Location    -34.41023922088965     -70.8525179206524
-  Sleep    30s
+  Set Location    -33.421063062541045   -70.59325379486936
+  Sleep    10s
 Paso 4
-  Set Location    -34.41001390011297     -70.85110684416829
-  Sleep    30s
+  Set Location    -33.42147463755117    -70.5956388021509
+  Sleep    10s
 Paso 5
-  Set Location    -34.40983865019779     -70.84993094709375
-  Sleep    30s
+  Set Location    -33.42158861260459    -70.5970878107326
+  Sleep    10s
 Paso 6
-  Set Location    -34.40888520980337     -70.8490866811272
-  Sleep    30s
+  Set Location    -33.420119721812426   -70.59911836950808
+  Sleep    10s
 Paso 7
-  Set Location    -34.40779613615711     -70.84855563082763
-  Sleep    30s
+  Set Location    -33.41889826217407    -70.60077289176188
+  Sleep    10s
 Paso 8
-  Set Location    -34.40799642662148     -70.84865425445612
-  Sleep    30s
+  Set Location    -33.418214388432936   -70.60166050440154
+  Sleep    10s
 Paso 9
-  Set Location    -34.40732044435621     -70.84832803784448
-  Sleep    30s
+  Set Location    -33.41811307335067    -70.60188809748952
+  Sleep    10s
 Paso 10
-  Set Location    -34.406550569021356     -70.84840390217329
-  Sleep    30s
+  Set Location    -33.419531473793434   -70.60474818252099
+  Sleep    10s
+Paso 11
+  Set Location    -33.42001904359918    -70.60618201829233
+  Sleep    10s
+Paso 12
+  Set Location    -33.42208960174992    -70.6086096768074
+  Sleep    10s
 Paso Punto de destino
-  Set Location    -34.406137462248914     -70.84825217351981
-  Sleep    30s
-
-Paso Punto de partida (vuelta)
-  Set Location    -34.406137462248914     -70.84825217351981
-  Sleep    30s
-Paso 1 (vuelta)
-  Set Location    -34.406550569021356     -70.84840390217329
-  Sleep    30s
-Paso 2 (vuelta)
-  Set Location    -34.40732044435621     -70.84832803784448
-  Sleep    30s
-Paso 3 (vuelta)
-  Set Location    -34.40799642662148     -70.84865425445612
-  Sleep    30s
-Paso 4 (vuelta)
-  Set Location    -34.40779613615711     -70.84855563082763
-  Sleep    30s
-Paso 5 (vuelta)
-  Set Location    -34.40888520980337     -70.8490866811272
-  Sleep    30s
-Paso 6 (vuelta)
-  Set Location    -34.40983865019779     -70.84993094709375
-  Sleep    30s
-Paso 7 (vuelta)
-  Set Location    -34.41001390011297     -70.85110684416829
-  Sleep    30s
-Paso 8 (vuelta)
-  Set Location    -34.41023922088965     -70.8525179206524
-  Sleep    30s
-Paso 9 (vuelta)
-  Set Location    -34.41085884988376     -70.85371657703962
-  Sleep    30s
-Paso 10 (vuelta)
-  Set Location    -34.41102503370746     -70.85368108555384
-  Sleep    30s
-Paso Punto de destino (vuelta)
-  Set Location    -34.41212945007269     -70.85422675459023
-  Sleep    30s
+  Set Location    -33.422520170337656   -70.60923935074672
+  Sleep    10s

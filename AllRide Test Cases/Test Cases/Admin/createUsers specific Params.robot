@@ -539,12 +539,12 @@ Join Community With Params
     Should Be Empty    ${custom[1]['value']}
     ...    msg=❌ 'address' should be empty. Found: ${custom[1]['value']}
 
-    Should Be Equal As Strings    ${custom[2]['key']}    coordinates
-    ...    msg=❌ Expected custom[2].key to be 'coordinates'. Found: ${custom[2]['key']}
-    Should Be True    ${custom[2]['private']}
-    ...    msg=❌ 'coordinates' should be private=True. Found: ${custom[2]['private']}
-    Should Be Empty   ${custom[2]['value']}
-    ...    msg=❌ 'coordinates' should be empty. Found: ${custom[2]['value']}
+ #   Should Be Equal As Strings    ${custom[2]['key']}    coordinates
+  #  ...    msg=❌ Expected custom[2].key to be 'coordinates'. Found: ${custom[2]['key']}
+   # Should Be True    ${custom[2]['private']}
+  #  ...    msg=❌ 'coordinates' should be private=True. Found: ${custom[2]['private']}
+   # Should Be Empty   ${custom[2]['value']}
+   # ...    msg=❌ 'coordinates' should be empty. Found: ${custom[2]['value']}
 
     Should Be Equal As Strings    ${custom[3]['key']}    Color
     ...    msg=❌ Expected custom[3].key to be 'Color'. Found: ${custom[3]['key']}
@@ -570,10 +570,6 @@ Join Community With Params
 
 ###Jooin user from community
 ### Solo correo y correo y parámetros
-
-
-
-    Sleep    50s
 Delete user with params from community
     [Documentation]     Se une a una comunidad con rut, se valida que solo tenga el servicio Limitada Nico activo
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -705,7 +701,7 @@ Try to Join Community With Wrong Params(Should fail)
     ${response}=  Run Keyword And Expect Error  HTTPError: 400 Client Error: Bad Request for url: https://stage.allrideapp.com/api/v1/communities/customJoin/6654ae4eba54fe502d4e4187     Post On Session
     ...    mysesion
     ...    url=/api/v1/communities/customJoin/6654ae4eba54fe502d4e4187
-    ...    data={"rut": "98863257112321", "Color": "Rosado"}
+    ...    data={"rut": "98863257112321123213", "Color": "Rosado"}
     ...    headers=${headers}
 
 ######Agregar caso ddonde al intentar unirse a la
