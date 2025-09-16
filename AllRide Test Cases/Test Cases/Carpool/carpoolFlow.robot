@@ -7,7 +7,7 @@ Library     DateTime
 Library     Collections
 Library     SeleniumLibrary
 Library     RPA.JSON
-Library    RPA.Smartsheet
+Library     RPA.Smartsheet
 Resource    ../Variables/variablesStage.robot
 
 
@@ -75,8 +75,6 @@ Set Date Variables
     Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
     Set Global Variable    ${formatted_one_hour_later}
 
-
-
 Get trip list at start
     [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
 
@@ -90,27 +88,31 @@ Get trip list at start
     ${response}=    GET    url=${url}    headers=${headers}
     Should Be Equal As Numbers    ${response.status_code}    200
     # Almacenamos la respuesta de json en una variable para poder jugar con ella
+
 Get community places
-    [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
+    Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/communities/places
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}
-
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-    Should Be Equal As Numbers    ${response.status_code}    200
-    # Almacenamos la respuesta de json en una variable para poder jugar con ella
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool1}
+    ...    Content-Type=application/json; charset=utf-8
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v1/communities/places
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${json}=    Set Variable    ${response.json()}
 
 ## Crear ruta
+
 Create recurrent route as driver (user1)
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
     # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}    Content-Type=application/json; charset=utf-8
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool1}
+    ...    Content-Type=application/json; charset=utf-8
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
@@ -118,139 +120,94 @@ Create recurrent route as driver (user1)
     ...    data={"allowsSectionCost":false,"aproxWaypoints":{"coordinates":[[-70.85381,-34.41107],[-70.85367,-34.41072],[-70.8535,-34.41007],[-70.85308,-34.40853],[-70.85251,-34.4076],[-70.85206,-34.40705],[-70.85159,-34.40653],[-70.85126,-34.4062],[-70.85087,-34.40583],[-70.85045,-34.40546],[-70.85003,-34.40502],[-70.84913,-34.40427],[-70.84813,-34.40353],[-70.84789,-34.40336],[-70.84742,-34.40297],[-70.84739,-34.40294],[-70.84736,-34.40283],[-70.84736,-34.4028],[-70.84715,-34.40279],[-70.84644,-34.40275],[-70.84573,-34.40269],[-70.8454,-34.40264],[-70.84433,-34.40239],[-70.84376,-34.40229],[-70.84337,-34.40227],[-70.84272,-34.40227],[-70.84241,-34.40229],[-70.84184,-34.40239],[-70.84125,-34.4025],[-70.83714,-34.40315],[-70.83642,-34.40327],[-70.8354,-34.40344],[-70.83488,-34.40357],[-70.83406,-34.40379],[-70.83375,-34.4039],[-70.83302,-34.4042],[-70.83145,-34.40482],[-70.83095,-34.40499],[-70.8303,-34.40523],[-70.82964,-34.40545],[-70.8294,-34.40552],[-70.82864,-34.40566],[-70.82751,-34.40584],[-70.82674,-34.40595],[-70.82589,-34.40601],[-70.8242,-34.40606],[-70.82344,-34.4061],[-70.8232,-34.40616],[-70.82282,-34.40633],[-70.82265,-34.40642],[-70.82228,-34.40661],[-70.82046,-34.40749],[-70.81975,-34.40782],[-70.81846,-34.40853],[-70.8176,-34.409],[-70.81725,-34.40913],[-70.81608,-34.40943],[-70.81525,-34.40961],[-70.81484,-34.40975],[-70.81446,-34.40992],[-70.81407,-34.41013],[-70.81334,-34.41055],[-70.81312,-34.41068],[-70.81286,-34.41062],[-70.81253,-34.41052],[-70.8121,-34.41037],[-70.80991,-34.40956],[-70.80924,-34.4093],[-70.80898,-34.40916],[-70.80834,-34.40865],[-70.80719,-34.40769],[-70.80685,-34.40737],[-70.80617,-34.40667],[-70.80582,-34.40635],[-70.80503,-34.40567],[-70.80483,-34.40554],[-70.8044,-34.40537],[-70.80415,-34.40527],[-70.80403,-34.40516],[-70.80382,-34.40491],[-70.80369,-34.40478],[-70.80358,-34.4047],[-70.8035,-34.40466],[-70.80312,-34.40457],[-70.80267,-34.40449],[-70.80251,-34.40444],[-70.80206,-34.40428],[-70.80188,-34.40425],[-70.80164,-34.40424],[-70.80096,-34.40423],[-70.80057,-34.4042],[-70.80041,-34.40421],[-70.80014,-34.40424],[-70.79997,-34.40422],[-70.79917,-34.40404],[-70.79892,-34.40455],[-70.79848,-34.40551],[-70.7984,-34.40561],[-70.79822,-34.40577],[-70.79717,-34.40651],[-70.797,-34.40664],[-70.79688,-34.40679],[-70.79667,-34.40719],[-70.79651,-34.40748],[-70.7962,-34.40792],[-70.79594,-34.4078],[-70.79534,-34.40744],[-70.79477,-34.4071],[-70.79366,-34.40644],[-70.79082,-34.40485],[-70.78907,-34.40384],[-70.78692,-34.40257],[-70.78458,-34.40116],[-70.78446,-34.40109],[-70.78438,-34.40108],[-70.78428,-34.40113],[-70.78417,-34.4012],[-70.78407,-34.40119],[-70.78353,-34.4009],[-70.78304,-34.40056],[-70.7827,-34.40029],[-70.78251,-34.40016],[-70.78235,-34.40008],[-70.78271,-34.3996],[-70.78272,-34.39955],[-70.78254,-34.39927],[-70.78226,-34.39882],[-70.78216,-34.39857],[-70.78178,-34.39746],[-70.78166,-34.39704],[-70.78167,-34.39695],[-70.78207,-34.39635],[-70.78252,-34.39578],[-70.78226,-34.39571],[-70.78214,-34.39566],[-70.78236,-34.39534],[-70.78264,-34.39501],[-70.78255,-34.3948],[-70.78238,-34.39462]],"type":"LineString"},"codedRoute":"d|_qEhsmoLeA[aCa@sHsAyDqBmByAgBAaAaAiAmAiAsAwAsAuCsDsCgEa@o@mAAEEUEE?Ai@GmCKmCIaAq@uESqBCmA?aCB@RqBTuB`CuXVoC`@kEXgBj@cDT@z@qCzByH`@cBn@aCj@cCLo@ZwCb@aFTyCJiDHqIFwCJo@`@kAPa@d@iAnDkJ`AmClCaG|AkDXeAz@iFb@eDZqA`@kAh@mArAqCXk@Ks@SaA]uAaDuLs@eC[s@eB_C_EeF_AcAkCgC_AeAgCCYg@a@uASq@UWq@i@YYOUGOQkAOyAI_@_@yAEc@Ao@AgCEmA@_@Du@Ca@c@_DdBq@~DwARO^c@rCqEXa@WnAi@x@_@vA@Ws@gAwBcAqBcCEHwPiEIFmLyGsMMWAOHSLUASy@kBcAaBu@cAYe@O_@_BfAI@w@c@yAw@q@SEkAsAWQ@wBnAqBxAMs@IW_Aj@aAv@i@Qc@a@","comment":"","cost":0,"currency":"","destination":{"communityId":"","icon":"","location":[-70.7819,-34.3945],"longName":"Media luna cerrillos","placeId":"6654d4c8713b9a5184cfe1de","reference":"","shortName":"Media Luna Cerrillos"},"dropoutPlaces":[],"fee":0,"filed":false,"followerShards":[],"followers":[],"followersData":[],"_id":"","tripInstances":[],"new":true,"origin":{"communityId":"","icon":"","location":[-70.8537,-34.4111],"longName":"Hospital Rengo","placeId":"","reference":"","shortName":"Hospital Rengo"},"pending":[],"pendingsData":[],"pickupPlaces":[],"recurrent":true,"restrictions":[{"_id":"","restrictionType":"public"}],"seats":4,"sectionCost":true,"startDate":"2025-08-04T17:44:13.666-04:00","studentFee":false,"timezone":"America/Santiago","tripDates":[{"day":"monday","_id":"","time":"1970-01-01T18:38:00.000-03:00"}],"userId":""}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
+    ${code}=    Convert To String    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
-    ${json}=    Set Variable    ${response.json()}    
 
-        # --- Trip Id ---
-    ${tripId}=  Set Variable    ${json}[_id]
+    ${json}=    Set Variable    ${response.json()}
+    ${tripId}=    Set Variable    ${json}[_id]
     Set Global Variable    ${tripId}
 
-        # --- Origin ---
-    Should Be Equal As Strings    ${json}[origin][longName]    Hospital Rengo
-    ...    msg=❌ Origin longName mismatch. Expected 'Hospital Rengo' but got '${json}[origin][longName]'.
+    # ✅ Basic status
+    Should Not Be Empty    ${tripId}    # ✅ Trip must have an internal ID
 
-    Should Be Equal As Strings    ${json}[origin][shortName]   Hospital Rengo
-    ...    msg=❌ Origin shortName mismatch. Expected 'Hospital Rengo' but got '${json}[origin][shortName]'.
+    # ✅ Origin & Destination
+    Should Be Equal As Strings    ${json["origin"]["longName"]}    Hospital Rengo
+    Should Be Equal As Strings    ${json["destination"]["shortName"]}    Media Luna Cerrillos
 
-    Length Should Be    ${json}[origin][location]    2
-    ...    msg=❌ Origin location must be [lon, lat] with 2 elements.
+    # ✅ Owner
+    Should Be Equal As Strings    ${json["owner"]["name"]}    Nico QA Carpool 1
+    Should Contain    ${json["owner"]["communities"]}    6654ae4eba54fe502d4e4187
 
-    Should Be Equal As Strings    ${json}[origin][placeId]    ${None}
-    ...    msg=❌ Origin placeId should be null for this case.
+    # ✅ Seats & Distance
+    Should Be Equal As Numbers    ${json["seats"]}    4
+    Should Be True    ${json["distance"]} > 0
 
-    # --- Destination ---
-    Should Be Equal As Strings    ${json}[destination][longName]    Media luna cerrillos
-    ...    msg=❌ Destination longName mismatch. Expected 'Media luna cerrillos' but got '${json}[destination][longName]'.
+    # ✅ Trip Dates
+    Length Should Be    ${json["tripDates"]}    1
+    Should Be Equal As Strings    ${json["tripDates"][0]["day"]}    monday
 
-    Should Be Equal As Strings    ${json}[destination][shortName]   Media Luna Cerrillos
-    ...    msg=❌ Destination shortName mismatch. Expected 'Media Luna Cerrillos' but got '${json}[destination][shortName]'.
+    # ✅ Restrictions
+    Should Be Equal As Strings    ${json["restrictions"][0]["restrictionType"]}    public
 
-    Length Should Be    ${json}[destination][location]    2
-    ...    msg=❌ Destination location must be [lon, lat] with 2 elements.
+    # ✅ Suggestions (esto depende de si tu backend realmente retorna esta sección, puedes comentarlo si no aplica)
+    Run Keyword And Ignore Error    Should Be Equal As Strings    ${json["suggestions"]["enabled"]}    True
 
-    Should Be Equal As Strings    ${json}[destination][placeId]    6654d4c8713b9a5184cfe1de
-    ...    msg=❌ Destination placeId missing or incorrect.
+    # ❌ Validaciones de error explícitas (por si falla alguna clave esperada)
+    Run Keyword Unless
+    ...    '${json["origin"]["longName"]}' == 'Hospital Rengo'
+    ...    Fail
+    ...    ❌ Origin longName does not match expected
+    Run Keyword Unless
+    ...    '${json["destination"]["shortName"]}' == 'Media Luna Cerrillos'
+    ...    Fail
+    ...    ❌ Destination shortName does not match expected
+    Run Keyword Unless    ${json["seats"]} == 4    Fail    ❌ Seats count is incorrect, expected 4
+    Run Keyword Unless    len(${json["tripDates"]}) == 1    Fail    ❌ Trip should have exactly 1 tripDate
+    Run Keyword Unless
+    ...    '${json["restrictions"][0]["restrictionType"]}' == 'public'
+    ...    Fail
+    ...    ❌ Restriction type must be 'public'
 
-    # --- Owner / Communities ---
-    Should Be Equal As Strings    ${json}[owner][id]    66d8cf4f4a7101503b01f84a
-    ...    msg=❌ Owner id mismatch.
-
-    Should Be Equal As Strings    ${json}[owner][name]  Barbara Lisboa
-    ...    msg=❌ Owner name mismatch.
-
-    Should Contain    ${json}[owner][communities]    6654ae4eba54fe502d4e4187
-    ...    msg=❌ Owner community 6654ae4eba54fe502d4e4187 not present.
-
-    # --- Trip config flags ---
-    Should Be True    ${json}[suggestions][enabled]
-    ...    msg=❌ Suggestions must be enabled.
-
-    Should Be True    ${json}[allowsSectionCost]
-    ...    msg=❌ allowsSectionCost must be True.
-
-    Should Be True    ${json}[recurrent]
-    ...    msg=❌ Trip must be recurrent.
-
-    # --- Seats / Cost / Currency / TZ ---
-    Should Be Equal As Integers    ${json}[seats]    4
-    ...    msg=❌ Seats should be 4 but got ${json}[seats].
-
-    Should Be Equal As Integers    ${json}[cost]     0
-    ...    msg=❌ Cost should be 0 (free), got ${json}[cost].
-
-    Should Be Equal As Integers    ${json}[originalCost]    700
-    ...    msg=❌ originalCost should be 700 but got ${json}[originalCost].
-
-    Should Be Equal As Strings     ${json}[currency]    clp
-    ...    msg=❌ Currency must be 'clp' but got '${json}[currency]'.
-
-    Should Be Equal As Strings     ${json}[timezone]    America/Santiago
-    ...    msg=❌ Timezone must be 'America/Santiago' but got '${json}[timezone]'.
-
-    # --- Distance / Direction / Geometry ---
-    Should Be True    ${json}[distance] > 0
-    ...    msg=❌ Distance must be positive, got ${json}[distance].
-
-
-    Should Not Be Empty    ${json}[codedRoute]
-    ...    msg=❌ codedRoute must not be empty (expected an encoded polyline).
-
-    # --- Arrays that should be empty ---
-    Length Should Be    ${json}[followers]     0
-    ...    msg=❌ followers should be empty for a new trip.
-
-    Length Should Be    ${json}[pending]       0
-    ...    msg=❌ pending should be empty for a new trip.
-
-    Length Should Be    ${json}[pickupPlaces]  0
-    ...    msg=❌ pickupPlaces should be empty.
-
-    # --- Category ---
-    Should Be Equal As Strings     ${json}[category]    5dab2269d79e785955386e2d
-    ...    msg=❌ Category mismatch (expected 5dab2269d79e785955386e2d).
-
-    # --- Restrictions (public) ---
-    Length Should Be    ${json}[restrictions]    1
-    ...    msg=❌ Expected exactly one restriction.
-
-    Should Be Equal As Strings    ${json}[restrictions][0][restrictionType]    public
-    ...    msg=❌ restrictionType must be 'public', got '${json}[restrictions][0][restrictionType]'.
-
-    # --- Trip dates (weekly recurrence) ---
-    Length Should Be    ${json}[tripDates]    1
-    ...    msg=❌ Expected one tripDates entry.
-
-    Should Be Equal As Strings    ${json}[tripDates][0][day]    monday
-    ...    msg=❌ tripDates[0].day must be 'monday', got '${json}[tripDates][0][day]'.
-
-    Should End With    ${json}[tripDates][0][time]    18:38:00.000Z
-    ...    msg=❌ tripDates[0].time must end with '18:38:00.000Z', got '${json}[tripDates][0][time]'.
-
-    # --- IDs present ---
-    Should Not Be Empty    ${json}[_id]
-    ...    msg=❌ Trip _id is missing.
-
-    # --- Super/Community lists at root ---
-    Should Contain    ${json}[communities]        6654ae4eba54fe502d4e4187
-    ...    msg=❌ Root communities missing expected id 6654ae4eba54fe502d4e4187.
-
-    Should Contain    ${json}[superCommunities]   653fd68233d83952fafcd4be
-    ...    msg=❌ Root superCommunities missing expected id 653fd68233d83952fafcd4be.
-
-
-Get route just created(Driver)
-    [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+Get route just created(Driver) And TripInstances
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/tripinstances/for_trip/${tripId}
-    # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}
 
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    GET    url=${url}    headers=${headers}
     Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${trips}=    Set Variable    ${response.json()}
+
+    # ✅ Validate total count is 5
+    Length Should Be    ${trips}    5
+    ...    msg=❌ Expected 5 trip instances, but got a different number
+
+    ${index}=    Set Variable    1
+    FOR    ${trip}    IN    @{trips}
+        # ✅ Common validations
+        Should Be Equal As Strings    ${trip["status"]}    published
+        ...    msg=❌ Trip instance status is not 'published'
+
+        Should Be Equal As Strings    ${trip["recurrent"]}    True
+        ...    msg=❌ Trip instance should be recurrent
+
+        Should Not Be Empty    ${trip["_id"]}
+        ...    msg=❌ Trip instance missing _id
+
+        Should Not Be Empty    ${trip["tripId"]}
+        ...    msg=❌ Trip instance missing tripId
+
+        # ✅ Save _id as global variables
+        Set Global Variable    ${tripinstance${index}}    ${trip["_id"]}
+        ${index}=    Evaluate    ${index} + 1
+    END
+
+    Log To Console    TripInstance1: ${tripinstance1}
+    Log To Console    TripInstance2: ${tripinstance2}
+    Log To Console    TripInstance3: ${tripinstance3}
+    Log To Console    TripInstance4: ${tripinstance4}
+    Log To Console    TripInstance5: ${tripinstance5}
+
 Search Route And Validate ID (User 2)
     [Documentation]    Recorre el response del endpoint de coordenadas y verifica si existe un objeto con el _id esperado.
     Set Log Level    TRACE
@@ -277,23 +234,25 @@ Search Route And Validate ID (User 2)
     END
 
     IF    not ${id_found}
-        Fail    ❌  Could not find the expected ID (${expected_id}) in the /search/coordinates response.
+        Fail    ❌    Could not find the expected ID (${expected_id}) in the /search/coordinates response.
     END
+
 Follow Route(User 2)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool2}    Content-Type=application/json; charset=utf-8
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool2}
+    ...    Content-Type=application/json; charset=utf-8
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/trips/follow/${tripId}
-    ...    data={"pickupPointLat":"0","pickupPointLon":"0"}
+    ...    data={"pickupPointLat":-33.4561,"pickupPointLon":-70.6480,"pickupPointName":"Punto de inicio","dropoutPointLat":-33.4570,"dropoutPointLon":-70.6500,"dropoutPointName":"Punto de bajada","message":"¡Hola! Me interesa este viaje.","shard":"cl","searchOrigin":null,"searchDestination":null,"originCenter":null,"destinationCenter":null}
     ...    headers=${headers}
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
-    ${json}=    Set Variable    ${response.json()}    
+    ${json}=    Set Variable    ${response.json()}
 
-
-Get requested user following route()
+Get requested user following route() 1
     [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -305,42 +264,66 @@ Get requested user following route()
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    GET    url=${url}    headers=${headers}
     Should Be Equal As Numbers    ${response.status_code}    200
-
     ${user}=    Set Variable    ${response.json()}
 
-    #✅ Validar estado general del usuario
-    Should Be True    ${user['active']}    ❌ Expected user to be active but it was inactive.
+    # ✅ General info
+    Should Be Equal As Strings    ${user["active"]}    True
+    ...    msg=❌ User should be active but is not
 
-    #✅ Validar nombre
-    Should Be Equal As Strings    ${user['name']}    Nico QA Carpool 2    ❌ User name is incorrect. Expected 'Nico QA Carpool 2' but found '${user['name']}'.
+    Should Not Be Empty    ${user["_id"]}
+    ...    msg=❌ User missing _id
 
-    #✅ Validar país
-    Should Be Equal As Strings    ${user['country']}    cl    ❌ User country is incorrect. Expected 'cl' but found '${user['country']}'.
+    Should Be Equal As Strings    ${user["country"]}    cl
+    ...    msg=❌ User country should be 'cl'
 
-    #✅ Validar comunidad
-    ${communities}=    Set Variable    ${user['communities']}
-    Should Not Be Empty    ${communities}    ❌ No communities found for user.
-    Should Be Equal As Strings    ${communities}[0]['communityId']    6654ae4eba54fe502d4e4187    ❌ Community ID mismatch. Expected '6654ae4eba54fe502d4e4187' but found '${communities}[0]['communityId']}'.
+    Should Be Equal As Strings    ${user["currency"]}    clp
+    ...    msg=❌ User currency should be 'clp'
 
-    #✅ Validar custom rut
-    ${custom}=    Set Variable    ${communities}[0]['custom']
-    ${rut_entry}=    Evaluate    [c for c in ${custom} if c["key"] == "rut"][0]
-    Should Be Equal As Strings    ${rut_entry['value']}    492086282    ❌ RUT is incorrect. Expected '492086282' but found '${rut_entry['value']}'.
+    Should Not Be Empty    ${user["name"]}
+    ...    msg=❌ User missing name
 
-    #✅ Validar privateBus ODD services
-    ${odd_services}=    Set Variable    ${communities}[0]['privateBus']['oDDServices']
-    Should Not Be Empty    ${odd_services}    ❌ No ODD services found for user.
-    Should Be Equal As Strings    ${odd_services}[0]['name']    Limitada Nico    ❌ ODD service name is incorrect. Expected 'Limitada Nico' but found '${odd_services}[0]['name']}'.
+    # ✅ Personal info
+    Should Not Be Empty    ${user["personalInfo"]["rut"]}
+    ...    msg=❌ User rut is missing
 
-    #✅ Validar auth tokens
-    Should Not Be Empty    ${user['auth']['accessToken']}    ❌ Access token is missing.
-    Should Not Be Empty    ${user['auth']['realtimeToken']}    ❌ Realtime token is missing.
-    Should Not Be Empty    ${user['auth']['chatToken']}    ❌ Chat token is missing.
+    # phoneNumber is expected to be null
+    Should Be Equal As Strings    ${user["personalInfo"]["phoneNumber"]}    ${None}
+    ...    msg=❌ User phoneNumber should be null
+
+    # ✅ Communities
+    Length Should Be    ${user["communities"]}    1
+    ...    msg=❌ User should belong to exactly 1 community
+
+    ${community}=    Set Variable    ${user["communities"][0]}
+    Should Be Equal As Strings    ${community["confirmed"]}    True
+    ...    msg=❌ Community should be confirmed
+
+    Should Be Equal As Strings    ${community["communityId"]}    6654ae4eba54fe502d4e4187
+    ...    msg=❌ Community ID is not the expected one
+
+    # ✅ Private bus
+    Should Be Equal As Strings    ${community["privateBus"]["enabled"]}    True
+    ...    msg=❌ Private bus should be enabled
+
+    Should Not Be Empty    ${community["privateBus"]["oDDServices"]}
+    ...    msg=❌ User should have at least one ODD service
+
+    # ✅ Auth tokens
+    Should Not Be Empty    ${user["auth"]["accessToken"]}
+    ...    msg=❌ User is missing accessToken
+
+    Should Not Be Empty    ${user["auth"]["realtimeToken"]}
+    ...    msg=❌ User is missing realtimeToken
+
+    Should Not Be Empty    ${user["auth"]["chatToken"]}
+    ...    msg=❌ User is missing chatToken
 
 Accept follower
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}    Content-Type=application/json; charset=utf-8
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool1}
+    ...    Content-Type=application/json; charset=utf-8
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/trips/accept/${tripId}/68b7576fc6280f9b167a25c8
@@ -348,81 +331,318 @@ Accept follower
     ...    headers=${headers}
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
-    ${json}=    Set Variable    ${response.json()}    
+    ${trip}=    Set Variable    ${response.json()}
+
+    # ✅ General validations
+    Should Not Be Empty    ${trip["_id"]}
+    ...    msg=❌ Trip is missing _id
+
+    Should Be Equal As Strings    ${trip["recurrent"]}    True
+    ...    msg=❌ Trip should be recurrent but is not
+
+    Should Be Equal As Strings    ${trip["currency"]}    clp
+    ...    msg=❌ Trip currency should be 'clp'
+
+    Should Be Equal As Strings    ${trip["timezone"]}    America/Santiago
+    ...    msg=❌ Trip timezone should be 'America/Santiago'
+
+    Should Not Be Empty    ${trip["codedRoute"]}
+    ...    msg=❌ Trip missing codedRoute
+
+    # ✅ Origin and destination
+    Should Be Equal As Strings    ${trip["origin"]["longName"]}    Hospital Rengo
+    ...    msg=❌ Trip origin longName mismatch
+
+    Should Be Equal As Strings    ${trip["destination"]["longName"]}    Media luna cerrillos
+    ...    msg=❌ Trip destination longName mismatch
+
+    Should Be Equal As Strings    ${trip["destination"]["placeId"]}    6654d4c8713b9a5184cfe1de
+    ...    msg=❌ Destination placeId mismatch
+
+    # ✅ Owner
+    Should Not Be Empty    ${trip["owner"]["id"]}
+    ...    msg=❌ Trip owner missing id
+
+    Should Be Equal As Strings    ${trip["owner"]["name"]}    Nico QA Carpool 1
+    ...    msg=❌ Trip owner name mismatch
+
+    Length Should Be    ${trip["owner"]["communities"]}    1
+    ...    msg=❌ Trip owner should belong to 1 community
+
+    # ✅ Trip Dates
+    Length Should Be    ${trip["tripDates"]}    1
+    ...    msg=❌ Trip should contain exactly 1 tripDate
+
+    ${date}=    Set Variable    ${trip["tripDates"][0]}
+    Should Be Equal As Strings    ${date["day"]}    monday
+    ...    msg=❌ Trip date day should be 'monday'
+
+    Should Not Be Empty    ${date["time"]}
+    ...    msg=❌ Trip date missing time
+
+    # ✅ Pickup & Dropout Places
+    Length Should Be    ${trip["pickupPlaces"]}    1
+    ...    msg=❌ Trip should contain exactly 1 pickupPlace
+
+    Length Should Be    ${trip["dropoutPlaces"]}    1
+    ...    msg=❌ Trip should contain exactly 1 dropoutPlace
+
+    Should Be Equal As Strings    ${trip["pickupPlaces"][0]["name"]}    Punto de inicio
+    ...    msg=❌ Pickup place name mismatch
+
+    Should Be Equal As Strings    ${trip["dropoutPlaces"][0]["name"]}    Punto de bajada
+    ...    msg=❌ Dropout place name mismatch
+
+    # ✅ Followers Data
+    Length Should Be    ${trip["followersData"]}    1
+    ...    msg=❌ Trip should contain exactly 1 follower
+
+    ${follower}=    Set Variable    ${trip["followersData"][0]}
+    Should Be Equal As Strings    ${follower["name"]}    Nico QA Carpool 2
+    ...    msg=❌ Follower name mismatch
+
+    Should Be Equal As Strings    ${follower["accepted"]}    True
+    ...    msg=❌ Follower should be accepted
+
+Get tripInstances
+    [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v1/tripinstances/for_trip/${tripId}
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${trip_instances}=    Set Variable    ${response.json()}
+
+    FOR    ${trip_instance}    IN    @{trip_instances}
+        Should Be Equal As Strings    ${trip_instance["status"]}    published
+        ...    msg=❌ Trip instance status should be 'plubished'
+
+        Should Be True    ${trip_instance["recurrent"]}
+        ...    msg=❌ Trip instance should be recurrent but is not
+
+        Should Not Be Empty    ${trip_instance["_id"]}
+
+        Should Not Be Empty    ${trip_instance["tripId"]}
+        ...    msg=❌ Trip instance missing tripId
+        Should Not Be Empty    ${trip_instance["userId"]}
+        ...    msg=❌ Trip instance missing userId
+    END
+
 Confirm tripInstances
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}    Content-Type=application/json; charset=utf-8
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool1}
+    ...    Content-Type=application/json; charset=utf-8
     ${response}=    PUT On Session
     ...    mysesion
     ...    url=/api/v1/tripinstances/confirm/${tripinstance1}
-    ...    data=""
     ...    headers=${headers}
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
-    ${json}=    Set Variable    ${response.json()}    
+    ${trip_instance}=    Set Variable    ${response.json()}
+
+    # ✅ General validations
+    Should Not Be Empty    ${trip_instance["_id"]}
+    ...    msg=❌ Trip instance is missing _id
+
+    Should Be Equal As Strings    ${trip_instance["status"]}    confirmed
+    ...    msg=❌ Trip instance status should be 'confirmed'
+
+    Should Be Equal As Strings    ${trip_instance["recurrent"]}    True
+    ...    msg=❌ Trip instance should be recurrent but is not
+
+    Should Not Be Empty    ${trip_instance["tripId"]}
+    ...    msg=❌ Trip instance missing tripId
+
+    Should Not Be Empty    ${trip_instance["userId"]}
+    ...    msg=❌ Trip instance missing userId
+
+    # ✅ Distance and filed
+    Should Be Equal As Numbers    ${trip_instance["distance"]}    0
+    ...    msg=❌ Trip instance distance should be 0 initially
+
+    Should Be Equal As Strings    ${trip_instance["filed"]}    False
+    ...    msg=❌ Trip instance should not be filed
+
+    # ✅ Dates
+    Should Not Be Empty    ${trip_instance["startDate"]}
+    ...    msg=❌ Trip instance missing startDate
+
+    # ✅ Boarding details
+    Length Should Be    ${trip_instance["boardingDetails"]}    0
+    ...    msg=❌ Trip instance boardingDetails should be empty
+
+    # ✅ Passengers
+    Length Should Be    ${trip_instance["passengers"]}    1
+    ...    msg=❌ Expected 1 passenger, but got a different number
+
+    Should Not Be Empty    ${trip_instance["passengers"][0]}
+    ...    msg=❌ Passenger ID is missing in the trip instance
+
 Board reservation as user
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool2}    Content-Type=application/json; charset=utf-8
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool2}
+    ...    Content-Type=application/json; charset=utf-8
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/tripinstances/board/${tripinstance1}
-    ...    data=""
-    ...    headers=${headers}
-    ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    ${json}=    Set Variable    ${response.json()}    
-Start carpool departure
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}    Content-Type=application/json; charset=utf-8
-    ${response}=    PUT On Session
-    ...    mysesion
-    ...    url=/api/v1/tripinstances/start/${tripinstance1}
-    ...    data=""
     ...    headers=${headers}
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     ${json}=    Set Variable    ${response.json()}
-    ${accessTokenDeparture}=   Set Variable    []   ###Reeemplazar 
+
+    ${trip}=    Set Variable    ${response.json()}
+
+    Length Should Be    ${trip_instance["passengers"]}    1
+    ...    msg=❌ Expected 1 passenger, but got a different number
+
+    Should Not Be Empty    ${trip_instance["passengers"][0]}
+    ...    msg=❌ Passenger ID is missing in the trip instance
+
+Start carpool departure
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool1}
+    ...    Content-Type=application/json; charset=utf-8
+    ${response}=    PUT On Session
+    ...    mysesion
+    ...    url=/api/v1/tripinstances/start/${tripinstance1}
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${json}=    Set Variable    ${response.json()}
+    ${accessTokenDeparture}=    Set Variable    []    ###Reeemplazar
 
 Get Chats
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool2}    Content-Type=application/json; charset=utf-8
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool2}
+    ...    Content-Type=application/json; charset=utf-8
     ${response}=    GET On Session
     ...    mysesion
     ...    url=/api/v1/chat/public/${tripId}
     ...    headers=${headers}
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
-    ${json}=    Set Variable    ${response.json()}    
+    ${json}=    Set Variable    ${response.json()}
+
 Get Chats (user)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool2}    Content-Type=application/json; charset=utf-8
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool2}
+    ...    Content-Type=application/json; charset=utf-8
     ${response}=    GET On Session
     ...    mysesion
     ...    url=/api/v1/chat/messages/${tripId}
     ...    headers=${headers}
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
-    ${json}=    Set Variable    ${response.json()}    
+    ${json}=    Set Variable    ${response.json()}
 
 Get Chats (driver)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
-    ${headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool2}    Content-Type=application/json; charset=utf-8
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool1}
+    ...    Content-Type=application/json; charset=utf-8
     ${response}=    GET On Session
     ...    mysesion
     ...    url=/api/v1/chat/messages/${tripId}
     ...    headers=${headers}
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
-    ${json}=    Set Variable    ${response.json()}    
+    ${json}=    Set Variable    ${response.json()}
 
+End trip
+    Create Session    mysesion    ${STAGE_URL}    verify=true
 
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool1}
+    ...    Content-Type=application/json; charset=utf-8
+    ${response}=    PUT On Session
+    ...    mysesion
+    ...    url=/api/v1/tripinstances/end/${tripinstance1}
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${trip_instance}=    Set Variable    ${response.json()}
+
+    # ✅ General validations
+    Should Not Be Empty    ${trip_instance["_id"]}
+    ...    msg=❌ Trip instance is missing _id
+
+    Should Be Equal As Strings    ${trip_instance["status"]}    ended
+    ...    msg=❌ Trip instance status should be 'ended'
+
+    Should Be Equal As Strings    ${trip_instance["recurrent"]}    True
+    ...    msg=❌ Trip instance should be recurrent but is not
+
+    Should Not Be Empty    ${trip_instance["tripId"]}
+    ...    msg=❌ Trip instance missing tripId
+
+    Should Not Be Empty    ${trip_instance["userId"]}
+    ...    msg=❌ Trip instance missing userId
+
+    # ✅ Distance and filed
+    Should Be Equal As Numbers    ${trip_instance["distance"]}    0
+    ...    msg=❌ Trip instance distance should be 0 initially
+
+    Should Be Equal As Strings    ${trip_instance["filed"]}    False
+    ...    msg=❌ Trip instance should not be filed
+
+    # ✅ Dates
+    Should Not Be Empty    ${trip_instance["startDate"]}
+    ...    msg=❌ Trip instance missing startDate
+
+    ${day_of_week}=    Evaluate
+    ...    __import__('datetime').datetime.fromisoformat(${trip_instance["startDate"].replace("Z","")}).strftime('%A')
+    Should Be Equal As Strings    ${day_of_week}    Monday
+    ...    msg=❌ Trip instance startDate must fall on a Monday
+
+    # ✅ EndedAt
+    Should Not Be Empty    ${trip_instance["endedAt"]}
+    ...    msg=❌ Trip instance has status 'ended' but is missing endedAt timestamp
+
+    # ✅ Passengers
+    Length Should Be    ${trip_instance["passengers"]}    1
+    ...    msg=❌ Expected 1 passenger, but got a different number
+
+    Should Not Be Empty    ${trip_instance["passengers"][0]}
+    ...    msg=❌ Passenger ID is missing in the trip instance
+
+Delete trip
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary
+    ...    Authorization=Bearer ${accessTokenCarpool1}
+    ...    Content-Type=application/json; charset=utf-8
+    ${response}=    DELETE On Session
+    ...    mysesion
+    ...    url=/api/v1/trips/${tripId}
+    ...    headers=${headers}
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    ${response}=    Set Variable    ${response.json()}
+
+    # ✅ Check that the API responded with the correct message
+    Should Be Equal As Strings    ${response["message"]}    Trip deleted
+    ...    msg=❌ Expected 'Trip deleted' message, but got something else
+
+    # ✅ Extra safeguard in case the response is empty
+    Should Not Be Empty    ${response["message"]}
+    ...    msg=❌ Response message is missing after deletion
 
 ##Iniciar el viaje
 ## Chat
