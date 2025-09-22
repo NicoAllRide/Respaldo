@@ -10,8 +10,8 @@ Library     RPA.JSON
 Resource    ../Variables/variablesStage.robot
 
 
-#---------------------------No se puede automatizar, luego de utilizar los Tickets no se eliminan, entonces el QR que se genera es el del pase ya utilizado, por lo que falla
-# Averiguar la manera de poder eliminar los Tickets del usuario para poder utilizar solo uno
+#---------------------------No se puede automatizar, luego de utilizar los pases no se eliminan, entonces el QR que se genera es el del pase ya utilizado, por lo que falla
+# Averiguar la manera de poder eliminar los pases del usuario para poder utilizar solo uno
 # Habría que ejecuar solo uno al día
 # -------------------------------------------------#
 
@@ -82,10 +82,6 @@ Generate random UUID 2 (_id validations qrValidations)
     ${uuid_qr2}=    Evaluate    str(uuid.uuid4())
     Log    ${uuid_qr2}
     Set Global Variable    ${uuid_qr2}
-Generate random UUID 3 (_id validations qrValidations)
-    ${uuid_qr3}=    Evaluate    str(uuid.uuid4())
-    Log    ${uuid_qr3}
-    Set Global Variable    ${uuid_qr3}
 
 2 hours local
     ${date}=    Get Current Date    time_zone=local    exclude_millis=yes
@@ -118,8 +114,8 @@ Create community Validation manual (Código de enrolamiento) 1
     ...    data={"community":"6654ae4eba54fe502d4e4187","values":[{"key":"rut","value":"111111111","listValue":null,"public":true,"check":true,"listOfRoutes":false},{"key":"address","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false},{"key":"coordinates","value":"","listValue":null,"public":false,"check":false,"listOfRoutes":false},{"key":"Color","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false},{"key":"Animal","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false},{"key":"Empresa","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false}],"validated":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-   ${customData}=    Set Variable    ${response.json()}
-   ${customValidationId}    Set Variable    ${response.json()}[_id]
+   ${customData}=    Set Variable    ${response.json()}[validation]
+   ${customValidationId}    Set Variable    ${response.json()}[validation][_id]
 
    Set Global Variable    ${customValidationId}
 
@@ -292,8 +288,8 @@ Create community Validation manual (Código de enrolamiento) 2
     ...    data={"community":"6654ae4eba54fe502d4e4187","values":[{"key":"rut","value":"111111112","listValue":null,"public":true,"check":true,"listOfRoutes":false},{"key":"address","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false},{"key":"coordinates","value":"","listValue":null,"public":false,"check":false,"listOfRoutes":false},{"key":"Color","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false},{"key":"Animal","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false},{"key":"Empresa","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false}],"validated":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-   ${customData}=    Set Variable    ${response.json()}
-   ${customValidationId}    Set Variable    ${response.json()}[_id]
+   ${customData}=    Set Variable    ${response.json()}[validation]
+   ${customValidationId}    Set Variable    ${response.json()}[validation][_id]
 
    Set Global Variable    ${customValidationId}
 
@@ -389,8 +385,8 @@ Find created user manually 2
 
 
 
-Crate Product (Ticket)
-    [Documentation]     Creación de productos desde el admin (Tickets)
+Crate Product (Pass)
+    [Documentation]     Creación de productos desde el admin (Pases)
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
 
@@ -400,42 +396,60 @@ Crate Product (Ticket)
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/admin/products/createProduct?community=6654ae4eba54fe502d4e4187
-    ...    data={"active":true,"name":"Automation Test Tickets 2","description":"Tickets ","communities":["6654ae4eba54fe502d4e4187"],"superCommunities":["653fd68233d83952fafcd4be"],"expiration":"","price":10,"discount":0,"stock":4,"values":[{"communities":["6654ae4eba54fe502d4e4187"],"superCommunities":["653fd68233d83952fafcd4be"],"ref":"pb_ticket","quantity":1,"options":{"name":"Automation Test Tickets 2","description":"Automation Test Tickets 2","startDate":null,"endDate":"2025-09-02","state":"available","allRoutes":true,"routeIds":[],"routeNames":[],"oddTypes":[]}}],"productType":"pb_ticket"}
+    ...    data={"active":true,"name":"Automation Test Passes 2","description":"Automation Test Passes 2","communities":["6654ae4eba54fe502d4e4187"],"superCommunities":["653fd68233d83952fafcd4be"],"expiration":"","price":10,"discount":0,"stock":2,"values":[{"communities":["6654ae4eba54fe502d4e4187"],"superCommunities":["653fd68233d83952fafcd4be"],"ref":"pb_pass","quantity":1,"options":{"name":"Automation Test Passes 2","description":"Automation Test Passes 2","startDate":"${fecha_hoy}","endDate":"${fecha_manana}","unlimitedUses":false,"maxUses":2,"maxDailyUses":2,"state":"available","allRoutes":true,"routeIds":[],"routeNames":[],"oddTypes":[]}}],"productType":"pb_pass"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
  
-    ${last_ticket}=    Set Variable    ${response.json()}
+    ${last_pass}=    Set Variable    ${response.json()}
 
-    Should Be Equal As Strings    ${last_ticket}[active]    True
-    ...    msg=❌ The ticket should be active. Found: "${last_ticket}[active]"
+    Should Be Equal As Strings    ${last_pass}[active]    True
+    ...    msg=❌ The pass should be active. Found: "${last_pass}[active]"
 
-    Should Be Equal As Integers    ${last_ticket}[stock]    4
-    ...    msg=❌ The stock should be 1. Found: "${last_ticket}[stock]"
+    Should Be Equal As Integers    ${last_pass}[stock]    2
+    ...    msg=❌ The stock should be 1. Found: "${last_pass}[stock]"
 
-    Should Be Equal As Integers    ${last_ticket}[price]    10
-    ...    msg=❌ The price should be 10. Found: "${last_ticket}[price]"
+    Should Be Equal As Integers    ${last_pass}[price]    10
+    ...    msg=❌ The price should be 10. Found: "${last_pass}[price]"
 
-    Should Contain    ${last_ticket}[communities]    6654ae4eba54fe502d4e4187
-    ...    msg=❌ Expected community ID not found. Found: "${last_ticket}[communities]"
+    Should Contain    ${last_pass}[communities]    6654ae4eba54fe502d4e4187
+    ...    msg=❌ Expected community ID not found. Found: "${last_pass}[communities]"
 
-    Should Contain    ${last_ticket}[superCommunities]    653fd68233d83952fafcd4be
-    ...    msg=❌ Expected superCommunity ID not found. Found: "${last_ticket}[superCommunities]"
+    Should Contain    ${last_pass}[superCommunities]    653fd68233d83952fafcd4be
+    ...    msg=❌ Expected superCommunity ID not found. Found: "${last_pass}[superCommunities]"
 
-    ${ticket_values}=    Get From List    ${last_ticket}[values]    0
+    ${pass_values}=    Get From List    ${last_pass}[values]    0
 
-    Should Be Equal As Strings    ${ticket_values}[ref]    pb_ticket
-    ...    msg=❌ The 'ref' should be 'pb_ticket'. Found: "${ticket_values}[ref]"
+    Should Be Equal As Strings    ${pass_values}[ref]    pb_pass
+    ...    msg=❌ The 'ref' should be 'pb_pass'. Found: "${pass_values}[ref]"
 
-    Should Be Equal As Integers    ${ticket_values}[quantity]    1
-    ...    msg=❌ The quantity should be 1. Found: "${ticket_values}[quantity]"
+    Should Be Equal As Integers    ${pass_values}[quantity]    1
+    ...    msg=❌ The quantity should be 1. Found: "${pass_values}[quantity]"
 
-    ${options}=    Set Variable    ${ticket_values}[options]
+    ${options}=    Set Variable    ${pass_values}[options]
 
-    Should Be Equal As Strings    ${options}[name]    Automation Test Tickets 2
-    ...    msg=❌ The ticket name should be 'Automation Test Tickets 2'. Found: "${options}[name]"
+    Should Be Equal As Strings    ${options}[name]    Automation Test Passes 2
+    ...    msg=❌ The pass name should be 'Automation Test Passes 2'. Found: "${options}[name]"
+
+    Should Be Equal As Strings    ${options}[description]    Automation Test Passes 2
+    ...    msg=❌ The pass description should be 'Automation Test Passes 2'. Found: "${options}[description]"
+
+    Should Be Equal As Strings    ${options}[startDate]    ${fecha_hoy}
+    ...    msg=❌ The start date should be '${fecha_hoy}'. Found: "${options}[startDate]"
+
+    Should Be Equal As Strings    ${options}[endDate]    ${fecha_manana}
+    ...    msg=❌ The end date should be '${fecha_manana}'. Found: "${options}[endDate]"
+
+    Should Be Equal As Strings    ${options}[unlimitedUses]    False
+    ...    msg=❌ 'unlimitedUses' should be False. Found: "${options}[unlimitedUses]"
+
+    Should Be Equal As Integers    ${options}[maxUses]    2
+    ...    msg=❌ 'maxUses' should be 2. Found: "${options}[maxUses]"
+
+    Should Be Equal As Integers    ${options}[maxDailyUses]    2
+    ...    msg=❌ 'maxDailyUses' should be 2. Found: "${options}[maxDailyUses]"
 
     Should Be Equal As Strings    ${options}[state]    available
-    ...    msg=❌ The ticket state should be 'available'. Found: "${options}[state]"
+    ...    msg=❌ The pass state should be 'available'. Found: "${options}[state]"
 
     Should Be True    ${options}[allRoutes]
     ...    msg=❌ 'allRoutes' should be True. Found: "${options}[allRoutes]"
@@ -449,16 +463,45 @@ Crate Product (Ticket)
     Length Should Be    ${options}[oddTypes]    0
     ...    msg=❌ 'oddTypes' should be empty. Found: "${options}[oddTypes]"
 
-    ${ticket_id}=    Set Variable    ${last_ticket}[_id]
-    Set Global Variable    ${ticket_id}
-    Log    ✅ ticket ID: ${ticket_id}
+    ${pass_id}=    Set Variable    ${last_pass}[_id]
+    Set Global Variable    ${pass_id}
+    Log    ✅ Pass ID: ${pass_id}
 
     Sleep    30s
 
 
+Get active product List (Before assign)
+    [Documentation]     Se obtiene la lista de prodcutos activos, se verifica que haya stock(1) y precio(10)
+    ${url}=    Set Variable    ${STAGE_URL}/api/v1/admin/products/listActive?community=6654ae4eba54fe502d4e4187
+
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    ${response}=    GET    url=${url}    headers=${headers}
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${passes}=    Set Variable    ${response.json()}
+    ${found}=     Set Variable    False
+    ${product_id}=    Set Variable    NONE
+
+    FOR    ${pass}    IN    @{passes}
+    ${name}=         Set Variable    ${pass}[name]
+    ${description}=  Set Variable    ${pass}[description]
+    ${price}=        Set Variable    ${pass}[price]
+    ${stock}=        Set Variable    ${pass}[stock]
+    Run Keyword If    '${name}' == 'Automation Test Passes 2' and '${description}' == 'Automation Test Passes 2' and '${price}' == '10' and ${stock} == 2
+    ...    Set Test Variable    ${found}    True
+    Run Keyword If    '${name}' == 'Automation Test Passes 2' and '${description}' == 'Automation Test Passes 2' and '${price}' == '10' and ${stock} == 2
+    ...    Set Test Variable    ${product_id}    ${pass}[_id]
+    END
+
+    Should Be True    ${found}    msg=❌ Product 'Automation Test Passes 2' with stock=0 not found in active product list.
+    Log    ✅ Found Product ID: ${product_id}
+    Set Global Variable    ${product_id}
+
+    Sleep    30s
 
 
-Assing tickets Manually From Admin 1
+Assing Passes Manually From Admin 1
     [Documentation]    Se asigna el pase al usuario y se verifica que los usos restantes correspondan a lo configurado
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -469,29 +512,37 @@ Assing tickets Manually From Admin 1
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/admin/products/assignToUser?community=6654ae4eba54fe502d4e4187
-    ...    data={"userId":"${userId}","productId":"${ticket_id}","quantity":2,"userName":"UserRobotFramework"}
+    ...    data={"userId":"${userId}","productId":"${product_id}","quantity":1,"userName":"UserRobotFramework"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
-    ${ticket}=    Set Variable    ${response.json()}[0]
+    ${pass}=    Set Variable    ${response.json()}[0]
 
-    Should Be Equal As Strings    ${ticket}[name]    Automation Test Tickets 2
-    ...    msg=❌ Expected name to be 'Automation Test Tickets 2' but got: ${ticket}[name]
+    Should Be Equal As Strings    ${pass}[name]    Automation Test Passes 2
+    ...    msg=❌ Expected name to be 'Automation Test Passes 2' but got: ${pass}[name]
 
+    Should Be Equal As Strings    ${pass}[description]    Automation Test Passes 2
+    ...    msg=❌ Expected description to be 'Automation Test Passes 2' but got: ${pass}[description]
 
-    Should Be Equal As Strings    ${ticket}[productId]    ${ticket_id}
-    ...    msg=❌ Expected productId to be '${ticket_id}' but got: ${ticket}[productId]
+    Should Be Equal As Strings    ${pass}[productId]    ${product_id}
+    ...    msg=❌ Expected productId to be '${product_id}' but got: ${pass}[productId]
 
-    Should Be Equal As Strings    ${ticket}[userId]    ${user_id}
-    ...    msg=❌ Expected userId to be '${user_id}' but got: ${ticket}[userId]
+    Should Be Equal As Strings    ${pass}[userId]    ${user_id}
+    ...    msg=❌ Expected userId to be '${user_id}' but got: ${pass}[userId]
 
-    Should Be Equal As Strings    ${ticket}[allRoutes]    True
-    ...    msg=❌ Expected allRoutes to be True but got: ${ticket}[allRoutes]
+    Should Be Equal As Strings    ${pass}[maxUses]    2
+    ...    msg=❌ Expected maxUses to be 2 but got: ${pass}[maxUses]
 
-    ${assigned_ticket_id}=    Set Variable    ${ticket}[_id]
-    Log    ✅ Assigned ticket ID: ${assigned_ticket_id}
-    Set Global Variable    ${assigned_ticket_id}
-Assing tickets Manually From Admin 2
+    Should Be Equal As Strings    ${pass}[maxDailyUses]    2
+    ...    msg=❌ Expected maxDailyUses to be 2 but got: ${pass}[maxDailyUses]
+
+    Should Be Equal As Strings    ${pass}[allRoutes]    True
+    ...    msg=❌ Expected allRoutes to be True but got: ${pass}[allRoutes]
+
+    ${assigned_pass_id}=    Set Variable    ${pass}[_id]
+    Log    ✅ Assigned pass ID: ${assigned_pass_id}
+    Set Global Variable    ${assigned_pass_id}
+Assing Passes Manually From Admin 2
     [Documentation]    Se asigna el pase al usuario y se verifica que los usos restantes correspondan a lo configurado
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -502,34 +553,70 @@ Assing tickets Manually From Admin 2
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/admin/products/assignToUser?community=6654ae4eba54fe502d4e4187
-    ...    data={"userId":"${userId_2}","productId":"${ticket_id}","quantity":2,"userName":"UserRobotFramework 2"}
+    ...    data={"userId":"${userId_2}","productId":"${product_id}","quantity":1,"userName":"UserRobotFramework 2"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
-    ${ticket}=    Set Variable    ${response.json()}[0]
+    ${pass}=    Set Variable    ${response.json()}[0]
 
-    Should Be Equal As Strings    ${ticket}[name]    Automation Test Tickets 2
-    ...    msg=❌ Expected name to be 'Automation Test Tickets 2' but got: ${ticket}[name]
+    Should Be Equal As Strings    ${pass}[name]    Automation Test Passes 2
+    ...    msg=❌ Expected name to be 'Automation Test Passes 2' but got: ${pass}[name]
 
+    Should Be Equal As Strings    ${pass}[description]    Automation Test Passes 2
+    ...    msg=❌ Expected description to be 'Automation Test Passes 2' but got: ${pass}[description]
 
-    Should Be Equal As Strings    ${ticket}[productId]    ${ticket_id}
-    ...    msg=❌ Expected productId to be '${ticket_id}' but got: ${ticket}[productId]
+    Should Be Equal As Strings    ${pass}[productId]    ${product_id}
+    ...    msg=❌ Expected productId to be '${product_id}' but got: ${pass}[productId]
 
-    Should Be Equal As Strings    ${ticket}[userId]    ${userId_2}
-    ...    msg=❌ Expected userId to be '${user_id}' but got: ${ticket}[userId]
+    Should Be Equal As Strings    ${pass}[userId]    ${userId_2}
+    ...    msg=❌ Expected userId to be '${user_id}' but got: ${pass}[userId]
 
+    Should Be Equal As Strings    ${pass}[maxUses]    2
+    ...    msg=❌ Expected maxUses to be 2 but got: ${pass}[maxUses]
 
+    Should Be Equal As Strings    ${pass}[maxDailyUses]    2
+    ...    msg=❌ Expected maxDailyUses to be 2 but got: ${pass}[maxDailyUses]
 
-    Should Be Equal As Strings    ${ticket}[allRoutes]    True
-    ...    msg=❌ Expected allRoutes to be True but got: ${ticket}[allRoutes]
+    Should Be Equal As Strings    ${pass}[allRoutes]    True
+    ...    msg=❌ Expected allRoutes to be True but got: ${pass}[allRoutes]
 
-    ${assigned_ticket_id_2}=    Set Variable    ${ticket}[_id]
-    Log    ✅ Assigned ticket ID: ${assigned_ticket_id_2}
-    Set Global Variable    ${assigned_ticket_id_2}
+    ${assigned_pass_id_2}=    Set Variable    ${pass}[_id]
+    Log    ✅ Assigned pass ID: ${assigned_pass_id_2}
+    Set Global Variable    ${assigned_pass_id_2}
+
+Get active product List (After assign-should be 0 passes left)
+    [Documentation]    Se obtiene la lista de prodcutos activos, se verifica que NO haya stock(0) y precio(10)
+    ${url}=    Set Variable    ${STAGE_URL}/api/v1/admin/products/listActive?community=6654ae4eba54fe502d4e4187
+
+    &{headers}=    Create Dictionary    Authorization=${tokenAdmin}
+
+    ${response}=    GET    url=${url}    headers=${headers}
+    Should Be Equal As Numbers    ${response.status_code}    200
+
+    ${passes}=    Set Variable    ${response.json()}
+    ${stock}=     Set Variable    NONE
+    ${product_id}=    Set Variable    NONE
+
+    FOR    ${pass}    IN    @{passes}
+    ${name}=         Set Variable    ${pass}[name]
+    ${description}=  Set Variable    ${pass}[description]
+    ${price}=        Set Variable    ${pass}[price]
+    ${stock_check}=  Set Variable    ${pass}[stock]
+    Run Keyword If    '${name}' == 'Automation Test Passes 2' and '${description}' == 'Automation Test Passes 2' and '${price}' == '10'
+    ...    Set Test Variable    ${stock}    ${stock_check}
+    Run Keyword If    '${name}' == 'Automation Test Passes 2' and '${description}' == 'Automation Test Passes 2' and '${price}' == '10'
+    ...    Set Test Variable    ${product_id}    ${pass}[_id]
+    END
+
+    Should Be Equal As Numbers    ${stock}    0
+    ...    msg=❌ Expected stock to be 0 for product 'Automation Test Passes 2', but got: ${stock}
+
+    Log    ✅ Found Product ID with stock=0: ${product_id}
+    Set Global Variable    ${product_id}
 
 
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-Get tickets From User 1 (Step2 - Should be 1+)
+Get Passes From User 1 (Step2 - Should be 1+)
     [Documentation]    Se verifica que se haya agregado correctamente el pase al usuario
     # Define the URL for authenticated resource
     ${url}=    Set Variable    ${STAGE_URL}/api/v2/products/user/purchased
@@ -541,31 +628,33 @@ Get tickets From User 1 (Step2 - Should be 1+)
     ${response}=    GET    url=${url}    headers=${headers}
     Should Be Equal As Numbers    ${response.status_code}    200
 
-    # Extract transaction and tickets
+    # Extract transaction and passes
     ${transactions}=    Set Variable    ${response.json()}[transactions]
     ${first_transaction}=    Get From List    ${transactions}    0
-    ${tickets}=    Get From Dictionary    ${first_transaction}    tickets
+    ${passes}=    Get From Dictionary    ${first_transaction}    passes
 
-    # Ensure tickets list is not empty
-    Should Not Be Empty    ${tickets}
-    ...    msg=❌ 'tickets' list is empty. No tickets found in the transaction.
+    # Ensure passes list is not empty
+    Should Not Be Empty    ${passes}
+    ...    msg=❌ 'passes' list is empty. No passes found in the transaction.
 
-    # Get the last ticket
-    ${ticket}=    Get From List    ${tickets}    -1
+    # Get the last pass
+    ${pass}=    Get From List    ${passes}    -1
 
-    # Validate ticket fields
-    Should Be Equal As Strings    ${ticket}[name]    Automation Test Tickets 2
-    ...    msg=❌ Expected ticket name to be 'Automation Test Tickets 2' but got '${ticket}[name]'
+    # Validate pass fields
+    Should Be Equal As Strings    ${pass}[name]    Automation Test Passes 2
+    ...    msg=❌ Expected pass name to be 'Automation Test Passes 2' but got '${pass}[name]'
 
+    Should Be Equal As Numbers    ${pass}[maxDailyUses]    2
+    ...    msg=❌ Expected maxDailyUses to be 2 but got '${pass}[maxDailyUses]'
 
-    Should Be Equal As Strings    ${ticket}[service]    privateBus
-    ...    msg=❌ Expected service to be 'privateBus' but got '${ticket}[service]'
+    Should Be Equal As Strings    ${pass}[service]    privateBus
+    ...    msg=❌ Expected service to be 'privateBus' but got '${pass}[service]'
 
     # Save _id globally for next steps
-    ${ticketId}=    Get From Dictionary    ${ticket}    _id
-    Log    ✅ Found ticket with _id: ${ticketId}
-    Set Global Variable    ${ticketId}
-Get tickets From User 2 (Step2 - Should be 1+)
+    ${passId}=    Get From Dictionary    ${pass}    _id
+    Log    ✅ Found pass with _id: ${passId}
+    Set Global Variable    ${passId}
+Get Passes From User 2 (Step2 - Should be 1+)
     [Documentation]    Se verifica que se haya agregado correctamente el pase al usuario
     # Define the URL for authenticated resource
     ${url}=    Set Variable    ${STAGE_URL}/api/v2/products/user/purchased
@@ -577,36 +666,38 @@ Get tickets From User 2 (Step2 - Should be 1+)
     ${response}=    GET    url=${url}    headers=${headers}
     Should Be Equal As Numbers    ${response.status_code}    200
 
-    # Extract transaction and tickets
+    # Extract transaction and passes
     ${transactions}=    Set Variable    ${response.json()}[transactions]
     ${first_transaction}=    Get From List    ${transactions}    0
-    ${tickets}=    Get From Dictionary    ${first_transaction}    tickets
+    ${passes}=    Get From Dictionary    ${first_transaction}    passes
 
-    # Ensure tickets list is not empty
-    Should Not Be Empty    ${tickets}
-    ...    msg=❌ 'tickets' list is empty. No tickets found in the transaction.
+    # Ensure passes list is not empty
+    Should Not Be Empty    ${passes}
+    ...    msg=❌ 'passes' list is empty. No passes found in the transaction.
 
-    # Get the last ticket
-    ${ticket}=    Get From List    ${tickets}    -1
+    # Get the last pass
+    ${pass}=    Get From List    ${passes}    -1
 
-    # Validate ticket fields
-    Should Be Equal As Strings    ${ticket}[name]    Automation Test Tickets 2
-    ...    msg=❌ Expected ticket name to be 'Automation Test Tickets 2' but got '${ticket}[name]'
+    # Validate pass fields
+    Should Be Equal As Strings    ${pass}[name]    Automation Test Passes 2
+    ...    msg=❌ Expected pass name to be 'Automation Test Passes 2' but got '${pass}[name]'
 
+    Should Be Equal As Numbers    ${pass}[maxDailyUses]    2
+    ...    msg=❌ Expected maxDailyUses to be 2 but got '${pass}[maxDailyUses]'
 
-    Should Be Equal As Strings    ${ticket}[service]    privateBus
-    ...    msg=❌ Expected service to be 'privateBus' but got '${ticket}[service]'
+    Should Be Equal As Strings    ${pass}[service]    privateBus
+    ...    msg=❌ Expected service to be 'privateBus' but got '${pass}[service]'
 
     # Save _id globally for next steps
-    ${ticketId2}=    Get From Dictionary    ${ticket}    _id
-    Log    ✅ Found ticket with _id: ${ticketId2}
-    Set Global Variable    ${ticketId2}
+    ${passId2}=    Get From Dictionary    ${pass}    _id
+    Log    ✅ Found pass with _id: ${passId2}
+    Set Global Variable    ${passId2}
 
-Get ticket Detail Before validation 1
+Get Pass Detail Before validation 1
     [Documentation]    Se verifica el pase comprado desde la app usuario y que tenga 2 usos aún
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v2/products/user/purchased/${ticketId}/tickets/privateBus
+    ...    ${STAGE_URL}/api/v2/products/user/purchased/${passId}/passes/privateBus
 
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenNico}
@@ -617,33 +708,40 @@ Get ticket Detail Before validation 1
     # Almacenamos la respuesta de json en una variable para poder jugar con ella
 
 # Tomar el primer pase
-    ${ticket}=    Set Variable    ${response.json()}
+    ${pass}=    Set Variable    ${response.json()}
 
-    Should Be Equal As Strings    ${ticket}[name]    Automation Test Tickets 2
-    ...    msg=❌ Expected name to be 'Automation Test Tickets 2', but got '${ticket}[name]'
+    Should Be Equal As Strings    ${pass}[name]    Automation Test Passes 2
+    ...    msg=❌ Expected name to be 'Automation Test Passes 2', but got '${pass}[name]'
 
-    Should Be Equal As Strings    ${ticket}[description]    Automation Test Tickets 2
-    ...    msg=❌ Expected description to be 'Automation Test Tickets 2', but got '${ticket}[description]'
+    Should Be Equal As Strings    ${pass}[description]    Automation Test Passes 2
+    ...    msg=❌ Expected description to be 'Automation Test Passes 2', but got '${pass}[description]'
 
-    Should Be Equal As Numbers    ${ticket}[remaining]    2
-    ...    msg=❌ Expected remaining to be 2, but got '${ticket}[remaining]'
+    Should Be Equal As Numbers    ${pass}[remaining]    2
+    ...    msg=❌ Expected remaining to be 2, but got '${pass}[remaining]'
 
+    Should Be Equal As Strings    ${pass}[unlimitedUses]    False
+    ...    msg=❌ Expected unlimitedUses to be False, but got '${pass}[unlimitedUses]'
 
-    Should Be Equal As Numbers    ${ticket}[used]    0
-    ...    msg=❌ Expected used to be 0, but got '${ticket}[used]'
+    Should Be Equal As Numbers    ${pass}[maxDailyUses]    2
+    ...    msg=❌ Expected maxDailyUses to be 2, but got '${pass}[maxDailyUses]'
 
-    Should Be Equal As Strings    ${ticket}[allRoutes]    True
-    ...    msg=❌ Expected allRoutes to be True, but got '${ticket}[allRoutes]'
+    Should Be Equal As Numbers    ${pass}[used]    0
+    ...    msg=❌ Expected used to be 0, but got '${pass}[used]'
 
-    Should Be Equal As Strings    ${ticket}[allLots]    False
-    ...    msg=❌ Expected allLots to be False, but got '${ticket}[allLots]'
+    Should Be Equal As Strings    ${pass}[allRoutes]    True
+    ...    msg=❌ Expected allRoutes to be True, but got '${pass}[allRoutes]'
 
+    Should Be Equal As Strings    ${pass}[allLots]    False
+    ...    msg=❌ Expected allLots to be False, but got '${pass}[allLots]'
 
-Get ticket Detail Before validation 2
+    Should Be Equal As Numbers    ${pass}[remainingDailyUses]    2
+    ...    msg=❌ Expected remainingDailyUses to be 2, but got '${pass}[remainingDailyUses]'
+
+Get Pass Detail Before validation 2
     [Documentation]    Se verifica el pase comprado desde la app usuario y que tenga 2 usos aún
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v2/products/user/purchased/${ticketId2}/tickets/privateBus
+    ...    ${STAGE_URL}/api/v2/products/user/purchased/${passId2}/passes/privateBus
 
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenNico2}
@@ -654,28 +752,34 @@ Get ticket Detail Before validation 2
     # Almacenamos la respuesta de json en una variable para poder jugar con ella
 
 # Tomar el primer pase
-    ${ticket}=    Set Variable    ${response.json()}
+    ${pass}=    Set Variable    ${response.json()}
 
-    Should Be Equal As Strings    ${ticket}[name]    Automation Test Tickets 2
-    ...    msg=❌ Expected name to be 'Automation Test Tickets 2', but got '${ticket}[name]'
+    Should Be Equal As Strings    ${pass}[name]    Automation Test Passes 2
+    ...    msg=❌ Expected name to be 'Automation Test Passes 2', but got '${pass}[name]'
 
-    Should Be Equal As Strings    ${ticket}[description]    Automation Test Tickets 2
-    ...    msg=❌ Expected description to be 'Automation Test Tickets 2', but got '${ticket}[description]'
+    Should Be Equal As Strings    ${pass}[description]    Automation Test Passes 2
+    ...    msg=❌ Expected description to be 'Automation Test Passes 2', but got '${pass}[description]'
 
-    Should Be Equal As Numbers    ${ticket}[remaining]    2
-    ...    msg=❌ Expected remaining to be 2, but got '${ticket}[remaining]'
+    Should Be Equal As Numbers    ${pass}[remaining]    2
+    ...    msg=❌ Expected remaining to be 2, but got '${pass}[remaining]'
 
+    Should Be Equal As Strings    ${pass}[unlimitedUses]    False
+    ...    msg=❌ Expected unlimitedUses to be False, but got '${pass}[unlimitedUses]'
 
-    Should Be Equal As Numbers    ${ticket}[used]    0
-    ...    msg=❌ Expected used to be 0, but got '${ticket}[used]'
+    Should Be Equal As Numbers    ${pass}[maxDailyUses]    2
+    ...    msg=❌ Expected maxDailyUses to be 2, but got '${pass}[maxDailyUses]'
 
-    Should Be Equal As Strings    ${ticket}[allRoutes]    True
-    ...    msg=❌ Expected allRoutes to be True, but got '${ticket}[allRoutes]'
+    Should Be Equal As Numbers    ${pass}[used]    0
+    ...    msg=❌ Expected used to be 0, but got '${pass}[used]'
 
-    Should Be Equal As Strings    ${ticket}[allLots]    False
-    ...    msg=❌ Expected allLots to be False, but got '${ticket}[allLots]'
+    Should Be Equal As Strings    ${pass}[allRoutes]    True
+    ...    msg=❌ Expected allRoutes to be True, but got '${pass}[allRoutes]'
 
+    Should Be Equal As Strings    ${pass}[allLots]    False
+    ...    msg=❌ Expected allLots to be False, but got '${pass}[allLots]'
 
+    Should Be Equal As Numbers    ${pass}[remainingDailyUses]    2
+    ...    msg=❌ Expected remainingDailyUses to be 2, but got '${pass}[remainingDailyUses]'
 
 
 
@@ -771,27 +875,6 @@ Get User QR(UserRobotFramework) 2
     Set Global Variable    ${qrCodeNico2}
     Log    ${qrCodeNico2}
     Log    ${code}
-Get User QR(UserRobotFramework) No tickets
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/api/v1/admin/users/qrCodes?community=${idComunidad2}
-    ...    data={"ids":["68a75a4e7811f4c78b962442"]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-    Status Should Be    200
-
-    ${qrCodeNotickets}=    Set Variable    ${response.json()}[0][qrCode]
-    Set Global Variable    ${qrCodeNotickets}
-    Log    ${qrCodeNotickets}
-    Log    ${code}
 
 Validate With QR(Nico)
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -813,11 +896,11 @@ Validate With QR(Nico)
     Sleep    10s
 
 
-Get ticket Detail After validation (Online)
+Get Pass Detail After validation (Online)
     [Documentation]    Se verifica el descuento del pase luego de la validación online, debería quedan 1 solo uso
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v2/products/user/purchased/${ticketId}/tickets/privateBus
+    ...    ${STAGE_URL}/api/v2/products/user/purchased/${passId}/passes/privateBus
 
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenNico}
@@ -828,29 +911,36 @@ Get ticket Detail After validation (Online)
     # Almacenamos la respuesta de json en una variable para poder jugar con ella
 
 # Tomar el primer pase
-    ${ticket}=    Set Variable    ${response.json()}
+    ${pass}=    Set Variable    ${response.json()}
 
-    Should Be Equal As Strings    ${ticket}[name]    Automation Test Tickets 2
-    ...    msg=❌ Expected name to be 'Automation Test Tickets 2', but got '${ticket}[name]'
+    Should Be Equal As Strings    ${pass}[name]    Automation Test Passes 2
+    ...    msg=❌ Expected name to be 'Automation Test Passes 2', but got '${pass}[name]'
 
-    Should Be Equal As Strings    ${ticket}[description]    Automation Test Tickets 2
-    ...    msg=❌ Expected description to be 'Automation Test Tickets 2', but got '${ticket}[description]'
+    Should Be Equal As Strings    ${pass}[description]    Automation Test Passes 2
+    ...    msg=❌ Expected description to be 'Automation Test Passes 2', but got '${pass}[description]'
 
-    Should Be Equal As Numbers    ${ticket}[remaining]    1
-    ...    msg=❌ Expected remaining to be 1, but got '${ticket}[remaining]'
+    Should Be Equal As Numbers    ${pass}[remaining]    1
+    ...    msg=❌ Expected remaining to be 1, but got '${pass}[remaining]'
 
+    Should Be Equal As Strings    ${pass}[unlimitedUses]    False
+    ...    msg=❌ Expected unlimitedUses to be False, but got '${pass}[unlimitedUses]'
 
-    Should Be Equal As Numbers    ${ticket}[used]    1
-    ...    msg=❌ Expected used to be 1, but got '${ticket}[used]'
+    Should Be Equal As Numbers    ${pass}[maxDailyUses]    2
+    ...    msg=❌ Expected maxDailyUses to be 2, but got '${pass}[maxDailyUses]'
 
-    Should Be Equal As Strings    ${ticket}[allRoutes]    True
-    ...    msg=❌ Expected allRoutes to be True, but got '${ticket}[allRoutes]'
+    Should Be Equal As Numbers    ${pass}[used]    1
+    ...    msg=❌ Expected used to be 1, but got '${pass}[used]'
 
-    Should Be Equal As Strings    ${ticket}[allLots]    False
-    ...    msg=❌ Expected allLots to be False, but got '${ticket}[allLots]'
+    Should Be Equal As Strings    ${pass}[allRoutes]    True
+    ...    msg=❌ Expected allRoutes to be True, but got '${pass}[allRoutes]'
 
+    Should Be Equal As Strings    ${pass}[allLots]    False
+    ...    msg=❌ Expected allLots to be False, but got '${pass}[allLots]'
 
-Sync ticket validation offline
+    Should Be Equal As Numbers    ${pass}[remainingDailyUses]    1
+    ...    msg=❌ Expected remainingDailyUses to be 1, but got '${pass}[remainingDailyUses]'
+
+Sync pass validation offline
     Set Log Level    TRACE
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -864,7 +954,7 @@ Sync ticket validation offline
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v2/pb/driver/validations/sync/${idSuperCommunity}
-    ...    data={"validations":[{"assignedSeat":"3","communityId":"${idComunidad2}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico}","reason":[],"remainingTickets":0,"routeId":"68488d2a4ff298af70023813","synced":false,"token":"","userId":"${user_id}","validated":true},{"assignedSeat":"4","communityId":"${idComunidad2}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr2}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico2}","reason":[],"remainingTickets":0,"routeId":"68488d2a4ff298af70023813","synced":false,"token":"","userId":"${userId_2}","validated":false},{"assignedSeat":"4","communityId":"${idComunidad2}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr3}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNotickets}","reason":[],"remainingTickets":0,"routeId":"68488d2a4ff298af70023813","synced":false,"token":"","userId":"68a75a4e7811f4c78b962442","validated":true}]}
+    ...    data={"validations":[{"assignedSeat":"3","communityId":"${idComunidad2}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico}","reason":[],"remainingTickets":0,"routeId":"68488d2a4ff298af70023813","synced":false,"token":"","userId":"${user_id}","validated":true},{"assignedSeat":"4","communityId":"${idComunidad2}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr2}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico2}","reason":[],"remainingTickets":0,"routeId":"68488d2a4ff298af70023813","synced":false,"token":"","userId":"${userId_2}","validated":false}]}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
@@ -877,12 +967,12 @@ Sync ticket validation offline
         Should Not Be Empty    ${validation}    Validations info is empty
     END
 
-Get ticket Detail After validation (Offline)
+Get Pass Detail After validation (Offline)
     [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v2/products/user/purchased/${ticketId}/tickets/privateBus
+    ...    ${STAGE_URL}/api/v2/products/user/purchased/${passId}/passes/privateBus
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenNico}
 
@@ -892,33 +982,41 @@ Get ticket Detail After validation (Offline)
     # Almacenamos la respuesta de json en una variable para poder jugar con ella
 
 # Tomar el primer pase
-    ${ticket}=    Set Variable    ${response.json()}
+    ${pass}=    Set Variable    ${response.json()}
 
-    Should Be Equal As Strings    ${ticket}[name]    Automation Test Tickets 2
-    ...    msg=❌ Expected name to be 'Automation Test Tickets 2', but got '${ticket}[name]'
+    Should Be Equal As Strings    ${pass}[name]    Automation Test Passes 2
+    ...    msg=❌ Expected name to be 'Automation Test Passes 2', but got '${pass}[name]'
 
-    Should Be Equal As Strings    ${ticket}[description]    Automation Test Tickets 2
-    ...    msg=❌ Expected description to be 'Automation Test Tickets 2', but got '${ticket}[description]'
+    Should Be Equal As Strings    ${pass}[description]    Automation Test Passes 2
+    ...    msg=❌ Expected description to be 'Automation Test Passes 2', but got '${pass}[description]'
 
-    Should Be Equal As Numbers    ${ticket}[remaining]    0
-    ...    msg=❌ Expected remaining to be 0, but got '${ticket}[remaining]'
+    Should Be Equal As Numbers    ${pass}[remaining]    0
+    ...    msg=❌ Expected remaining to be 0, but got '${pass}[remaining]'
 
-    Should Be Equal As Numbers    ${ticket}[used]    2
-    ...    msg=❌ Expected used to be 2, but got '${ticket}[used]'
+    Should Be Equal As Strings    ${pass}[unlimitedUses]    False
+    ...    msg=❌ Expected unlimitedUses to be False, but got '${pass}[unlimitedUses]'
 
-    Should Be Equal As Strings    ${ticket}[allRoutes]    True
-    ...    msg=❌ Expected allRoutes to be True, but got '${ticket}[allRoutes]'
+    Should Be Equal As Numbers    ${pass}[maxDailyUses]    2
+    ...    msg=❌ Expected maxDailyUses to be 2, but got '${pass}[maxDailyUses]'
 
-    Should Be Equal As Strings    ${ticket}[allLots]    False
-    ...    msg=❌ Expected allLots to be False, but got '${ticket}[allLots]'
+    Should Be Equal As Numbers    ${pass}[used]    2
+    ...    msg=❌ Expected used to be 2, but got '${pass}[used]'
 
+    Should Be Equal As Strings    ${pass}[allRoutes]    True
+    ...    msg=❌ Expected allRoutes to be True, but got '${pass}[allRoutes]'
 
-Get ticket Detail After validation (Offline) User 2
+    Should Be Equal As Strings    ${pass}[allLots]    False
+    ...    msg=❌ Expected allLots to be False, but got '${pass}[allLots]'
+
+    Should Be Equal As Numbers    ${pass}[remainingDailyUses]    0
+    ...    msg=❌ Expected remainingDailyUses to be 0, but got '${pass}[remainingDailyUses]'
+
+Get Pass Detail After validation (Offline) User 2
     [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v2/products/user/purchased/${ticketId2}/tickets/privateBus
+    ...    ${STAGE_URL}/api/v2/products/user/purchased/${passId2}/passes/privateBus
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenNico2}
 
@@ -928,26 +1026,34 @@ Get ticket Detail After validation (Offline) User 2
     # Almacenamos la respuesta de json en una variable para poder jugar con ella
 
 # Tomar el primer pase
-    ${ticket}=    Set Variable    ${response.json()}
+    ${pass}=    Set Variable    ${response.json()}
 
-    Should Be Equal As Strings    ${ticket}[name]    Automation Test Tickets 2
-    ...    msg=❌ Expected name to be 'Automation Test Tickets 2', but got '${ticket}[name]'
+    Should Be Equal As Strings    ${pass}[name]    Automation Test Passes 2
+    ...    msg=❌ Expected name to be 'Automation Test Passes 2', but got '${pass}[name]'
 
-    Should Be Equal As Strings    ${ticket}[description]    Automation Test Tickets 2
-    ...    msg=❌ Expected description to be 'Automation Test Tickets 2', but got '${ticket}[description]'
+    Should Be Equal As Strings    ${pass}[description]    Automation Test Passes 2
+    ...    msg=❌ Expected description to be 'Automation Test Passes 2', but got '${pass}[description]'
 
-    Should Be Equal As Numbers    ${ticket}[remaining]    2
-    ...    msg=❌ Expected remaining to be 2, but got '${ticket}[remaining]'
+    Should Be Equal As Numbers    ${pass}[remaining]    2
+    ...    msg=❌ Expected remaining to be 2, but got '${pass}[remaining]'
 
-    Should Be Equal As Numbers    ${ticket}[used]    0
-    ...    msg=❌ Expected used to be 0, but got '${ticket}[used]'
+    Should Be Equal As Strings    ${pass}[unlimitedUses]    False
+    ...    msg=❌ Expected unlimitedUses to be False, but got '${pass}[unlimitedUses]'
 
-    Should Be Equal As Strings    ${ticket}[allRoutes]    True
-    ...    msg=❌ Expected allRoutes to be True, but got '${ticket}[allRoutes]'
+    Should Be Equal As Numbers    ${pass}[maxDailyUses]    2
+    ...    msg=❌ Expected maxDailyUses to be 2, but got '${pass}[maxDailyUses]'
 
-    Should Be Equal As Strings    ${ticket}[allLots]    False
-    ...    msg=❌ Expected allLots to be False, but got '${ticket}[allLots]'
+    Should Be Equal As Numbers    ${pass}[used]    0
+    ...    msg=❌ Expected used to be 0, but got '${pass}[used]'
 
+    Should Be Equal As Strings    ${pass}[allRoutes]    True
+    ...    msg=❌ Expected allRoutes to be True, but got '${pass}[allRoutes]'
+
+    Should Be Equal As Strings    ${pass}[allLots]    False
+    ...    msg=❌ Expected allLots to be False, but got '${pass}[allLots]'
+
+    Should Be Equal As Numbers    ${pass}[remainingDailyUses]    2
+    ...    msg=❌ Expected remainingDailyUses to be 2, but got '${pass}[remainingDailyUses]'
 
 
 Stop Post Leg Departure
@@ -981,7 +1087,7 @@ Delete Product from Admin
     # Realiza la solicitud GET en la sesión por defecto
     ${response}=    DELETE On Session
     ...    mysesion
-    ...    url=/api/v1/admin/products/${ticket_id}?community=6654ae4eba54fe502d4e4187
+    ...    url=/api/v1/admin/products/${product_id}?community=6654ae4eba54fe502d4e4187
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}

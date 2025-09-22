@@ -105,47 +105,47 @@ Create community Validation manual (Código de enrolamiento)
     ...    data={"community":"6654ae4eba54fe502d4e4187","values":[{"key":"rut","value":"111111111","listValue":null,"public":true,"check":true,"listOfRoutes":false},{"key":"address","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false},{"key":"coordinates","value":"","listValue":null,"public":false,"check":false,"listOfRoutes":false},{"key":"Color","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false},{"key":"Animal","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false},{"key":"Empresa","value":"","listValue":null,"public":true,"check":false,"listOfRoutes":false}],"validated":false}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-   ${customData}=    Set Variable    ${response.json()}
-   ${customValidationId}    Set Variable    ${response.json()}[_id]
+    ${customData}=	Set Variable	${response.json()}[validation]
+    ${customValidationId}=	Set Variable	${customData}[_id]
 
-   Set Global Variable    ${customValidationId}
+    Set Global Variable	${customValidationId}
 
-    Should Be Equal As Strings    ${customData}[community]  6654ae4eba54fe502d4e4187
-    ...    msg=❌ Community mismatch. Found: "${customData}[community]"
+    Should Be Equal As Strings	${customData}[community]	6654ae4eba54fe502d4e4187
+    ...	msg=❌ Community mismatch. Found: "${customData}[community]"
 
-    Should Be Equal As Strings    ${customData}[validated]  False
-    ...    msg=❌ Validated flag mismatch. Found: "${customData}[validated]"
+    Should Be Equal As Strings	${customData}[validated]	False
+    ...	msg=❌ Validated flag mismatch. Found: "${customData}[validated]"
 
-    ${value1}=    Set Variable    ${customData}[values][0]
-    Should Be Equal As Strings    ${value1}[key]     rut
-    Should Be Equal As Strings    ${value1}[value]   111111111
-    Should Be Equal As Strings    ${value1}[public]  True
-    ...    msg=❌ 'rut' field is incorrect. Found: ${value1}
+    ${value1}=	Set Variable	${customData}[values][0]
+    Should Be Equal As Strings	${value1}[key]	rut
+    Should Be Equal As Strings	${value1}[value]	111111111
+    Should Be Equal As Strings	${value1}[public]	True
+    ...	msg=❌ 'rut' field is incorrect. Found: ${value1}
 
-    ${value2}=    Set Variable    ${customData}[values][1]
-    Should Be Equal As Strings    ${value2}[key]     address
-    Should Be Equal As Strings    ${value2}[public]  True
-    ...    msg=❌ 'address' field is incorrect. Found: ${value2}
+    ${value2}=	Set Variable	${customData}[values][1]
+    Should Be Equal As Strings	${value2}[key]	address
+    Should Be Equal As Strings	${value2}[public]	True
+    ...	msg=❌ 'address' field is incorrect. Found: ${value2}
 
-    ${value3}=    Set Variable    ${customData}[values][2]
-    Should Be Equal As Strings    ${value3}[key]     coordinates
-    Should Be Equal As Strings    ${value3}[public]  False
-    ...    msg=❌ 'coordinates' field is incorrect. Found: ${value3}
+    ${value3}=	Set Variable	${customData}[values][2]
+    Should Be Equal As Strings	${value3}[key]	coordinates
+    Should Be Equal As Strings	${value3}[public]	False
+    ...	msg=❌ 'coordinates' field is incorrect. Found: ${value3}
 
-    ${value4}=    Set Variable    ${customData}[values][3]
-    Should Be Equal As Strings    ${value4}[key]     Color
-    Should Be Equal As Strings    ${value4}[public]  True
-    ...    msg=❌ 'Color' field is incorrect. Found: ${value4}
+    ${value4}=	Set Variable	${customData}[values][3]
+    Should Be Equal As Strings	${value4}[key]	Color
+    Should Be Equal As Strings	${value4}[public]	True
+    ...	msg=❌ 'Color' field is incorrect. Found: ${value4}
 
-    ${value5}=    Set Variable    ${customData}[values][4]
-    Should Be Equal As Strings    ${value5}[key]     Animal
-    Should Be Equal As Strings    ${value5}[public]  True
-    ...    msg=❌ 'Animal' field is incorrect. Found: ${value5}
+    ${value5}=	Set Variable	${customData}[values][4]
+    Should Be Equal As Strings	${value5}[key]	Animal
+    Should Be Equal As Strings	${value5}[public]	True
+    ...	msg=❌ 'Animal' field is incorrect. Found: ${value5}
 
-    ${value6}=    Set Variable    ${customData}[values][5]
-    Should Be Equal As Strings    ${value6}[key]     Empresa
-    Should Be Equal As Strings    ${value6}[public]  True
-    ...    msg=❌ 'Empresa' field is incorrect. Found: ${value6}
+    ${value6}=	Set Variable	${customData}[values][5]
+    Should Be Equal As Strings	${value6}[key]	Empresa
+    Should Be Equal As Strings	${value6}[public]	True
+    ...	msg=❌ 'Empresa' field is incorrect. Found: ${value6}
 Create user manually with already existing communityValidation
     [Documentation]    Crear un usuario individual de manera manual con un código ya existente
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -160,7 +160,6 @@ Create user manually with already existing communityValidation
     ...    headers=${headers}
 
     ${user}=    Set Variable    ${response.json()}[correct][0]
-    
     ${userId}=    Set Variable    ${response.json()}[correct][0][_id]
     Set Global Variable    ${userId}
 

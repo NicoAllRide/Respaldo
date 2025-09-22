@@ -9,7 +9,7 @@ Library     SeleniumLibrary
 Library     RPA.JSON
 Library     RPA.Smartsheet
 Resource    ../Variables/variablesStage.robot
-
+Library     WebSocketClient
 
 *** Test Cases ***
 Set Date Variables
@@ -75,6 +75,56 @@ Set Date Variables
     Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
     Set Global Variable    ${formatted_one_hour_later}
 
+Login User With Email(Obtain Token) Carpool 1
+        Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${jsonBody}=    Set Variable    {"username":"nicolas+carpool1@allrideapp.com","password":"Lolowerty21@"}
+    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
+    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Post On Session
+    ...    mysesion
+    ...    url=${loginUserUrl}
+    ...    json=${parsed_json}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
+    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
+    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
+    ${realTimeToken}=    Set Variable    ${response.json()}[realTimeToken]
+    ${accessTokenCarpool1}=    Evaluate    "${accessToken}"
+    Set Global Variable    ${accessTokenCarpool1}
+    Set Global Variable    ${realTimeToken}
+Login User With Email(Obtain Token) Carpool 2
+        Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${jsonBody}=    Set Variable    {"username":"nicolas+carpool2@allrideapp.com","password":"Lolowerty21@"}
+    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
+    ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Post On Session
+    ...    mysesion
+    ...    url=${loginUserUrl}
+    ...    json=${parsed_json}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
+    List Should Contain Value    ${response.json()}    accessToken            No accesToken found in Login!, Failing
+    ${accessToken}=    Set Variable    ${response.json()}[accessToken]
+    ${accessTokenCarpool2}=    Evaluate    "${accessToken}"
+    Set Global Variable    ${accessTokenCarpool2}
+    ${realTimeTokenUser}=    Set Variable    ${response.json()}[realTimeToken]
+    Set Global Variable    ${realTimeTokenUser}
+
+
+
+## Vista Principal Carpool
 Get trip list at start
     [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
 
@@ -104,7 +154,6 @@ Get community places
     ${json}=    Set Variable    ${response.json()}
 
 ## Crear ruta
-
 Create recurrent route as driver (user1)
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -168,6 +217,7 @@ Create recurrent route as driver (user1)
     ...    Fail
     ...    ❌ Restriction type must be 'public'
 
+##Vista principal carpool luego de crear una ruta recurrente
 Get route just created(Driver) And TripInstances
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/tripinstances/for_trip/${tripId}
@@ -208,6 +258,8 @@ Get route just created(Driver) And TripInstances
     Log To Console    TripInstance4: ${tripinstance4}
     Log To Console    TripInstance5: ${tripinstance5}
 
+
+#Buscador de rutas
 Search Route And Validate ID (User 2)
     [Documentation]    Recorre el response del endpoint de coordenadas y verifica si existe un objeto con el _id esperado.
     Set Log Level    TRACE
@@ -237,6 +289,7 @@ Search Route And Validate ID (User 2)
         Fail    ❌    Could not find the expected ID (${expected_id}) in the /search/coordinates response.
     END
 
+#Seguir ruta
 Follow Route(User 2)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -327,7 +380,7 @@ Accept follower
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/trips/accept/${tripId}/68b7576fc6280f9b167a25c8
-    ...    data={"pickupPointLat":"0","pickupPointLon":"0"}
+    ...    data={"pickupPointLat":"-33.456","pickupPointLon":"-70.6480"}
     ...    headers=${headers}
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
@@ -523,6 +576,55 @@ Start carpool departure
     ${json}=    Set Variable    ${response.json()}
     ${accessTokenDeparture}=    Set Variable    []    ###Reeemplazar
 
+Validate user by socket(New position) Driver
+   ${URL_with_token}=    Set Variable    wss://stage.allrideapp.com/socket.io/?token=${realTimeToken}&EIO=3&transport=websocket
+    ${user_socket}=    Connect    ${URL_with_token}
+    Log    Connected to WebSocket (User)
+
+    Send    ${user_socket}    40/carpoolRealtime?token=${realTimeToken}
+    Sleep    2s
+    ${result}=    Recv Data    ${user_socket}
+    Log    Received (auth): ${result}
+
+    Send    ${user_socket}    42/carpoolRealtime,["join"]
+    Sleep    2s
+    ${result}=    Recv Data    ${user_socket}
+    Log    Received (join): ${result}
+
+    Send    ${user_socket}    42/carpoolRealtime,["newPosition", {"latitude": -33.456, "longitude": -70.6480}]
+    Sleep    3s
+    ${result}=    Recv Data    ${user_socket}
+    Log    Posición inicial enviada (user): ${result}
+
+    Send    ${user_socket}    42/carpoolRealtime,["newPosition", {"latitude": -33.456, "longitude": -70.6480}]
+    Sleep    3s
+    ${result}=    Recv Data    ${user_socket}
+    Log    Posición desviada final (user): ${result}
+Validate user by socket(New position) User
+   ${URL_with_token}=    Set Variable    wss://stage.allrideapp.com/socket.io/?token=${realTimeTokenUser}&EIO=3&transport=websocket
+    ${user_socket}=    Connect    ${URL_with_token}
+    Log    Connected to WebSocket (User)
+
+    Send    ${user_socket}    40/carpoolRealtime?token=${realTimeToken}
+    Sleep    2s
+    ${result}=    Recv Data    ${user_socket}
+    Log    Received (auth): ${result}
+
+    Send    ${user_socket}    42/carpoolRealtime,["join"]
+    Sleep    2s
+    ${result}=    Recv Data    ${user_socket}
+    Log    Received (join): ${result}
+
+    Send    ${user_socket}    42/carpoolRealtime,["newPosition", {"latitude": -33.456, "longitude": -70.6480}]
+    Sleep    3s
+    ${result}=    Recv Data    ${user_socket}
+    Log    Posición inicial enviada (user): ${result}
+
+    Send    ${user_socket}    42/carpoolRealtime,["newPosition", {"latitude": -33.456, "longitude": -70.6480}]
+    Sleep    3s
+    ${result}=    Recv Data    ${user_socket}
+    Log    Posición desviada final (user): ${result}
+
 Get Chats
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
@@ -564,6 +666,9 @@ Get Chats (driver)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     ${json}=    Set Variable    ${response.json()}
+
+
+
 
 End trip
     Create Session    mysesion    ${STAGE_URL}    verify=true
@@ -623,6 +728,7 @@ End trip
     ...    msg=❌ Passenger ID is missing in the trip instance
 
 Delete trip
+
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     ${headers}=    Create Dictionary
