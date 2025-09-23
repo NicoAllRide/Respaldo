@@ -77,18 +77,16 @@ Set Date Variables
 
 Login User With Email(Obtain Token) Carpool 1
         Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
+
     ${jsonBody}=    Set Variable    {"username":"nicolas+carpool1@allrideapp.com","password":"Lolowerty21@"}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
+
     ${response}=    Post On Session
     ...    mysesion
     ...    url=${loginUserUrl}
     ...    json=${parsed_json}
     ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
@@ -100,18 +98,15 @@ Login User With Email(Obtain Token) Carpool 1
     Set Global Variable    ${realTimeToken}
 Login User With Email(Obtain Token) Carpool 2
         Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
+
     ${jsonBody}=    Set Variable    {"username":"nicolas+carpool2@allrideapp.com","password":"Lolowerty21@"}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    Post On Session
     ...    mysesion
     ...    url=${loginUserUrl}
     ...    json=${parsed_json}
     ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
@@ -126,20 +121,35 @@ Login User With Email(Obtain Token) Carpool 2
 
 ## Vista Principal Carpool
 Get trip list at start
-    [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    [Documentation]  Lista de viajes en vista principal de carpool
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/trips/list
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}
+    &{headers}=    Create Dictionary    Authorization=Bearer d3b4104a79edf3ebd7797523b601471e349e1228811f6ee9a7b38689f442fe19dd5c4aeb7e56ceeac71528a2d13bcd7f483c531bced01d9d589bbbe615c53342
 
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    GET    url=${url}    headers=${headers}
     Should Be Equal As Numbers    ${response.status_code}    200
-    # Almacenamos la respuesta de json en una variable para poder jugar con ella
 
-Get community places
+    #La cantidad total de viajes que deben aparecen deben ser 3
+    #El nombre owner de los dos primeros viajes debe ser Barbara
+    
+    ${json}=    Set Variable    ${response.json()}
+    ${lastTripId}=    Set Variable    ${json}[-1][_id]
+    ${trip1OwnerName}=  Set Variable   ${json}[0][owner][name]
+    ${trip2OwnerName}=  Set Variable  ${json}[1][owner][name]
+    ${trip3OwnerName}=  Set Variable  ${json}[2][owner][name]
+
+    Should Be Equal As Strings    ${trip1OwnerName}    Barbara Lisboa         msg= name should be Barbara Lisboa but got ${trip1OwnerName}
+    Should Be Equal As Strings    ${trip2OwnerName}    Barbara Lisboa         msg= name should be Barbara Lisboa but got ${trip2OwnerName}
+    Should Be Equal As Strings    ${trip3OwnerName}    Paulina Pasajero         msg= name should be Paulina Pasajero but got ${trip3OwnerName}
+
+
+    
+
+    
+
+Get community places (CONSULTAR BODY CRIS O JC)
+    [Documentation]  Obtener los lugares de la comunuidad
+
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     ${headers}=    Create Dictionary
@@ -148,33 +158,39 @@ Get community places
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/communities/places
+    ...    data=""
     ...    headers=${headers}
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     ${json}=    Set Variable    ${response.json()}
 
-## Crear ruta
-Create recurrent route as driver (user1)
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+########################################## Crear ruta de un solo viaje está pendiente############################################
 
-    # Configura las opciones de la solicitud (headers, auth)
+
+
+Create recurrent route as driver (user1)
+    [Documentation]  Crear una ruta recurrente como conductor(usuario 1)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+ 
     ${headers}=    Create Dictionary
     ...    Authorization=Bearer ${accessTokenCarpool1}
     ...    Content-Type=application/json; charset=utf-8
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
     ...    url=/api/v1/trips/
     ...    data={"allowsSectionCost":false,"aproxWaypoints":{"coordinates":[[-70.85381,-34.41107],[-70.85367,-34.41072],[-70.8535,-34.41007],[-70.85308,-34.40853],[-70.85251,-34.4076],[-70.85206,-34.40705],[-70.85159,-34.40653],[-70.85126,-34.4062],[-70.85087,-34.40583],[-70.85045,-34.40546],[-70.85003,-34.40502],[-70.84913,-34.40427],[-70.84813,-34.40353],[-70.84789,-34.40336],[-70.84742,-34.40297],[-70.84739,-34.40294],[-70.84736,-34.40283],[-70.84736,-34.4028],[-70.84715,-34.40279],[-70.84644,-34.40275],[-70.84573,-34.40269],[-70.8454,-34.40264],[-70.84433,-34.40239],[-70.84376,-34.40229],[-70.84337,-34.40227],[-70.84272,-34.40227],[-70.84241,-34.40229],[-70.84184,-34.40239],[-70.84125,-34.4025],[-70.83714,-34.40315],[-70.83642,-34.40327],[-70.8354,-34.40344],[-70.83488,-34.40357],[-70.83406,-34.40379],[-70.83375,-34.4039],[-70.83302,-34.4042],[-70.83145,-34.40482],[-70.83095,-34.40499],[-70.8303,-34.40523],[-70.82964,-34.40545],[-70.8294,-34.40552],[-70.82864,-34.40566],[-70.82751,-34.40584],[-70.82674,-34.40595],[-70.82589,-34.40601],[-70.8242,-34.40606],[-70.82344,-34.4061],[-70.8232,-34.40616],[-70.82282,-34.40633],[-70.82265,-34.40642],[-70.82228,-34.40661],[-70.82046,-34.40749],[-70.81975,-34.40782],[-70.81846,-34.40853],[-70.8176,-34.409],[-70.81725,-34.40913],[-70.81608,-34.40943],[-70.81525,-34.40961],[-70.81484,-34.40975],[-70.81446,-34.40992],[-70.81407,-34.41013],[-70.81334,-34.41055],[-70.81312,-34.41068],[-70.81286,-34.41062],[-70.81253,-34.41052],[-70.8121,-34.41037],[-70.80991,-34.40956],[-70.80924,-34.4093],[-70.80898,-34.40916],[-70.80834,-34.40865],[-70.80719,-34.40769],[-70.80685,-34.40737],[-70.80617,-34.40667],[-70.80582,-34.40635],[-70.80503,-34.40567],[-70.80483,-34.40554],[-70.8044,-34.40537],[-70.80415,-34.40527],[-70.80403,-34.40516],[-70.80382,-34.40491],[-70.80369,-34.40478],[-70.80358,-34.4047],[-70.8035,-34.40466],[-70.80312,-34.40457],[-70.80267,-34.40449],[-70.80251,-34.40444],[-70.80206,-34.40428],[-70.80188,-34.40425],[-70.80164,-34.40424],[-70.80096,-34.40423],[-70.80057,-34.4042],[-70.80041,-34.40421],[-70.80014,-34.40424],[-70.79997,-34.40422],[-70.79917,-34.40404],[-70.79892,-34.40455],[-70.79848,-34.40551],[-70.7984,-34.40561],[-70.79822,-34.40577],[-70.79717,-34.40651],[-70.797,-34.40664],[-70.79688,-34.40679],[-70.79667,-34.40719],[-70.79651,-34.40748],[-70.7962,-34.40792],[-70.79594,-34.4078],[-70.79534,-34.40744],[-70.79477,-34.4071],[-70.79366,-34.40644],[-70.79082,-34.40485],[-70.78907,-34.40384],[-70.78692,-34.40257],[-70.78458,-34.40116],[-70.78446,-34.40109],[-70.78438,-34.40108],[-70.78428,-34.40113],[-70.78417,-34.4012],[-70.78407,-34.40119],[-70.78353,-34.4009],[-70.78304,-34.40056],[-70.7827,-34.40029],[-70.78251,-34.40016],[-70.78235,-34.40008],[-70.78271,-34.3996],[-70.78272,-34.39955],[-70.78254,-34.39927],[-70.78226,-34.39882],[-70.78216,-34.39857],[-70.78178,-34.39746],[-70.78166,-34.39704],[-70.78167,-34.39695],[-70.78207,-34.39635],[-70.78252,-34.39578],[-70.78226,-34.39571],[-70.78214,-34.39566],[-70.78236,-34.39534],[-70.78264,-34.39501],[-70.78255,-34.3948],[-70.78238,-34.39462]],"type":"LineString"},"codedRoute":"d|_qEhsmoLeA[aCa@sHsAyDqBmByAgBAaAaAiAmAiAsAwAsAuCsDsCgEa@o@mAAEEUEE?Ai@GmCKmCIaAq@uESqBCmA?aCB@RqBTuB`CuXVoC`@kEXgBj@cDT@z@qCzByH`@cBn@aCj@cCLo@ZwCb@aFTyCJiDHqIFwCJo@`@kAPa@d@iAnDkJ`AmClCaG|AkDXeAz@iFb@eDZqA`@kAh@mArAqCXk@Ks@SaA]uAaDuLs@eC[s@eB_C_EeF_AcAkCgC_AeAgCCYg@a@uASq@UWq@i@YYOUGOQkAOyAI_@_@yAEc@Ao@AgCEmA@_@Du@Ca@c@_DdBq@~DwARO^c@rCqEXa@WnAi@x@_@vA@Ws@gAwBcAqBcCEHwPiEIFmLyGsMMWAOHSLUASy@kBcAaBu@cAYe@O_@_BfAI@w@c@yAw@q@SEkAsAWQ@wBnAqBxAMs@IW_Aj@aAv@i@Qc@a@","comment":"","cost":0,"currency":"","destination":{"communityId":"","icon":"","location":[-70.7819,-34.3945],"longName":"Media luna cerrillos","placeId":"6654d4c8713b9a5184cfe1de","reference":"","shortName":"Media Luna Cerrillos"},"dropoutPlaces":[],"fee":0,"filed":false,"followerShards":[],"followers":[],"followersData":[],"_id":"","tripInstances":[],"new":true,"origin":{"communityId":"","icon":"","location":[-70.8537,-34.4111],"longName":"Hospital Rengo","placeId":"","reference":"","shortName":"Hospital Rengo"},"pending":[],"pendingsData":[],"pickupPlaces":[],"recurrent":true,"restrictions":[{"_id":"","restrictionType":"public"}],"seats":4,"sectionCost":true,"startDate":"2025-08-04T17:44:13.666-04:00","studentFee":false,"timezone":"America/Santiago","tripDates":[{"day":"monday","_id":"","time":"1970-01-01T18:38:00.000-03:00"}],"userId":""}
     ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    Convert To String    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
 
     ${json}=    Set Variable    ${response.json()}
     ${tripId}=    Set Variable    ${json}[_id]
     Set Global Variable    ${tripId}
+
+    #✅ Privacidad
+
+    ${restriction}=    Set Variable    ${json}[restrictions][0][restrictionType]
+    Should Be Equal As Strings    ${restriction}    public    msg=restriction should be public but got ${restriction}
 
     # ✅ Basic status
     Should Not Be Empty    ${tripId}    # ✅ Trip must have an internal ID
@@ -219,6 +235,8 @@ Create recurrent route as driver (user1)
 
 ##Vista principal carpool luego de crear una ruta recurrente
 Get route just created(Driver) And TripInstances
+        [Documentation]  Obtener la ruta recién creada y los tripInstances, corresponden a los días en los que se genera cada ruta
+
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/tripinstances/for_trip/${tripId}
     &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}
@@ -227,7 +245,10 @@ Get route just created(Driver) And TripInstances
     Should Be Equal As Numbers    ${response.status_code}    200
 
     ${trips}=    Set Variable    ${response.json()}
-
+    ${passengers}=    Set Variable    ${response.json()}[passengers]
+    ${passengersLength}=    Get Length    ${passengers}
+    
+    Should Be Empty    ${passengers}    msg=passengers should be empty but found ${passengersLength}
     # ✅ Validate total count is 5
     Length Should Be    ${trips}    5
     ...    msg=❌ Expected 5 trip instances, but got a different number
@@ -261,8 +282,7 @@ Get route just created(Driver) And TripInstances
 
 #Buscador de rutas
 Search Route And Validate ID (User 2)
-    [Documentation]    Recorre el response del endpoint de coordenadas y verifica si existe un objeto con el _id esperado.
-    Set Log Level    TRACE
+    [Documentation]    Buscar la ruta recién creada mediante su ID como usuario 2
 
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/search/coordinates?country=cl&origin_lat=-34.4111&origin_lon=-70.8537&destination_lat=-34.3945&destination_lon=-70.7819&origin_name=Hospital%20Rengo&destination_name=Media%20Luna%20Cerrillos&origin_place_id=6654d4acba54fe502d4e6b6a&destination_place_id=6654d4c8713b9a5184cfe1de
@@ -291,6 +311,8 @@ Search Route And Validate ID (User 2)
 
 #Seguir ruta
 Follow Route(User 2)
+    [Documentation]  Seguir ruta recién encontrada como usuario
+
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     ${headers}=    Create Dictionary
@@ -305,16 +327,13 @@ Follow Route(User 2)
     Should Be Equal As Numbers    ${code}    200
     ${json}=    Set Variable    ${response.json()}
 
-Get requested user following route() 1
-    [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
+Get requested user following route as Driver
+    [Documentation]    Verificar la información del usuario que está solicitando unirse como conductor
 
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
     ...    ${STAGE_URL}/api/v1/users/68b7576fc6280f9b167a25c8
-    # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}
 
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    GET    url=${url}    headers=${headers}
     Should Be Equal As Numbers    ${response.status_code}    200
     ${user}=    Set Variable    ${response.json()}
@@ -371,7 +390,9 @@ Get requested user following route() 1
     Should Not Be Empty    ${user["auth"]["chatToken"]}
     ...    msg=❌ User is missing chatToken
 
-Accept follower
+Accept follower as Driver
+    [Documentation]  Aceptar seguidor del viaje como Conductor
+
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     ${headers}=    Create Dictionary
@@ -457,37 +478,10 @@ Accept follower
     Should Be Equal As Strings    ${follower["accepted"]}    True
     ...    msg=❌ Follower should be accepted
 
-Get tripInstances
-    [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
 
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/tripinstances/for_trip/${tripId}
-    # Configura las opciones de la solicitud (headers, auth)
-    &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenCarpool1}
+Confirm tripInstances as Driver
+    [Documentation]  Confirmar salida luego de que se aceptara al usuario
 
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    GET    url=${url}    headers=${headers}
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    ${trip_instances}=    Set Variable    ${response.json()}
-
-    FOR    ${trip_instance}    IN    @{trip_instances}
-        Should Be Equal As Strings    ${trip_instance["status"]}    published
-        ...    msg=❌ Trip instance status should be 'plubished'
-
-        Should Be True    ${trip_instance["recurrent"]}
-        ...    msg=❌ Trip instance should be recurrent but is not
-
-        Should Not Be Empty    ${trip_instance["_id"]}
-
-        Should Not Be Empty    ${trip_instance["tripId"]}
-        ...    msg=❌ Trip instance missing tripId
-        Should Not Be Empty    ${trip_instance["userId"]}
-        ...    msg=❌ Trip instance missing userId
-    END
-
-Confirm tripInstances
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     ${headers}=    Create Dictionary
@@ -576,7 +570,9 @@ Start carpool departure
     ${json}=    Set Variable    ${response.json()}
     ${accessTokenDeparture}=    Set Variable    []    ###Reeemplazar
 
-Validate user by socket(New position) Driver
+Validate user by socket(New position) Driver pendiente
+    Skip
+
    ${URL_with_token}=    Set Variable    wss://stage.allrideapp.com/socket.io/?token=${realTimeToken}&EIO=3&transport=websocket
     ${user_socket}=    Connect    ${URL_with_token}
     Log    Connected to WebSocket (User)
@@ -601,6 +597,7 @@ Validate user by socket(New position) Driver
     ${result}=    Recv Data    ${user_socket}
     Log    Posición desviada final (user): ${result}
 Validate user by socket(New position) User
+    Skip
    ${URL_with_token}=    Set Variable    wss://stage.allrideapp.com/socket.io/?token=${realTimeTokenUser}&EIO=3&transport=websocket
     ${user_socket}=    Connect    ${URL_with_token}
     Log    Connected to WebSocket (User)

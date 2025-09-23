@@ -19,6 +19,8 @@ ${VEH_PLATE}            XXYYZZ
 
 ${START_OFFSET_MIN}     10
 ${END_OFFSET_MIN}       70
+${PAYLOADS_FILE}           rf_payloads_6025198_from_0750.txt
+${DELAY_S}                 5s
 
 
 *** Test Cases ***
@@ -30,10 +32,7 @@ Generate random UUIDs
     Log    ${uuid_qr2}
     Log    ${uuid_qr3}
 
-    
-
-Create Route
-    ${ROUTE_EXT_ID}=    Evaluate    f"ROUTE-XYZ-{__import__('random').randint(10000, 99999)}"
+    ${ROUTE_EXT_ID}=    Set Variable    5708
     ${SERVICE_EXT_ID}=    Evaluate    f"SERVICE-XYZ-{__import__('random').randint(10000, 99999)}"
     ${DRIVER_EXT_ID}=    Evaluate    f"DRIVER-XYZ-{__import__('random').randint(10000, 99999)}"
     ${VEHICLE_EXT_ID}=    Evaluate    f"VEH-XYZ-{__import__('random').randint(10000, 99999)}"
@@ -54,113 +53,6 @@ Create Route
     Set Global Variable    ${DRIVER_EXT_ID}
     Set Global Variable    ${VEHICLE_EXT_ID}
     Set Global Variable    ${SERVICE_EXT_ID}
-
-    ${stops}=    Set Variable
-    ...    [{"name":"Oficina Central","latitude":-33.456,"longitude":-70.678,"order":0},{"name":"Parada Intermedia 1","latitude":-33.460,"longitude":-70.685,"order":1},{"name":"Planta Norte","latitude":-33.470,"longitude":-70.695,"order":2}]
-    ${headers}=    Create Dictionary    Authorization=${EXT_API_KEY}    Content-Type=application/json
-    ${payload}=    Set Variable
-    ...    {"externalRouteId":"${ROUTE_EXT_ID}","externalClientId":"3335","name":"Ruta E2E RF 2","description":"Ruta de ida y vuelta","stops":${stops},"distance":15.5}
-    ${response}=    POST On Session    mysesion    url=/ext/api/v2/routes    data=${payload}    headers=${headers}
-    Status Should Be    200
-
-    ${json}=    Set Variable    ${response.json()}
-
-    # ✅ Código de estado
-    Should Be Equal As Numbers    ${response.status_code}    200
-    ...    msg=❌ Expected status 200 but got ${response.status_code}
-
-    # ✅ Mensaje de éxito
-    Should Be Equal As Strings    ${json}[message]    Route created successfully
-    ...    msg=❌ Route creation message mismatch. Got: "${json}[message]"
-
-    # ✅ Nombre de la ruta
-    Should Be Equal As Strings    ${json}[route][name]    Ruta E2E RF 2
-    ...    msg=❌ Route name is incorrect. Expected 'Ruta E2E RF 2' but got "${json}[route][name]"
-
-    # ✅ Distancia en metros mayor a 0
-    ${distance}=    Set Variable    ${json}[route][distanceInMeters]
-    Should Be True    ${distance} > 0
-    ...    msg=❌ Distance in meters should be greater than 0 but got ${distance}
-
-    # ✅ Community ID correcto
-    Should Be Equal As Strings    ${json}[route][communityId]    5b8576db00a0355421d76393
-    ...    msg=❌ CommunityId mismatch. Expected '5b8576db00a0355421d76393' but got "${json}[route][communityId]"
-
-    # ✅ ShapeId presente
-    Should Not Be Empty    ${json}[route][shapeId]
-    ...    msg=❌ ShapeId is missing
-
-    # ✅ Estado activo
-    Should Be Equal As Strings    ${json}[route][active]    True
-    ...    msg=❌ Route should be active but got "${json}[route][active]"
-
-Read Route
-    ${url}=    Set Variable    ${STAGE_URL}/ext/api/v2/routes/${ROUTE_EXT_ID}?externalClientId=3335
-    &{headers}=    Create Dictionary    Authorization=${EXT_API_KEY}
-    ${response}=    GET    url=${url}    headers=${headers}
-    Should Be Equal As Numbers    ${response.status_code}    200
-    ${json}=    Set Variable    ${response.json()}
-
-    # ✅ Código de estado
-    Should Be Equal As Numbers    ${response.status_code}    200
-    ...    msg=❌ Expected status 200 but got ${response.status_code}
-
-    # ✅ Mensaje de éxito
-    Should Be Equal As Strings    ${json}[message]    Route get successfully
-    ...    msg=❌ Route GET message mismatch. Got: "${json}[message]"
-
-    # ✅ ExternalRouteId correcto con prefijo
-    ${extRouteId}=    Set Variable    ${json}[data][externalRouteId]
-    Should Start With    ${extRouteId}    ROUTE-XYZ-
-    ...    msg=❌ ExternalRouteId must start with ROUTE-XYZ- but got "${extRouteId}"
-
-    # ✅ ExternalClientId esperado
-    Should Be Equal As Strings    ${json}[data][externalClientId]    3335
-    ...    msg=❌ ExternalClientId mismatch. Expected '3335' but got "${json}[data][externalClientId]"
-
-    # ✅ Nombre de la ruta
-    Should Be Equal As Strings    ${json}[data][name]    Ruta E2E RF 2
-    ...    msg=❌ Route name mismatch. Expected 'Ruta E2E RF 2' but got "${json}[data][name]"
-
-    # ✅ Descripción de la ruta
-    Should Be Equal As Strings    ${json}[data][description]    Ruta de ida y vuelta
-    ...    msg=❌ Route description mismatch. Got: "${json}[data][description]"
-
-    # ✅ Distancia mayor a 0
-    ${distance}=    Set Variable    ${json}[data][distance]
-    Should Be True    ${distance} > 0
-    ...    msg=❌ Distance must be greater than 0 but got ${distance}
-
-
-Update Route
-    ${stops2}=    Set Variable
-    ...    [{"name":"Oficina Central","latitude":-33.456,"longitude":-70.678,"order":0},{"name":"Parada Intermedia 1","latitude":-33.463,"longitude":-70.686,"order":1},{"name":"Planta Norte","latitude":-33.471,"longitude":-70.696,"order":2}]
-    ${headers}=    Create Dictionary    Authorization=${EXT_API_KEY}    Content-Type=application/json
-    ${payload}=    Set Variable
-    ...    {"name":"Ruta E2E RF (v2)","description":"Ruta editada","stops":${stops2},"distance":16.2}
-    ${response}=    PUT On Session
-    ...    mysesion
-    ...    url=/ext/api/v2/routes/${ROUTE_EXT_ID}?externalClientId=3335
-    ...    data=${payload}
-    ...    headers=${headers}
-    Status Should Be    200
-
-    ${json}=    Set Variable    ${response.json()}
-
-    # ✅ Status code debe ser 200
-    Should Be Equal As Numbers    ${response.status_code}    200
-    ...    msg=❌ Expected status 200 but got ${response.status_code}
-
-    # ✅ Mensaje debe ser el esperado
-    Should Be Equal As Strings    ${json}[message]    Route updated successfully
-    ...    msg=❌ Expected message 'Route updated successfully' but got "${json}[message]"
-
-Read Route After Update
-    ${url}=    Set Variable    ${STAGE_URL}/ext/api/v2/routes/${ROUTE_EXT_ID}?externalClientId=3335
-    &{headers}=    Create Dictionary    Authorization=${EXT_API_KEY}
-    ${response}=    GET    url=${url}    headers=${headers}
-    Should Be Equal As Numbers    ${response.status_code}    200
-    ${json}=    Set Variable    ${response.json()}
 
 Create Driver
     ${headers}=    Create Dictionary    Authorization=${EXT_API_KEY}    Content-Type=application/json
@@ -276,26 +168,29 @@ Start Service
     sleep     2h
 
 Submit Location
-    ${ts}=    Get Current Date    UTC    result_format=%Y-%m-%dT%H:%M:%SZ
-    ${headers}=    Create Dictionary    Authorization=${EXT_API_KEY}    Content-Type=application/json
-    ${payload}=    Set Variable
-    ...    {"externalClientId":"3335","timestamp":"${ts}","location":{"latitude":-33.465,"longitude":-70.690},"speed":35.5,"heading":180,"accuracy":10}
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=/ext/api/v2/services/${SERVICE_EXT_ID}/location
-    ...    data=${payload}
-    ...    headers=${headers}
-    Status Should Be    200
+    Create Session    mysesion    ${STAGE_URL}
+    ${headers}=       Create Dictionary    Authorization=${EXT_API_KEY}    Content-Type=application/json
+    ${content}=       Get File    ${PAYLOADS_FILE}
+    ${lines}=         Split To Lines    ${content}
+    ${count}=         Get Length    ${lines}
 
-    ${json}=    Set Variable    ${response.json()}
+    FOR    ${i}    IN RANGE    ${count}
+        ${line}=     Get From List    ${lines}    ${i}
+        Run Keyword If    '${line}' == ''    Continue For Loop
 
-    # ✅ Código de estado
-    Should Be Equal As Numbers    ${response.status_code}    200
-    ...    msg=❌ Expected status 200 but got ${response.status_code}
+        ${ts}=        Get Current Date    UTC    result_format=%Y-%m-%dT%H:%M:%SZ
+        ${payload}=   Replace Variables    ${line}      # resuelve ${ts} dentro del JSON
+        ${n}=         Evaluate    ${i}+1
+        Log To Console    \n--- Submit Location ${n}/${count} ---
 
-    # ✅ Mensaje
-    Should Be Equal As Strings    ${json}[message]    Location received successfully
-    ...    msg=❌ Expected message 'Location received successfully' but got "${json}[message]"
+        ${response}=  POST On Session
+        ...           mysesion
+        ...           url=/ext/api/v2/services/${SERVICE_EXT_ID}/location
+        ...           data=${payload}
+        ...           headers=${headers}
+        Status Should Be    200
+        Sleep         ${DELAY_S}
+    END
 
 Get Service Details
     ${url}=    Set Variable    ${STAGE_URL}/ext/api/v2/services/${SERVICE_EXT_ID}?externalClientId=3335

@@ -1,24 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250904 11:03:12.307" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20250923 11:21:39.762" rpa="false" schemaversion="4">
 <suite id="s1" name="Robot Interactive Console" source="c:\Users\UsuarioCompuElite\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
-<kw name="Set Location">
-<arg>-34.409410992051406</arg>
-<arg>-70.84924000874159</arg>
-<msg timestamp="20250904 11:03:12.572" level="FAIL">No keyword with name 'Set Location' found.</msg>
-<status status="FAIL" starttime="20250904 11:03:12.572" endtime="20250904 11:03:12.572"/>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${STAGE_URL}/api/v1/tripinstances/for_trip/${tripId}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 11:21:40.021" level="FAIL">Variable '${STAGE_URL}' not found.</msg>
+<status status="FAIL" starttime="20250923 11:21:40.020" endtime="20250923 11:21:40.021"/>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>10s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20250904 11:03:12.572" endtime="20250904 11:03:12.572"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" starttime="20250923 11:21:40.021" endtime="20250923 11:21:40.021"/>
 </kw>
-<status status="PASS" starttime="20250904 11:03:12.321" endtime="20250904 11:03:13.721"/>
+<kw name="GET">
+<var>${response}</var>
+<arg>url=${url}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" starttime="20250923 11:21:40.021" endtime="20250923 11:21:40.021"/>
 </kw>
-<status status="PASS" starttime="20250904 11:03:12.321" endtime="20250904 11:03:13.721"/>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" starttime="20250923 11:21:40.021" endtime="20250923 11:21:40.021"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${trip_instances}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20250923 11:21:40.021" endtime="20250923 11:21:40.021"/>
+</kw>
+<for flavor="IN">
+<var>${trip_instance}</var>
+<value>@{trip_instances}</value>
+<iter>
+<var name="${trip_instance}"/>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${trip_instance["status"]}</arg>
+<arg>published</arg>
+<arg>msg=❌ Trip instance status should be 'plubished'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20250923 11:21:40.021" endtime="20250923 11:21:40.021"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${trip_instance["recurrent"]}</arg>
+<arg>msg=❌ Trip instance should be recurrent but is not</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" starttime="20250923 11:21:40.021" endtime="20250923 11:21:40.021"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${trip_instance["_id"]}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" starttime="20250923 11:21:40.021" endtime="20250923 11:21:40.021"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${trip_instance["tripId"]}</arg>
+<arg>msg=❌ Trip instance missing tripId</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" starttime="20250923 11:21:40.021" endtime="20250923 11:21:40.021"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${trip_instance["userId"]}</arg>
+<arg>msg=❌ Trip instance missing userId</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" starttime="20250923 11:21:40.021" endtime="20250923 11:21:40.021"/>
+</kw>
+<status status="NOT RUN" starttime="20250923 11:21:40.021" endtime="20250923 11:21:40.021"/>
+</iter>
+<status status="NOT RUN" starttime="20250923 11:21:40.021" endtime="20250923 11:21:40.021"/>
+</for>
+<status status="PASS" starttime="20250923 11:21:39.775" endtime="20250923 11:21:41.128"/>
+</kw>
+<status status="PASS" starttime="20250923 11:21:39.775" endtime="20250923 11:21:41.128"/>
 </test>
-<status status="PASS" starttime="20250904 11:03:12.309" endtime="20250904 11:03:13.721"/>
+<status status="PASS" starttime="20250923 11:21:39.763" endtime="20250923 11:21:41.129"/>
 </suite>
 <statistics>
 <total>
