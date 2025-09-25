@@ -944,6 +944,9 @@ Get User QR(No reservation 2)
     Log    ${qrCodeNoReservation3}
     Log    ${code}
 
+
+    
+
 Validate With QR(Loki No reservation)
     Create Session    mysesion    ${STAGE_URL}    verify=true
 

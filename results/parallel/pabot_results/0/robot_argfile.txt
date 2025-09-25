@@ -1,0 +1,16 @@
+--test carpoolFlow.Carpool Realtime - Start + New Positions (USER_ID)
+--variable CALLER_ID:20abe055f1e64fb29184477509ec4464
+--variable PABOTLIBURI:127.0.0.1:8270
+--variable PABOTEXECUTIONPOOLID:1
+--variable PABOTISLASTEXECUTIONINPOOL:0
+--variable PABOTNUMBEROFPROCESSES:2
+--variable PABOTQUEUEINDEX:0
+--variable PABOTLASTLEVEL:carpoolFlow.Carpool Realtime - Start + New Positions (USER_ID)
+--outputdir results\parallel\pabot_results\0
+--listener RobotStackTracer
+--log NONE
+--report NONE
+--xunit NONE
+--consolecolors off
+--consolemarkers off
+.\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot

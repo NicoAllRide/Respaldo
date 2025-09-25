@@ -1,0 +1,20 @@
+==============================================================================
+carpoolFlow                                                                   
+==============================================================================
+Carpool Realtime - Start + New Positions (USER_ID)                      
+  Traceback (most recent call last):
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot:577
+    T:  Carpool Realtime - Start + New Positions (USER_ID)    
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot:581
+      Set Variable    ${WS_BASE}&token=${realTimeToken}
+      |  ${WS_BASE}&token=${realTimeToken} = <Unable to define variable value>
+______________________________________________________________________________
+| FAIL |
+Variable '${realTimeToken}' not found.
+------------------------------------------------------------------------------
+carpoolFlow                                                           | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+Output:  C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\results\parallel\pabot_results\0\output.xml

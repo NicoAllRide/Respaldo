@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Rebot 7.3.2 (Python 3.12.4 on win32)" generated="2025-09-24T15:53:52.167023" rpa="false" schemaversion="5">
+<suite id="s1" name="carpoolFlow" source="C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot">
+<test id="s1-t1" name="Carpool Realtime - Start + New Positions (USER_ID)" line="577">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:53:51.917232" level="FAIL">Variable '${realTimeToken}' not found.</msg>
+<var>${WS_URL_1}</var>
+<arg>${WS_BASE}&amp;token=${realTimeToken}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="FAIL" start="2025-09-24T15:53:51.917232" elapsed="0.000000">Variable '${realTimeToken}' not found.</status>
+</kw>
+<kw name="Connect" owner="WebSocketClient">
+<var>${sock1}</var>
+<arg>${WS_URL_1}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.918237" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Connected U1</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.918237" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock1}</arg>
+<arg>40/carpoolRealtime?token=${realTimeToken}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.918237" elapsed="0.000989"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${r0}</var>
+<arg>${sock1}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>NS U1: ${r0}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock1}</arg>
+<arg>42/carpoolRealtime,["join", {"userId":"${USER_ID}","tripInstanceId":"${tripInstance1}"}]</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${r1}</var>
+<arg>${sock1}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Join U1: ${r1}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock1}</arg>
+<arg>42/carpoolRealtime,["start", {"userId":"${USER_ID}","tripInstanceId":"${tripInstance1}","latitude":-34.41624333397236,"longitude":-70.86005486547947}]</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.001006"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${r2}</var>
+<arg>${sock1}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Start U1: ${r2}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock1}</arg>
+<arg>42/carpoolRealtime,["last", {"userId":"${USER_ID}","tripInstanceId":"${tripInstance1}"}]</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${rl1}</var>
+<arg>${sock1}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Last U1: ${rl1}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock1}</arg>
+<arg>42/carpoolRealtime,["newPosition", {"latitude":-33.456000,"longitude":-70.648000,"tripInstanceId":"${tripInstance1}","userId":"${USER_ID}"}]</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${r3}</var>
+<arg>${sock1}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>NP1 U1: ${r3}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock1}</arg>
+<arg>42/carpoolRealtime,["newPosition", {"latitude":-33.455500,"longitude":-70.647300,"tripInstanceId":"${tripInstance1}","userId":"${USER_ID}"}]</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${r4}</var>
+<arg>${sock1}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>NP2 U1: ${r4}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<tag>CARPOOL</tag>
+<tag>RUN_PARALLEL</tag>
+<tag>U1</tag>
+<status status="FAIL" start="2025-09-24T15:53:51.916215" elapsed="0.004017">Variable '${realTimeToken}' not found.</status>
+</test>
+<test id="s1-t2" name="Carpool Realtime - Start + New Positions (USER_ID2)" line="620">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:53:51.917232" level="FAIL">Variable '${realTimeTokenUser}' not found.</msg>
+<var>${WS_URL_2}</var>
+<arg>${WS_BASE}&amp;token=${realTimeTokenUser}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="FAIL" start="2025-09-24T15:53:51.916215" elapsed="0.001017">Variable '${realTimeTokenUser}' not found.</status>
+</kw>
+<kw name="Connect" owner="WebSocketClient">
+<var>${sock2}</var>
+<arg>${WS_URL_2}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.918237" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Connected U2</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.918237" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock2}</arg>
+<arg>40/carpoolRealtime?token=${realTimeTokenUser}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.918237" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.918237" elapsed="0.000989"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${s0}</var>
+<arg>${sock2}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>NS U2: ${s0}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock2}</arg>
+<arg>42/carpoolRealtime,["join", {"userId":"${USER_ID2}","tripInstanceId":"${tripInstance1}"}]</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${s1}</var>
+<arg>${sock2}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Join U2: ${s1}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock2}</arg>
+<arg>42/carpoolRealtime,["start", {"userId":"${USER_ID2}","tripInstanceId":"${tripInstance1}","latitude":-34.41624333397236,"longitude":-70.86005486547947}]</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.000000"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${s2}</var>
+<arg>${sock2}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.919226" elapsed="0.001006"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Start U2: ${s2}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock2}</arg>
+<arg>42/carpoolRealtime,["last", {"userId":"${USER_ID2}","tripInstanceId":"${tripInstance1}"}]</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${sl}</var>
+<arg>${sock2}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Last U2: ${sl}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock2}</arg>
+<arg>42/carpoolRealtime,["newPosition", {"latitude":-33.456200,"longitude":-70.648400,"tripInstanceId":"${tripInstance1}","userId":"${USER_ID2}"}]</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${s3}</var>
+<arg>${sock2}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>NP1 U2: ${s3}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Send" owner="WebSocketClient">
+<arg>${sock2}</arg>
+<arg>42/carpoolRealtime,["newPosition", {"latitude":-33.455700,"longitude":-70.647900,"tripInstanceId":"${tripInstance1}","userId":"${USER_ID2}"}]</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Recv Data" owner="WebSocketClient">
+<var>${s4}</var>
+<arg>${sock2}</arg>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>NP2 U2: ${s4}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:53:51.920232" elapsed="0.000000"/>
+</kw>
+<tag>CARPOOL</tag>
+<tag>RUN_PARALLEL</tag>
+<tag>U2</tag>
+<status status="FAIL" start="2025-09-24T15:53:51.916215" elapsed="0.004017">Variable '${realTimeTokenUser}' not found.</status>
+</test>
+<doc>[https://pabot.org/?ref=log|Pabot] result from 2 executions.</doc>
+<status status="FAIL" start="2025-09-24T15:53:51.882000" elapsed="0.039000"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="2" skip="0">CARPOOL</stat>
+<stat pass="0" fail="2" skip="0">RUN_PARALLEL</stat>
+<stat pass="0" fail="1" skip="0">U1</stat>
+<stat pass="0" fail="1" skip="0">U2</stat>
+</tag>
+<suite>
+<stat name="carpoolFlow" id="s1" pass="0" fail="2" skip="0">carpoolFlow</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-09-24T15:53:51.890254" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 2: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+<msg time="2025-09-24T15:53:51.902602" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 8: Importing library 'SeleniumLibrary' failed: ModuleNotFoundError: No module named 'SeleniumLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+<msg time="2025-09-24T15:53:51.903610" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 9: Importing library 'RPA.JSON' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+<msg time="2025-09-24T15:53:51.903610" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 10: Importing library 'RPA.Smartsheet' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+<msg time="2025-09-24T15:53:51.890254" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 2: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+<msg time="2025-09-24T15:53:51.902602" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 8: Importing library 'SeleniumLibrary' failed: ModuleNotFoundError: No module named 'SeleniumLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+<msg time="2025-09-24T15:53:51.903610" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 9: Importing library 'RPA.JSON' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+<msg time="2025-09-24T15:53:51.904729" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 10: Importing library 'RPA.Smartsheet' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+</errors>
+</robot>

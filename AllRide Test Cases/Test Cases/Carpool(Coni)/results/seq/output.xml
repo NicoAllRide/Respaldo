@@ -1,0 +1,2028 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.4 on win32)" generated="2025-09-24T15:47:11.026297" rpa="false" schemaversion="5">
+<suite id="s1" name="carpoolFlow" source="C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot">
+<test id="s1-t1" name="Set Date Variables" line="24">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-09-24T15:47:11.070224" level="INFO">${fecha_hoy} = 2025-09-24</msg>
+<var>${fecha_hoy}</var>
+<arg>result_format=%Y-%m-%d</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.070224" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.071235" level="INFO">${fecha_hoy} = 2025-09-24</msg>
+<arg>${fecha_hoy}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.070224" elapsed="0.001011"/>
+</kw>
+<kw name="Add Time To Date" owner="DateTime">
+<msg time="2025-09-24T15:47:11.072242" level="INFO">${fecha_manana} = 2025-09-25</msg>
+<var>${fecha_manana}</var>
+<arg>${fecha_hoy}</arg>
+<arg>1 days</arg>
+<arg>result_format=%Y-%m-%d</arg>
+<doc>Adds time to date and returns the resulting date.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.071235" elapsed="0.001007"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.072242" level="INFO">${fecha_manana} = 2025-09-25</msg>
+<arg>${fecha_manana}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.072242" elapsed="0.000000"/>
+</kw>
+<kw name="Add Time To Date" owner="DateTime">
+<msg time="2025-09-24T15:47:11.073244" level="INFO">${fecha_pasado_manana} = 2025-09-26</msg>
+<var>${fecha_pasado_manana}</var>
+<arg>${fecha_hoy}</arg>
+<arg>2 days</arg>
+<arg>result_format=%Y-%m-%d</arg>
+<doc>Adds time to date and returns the resulting date.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.072242" elapsed="0.001002"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.073244" level="INFO">${fecha_pasado_manana} = 2025-09-26</msg>
+<arg>${fecha_pasado_manana}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.073244" elapsed="0.000000"/>
+</kw>
+<kw name="Add Time To Date" owner="DateTime">
+<msg time="2025-09-24T15:47:11.073244" level="INFO">${fecha_pasado_pasado_manana} = 2025-09-27</msg>
+<var>${fecha_pasado_pasado_manana}</var>
+<arg>${fecha_hoy}</arg>
+<arg>3 days</arg>
+<arg>result_format=%Y-%m-%d</arg>
+<doc>Adds time to date and returns the resulting date.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.073244" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.074231" level="INFO">${fecha_pasado_pasado_manana} = 2025-09-27</msg>
+<arg>${fecha_pasado_pasado_manana}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.073244" elapsed="0.000987"/>
+</kw>
+<kw name="Convert Date" owner="DateTime">
+<msg time="2025-09-24T15:47:11.074231" level="INFO">${dia_actual} = Wed</msg>
+<var>${dia_actual}</var>
+<arg>${fecha_hoy}</arg>
+<arg>result_format=%a</arg>
+<doc>Converts between supported `date formats`.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.074231" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.074231" level="INFO">${dia_actual_lower} = wed</msg>
+<var>${dia_actual_lower}</var>
+<arg>${dia_actual.lower()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.074231" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.074231" level="INFO">${arrival_date} = 2025-09-25T01:00:00.000Z</msg>
+<var>${arrival_date}</var>
+<arg>${fecha_manana}T01:00:00.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.074231" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.074231" level="INFO">${arrival_date} = 2025-09-25T01:00:00.000Z</msg>
+<arg>${arrival_date}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.074231" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.075736" level="INFO">${r_estimated_arrival1} = 2025-09-25T14:45:57.000Z</msg>
+<var>${r_estimated_arrival1}</var>
+<arg>${fecha_manana}T14:45:57.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.075736" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.075736" level="INFO">${r_estimated_arrival1} = 2025-09-25T14:45:57.000Z</msg>
+<arg>${r_estimated_arrival1}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.075736" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.075736" level="INFO">${service_date} = 2025-09-25T00:25:29.000Z</msg>
+<var>${service_date}</var>
+<arg>${fecha_manana}T00:25:29.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.075736" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.075736" level="INFO">${service_date} = 2025-09-25T00:25:29.000Z</msg>
+<arg>${service_date}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.075736" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.075736" level="INFO">${modified_arrival_date} = 2025-09-25T01:00:00.000Z</msg>
+<var>${modified_arrival_date}</var>
+<arg>${fecha_manana}T01:00:00.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.075736" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.076732" level="INFO">${modified_arrival_date} = 2025-09-25T01:00:00.000Z</msg>
+<arg>${modified_arrival_date}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.076732" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.076732" level="INFO">${r_modified_estimated_arrival} = 2025-09-26T14:45:57.000Z</msg>
+<var>${r_modified_estimated_arrival}</var>
+<arg>${fecha_pasado_manana}T14:45:57.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.076732" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.076732" level="INFO">${r_modified_estimated_arrival} = 2025-09-26T14:45:57.000Z</msg>
+<arg>${r_modified_estimated_arrival}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.076732" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.077737" level="INFO">${modified_service_date} = 2025-09-25T00:25:29.000Z</msg>
+<var>${modified_service_date}</var>
+<arg>${fecha_manana}T00:25:29.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.077737" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.077737" level="INFO">${modified_service_date} = 2025-09-25T00:25:29.000Z</msg>
+<arg>${modified_service_date}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.077737" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.077737" level="INFO">${service_date_20min} = 2025-09-25T00:20:00.000Z</msg>
+<var>${service_date_20min}</var>
+<arg>${fecha_manana}T00:20:00.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.077737" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.077737" level="INFO">${service_date_20min} = 2025-09-25T00:20:00.000Z</msg>
+<arg>${service_date_20min}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.077737" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.078788" level="INFO">${service_date_22min} = 2025-09-25T00:47:00.000Z</msg>
+<var>${service_date_22min}</var>
+<arg>${fecha_manana}T00:47:00.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.077737" elapsed="0.001051"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.078788" level="INFO">${service_date_22min} = 2025-09-25T00:47:00.000Z</msg>
+<arg>${service_date_22min}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.078788" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.078788" level="INFO">${start_date} = 2025-09-25T03:00:00.000Z</msg>
+<var>${start_date}</var>
+<arg>${fecha_manana}T03:00:00.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.078788" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.078788" level="INFO">${start_date} = 2025-09-25T03:00:00.000Z</msg>
+<arg>${start_date}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.078788" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.078788" level="INFO">${end_date_4weeks} = 2023-12-30T02:59:59.999Z</msg>
+<var>${end_date_4weeks}</var>
+<arg>2023-12-30T02:59:59.999Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.078788" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.079779" level="INFO">${end_date_4weeks} = 2023-12-30T02:59:59.999Z</msg>
+<arg>${end_date_4weeks}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.079779" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.079779" level="INFO">${end_date} = 2025-09-27T03:00:00.000Z</msg>
+<var>${end_date}</var>
+<arg>${fecha_pasado_pasado_manana}T03:00:00.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.079779" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.080828" level="INFO">${end_date} = 2025-09-27T03:00:00.000Z</msg>
+<arg>${end_date}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.080828" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.080828" level="INFO">${end_date_tomorrow} = 2025-09-25T03:00:00.000Z</msg>
+<var>${end_date_tomorrow}</var>
+<arg>${fecha_manana}T03:00:00.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.080828" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.080828" level="INFO">${end_date_tomorrow} = 2025-09-25T03:00:00.000Z</msg>
+<arg>${end_date_tomorrow}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.080828" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.080828" level="INFO">${end_date_pastTomorrow} = 2025-09-26T03:00:00.000Z</msg>
+<var>${end_date_pastTomorrow}</var>
+<arg>${fecha_pasado_manana}T03:00:00.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.080828" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.081931" level="INFO">${end_date_pastTomorrow} = 2025-09-26T03:00:00.000Z</msg>
+<arg>${end_date_pastTomorrow}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.080828" elapsed="0.001103"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.081931" level="INFO">${schedule_day} = wed</msg>
+<var>${schedule_day}</var>
+<arg>${dia_actual_lower}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.081931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.081931" level="INFO">${schedule_day} = wed</msg>
+<arg>${schedule_day}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.081931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.081931" level="INFO">${start_date_today} = 2025-09-24T03:00:00.000Z</msg>
+<var>${start_date_today}</var>
+<arg>${fecha_hoy}T03:00:00.000Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.081931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.081931" level="INFO">${start_date_today} = 2025-09-24T03:00:00.000Z</msg>
+<arg>${start_date_today}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.081931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.082925" level="INFO">${today_date} = 2025-09-24</msg>
+<var>${today_date}</var>
+<arg>${fecha_hoy}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.082925" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.082925" level="INFO">${today_date} = 2025-09-24</msg>
+<arg>${today_date}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.082925" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.082925" level="INFO">${end_date_tomorrow2} = 2025-09-25T02:59:59.999Z</msg>
+<var>${end_date_tomorrow2}</var>
+<arg>${fecha_manana}T02:59:59.999Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.082925" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.083918" level="INFO">${end_date_tomorrow} = 2025-09-25T03:00:00.000Z</msg>
+<arg>${end_date_tomorrow}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.082925" elapsed="0.000993"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.083918" level="INFO">${expiration_date_qr} = 2025-09-25T14:10:37.968Z</msg>
+<var>${expiration_date_qr}</var>
+<arg>${fecha_manana}T14:10:37.968Z</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.083918" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.083918" level="INFO">${expiration_date_qr} = 2025-09-25T14:10:37.968Z</msg>
+<arg>${expiration_date_qr}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.083918" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-09-24T15:47:11.069182" elapsed="0.014736"/>
+</test>
+<test id="s1-t2" name="2 hours local" line="76">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-09-24T15:47:11.084925" level="INFO">${date} = 2025-09-24 15:47:11</msg>
+<var>${date}</var>
+<arg>time_zone=local</arg>
+<arg>exclude_millis=yes</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.084925" elapsed="0.000000"/>
+</kw>
+<kw name="Convert Date" owner="DateTime">
+<msg time="2025-09-24T15:47:11.084925" level="INFO">${formatted_date} = 15:47:11</msg>
+<var>${formatted_date}</var>
+<arg>${date}</arg>
+<arg>result_format=%H:%M:%S</arg>
+<doc>Converts between supported `date formats`.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.084925" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.085972" level="INFO">Hora Actual: 15:47:11</msg>
+<arg>Hora Actual: ${formatted_date}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.084925" elapsed="0.001047"/>
+</kw>
+<kw name="Add Time To Date" owner="DateTime">
+<msg time="2025-09-24T15:47:11.085972" level="INFO">${one_hour_later} = 2025-09-24 16:47:11.000</msg>
+<var>${one_hour_later}</var>
+<arg>${date}</arg>
+<arg>1 hour</arg>
+<doc>Adds time to date and returns the resulting date.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.085972" elapsed="0.000000"/>
+</kw>
+<kw name="Convert Date" owner="DateTime">
+<msg time="2025-09-24T15:47:11.085972" level="INFO">${formatted_one_hour_later} = 16:47</msg>
+<var>${formatted_one_hour_later}</var>
+<arg>${one_hour_later}</arg>
+<arg>result_format=%H:%M</arg>
+<doc>Converts between supported `date formats`.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.085972" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.085972" level="INFO">Hora Actual + 1 hora: 16:47</msg>
+<arg>Hora Actual + 1 hora: ${formatted_one_hour_later}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.085972" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.087122" level="INFO">${formatted_one_hour_later} = 16:47</msg>
+<arg>${formatted_one_hour_later}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.087122" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-09-24T15:47:11.084925" elapsed="0.002197"/>
+</test>
+<test id="s1-t3" name="Login User With Email(Obtain Token) Carpool 1" line="87">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.088127" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.088127" elapsed="0.000000">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${jsonBody}</var>
+<arg>{"username":"nicolas+carpool1@allrideapp.com","password":"Lolowerty21@"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.089128" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${parsed_json}</var>
+<arg>json.loads($jsonBody)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.089128" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=""</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.089128" elapsed="0.000000"/>
+</kw>
+<kw name="Post On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=${loginUserUrl}</arg>
+<arg>json=${parsed_json}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.089128" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.089128" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.089128" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.089128" elapsed="0.000000"/>
+</kw>
+<kw name="List Should Contain Value" owner="Collections">
+<arg>${response.json()}</arg>
+<arg>accessToken</arg>
+<arg>No accesToken found in Login!, Failing</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.089128" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${accessToken}</var>
+<arg>${response.json()}[accessToken]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.089128" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${realTimeToken}</var>
+<arg>${response.json()}[realTimeToken]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.090416" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${accessTokenCarpool1}</var>
+<arg>"${accessToken}"</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.090416" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${accessTokenCarpool1}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.090416" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${realTimeToken}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.090416" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-09-24T15:47:11.087122" elapsed="0.003294">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t4" name="Login User With Email(Obtain Token) Carpool 2" line="108">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.091539" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.091539" elapsed="0.000000">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${jsonBody}</var>
+<arg>{"username":"nicolas+carpool2@allrideapp.com","password":"Lolowerty21@"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.091539" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${parsed_json}</var>
+<arg>json.loads($jsonBody)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.092578" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=""</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.092578" elapsed="0.000000"/>
+</kw>
+<kw name="Post On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=${loginUserUrl}</arg>
+<arg>json=${parsed_json}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.092578" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.092578" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.092578" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.092578" elapsed="0.000000"/>
+</kw>
+<kw name="List Should Contain Value" owner="Collections">
+<arg>${response.json()}</arg>
+<arg>accessToken</arg>
+<arg>No accesToken found in Login!, Failing</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.092578" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${accessToken}</var>
+<arg>${response.json()}[accessToken]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.093677" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${accessTokenCarpool2}</var>
+<arg>"${accessToken}"</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.093677" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${accessTokenCarpool2}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.093677" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${realTimeTokenUser}</var>
+<arg>${response.json()}[realTimeToken]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.093677" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${realTimeTokenUser}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.093677" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-09-24T15:47:11.090416" elapsed="0.003261">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t5" name="Get trip list at start" line="132">
+<kw name="Skip" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.094683" level="SKIP">Skipped with Skip keyword.</msg>
+<doc>Skips the rest of the current test.</doc>
+<status status="SKIP" start="2025-09-24T15:47:11.094683" elapsed="0.000000">Skipped with Skip keyword.</status>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${url}</var>
+<arg>${STAGE_URL}/api/v1/trips/list</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.094683" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.094683" elapsed="0.000000"/>
+</kw>
+<kw name="GET">
+<var>${response}</var>
+<arg>url=${url}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.094683" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.095680" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.095680" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${lastTripId}</var>
+<arg>${json}[-1][_id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.095680" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${trip1OwnerName}</var>
+<arg>${json}[0][owner][name]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.095680" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${trip2OwnerName}</var>
+<arg>${json}[1][owner][name]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.095680" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${trip3OwnerName}</var>
+<arg>${json}[2][owner][name]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.095680" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip1OwnerName}</arg>
+<arg>Barbara Lisboa</arg>
+<arg>msg= name should be Barbara Lisboa but got ${trip1OwnerName}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.095680" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip2OwnerName}</arg>
+<arg>Barbara Lisboa</arg>
+<arg>msg= name should be Barbara Lisboa but got ${trip2OwnerName}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.095680" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip3OwnerName}</arg>
+<arg>Paulina Pasajero</arg>
+<arg>msg= name should be Paulina Pasajero but got ${trip3OwnerName}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.096666" elapsed="0.000000"/>
+</kw>
+<doc>Lista de viajes en vista principal de carpool</doc>
+<status status="SKIP" start="2025-09-24T15:47:11.094683" elapsed="0.001983">Skipped with Skip keyword.</status>
+</test>
+<test id="s1-t6" name="Get community places (CONSULTAR BODY CRIS O JC)" line="160">
+<kw name="Skip" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.096666" level="SKIP">Skipped with Skip keyword.</msg>
+<doc>Skips the rest of the current test.</doc>
+<status status="SKIP" start="2025-09-24T15:47:11.096666" elapsed="0.000000">Skipped with Skip keyword.</status>
+</kw>
+<kw name="Create Session">
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.096666" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.097671" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Expect Error" owner="BuiltIn">
+<var>${response}</var>
+<arg>HTTP:401 invalid autentication</arg>
+<arg>POST On Session</arg>
+<arg>mysesion</arg>
+<arg>url=/api/v1/communities/places</arg>
+<arg>data=""</arg>
+<arg>headers=${headers}</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.097671" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.097671" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.097671" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.097671" elapsed="0.000000"/>
+</kw>
+<doc>Obtener los lugares de la comunuidad</doc>
+<status status="SKIP" start="2025-09-24T15:47:11.096666" elapsed="0.001005">Skipped with Skip keyword.</status>
+</test>
+<test id="s1-t7" name="Create recurrent route as driver (user1)" line="182">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.098786" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.098786" elapsed="0.000983">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.099769" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/trips/</arg>
+<arg>data={"allowsSectionCost":false,"aproxWaypoints":{"coordinates":[[-70.85381,-34.41107],[-70.85367,-34.41072],[-70.8535,-34.41007],[-70.85308,-34.40853],[-70.85251,-34.4076],[-70.85206,-34.40705],[-70.85159,-34.40653],[-70.85126,-34.4062],[-70.85087,-34.40583],[-70.85045,-34.40546],[-70.85003,-34.40502],[-70.84913,-34.40427],[-70.84813,-34.40353],[-70.84789,-34.40336],[-70.84742,-34.40297],[-70.84739,-34.40294],[-70.84736,-34.40283],[-70.84736,-34.4028],[-70.84715,-34.40279],[-70.84644,-34.40275],[-70.84573,-34.40269],[-70.8454,-34.40264],[-70.84433,-34.40239],[-70.84376,-34.40229],[-70.84337,-34.40227],[-70.84272,-34.40227],[-70.84241,-34.40229],[-70.84184,-34.40239],[-70.84125,-34.4025],[-70.83714,-34.40315],[-70.83642,-34.40327],[-70.8354,-34.40344],[-70.83488,-34.40357],[-70.83406,-34.40379],[-70.83375,-34.4039],[-70.83302,-34.4042],[-70.83145,-34.40482],[-70.83095,-34.40499],[-70.8303,-34.40523],[-70.82964,-34.40545],[-70.8294,-34.40552],[-70.82864,-34.40566],[-70.82751,-34.40584],[-70.82674,-34.40595],[-70.82589,-34.40601],[-70.8242,-34.40606],[-70.82344,-34.4061],[-70.8232,-34.40616],[-70.82282,-34.40633],[-70.82265,-34.40642],[-70.82228,-34.40661],[-70.82046,-34.40749],[-70.81975,-34.40782],[-70.81846,-34.40853],[-70.8176,-34.409],[-70.81725,-34.40913],[-70.81608,-34.40943],[-70.81525,-34.40961],[-70.81484,-34.40975],[-70.81446,-34.40992],[-70.81407,-34.41013],[-70.81334,-34.41055],[-70.81312,-34.41068],[-70.81286,-34.41062],[-70.81253,-34.41052],[-70.8121,-34.41037],[-70.80991,-34.40956],[-70.80924,-34.4093],[-70.80898,-34.40916],[-70.80834,-34.40865],[-70.80719,-34.40769],[-70.80685,-34.40737],[-70.80617,-34.40667],[-70.80582,-34.40635],[-70.80503,-34.40567],[-70.80483,-34.40554],[-70.8044,-34.40537],[-70.80415,-34.40527],[-70.80403,-34.40516],[-70.80382,-34.40491],[-70.80369,-34.40478],[-70.80358,-34.4047],[-70.8035,-34.40466],[-70.80312,-34.40457],[-70.80267,-34.40449],[-70.80251,-34.40444],[-70.80206,-34.40428],[-70.80188,-34.40425],[-70.80164,-34.40424],[-70.80096,-34.40423],[-70.80057,-34.4042],[-70.80041,-34.40421],[-70.80014,-34.40424],[-70.79997,-34.40422],[-70.79917,-34.40404],[-70.79892,-34.40455],[-70.79848,-34.40551],[-70.7984,-34.40561],[-70.79822,-34.40577],[-70.79717,-34.40651],[-70.797,-34.40664],[-70.79688,-34.40679],[-70.79667,-34.40719],[-70.79651,-34.40748],[-70.7962,-34.40792],[-70.79594,-34.4078],[-70.79534,-34.40744],[-70.79477,-34.4071],[-70.79366,-34.40644],[-70.79082,-34.40485],[-70.78907,-34.40384],[-70.78692,-34.40257],[-70.78458,-34.40116],[-70.78446,-34.40109],[-70.78438,-34.40108],[-70.78428,-34.40113],[-70.78417,-34.4012],[-70.78407,-34.40119],[-70.78353,-34.4009],[-70.78304,-34.40056],[-70.7827,-34.40029],[-70.78251,-34.40016],[-70.78235,-34.40008],[-70.78271,-34.3996],[-70.78272,-34.39955],[-70.78254,-34.39927],[-70.78226,-34.39882],[-70.78216,-34.39857],[-70.78178,-34.39746],[-70.78166,-34.39704],[-70.78167,-34.39695],[-70.78207,-34.39635],[-70.78252,-34.39578],[-70.78226,-34.39571],[-70.78214,-34.39566],[-70.78236,-34.39534],[-70.78264,-34.39501],[-70.78255,-34.3948],[-70.78238,-34.39462]],"type":"LineString"},"codedRoute":"d|_qEhsmoLeA[aCa@sHsAyDqBmByAgBAaAaAiAmAiAsAwAsAuCsDsCgEa@o@mAAEEUEE?Ai@GmCKmCIaAq@uESqBCmA?aCB@RqBTuB`CuXVoC`@kEXgBj@cDT@z@qCzByH`@cBn@aCj@cCLo@ZwCb@aFTyCJiDHqIFwCJo@`@kAPa@d@iAnDkJ`AmClCaG|AkDXeAz@iFb@eDZqA`@kAh@mArAqCXk@Ks@SaA]uAaDuLs@eC[s@eB_C_EeF_AcAkCgC_AeAgCCYg@a@uASq@UWq@i@YYOUGOQkAOyAI_@_@yAEc@Ao@AgCEmA@_@Du@Ca@c@_DdBq@~DwARO^c@rCqEXa@WnAi@x@_@vA@Ws@gAwBcAqBcCEHwPiEIFmLyGsMMWAOHSLUASy@kBcAaBu@cAYe@O_@_BfAI@w@c@yAw@q@SEkAsAWQ@wBnAqBxAMs@IW_Aj@aAv@i@Qc@a@","comment":"","cost":0,"currency":"","destination":{"communityId":"","icon":"","location":[-70.7819,-34.3945],"longName":"Media luna cerrillos","placeId":"6654d4c8713b9a5184cfe1de","reference":"","shortName":"Media Luna Cerrillos"},"dropoutPlaces":[],"fee":0,"filed":false,"followerShards":[],"followers":[],"followersData":[],"_id":"","tripInstances":[],"new":true,"origin":{"communityId":"","icon":"","location":[-70.8537,-34.4111],"longName":"Hospital Rengo","placeId":"","reference":"","shortName":"Hospital Rengo"},"pending":[],"pendingsData":[],"pickupPlaces":[],"recurrent":true,"restrictions":[{"_id":"","restrictionType":"public"}],"seats":4,"sectionCost":true,"startDate":"2025-08-04T17:44:13.666-04:00","studentFee":false,"timezone":"America/Santiago","tripDates":[{"day":"wednesday","_id":"","time":"1970-01-01T18:38:00.000-03:00"}],"userId":""}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.099769" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.099769" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.099769" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.099769" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${tripId}</var>
+<arg>${json}[_id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.099769" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${tripId}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.099769" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${restriction}</var>
+<arg>${json}[restrictions][0][restrictionType]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.099769" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${restriction}</arg>
+<arg>public</arg>
+<arg>msg=restriction should be public but got ${restriction}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.100782" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${tripId}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.100782" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["origin"]["longName"]}</arg>
+<arg>Hospital Rengo</arg>
+<arg>msg</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.100782" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["destination"]["shortName"]}</arg>
+<arg>Media Luna Cerrillos</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.100782" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["owner"]["name"]}</arg>
+<arg>Nico QA Carpool 1</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.100782" elapsed="0.000000"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${json["owner"]["communities"]}</arg>
+<arg>6654ae4eba54fe502d4e4187</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.100782" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${json["seats"]}</arg>
+<arg>4</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.100782" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${json["distance"]} &gt; 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.100782" elapsed="0.000000"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<arg>${json["tripDates"]}</arg>
+<arg>1</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.101842" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["tripDates"][0]["day"]}</arg>
+<arg>wednesday</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.101842" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["restrictions"][0]["restrictionType"]}</arg>
+<arg>public</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.101842" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<arg>Should Be Equal As Strings</arg>
+<arg>${json["suggestions"]["enabled"]}</arg>
+<arg>True</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.101842" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword Unless" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.101842" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<arg>'${json["origin"]["longName"]}' == 'Hospital Rengo'</arg>
+<arg>Fail</arg>
+<arg>❌ Origin longName does not match expected</arg>
+<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.101842" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword Unless" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.101842" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<arg>'${json["destination"]["shortName"]}' == 'Media Luna Cerrillos'</arg>
+<arg>Fail</arg>
+<arg>❌ Destination shortName does not match expected</arg>
+<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.101842" elapsed="0.000973"/>
+</kw>
+<kw name="Run Keyword Unless" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.102815" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<arg>${json["seats"]} == 4</arg>
+<arg>Fail</arg>
+<arg>❌ Seats count is incorrect, expected 4</arg>
+<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.102815" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword Unless" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.102815" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<arg>len(${json["tripDates"]}) == 1</arg>
+<arg>Fail</arg>
+<arg>❌ Trip should have exactly 1 tripDate</arg>
+<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.102815" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword Unless" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.102815" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<arg>'${json["restrictions"][0]["restrictionType"]}' == 'public'</arg>
+<arg>Fail</arg>
+<arg>❌ Restriction type must be 'public'</arg>
+<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.102815" elapsed="0.000974"/>
+</kw>
+<doc>Crear una ruta recurrente como conductor(usuario 1)</doc>
+<status status="FAIL" start="2025-09-24T15:47:11.097671" elapsed="0.006118">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t8" name="Get route just created(Driver) And TripInstances" line="248">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.105143" level="FAIL">Variable '${tripId}' not found.</msg>
+<var>${url}</var>
+<arg>${STAGE_URL}/api/v1/tripinstances/for_trip/${tripId}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="FAIL" start="2025-09-24T15:47:11.103789" elapsed="0.001354">Variable '${tripId}' not found.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.105143" elapsed="0.000000"/>
+</kw>
+<kw name="GET">
+<var>${response}</var>
+<arg>url=${url}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.105143" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.105143" elapsed="0.001004"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${trips}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.106147" elapsed="0.000000"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<arg>${trips}</arg>
+<arg>5</arg>
+<arg>msg=❌ Expected 5 trip instances, but got a different number</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.106147" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${index}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.106147" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip["status"]}</arg>
+<arg>published</arg>
+<arg>msg=❌ Trip instance status is not 'published'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.106147" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip["recurrent"]}</arg>
+<arg>True</arg>
+<arg>msg=❌ Trip instance should be recurrent</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.106147" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip["_id"]}</arg>
+<arg>msg=❌ Trip instance missing _id</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.106147" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip["tripId"]}</arg>
+<arg>msg=❌ Trip instance missing tripId</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.107137" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${tripinstance${index}}</arg>
+<arg>${trip["_id"]}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.107137" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${index}</var>
+<arg>${index} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.107137" elapsed="0.000000"/>
+</kw>
+<var name="${trip}"/>
+<status status="NOT RUN" start="2025-09-24T15:47:11.106147" elapsed="0.000990"/>
+</iter>
+<var>${trip}</var>
+<value>@{trips}</value>
+<status status="NOT RUN" start="2025-09-24T15:47:11.106147" elapsed="0.000990"/>
+</for>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>TripInstance1: ${tripinstance1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.107137" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>TripInstance2: ${tripinstance2}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.107137" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>TripInstance3: ${tripinstance3}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.107137" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>TripInstance4: ${tripinstance4}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.107137" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>TripInstance5: ${tripinstance5}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.107137" elapsed="0.000000"/>
+</kw>
+<doc>Obtener la ruta recién creada y los tripInstances, corresponden a los días en los que se genera cada ruta</doc>
+<status status="FAIL" start="2025-09-24T15:47:11.103789" elapsed="0.003348">Variable '${tripId}' not found.</status>
+</test>
+<test id="s1-t9" name="Search Route And Validate ID (User 2)" line="293">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.108142" level="INFO">${url} = https://stage.allrideapp.com/api/v1/search/coordinates?country=cl&amp;origin_lat=-34.4111&amp;origin_lon=-70.8537&amp;destination_lat=-34.3945&amp;destination_lon=-70.7819&amp;origin_name=Hospital%20Rengo&amp;destination_nam...</msg>
+<var>${url}</var>
+<arg>${STAGE_URL}/api/v1/search/coordinates?country=cl&amp;origin_lat=-34.4111&amp;origin_lon=-70.8537&amp;destination_lat=-34.3945&amp;destination_lon=-70.7819&amp;origin_name=Hospital%20Rengo&amp;destination_name=Media%20Luna%20Cerrillos&amp;origin_place_id=6654d4acba54fe502d4e6b6a&amp;destination_place_id=6654d4c8713b9a5184cfe1de</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.108142" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.109140" level="INFO">&amp;{headers} = { Authorization=Bearer fde74238603a77a35c6382d930ea1ec157153b9a4b4eac95a54fca5b1f7096395310b33f5e8c555bc5e3595e88f39812238d17960d0d69d676155063fa8ea362 }</msg>
+<var>&amp;{headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool2}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.108142" elapsed="0.000998"/>
+</kw>
+<kw name="GET">
+<msg time="2025-09-24T15:47:11.109140" level="FAIL">No keyword with name 'GET' found. Did you mean:
+    BuiltIn.Get Time
+    String.Get Line
+    OperatingSystem.Get File</msg>
+<var>${response}</var>
+<arg>url=${url}</arg>
+<arg>headers=${headers}</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.109140" elapsed="0.000000">No keyword with name 'GET' found. Did you mean:
+    BuiltIn.Get Time
+    String.Get Line
+    OperatingSystem.Get File</status>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.109140" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${expected_id}</var>
+<arg>6757525faa9f4e162d0c105e</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.109140" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.109140" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${id_found}</var>
+<arg>False</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<arg>Revisando ID: ${element["_id"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${element[&quot;_id&quot;]}' == '${expected_id}'">
+<kw name="Log" owner="BuiltIn">
+<arg>✅ ID encontrado: ${expected_id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${id_found}</var>
+<arg>True</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</if>
+<var name="${element}"/>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</iter>
+<var>${element}</var>
+<value>@{json}</value>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</for>
+<if>
+<branch type="IF" condition="not ${id_found}">
+<kw name="Fail" owner="BuiltIn">
+<arg>❌</arg>
+<arg>Could not find the expected ID (${expected_id}) in the /search/coordinates response.</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-09-24T15:47:11.110121" elapsed="0.000000"/>
+</if>
+<doc>Buscar la ruta recién creada mediante su ID como usuario 2</doc>
+<status status="FAIL" start="2025-09-24T15:47:11.108142" elapsed="0.001979">No keyword with name 'GET' found. Did you mean:
+    BuiltIn.Get Time
+    String.Get Line
+    OperatingSystem.Get File</status>
+</test>
+<test id="s1-t10" name="Follow Route(User 2)" line="322">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.112295" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.112295" elapsed="0.000000">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool2}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.112295" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/trips/follow/${tripId}</arg>
+<arg>data={"pickupPointLat":-33.4561,"pickupPointLon":-70.6480,"pickupPointName":"Punto de inicio","dropoutPointLat":-33.4570,"dropoutPointLon":-70.6500,"dropoutPointName":"Punto de bajada","message":"¡Hola! Me interesa este viaje.","shard":"cl","searchOrigin":null,"searchDestination":null,"originCenter":null,"destinationCenter":null}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.112295" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.113286" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.113286" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.113286" elapsed="0.000000"/>
+</kw>
+<doc>Seguir ruta recién encontrada como usuario</doc>
+<status status="FAIL" start="2025-09-24T15:47:11.111264" elapsed="0.002022">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t11" name="Get requested user following route as Driver" line="339">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.114332" level="INFO">${url} = https://stage.allrideapp.com/api/v1/users/68b7576fc6280f9b167a25c8</msg>
+<var>${url}</var>
+<arg>${STAGE_URL}/api/v1/users/68b7576fc6280f9b167a25c8</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.113286" elapsed="0.001046"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.114332" level="INFO">&amp;{headers} = { Authorization=Bearer 4717a8af3218fc7ef170ea32bf13771a6cfd93f3333d47274622f698e5fa997c9a35409e87db4617f8d9a4a905c97b878771b71cb727750b37f511ee4e5cb326 }</msg>
+<var>&amp;{headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-24T15:47:11.114332" elapsed="0.000000"/>
+</kw>
+<kw name="GET">
+<msg time="2025-09-24T15:47:11.114332" level="FAIL">No keyword with name 'GET' found. Did you mean:
+    BuiltIn.Get Time
+    String.Get Line
+    OperatingSystem.Get File</msg>
+<var>${response}</var>
+<arg>url=${url}</arg>
+<arg>headers=${headers}</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.114332" elapsed="0.000000">No keyword with name 'GET' found. Did you mean:
+    BuiltIn.Get Time
+    String.Get Line
+    OperatingSystem.Get File</status>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.115348" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${user}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.115348" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${user["active"]}</arg>
+<arg>True</arg>
+<arg>msg=❌ User should be active but is not</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.115348" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${user["_id"]}</arg>
+<arg>msg=❌ User missing _id</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.115348" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${user["country"]}</arg>
+<arg>cl</arg>
+<arg>msg=❌ User country should be 'cl'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.115348" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${user["currency"]}</arg>
+<arg>clp</arg>
+<arg>msg=❌ User currency should be 'clp'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.115348" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${user["name"]}</arg>
+<arg>msg=❌ User missing name</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.115348" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${user["personalInfo"]["rut"]}</arg>
+<arg>msg=❌ User rut is missing</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.115348" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${user["personalInfo"]["phoneNumber"]}</arg>
+<arg>${None}</arg>
+<arg>msg=❌ User phoneNumber should be null</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.115348" elapsed="0.000000"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<arg>${user["communities"]}</arg>
+<arg>1</arg>
+<arg>msg=❌ User should belong to exactly 1 community</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.116337" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${community}</var>
+<arg>${user["communities"][0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.116337" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${community["confirmed"]}</arg>
+<arg>True</arg>
+<arg>msg=❌ Community should be confirmed</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.116337" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${community["communityId"]}</arg>
+<arg>6654ae4eba54fe502d4e4187</arg>
+<arg>msg=❌ Community ID is not the expected one</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.116337" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${community["privateBus"]["enabled"]}</arg>
+<arg>True</arg>
+<arg>msg=❌ Private bus should be enabled</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.116337" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${community["privateBus"]["oDDServices"]}</arg>
+<arg>msg=❌ User should have at least one ODD service</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.116337" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${user["auth"]["accessToken"]}</arg>
+<arg>msg=❌ User is missing accessToken</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.116337" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${user["auth"]["realtimeToken"]}</arg>
+<arg>msg=❌ User is missing realtimeToken</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.116337" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${user["auth"]["chatToken"]}</arg>
+<arg>msg=❌ User is missing chatToken</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.116337" elapsed="0.000000"/>
+</kw>
+<doc>Verificar la información del usuario que está solicitando unirse como conductor</doc>
+<status status="FAIL" start="2025-09-24T15:47:11.113286" elapsed="0.003051">No keyword with name 'GET' found. Did you mean:
+    BuiltIn.Get Time
+    String.Get Line
+    OperatingSystem.Get File</status>
+</test>
+<test id="s1-t12" name="Accept follower as Driver" line="402">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.117843" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.117843" elapsed="0.000000">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.118839" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/trips/accept/${tripId}/68b7576fc6280f9b167a25c8</arg>
+<arg>data={"pickupPointLat":"-33.456","pickupPointLon":"-70.6480"}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.118839" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.118839" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.118839" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${trip}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.118839" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip["_id"]}</arg>
+<arg>msg=❌ Trip is missing _id</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.118839" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip["recurrent"]}</arg>
+<arg>True</arg>
+<arg>msg=❌ Trip should be recurrent but is not</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.118839" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip["currency"]}</arg>
+<arg>clp</arg>
+<arg>msg=❌ Trip currency should be 'clp'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.118839" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip["timezone"]}</arg>
+<arg>America/Santiago</arg>
+<arg>msg=❌ Trip timezone should be 'America/Santiago'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.119924" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip["codedRoute"]}</arg>
+<arg>msg=❌ Trip missing codedRoute</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.119924" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip["origin"]["longName"]}</arg>
+<arg>Hospital Rengo</arg>
+<arg>msg=❌ Trip origin longName mismatch</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.119924" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip["destination"]["longName"]}</arg>
+<arg>Media luna cerrillos</arg>
+<arg>msg=❌ Trip destination longName mismatch</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.119924" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip["destination"]["placeId"]}</arg>
+<arg>6654d4c8713b9a5184cfe1de</arg>
+<arg>msg=❌ Destination placeId mismatch</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.119924" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip["owner"]["id"]}</arg>
+<arg>msg=❌ Trip owner missing id</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.119924" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip["owner"]["name"]}</arg>
+<arg>Nico QA Carpool 1</arg>
+<arg>msg=❌ Trip owner name mismatch</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.119924" elapsed="0.000000"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<arg>${trip["owner"]["communities"]}</arg>
+<arg>1</arg>
+<arg>msg=❌ Trip owner should belong to 1 community</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.119924" elapsed="0.000000"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<arg>${trip["tripDates"]}</arg>
+<arg>1</arg>
+<arg>msg=❌ Trip should contain exactly 1 tripDate</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.120971" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${date}</var>
+<arg>${trip["tripDates"][0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.120971" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${date["day"]}</arg>
+<arg>wednesday</arg>
+<arg>msg=❌ Trip date day should be 'wednesday'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.120971" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${date["time"]}</arg>
+<arg>msg=❌ Trip date missing time</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.120971" elapsed="0.000000"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<arg>${trip["pickupPlaces"]}</arg>
+<arg>1</arg>
+<arg>msg=❌ Trip should contain exactly 1 pickupPlace</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.120971" elapsed="0.000000"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<arg>${trip["dropoutPlaces"]}</arg>
+<arg>1</arg>
+<arg>msg=❌ Trip should contain exactly 1 dropoutPlace</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.120971" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip["pickupPlaces"][0]["name"]}</arg>
+<arg>Punto de inicio</arg>
+<arg>msg=❌ Pickup place name mismatch</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.120971" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip["dropoutPlaces"][0]["name"]}</arg>
+<arg>Punto de bajada</arg>
+<arg>msg=❌ Dropout place name mismatch</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.120971" elapsed="0.000000"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<arg>${trip["followersData"]}</arg>
+<arg>1</arg>
+<arg>msg=❌ Trip should contain exactly 1 follower</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.120971" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${follower}</var>
+<arg>${trip["followersData"][0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.120971" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${follower["name"]}</arg>
+<arg>Nico QA Carpool 2</arg>
+<arg>msg=❌ Follower name mismatch</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.122024" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${follower["accepted"]}</arg>
+<arg>True</arg>
+<arg>msg=❌ Follower should be accepted</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.122024" elapsed="0.000000"/>
+</kw>
+<doc>Aceptar seguidor del viaje como Conductor</doc>
+<status status="FAIL" start="2025-09-24T15:47:11.117843" elapsed="0.004181">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t13" name="Confirm tripInstances as Driver" line="491">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.123101" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.123101" elapsed="0.000000">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.123101" elapsed="0.000000"/>
+</kw>
+<kw name="PUT On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/tripinstances/confirm/${tripinstance1}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.123101" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.124094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.124094" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${trip_instance}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.124094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip_instance["_id"]}</arg>
+<arg>msg=❌ Trip instance is missing _id</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.124094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip_instance["status"]}</arg>
+<arg>confirmed</arg>
+<arg>msg=❌ Trip instance status should be 'confirmed'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.124094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip_instance["recurrent"]}</arg>
+<arg>True</arg>
+<arg>msg=❌ Trip instance should be recurrent but is not</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.124094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip_instance["tripId"]}</arg>
+<arg>msg=❌ Trip instance missing tripId</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.124094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip_instance["userId"]}</arg>
+<arg>msg=❌ Trip instance missing userId</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.125080" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${trip_instance["distance"]}</arg>
+<arg>0</arg>
+<arg>msg=❌ Trip instance distance should be 0 initially</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.125080" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip_instance["filed"]}</arg>
+<arg>False</arg>
+<arg>msg=❌ Trip instance should not be filed</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.125080" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip_instance["startDate"]}</arg>
+<arg>msg=❌ Trip instance missing startDate</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.125080" elapsed="0.000000"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<arg>${trip_instance["boardingDetails"]}</arg>
+<arg>0</arg>
+<arg>msg=❌ Trip instance boardingDetails should be empty</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.125080" elapsed="0.000000"/>
+</kw>
+<doc>Confirmar salida luego de que se aceptara al usuario</doc>
+<status status="FAIL" start="2025-09-24T15:47:11.122024" elapsed="0.003056">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t14" name="Board reservation as user" line="545">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.126086" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.126086" elapsed="0.000988">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool2}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.127074" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/tripinstances/board/${tripinstance1}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.127074" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.127074" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.127074" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.127074" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${trip}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.127074" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-09-24T15:47:11.125080" elapsed="0.001994">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t15" name="Start carpool departure" line="562">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.128079" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.128079" elapsed="0.000000">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.129213" elapsed="0.000000"/>
+</kw>
+<kw name="PUT On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/tripinstances/start/${tripinstance1}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.129213" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.129213" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.129213" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.129213" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${accessTokenDeparture}</var>
+<arg>[]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.129213" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-09-24T15:47:11.128079" elapsed="0.001134">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t16" name="Get Chats" line="664">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.131213" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.130225" elapsed="0.000988">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool2}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.131213" elapsed="0.000000"/>
+</kw>
+<kw name="GET On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/chat/public/${tripId}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.131213" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.131213" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.131213" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.131213" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-09-24T15:47:11.130225" elapsed="0.000988">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t17" name="Get Chats (user)" line="678">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.133511" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.133511" elapsed="0.000000">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool2}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.133511" elapsed="0.000000"/>
+</kw>
+<kw name="GET On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/chat/messages/${tripId}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.133511" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.133511" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.133511" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.133511" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-09-24T15:47:11.132441" elapsed="0.001070">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t18" name="Get Chats (driver)" line="692">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.135507" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.135507" elapsed="0.000000">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.135507" elapsed="0.000000"/>
+</kw>
+<kw name="GET On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/chat/messages/${tripId}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.135507" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.135507" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.135507" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.135507" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-09-24T15:47:11.134503" elapsed="0.002013">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t19" name="End trip" line="709">
+<kw name="Create Session">
+<msg time="2025-09-24T15:47:11.136516" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="FAIL" start="2025-09-24T15:47:11.136516" elapsed="0.000000">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.138022" elapsed="0.000000"/>
+</kw>
+<kw name="PUT On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/tripinstances/end/${tripinstance1}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.138022" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.138022" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.138022" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${trip_instance}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.138022" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip_instance["_id"]}</arg>
+<arg>msg=❌ Trip instance is missing _id</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.138022" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip_instance["status"]}</arg>
+<arg>ended</arg>
+<arg>msg=❌ Trip instance status should be 'ended'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.138022" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip_instance["recurrent"]}</arg>
+<arg>True</arg>
+<arg>msg=❌ Trip instance should be recurrent but is not</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.138022" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip_instance["tripId"]}</arg>
+<arg>msg=❌ Trip instance missing tripId</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.139094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip_instance["userId"]}</arg>
+<arg>msg=❌ Trip instance missing userId</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.139094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${trip_instance["distance"]}</arg>
+<arg>0</arg>
+<arg>msg=❌ Trip instance distance should be 0 initially</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.139094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${trip_instance["filed"]}</arg>
+<arg>False</arg>
+<arg>msg=❌ Trip instance should not be filed</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.139094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip_instance["startDate"]}</arg>
+<arg>msg=❌ Trip instance missing startDate</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.139094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip_instance["endedAt"]}</arg>
+<arg>msg=❌ Trip instance has status 'ended' but is missing endedAt timestamp</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.139094" elapsed="0.000000"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<arg>${trip_instance["passengers"]}</arg>
+<arg>1</arg>
+<arg>msg=❌ Expected 1 passenger, but got a different number</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.139094" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${trip_instance["passengers"][0]}</arg>
+<arg>msg=❌ Passenger ID is missing in the trip instance</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.139094" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-09-24T15:47:11.136516" elapsed="0.003690">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t20" name="Delete trip" line="761">
+<kw name="Skip" owner="BuiltIn">
+<msg time="2025-09-24T15:47:11.140206" level="SKIP">Skipped with Skip keyword.</msg>
+<doc>Skips the rest of the current test.</doc>
+<status status="SKIP" start="2025-09-24T15:47:11.140206" elapsed="0.000000">Skipped with Skip keyword.</status>
+</kw>
+<kw name="Create Session">
+<arg>mysesion</arg>
+<arg>${STAGE_URL}</arg>
+<arg>verify=true</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.140206" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${accessTokenCarpool1}</arg>
+<arg>Content-Type=application/json; charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.141252" elapsed="0.000000"/>
+</kw>
+<kw name="DELETE On Session">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>url=/api/v1/trips/${tripId}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" start="2025-09-24T15:47:11.141252" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.141252" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.141252" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${response}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.141252" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response["message"]}</arg>
+<arg>Trip deleted</arg>
+<arg>msg=❌ Expected 'Trip deleted' message, but got something else</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.141252" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${response["message"]}</arg>
+<arg>msg=❌ Response message is missing after deletion</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-24T15:47:11.141252" elapsed="0.000000"/>
+</kw>
+<status status="SKIP" start="2025-09-24T15:47:11.140206" elapsed="0.001046">Skipped with Skip keyword.</status>
+</test>
+<status status="FAIL" start="2025-09-24T15:47:11.026297" elapsed="0.116053"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="15" skip="3">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="15" skip="3" id="s1" name="carpoolFlow">carpoolFlow</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-09-24T15:47:11.043884" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 2: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+<msg time="2025-09-24T15:47:11.055425" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 8: Importing library 'SeleniumLibrary' failed: ModuleNotFoundError: No module named 'SeleniumLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+<msg time="2025-09-24T15:47:11.056457" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 9: Importing library 'RPA.JSON' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+<msg time="2025-09-24T15:47:11.056457" level="ERROR">Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 10: Importing library 'RPA.Smartsheet' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages</msg>
+<msg time="2025-09-24T15:47:11.101842" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<msg time="2025-09-24T15:47:11.101842" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<msg time="2025-09-24T15:47:11.102815" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<msg time="2025-09-24T15:47:11.102815" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<msg time="2025-09-24T15:47:11.102815" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+</errors>
+</robot>

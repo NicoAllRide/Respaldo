@@ -1,0 +1,40 @@
+[ ERROR ] Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 2: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages
+[ ERROR ] Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 8: Importing library 'SeleniumLibrary' failed: ModuleNotFoundError: No module named 'SeleniumLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages
+[ ERROR ] Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 9: Importing library 'RPA.JSON' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages
+[ ERROR ] Error in file 'C:\Users\UsuarioCompuElite\Documents\GitHub\Respaldo\AllRide Test Cases\Test Cases\Carpool(Coni)\carpoolFlow.robot' on line 10: Importing library 'RPA.Smartsheet' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312
+  C:\Users\UsuarioCompuElite\AppData\Local\Programs\Python\Python312\Lib\site-packages

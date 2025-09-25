@@ -19,8 +19,8 @@ ${VEH_PLATE}            XXYYZZ
 
 ${START_OFFSET_MIN}     10
 ${END_OFFSET_MIN}       70
-${PAYLOADS_FILE}           rf_payloads_6025198_from_0750.txt
-${DELAY_S}                 5s
+${PAYLOADS_FILE}           rf_payloads_from_uploaded.txt
+${DELAY_S}                 3s
 
 
 *** Test Cases ***
@@ -164,8 +164,6 @@ Start Service
     Should Be Equal As Strings    ${json}[message]    Service started successfully
     ...    msg=❌ Expected message 'Service started successfully' but got "${json}[message]"
 
-
-    sleep     2h
 
 Submit Location
     Create Session    mysesion    ${STAGE_URL}
