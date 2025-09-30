@@ -1,0 +1,6 @@
+datasources:517f4d413533cb2aaa4f25d5b8e6b512f0f929c7
+commandlineoptions:05208b8fa5e08715f42f4ed65b0c9f06f4380d49
+suitesfrom:no-suites-from-option
+file:e4bee7ea140c7ae3013e37d4bed82c2e3cad8d5c
+--test carpoolFlow.Carpool Realtime - Start + New Positions (USER_ID)
+--test carpoolFlow.Carpool Realtime - Start + New Positions (USER_ID2)

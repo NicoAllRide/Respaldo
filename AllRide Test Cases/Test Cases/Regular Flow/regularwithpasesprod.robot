@@ -82,6 +82,14 @@ Generate random UUID 2 (_id validations qrValidations)
     ${uuid_qr2}=    Evaluate    str(uuid.uuid4())
     Log    ${uuid_qr2}
     Set Global Variable    ${uuid_qr2}
+Generate random UUID 3 (_id validations qrValidations)
+    ${uuid_qr3}=    Evaluate    str(uuid.uuid4())
+    Log    ${uuid_qr3}
+    Set Global Variable    ${uuid_qr3}
+Generate random UUID 4 (_id validations qrValidations)
+    ${uuid_qr4}=    Evaluate    str(uuid.uuid4())
+    Log    ${uuid_qr4}
+    Set Global Variable    ${uuid_qr4}
 
 2 hours local
     ${date}=    Get Current Date    time_zone=local    exclude_millis=yes
@@ -877,7 +885,6 @@ Get User QR(UserRobotFramework) 2
     Log    ${code}
 
 Validate With QR(Nico)
-    skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -896,37 +903,8 @@ Validate With QR(Nico)
     Log    ${code}
     Sleep    10s
 
-    Sleep    31s
 
-
-Sync pass validation offline
-    Set Log Level    TRACE
-    Create Session    mysesion    ${STAGE_URL}    verify=true
-
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
-    ${headers}=    Create Dictionary
-    ...    Authorization=${tokenDriver}
-    ...    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
-    ${response}=    POST On Session
-    ...    mysesion
-    ...    url=https://bryan-testing.loca.lt/api/v2/pb/driver/validations/sync/${idSuperCommunity}
-    ...    data={"validations":[{"assignedSeat":"3","communityId":"${idComunidad2}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico}","reason":[],"remainingTickets":0,"routeId":"68488d2a4ff298af70023813","synced":false,"token":"","userId":"${user_id}","validated":true},{"assignedSeat":"4","communityId":"${idComunidad2}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr2}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico2}","reason":[],"remainingTickets":0,"routeId":"68488d2a4ff298af70023813","synced":false,"token":"","userId":"${userId_2}","validated":false}]}
-    ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
-    ${code}=    convert to string    ${response.status_code}
-        ${validations}=    Set Variable    ${response.json()}
-    Should Not Be Empty    ${response.json()}
-    Status Should Be    200
-
-    FOR    ${validation}    IN    @{validations}
-    # Verifica que cada objeto no esté vacío
-        Should Not Be Empty    ${validation}    Validations info is empty
-    END
-
-Get Pass Detail After validation (Offline)
+Get Pass Detail After validation (Online)
     [Documentation]    Se verifica el descuento del pase luego de la validación online, debería quedan 1 solo uso
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
@@ -970,12 +948,161 @@ Get Pass Detail After validation (Offline)
     Should Be Equal As Numbers    ${pass}[remainingDailyUses]    1
     ...    msg=❌ Expected remainingDailyUses to be 1, but got '${pass}[remainingDailyUses]'
 
+    Sleep    17s
+
+Sync pass validation offline
+    Set Log Level    TRACE
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary
+    ...    Authorization=${tokenDriver}
+    ...    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/validations/sync/${idSuperCommunity}
+    ...    data={"validations":[{"assignedSeat":"3","communityId":"${idComunidad2}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico}","reason":[],"remainingTickets":0,"routeId":"68488d2a4ff298af70023813","synced":false,"token":"","userId":"${user_id}","validated":true},{"assignedSeat":"4","communityId":"${idComunidad2}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr2}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico2}","reason":[],"remainingTickets":0,"routeId":"68488d2a4ff298af70023813","synced":false,"token":"","userId":"${userId_2}","validated":false}]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+        ${validations}=    Set Variable    ${response.json()}
+    Should Not Be Empty    ${response.json()}
+    Status Should Be    200
+
+    FOR    ${validation}    IN    @{validations}
+    # Verifica que cada objeto no esté vacío
+        Should Not Be Empty    ${validation}    Validations info is empty
+    END
+
+
+Get Pass Detail After validation (Offline) Should not discount ticket due to time limitation
+    [Documentation]    Se verifica que no se haya descontado ningún uso de pase dentro de los 29 segundos de restricción
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v2/products/user/purchased/${passId}/passes/privateBus
+
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenNico}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+    Should Be Equal As Numbers    ${response.status_code}    200
+    # Almacenamos la respuesta de json en una variable para poder jugar con ella
+
+# Tomar el primer pase
+    ${pass}=    Set Variable    ${response.json()}
+
+    Should Be Equal As Strings    ${pass}[name]    Automation Test Passes 2
+    ...    msg=❌ Expected name to be 'Automation Test Passes 2', but got '${pass}[name]'
+
+    Should Be Equal As Strings    ${pass}[description]    Automation Test Passes 2
+    ...    msg=❌ Expected description to be 'Automation Test Passes 2', but got '${pass}[description]'
+
+    Should Be Equal As Numbers    ${pass}[remaining]    1
+    ...    msg=❌ Expected remaining to be 1, but got '${pass}[remaining]'
+
+    Should Be Equal As Strings    ${pass}[unlimitedUses]    False
+    ...    msg=❌ Expected unlimitedUses to be False, but got '${pass}[unlimitedUses]'
+
+    Should Be Equal As Numbers    ${pass}[maxDailyUses]    2
+    ...    msg=❌ Expected maxDailyUses to be 2, but got '${pass}[maxDailyUses]'
+
+    Should Be Equal As Numbers    ${pass}[used]    1
+    ...    msg=❌ Expected used to be 1, but got '${pass}[used]'
+
+    Should Be Equal As Strings    ${pass}[allRoutes]    True
+    ...    msg=❌ Expected allRoutes to be True, but got '${pass}[allRoutes]'
+
+    Should Be Equal As Strings    ${pass}[allLots]    False
+    ...    msg=❌ Expected allLots to be False, but got '${pass}[allLots]'
+
+    Should Be Equal As Numbers    ${pass}[remainingDailyUses]    1
+    ...    msg=❌ Expected remainingDailyUses to be 1, but got '${pass}[remainingDailyUses]'
+
+    Sleep    31s
+
+Sync pass validation offline after pass time limit(30s)
+    Set Log Level    TRACE
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary
+    ...    Authorization=${tokenDriver}
+    ...    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=/api/v2/pb/driver/validations/sync/${idSuperCommunity}
+    ...    data={"validations":[{"assignedSeat":"3","communityId":"${idComunidad2}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr4}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico}","reason":[],"remainingTickets":0,"routeId":"68488d2a4ff298af70023813","synced":false,"token":"","userId":"${user_id}","validated":true},{"assignedSeat":"4","communityId":"${idComunidad2}","createdAt":"2024-06-28T15:48:27.139-04:00","departureId":"${departureId}","_id":"${uuid_qr3}","isCustom":false,"isDNI":false,"isManual":false,"latitude":-34.394115,"loc":[-70.78126,-34.394115],"longitude":-70.78126,"qrCode":"${qrCodeNico2}","reason":[],"remainingTickets":0,"routeId":"68488d2a4ff298af70023813","synced":false,"token":"","userId":"${userId_2}","validated":false}]}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+        ${validations}=    Set Variable    ${response.json()}
+    Should Not Be Empty    ${response.json()}
+    Status Should Be    200
+
+    FOR    ${validation}    IN    @{validations}
+    # Verifica que cada objeto no esté vacío
+        Should Not Be Empty    ${validation}    Validations info is empty
+    END
+
+
+Get Pass Detail After validation (Offline) Should disctount ticket after 31 s
+    [Documentation]    Se verifica el descuento del pase luego de la validación offline luego del limite de tiempo(30s) no deberían quedar usos
+
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    ${url}=    Set Variable
+    ...    ${STAGE_URL}/api/v2/products/user/purchased/${passId}/passes/privateBus
+    # Configura las opciones de la solicitud (headers, auth)
+    &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenNico}
+
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    GET    url=${url}    headers=${headers}
+    Should Be Equal As Numbers    ${response.status_code}    200
+    # Almacenamos la respuesta de json en una variable para poder jugar con ella
+
+# Tomar el primer pase
+    ${pass}=    Set Variable    ${response.json()}
+
+    Should Be Equal As Strings    ${pass}[name]    Automation Test Passes 2
+    ...    msg=❌ Expected name to be 'Automation Test Passes 2', but got '${pass}[name]'
+
+    Should Be Equal As Strings    ${pass}[description]    Automation Test Passes 2
+    ...    msg=❌ Expected description to be 'Automation Test Passes 2', but got '${pass}[description]'
+
+    Should Be Equal As Numbers    ${pass}[remaining]    0
+    ...    msg=❌ Expected remaining to be 0, but got '${pass}[remaining]'
+
+    Should Be Equal As Strings    ${pass}[unlimitedUses]    False
+    ...    msg=❌ Expected unlimitedUses to be False, but got '${pass}[unlimitedUses]'
+
+    Should Be Equal As Numbers    ${pass}[maxDailyUses]    2
+    ...    msg=❌ Expected maxDailyUses to be 2, but got '${pass}[maxDailyUses]'
+
+    Should Be Equal As Numbers    ${pass}[used]    2
+    ...    msg=❌ Expected used to be 2, but got '${pass}[used]'
+
+    Should Be Equal As Strings    ${pass}[allRoutes]    True
+    ...    msg=❌ Expected allRoutes to be True, but got '${pass}[allRoutes]'
+
+    Should Be Equal As Strings    ${pass}[allLots]    False
+    ...    msg=❌ Expected allLots to be False, but got '${pass}[allLots]'
+
+    Should Be Equal As Numbers    ${pass}[remainingDailyUses]    0
+    ...    msg=❌ Expected remainingDailyUses to be 0, but got '${pass}[remainingDailyUses]'
+
+
 Get Pass Detail After validation (Offline) User 2
     [Documentation]    Se verifica el descuento del pase luego de la validación offline, no deberían quedar usos
 
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    https://bryan-testing.loca.lt/api/v2/products/user/purchased/${passId2}/passes/privateBus
+    ...    ${STAGE_URL}/api/v2/products/user/purchased/${passId2}/passes/privateBus
     # Configura las opciones de la solicitud (headers, auth)
     &{headers}=    Create Dictionary    Authorization=Bearer ${accessTokenNico2}
 
