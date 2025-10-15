@@ -117,10 +117,10 @@ Create services
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_pastTomorrow}&onlyODDs=false
+    ...    ${STAGE_URL}/api/v1/admin/pb/icTable/services?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_pasttomorrow}
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set Variable    ${response.json()}[scheduledServices]
+    ${responseJson}=    Set Variable    ${response.json()}
     ${service_id}=    Set Variable    None
 
     

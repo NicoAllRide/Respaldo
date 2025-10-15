@@ -68,28 +68,40 @@ Set Date Variables
     ${date}    Get Current Date    time_zone=local    exclude_millis=yes
     ${formatted_date}    Convert Date    ${date}    result_format=%H:%M:%S
     Log    Hora Actual: ${formatted_date}
-
-    # Sumar una hora
     ${one_hour_later}    Add Time To Date    ${date}    1 hour
     ${formatted_one_hour_later}    Convert Date    ${one_hour_later}    result_format=%H:%M
     Log    Hora Actual + 1 hora: ${formatted_one_hour_later}
     Set Global Variable    ${formatted_one_hour_later}
 
+1 week local
+    ${today}=    Get Current Date    time_zone=local
+    ${weekday}=    Convert Date    ${today}    result_format=%w
+    ${days_until_monday}=    Evaluate    (7 - int(${weekday}) + 1) % 7 or 7
+
+    ${next_monday}=    Add Time To Date    ${today}    ${days_until_monday} days
+    ${next_tuesday}=    Add Time To Date    ${next_monday}    1 day
+
+    ${startDate}=    Convert Date    ${next_monday}    result_format=%Y-%m-%dT03:00:00.000Z
+    ${endDate}=      Convert Date    ${next_tuesday}   result_format=%Y-%m-%dT02:59:59.999Z
+
+    Log To Console    StartDate: ${startDate}
+    Log To Console    EndDate: ${endDate}
+    Set Global Variable    ${startDate}
+    Set Global Variable    ${endDate}
+
+
+
 
 Login User With Email(Obtain Token)
         Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
     ${jsonBody}=    Set Variable    {"username":"nicolas+comunidad2@allrideapp.com","password":"Lolowerty21@"}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    Post On Session
     ...    mysesion
     ...    url=${loginUserUrl}
     ...    json=${parsed_json}
     ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
@@ -98,46 +110,102 @@ Login User With Email(Obtain Token)
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
 
+Find serviceId from other week (IN)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    ${response}=    GET On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/pb/allServices?community=6654ae4eba54fe502d4e4187&startDate=2025-10-13T03:00:00.000Z&endDate=2025-10-14T02:59:59.999Z&onlyODDs=false
+    ...    headers=${headers}
+    
+    ${responseJson}=    Set Variable    ${response.json()}
+
+        # Obtenemos la cantidad de objetos de scheduledServices
+    ${num_scheduled_services}=    Get Length    ${responseJson}
+
+    # Ordenamos los servicios por createdAt
+    ${sorted_services}=    Evaluate
+    ...    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '6818eceadee018d6a8ed7948']
+    ...    json
+    Log    ${sorted_services}
+
+
+    # Obtenemos el último servicio creado
+    ${last_service}=    Set Variable    ${sorted_services[-1]}
+    ${service_id}=    Set Variable    ${last_service['_id']}
+    ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
+    Should Be Equal As Strings    6818eceadee018d6a8ed7948    ${last_service_route}
+
+    Set Global Variable    ${service_id}
+
+    Log    Last created service ID: ${service_id}
+
+
+    ## 6818eceadee018d6a8ed7948 route dia lunes 2pm es TD Out y 3pm es TD in, parámetroo Color, Rojo azul, Amarillo
+    # Probar caso de solicitar una TD con paramtetros y con un usuario que no tenga
+    #
+Find serviceId from other week (OUT)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    ${response}=    GET On Session
+    ...    mysesion
+    ...    url=/api/v1/admin/pb/allServices?community=6654ae4eba54fe502d4e4187&startDate=2025-10-13T03:00:00.000Z&endDate=2025-10-14T02:59:59.999Z&onlyODDs=false
+    ...    headers=${headers}
+    
+    ${responseJson}=    Set Variable    ${response.json()}
+
+        # Obtenemos la cantidad de objetos de scheduledServices
+    ${num_scheduled_services}=    Get Length    ${responseJson}
+
+    # Ordenamos los servicios por createdAt
+    ${sorted_services}=    Evaluate
+    ...    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '6818eceadee018d6a8ed7948']
+    ...    json
+    Log    ${sorted_services}
+
+
+    # Obtenemos el último servicio creado
+    ${last_service}=    Set Variable    ${sorted_services[-1]}
+    ${service_id}=    Set Variable    ${last_service['_id']}
+    ${last_service_route}=    Set Variable    ${last_service['routeId']['_id']}
+    Should Be Equal As Strings    6818eceadee018d6a8ed7948    ${last_service_route}
+
+    Set Global Variable    ${service_id}
+
+    Log    Last created service ID: ${service_id}
+
+
+    ## 6818eceadee018d6a8ed7948 route dia lunes 2pm es TD Out y 3pm es TD in, parámetroo Color, Rojo azul, Amarillo
+    # Probar caso de solicitar una TD con paramtetros y con un usuario que no tenga
+    #
 Seat Reservation(User1-NicoEnd)
     Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/user/booking
+    ...    url=/api/v1/pb/user/booking
     ...    data={"serviceId":"6818ed66dee018d6a8ed7fe1","stopId":"6654d4acba54fe502d4e6b6b"}
     ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
 Can Request TD
 
     skip
     Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/user/canRequestTD
+    ...    url=/api/v1/pb/user/canRequestTD
     ...    data={"communityId":"6654ae4eba54fe502d4e4187","direction":"in","routeId":"6818eceadee018d6a8ed7948","serviceId":"6818ed66dee018d6a8ed7fe1","stopId":"6654d4acba54fe502d4e6b6b"}
     ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
 Create TD
     Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/user/transitDeparture
+    ...    url=/api/v1/pb/user/transitDeparture
     ...    data={"communityId":"6654ae4eba54fe502d4e4187","direction":"in","endLocation":{"address":"Hospital Rengo","isUserStop":false,"lat":"-34.4111","loc":["-34.4111","-70.8537"],"lon":"-70.8537","placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b"},"estimatedArrival":"2025-05-12T18:00:00.000Z","isEmergency":false,"matchedOption":{"allowedUsers":{},"direction":"in","_id":"681ce3854093cf7169c2eaa3","margin":{"amount":10,"enabled":true,"unit":"minutes"}},"oddType":"Taxis Nico","startLocation":{"address":"Cesfam Rengo -","isUserStop":false,"lat":"-34.3944","loc":["-34.3944","-70.8504"],"lon":"-70.8504","placeId":"666854f90c80b160cb022b90"}}
     ...    headers=${headers}
     
@@ -145,18 +213,14 @@ Create TD
     Set Global Variable    ${TD_id}
 Login User With Email(Obtain Token) Barbi
         Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    # Configura las opciones de la solicitud (headers, auth)
     ${jsonBody}=    Set Variable    {"username":"nicolas+barbara@allrideapp.com","password":"Lowerty21@"}
     ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
     ${headers}=    Create Dictionary    Authorization=""    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    Post On Session
     ...    mysesion
     ...    url=${loginUserUrl}
     ...    json=${parsed_json}
     ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
     Should Be Equal As Numbers    ${code}    200
     Log    ${code}
@@ -168,42 +232,28 @@ Login User With Email(Obtain Token) Barbi
 
 Seat Reservation(User2-Barbi)
     Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${accessTokenBarbi}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/user/booking
+    ...    url=/api/v1/pb/user/booking
     ...    data={"serviceId":"6818ed66dee018d6a8ed7fe1","stopId":"6654d4acba54fe502d4e6b6b"}
     ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
 Can Request TD Barbi
     Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${accessTokenBarbi}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/user/canRequestTD
+    ...    url=/api/v1/pb/user/canRequestTD
     ...    data={"communityId":"6654ae4eba54fe502d4e4187","direction":"in","routeId":"6818eceadee018d6a8ed7948","serviceId":"6818ed66dee018d6a8ed7fe1","stopId":"6654d4acba54fe502d4e6b6b"}
     ...    headers=${headers}
-    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
 
 Create TD Barbi
     Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${accessTokenBarbi}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    POST On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/user/transitDeparture
+    ...    url=/api/v1/pb/user/transitDeparture
     ...    data={"communityId":"6654ae4eba54fe502d4e4187","direction":"in","endLocation":{"address":"Hospital Rengo","isUserStop":false,"lat":"-34.4111","loc":["-34.4111","-70.8537"],"lon":"-70.8537","placeId":"6654d4acba54fe502d4e6b6a","stopId":"6654d4acba54fe502d4e6b6b"},"estimatedArrival":"2025-05-12T18:00:00.000Z","isEmergency":false,"matchedOption":{"allowedUsers":{},"direction":"in","_id":"681ce3854093cf7169c2eaa3","margin":{"amount":10,"enabled":true,"unit":"minutes"}},"oddType":"Taxis Nico","startLocation":{"address":"Cesfam Rengo -","isUserStop":false,"lat":"-34.3944","loc":["-34.3944","-70.8504"],"lon":"-70.8504","placeId":"666854f90c80b160cb022b90"}}
     ...    headers=${headers}
     
@@ -216,14 +266,10 @@ Create TD Barbi
     Sleep    20s
 Delete TD Nico
     Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    DELETE On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/user/transitDeparture/${TD_id}
+    ...    url=/api/v1/pb/user/transitDeparture/${TD_id}
     ...    headers=${headers}
     
     ${TD_idBarbi}=  Set variable    ${response.json()}[_id]
@@ -236,14 +282,10 @@ Delete TD Nico
 
 Delete TD Barbi
     Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${accessTokenBarbi}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    DELETE On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/user/transitDeparture/${TD_idBarbi}
+    ...    url=/api/v1/pb/user/transitDeparture/${TD_idBarbi}
     ...    headers=${headers}
     
     ${TD_idBarbi}=  Set variable    ${response.json()}[_id]
@@ -256,14 +298,10 @@ Delete TD Barbi
 
 Delete Regular reservation Nico
     Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${accessTokenNico}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    DELETE On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/user/booking/6818ed66dee018d6a8ed7fe1
+    ...    url=/api/v1/pb/user/booking/6818ed66dee018d6a8ed7fe1
     
     ${TD_idBarbi}=  Set variable    ${response.json()}[_id]
     Set Global Variable    ${TD_idBarbi}
@@ -275,14 +313,10 @@ Delete Regular reservation Nico
 
 Delete Regular reservation Barbi
     Create Session    mysesion    ${STAGE_URL}    verify=true
-    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-
-    # Configura las opciones de la solicitud (headers, auth)
     ${headers}=    Create Dictionary    Authorization=${accessTokenBarbi}    Content-Type=application/json
-    # Realiza la solicitud GET en la sesión por defecto
     ${response}=    DELETE On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/user/booking/6818ed66dee018d6a8ed7fe1
+    ...    url=/api/v1/pb/user/booking/6818ed66dee018d6a8ed7fe1
     
     ${TD_idBarbi}=  Set variable    ${response.json()}[_id]
     Set Global Variable    ${TD_idBarbi}

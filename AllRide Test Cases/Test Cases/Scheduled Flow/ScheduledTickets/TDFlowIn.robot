@@ -169,7 +169,7 @@ Get Service Id
     ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${nextMonday}&endDate=${nextTuesday}&onlyODDs=false
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set Variable    ${response.json()}[scheduledServices]
+    ${responseJson}=    Set Variable    ${response.json()}
     ${service_id}=    Set Variable    None
 
     

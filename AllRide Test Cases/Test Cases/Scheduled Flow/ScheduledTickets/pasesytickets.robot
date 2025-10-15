@@ -362,7 +362,7 @@ Assing Tickets No reservation User3
 
 Get Assigned Tickets (Nico)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}
+    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}
@@ -388,7 +388,7 @@ Get Assigned Tickets (Nico)
 
 Get Assigned Tickets (Kratos)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}
+    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}
@@ -414,7 +414,7 @@ Get Assigned Tickets (Kratos)
 
 Get Assigned Tickets (Pedro)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}
+    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}
@@ -942,7 +942,7 @@ Get Departure Info After QR Validation(Has reservation)
 
 Get Assigned Tickets After Validation(Nico)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}
+    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}
@@ -1062,7 +1062,7 @@ Get Departure Info After Custom Validation (Has reservation)
 
 Get Assigned Tickets After Validation(Kratos)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}
+    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}
@@ -1178,7 +1178,7 @@ Get Departure Info After reservations(Capacity should be 0 but able to validate,
 
 Get Assigned Tickets After Validation(Pedro)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}
+    ...    ${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}

@@ -126,12 +126,12 @@ Get Service Id
     ${service_id}=    Set Variable    None
 
     # Obtenemos la cantidad de objetos de scheduledServices
-    ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
+    ${num_scheduled_services}=    Get Length    ${responseJson}
 
     # Ordenamos los servicios por createdAt
     ${sorted_services}=    Evaluate    sorted(${responseJson}[scheduledServices], key=lambda x: x['createdAt'])    json
     ${sorted_services}=    Evaluate
-    ...    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']
+    ...    [service for service in ${responseJson} if service['routeId']['_id'] == '${scheduleId}']
     ...    json
 
     IF    ${sorted_services} == []

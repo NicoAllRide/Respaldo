@@ -95,7 +95,7 @@ Get Last Scheduled Service
     ${service_id_tickets}=    Set Variable    None
 
     # Obtenemos la cantidad de objetos de scheduledServices
-    ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
+    ${num_scheduled_services}=    Get Length    ${responseJson}
     
     IF    ${num_scheduled_services} == 0
         Create Session    mysesion    ${STAGE_URL}    verify=true

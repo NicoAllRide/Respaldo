@@ -102,7 +102,7 @@ Get Service Id
     ${serviceId}=    Set Variable    None
 
     # Obtenemos la cantidad de objetos de scheduledServices
-    ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
+    ${num_scheduled_services}=    Get Length    ${responseJson}
 
     # Iteramos sobre los objetos de scheduledServices
     FOR    ${index}    IN RANGE    ${num_scheduled_services}

@@ -256,7 +256,7 @@ Validate With QR, second validation should fail Nico
     ${response}=    
     ...    POST On Session
     ...    mysesion
-    ...    url=${CRIS_URL}/api/v1/pb/provider/departures/validate
+    ...    url=/api/v1/pb/provider/departures/validate
     ...    data={"validationString":"${qrCodeNico}"}
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)

@@ -23,7 +23,7 @@ ${idDNI}               653ff52433d83952fafcf397
 ${idKratos}             65e092afca7842b1032f12e2
 ${idPedro}              654a5148bf3e9410d0bcd39a
 ${idNaruto}             653ff69df90509541a74988b
-${tokenAdmin}           Bearer bacdcbf949137fb6c597fbd1c71a701735b7935d59c49b525c6f6e2ebff6df67bdc879872be987b81c2093f874984f1cc214e6537e3faf83b56bbf076b92e32e
+${tokenAdmin}           Bearer 462ae0a3feba486c0eabc1f0cfd5e4830c01b920d66126e4af95b6f7ac738d6fc03d21821d8c076407a10c94177e61ae51ef2780413d368a62231ea08de88c75
 ${tokenNico}            Bearer 496877632cc5c424ae72182e0ff61b8c6c3a09c8fff8bcde60fa7c2a5e50c40500ad6f1cb5a19ebaf5fdc42d250552654bc57cc10298efbd771aeaa018ebcecb
 ${tokenPedroPascal}     Bearer 2eacdb42a68ffa12b3d9901816b6b6049b1a65c9232c2112a64c5935002683b35bbf10c046ef9670f529241849999f66c4645956ecb1b0ae2a1de5c3209f9f4b
 ${tokenKratos}          Bearer fda5651771446906c9a511a066e26b4ef28873fa97ce094f47a2402b4a9a6f652a0032e1a7d3607515d2a873f2bb1eb73033e06c8d1d78e28b725a0537807d6f
@@ -57,3 +57,4 @@ ${tokenAdminProd}        Bearer a027e1d915e918ca18f68c5880947ac525a18d3ab7ba6d9a
 ${accessTokenCarpool1}        4717a8af3218fc7ef170ea32bf13771a6cfd93f3333d47274622f698e5fa997c9a35409e87db4617f8d9a4a905c97b878771b71cb727750b37f511ee4e5cb326
 ${accessTokenCarpool2}        fde74238603a77a35c6382d930ea1ec157153b9a4b4eac95a54fca5b1f7096395310b33f5e8c555bc5e3595e88f39812238d17960d0d69d676155063fa8ea362
 ${EXT_API_KEY}           Bearer Riz0QJrwDpBB3GwNuPVFg1gLUE9Vnek9XBVUeArWoW7ubsRCRMcQ6Ag5HPo8lbgK
+${variable}            valor

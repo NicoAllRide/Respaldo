@@ -141,19 +141,20 @@ Get Driver Token
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=67b879e99a2ba09f940ea7c5&startDate=${start_date_today}&endDate=${end_date_pastTomorrow}&onlyODDs=false
+    ...    ${STAGE_URL}/api/v1/admin/pb/icTable/services?community=67b879e99a2ba09f940ea7c5&startDate=${start_date_today}&endDate=${end_date_pastTomorrow}
+
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}
     ${service_id}=    Set Variable    None
 
     # Obtenemos la cantidad de objetos de scheduledServices
-    ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
-
+    ${num_scheduled_services}=    Get Length    ${responseJson}
     # Ordenamos los servicios por createdAt
-    ${sorted_services}=    Evaluate    sorted(${responseJson}[scheduledServices], key=lambda x: x['createdAt'])    json
+
+    ${sorted_services}=    Evaluate    sorted(${responseJson}, key=lambda x: x['createdAt'])    json
     ${sorted_services}=    Evaluate
-    ...    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']
+    ...    [service for service in ${responseJson} if service['routeId']['_id'] == '${scheduleId}']
     ...    json
 
     IF    ${sorted_services} == []
@@ -404,7 +405,6 @@ Stop Post Leg Departure
     ${code}=    convert to string    ${response.status_code}
     Status Should Be    200
     Log    ${code}
-
 
 Delete Route
     Create Session    mysesion    ${STAGE_URL}    verify=true

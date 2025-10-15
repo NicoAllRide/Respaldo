@@ -105,7 +105,7 @@ Get Service Id
     ${service_id_tickets}=    Set Variable    None
 
     # Obtenemos la cantidad de objetos de scheduledServices
-    ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
+    ${num_scheduled_services}=    Get Length    ${responseJson}
     
     # Ordenamos los servicios por createdAt
     ${sorted_services}=    Evaluate    sorted(${responseJson}[scheduledServices], key=lambda x: x['createdAt'])    json

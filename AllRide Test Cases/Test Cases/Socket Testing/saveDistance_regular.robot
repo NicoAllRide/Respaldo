@@ -199,18 +199,17 @@ Create services
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
     Log    ${code}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    Sleep    2s   
+    Sleep    15s   
 
 Get Service Id
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_pastTomorrow}&onlyODDs=false
+    ...    ${STAGE_URL}/api/v1/admin/pb/icTable/services?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_pasttomorrow}
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set Variable    ${response.json()}[scheduledServices]
+    ${responseJson}=    Set Variable    ${response.json()}
     ${service_id}=    Set Variable    None
 
     

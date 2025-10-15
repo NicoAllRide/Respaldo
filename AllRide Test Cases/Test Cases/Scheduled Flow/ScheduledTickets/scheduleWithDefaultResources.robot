@@ -144,12 +144,12 @@ Get Service Id (con retry inline)
     ${RETRY_INTERVAL}=   Set Variable    10 sec
 
     Wait Until Keyword Succeeds    ${RETRY_TIMEOUT}    ${RETRY_INTERVAL}    Run Keywords
-    ...    ${url}=    Set Variable    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_pastTomorrow}&onlyODDs=false
+    ...    ${url}=    Set Variable    ${STAGE_URL}/api/v1/admin/pb/icTable/services?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_pasttomorrow}
     ...    AND    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ...    AND    ${response}=    GET    url=${url}    headers=${headers}
     ...    AND    ${responseJson}=    Set Variable    ${response.json()}
     ...    AND    ${service_id_default}=    Set Variable    None
-    ...    AND    ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
+    ...    AND    ${num_scheduled_services}=    Get Length    ${responseJson}
     ...    AND    ${sorted_services}=    Evaluate    [s for s in ${responseJson}['scheduledServices'] if s['routeId']['_id'] == '${scheduleId}']
     ...    AND    Log    ${sorted_services}
     ...    AND    Run Keyword If    ${sorted_services} == []    Fail    No services were created with routeId._id = "${scheduleId}" All createSheduledWithDefaultResources Tests Failing(Fatal error)

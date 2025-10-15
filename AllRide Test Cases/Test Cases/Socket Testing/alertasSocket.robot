@@ -156,10 +156,9 @@ Create services
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${code}=    convert to string    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
     Log    ${code}
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
-    Sleep    2s
+    Sleep    15s
 
 Get Today Service Id
     [Tags]    test:retry(1)

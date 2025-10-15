@@ -15410,7 +15410,7 @@
 </kw>
 <kw name="Get Length" library="BuiltIn">
 <var>${num_scheduled_services}</var>
-<arg>${responseJson['scheduledServices']}</arg>
+<arg>${responseJson}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
 <msg timestamp="20240603 13:34:18.182" level="INFO">Length is 42</msg>
 <msg timestamp="20240603 13:34:18.182" level="INFO">${num_scheduled_services} = 42</msg>
@@ -19177,7 +19177,7 @@
 <test id="s1-s3-s2-t13" name="Get Assigned Tickets (Nico)" line="303">
 <kw name="Set Variable" library="BuiltIn">
 <var>${url}</var>
-<arg>${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}</arg>
+<arg>${STAGE_URL}https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <msg timestamp="20240603 13:34:34.849" level="INFO">${url} = https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683</msg>
 <status status="PASS" starttime="20240603 13:34:34.848" endtime="20240603 13:34:34.849"/>
@@ -19546,7 +19546,7 @@
 <test id="s1-s3-s2-t14" name="Get Assigned Tickets (Kratos)" line="327">
 <kw name="Set Variable" library="BuiltIn">
 <var>${url}</var>
-<arg>${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}</arg>
+<arg>${STAGE_URL}https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <msg timestamp="20240603 13:34:35.945" level="INFO">${url} = https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683</msg>
 <status status="PASS" starttime="20240603 13:34:35.944" endtime="20240603 13:34:35.945"/>
@@ -19882,7 +19882,7 @@
 <test id="s1-s3-s2-t15" name="Get Assigned Tickets (Pedro)" line="351">
 <kw name="Set Variable" library="BuiltIn">
 <var>${url}</var>
-<arg>${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}</arg>
+<arg>${STAGE_URL}https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <msg timestamp="20240603 13:34:37.137" level="INFO">${url} = https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683</msg>
 <status status="PASS" starttime="20240603 13:34:37.137" endtime="20240603 13:34:37.137"/>
@@ -20236,7 +20236,7 @@
 </kw>
 <kw name="Get Length" library="BuiltIn">
 <var>${num_scheduled_services}</var>
-<arg>${responseJson['scheduledServices']}</arg>
+<arg>${responseJson}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
 <msg timestamp="20240603 13:34:39.447" level="INFO">Length is 43</msg>
 <msg timestamp="20240603 13:34:39.447" level="INFO">${num_scheduled_services} = 43</msg>
@@ -22332,7 +22332,7 @@
 <test id="s1-s3-s2-t32" name="Get Assigned Tickets After Validation(Nico)" line="698">
 <kw name="Set Variable" library="BuiltIn">
 <var>${url}</var>
-<arg>${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}</arg>
+<arg>${STAGE_URL}https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <msg timestamp="20240603 13:34:53.858" level="INFO">${url} = https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683</msg>
 <status status="PASS" starttime="20240603 13:34:53.858" endtime="20240603 13:34:53.858"/>
@@ -22976,7 +22976,7 @@
 <test id="s1-s3-s2-t36" name="Get Assigned Tickets After Validation(Kratos)" line="788">
 <kw name="Set Variable" library="BuiltIn">
 <var>${url}</var>
-<arg>${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}</arg>
+<arg>${STAGE_URL}https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <msg timestamp="20240603 13:34:55.779" level="INFO">${url} = https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683</msg>
 <status status="PASS" starttime="20240603 13:34:55.779" endtime="20240603 13:34:55.779"/>
@@ -23586,7 +23586,7 @@
 <test id="s1-s3-s2-t40" name="Get Assigned Tickets After Validation(Pedro)" line="876">
 <kw name="Set Variable" library="BuiltIn">
 <var>${url}</var>
-<arg>${STAGE_URL}/api/v1/admin/pb/ticket/assigned/list?community=${idComunidad}</arg>
+<arg>${STAGE_URL}https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683&productId=6756633eaa9f4e162d084819</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <msg timestamp="20240603 13:34:57.778" level="INFO">${url} = https://stage.allrideapp.com/api/v1/admin/pb/ticket/assigned/list?community=653fd601f90509541a748683</msg>
 <status status="PASS" starttime="20240603 13:34:57.778" endtime="20240603 13:34:57.779"/>
@@ -24958,7 +24958,7 @@
 </kw>
 <kw name="Get Length" library="BuiltIn">
 <var>${num_scheduled_services}</var>
-<arg>${responseJson['scheduledServices']}</arg>
+<arg>${responseJson}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
 <msg timestamp="20240603 13:35:10.262" level="INFO">Length is 44</msg>
 <msg timestamp="20240603 13:35:10.262" level="INFO">${num_scheduled_services} = 44</msg>

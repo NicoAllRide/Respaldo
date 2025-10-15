@@ -126,12 +126,13 @@ Create services 2
     Sleep    15s
 
 Get Service Id
+    Set Log Level    TRACE
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_pasttomorrow}&onlyODDs=false
+    ...    ${STAGE_URL}/api/v1/admin/pb/icTable/services?community=${idComunidad2}&startDate=${start_date_today}&endDate=${end_date_pasttomorrow}
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set Variable    ${response.json()}[scheduledServices]
+    ${responseJson}=    Set Variable    ${response.json()}
     ${service_id}=    Set Variable    None
 
     
@@ -247,7 +248,7 @@ Get Service Id And Validate Pending States without reservations
     ${response}=    GET    url=${url}    headers=${headers}
     Should Be Equal As Numbers    ${response.status_code}    200
 
-    ${responseJson}=    Set Variable    ${response.json()}[scheduledServices]
+    ${responseJson}=    Set Variable    ${response.json()}
     ${service_id}=    Set Variable    None
 
     ${sorted_services}=    Evaluate    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])    json
@@ -367,7 +368,7 @@ Get Service Id And Validate Pending States with reservations
     ${response}=    GET    url=${url}    headers=${headers}
     Should Be Equal As Numbers    ${response.status_code}    200
 
-    ${responseJson}=    Set Variable    ${response.json()}[scheduledServices]
+    ${responseJson}=    Set Variable    ${response.json()}
     ${service_id}=    Set Variable    None
 
     ${sorted_services}=    Evaluate    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])    json

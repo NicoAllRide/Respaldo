@@ -165,7 +165,7 @@ Login User With Email(Obtain Token)
     ${accessToken}=    Set Variable    ${response.json()}[accessToken]
     ${accessTokenNico}=    Evaluate    "Bearer ${accessToken}"
     Set Global Variable    ${accessTokenNico}
-    sleep     5s
+    sleep     15s
 
 
 
@@ -173,18 +173,20 @@ Get Service Id
     [Documentation]    Obtiene el ID del último servicio creado con el schedule actual. Verifica también que se haya creado correctamente.
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     ${url}=    Set Variable
-    ...    ${STAGE_URL}/api/v1/admin/pb/allServices?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_pastTomorrow}&onlyODDs=false
+    ...    ${STAGE_URL}/api/v1/admin/pb/icTable/services?community=${idComunidad}&startDate=${start_date_today}&endDate=${end_date_pasttomorrow}
     ${headers}=    Create Dictionary    Authorization=${tokenAdmin}
     ${response}=    GET    url=${url}    headers=${headers}
     ${responseJson}=    Set Variable    ${response.json()}
     ${service_id}=    Set Variable    None
 
     # Obtenemos la cantidad de objetos de scheduledServices
-    ${num_scheduled_services}=    Get Length    ${responseJson['scheduledServices']}
+    ${num_scheduled_services}=    Get Length    ${responseJson}
     
     # Ordenamos los servicios por createdAt
-    ${sorted_services}=    Evaluate    sorted(${responseJson}[scheduledServices], key=lambda x: x['createdAt'])    json
-    ${sorted_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']    json
+
+    ${sorted_services}=    Evaluate    sorted(${responseJson}, key=lambda x: x['createdAt'])    json
+    ${sorted_services}=    Evaluate    [service for service in ${responseJson} if service['routeId']['_id'] == '${scheduleId}']    json
+
 
     Run Keyword If    ${sorted_services} == []    Fatal Error    msg= No services were created with routeId._id = "${scheduleId}" All createSheduled Tests Failing(Fatal error)
     # Obtenemos el último servicio creado

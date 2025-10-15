@@ -199,7 +199,7 @@ Get Service Id
     ...    ${NewAdmin_URL}/api/v1/admin/pb/allServices?community=${idComunidadProd}&startDate=${start_date_today}&endDate=${end_date_tomorrow}&onlyODDs=false
     ${headers}=    Create Dictionary    Authorization=${tokenAdminProd}
     ${response}=    GET    url=${url}    headers=${headers}
-    ${responseJson}=    Set Variable    ${response.json()}[scheduledServices]
+    ${responseJson}=    Set Variable    ${response.json()}
     ${service_id}=    Set Variable    None
 
     
