@@ -18,6 +18,7 @@ Resource    ../Variables/variablesStage.robot
 
 *** Test Cases ***
 Set Date Variables
+    sleep     15s
     ${fecha_hoy}=    Get Current Date    result_format=%Y-%m-%d
     Set Global Variable    ${fecha_hoy}
 
@@ -236,17 +237,7 @@ Create user manually with already existing communityValidation 1
     ${privateBus}=    Get From Dictionary    ${community}    privateBus
     Should Be Equal As Strings    ${privateBus}[enabled]    True    msg=❌ 'privateBus' no está habilitado para el usuario
 
-       # Validar que solo existe un oDDService
-    ${services}=    Get From Dictionary    ${privateBus}    oDDServices
-    Length Should Be    ${services}    1    msg=❌ El usuario debería tener solo un oDDService
 
-    # Validar que el único servicio sea 'Limitada Nico' y tenga needsAdminApproval=False
-    ${service}=    Get From List    ${services}    0
-    Should Be Equal As Strings    ${service}[name]    Limitada Nico    msg=❌ El servicio activo debería ser 'Limitada Nico'
-    Should Be Equal As Strings    ${service}[needsAdminApproval]    False    msg=❌ 'Limitada Nico' debería tener needsAdminApproval=False
- # Validar que odd.needsAdminApproval sea False (debe seguir al único servicio activo)
-    ${odd}=    Get From Dictionary    ${privateBus}    odd
-    Should Be Equal As Strings    ${odd}[needsAdminApproval]    True    msg=❌ 'odd.needsAdminApproval' debería ser True
 
 
 

@@ -128,7 +128,7 @@ Get Service Id
     ${sorted_services}=    Evaluate    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])    json
 
 
-    Run Keyword If    ${sorted_services} == []    Fatal Error    msg= No services were created with routeId._id = "${scheduleId}" All createSheduled Tests Failing(Fatal error)
+   Should not be Empty    ${sorted_services}      msg= No services were created with routeId._id = "${scheduleId}" Exit tests
     # Obtenemos el último servicio creado
     ${last_service}=    Set Variable    ${sorted_services[-1]}
     ${service_id}=    Set Variable    ${last_service['_id']}
@@ -160,6 +160,25 @@ Make User reservation Admin(No resources)(Paulina pasajero)
 
     ${scheduleId}=    Set Variable    ${response.json()}[_id]
     Set Global Variable    ${scheduleId}
+Make User reservation Admin(No resources)(User Carpool)
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+
+    # Configura las opciones de la solicitud (headers, auth)
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json; charset=utf-8
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    POST On Session
+    ...    mysesion
+    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/bookService/${service_id}?community=${idComunidad2}
+    ...    data={"userId":"68d581be1ee85dd206e05804"}
+    ...    headers=${headers}
+    # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
+    ${code}=    convert to string    ${response.status_code}
+    Should Be Equal As Numbers    ${code}    200
+    Log    ${code}
+
+    ${scheduleId}=    Set Variable    ${response.json()}[_id]
+    Set Global Variable    ${scheduleId}
 
 Get reservation before cancel
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
@@ -176,16 +195,32 @@ Get reservation before cancel
     Should Be Equal As Numbers    ${response.status_code}    200
 
     ${reservations}=    Set Variable  ${response.json()}[reservations]
-    Length Should Be    ${reservations}    1        More reservations found in service, there should only be one
+    Length Should Be    ${reservations}    2        More reservations found in service, there should only be one
     ${reservation_userid}=    Set Variable    ${response.json()}[reservations][0][userId][_id]
+    ${reservation_userid2}=    Set Variable    ${response.json()}[reservations][1][userId][_id]
     ${reservationId}=    Set Variable    ${response.json()}[reservations][0][_id]
+    ${reservationId2}=    Set Variable    ${response.json()}[reservations][1][_id]
 
     Should Be Equal As Strings    ${reservation_userid}    65e5d25bb23585cc1d6720b4
+    Should Be Equal As Strings    ${reservation_userid}    68d581be1ee85dd206e05804
     Set Global Variable    ${reservationId}
 
     Log    ${response.content}
 
-Cancel reservation 
+Cancel reservation 1
+    Create Session    mysesion    ${STAGE_URL}    verify=true
+    # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
+    # Configura las opciones de la solicitud (headers, auth)
+    ${jsonBody}=    Set Variable    {"_id":"65e5d25bb23585cc1d6720b4","communities":[{"confirmed":true,"_id":"6757581a0045ccd021173bea","communityId":"6654ae4eba54fe502d4e4187","isAdmin":false,"isStudent":false,"custom":[{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1e7","key":"rut","value":"190778045"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1e8","key":"address","value":"Brown Sur 48, 7760066 Ñuñoa, Región Metropolitana, Chile"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1e9","key":"coordinates","value":"-33.45584580063265,-70.5919211272842"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1ea","key":"Color","value":"Color"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1eb","key":"Animal","value":"Animal2"}],"privateBus":{"odd":{"canCreate":true,"needsAdminApproval":true,"exclusiveDepartures":false,"asapDepartures":false,"providers":[]},"validation":{"external":{"required":true}},"enabled":true,"favoriteRoutes":[],"suggestedRoutes":["66954794b24db9885e5aed7e","66cc94821125fb1232f990a1","668456ea56270b3e81594b60","6798bd8be494cc12a9d737d4"],"_id":"6757581a0045ccd021173bf0","oDDServices":[{"canCreate":true,"needsAdminApproval":true,"exclusiveDepartures":false,"asapDepartures":false,"providers":["653fd68233d83952fafcd4be"],"_id":"67cb1f0956535c5b75cba9a8","name":"Taxis Nico"}]},"createdAt":"2024-12-09T20:50:34.207Z","updatedAt":"2025-03-07T16:30:01.698Z"}],"emails":[{"fromCommunity":false,"_id":"65e5d25bb23585cc1d6720b5","email":"florencia+paulina@allrideapp.com","validationToken":"cd2d45a0c96c46f51a837537c0779c4f0321d71b0b1f9462df6faa2607e2021a7ad6a8944a31624c71972ca0e1c33a2911d9971e77dbfe6fa0289061a97bcde7","active":true}],"name":"Paulina Pasajero","custom":[{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1e7","key":"rut","value":"190778045"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1e8","key":"address","value":"Brown Sur 48, 7760066 Ñuñoa, Región Metropolitana, Chile"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1e9","key":"coordinates","value":"-33.45584580063265,-70.5919211272842"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1ea","key":"Color","value":"Color"},{"listValue":[],"private":true,"_id":"67af4e004fe3a577d333d1eb","key":"Animal","value":"Animal2"}],"validated":false,"reservationId":"hasReservation"}
+    ${parsed_json}=    Evaluate    json.loads($jsonBody)    json
+    ${headers}=    Create Dictionary    Authorization=${tokenAdmin}    Content-Type=application/json
+    # Realiza la solicitud GET en la sesión por defecto
+    ${response}=    Put On Session
+    ...    mysesion
+    ...    url=https://stage.allrideapp.com/api/v1/admin/pb/service/removeReservation/${service_id}?community=6654ae4eba54fe502d4e4187
+    ...    json=${parsed_json}
+    ...    headers=${headers}
+Cancel reservation 2
     Create Session    mysesion    ${STAGE_URL}    verify=true
     # Define la URL del recurso que requiere autenticación (puedes ajustarla según tus necesidades)
     # Configura las opciones de la solicitud (headers, auth)

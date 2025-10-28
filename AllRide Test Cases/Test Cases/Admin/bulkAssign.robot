@@ -140,7 +140,7 @@ Get Service Id
     ${sorted_services}=    Evaluate    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])    json
 
 
-    Run Keyword If    ${sorted_services} == []    Fatal Error    msg= No services were created with routeId._id = "${scheduleId}" All createSheduled Tests Failing(Fatal error)
+   Should not be Empty    ${sorted_services}      msg= No services were created with routeId._id = "${scheduleId}" Exit tests
     # Obtenemos el último servicio creado
     ${last_service}=    Set Variable    ${sorted_services[-1]}
     ${service_id}=    Set Variable    ${last_service['_id']}
@@ -252,7 +252,7 @@ Get Service Id And Validate Pending States without reservations
     ${service_id}=    Set Variable    None
 
     ${sorted_services}=    Evaluate    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])    json
-    Run Keyword If    ${sorted_services} == []    Fatal Error    msg= No services were created with routeId._id = "${scheduleId}" — All createScheduled tests failing
+    Should not be empty  ${sorted_services}    msg=No services were created with routeId._id = "${scheduleId}" — All createScheduled tests failing
 
     ${last_service}=    Set Variable    ${sorted_services[-1]}
     ${service_id}=    Set Variable    ${last_service['_id']}
@@ -372,7 +372,7 @@ Get Service Id And Validate Pending States with reservations
     ${service_id}=    Set Variable    None
 
     ${sorted_services}=    Evaluate    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])    json
-    Run Keyword If    ${sorted_services} == []    Fatal Error    msg= No services were created with routeId._id = "${scheduleId}" — All createScheduled tests failing
+    Should not be empty  ${sorted_services}    msg= No services were created with routeId._id = "${scheduleId}" — All createScheduled tests failing
 
     ${last_service}=    Set Variable    ${sorted_services[-1]}
     ${service_id}=    Set Variable    ${last_service['_id']}

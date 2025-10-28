@@ -234,7 +234,7 @@ Get All Shapes(After deleted shape)
     ${shapes}=    Set Variable    ${response.json()}
     FOR    ${shape}    IN    @{shapes}
         Should Not Contain    ${shape}[name]    Shape RF Modified 1
-        ...    msg=❌ Found shape with name 'Shape RF Modified 1'. Full object: ${shape}
+        ...    msg=❌ Found shape with name 'Shape RF Modified 1', should be deleted
     END
 Get Route after deleted Shape (Preguntar Gustavo)
     Skip

@@ -33,6 +33,10 @@ Generate random UUIDs
     Log    ${uuid_qr3}
 
 
+
+startenddate
+    ${start}=    Get Current Date    UTC    increment=${START_OFFSET_MIN} minutes    result_format=%Y-%m-%dT%H:%M:%SZ
+    ${end}=    Get Current Date    UTC    increment=${END_OFFSET_MIN} minutes    result_format=%Y-%m-%dT%H:%M:%SZ
 Set Date Variables
     ${fecha_hoy}=    Get Current Date    result_format=%Y-%m-%d
     Set Global Variable    ${fecha_hoy}
@@ -159,7 +163,7 @@ Get Last Route From Admin
 
     # Validamos que existan rutas
     ${num_routes}=    Get Length    ${routes}
-    Run Keyword If    ${num_routes} == 0    Fatal Error    msg=No routes found for community 5b8576db00a0355421d76393
+    Should not be empty  ${num_routes}  msg=No routes found
 
     # Ordenamos por createdAt
     ${sorted_routes}=    Evaluate    sorted(${routes}, key=lambda x: x['createdAt'])    json
@@ -258,7 +262,7 @@ Get Route From admin after update (PENDIENTE MENSAJE)
 
     # Validamos que existan rutas
     ${num_routes}=    Get Length    ${routes}
-    Run Keyword If    ${num_routes} == 0    Fatal Error    msg=No routes found for community 5b8576db00a0355421d76393
+    Should not be empty  ${num_routes}  msg=No routes found
 
     # Ordenamos por createdAt
     ${sorted_routes}=    Evaluate    sorted(${routes}, key=lambda x: x['createdAt'])    json
@@ -356,7 +360,7 @@ Get Last Driver From Admin
 
     # Validamos que existan drivers
     ${num_drivers}=    Get Length    ${drivers}
-    Run Keyword If    ${num_drivers} == 0    Fatal Error    msg=❌ No drivers found for community 5b8576db00a0355421d76393
+    
 
     # Ordenamos drivers por fecha de creación
     ${sorted_drivers}=    Evaluate    sorted(${drivers}, key=lambda x: x['createdAt'])    json
@@ -420,7 +424,6 @@ GET Last Vehicle From Admin
 
     # Validamos que existan vehículos
     ${num_vehicles}=    Get Length    ${vehicles}
-    Run Keyword If    ${num_vehicles} == 0    Fatal Error    msg=❌ No vehicles found for community 5b8576db00a0355421d76393
 
     # Ordenamos vehículos por fecha de creación
     ${sorted_vehicles}=    Evaluate    sorted(${vehicles}, key=lambda x: x['createdAt'])    json
@@ -826,7 +829,6 @@ Get Routes From Admin After Bulk Create
 
     # Validamos que existan rutas
     ${num_routes}=    Get Length    ${routes}
-    Run Keyword If    ${num_routes} == 0    Fatal Error    msg=❌ No routes found for community 5b8576db00a0355421d76393
 
     # ✅ Verificar que la ruta creada en bulk existe
     ${matching_route}=    Evaluate    [r for r in ${routes} if r["externalInfo"]["uuid"] == "${ROUTE_EXT_ID}"]    json

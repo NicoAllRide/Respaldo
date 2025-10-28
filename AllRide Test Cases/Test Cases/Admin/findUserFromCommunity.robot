@@ -207,7 +207,7 @@ Get Service Id
     ${sorted_services}=    Evaluate    sorted([s for s in ${responseJson} if s['routeId']['_id'] == '${scheduleId}'], key=lambda x: x['createdAt'])    json
 
 
-    Run Keyword If    ${sorted_services} == []    Fatal Error    msg= No services were created with routeId._id = "${scheduleId}" All createSheduled Tests Failing(Fatal error)
+   Should not be Empty    ${sorted_services}      msg= No services were created with routeId._id = "${scheduleId}" Exit tests
     # Obtenemos el último servicio creado
     ${last_service}=    Set Variable    ${sorted_services[-1]}
     ${service_id}=    Set Variable    ${last_service['_id']}
@@ -346,7 +346,7 @@ Find User (Usuario QA Eliminar)
     ...    headers=${headers}
     # Verifica el código de estado esperado (puedes ajustarlo según tus expectativas)
     ${userFounds}=    Set Variable    ${response.json()}
-    Should Be Empty    ${userFounds}
+    Should Be Empty    ${userFounds}        msg=
 
 Get service details(Should not have any reservation after user deletion)
     [Documentation]    Se verifica que no hayan reservas en el servicio recién creado luego de la eliminación del usuario

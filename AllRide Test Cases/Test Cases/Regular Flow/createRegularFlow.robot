@@ -192,7 +192,7 @@ Get Service Id
 
     ${sorted_services}=    Evaluate    [service for service in ${responseJson} if service['routeId']['_id'] == '${regularRouteId}']    json
 
-    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services were creatred with routeId._id = "${regularRouteId}" Failing all test(Fatal Error)
+    Should Not Be Empty    ${sorted_services}    msg="No services were created, exit test"
     
     # Obtenemos el último servicio creado
     ${last_service}=    Set Variable    ${sorted_services[-1]}

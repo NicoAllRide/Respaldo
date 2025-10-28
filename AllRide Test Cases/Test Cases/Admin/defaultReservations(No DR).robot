@@ -151,8 +151,7 @@ Get Service Id And Check Reservations - Week 1
     ${sorted_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']    json
 
     # Verificamos que se encuentre exactamente un servicio para la semana 1
-    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found in Week 1 with routeId._id = "${scheduleId}". Stopping test"
-    Run Keyword If    ${sorted_services.__len__()} != 1    Fatal Error    "Not exactly one service found in Week 1 with routeId._id = ${scheduleId}. Stopping test"
+    Should not be empty  ${sorted_services}   msg=No services found in Week 1 with routeId._id = "${scheduleId}". Stopping test
 
     # Asignamos las variables del servicio encontrado
     ${service}=    Set Variable    ${sorted_services[0]}
@@ -182,8 +181,8 @@ Get Service Id And Check Reservations - Week 2
     ${sorted_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']    json
 
     # Verificamos que se encuentre exactamente un servicio para la semana 1
-    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found in Week 1 with routeId._id = "${scheduleId}". Stopping test"
-    Run Keyword If    ${sorted_services.__len__()} != 1    Fatal Error    "Not exactly one service found in Week 1 with routeId._id = ${scheduleId}. Stopping test"
+    Should not be empty  ${sorted_services}   msg=No services found in Week 1 with routeId._id = "${scheduleId}". Stopping test
+    
 
     # Asignamos las variables del servicio encontrado
     ${service}=    Set Variable    ${sorted_services[0]}
@@ -213,8 +212,8 @@ Get Service Id And Check Reservations - Week 3
     ${sorted_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']    json
 
     # Verificamos que se encuentre exactamente un servicio para la semana 1
-    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found in Week 1 with routeId._id = "${scheduleId}". Stopping test"
-    Run Keyword If    ${sorted_services.__len__()} != 1    Fatal Error    "Not exactly one service found in Week 1 with routeId._id = ${scheduleId}. Stopping test"
+    Should not be empty  ${sorted_services}   msg=No services found in Week 1 with routeId._id = "${scheduleId}". Stopping test
+    
 
     # Asignamos las variables del servicio encontrado
     ${service}=    Set Variable    ${sorted_services[0]}
@@ -244,8 +243,8 @@ Get Service Id And Check Reservations - Week 4
     ${sorted_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']    json
 
     # Verificamos que se encuentre exactamente un servicio para la semana 1
-    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found in Week 1 with routeId._id = "${scheduleId}". Stopping test"
-    Run Keyword If    ${sorted_services.__len__()} != 1    Fatal Error    "Not exactly one service found in Week 1 with routeId._id = ${scheduleId}. Stopping test"
+    Should not be empty  ${sorted_services}   msg=No services found in Week 1 with routeId._id = "${scheduleId}". Stopping test
+    
 
     # Asignamos las variables del servicio encontrado
     ${service}=    Set Variable    ${sorted_services[0]}

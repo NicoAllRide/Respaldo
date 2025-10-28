@@ -130,7 +130,7 @@ Get Service Id
     ${sorted_services}=    Evaluate    sorted(${responseJson}[scheduledServices], key=lambda x: x['createdAt'])    json
     ${sorted_services}=    Evaluate    [service for service in ${responseJson}[scheduledServices] if service['routeId']['_id'] == '${scheduleId}']    json
 
-    Run Keyword If    ${sorted_services} == []    Fatal Error    msg= No services were created with routeId._id = "${scheduleId}" All createSheduled Tests Failing(Fatal error)
+   Should not be Empty    ${sorted_services}      msg= No services were created with routeId._id = "${scheduleId}" Exit tests
     # Obtenemos el último servicio creado
     ${last_service}=    Set Variable    ${sorted_services[-1]}
     ${service_id}=    Set Variable    ${last_service['_id']}

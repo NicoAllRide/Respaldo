@@ -134,10 +134,7 @@ Get Service Id
     ...    [service for service in ${responseJson} if service['routeId']['_id'] == '${scheduleId}']
     ...    json
 
-    IF    ${sorted_services} == []
-        Fatal Error
-        ...    msg= No services were created with routeId._id = "${scheduleId}" All createSheduled Tests Failing(Fatal error)
-    END
+       Should not be empty ${sorted_services}  msg=No services were created with routeId._id = "${scheduleId}" All createSheduled Tests Failing
     # Obtenemos el último servicio creado
     ${last_service}=    Set Variable    ${sorted_services[-1]}
     ${service_id}=    Set Variable    ${last_service['_id']}

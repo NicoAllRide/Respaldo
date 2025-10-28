@@ -336,7 +336,7 @@ Get Service Id
     Log     ${sorted_services}
 
     # Verificar si se encontraron servicios
-    Run Keyword If    ${sorted_services} == []    Fatal Error    "No services found in 4 weeks with routeId._id = "${scheduleId}"
+    Should not be empty  ${sorted_services}  msg= "No services found in 4 weeks with routeId._id = "${scheduleId}"
     
     # Obtenemos el último servicio creado
     ${last_service}=    Set Variable    ${sorted_services[-1]}
